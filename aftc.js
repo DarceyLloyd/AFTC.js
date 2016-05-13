@@ -1,7 +1,18 @@
 // Author: Darcey@AllForTheCode.co.uk
-// Date: 2005 > 2016
-// Version 1.0
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function debugWindow($input) {
+	 var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
+	 w.document.title = "Debug";
+	 w.document.write("<style>body {width:100%;}</style>");
+	 w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + $input + "</div>");
+	 //w.document.write("<div style='width:100%'>" + $response + "</div>");
+	 w.document.close();
+	console.log($response);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 
 
