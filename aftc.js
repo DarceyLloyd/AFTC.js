@@ -72,8 +72,8 @@ function arrayRemoveIndex(array, index) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFunctionName(callback){
-	var name=callback.toString();
+function getFunctionName(fn){
+	var name=fn.toString();
 	var reg=/function ([^\(]*)/;
 	return reg.exec(name)[1];
 }
@@ -267,7 +267,7 @@ function getIEVersion() {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
 	return match ? parseInt(match[1]) : undefined;
 }
-function get_browser() {
+function getBrowser() {
 	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 	if (/trident/i.test(M[1])) {
 		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
@@ -303,6 +303,20 @@ function boolToString($bool) {
 	}
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function stringToBool($string) {
+	switch ($string.toLowerCase()){
+		case "y": return true; break;
+		case "yes": return true; break;
+		case "1": return true; break;
+		case "true": return true; break;
+		case "y": return true; break;
+	}
+	
+	return false;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 function aftcImageFitter($id) {
@@ -568,7 +582,7 @@ function getCookie($name) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFileExtensions($input) {
+function getFileExtension($input) {
 	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
