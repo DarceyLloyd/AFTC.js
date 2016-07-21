@@ -285,7 +285,7 @@ A JavaScript function to set a cookie value by cookie name.
 function setCookie($name, $value)
 ```
 
-#xxxxxxxxxxxxxx
+#getCookie
 A JavaScript function to get a cookie value by cookie name.
 ```
 function getCookie($name)
