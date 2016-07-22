@@ -1,5 +1,18 @@
 // Author: Darcey@AllForTheCode.co.uk
+// Requirements: jQuery 1.10+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function centerAbsoluteItem($ElementIdentifier){
+	var element = $($ElementIdentifier);
+	var tx = windowHalfX - (element.width() / 2);
+	var ty = windowHalfY - (element.height() / 2);
+	element.css("left", tx);
+	element.css("top", ty);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function debugWindow($input) {
@@ -766,12 +779,11 @@ jQuery(document).ready(function () {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function log($str) {
-	console.log($str);
+function log(arg) {
+	console.log(arg);
 }
-function trace($str) {
-	// ActionScript?
-	log($str);
+function trace(arg) {
+	console.trace(arg);
 }
 function logTo($id, $msg) {
 	$($id).html($msg);
