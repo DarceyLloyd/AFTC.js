@@ -3,13 +3,97 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function centerAbsoluteItem($ElementIdentifier){
-	var element = $($ElementIdentifier);
-	var tx = windowHalfX - (element.width() / 2);
-	var ty = windowHalfY - (element.height() / 2);
-	element.css("left", tx);
-	element.css("top", ty);
+function getArgs(){
+	console.log( arguments.length ); // Returns 5
+	for ( i = 0; i < arguments.length; i++ ) {
+		console.log( typeof arguments[i] ); // Returns string, number, object, object, boolean
+	}
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function getWeightedRandom(odds,iterations=5){
+	if (!odds){
+		odds = [
+			0.68, // 0
+			0.69, // 1
+			0.698, // 2
+			0.6909, // 3
+			0.68, // 4
+			0.58, // 5
+			0.57, // 6
+			0.56, // 7
+			0.4, // 8
+			0.3, // 9
+		];
+	}
+	var weights = [];
+	var r = 0;	
+	var iMax = 0;
+	var wMax = 0;
+	
+	for (var i in odds) {
+		if (!weights[i]){
+			weights[i] = 0;
+		}
+				
+		for (var x=0; x<iterations; x++) {
+			r = Math.random();
+			//log(r.toFixed(3) + "   " + odds[i].toFixed(3));
+			if (r<=odds[i]){
+				weights[i] += odds[i];
+			}
+		}
+		
+		if (weights[i] > wMax){
+			wMax = weights[i];
+			iMax = i;
+		}
+		
+  	}
+	
+	//log(weights);
+	//log("wMax = " + wMax + "   iMax = " + iMax);
+  	return iMax;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function centerAbsoluteItem($element){
+	if (typeof($element)==="string"){
+		$element = $($element);
+	}
+	//log($element);
+	//log($element.width());
+	var mLeft = parseInt($element.css("margin-left"));
+	var mRight = parseInt($element.css("margin-right"));
+	var mTop = parseInt($element.css("margin-top"));
+	var mBtm = parseInt($element.css("margin-bottom"));
+	
+	var pLeft = parseInt($element.css("padding-left"));
+	var pRight = parseInt($element.css("padding-right"));
+	var pTop = parseInt($element.css("padding-top"));
+	var pBtm = parseInt($element.css("padding-bottom"));
+	
+	var bLeft = parseInt($element.css("border-left-width"));
+	var bRight = parseInt($element.css("border-right-width"));
+	var bTop = parseInt($element.css("border-top-width"));
+	var bBtm = parseInt($element.css("border-bottom-width"));
+	
+	//log("mLeft:"+mLeft+ "   mRight:"+mRight + "   mTop:"+mTop+"   mBtm:"+mBtm);
+	//log("pLeft:"+pLeft+ "   pRight:"+pRight + "   pTop:"+pTop+"   pBtm:"+pBtm);
+	//log("bLeft:"+bLeft+ "   bRight:"+bRight + "   bTop:"+bTop+"   bBtm:"+bBtm);
+	
+	var w = $element.width() + pLeft + pRight + mLeft + mRight + bLeft + bRight;
+	var h = $element.height() + pTop + pBtm + pLeft + pRight + bTop + bBtm;
+	var tx = (window.innerWidth/2) - (w / 2);
+	var ty = (window.innerHeight/2) - (h / 2);
+	$element.css("left", tx);
+	$element.css("top", ty);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -50,6 +134,12 @@ function generateNoise(canvasId,width,height,opacity) {
 	//document.body.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")";
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
 
 
 
@@ -766,24 +856,27 @@ function DebugPosition($arg) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-jQuery(document).ready(function () {
-	
-
-});
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
 
 
 
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+var aftcLogEnabled = true;
 function log(arg) {
-	console.log(arg);
+	if (console){
+	if (aftcLogEnabled){
+		console.log(arg);
+	}
+	}
 }
+function enableLog(){ aftcLogEnabled = true; log("log() is now enabled.");}
+function disableLog(){ aftcLogEnabled = false; log("log() is now disabled.");}
+
 function trace(arg) {
-	console.trace(arg);
+	if (console){
+		console.trace(arg);
+	}
 }
 function logTo($id, $msg) {
 	$($id).html($msg);
