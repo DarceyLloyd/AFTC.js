@@ -1,21 +1,21 @@
 // Author: Darcey@AllForTheCode.co.uk
 // Requirements: jQuery 1.10+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
+//"use strict";
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getArgs(){
-	console.log( arguments.length ); // Returns 5
-	for ( i = 0; i < arguments.length; i++ ) {
-		console.log( typeof arguments[i] ); // Returns string, number, object, object, boolean
+function getArgs() {
+	console.log(arguments.length); // Returns 5
+	for (var i = 0; i < arguments.length; i++) {
+		console.log(typeof arguments[i]); // Returns string, number, object, object, boolean
 	}
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getWeightedRandom(odds,iterations=5){
-	if (!odds){
+function getWeightedRandom(odds, iterations) {
+	if (!odds) {
 		odds = [
 			0.68, // 0
 			0.69, // 1
@@ -30,41 +30,41 @@ function getWeightedRandom(odds,iterations=5){
 		];
 	}
 	var weights = [];
-	var r = 0;	
+	var r = 0;
 	var iMax = 0;
 	var wMax = 0;
-	
+
 	for (var i in odds) {
-		if (!weights[i]){
+		if (!weights[i]) {
 			weights[i] = 0;
 		}
-				
-		for (var x=0; x<iterations; x++) {
+
+		for (var x = 0; x < iterations; x++) {
 			r = Math.random();
 			//log(r.toFixed(3) + "   " + odds[i].toFixed(3));
-			if (r<=odds[i]){
+			if (r <= odds[i]) {
 				weights[i] += odds[i];
 			}
 		}
-		
-		if (weights[i] > wMax){
+
+		if (weights[i] > wMax) {
 			wMax = weights[i];
 			iMax = i;
 		}
-		
-  	}
-	
+
+	}
+
 	//log(weights);
 	//log("wMax = " + wMax + "   iMax = " + iMax);
-  	return iMax;
+	return iMax;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function centerAbsoluteItem($element){
-	if (typeof($element)==="string"){
+function centerAbsoluteItem($element) {
+	if (typeof($element) === "string") {
 		$element = $($element);
 	}
 	//log($element);
@@ -73,25 +73,25 @@ function centerAbsoluteItem($element){
 	var mRight = parseInt($element.css("margin-right"));
 	var mTop = parseInt($element.css("margin-top"));
 	var mBtm = parseInt($element.css("margin-bottom"));
-	
+
 	var pLeft = parseInt($element.css("padding-left"));
 	var pRight = parseInt($element.css("padding-right"));
 	var pTop = parseInt($element.css("padding-top"));
 	var pBtm = parseInt($element.css("padding-bottom"));
-	
+
 	var bLeft = parseInt($element.css("border-left-width"));
 	var bRight = parseInt($element.css("border-right-width"));
 	var bTop = parseInt($element.css("border-top-width"));
 	var bBtm = parseInt($element.css("border-bottom-width"));
-	
+
 	//log("mLeft:"+mLeft+ "   mRight:"+mRight + "   mTop:"+mTop+"   mBtm:"+mBtm);
 	//log("pLeft:"+pLeft+ "   pRight:"+pRight + "   pTop:"+pTop+"   pBtm:"+pBtm);
 	//log("bLeft:"+bLeft+ "   bRight:"+bRight + "   bTop:"+bTop+"   bBtm:"+bBtm);
-	
+
 	var w = $element.width() + pLeft + pRight + mLeft + mRight + bLeft + bRight;
 	var h = $element.height() + pTop + pBtm + pLeft + pRight + bTop + bBtm;
-	var tx = (window.innerWidth/2) - (w / 2);
-	var ty = (window.innerHeight/2) - (h / 2);
+	var tx = (window.innerWidth / 2) - (w / 2);
+	var ty = (window.innerHeight / 2) - (h / 2);
 	$element.css("left", tx);
 	$element.css("top", ty);
 }
@@ -100,59 +100,53 @@ function centerAbsoluteItem($element){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function debugWindow($input) {
-	 var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
-	 w.document.title = "Debug";
-	 w.document.write("<style>body {width:100%;}</style>");
-	 w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + $input + "</div>");
-	 //w.document.write("<div style='width:100%'>" + $response + "</div>");
-	 w.document.close();
-	console.log($response);
+	var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
+	w.document.title = "Debug";
+	w.document.write("<style>body {width:100%;}</style>");
+	w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + $input + "</div>");
+	//w.document.write("<div style='width:100%'>" + $response + "</div>");
+	w.document.close();
+	//console.log($response);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function generateNoise(canvasId,width,height,opacity) {
+function generateNoise(canvasId, width, height, arg_opacity) {
 	var canvas = document.getElementById(canvasId),
 		ctx = canvas.getContext('2d'),
 		x, y,
 		number,
-		opacity = opacity || .2;
-	
+		opacity = arg_opacity || .2;
+
 	canvas.width = width;
 	canvas.height = height;
-	
-	for ( x = 0; x < canvas.width; x++ ) {
-		for ( y = 0; y < canvas.height; y++ ) {
-			number = Math.floor( Math.random() * 60 );
-			
+
+	for (x = 0; x < canvas.width; x++) {
+		for (y = 0; y < canvas.height; y++) {
+			number = Math.floor(Math.random() * 60);
+
 			ctx.fillStyle = "rgba(" + number + "," + number + "," + number + "," + opacity + ")";
 			ctx.fillRect(x, y, 1, 1);
 		}
 	}
-	
+
 	//document.body.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")";
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
-
-
-
-
-
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function radToDeg(input){
-	return input * (180/Math.PI);
+function radToDeg(input) {
+	return input * (180 / Math.PI);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function degToRad(input){
-	return input * (Math.PI/180);
+function degToRad(input) {
+	return input * (Math.PI / 180);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -175,18 +169,18 @@ function arrayRemoveIndex(array, index) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFunctionName(fn){
-	var name=fn.toString();
-	var reg=/function ([^\(]*)/;
+function getFunctionName(fn) {
+	var name = fn.toString();
+	var reg = /function ([^\(]*)/;
 	return reg.exec(name)[1];
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
-function getUkDateFromDbDateTime($input){
+function getUkDateFromDbDateTime($input) {
 	// "2016-04-08 21:11:59" to UK date
-	if ($input == "" || $input == null){
+	if ($input == "" || $input == null) {
 		return "no input";
 	}
 	var $DateTime = $input.split(" ");
@@ -195,7 +189,7 @@ function getUkDateFromDbDateTime($input){
 	return $UKDate;
 }
 
-function getUkDateTimeFromDbDateTime($input){
+function getUkDateTimeFromDbDateTime($input) {
 	// "2016-04-08 21:11:59" to UK date time
 	var $DateTime = $input.split(" ");
 	var $DateParts = $DateTime[0].split("-");
@@ -278,7 +272,7 @@ function getRandomRGBString() {
 	var $r = Math.round(Math.random() * 255);
 	var $g = Math.round(Math.random() * 255);
 	var $b = Math.round(Math.random() * 255);
-	rgb = "rgb(" + $r + "," + $g + "," + $b + ")";
+	var rgb = "rgb(" + $r + "," + $g + "," + $b + ")";
 	return rgb;
 }
 
@@ -310,11 +304,11 @@ function parseJSONFileToSelect($file, $element_id, $label_index, $value_index) {
 				}
 
 				$('#' + $element_id).append(
-						$('<option>')
+					$('<option>')
 						.text($select_label)
 						.attr('value', $select_value)
-					);
-				});
+				);
+			});
 		}
 	});
 }
@@ -409,14 +403,24 @@ function boolToString($bool) {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function stringToBool($string) {
-	switch ($string.toLowerCase()){
-		case "y": return true; break;
-		case "yes": return true; break;
-		case "1": return true; break;
-		case "true": return true; break;
-		case "y": return true; break;
+	switch ($string.toLowerCase()) {
+		case "y":
+			return true;
+			break;
+		case "yes":
+			return true;
+			break;
+		case "1":
+			return true;
+			break;
+		case "true":
+			return true;
+			break;
+		case "y":
+			return true;
+			break;
 	}
-	
+
 	return false;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -451,6 +455,7 @@ function setFormFieldById($id, $value) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 function limitLengthInWords(field, maxWords) {
 	var value = field.value,
+		wcount_valid,
 		wordCount = value.split(/\S+/).length - 1,
 		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
 	if (wordCount >= maxWords) {
@@ -469,16 +474,16 @@ function limitLengthInWords(field, maxWords) {
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 function isChecked($id) {
-	$element = document.getElementById($id);
+	var $element = document.getElementById($id);
 	return $element.checked;
 }
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 function checkboxReveal($checkbox, $elementForStateChange, $showOnChecked) {
-	$state = jQuery('input[name="' + $checkbox.id + '"]:checked').val();
+	var $state = jQuery('input[name="' + $checkbox.id + '"]:checked').val();
 	$state = $state.toLowerCase();
-	
+
 	if ($showOnChecked) {
 		jQuery("#" + $elementForStateChange.id).slideDown($AnimSwitch);
 	} else {
@@ -517,9 +522,9 @@ function loadJSONFile($url, $callback) {
 			var msg = "";
 			msg += "loadJSONFile: ERROR\n";
 			msg += "\t" + "URL: [" + $url + "]\n";
-			msg += "\t" + "ID: [" + $id + "]\n";
-			msg += "\t" + "method: [" + $method + "]\n";
-			msg += "\t" + "data: [" + $data + "]\n";
+			//msg += "\t" + "ID: [" + $id + "]\n";
+			//msg += "\t" + "method: [" + $method + "]\n";
+			msg += "\t" + "data: [" + data + "]\n";
 			msg += "\t" + "status: [" + ajax.status + "]\n";
 			msg += "\t" + "statusText: [" + ajax.statusText + "]\n";
 			log(msg);
@@ -539,9 +544,11 @@ function AJAXLoadPage($url, $id, $method, $data, $callback) {
 		$method = "";
 	}
 
+	var ajax;
+
 	switch ($method.toLowerCase()) {
 		case "post":
-			var ajax = $.ajax({
+			ajax = $.ajax({
 				type: "POST",
 				url: $url,
 				data: $data,
@@ -565,7 +572,7 @@ function AJAXLoadPage($url, $id, $method, $data, $callback) {
 			break;
 
 		case "get":
-			var ajax = $.ajax({
+			ajax = $.ajax({
 				type: "GET",
 				url: $url,
 				data: $data,
@@ -640,7 +647,7 @@ function convertOnlyZeroToNull($input) {
 		return null;
 	}
 
-	return $intput;
+	return $input;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -658,7 +665,7 @@ function convertNullToZero($input) {
 	if ($input == "NULL") {
 		return 0;
 	}
-	
+
 	return $input;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -702,28 +709,28 @@ function getLastPartOfUrl() {
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 function DebugPosition($arg) {
-	
+
 	var $msg = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
 	$msg += "DebugPosition(): " + $arg.selector + " " + $arg[0] + "\n";
 	$msg += "\t" + "KEYS: a:left   b:right   w:up,   s:down   k+:scale+   k-:scale-   +:step+   -:step-";
 	console.log($msg);
-	
-	
-	$element = $arg;
-	$x = 0;
-	$y = 0;
-	$z = 0;
-	$o = 0;
-	$sc = 0;
-	$tweenTime = 0;
-	
-	$shift = false;
-	$step = 1.01;
-	
-	
+
+
+	var $element = $arg;
+	var $x = 0;
+	var $y = 0;
+	var $z = 0;
+	var $o = 0;
+	var $sc = 0;
+	var $tweenTime = 0;
+
+	var $shift = false;
+	var $step = 1.01;
+
+
 	logPos();
-	
-	
+
+
 	$(document).keyup(function (e) {
 		switch (e.which) {
 			case 16: // shift
@@ -731,7 +738,7 @@ function DebugPosition($arg) {
 				break;
 		}
 	});
-	
+
 	$(document).keydown(function (e) {
 		//console.log(e.which);
 		$x = parseInt($element.css("left"));
@@ -739,17 +746,17 @@ function DebugPosition($arg) {
 		$z = parseFloat($element.css("zoom"));
 		$o = parseInt($element.css("opacity"));
 		$sc = getElementScale();
-		
+
 		switch (e.which) {
 			case 16: // shift
 				$shift = true;
 				break;
-			
+
 			case 187: // +
 				$step += 1;
 				logPos();
 				break;
-			
+
 			case 189: // -
 				$step -= 1;
 				if ($step < 1) {
@@ -757,8 +764,8 @@ function DebugPosition($arg) {
 				}
 				logPos();
 				break;
-			
-			
+
+
 			case 107: // keypad +
 				/*
 				 $z += 0.001;
@@ -768,7 +775,7 @@ function DebugPosition($arg) {
 				$sc += 0.001;
 				TweenLite.to($element, $tweenTime, {scale: $sc, onComplete: logPos});
 				break;
-			
+
 			case 109: // keypad -
 				/*
 				 $z -= 0.001;
@@ -778,7 +785,7 @@ function DebugPosition($arg) {
 				$sc -= 0.001;
 				TweenLite.to($element, $tweenTime, {scale: $sc, onComplete: logPos});
 				break;
-			
+
 			case 65: // a
 				$x -= $step;
 				$x *= 100;
@@ -786,7 +793,7 @@ function DebugPosition($arg) {
 				//TweenLite.to($element,$tweenTime,{left:$x,onComplete:logPos});
 				$element.css("left", $x);
 				break;
-			
+
 			case 68: // d
 				$x += $step;
 				$x *= 100;
@@ -794,7 +801,7 @@ function DebugPosition($arg) {
 				//TweenLite.to($element,$tweenTime,{left:$x,onComplete:logPos});
 				$element.css("left", $x);
 				break;
-			
+
 			case 87: // w
 				$y -= $step;
 				$y *= 100;
@@ -802,7 +809,7 @@ function DebugPosition($arg) {
 				//TweenLite.to($element,$tweenTime,{top:$y,onComplete:logPos});
 				$element.css("top", $y);
 				break;
-			
+
 			case 83: // s
 				$y += $step;
 				$y *= 100;
@@ -811,14 +818,14 @@ function DebugPosition($arg) {
 				$element.css("top", $y);
 				break;
 		}
-		
+
 		logPos();
 	});
-	
-	
+
+
 	function getElementScale() {
 		// We will work with 1st value only
-		str = $element.css('-webkit-transform');
+		var str = $element.css('-webkit-transform');
 		str = str.replace("matrix3d(", "");
 		str = str.replace("matrix(", "");
 		str = str.replace(")", "");
@@ -827,7 +834,7 @@ function DebugPosition($arg) {
 		//console.log(v);
 		return parseFloat(v[0]);
 	}
-	
+
 	/*
 	 function getRotationX()
 	 {
@@ -835,7 +842,7 @@ function DebugPosition($arg) {
 	 return Math.floor( (Math.asin(wkcm.b) * (180/Math.PI)) );
 	 }
 	 */
-	
+
 	function logPos() {
 		$msg = "";
 		//$msg += "keycode:" + e.which + "   ";
@@ -847,7 +854,7 @@ function DebugPosition($arg) {
 		$msg += "scale:" + getElementScale().toFixed(3) + "   ";
 		$msg += "w:" + parseFloat($element[0].getBoundingClientRect().width).toFixed(3) + "   ";
 		$msg += "h:" + parseFloat($element[0].getBoundingClientRect().height).toFixed(3) + "   ";
-		
+
 		console.log($msg);
 		//console.log($element.css('-webkit-transform'));
 		$("#debug").html($msg);
@@ -857,24 +864,27 @@ function DebugPosition($arg) {
 
 
 
-
-
-
-
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 var aftcLogEnabled = true;
 function log(arg) {
-	if (console){
-	if (aftcLogEnabled){
-		console.log(arg);
-	}
+	if (console) {
+		if (aftcLogEnabled) {
+			console.log(arg);
+		}
 	}
 }
-function enableLog(){ aftcLogEnabled = true; log("log() is now enabled.");}
-function disableLog(){ aftcLogEnabled = false; log("log() is now disabled.");}
+
+function enableLog() {
+	aftcLogEnabled = true;
+	log("log() is now enabled.");
+}
+function disableLog() {
+	aftcLogEnabled = false;
+	log("log() is now disabled.");
+}
 
 function trace(arg) {
-	if (console){
+	if (console) {
 		console.trace(arg);
 	}
 }
