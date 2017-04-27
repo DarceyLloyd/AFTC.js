@@ -6,9 +6,15 @@ A collection of functions I find make life a lot easier when working in JavaScri
 jQuery 1.12 and above.
 
 #  Instructions
+```
 npm install
 npm build // dist (minified)
 npm dev // dev (non-minified)
+```
+
+Add what you need via
+```
+npm i lodash -S
 
 # Configuration
 Edit aftc.js, comment out the features you don't require
