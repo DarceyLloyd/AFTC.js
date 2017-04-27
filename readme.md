@@ -3,8 +3,18 @@
 A collection of functions I find make life a lot easier when working in JavaScript.
 
 # Requirements:
-jQuery 1.8 and above.
+jQuery 1.12 and above.
 
+#  Instructions
+npm install
+npm build // dist (minified)
+npm dev // dev (non-minified)
+
+# Configuration
+Edit aftc.js, comment out the features you don't require
+
+
+# This is not a full list of functions but is most of them (Needs an update)
 
 #log
 Replacement for console.log, now you can just type log, so much quicker.
