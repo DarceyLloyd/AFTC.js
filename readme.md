@@ -15,9 +15,11 @@ npm dev // dev (non-minified)
 Add what you need via
 ```
 npm i lodash -S
+```
 
 # Configuration
 Edit aftc.js, comment out the features you don't require
+
 
 
 # This is not a full list of functions but is most of them (Needs an update)
