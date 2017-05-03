@@ -1,5 +1,5 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function checkboxReveal($checkbox, $elementIdForHideShow) {
+window.checkboxReveal = function ($checkbox, $elementIdForHideShow) {
 	var $state = jQuery('input[name="' + $checkbox.id + '"]:checked').val();
 	$state = $state.toLowerCase();
 
@@ -13,7 +13,7 @@ function checkboxReveal($checkbox, $elementIdForHideShow) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function isChecked($id) {
+window.isChecked = function ($id) {
 	$element = document.getElementById($id);
 	return $element.checked;
 }
@@ -22,7 +22,7 @@ function isChecked($id) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function isNumberKey(evt) {
+window.isNumberKey = function (evt) {
 	var charCode = (evt.which) ? evt.which : event.keyCode;
 	if (charCode > 31 && (charCode < 48 || charCode > 57))
 		return false;
@@ -34,7 +34,7 @@ function isNumberKey(evt) {
 
 
 
-function parseJSONFileToSelect($file, $element_id, $label_index, $value_index) {
+window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $value_index) {
 	$.ajax({
 		url: $file,
 		type: 'POST',
@@ -66,7 +66,7 @@ function parseJSONFileToSelect($file, $element_id, $label_index, $value_index) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function limitLengthInWords(field, maxWords) {
+window.limitLengthInWords = function(field, maxWords) {
 	var value = field.value,
 		wordCount = value.split(/\S+/).length - 1,
 		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");

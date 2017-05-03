@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="dist/aftc.min.js" rel="stylesheet">
-    </head>
-    <body>
-    
-    </body>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="dist/aftc.min.js"></script>
+    <script>
+        log("AFTC.JS");
+        
+        $(document).ready(function(){
+            logTo("debug","AFTC.JS: Document ready");
+            log(guid());
+        });
+        
+    </script>
+</head>
+
+<body>
+    <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+    <!--<button onclick="scrollToElementID( 'box3' );">ScrollToElement (given id)</button>-->
+    <!--<button onclick="scrollToElementClass( 'box-3' );">ScrollToElement (given class)</button>-->
+    <button onclick="scrollToElement( $('#box3') );">ScrollToElement 2 (given jQuery element)</button>
+    <div id="box1" class="box-1" style="border:1px solid #cc0000;min-height: 500px;">BOX1</div>
+    <div id="box2" class="box-2" style="border:1px solid #cc0000;min-height: 500px;">BOX2</div>
+    <div id="box3" class="box-3" style="border:1px solid #cc0000;min-height: 500px;">BOX3</div>
+    <button onclick="scrollToElementClass('box-1');">scrollToElementClass</button>
+</body>
+
 </html>

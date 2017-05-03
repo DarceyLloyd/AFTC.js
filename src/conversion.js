@@ -1,12 +1,12 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function radToDeg(input) {
+window.radToDeg = function (input) {
 	return input * (180 / Math.PI);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function degToRad(input) {
+window.degToRad = function (input) {
 	return input * (Math.PI / 180);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -20,7 +20,7 @@ function degToRad(input) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function boolToString($bool) {
+window.boolToString = function ($bool) {
 	if ($bool) {
 		return "true";
 	} else {
@@ -30,7 +30,7 @@ function boolToString($bool) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function stringToBool($string) {
+window.stringToBool = function ($string) {
 	switch ($string.toLowerCase()) {
 		case "y":
 			return true;
@@ -46,10 +46,10 @@ function stringToBool($string) {
 			break;
 		case "y":
 			return true;
-            break;
-        default:
-            return false;
-            break;
+			break;
+		default:
+			return false;
+			break;
 	}
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

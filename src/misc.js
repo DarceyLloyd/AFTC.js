@@ -1,12 +1,12 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function redirect($url) {
+window.redirect = function($url) {
 	self.location.href = $url;
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getArgs() {
+window.getArgs = function() {
 	console.log(arguments.length); // Returns 5
 	for (var i = 0; i < arguments.length; i++) {
 		console.log(typeof arguments[i]); // Returns string, number, object, object, boolean
@@ -27,7 +27,7 @@ function getFunctionName(fn) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getWeightedRandom(odds, iterations) {
+window.getWeightedRandom = function(odds, iterations) {
 	if (!odds) {
 		odds = [
 			0.68, // 0

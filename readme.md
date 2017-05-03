@@ -8,8 +8,8 @@ jQuery 1.12 and above.
 #  Instructions
 ```
 npm install
-npm build // dist (minified)
-npm dev // dev (non-minified)
+npm run build // dist (minified)
+npm run dev // dev (non-minified)
 ```
 
 Add what you need via

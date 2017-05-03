@@ -1,5 +1,20 @@
-function scrollToElementID($id, $speed, $delay) {
-	$id = $id.replace("#", ""); // Ensure we have something uniform to work with
+window.scrollToElementID = function($id, $speed, $delay) {
+	scrollToElement($("#"+$id), $speed, $delay);
+}
+
+window.scrollToElementClass = function($class, $speed, $delay) {
+	scrollToElement($("."+$class), $speed, $delay);
+}
+
+
+window.scrollToElement = function ($obj, $speed, $delay) {
+		
+	var isJqueryObject = $obj instanceof jQuery;
+	if (!isJqueryObject) {
+		log("AFTC.JS: scrollToElement requires an element with a class or id or a jquery object");
+		return;
+	}
+
 	if (!$speed || $speed == null) {
 		$speed = 1;
 	}
@@ -11,6 +26,6 @@ function scrollToElementID($id, $speed, $delay) {
 	$delay *= 1000;
 
 	$('html, body').delay($delay).animate({
-		scrollTop: $("#" + $id).offset().top
+		scrollTop: $obj.offset().top
 	}, $speed);
 }

@@ -1,6 +1,6 @@
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function setCookie($name, $value) {
+window.setCookie = function ($name, $value) {
 	//document.cookie = $name + "=" + $value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
 	//$.cookie($name, $value, {expires:365,path:'/sfsow'});
 	var expires = new Date();
@@ -11,7 +11,7 @@ function setCookie($name, $value) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function getCookie($name) {
+window.getCookie = function ($name) {
 	//return $.cookie($name);
 	var keyValue = document.cookie.match('(^|;) ?' + $name + '=([^;]*)(;|$)');
 	return keyValue ? keyValue[2] : null;

@@ -1,8 +1,8 @@
-function getElementById(id){
-    return document.getElementById(id);
+window.getElementById = function (id) {
+	return document.getElementById(id);
 }
 
-function hideShow($ShowClassName, $HideClassName) {
+window.hideShow = function ($ShowClassName, $HideClassName) {
 	var $index;
 
 	if (isArray($ShowClassName)) {
@@ -31,8 +31,8 @@ function hideShow($ShowClassName, $HideClassName) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function centerAbsoluteItem($element) {
-	if (typeof($element) === "string") {
+window.centerAbsoluteItem = function ($element) {
+	if (typeof ($element) === "string") {
 		$element = $($element);
 	}
 	//log($element);

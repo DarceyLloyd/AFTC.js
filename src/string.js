@@ -1,4 +1,4 @@
-function randomString($length) {
+window.randomString = function($length) {
 	var text = "";
 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -9,7 +9,7 @@ function randomString($length) {
 }
 
 
-function guid() {
+window.guid = function() {
 	function Amiga() {
 		return Math.floor((1 + Math.random()) * 0x10000)
 			.toString(16)
@@ -21,13 +21,13 @@ function guid() {
 }
 
 
-function trimStringLength($input, $length) {
+window.trimStringLength = function($input, $length) {
 	return $input.substring(0, $length);
 }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getLastPartOfUrl() {
+window.getLastPartOfUrl = function() {
 	var $url = window.location.href;
 	var $part = $url.substring($url.lastIndexOf('/') + 1);
 	return $part;
@@ -36,7 +36,7 @@ function getLastPartOfUrl() {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFileExtension($input) {
+window.getFileExtension = function($input) {
 	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -44,7 +44,7 @@ function getFileExtension($input) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function removeFileFromPath(path) {
+window.removeFileFromPath = function(path) {
     //var pa = '/this/is/a/folder/aFile.txt';
     var r = /[^\/]*$/;
     path = path.replace(r, '');

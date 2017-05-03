@@ -1,5 +1,5 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-function AJAXLoad($url, $method, $data, $callback) {
+window.AJAXLoad = function($url, $method, $data, $callback) {
 
 	$.ajax({
 		method: $method,
@@ -27,7 +27,7 @@ function AJAXLoad($url, $method, $data, $callback) {
 
 
 
-function loadJSONFile($url, $callback) {
+window.loadJSONFile = function($url, $callback) {
 	/*
 	 var $data = $.getJSON($file, function(result){
 	 $.each(result, function(key, val){

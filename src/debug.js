@@ -1,6 +1,24 @@
+//Returns true if it is a DOM node
+window.isNode = function(o) {
+	return (
+		typeof Node === "object" ? o instanceof Node :
+			o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string"
+	);
+}
+
+//Returns true if it is a DOM element    
+window.isElement = function(o) {
+	return (
+		typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+			o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
+	);
+}
+
+
+
 var lazyLog = true;
 
-function log(arg) {
+window.log = function(arg) {
     if (console) {
         if (lazyLog) {
             console.log(arg);
@@ -8,31 +26,39 @@ function log(arg) {
     }
 }
 
-function logEnable() {
+window.logEnable = function() {
     lazyLog = true;
     log("log() is now enabled.");
 }
 
-function logDisable() {
+window.logDisable = function() {
     lazyLog = false;
     log("log() is now disabled.");
 }
 
-function trace(arg) {
+window.trace = function(arg) {
     if (console) {
         console.trace(arg);
     }
 }
 
-function logTo($id, $msg) {
-    $($id).html($msg);
+window.logTo = function ($id, $msg) {
+    if (isElement($id)) {
+        $id.innerHTML = $msg;
+    } else {
+        if ($("#" + $id)) {
+            $("#"+$id).html($msg);
+        } else {
+            $("."+$id).html($msg);
+        }
+    }
 }
 
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function debugWindow($input) {
+window.debugWindow = function($input) {
 	var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
 	w.document.title = "Debug";
 	w.document.write("<style>body {width:100%;}</style>");
@@ -41,13 +67,13 @@ function debugWindow($input) {
 	w.document.close();
 	//console.log($response);
 }
-function stringToDebugWindow($input) {
+window.stringToDebugWindow = function($input) {
     debugWindow($input);
 }
-function stringToPopup($input) {
+window.stringToPopup = function($input) {
     debugWindow($input);
 }
-function stringToWindow($input) {
+window.stringToWindow = function($input) {
     debugWindow($input);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
