@@ -1,6 +1,6 @@
 # AFTC.js
 
-A collection of functions I find make life a lot easier when working in JavaScript.
+A collection of utilities / functions I find make life easier when working with JavaScript.
 
 # Requirements:
 jQuery 1.12 and above.
@@ -10,12 +10,33 @@ jQuery 1.12 and above.
 npm install
 npm run build // dist (minified)
 npm run dev // dev (non-minified)
+npm run watch // dev (auto rebuild on file change)
 ```
 
-Add what you need via
+# My setup
+1. Open directory in VSCode
+2. press
+```
+CTRL + ' 
+```
+to open terminal in VSCode
+3. Configure aftc.js
+4. Type into terminal
+```
+npm run build
+```
+5. Copy the "aftc.min.js" to my project
+
+
+# Configuration / Adding what you need
+1. Either download the lib you want yourself and add it to source or use npm install eg
 ```
 npm i lodash -S
 ```
+2. Edit aftc.js, adding your require or include (note you may need to resolve certain libs eg see webpack.config.js as I've done it for jQuery )
+
+3. npm run build
+
 
 # Configuration
 Edit aftc.js, comment out the features you don't require
