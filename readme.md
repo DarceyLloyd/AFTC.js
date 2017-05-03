@@ -15,11 +15,10 @@ npm run watch // dev (auto rebuild on file change)
 
 # My setup
 1. Open directory in VSCode
-2. press
+2. Open terminal in VSCode by pressing
 ```
 CTRL + ' 
 ```
-to open terminal in VSCode
 3. Configure aftc.js
 4. Type into terminal
 ```
