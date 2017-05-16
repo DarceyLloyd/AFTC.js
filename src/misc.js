@@ -1,7 +1,7 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.redirect = function($url) {
 	self.location.href = $url;
-}
+};
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
@@ -11,7 +11,15 @@ window.getArgs = function() {
 	for (var i = 0; i < arguments.length; i++) {
 		console.log(typeof arguments[i]); // Returns string, number, object, object, boolean
 	}
-}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getRandomInt = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -21,7 +29,7 @@ function getFunctionName(fn) {
 	var name = fn.toString();
 	var reg = /function ([^\(]*)/;
 	return reg.exec(name)[1];
-}
+};
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -70,5 +78,5 @@ window.getWeightedRandom = function(odds, iterations) {
 	//log(weights);
 	//log("wMax = " + wMax + "   iMax = " + iMax);
 	return iMax;
-}
+};
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

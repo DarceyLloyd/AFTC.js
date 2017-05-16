@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gsap": "^1.19.1",
     "webpack": "^2.4.1"
   },
   "dependencies": {
