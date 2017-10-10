@@ -17,7 +17,5 @@ import "./src/misc.js";
 import "./src/string.js"; 
 import "./src/validation.js"; 
 
-
-
 //var _ = require('lodash'); // https://lodash.com/
 //import "../node_modules/axios/dist/axios.min.js"; // https://github.com/mzabriskie/axios

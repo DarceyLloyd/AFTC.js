@@ -1,3 +1,7 @@
+
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.radToDeg = function (input) {
 	return input * (180 / Math.PI);
@@ -20,8 +24,14 @@ window.degToRad = function (input) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.boolToString = function ($bool) {
-	if ($bool) {
+window.boolToString = function (arg) {
+
+	if (!arg || arg == undefined || typeof(arg) != "boolean"){
+		console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
+		return "error";
+	}
+	
+	if (arg) {
 		return "true";
 	} else {
 		return "false";
@@ -30,8 +40,14 @@ window.boolToString = function ($bool) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.stringToBool = function ($string) {
-	switch ($string.toLowerCase()) {
+window.stringToBool = function (str) {
+
+	if (!str || str == undefined || typeof(str) != "string"){
+		console.log("AFTC.js: Conversion.js: stringToBoolean(str): Error - input str is not valid!");
+		return false;
+	}
+
+	switch (str.toLowerCase()) {
 		case "y":
 			return true;
 			break;
