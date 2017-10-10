@@ -1,9 +1,8 @@
 {
-  "name": "webpack-test",
-  "version": "1.1.1",
+  "name": "aftc.js",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d",
     "build": "webpack -p",
     "watch": "webpack -d --watch"
@@ -13,11 +12,12 @@
   "license": "ISC",
   "devDependencies": {
     "gsap": "^1.19.1",
-    "webpack": "^2.4.1"
-  },
-  "dependencies": {
+    "webpack": "^2.4.1",
     "axios": "^0.16.1",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4"
+  },
+  "dependencies": {
+    
   }
 }
