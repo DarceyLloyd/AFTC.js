@@ -17,5 +17,6 @@ import "./src/misc.js";
 import "./src/string.js"; 
 import "./src/validation.js"; 
 
+// Example on including lodash, axios etc from nodemodules via nodejs apps
 //var _ = require('lodash'); // https://lodash.com/
 //import "../node_modules/axios/dist/axios.min.js"; // https://github.com/mzabriskie/axios
