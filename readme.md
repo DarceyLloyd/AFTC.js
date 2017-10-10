@@ -2,10 +2,10 @@
 
 A collection of utilities / functions I find make life easier when working with JavaScript.
 
-# Requirements:
-jQuery 1.12 and above.
+### Requirements:
+Some modules/files require jQuery 1.12 and above.
 
-#  Instructions
+###  Instructions
 ```
 npm install
 npm run build // dist (minified)
@@ -13,7 +13,7 @@ npm run dev // dev (non-minified)
 npm run watch // dev (auto rebuild on file change)
 ```
 
-# My setup
+### My setup
 1. Open directory in VSCode
 2. Open terminal in VSCode by pressing
 ```
@@ -27,7 +27,7 @@ npm run build
 5. Copy the "aftc.min.js" to my project
 
 
-# Configuration / Adding what you need
+### Configuration / Adding what you need
 1. Either download the lib you want yourself and add it to source or use npm install eg
 ```
 npm i lodash -S
@@ -37,10 +37,11 @@ npm i lodash -S
 3. npm run build
 
 
-# Configuration
+### Configuration
 Edit aftc.js, comment out the features you don't require.
 
 
+<hr>
 
 # So what's inside?
 Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
