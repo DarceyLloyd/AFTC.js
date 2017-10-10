@@ -32,13 +32,25 @@ npm run build
 ```
 npm i lodash -S
 ```
-2. Edit aftc.js, adding your require or include (note you may need to resolve certain libs eg see webpack.config.js as I've done it for jQuery )
+2. Edit aftc.js, adding your require or include (note you may need to resolve certain libs paths eg see webpack.config.js as I've done it for jQuery )
 
 3. npm run build
 
 
 # Configuration
-Edit aftc.js, comment out the features you don't require
+Edit aftc.js, comment out the features you don't require.
+
+
+
+# So what's inside?
+Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
+
+## File: animation.js
+
+## scrollToElementID = function($id, $speed, $delay)
+<p>Requiements: jQuery >1.9<br>
+Simply a function which takes the ID(string), speed:Number/Float, delay:Int/Float of Seconds, to auto scroll the web browser to an element.</p>
+
 
 
 
