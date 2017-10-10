@@ -41,321 +41,337 @@ npm i lodash -S
 Edit aftc.js, comment out the features you don't require.
 
 
+
+<br>
+<br>
+<br>
+<br>
+
+# <b>So what's inside?</b>
+#### Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
+<br>
+<br>
+
+
+
+# <b>debug.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.6<br>
+
+## <b>isElement(obj)</b>
+Checks if your var is an element or not.
+
+## <b>log(arg)</b>
+Tired of typing console.log all the time? From now on just type log!
+
+## <b>logDisable()</b>
+Found your app to be full of log statements? Turn them all off with logEnable()
+
+## <b>logEnable()</b>
+Log not working? Why cant I see any of my console.log short cut output anymore? Turn them back on with this commoand
+
+## <b>trace(arg)</b>
+Do you still live in a ActionScript world? trace is back, same as log.
+
+## <b>logTo($id, $msg)</b>
+Want to see your debug on the page / app, logTo(elementId:String,value:String/Number) and it will appear in the element with the corresponding ID (if it exists)
+
+## <b>debugWindow(arg)</b>
+<b>Aliases:</b> stringToDebugWindow(arg); stringToPopup(arg); stringToWindow(arg);<br>
+This will open a debugWindow to which you can specify its contents via arg:string.
+
+
+
+
+
+
+<br>
+<br>
 <hr>
 
-# So what's inside?
-Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
+# <b>misc.js</b>
+#### <b>Dependencies:</b> none<br>
 
-## File: animation.js
+## <b>redirect(url)</b>
+Redirects to a specified page
 
-## scrollToElementID = function($id, $speed, $delay)
-<p>Requiements: jQuery >1.9<br>
-Simply a function which takes the ID(string), speed:Number/Float, delay:Int/Float of Seconds, to auto scroll the web browser to an element.</p>
+## <b>getArgs</b>
+Debug to console the Arguments a function has recieved.
 
+## <b>getRandomInt(min,max)</b>
+Returns a random number/int between two numbers.
 
+## <b>getFunctionName(fn)</b>
+Returns the name of function fn.
 
-
-# This is not a full list of functions but is most of them (Needs an update)
-
-#log
-Replacement for console.log, now you can just type log, so much quicker.
-```
-log($str)
-```
-
-#trace
-Replacement for console.log, now you can type trace or log, quicker but this one was made for when I have those days when I for some reason turn back into an AS3 programmer.
-```
-trace($str)
-```
-
-#logTo
-A JavaScript function which makes quick work of writing some text or a html element via ID.
-```
-logTo($id, $msg)
-```
+## <b>getWeightedRandom(odds,itterations)</b>
+Want a random number set which will give you more of a certain set of number than the anothers? This will help. Specify an array of odds 0=0%, 1 = 100% chance and the number of iterations it will do to run those odds.
 
 
-#debugWindow
-This will open a debug window with contents you specify, helps with debugging sometimes, I sometimes use it for AJAX heavy application debugging or when console is getting too much debug code.
-```
-debugWindow($input)
-```
 
-#generateNoise
-Generates a canvas perlin noise, great for tv static, terrain maps, random, height maps, clouds etc.
-```
-generateNoise(canvasId,width,height,opacity)
-```
 
-#radToDeg
-A JavaScript function to convert radians to degrees.
-```
-radToDeg(input)
-```
 
-#degToRad
-A JavaScript function to convert degrees to radians.
-```
-degToRad(input)
-```
 
-#rgbToHex
-A JavaScript function to convert RGB to HEX.
-```
-rgbToHex(r, g, b)
-```
+<br>
+<br>
+<hr>
 
-#arrayRemoveIndex
-Not sure why I included this, but removes an array item at the index you specify.
-A JavaScript function to remove a specified index of an array.
-```
-arrayRemoveIndex(array, index)
-```
+# <b>string.js</b>
 
-#getFunctionName
-A JavaScript function to get return a functions name as a string.
-I sometimes want to debug the name of a function supplied to some code, and if you log it, it dumps out the whole function, so this will just get the function name for you.
-```
-getFunctionName(fn)
-```
+## <b>randomString(length:number)</b>
+Returns a string of random characters between AZ and az to the length you specify.
 
-#getUkDateFromDbDateTime
-A JavaScript function to get UK Date from MySQL standard date time
-```
-getUkDateFromDbDateTime($input)
-```
+## <b>guid()</b>
+Returns a GUID.
 
-#getUkDateTimeFromDbDateTime
-A JavaScript function to get UK Date and Time from MySQL standard date time
-```
-getUkDateTimeFromDbDateTime($input)
-```
+## <b>trimStringLength(input,length)</b>
+Trims a string to a number (length) of characters.
 
-#isArrayInString
-JavaScript check if a string is in an array
-```
-isArrayInString($string, $array)
-```
+## <b>getFileExtension(file)</b>
+Returns the file extension from a supplied file path if available
 
-#getRandomHexColor
-A JavaScript function to get a random HEX Color value
-```
-getRandomHexColor()
-```
+## <b>getFileExtension2(file)</b>
+Returns the file extension from a supplied file path if available (method2)
 
-#scrollToElementID
-A JavaScript function to a html element ID.
-```
-scrollToElementID($id, $speed, $delay)
-```
+## <b>getLastPartofUrl()</b>
+Returns the last part of the URL
 
-#scrollToElementID
-A JavaScript function to a html element ID.
-```
-scrollToElementID($id, $speed, $delay)
-```
+## <b>removeFileFromPath</b>
+Attempts to remove the file from a full file path, eg a/b/c/text.txt would return a/b/c/
 
-#isValidEmail
-A JavaScript function to validate email.
-```
-isValidEmail(email)
-```
 
-#validateEmail
-Another JavaScript function to validate email.
-```
-validateEmail(email)
-```
 
-#randomString
-A JavaScript function to generate a random string of a specified length.
-```
-randomString($length)
-```
 
-#guid
-A JavaScript function to generate a GUID.
-```
-guid()
-```
 
-#trimStringLength
-A JavaScript function to trim a string to a specified length.
-```
-trimStringLength($input, $length)
-```
+<br>
+<br>
+<hr>
 
-#getHSLColor
-A JavaScript function to get a HSL Color value from an input of 0.0 to 1.0
-```
-getHSLColor(value)
-```
+# <b>validation.js</b>
+#### <b>Dependencies:</b> none<br>
 
-#getRandomRGBString
-A JavaScript function to generate a random RGB string.
-```
-getRandomRGBString()
-```
+## <b>validateEmail(email)</b>
+<b>Aliases:</b> isValidEmail(email)<br>
+Validates an email adddress (string) via regex.
 
-#parseJSONFileToSelect
-A JavaScript function to load and parse a json file into a html select input. You can specify selected label or index.
-```
-parseJSONFileToSelect($file, $element_id, $label_index, $value_index)
-```
 
-#hideShow
-A JavaScript function to hide one element and show another by class name.
-```
-hideShow($ShowClassName, $HideClassName)
-```
 
-#isArray
-A JavaScript function to return a boolean on whether a variable is an array or not (An interesting way of doing it).
-```
-isArray(obj)
-```
 
-#isFireFox
-A JavaScript function to detect Firefox.
-```
-isFireFox()
-```
 
-#isChrome
-A JavaScript function to detect Chrome.
-```
-isChrome() 
-```
+<br>
+<br>
+<hr>
 
-#isSafari
-A JavaScript function to deted Safari.
-```
-isSafari()
-```
+# <b>animation.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.10<br>
 
-#isIE
-A JavaScript function to detect Internet Explorer (IE).
-```
-isIE()
-```
+## <b>scrollToElementID($id, $speed, $delay)</b>
+Scroll to an element specified by ID on the page, with speed and delay options.
 
-#getIEVersion
-A JavaScript function to get the version of IE.
-```
-getIEVersion()
-```
+## <b>scrollToElementClass($class, $speed, $delay)</b>
+Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
 
-#getBrowser
-A JavaScript function to get what browser is being used.
-```
-getBrowser()
-```
+## <b>scrollToElement($obj, $speed, $delay)</b>
+Scroll to a specified jQUERY ELEMENT on the page ($obj), width speed and delay options.
 
-#redirect
-A JavaScript function to redirect.
-```
-redirect($url)
-```
 
-#boolToString
-A JavaScript function to convert booleans to string.
-```
-boolToString($bool)
-```
+<br>
+<br>
+<hr>
 
-#stringToBool
-A JavaScript function to convert strings to boolean values.
-```
-stringToBool($bool)
-```
+# <b>array.js</b>
 
-#isNumberKey
-A JavaScript function to detect if a keyboard event (evt) is a number, boolean response.
-```
-isNumberKey(evt)
-```
+## <b>arrayRemoveIndex(array,index)</b>
+Removed an index from an array.
 
-#setFormFieldById
-A JavaScript function to set the value of a form field by it's ID.
-```
-setFormFieldById($id, $value)
-```
+## <b>isArrayInString(string,array)</b>
+Checks to see if any array items match or are in a string.
 
-#limitLengthInWords
-A JavaScript function to limit the number of words in a string.
-```
-limitLengthInWords(field, maxWords) 
-```
+## <b>isArray(array)</b>
+Checks to see if input is an array or not.
 
-#isChecked
-A JavaScript function to quickly check if a form checkbox is checked.
-```
-isChecked($id)
-```
 
-#checkboxReveal
-A JavaScript function to hide and show for checkbox ticking and unticking.
-```
-checkboxReveal($checkbox, $elementForStateChange, $showOnChecked)
-```
 
-#loadJSONFile
-A JavaScript function to load a json file.
-```
-loadJSONFile($url, $callback)
-```
+<br>
+<br>
+<hr>
 
-#AJAXLoadPage
-A JavaScript function to load a url into a html element by ID, it can also send data and fire a callback function once load has completed.
-```
-AJAXLoadPage($url, $id, $method, $data, $callback)
-```
+# <b>conversion.js</b>
 
-#AJAXLoad
-A JavaScript function for generic AJAX loading, quick and simple, I use this often.
-```
-AJAXLoad($url, $method, $data, $callback)
-```
+## <b>radToDeg(radians)</b>
+<b>Aliases:</b> rad2deg(radians)<br>
+Converts radians to degrees.
 
-#convertOnlyZeroToNull
-A JavaScript function to convert zero's to null.
-```
-convertOnlyZeroToNull($input)
-```
+## <b>degToRad(degrees)</b>
+<b>Aliases:</b> deg2rad(degrees)<br>
+Converts degrees to radians.
 
-#convertNullToZero
-A JavaScript function to convert null to zero.
-```
-convertNullToZero($input)
-```
+## <b>boolToString(boolean)</b>
+Converts a boolean to a string.
 
-#setCookie
-A JavaScript function to set a cookie value by cookie name.
-```
-setCookie($name, $value)
-```
+## <b>stringToBool(str)</b>
+Converts strings such as yes, y, 1, true, n, false etc to a boolean true or false.
 
-#getCookie
-A JavaScript function to get a cookie value by cookie name.
-```
-getCookie($name)
-```
 
-#getFileExtension
-A JavaScript function to get the file extension from a file name (string).
-```
-getFileExtensions($input)
-```
 
-#getLastPartOfUrl
-A JavaScript function to return the last part of a url (parts are based on slashes).
-```
-getLastPartOfUrl()
-```
 
-#DebugPosition
-A JavaScript function to debug / log the position of a html element (needs revisiting).
-```
-DebugPosition($arg)
-```
+<br>
+<br>
+<hr>
+
+# <b>cookies.js</b>
+
+## <b>setCookie(name,value)</b>
+Sets a javascript cookie.
+
+## <b>getCookie(name)</b>
+Reads a javascript cookie.
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>datetime.js</b>
+
+## <b>getUkDateFromDbDateTime(arg)</b>
+Gets a UK date from a MySQL datetime (2016-04-08 21:11:59).
+
+## <b>getUkDateTimeFromDbDateTime(arg)</b>
+Gets the UK date and time from a MySQL datetime (2016-04-08 21:11:59).
+
+## <b>getSQLDateTime()</b>
+Gets a MySQL compatible datetime from the javascript Date().
+
+## <b>getDateTime(local)</b>
+Gets a formatted datetime from the javascript Date() object arg:local:string can be db, us or it will defaults to en-GB.
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>detection.js</b>
+
+## <b>isChrome()</b>
+Return true if your browser is Chrome, false if not.
+
+## <b>isFireFox()</b>
+Return true if your browser is FireFox, false if not.
+
+## <b>isSafari()</b>
+Returns true if your browser is Safari, false if not.
+
+## <b>isIE()</b>
+Returns true if your browser is IE, false if not.
+
+## <b>getIEVersion()</b>
+Returns the version of IE you are using.
+
+## <b>getBrowser()</b>
+Returns the name of the web browser you are using.
+
+## <b>getMobileOperatingSystem()</b>
+Attempts to returns the name of the Operating System (OS) of the device/tablet/mobile you are using.
+
+
+
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>dom.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.10<br>
+
+## <b>getElementById(id:string)</b>
+You no longer need to type document each time you want to use getElementById.
+
+## <b>hideShow(classNameToShow:String||Array,classNameToHide::String||Array)</b>
+You can hide and show as many elements on the page as you want, just give the function an array of class names to hide or a single string of class names to hide and show.
+
+## <b>centerAbsoluteItem(element:string||jQueryElementObject)</b>
+Attempts to center an css absolute positioned element within your browsers current dimensions.
+
+
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>form.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.10<br>
+
+## <b>checkBoxReveal(checkboxID,elementIdForHideShow)</b>
+Put in the html onclick or any function for a checkbox click to hide or show any element on the page synchronised with state of checkbox.
+
+## <b>isChecked(id:string)</b>
+Returns true or false if id of the checkbox / radio is checked.
+
+## <b>isNumberKey(evt)</b>
+Place on form text inputs to ensure numbers are only entered into it. eg onKeyUp="isNumberKey(event)"
+
+## <b>parseJSONFileToSelect(file, $element_id, $label_index, $value_index)</b>
+Will attempt to load and parse a json file into a form select element.
+
+
+
+
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>graphics.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.10<br>
+
+## <b>toggleVisibilityOnClass(class:string)</b>
+Quick access to jQuery's toggle
+
+## <b>slideToggleOnClass(class:string)</b>
+
+Quick access to jQuery's slideToggle
+
+## <b>getHSLColor(float)</b>
+Returns a HSL Colour from a float, input range is 0 to 1
+
+## <b>getRandomRGBString()</b>
+Returns a random RGB string eg "rgb(R,G,B)"
+
+## <b>getRandomHexColor()</b>
+Returns a random hex color
+
+## <b>rgbToHex(r,g,b)</b>
+Converts a RGB value to a HEX value.
+
+## <b>generateNoise(canvasId, width, height, arg_opacity)</b>
+Will generate noise / static / perlin noise on a canvas element.
+
+
+
+
+
+<br>
+<br>
+<hr>
+
+# <b>io.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.12<br>
+
+## <b>AJAXLoad($url, $method, $data, $callback)</b>
+Sends data to a specified url, with a specified method (post||get) with a callback on success which will return the response.
+
+## <b>loadJSONFile($url, $callback)</b>
+Loads a json file and sends it to a callback function (onSuccess).

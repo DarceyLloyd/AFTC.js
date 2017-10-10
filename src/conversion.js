@@ -1,10 +1,9 @@
-
-
-
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.radToDeg = function (input) {
 	return input * (180 / Math.PI);
+}
+window.rad2deg = function(arg){
+	return radToDeg(arg);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -12,6 +11,9 @@ window.radToDeg = function (input) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.degToRad = function (input) {
 	return input * (Math.PI / 180);
+}
+window.deg2rad = function(arg){
+	return degToRad(arg);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -26,6 +26,11 @@ window.trimStringLength = function($input, $length) {
 }
 
 
+window.getFileExtension = function(str){
+	var ext = str.split('.').pop();
+	return str;
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getLastPartOfUrl = function() {
 	var $url = window.location.href;
@@ -36,7 +41,7 @@ window.getLastPartOfUrl = function() {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getFileExtension = function($input) {
+window.getFileExtension2 = function($input) {
 	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

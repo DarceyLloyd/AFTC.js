@@ -12,8 +12,8 @@ window.isSafari = function () {
 	return is_safari;
 }
 window.isIE = function () {
-	var is_firefox = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
-	return is_firefox;
+	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
+	return is_ie;
 }
 window.getIEVersion = function () {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
@@ -65,6 +65,3 @@ window.getMobileOperatingSystem = function () {
 
 
 
-window.isArray = function (obj) {
-	return obj.constructor == Array;
-}

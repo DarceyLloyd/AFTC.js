@@ -1,6 +1,6 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.checkboxReveal = function ($checkbox, $elementIdForHideShow) {
-	var $state = jQuery('input[name="' + $checkbox.id + '"]:checked').val();
+window.checkboxReveal = function ($checkboxID, $elementIdForHideShow) {
+	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
 	$state = $state.toLowerCase();
 
 	if ($state.checked) {
