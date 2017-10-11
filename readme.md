@@ -1,4 +1,5 @@
 # AFTC.js
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 A collection of utilities / functions I find make life easier when working with JavaScript.
 
@@ -375,3 +376,14 @@ Sends data to a specified url, with a specified method (post||get) with a callba
 
 ## <b>loadJSONFile($url, $callback)</b>
 Loads a json file and sends it to a callback function (onSuccess).
+
+
+
+<br>
+<br>
+
+
+## <b>Found this useful? Please Donate...</b>
+Any and all donations to help keep active development and the lights on are more than welcome.
+
+[![paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
