@@ -115,11 +115,11 @@ This will open a debugWindow to which you can specify its contents via arg:strin
 <br><br><br><br><br><br>
 
 # <b>color.js</b>
-#### <b>Dependencies:</b> NONE<br>
+#### <b>Dependencies:</b> NONE<br><br>
 
-## <b>var myColor = new AFTC.Color("#FFCC00")</b>
-### AFTC.Color.<b>lighten</b>(percent);
-### AFTC.Color.<b>darken</b>(percent);
+# <b>AFTC.Color(color)</b>
+### <b>lighten</b>(percent);
+### <b>darken</b>(percent);
 Lightens or darkens a color like sass and less does.
 ```
     var color = new AFTC.Color([10,20,30]);
