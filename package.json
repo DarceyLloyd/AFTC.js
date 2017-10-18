@@ -1,11 +1,16 @@
 {
   "name": "aftc.js",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A collection utilities / functions.",
   "scripts": {
-    "dev": "webpack -d",
-    "build": "webpack -p",
-    "watch": "webpack -d --watch"
+    "webpack-dev": "webpack -d",
+    "webpack-dev-watch": "webpack -d --watch",
+    "webpack-dist": "webpack -p",
+    "webpack-dist-watch": "webpack -p --watch",
+    "gulp-build-dev": "gulp build-dev",
+    "gulp-watch-dev": "gulp watch-dev",
+    "gulp-build": "gulp build",
+    "gulp-watch": "gulp watch"
   },
   "keywords": [],
   "repository": {
@@ -16,10 +21,12 @@
   "license": "ISC",
   "devDependencies": {
     "gsap": "^1.19.1",
-    "webpack": "^2.4.1",
-    "axios": "^0.16.1",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4"
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "webpack": "^2.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^1.12.4"
+  }
 }

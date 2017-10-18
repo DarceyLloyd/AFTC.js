@@ -6,10 +6,22 @@ window.redirect = function($url) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.dumpArgs = function() {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			console.log("Argument[" + key + "] = " + arguments[0][key]);
+		}
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getArgs = function() {
-	console.log(arguments.length); // Returns 5
-	for (var i = 0; i < arguments.length; i++) {
-		console.log(typeof arguments[i]); // Returns string, number, object, object, boolean
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		return arguments[0];
+	} else {
+		return null;
 	}
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

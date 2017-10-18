@@ -10,11 +10,9 @@ window.isArrayInString = function ($string, $array) {
 }
 
 
-window.isArray = function (arr) {
-	if (typeof(arr) == "array"){
-		return true;
-	} else {
-		return false;
-	}
+
+window.isArray = function(obj) {
+	return !!obj && obj.constructor === Array;
 	//return arr.constructor == Array;
 }
+

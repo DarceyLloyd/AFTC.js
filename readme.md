@@ -3,50 +3,74 @@
 
 A collection of utilities / functions I find make life easier when working with JavaScript.
 
-### Requirements:
-Some modules/files require jQuery 1.12 and above.
+## Requirements:
+Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
 
-###  Instructions
+###  Installation
 ```
 npm install
-npm run build // dist (minified)
-npm run dev // dev (non-minified)
-npm run watch // dev (auto rebuild on file change)
+npm run build // distribution version
+npm run dev // devevelopment version
+npm run watch // development version with watch (auto rebuild on file change)
 ```
 
-### My setup
-1. Open directory in VSCode
-2. Open terminal in VSCode by pressing
+### Build
+You can use webpack or gulp, I pref' gulp at the moment.
+
 ```
-CTRL + ' 
+gulp build-dev
+gulp watch-dev
+gulp build
+gulp watch
 ```
-3. Configure aftc.js
-4. Type into terminal
+
+or use npm with the following:
+
+```
+npm run webpack-dev
+npm run webpack-dev-watch
+npm run webpack-dist
+npm run webpack-dist-watch
+
+npm run gulp-build-dev
+npm run gulp-watch-dev
+npm run gulp-build
+npm run gulp-watch
+```
+
+
+
+
+<br>
+## Usage
+
+- Open directory in VSCode
+- Open "aftc.js"
+- Comment out or uncomment any of the imports that you want or don't want (I've put jQuery in there as an example of how to require that)
+- Open terminal in VSCode by pressing CTRL + '
+- Type into terminal
 ```
 npm run build
 ```
-5. Copy the "aftc.min.js" to my project
-
-
-### Configuration / Adding what you need
-1. Either download the lib you want yourself and add it to source or use npm install eg
-```
-npm i lodash -S
-```
-2. Edit aftc.js, adding your require or include (note you may need to resolve certain libs paths eg see webpack.config.js as I've done it for jQuery )
-
-3. npm run build
-
-
-### Configuration
-Edit aftc.js, comment out the features you don't require.
+- Now you can either copy aftc.min.js to your project or add it to your webpack/gulp concatination and mangle scripts or just add it as a script tag in your HTML.
 
 
 
-<br>
-<br>
-<br>
-<br>
+
+<br><br><br><br><br><br>
+
+## What's new?
+
+- Added color.js
+- Added color brighten and darken via <b>AFTC.Color(color)</b> // Simulates SASS brighten
+- Added some color conversion functions
+- Re-added the old array type detect (it's better than the new way)
+- Moved some functions to more appropriate files
+- Removed 2 functions as they were extremely simple uses of jQuery
+
+
+
+<br><br><br><br><br><br>
 
 # <b>So what's inside?</b>
 #### Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
@@ -85,9 +109,7 @@ This will open a debugWindow to which you can specify its contents via arg:strin
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>misc.js</b>
 #### <b>Dependencies:</b> none<br>
@@ -96,7 +118,10 @@ This will open a debugWindow to which you can specify its contents via arg:strin
 Redirects to a specified page
 
 ## <b>getArgs</b>
-Debug to console the Arguments a function has recieved.
+Returns arguments object if available, null if not;
+
+## <b>dumpArgs</b>
+Dumps each argument with key to the console for debugging, if it exists.
 
 ## <b>getRandomInt(min,max)</b>
 Returns a random number/int between two numbers.
@@ -112,9 +137,7 @@ Want a random number set which will give you more of a certain set of number tha
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>string.js</b>
 
@@ -143,9 +166,7 @@ Attempts to remove the file from a full file path, eg a/b/c/text.txt would retur
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>validation.js</b>
 #### <b>Dependencies:</b> none<br>
@@ -158,9 +179,7 @@ Validates an email adddress (string) via regex.
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>animation.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.10<br>
@@ -175,9 +194,7 @@ Scroll to an element specified by CLASS NAME on the page, width speed and delay 
 Scroll to a specified jQUERY ELEMENT on the page ($obj), width speed and delay options.
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>array.js</b>
 
@@ -192,9 +209,7 @@ Checks to see if input is an array or not.
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>conversion.js</b>
 
@@ -215,9 +230,7 @@ Converts strings such as yes, y, 1, true, n, false etc to a boolean true or fals
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>cookies.js</b>
 
@@ -230,9 +243,7 @@ Reads a javascript cookie.
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>datetime.js</b>
 
@@ -251,9 +262,7 @@ Gets a formatted datetime from the javascript Date() object arg:local:string can
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>detection.js</b>
 
@@ -284,9 +293,7 @@ Attempts to returns the name of the Operating System (OS) of the device/tablet/m
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>dom.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.10<br>
@@ -305,9 +312,7 @@ Attempts to center an css absolute positioned element within your browsers curre
 
 
 
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>form.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.10<br>
@@ -329,21 +334,60 @@ Will attempt to load and parse a json file into a form select element.
 
 
 
+<br><br><br><br><br><br>
+
+# <b>color.js</b>
+#### <b>Dependencies:</b> NONE<br>
+
+## <b>AFTC.Color(color)</b>
+### AFTC.Color.<b>lighten</b>(percent);
+### AFTC.Color.<b>darken</b>(percent);
+Lightens or darkens a color like sass and less does.
+```
+    var color = new AFTC.Color([10,20,30]);
+    color.lighten(10);
+    color.darken(10);
+    log("color.getHex() = " + color.getHex());
+    log("color.getRGB().r = " + color.getRGB().r);
+    log("color.getRGB().g = " + color.getRGB().g);
+    log("color.getRGB().b = " + color.getRGB().b);
+    log("color.getRGBString() = " + color.getRGBString());
+    // See example.htm for further usage
+```
+
+## <b>getHSLColor(float)</b>
+Returns a HSL Colour from a float, input range is 0 to 1
+
+## <b>getRandomRGBString()</b>
+Returns a random RGB string eg "rgb(R,G,B)"
+
+## <b>getRandomHexColor()</b>
+Returns a random hex color
+
+## <b>rgbToHex(r,g,b)</b>
+Alternate version rgb2hex(r,g,b);
+Converts a RGB value to a HEX value.
+
+## <b>hexToRgb()</b>
+Converts hex to rgb, returns object{}
+
+## <b>numberToHex(num)</b>
+Converts a number to hex string.
+
+## rgb2hsv({r:0,g:0,b:0})</b>
+Converts an rgb object to a hsv object.
 
 
-<br>
-<br>
-<hr>
+
+
+
+
+
+
+<br><br><br><br><br><br>
 
 # <b>graphics.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.10<br>
-
-## <b>toggleVisibilityOnClass(class:string)</b>
-Quick access to jQuery's toggle
-
-## <b>slideToggleOnClass(class:string)</b>
-
-Quick access to jQuery's slideToggle
+#### <b>Dependencies:</b> NONE<br>
 
 ## <b>getHSLColor(float)</b>
 Returns a HSL Colour from a float, input range is 0 to 1
@@ -363,10 +407,7 @@ Will generate noise / static / perlin noise on a canvas element.
 
 
 
-
-<br>
-<br>
-<hr>
+<br><br><br><br><br><br>
 
 # <b>io.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.12<br>
@@ -380,7 +421,7 @@ Loads a json file and sends it to a callback function (onSuccess).
 
 
 <br>
-<br>
+<br><br><br><br><br><br>
 
 
 ## <b>Found this useful? Please Donate...</b>
@@ -388,8 +429,7 @@ Any and all donations to help keep active development and the lights on are more
 
 [![paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-<br>
-<br>
+<br><br><br><br><br><br>
 
 [![Hire](https://www.allforthecode.co.uk/images/pph_widget.jpg)](http://pph.me/Darcey)
 

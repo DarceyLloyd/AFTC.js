@@ -3,7 +3,7 @@ var $ = require("jquery"); // See webpack.config.js for "resolve"" path for jque
 
 // Comment out the ones you don't want/need
 import "./src/debug.js";
-import "./src/animation.js"; 
+import "./src/animation.js";
 import "./src/conversion.js"; 
 import "./src/cookies.js"; 
 import "./src/cordova.js"; 
@@ -20,3 +20,9 @@ import "./src/validation.js";
 // Example on including lodash, axios etc from nodemodules via nodejs apps
 //var _ = require('lodash'); // https://lodash.com/
 //import "../node_modules/axios/dist/axios.min.js"; // https://github.com/mzabriskie/axios
+
+
+
+
+// This section is for more advanced features and access to the AFTC function object
+import "./src/aftc.js"; // Required
