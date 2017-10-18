@@ -110,6 +110,59 @@ This will open a debugWindow to which you can specify its contents via arg:strin
 
 
 
+
+
+<br><br><br><br><br><br>
+
+# <b>color.js</b>
+#### <b>Dependencies:</b> NONE<br>
+
+## <b>var myColor = new AFTC.Color("#FFCC00")</b>
+### AFTC.Color.<b>lighten</b>(percent);
+### AFTC.Color.<b>darken</b>(percent);
+Lightens or darkens a color like sass and less does.
+```
+    var color = new AFTC.Color([10,20,30]);
+    color.lighten(10);
+    color.darken(10);
+    log("color.getHex() = " + color.getHex());
+    log("color.getRGB().r = " + color.getRGB().r);
+    log("color.getRGB().g = " + color.getRGB().g);
+    log("color.getRGB().b = " + color.getRGB().b);
+    log("color.getRGBString() = " + color.getRGBString());
+    // See example.htm for further usage
+```
+
+## <b>getHSLColor(float)</b>
+Returns a HSL Colour from a float, input range is 0 to 1
+
+## <b>getRandomRGBString()</b>
+Returns a random RGB string eg "rgb(R,G,B)"
+
+## <b>getRandomHexColor()</b>
+Returns a random hex color
+
+## <b>rgbToHex(r,g,b)</b>
+Alternate version rgb2hex(r,g,b);
+Converts a RGB value to a HEX value.
+
+## <b>hexToRgb()</b>
+Converts hex to rgb, returns object{}
+
+## <b>numberToHex(num)</b>
+Converts a number to hex string.
+
+## rgb2hsv({r:0,g:0,b:0})</b>
+Converts an rgb object to a hsv object.
+
+
+
+
+
+
+
+
+
 <br><br><br><br><br><br>
 
 # <b>misc.js</b>
@@ -331,52 +384,6 @@ Place on form text inputs to ensure numbers are only entered into it. eg onKeyUp
 Will attempt to load and parse a json file into a form select element.
 
 
-
-
-
-
-<br><br><br><br><br><br>
-
-# <b>color.js</b>
-#### <b>Dependencies:</b> NONE<br>
-
-## <b>AFTC.Color(color)</b>
-### AFTC.Color.<b>lighten</b>(percent);
-### AFTC.Color.<b>darken</b>(percent);
-Lightens or darkens a color like sass and less does.
-```
-    var color = new AFTC.Color([10,20,30]);
-    color.lighten(10);
-    color.darken(10);
-    log("color.getHex() = " + color.getHex());
-    log("color.getRGB().r = " + color.getRGB().r);
-    log("color.getRGB().g = " + color.getRGB().g);
-    log("color.getRGB().b = " + color.getRGB().b);
-    log("color.getRGBString() = " + color.getRGBString());
-    // See example.htm for further usage
-```
-
-## <b>getHSLColor(float)</b>
-Returns a HSL Colour from a float, input range is 0 to 1
-
-## <b>getRandomRGBString()</b>
-Returns a random RGB string eg "rgb(R,G,B)"
-
-## <b>getRandomHexColor()</b>
-Returns a random hex color
-
-## <b>rgbToHex(r,g,b)</b>
-Alternate version rgb2hex(r,g,b);
-Converts a RGB value to a HEX value.
-
-## <b>hexToRgb()</b>
-Converts hex to rgb, returns object{}
-
-## <b>numberToHex(num)</b>
-Converts a number to hex string.
-
-## rgb2hsv({r:0,g:0,b:0})</b>
-Converts an rgb object to a hsv object.
 
 
 
