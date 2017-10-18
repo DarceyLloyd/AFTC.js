@@ -61,8 +61,9 @@ npm run build
 
 ## What's new?
 
+- AFTC object (The base of the AFTC object suite)
 - Added color.js
-- Added color brighten and darken via <b>AFTC.Color(color)</b> // Simulates SASS brighten
+- Added color <b>brighten</b> and <b>darken</b> via <b>AFTC.Color(color)</b> // Simulates SASS brighten
 - Added some color conversion functions
 - Re-added the old array type detect (it's better than the new way)
 - Moved some functions to more appropriate files
