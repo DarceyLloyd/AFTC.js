@@ -40,7 +40,7 @@ gulp.task('watch-dev', function () {
 
 
 gulp.task('build', function () {
-    gulp.src(AFTCThreeJSFiles)
+    gulp.src(jsFiles)
         .pipe(concat('aftc.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/'));
@@ -53,23 +53,3 @@ gulp.task('watch', function () {
 
 
 
-
-
-
-// I've left this in encase I ever want to start using sass/scss
-// var sass = require('gulp-ruby-sass');
-// var autoprefixer = require('gulp-autoprefixer');
-// var minifyCss = require('gulp-minify-css');
-
-// gulp.task('sass', function () {
-//     gulp.src('src/sass/styles.scss')
-//         .pipe(sass())
-//         .pipe(autoprefixer())
-//         .pipe(minifyCss())
-//         .pipe(gulp.dest('dest'));
-// });
-
-// gulp.task('default', ['scripts', 'sass'], function () {
-//     gulp.watch('src/js/**/*.js', ['scripts']);
-//     gulp.watch('src/sass/**/*.{sass,scss}', ['sass']);
-// });
