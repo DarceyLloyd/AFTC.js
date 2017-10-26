@@ -1,4 +1,22 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.removeAllSelectOptions = function (selectBoxId) {
+	var i,
+		element = document.getElementById(selectBoxId);
+
+	if (element){
+		for (i = element.options.length - 1; i >= 0; i--) {
+			element.remove(i);
+		}
+	}
+
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.checkboxReveal = function ($checkboxID, $elementIdForHideShow) {
 	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
 	$state = $state.toLowerCase();
@@ -66,7 +84,7 @@ window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $valu
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.limitLengthInWords = function(field, maxWords) {
+window.limitLengthInWords = function (field, maxWords) {
 	var value = field.value,
 		wordCount = value.split(/\S+/).length - 1,
 		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");

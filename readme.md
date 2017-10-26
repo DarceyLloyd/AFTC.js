@@ -371,6 +371,8 @@ Attempts to center an css absolute positioned element within your browsers curre
 # <b>form.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.10<br>
 
+## <b>removeAllSelectOptions(selectBoxId)</b>
+
 ## <b>checkBoxReveal(checkboxID,elementIdForHideShow)</b>
 Put in the html onclick or any function for a checkbox click to hide or show any element on the page synchronised with state of checkbox.
 
