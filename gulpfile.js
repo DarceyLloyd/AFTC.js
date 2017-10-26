@@ -6,11 +6,15 @@ var uglify = require('gulp-uglify');
 // Utility files first (window.) aka global scope functions
 var jsFiles = [
     "./node_modules/jquery/dist/jquery.min.js",
+    //"./node_modules/gsap/src/minified/TweenMax.min.js", //113kb (if you need more powerfull animation capabilities)
+    //"./node_modules/gsap/src/minified/TweenLite.min.js", //13kb (basic animation only)
+    //"./node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js", //4kb
     "./src/debug.js",
-    "./src/animation.js",
+    //"./src/animation.gsap.js", // Requires: TweenLite.min.js || TweenMax.min.js & ScrollToPlugin.min.js
+    "./src/animation.jquery.js", // Requires: jQuery >= 1.12
     "./src/conversion.js", 
     "./src/cookies.js", 
-    "./src/cordova.js", 
+    //"./src/cordova.js", 
     "./src/datetime.js",  
     "./src/detection.js", 
     "./src/dom.js", 
@@ -31,23 +35,17 @@ gulp.task('build-dev', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('watch-dev', function () {
-    gulp.watch(jsFiles, ['build-dev']);
-});
-
-
-
-
-
-gulp.task('build', function () {
+gulp.task('build-dist', function () {
     gulp.src(jsFiles)
         .pipe(concat('aftc.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('build', ['build-dev', 'build-dist']);
+
 gulp.task('watch', function () {
-    gulp.watch(jsFiles, ['build']);
+    gulp.watch(jsFiles, ['build','build-dev']);
 });
 
 

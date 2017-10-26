@@ -48,15 +48,30 @@ window.trace = function(arg) {
     }
 }
 
-window.logTo = function ($id, $msg) {
-    if (isElement($id)) {
-        $id.innerHTML = $msg;
-    } else {
-        if ($("#" + $id)) {
-            $("#"+$id).html($msg);
-        } else {
-            $("."+$id).html($msg);
+window.logTo = function (elementIdOrElement, msg , append) {
+    var element;
+    if (isElement(elementIdOrElement)){
+        element = elementIdOrElement;
+    } else if (typeof(elementIdOrElement) == "string") {
+        element = document.getElementById(elementIdOrElement);
+        if (!element){
+            throw("logTo paramater 1 requires an element object or elementId that exists, you supplied an elementId that doesn't exist.");
         }
+    } else {
+        throw("logTo paramater 1 requires an element object or elementId.");
+    }
+
+    if (!append){
+        if (typeof(append) != "boolean"){
+            append = true;
+        }
+    }
+
+    if (append){
+        element.innerHTML += msg;
+    } else {
+        var old = element.innerHTML;
+        element.innerHTML = (msg + element.innerHTML);
     }
 }
 
@@ -84,37 +99,56 @@ window.stringToWindow = function($input) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-window.scrollToElementID = function($id, $speed, $delay) {
-	scrollToElement($("#"+$id), $speed, $delay);
-}
+window.scrollToElementId = function (elementId, speed, delay) {
 
-window.scrollToElementClass = function($class, $speed, $delay) {
-	scrollToElement($("."+$class), $speed, $delay);
-}
-
-
-window.scrollToElement = function ($obj, $speed, $delay) {
-		
-	var isJqueryObject = $obj instanceof jQuery;
-	if (!isJqueryObject) {
-		log("AFTC.JS: scrollToElement requires an element with a class or id or a jquery object");
-		return;
+	var $target = $("#"+elementId);
+	if (!$target){
+		throw("AFTC.js > animation.jquery.js: Error unable to find element with id [" + elementId + "]");
 	}
 
-	if (!$speed || $speed == null) {
-		$speed = 1;
+	if (!speed || speed == null) {
+		speed = 1;
 	}
-	$speed *= 1000;
+	speed *= 1000;
 
-	if (!$delay || $delay == null) {
-		$delay = 0;
+	if (!delay || delay == null) {
+		delay = 0;
 	}
-	$delay *= 1000;
+	delay *= 1000;
 
-	$('html, body').delay($delay).animate({
-		scrollTop: $obj.offset().top
-	}, $speed);
+	$('html, body').delay(delay).animate(
+		{
+			scrollTop: $target.offset().top
+		}, speed
+	);
+	
 }
+
+window.scrollToElementClass = function (elementClassName, speed, delay) {
+	
+	var $target = $("."+elementClassName);
+	if (!$target){
+		throw("AFTC.js > animation.jquery.js: Error unable to find element with class name [" + elementClassName + "]");
+	}
+
+	if (!speed || speed == null) {
+		speed = 1;
+	}
+	speed *= 1000;
+
+	if (!delay || delay == null) {
+		delay = 0;
+	}
+	delay *= 1000;
+
+	$('html, body').delay(delay).animate({
+		scrollTop: $target.offset().top
+	}, speed);
+
+}
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.radToDeg = function (input) {
 	return input * (180 / Math.PI);
@@ -208,7 +242,6 @@ window.getCookie = function ($name) {
 	return keyValue ? keyValue[2] : null;
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
 
 
 
@@ -435,6 +468,24 @@ window.centerAbsoluteItem = function ($element) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.removeAllSelectOptions = function (selectBoxId) {
+	var i,
+		element = document.getElementById(selectBoxId);
+
+	if (element){
+		for (i = element.options.length - 1; i >= 0; i--) {
+			element.remove(i);
+		}
+	}
+
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.checkboxReveal = function ($checkboxID, $elementIdForHideShow) {
 	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
 	$state = $state.toLowerCase();
@@ -502,7 +553,7 @@ window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $valu
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.limitLengthInWords = function(field, maxWords) {
+window.limitLengthInWords = function (field, maxWords) {
 	var value = field.value,
 		wordCount = value.split(/\S+/).length - 1,
 		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
@@ -777,7 +828,6 @@ window.isValidEmail = function (email) {
 
 /*
  * Author: Darcey@AllForTheCode.co.uk
- * Version: 1.0.3
 */
 
 
@@ -788,10 +838,8 @@ var AFTC = function () {
     var me = this; // Accessor
 
     var params = {
-        version: "1.0.3"
+        
     };
-
-    this.version = "1.0.3";
 
     // Process arguments
     if (arguments[0] && typeof (arguments[0]) == "object") {

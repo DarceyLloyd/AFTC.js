@@ -1,6 +1,5 @@
 /*
  * Author: Darcey@AllForTheCode.co.uk
- * Version: 1.0.3
 */
 
 
@@ -11,10 +10,8 @@ var AFTC = function () {
     var me = this; // Accessor
 
     var params = {
-        version: "1.0.3"
+        
     };
-
-    this.version = "1.0.3";
 
     // Process arguments
     if (arguments[0] && typeof (arguments[0]) == "object") {

@@ -42,15 +42,30 @@ window.trace = function(arg) {
     }
 }
 
-window.logTo = function ($id, $msg) {
-    if (isElement($id)) {
-        $id.innerHTML = $msg;
-    } else {
-        if ($("#" + $id)) {
-            $("#"+$id).html($msg);
-        } else {
-            $("."+$id).html($msg);
+window.logTo = function (elementIdOrElement, msg , append) {
+    var element;
+    if (isElement(elementIdOrElement)){
+        element = elementIdOrElement;
+    } else if (typeof(elementIdOrElement) == "string") {
+        element = document.getElementById(elementIdOrElement);
+        if (!element){
+            throw("logTo paramater 1 requires an element object or elementId that exists, you supplied an elementId that doesn't exist.");
         }
+    } else {
+        throw("logTo paramater 1 requires an element object or elementId.");
+    }
+
+    if (!append){
+        if (typeof(append) != "boolean"){
+            append = true;
+        }
+    }
+
+    if (append){
+        element.innerHTML += msg;
+    } else {
+        var old = element.innerHTML;
+        element.innerHTML = (msg + element.innerHTML);
     }
 }
 

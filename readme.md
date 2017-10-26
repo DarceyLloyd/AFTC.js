@@ -42,6 +42,7 @@ npm run gulp-watch
 
 
 <br>
+
 ## Usage
 
 - Open directory in VSCode
@@ -61,6 +62,11 @@ npm run build
 
 ## What's new?
 
+- Enhanced debug.js function logTo(): Now takes 3 parameters:
+  - param 1 = elementObject or elementId
+  - param 2 = message (string)
+  - param 3 (optional) = append (boolean default = true)
+- debug.js no longer requires jquery as a dependancy 
 - AFTC object (The base of the AFTC object suite)
 - Added color.js
 - Added color <b>brighten</b> and <b>darken</b> via <b>AFTC.Color(color)</b> // Simulates SASS brighten
@@ -81,7 +87,7 @@ npm run build
 
 
 # <b>debug.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.6<br>
+#### <b>Dependencies:</b> none<br>
 
 ## <b>isElement(obj)</b>
 Checks if your var is an element or not.
@@ -235,8 +241,8 @@ Validates an email adddress (string) via regex.
 
 <br><br><br><br><br><br>
 
-# <b>animation.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.10<br>
+# <b>animation.jquery.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.12<br>
 
 ## <b>scrollToElementID($id, $speed, $delay)</b>
 Scroll to an element specified by ID on the page, with speed and delay options.
@@ -244,8 +250,21 @@ Scroll to an element specified by ID on the page, with speed and delay options.
 ## <b>scrollToElementClass($class, $speed, $delay)</b>
 Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
 
-## <b>scrollToElement($obj, $speed, $delay)</b>
-Scroll to a specified jQUERY ELEMENT on the page ($obj), width speed and delay options.
+<br>
+<br>
+
+# <b>animation.gsap.js</b>
+## <b>If file size matters and jQuery is too big then use this version, make sure you have TweenLite.min.js and ScrollToPlugin.min.js in your gulp build file list.</b>
+#### <b>Dependencies:</b> gsap TweenLite & ScrollToPlugin<br>
+
+## <b>scrollToElementID($id, $speed, $delay)</b>
+Scroll to an element specified by ID on the page, with speed and delay options.
+
+## <b>scrollToElementClass($class, $speed, $delay)</b>
+Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
+
+
+
 
 
 <br><br><br><br><br><br>
@@ -350,7 +369,7 @@ Attempts to returns the name of the Operating System (OS) of the device/tablet/m
 <br><br><br><br><br><br>
 
 # <b>dom.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.10<br>
+#### <b>Dependencies:</b> aftc.js/src/array.js & jQuery >= 1.10<br>
 
 ## <b>getElementById(id:string)</b>
 You no longer need to type document each time you want to use getElementById.
