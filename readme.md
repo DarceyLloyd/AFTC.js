@@ -1,18 +1,19 @@
-# AFTC.js
+# <b>AFTC.js</b>
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-A collection of utilities / functions I find useful when working with <b>Browser based JavaScript</b>.
+<b>A collection of utilities / functions I find useful when working with BROWSER based JavaScript.</b>
+
+<br>
 
 #### <b>Want the NodeJS version? https://github.com/DarceyLloyd/AFTC.Node.Libs</b>
 
 <br>
-<br>
 
 
-## Requirements:
+## <b>Requirements:</b>
 Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
 
-###  Installation
+###  <b>Installation</b>
 ```
 npm install aftc.js
 npm run build // distribution version
@@ -20,7 +21,7 @@ npm run dev // devevelopment version
 npm run watch // development version with watch (auto rebuild on file change)
 ```
 
-### Build
+### <b>Build</b>
 You can use webpack or gulp, I pref' gulp at the moment.
 
 ```
@@ -49,7 +50,7 @@ npm run gulp-watch
 
 <br>
 
-## Usage
+## <b>Usage</b>
 
 - Open directory in VSCode
 - Open "aftc.js"
@@ -66,7 +67,7 @@ npm run build
 
 <br><br><br><br><br><br>
 
-## What's new?
+## <b>What's new?</b>
 
 - Enhanced debug.js function logTo(): Now takes 3 parameters:
   - param 1 = elementObject or elementId
