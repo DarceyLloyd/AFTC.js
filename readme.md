@@ -3,7 +3,7 @@
 
 A collection of utilities / functions I find useful when working with based browser JavaScript.
 
-### <b>Want the NODEJS version ?https://github.com/DarceyLloyd/AFTC.Node.Libs
+### <b>Want the NODEJS version ?https://github.com/DarceyLloyd/AFTC.Node.Libs</b>
 
 ## Requirements:
 Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
