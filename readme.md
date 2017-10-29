@@ -1,7 +1,9 @@
 # AFTC.js
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-A collection of utilities / functions I find make life easier when working with JavaScript.
+A collection of utilities / functions I find useful when working with based browser JavaScript.
+
+### <b>Want the NODEJS version ?https://github.com/DarceyLloyd/AFTC.Node.Libs
 
 ## Requirements:
 Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
