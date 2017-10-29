@@ -5,12 +5,16 @@ A collection of utilities / functions I find useful when working with <b>Browser
 
 #### <b>Want the NodeJS version? https://github.com/DarceyLloyd/AFTC.Node.Libs</b>
 
+<br>
+<br>
+
+
 ## Requirements:
 Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
 
 ###  Installation
 ```
-npm install
+npm install aftc.js
 npm run build // distribution version
 npm run dev // devevelopment version
 npm run watch // development version with watch (auto rebuild on file change)
