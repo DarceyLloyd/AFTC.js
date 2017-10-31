@@ -45,7 +45,7 @@ npm run gulp-build
 npm run gulp-watch
 ```
 
-## BUILD NOTES: 
+### BUILD NOTES: 
 If you already have jQuery as part of your build, aftc.js doesn't need to be built with jQuery, simply comment out the line for jquery in "gulpfile.js" (arount line 8) and re-build via gulp with "gulp build". aftc.min.js will be a fraction of the size without jquery packaged with it!
 
 - With jQuery - aftc.min.js is 108KB
