@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../dist/aftc.js"></script>
+    <script>
+
+
+
+        function init() {
+            // Debug.js usage exmaples
+            log("AFTC.JS");
+
+            var debugElement = document.getElementById("debug");
+            logTo("debug", "Usage example 1 of error.js logTo(elementOrElementId,message,prepend:boolean:optional)<br>");
+            logTo(debugElement, "Usage example 2 of error.js logTo(elementObject,'this message')<br>");
+            logTo(debugElement, "Usage example 3 of error.js logTo(elementObject,'this message',true)<br>", true);
+            logTo("debug", "Usage example 4 of error.js logTo('debug,'this message',false)<br>", false);
+            logTo("debug", "Usage example 5 of error.js logTo('debug,'this message',false)<br>", false);
+
+            logTo("debug", "To see more details of what is going on open console<br>", false);
+
+
+            if (typeof(TweenMax) == "undefined"){
+                log("TweenMax is not available");
+	        }
+
+            
+
+
+
+        }
+
+    </script>
+</head>
+
+<body onload="init()">
+    <h2>test: log(arg)</h2>
+    <h4>Please open console output</h4>
+    <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+</body>
+
+</html>

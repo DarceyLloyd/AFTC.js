@@ -99,54 +99,23 @@ window.stringToWindow = function($input) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-window.scrollToElementId = function (elementId, speed, delay) {
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.arrayRemoveIndex = function (array, index) {
+	return array.splice(index);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-	var $target = $("#"+elementId);
-	if (!$target){
-		throw("AFTC.js > animation.jquery.js: Error unable to find element with id [" + elementId + "]");
-	}
 
-	if (!speed || speed == null) {
-		speed = 1;
-	}
-	speed *= 1000;
-
-	if (!delay || delay == null) {
-		delay = 0;
-	}
-	delay *= 1000;
-
-	$('html, body').delay(delay).animate(
-		{
-			scrollTop: $target.offset().top
-		}, speed
-	);
-	
+window.isArrayInString = function ($string, $array) {
+	return (new RegExp('(' + $array.join('|').replace(/\./g, '\\.') + ')$')).test($string);
 }
 
-window.scrollToElementClass = function (elementClassName, speed, delay) {
-	
-	var $target = $("."+elementClassName);
-	if (!$target){
-		throw("AFTC.js > animation.jquery.js: Error unable to find element with class name [" + elementClassName + "]");
-	}
 
-	if (!speed || speed == null) {
-		speed = 1;
-	}
-	speed *= 1000;
 
-	if (!delay || delay == null) {
-		delay = 0;
-	}
-	delay *= 1000;
-
-	$('html, body').delay(delay).animate({
-		scrollTop: $target.offset().top
-	}, speed);
-
+window.isArray = function(obj) {
+	return !!obj && obj.constructor === Array;
+	//return arr.constructor == Array;
 }
-
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -472,7 +441,7 @@ window.removeAllSelectOptions = function (selectBoxId) {
 	var i,
 		element = document.getElementById(selectBoxId);
 
-	if (element){
+	if (element) {
 		for (i = element.options.length - 1; i >= 0; i--) {
 			element.remove(i);
 		}
@@ -486,7 +455,97 @@ window.removeAllSelectOptions = function (selectBoxId) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.checkboxReveal = function ($checkboxID, $elementIdForHideShow) {
+window.checkboxToggleContent = function (cb, ids, showOnCheck) {
+	var msg = "aftc.js > checkboxShowHide > incorrect usage!\n";
+	msg += "checkboxHideShow(arg1,arg2,arg3)" + "\n";
+	msg += "arg1 = checkbox element || checkbox element id" + "\n";
+	msg += "arg2 = elementIdToShowHodeToggle || ArrayOfElementIdsToShowHide toggle" + "\n";
+	msg += "arg3 (optional) = boolean : true (default) = show items on check || false = hide items on check" + "\n";
+
+	var checkbox;
+
+	if (typeof (cb) == "string") {
+		checkbox = document.getElementById(cb);
+		if (!cb) {
+			log("checkboxShowHide argument 1 ID was not found on the DOM! Check for typos")
+			throw (msg);
+		}
+	}
+
+	if (cb.type && cb.type != 'checkbox') {
+		log("checkboxShowHide argument 1 was not a checkbox element or id of a checkbox!")
+		throw (msg);
+	}
+
+
+	if (!showOnCheck) {
+		showOnCheck = true;
+	}
+
+	var itemsToShowHide = [];
+
+	if (typeof (ids) == "string") {
+		var elementToShow = document.getElementById(ids);
+		if (!elementToShow) {
+			log("Unable to find elemnt id [" + ids + "] on page!\n" + msg);
+		}
+		itemsToShowHide.push(elementToShow);
+		
+	} else if (isArray(ids)) {
+		for (var index = 0; index < ids.length; index++) {
+			var id = ids[index];
+			var elementToShow = document.getElementById(ids);
+			if (!elementToShow) {
+				throw("Unable to find elemnt id [" + id + "] on page!\n" + msg);
+			}
+		}
+		itemsToShowHide.push(elementToShow);
+	}
+
+
+	// Take note of each elements style.display value as we will want to restore it
+	//.setAttribute('data', "icon:
+	//document.getElementById('item1').dataset.icon
+
+	var displayStyles = [];
+	for (var index = 0; index < itemsToShowHide.length; index++) {
+		var element = itemsToShowHide[index];
+		var displayStyle = element.style.display;
+		console.log("["+displayStyle.length+"]");
+		if (displayStyle.length < 1){
+			var sd = document.defaultView.getComputedStyle(element,null);
+			log(sd.display);
+			displayStyle = "moo";
+		}
+		var dataDisplayStyle = element.getAttribute("data-display");
+		log("displayStyle = [" + displayStyle + "]");
+		log("dataDisplayStyle = [" + dataDisplayStyle + "]");
+		if (!element.dataset.display){
+			element.setAttribute("data-display",displayStyle);
+		}
+		displayStyles.push(element.style.display);
+	}
+
+
+
+		// show by elementId
+		var elementToShow = document.getElementById(ids);
+		if (elementToShow) {
+			log(elementToShow)
+
+			if (cb.checked && showOnCheck){
+				elementToShow.style.display = displayStyle;
+			} else if (cb.checked && !showOnCheck){
+				elementToShow.style.display = "none";
+			} else if (!cb.checked && showOnCheck) {
+				elementToShow.style.display = "none";
+			} else {
+				elementToShow.style.display = displayStyle;
+			}
+
+		}
+
+	/*
 	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
 	$state = $state.toLowerCase();
 
@@ -495,15 +554,16 @@ window.checkboxReveal = function ($checkboxID, $elementIdForHideShow) {
 	} else {
 		jQuery("#" + $elementIdForHideShow).slideUp();
 	}
+	*/
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.isChecked = function ($id) {
-	$element = document.getElementById($id);
-	return $element.checked;
+window.isChecked = function (id) {
+	return document.getElementById(id).checked;
 }
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 
@@ -541,8 +601,8 @@ window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $valu
 
 				$('#' + $element_id).append(
 					$('<option>')
-						.text($select_label)
-						.attr('value', $select_value)
+					.text($select_label)
+					.attr('value', $select_value)
 				);
 			});
 		}
@@ -553,12 +613,12 @@ window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $valu
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.limitLengthInWords = function (field, maxWords) {
-	var value = field.value,
+window.limitLengthInWords = function (element, maxWords) {
+	var value = element.value,
 		wordCount = value.split(/\S+/).length - 1,
 		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
 	if (wordCount >= maxWords) {
-		field.value = value.match(re);
+		element.value = value.match(re);
 		document.getElementById('word_count').innerHTML = "";
 		wcount_valid = true;
 	} else {
@@ -572,17 +632,16 @@ window.limitLengthInWords = function (field, maxWords) {
 
 
 
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.generateNoise = function($canvasId, $width, $height, $opacity) {
-	var canvas = document.getElementById($canvasId),
+window.generateNoise = function(canvasId, width, height, opacity) {
+	var canvas = document.getElementById(canvasId),
 		ctx = canvas.getContext('2d'),
 		x, y,
 		number,
-		opacity = $opacity || .2;
+		opacity = opacity || .2;
 
-	canvas.width = $width;
-	canvas.height = $height;
+	canvas.width = width;
+	canvas.height = height;
 
 	for (x = 0; x < canvas.width; x++) {
 		for (y = 0; y < canvas.height; y++) {
@@ -662,8 +721,8 @@ window.loadJSONFile = function($url, $callback) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.redirect = function($url) {
-	self.location.href = $url;
+window.redirect = function(url) {
+	self.location.href = url;
 };
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
@@ -1244,4 +1303,54 @@ AFTC.Color = function (arg_color) {
 
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+window.scrollToElementId = function (elementId, speed, delay) {
+
+	var $target = $("#"+elementId);
+	if (!$target){
+		throw("AFTC.js > animation.jquery.js: Error unable to find element with id [" + elementId + "]");
+	}
+
+	if (!speed || speed == null) {
+		speed = 1;
+	}
+	speed *= 1000;
+
+	if (!delay || delay == null) {
+		delay = 0;
+	}
+	delay *= 1000;
+
+	$('html, body').delay(delay).animate(
+		{
+			scrollTop: $target.offset().top
+		}, speed
+	);
+	
+}
+
+window.scrollToElementClass = function (elementClassName, speed, delay) {
+	
+	var $target = $("."+elementClassName);
+	if (!$target){
+		throw("AFTC.js > animation.jquery.js: Error unable to find element with class name [" + elementClassName + "]");
+	}
+
+	if (!speed || speed == null) {
+		speed = 1;
+	}
+	speed *= 1000;
+
+	if (!delay || delay == null) {
+		delay = 0;
+	}
+	delay *= 1000;
+
+	$('html, body').delay(delay).animate({
+		scrollTop: $target.offset().top
+	}, speed);
+
+}
+
 

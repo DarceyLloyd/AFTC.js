@@ -2,15 +2,15 @@
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.generateNoise = function($canvasId, $width, $height, $opacity) {
-	var canvas = document.getElementById($canvasId),
+window.generateNoise = function(canvasId, width, height, opacity) {
+	var canvas = document.getElementById(canvasId),
 		ctx = canvas.getContext('2d'),
 		x, y,
 		number,
-		opacity = $opacity || .2;
+		opacity = opacity || .2;
 
-	canvas.width = $width;
-	canvas.height = $height;
+	canvas.width = width;
+	canvas.height = height;
 
 	for (x = 0; x < canvas.width; x++) {
 		for (y = 0; y < canvas.height; y++) {

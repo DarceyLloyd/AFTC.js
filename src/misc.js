@@ -1,12 +1,12 @@
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.redirect = function($url) {
-	self.location.href = $url;
+window.redirect = function (url) {
+	self.location.href = url;
 };
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.dumpArgs = function() {
+window.dumpArgs = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
 		for (var key in arguments[0]) {
 			console.log("Argument[" + key + "] = " + arguments[0][key]);
@@ -17,7 +17,7 @@ window.dumpArgs = function() {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArgs = function() {
+window.getArgs = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
 		return arguments[0];
 	} else {
@@ -30,7 +30,7 @@ window.getArgs = function() {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getRandomInt = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,7 +47,7 @@ function getFunctionName(fn) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getWeightedRandom = function(odds, iterations) {
+window.getWeightedRandom = function (odds, iterations) {
 	if (!odds) {
 		odds = [
 			0.68, // 0
@@ -92,3 +92,47 @@ window.getWeightedRandom = function(odds, iterations) {
 	return iMax;
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+window.getStyle = function (eleOrId, style) {
+	var element;
+
+	if (typeof (eleOrId) == "string") {
+		element = document.getElementById(eleOrId);
+		if (!element) {
+			var msg = "getComputerStyle(elementOrId,style): usage error!";
+			msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
+			throw (msg);
+		}
+	} else {
+		element = eleOrId;
+	}
+
+
+	if (!document.defaultView) {
+		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
+		throw (msg);
+	}
+
+	if (!document.defaultView.getComputedStyle) {
+		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
+		throw (msg);
+	}
+
+	var sd = document.defaultView.getComputedStyle(element, null);
+
+	if (!sd[style]) {
+		var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
+		msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
+		throw (msg);
+	}
+
+
+	return sd[style];
+
+
+
+}

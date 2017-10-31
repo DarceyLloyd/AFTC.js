@@ -45,6 +45,16 @@ npm run gulp-build
 npm run gulp-watch
 ```
 
+## BUILD NOTES: 
+If you already have jQuery as part of your build, aftc.js doesn't need to be built with jQuery, simply comment out the line for jquery in "gulpfile.js" (arount line 8) and re-build via gulp with "gulp build". aftc.min.js will be a fraction of the size without jquery packaged with it!
+
+- With jQuery - aftc.min.js is 108KB
+- <b>Without jQuery - aftc.min.js is just 13KB!</b>
+- WIthout jQuery, with TweenMax - aftc.min.js is 125KB
+- Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is 43KB!
+
+I would recommend using TweenLite and the ScrollToPlugin unless your working with a lot of animation then I would go all out for TweenMax.
+
 
 
 
@@ -69,6 +79,9 @@ npm run build
 
 ## <b>What's new?</b>
 
+- new tests (I plan on creating individual test files for each function, will also serve as usage examples)
+- getStyle(elementOrElementId,style): Gets computed style of element
+- Removed checkboxHideShow and replace with <b>checkboxToggleContent(elementOrElementId, idOrIds, showOnCheck=true:boolean:optional) {
 - Enhanced debug.js function logTo(): Now takes 3 parameters:
   - param 1 = elementObject or elementId
   - param 2 = message (string)
@@ -79,8 +92,6 @@ npm run build
 - Added color <b>brighten</b> and <b>darken</b> via <b>AFTC.Color(color)</b> // Simulates SASS brighten
 - Added some color conversion functions
 - Re-added the old array type detect (it's better than the new way)
-- Moved some functions to more appropriate files
-- Removed 2 functions as they were extremely simple uses of jQuery
 
 
 
@@ -111,7 +122,7 @@ Log not working? Why cant I see any of my console.log short cut output anymore? 
 ## <b>trace(arg)</b>
 Do you still live in a ActionScript world? trace is back, same as log.
 
-## <b>logTo($id, $msg)</b>
+## <b>logTo(id, msg)</b>
 Want to see your debug on the page / app, logTo(elementId:String,value:String/Number) and it will appear in the element with the corresponding ID (if it exists)
 
 ## <b>debugWindow(arg)</b>
@@ -199,6 +210,9 @@ Returns the name of function fn.
 ## <b>getWeightedRandom(odds,itterations)</b>
 Want a random number set which will give you more of a certain set of number than the anothers? This will help. Specify an array of odds 0=0%, 1 = 100% chance and the number of iterations it will do to run those odds.
 
+## <b>getComputedStyle(elementOrElementId,style)</b>
+Returns the value of an elements computed style.
+
 
 
 
@@ -251,10 +265,10 @@ Validates an email adddress (string) via regex.
 # <b>animation.jquery.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.12<br>
 
-## <b>scrollToElementID($id, $speed, $delay)</b>
+## <b>scrollToElementID(id, speed, delay)</b>
 Scroll to an element specified by ID on the page, with speed and delay options.
 
-## <b>scrollToElementClass($class, $speed, $delay)</b>
+## <b>scrollToElementClass(class, speed, delay)</b>
 Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
 
 <br>
@@ -264,10 +278,10 @@ Scroll to an element specified by CLASS NAME on the page, width speed and delay 
 ## <b>If file size matters and jQuery is too big then use this version, make sure you have TweenLite.min.js and ScrollToPlugin.min.js in your gulp build file list.</b>
 #### <b>Dependencies:</b> gsap TweenLite & ScrollToPlugin<br>
 
-## <b>scrollToElementID($id, $speed, $delay)</b>
+## <b>scrollToElementID(id, speed, delay)</b>
 Scroll to an element specified by ID on the page, with speed and delay options.
 
-## <b>scrollToElementClass($class, $speed, $delay)</b>
+## <b>scrollToElementClass(class, speed, delay)</b>
 Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
 
 
@@ -408,10 +422,11 @@ Returns true or false if id of the checkbox / radio is checked.
 ## <b>isNumberKey(evt)</b>
 Place on form text inputs to ensure numbers are only entered into it. eg onKeyUp="isNumberKey(event)"
 
-## <b>parseJSONFileToSelect(file, $element_id, $label_index, $value_index)</b>
+## <b>parseJSONFileToSelect(file, element_id, label_index, value_index)</b>
 Will attempt to load and parse a json file into a form select element.
 
-
+## <b>limitLengthInWords(element, maxWords)</b>
+Will place a limit on the number of words you can enter. eg onKeyUp="limitLengthInWords(this,5)"
 
 
 
