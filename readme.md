@@ -22,7 +22,7 @@ npm run watch // development version with watch (auto rebuild on file change)
 ```
 
 ### <b>Build</b>
-You can use webpack or gulp, I pref' gulp at the moment.
+You can use webpack or gulp, I pref' gulp at the moment, I am also getting better file sizes minified with gulp than webpack.
 
 ```
 gulp build-dev
@@ -31,18 +31,13 @@ gulp build
 gulp watch
 ```
 
-or use npm with the following:
+or webpack via npm (I recommend using gulp however)
 
 ```
 npm run webpack-dev
 npm run webpack-dev-watch
 npm run webpack-dist
 npm run webpack-dist-watch
-
-npm run gulp-build-dev
-npm run gulp-watch-dev
-npm run gulp-build
-npm run gulp-watch
 ```
 
 ### BUILD NOTES: 
