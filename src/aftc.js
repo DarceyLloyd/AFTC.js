@@ -36,7 +36,7 @@ var AFTC = function () {
     // Can also use this.fn = function() {}
     return {
         version: function () {
-            console.log("AFTC.js v" + params.version);
+            console.log("AFTC.js");
         }
     };
 }

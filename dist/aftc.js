@@ -192,27 +192,203 @@ window.stringToBool = function (str) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+window.randomString = function($length) {
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.setCookie = function ($name, $value) {
-	//document.cookie = $name + "=" + $value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
-	//$.cookie($name, $value, {expires:365,path:'/sfsow'});
-	var expires = new Date();
-	expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
-	document.cookie = $name + '=' + $value + ';expires=' + expires.toUTCString();
+	for (var i = 0; i < $length; i++)
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+	return text;
 }
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.getCookie = function ($name) {
-	//return $.cookie($name);
-	var keyValue = document.cookie.match('(^|;) ?' + $name + '=([^;]*)(;|$)');
-	return keyValue ? keyValue[2] : null;
+window.guid = function() {
+	function Amiga() {
+		return Math.floor((1 + Math.random()) * 0x10000)
+			.toString(16)
+			.substring(1);
+	}
+
+	return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
+		Amiga() + '-' + Amiga() + Amiga() + Amiga();
 }
+
+
+window.trimStringLength = function($input, $length) {
+	return $input.substring(0, $length);
+}
+
+
+window.getFileExtension = function(str){
+	var ext = str.split('.').pop();
+	return str;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getLastPartOfUrl = function() {
+	var $url = window.location.href;
+	var $part = $url.substring($url.lastIndexOf('/') + 1);
+	return $part;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getFileExtension2 = function($input) {
+	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.removeFileFromPath = function(path) {
+    //var pa = '/this/is/a/folder/aFile.txt';
+    var r = /[^\/]*$/;
+    path = path.replace(r, '');
+    return path;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.redirect = function (url) {
+	self.location.href = url;
+};
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.dumpArgs = function () {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			console.log("Argument[" + key + "] = " + arguments[0][key]);
+		}
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getArgs = function () {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		return arguments[0];
+	} else {
+		return null;
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getRandomInt = function (min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function getFunctionName(fn) {
+	var name = fn.toString();
+	var reg = /function ([^\(]*)/;
+	return reg.exec(name)[1];
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getWeightedRandom = function (odds, iterations) {
+	if (!odds) {
+		odds = [
+			0.68, // 0
+			0.69, // 1
+			0.698, // 2
+			0.6909, // 3
+			0.68, // 4
+			0.58, // 5
+			0.57, // 6
+			0.56, // 7
+			0.4, // 8
+			0.3, // 9
+		];
+	}
+	var weights = [];
+	var r = 0;
+	var iMax = 0;
+	var wMax = 0;
+
+	for (var i in odds) {
+		if (!weights[i]) {
+			weights[i] = 0;
+		}
+
+		for (var x = 0; x < iterations; x++) {
+			r = Math.random();
+			//log(r.toFixed(3) + "   " + odds[i].toFixed(3));
+			if (r <= odds[i]) {
+				weights[i] += odds[i];
+			}
+		}
+
+		if (weights[i] > wMax) {
+			wMax = weights[i];
+			iMax = i;
+		}
+
+	}
+
+	//log(weights);
+	//log("wMax = " + wMax + "   iMax = " + iMax);
+	return iMax;
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+window.getStyle = function (eleOrId, style) {
+	var element;
+
+	if (typeof (eleOrId) == "string") {
+		element = document.getElementById(eleOrId);
+		if (!element) {
+			var msg = "getComputerStyle(elementOrId,style): usage error!";
+			msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
+			throw (msg);
+		}
+	} else {
+		element = eleOrId;
+	}
+
+
+	if (!document.defaultView) {
+		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
+		throw (msg);
+	}
+
+	if (!document.defaultView.getComputedStyle) {
+		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
+		throw (msg);
+	}
+
+	var sd = document.defaultView.getComputedStyle(element, null);
+
+	if (!sd[style]) {
+		var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
+		msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
+		throw (msg);
+	}
+
+
+	return sd[style];
+
+
+
+}
 
 window.getUkDateFromDbDateTime = function ($input) {
 	// "2016-04-08 21:11:59" to UK date
@@ -436,6 +612,27 @@ window.centerAbsoluteItem = function ($element) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.setCookie = function ($name, $value) {
+	//document.cookie = $name + "=" + $value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
+	//$.cookie($name, $value, {expires:365,path:'/sfsow'});
+	var expires = new Date();
+	expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+	document.cookie = $name + '=' + $value + ';expires=' + expires.toUTCString();
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.getCookie = function ($name) {
+	//return $.cookie($name);
+	var keyValue = document.cookie.match('(^|;) ?' + $name + '=([^;]*)(;|$)');
+	return keyValue ? keyValue[2] : null;
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.removeAllSelectOptions = function (selectBoxId) {
 	var i,
@@ -478,28 +675,37 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 	}
 
 
-	if (!showOnCheck) {
+	if (!ids || ids == '' || ids.length < 1) {
+		log("checkboxShowHide argument 2 is not valid!")
+		throw (msg);
+	}
+
+
+	if (typeof(showOnCheck) == "undefined"){
 		showOnCheck = true;
 	}
 
 	var itemsToShowHide = [];
 
 	if (typeof (ids) == "string") {
-		var elementToShow = document.getElementById(ids);
-		if (!elementToShow) {
+		var element = document.getElementById(ids);
+		if (!element) {
 			log("Unable to find elemnt id [" + ids + "] on page!\n" + msg);
 		}
-		itemsToShowHide.push(elementToShow);
-		
+		itemsToShowHide.push(element);
+
 	} else if (isArray(ids)) {
+		log("PARSING ARRAY");
 		for (var index = 0; index < ids.length; index++) {
 			var id = ids[index];
-			var elementToShow = document.getElementById(ids);
-			if (!elementToShow) {
-				throw("Unable to find elemnt id [" + id + "] on page!\n" + msg);
+			log("going to look for element with id of [" + id + "]");
+			var element = document.getElementById(id);
+			if (!element) {
+				throw ("Unable to find elemnt id [" + id + "] on page!\n" + msg);
 			}
+			itemsToShowHide.push(element);
 		}
-		itemsToShowHide.push(elementToShow);
+		
 	}
 
 
@@ -507,43 +713,46 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 	//.setAttribute('data', "icon:
 	//document.getElementById('item1').dataset.icon
 
-	var displayStyles = [];
+
 	for (var index = 0; index < itemsToShowHide.length; index++) {
 		var element = itemsToShowHide[index];
-		var displayStyle = element.style.display;
-		console.log("["+displayStyle.length+"]");
-		if (displayStyle.length < 1){
-			var sd = document.defaultView.getComputedStyle(element,null);
-			log(sd.display);
-			displayStyle = "moo";
+		var currentDisplayStyle = element.style.display;
+		var originalDisplayStyle = element.getAttribute("data-display");
+		if (!element.dataset.display) {
+			//displayStyle = getStyle(element,"display"); // This would make it dependent on misc.js
+			var sd = document.defaultView.getComputedStyle(element, null);
+			currentDisplayStyle = sd.display;
+			originalDisplayStyle = currentDisplayStyle;
+			element.setAttribute("data-display", originalDisplayStyle);
 		}
-		var dataDisplayStyle = element.getAttribute("data-display");
-		log("displayStyle = [" + displayStyle + "]");
-		log("dataDisplayStyle = [" + dataDisplayStyle + "]");
-		if (!element.dataset.display){
-			element.setAttribute("data-display",displayStyle);
+
+		var style = "";
+
+		if (cb.checked && showOnCheck) {
+			style = originalDisplayStyle;
+		} else if (cb.checked && !showOnCheck) {
+			style = "none";
+		} else if (!cb.checked && showOnCheck) {
+			style = "none";
+		} else {
+			style = originalDisplayStyle;
 		}
-		displayStyles.push(element.style.display);
+
+		log("Setting [" + element.id + "] style.display to [" + style + "]");
+		element.style.display = style;
+
 	}
 
+	// log("---");
+	// log("currentDisplayStyle = [" + currentDisplayStyle + "]");
+	// log("originalDisplayStyle = [" + originalDisplayStyle + "]");
+
+	// show by elementId
+	var elementToShow = document.getElementById(ids);
+	if (elementToShow) {
 
 
-		// show by elementId
-		var elementToShow = document.getElementById(ids);
-		if (elementToShow) {
-			log(elementToShow)
-
-			if (cb.checked && showOnCheck){
-				elementToShow.style.display = displayStyle;
-			} else if (cb.checked && !showOnCheck){
-				elementToShow.style.display = "none";
-			} else if (!cb.checked && showOnCheck) {
-				elementToShow.style.display = "none";
-			} else {
-				elementToShow.style.display = displayStyle;
-			}
-
-		}
+	}
 
 	/*
 	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
@@ -658,6 +867,11 @@ window.generateNoise = function(canvasId, width, height, opacity) {
 
 
 
+// Requires jQuery
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.AJAXLoad = function($url, $method, $data, $callback) {
 
@@ -719,160 +933,6 @@ window.loadJSONFile = function($url, $callback) {
 	});
 }
 
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.redirect = function(url) {
-	self.location.href = url;
-};
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.dumpArgs = function() {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			console.log("Argument[" + key + "] = " + arguments[0][key]);
-		}
-	}
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArgs = function() {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		return arguments[0];
-	} else {
-		return null;
-	}
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getRandomInt = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFunctionName(fn) {
-	var name = fn.toString();
-	var reg = /function ([^\(]*)/;
-	return reg.exec(name)[1];
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getWeightedRandom = function(odds, iterations) {
-	if (!odds) {
-		odds = [
-			0.68, // 0
-			0.69, // 1
-			0.698, // 2
-			0.6909, // 3
-			0.68, // 4
-			0.58, // 5
-			0.57, // 6
-			0.56, // 7
-			0.4, // 8
-			0.3, // 9
-		];
-	}
-	var weights = [];
-	var r = 0;
-	var iMax = 0;
-	var wMax = 0;
-
-	for (var i in odds) {
-		if (!weights[i]) {
-			weights[i] = 0;
-		}
-
-		for (var x = 0; x < iterations; x++) {
-			r = Math.random();
-			//log(r.toFixed(3) + "   " + odds[i].toFixed(3));
-			if (r <= odds[i]) {
-				weights[i] += odds[i];
-			}
-		}
-
-		if (weights[i] > wMax) {
-			wMax = weights[i];
-			iMax = i;
-		}
-
-	}
-
-	//log(weights);
-	//log("wMax = " + wMax + "   iMax = " + iMax);
-	return iMax;
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-window.randomString = function($length) {
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-	for (var i = 0; i < $length; i++)
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-	return text;
-}
-
-
-window.guid = function() {
-	function Amiga() {
-		return Math.floor((1 + Math.random()) * 0x10000)
-			.toString(16)
-			.substring(1);
-	}
-
-	return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
-		Amiga() + '-' + Amiga() + Amiga() + Amiga();
-}
-
-
-window.trimStringLength = function($input, $length) {
-	return $input.substring(0, $length);
-}
-
-
-window.getFileExtension = function(str){
-	var ext = str.split('.').pop();
-	return str;
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getLastPartOfUrl = function() {
-	var $url = window.location.href;
-	var $part = $url.substring($url.lastIndexOf('/') + 1);
-	return $part;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getFileExtension2 = function($input) {
-	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.removeFileFromPath = function(path) {
-    //var pa = '/this/is/a/folder/aFile.txt';
-    var r = /[^\/]*$/;
-    path = path.replace(r, '');
-    return path;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.validateEmail = function (email) {

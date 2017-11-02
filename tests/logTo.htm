@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/TweenMax.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/TweenLite.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script> -->
+    <script src="../src/debug.js"></script>
+    <script src="../src/array.js"></script>
+    <script src="../src/conversion.js"></script>
+    <script src="../src/string.js"></script>
+    <script src="../src/misc.js"></script>
+    <script src="../src/datetime.js"></script>
+    <script src="../src/detection.js"></script>
+    <script src="../src/dom.js"></script>
+    <script src="../src/cookies.js"></script>
+    <script src="../src/form.js"></script>
+    <script src="../src/graphics.js"></script>
+    <script src="../src/io.js"></script>
+    <script src="../src/validation.js"></script>
+    <script src="../src/aftc.js"></script>
+    <script src="../src/color.js"></script>
+    <!-- <script src="../src/animation.jquery.js"></script> -->
+    <!-- <script src="../src/animation.gsap.js"></script> -->
+
+    <style>
+        .box {
+            border: 1px solid #000000;
+            margin: 10px;
+            padding: px;
+            min-height: 50px;
+        }
+    </style>
+
+    <script>
+        var debug;
+
+
+        function init() {
+            // Debug.js usage exmaples
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS")
+
+            debug = document.getElementById("output");
+
+            // Persistive usage (recommended for when your logging to a single output on a page)
+            logTo({elementId: "output1"});
+            logTo("<br>Hello World 1");
+            logTo("Hello World 2");
+            logTo("Hello World 3");
+
+            // Recommended uage for multiple outputs on a page
+            logTo("<br>Hello output 2! (test 1)",{elementId: "output2"});
+            logTo("Hello output 2! (test 2)");
+            logTo("Hello output 2! (test 3)");
+
+            logTo("Hello output 3! (test 1)",{elementId: "output3",clear:true});
+            logTo("Hello output 3! (test 2)");
+            logTo("Hello output 3! (test 3)");
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <h2>test: log(message,options)</h2>
+
+
+    <h3>Usage</h3>
+    <p>You can set its configuration each time you use it and use it like the old way eg:</p>
+    <ul>
+        <li>logTo("Hello World 1",{elementId:"output",clear:true,append:true,logToConsoleAlso:true,addLineBreaks:true});</li>
+        <br>
+        <li>logTo("Hello World 2",{element:myHTMLElement,clear:true,append:true,logToConsoleAlso:true,addLineBreaks:true});</li>
+        <br>
+        <li>logTo("Hello World 3",{elementId:"output"});</li>
+        <br>
+        <li>logTo("Hello World 4",{element:myHTMLElement});</li>
+        <br>
+    </ul>
+
+    <p>or you can set it's configuration before use and forget about setting it's options till you have to, eg:</p>
+    <ul>
+        <li>logTo({elementId:"output",clear:true,append:true,logToConsoleAlso:true,addLineBreaks:true});</li>
+        <br>
+        <li>logTo("Hello World 1";</li>
+        <br>
+        <li>logTo("Hello World 2";</li>
+        <br>
+        <li>logTo("Hello World 3";</li>
+        <br>
+    </ul>
+
+
+    <p>Persistive options / options which will remember their settings are:</p>
+    <ul>
+        <li>element : HTML Element Object</li>
+        <li>append:boolean (default: true)</li>
+        <li>addLineBreaks:boolean (default: true)</li>
+        <li>logToConsoleAlso:boolean (default: true)</li>
+    </ul>
+   
+
+    <div id="output1" class="box">
+        output1 - this will be used for logTo (you wont see this if clear is set to true)
+    </div>
+
+    <div id="output2" class="box">
+        output2 - this will be used for logTo (you wont see this if clear is set to true)
+    </div>
+
+    <div id="output3" class="box">
+        output3 - this will be used for logTo (you wont see this if clear is set to true)
+    </div>
+
+</body>
+
+</html>

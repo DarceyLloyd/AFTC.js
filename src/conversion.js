@@ -71,3 +71,23 @@ window.stringToBool = function (str) {
 	}
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getBooleanFrom = function(arg){
+	if (typeof(arg) == "string"){
+		return stringToBool(arg);
+	}
+	
+	if (typeof(arg) == "number"){
+		if (arg <= 0){
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

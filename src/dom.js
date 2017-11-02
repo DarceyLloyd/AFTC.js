@@ -31,36 +31,41 @@ window.hideShow = function ($ShowClassName, $HideClassName) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.centerAbsoluteItem = function ($element) {
-	if (typeof ($element) === "string") {
-		$element = $($element);
+window.centerAbsoluteElement = function (eleOrEleId) {
+	var element;
+
+	if (typeof (eleOrEleId) === "string") {
+		element = document.getElementById(eleOrEleId);
+		if (!element){
+			throw("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
+		}
 	}
-	//log($element);
-	//log($element.width());
-	var mLeft = parseInt($element.css("margin-left"));
-	var mRight = parseInt($element.css("margin-right"));
-	var mTop = parseInt($element.css("margin-top"));
-	var mBtm = parseInt($element.css("margin-bottom"));
 
-	var pLeft = parseInt($element.css("padding-left"));
-	var pRight = parseInt($element.css("padding-right"));
-	var pTop = parseInt($element.css("padding-top"));
-	var pBtm = parseInt($element.css("padding-bottom"));
+	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
+	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
+	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
+	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
 
-	var bLeft = parseInt($element.css("border-left-width"));
-	var bRight = parseInt($element.css("border-right-width"));
-	var bTop = parseInt($element.css("border-top-width"));
-	var bBtm = parseInt($element.css("border-bottom-width"));
+	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
+	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
+	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
+	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
 
-	//log("mLeft:"+mLeft+ "   mRight:"+mRight + "   mTop:"+mTop+"   mBtm:"+mBtm);
-	//log("pLeft:"+pLeft+ "   pRight:"+pRight + "   pTop:"+pTop+"   pBtm:"+pBtm);
-	//log("bLeft:"+bLeft+ "   bRight:"+bRight + "   bTop:"+bTop+"   bBtm:"+bBtm);
+	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
+	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
+	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
+	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
 
-	var w = $element.width() + pLeft + pRight + mLeft + mRight + bLeft + bRight;
-	var h = $element.height() + pTop + pBtm + pLeft + pRight + bTop + bBtm;
-	var tx = (window.innerWidth / 2) - (w / 2);
-	var ty = (window.innerHeight / 2) - (h / 2);
-	$element.css("left", tx);
-	$element.css("top", ty);
+	var offsetWidth = parseInt( element.offsetWidth );
+	var offsetHeight = parseInt( element.offsetHeight );
+	
+	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
+	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
+
+	element.style.left = tx + "px";
+	element.style.top = ty + "px";
+
+	// element.css("left", tx);
+	// element.css("top", ty);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -79,19 +79,27 @@ npm run build
 
 ## <b>What's new?</b>
 
-- new tests (I plan on creating individual test files for each function, will also serve as usage examples)
+- A re-write of logTo (again), I wanted persistant settings for less typing (see usage notes below and tests/logTo.htm)
+  - param 1 = msg
+  - param 2 (optional) = options object {}
+  - options are
+  {
+    elementId:string,
+    element:html object,
+    append:boolean,
+    clear:boolean,
+    addLineBreaks:boolean (default true)
+    logToConsoleAlso:boolean (default true),
+  }
+
+- New function added to conversion.js getBooleanFrom(arg)
+- Removed function from conversion.js stringToBool(str)
+
+- Removed centerAbsoluteItem and replaced with centerAbsoluteElement, which has no reliance on jQuery
+
 - getStyle(elementOrElementId,style): Gets computed style of element
 - Removed checkboxHideShow and replace with <b>checkboxToggleContent(elementOrElementId, idOrIds, showOnCheck=true:boolean:optional) {
-- Enhanced debug.js function logTo(): Now takes 3 parameters:
-  - param 1 = elementObject or elementId
-  - param 2 = message (string)
-  - param 3 (optional) = append (boolean default = true)
-- debug.js no longer requires jquery as a dependancy 
-- AFTC object (The base of the AFTC object suite)
-- Added color.js
-- Added color <b>brighten</b> and <b>darken</b> via <b>AFTC.Color(color)</b> // Simulates SASS brighten
-- Added some color conversion functions
-- Re-added the old array type detect (it's better than the new way)
+
 
 
 
@@ -122,8 +130,26 @@ Log not working? Why cant I see any of my console.log short cut output anymore? 
 ## <b>trace(arg)</b>
 Do you still live in a ActionScript world? trace is back, same as log.
 
-## <b>logTo(id, msg)</b>
-Want to see your debug on the page / app, logTo(elementId:String,value:String/Number) and it will appear in the element with the corresponding ID (if it exists)
+## <b>logTo(message:string or options:object or both string,settings)</b>
+Want to see your debug on the page / app, logTo is here for you.
+```
+  // Persistive usage (recommended for when your logging to a single output on a page)
+  logTo({elementId: "output1"});
+  logTo("<br>Hello World 1");
+  logTo("Hello World 2");
+  logTo("Hello World 3");
+
+  // Recommended uage for multiple outputs on a page
+  logTo("<br>Hello output 2! (test 1)",{elementId: "output2"});
+  logTo("Hello output 2! (test 2)");
+  logTo("Hello output 2! (test 3)");
+
+  logTo("Hello output 3! (test 1)",{elementId: "output3",clear:true});
+  logTo("Hello output 3! (test 2)");
+  logTo("Hello output 3! (test 3)");
+```
+
+
 
 ## <b>debugWindow(arg)</b>
 <b>Aliases:</b> stringToDebugWindow(arg); stringToPopup(arg); stringToWindow(arg);<br>
@@ -318,8 +344,10 @@ Converts degrees to radians.
 ## <b>boolToString(boolean)</b>
 Converts a boolean to a string.
 
-## <b>stringToBool(str)</b>
-Converts strings such as yes, y, 1, true, n, false etc to a boolean true or false.
+## <b>getBooleanFrom(arg)</b>
+Converts strings such as yes, y, 1, true, n, false etc as well as numbers and a few other data types.
+
+
 
 
 
@@ -390,7 +418,7 @@ Attempts to returns the name of the Operating System (OS) of the device/tablet/m
 <br><br><br><br><br><br>
 
 # <b>dom.js</b>
-#### <b>Dependencies:</b> aftc.js/src/array.js & jQuery >= 1.10<br>
+#### <b>Dependencies:</b> aftc.js/src/array.js<br>
 
 ## <b>getElementById(id:string)</b>
 You no longer need to type document each time you want to use getElementById.
@@ -398,8 +426,8 @@ You no longer need to type document each time you want to use getElementById.
 ## <b>hideShow(classNameToShow:String||Array,classNameToHide::String||Array)</b>
 You can hide and show as many elements on the page as you want, just give the function an array of class names to hide or a single string of class names to hide and show.
 
-## <b>centerAbsoluteItem(element:string||jQueryElementObject)</b>
-Attempts to center an css absolute positioned element within your browsers current dimensions.
+## <b>centerAbsoluteElement(element || elementId)</b>
+Attempts to center an absolute positioned element within your browsers current dimensions.
 
 
 

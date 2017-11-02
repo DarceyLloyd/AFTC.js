@@ -9,14 +9,14 @@ var jsFiles = [
     //"./node_modules/gsap/src/minified/TweenMax.min.js", //113kb (if you need more powerfull animation capabilities)
     //"./node_modules/gsap/src/minified/TweenLite.min.js", //13kb (basic animation only)
     //"./node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js", //4kb
-    "./src/debug.js",
-    "./src/array.js",
-    "./src/conversion.js", 
+    "./src/debug.js", // Dependencies: none
+    "./src/array.js", // Dependencies: none
+    "./src/conversion.js", // Dependencies: none
     "./src/string.js", // Dependencies: none
     "./src/misc.js", // Dependencies: none
     //"./src/cordova.js", 
-    "./src/datetime.js",  
-    "./src/detection.js", 
+    "./src/datetime.js", // Dependencies: none
+    "./src/detection.js", // Dependencies: none
     "./src/dom.js", 
     "./src/cookies.js", 
     "./src/form.js", // Dependencies: jQuery >= 1.12
@@ -34,8 +34,6 @@ var jsFiles = [
 gulp.task('build-dev', function () {
     //gulp.src('./src/**/*.js')
     gulp.src(jsFiles)
-        .pipe(jslint({ /* this object represents the JSLint directives being passed down */ }))
-        .pipe(jslint.reporter('default'))
         .pipe(concat('aftc.js'))
         .pipe(gulp.dest('./dist/'));
 });
