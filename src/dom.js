@@ -2,30 +2,6 @@ window.getElementById = function (id) {
 	return document.getElementById(id);
 }
 
-window.hideShow = function ($ShowClassName, $HideClassName) {
-	var $index;
-
-	if (isArray($ShowClassName)) {
-		for ($index in $ShowClassName) {
-			var $ItemToShow = $ShowClassName[$index];
-			log($ItemToShow);
-			$("." + $ItemToShow).show();
-		}
-	} else {
-		$("." + $ShowClassName).show();
-	}
-
-
-	if (isArray($ShowClassName)) {
-		for ($index in $ShowClassName) {
-			var $ItemToHide = $ShowClassName[$index];
-			//log($ItemToHide);
-			$("." + $ItemToShow).hide();
-		}
-	} else {
-		$("." + $HideClassName).hide();
-	}
-}
 
 
 

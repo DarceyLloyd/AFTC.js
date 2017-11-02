@@ -1,3 +1,7 @@
+
+
+
+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.redirect = function (url) {
 	self.location.href = url;

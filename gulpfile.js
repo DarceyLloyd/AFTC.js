@@ -5,7 +5,7 @@ var uglify = require('gulp-uglify');
 
 // Configure your build!
 var jsFiles = [
-    "./node_modules/jquery/dist/jquery.min.js",
+    //"./node_modules/jquery/dist/jquery.min.js",
     //"./node_modules/gsap/src/minified/TweenMax.min.js", //113kb (if you need more powerfull animation capabilities)
     //"./node_modules/gsap/src/minified/TweenLite.min.js", //13kb (basic animation only)
     //"./node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js", //4kb
@@ -14,19 +14,18 @@ var jsFiles = [
     "./src/conversion.js", // Dependencies: none
     "./src/string.js", // Dependencies: none
     "./src/misc.js", // Dependencies: none
-    //"./src/cordova.js", 
     "./src/datetime.js", // Dependencies: none
     "./src/detection.js", // Dependencies: none
-    "./src/dom.js", 
-    "./src/cookies.js", 
-    "./src/form.js", // Dependencies: jQuery >= 1.12
+    "./src/dom.js", // Dependencies: none
+    "./src/cookies.js", // Dependencies: none
+    "./src/form.js", // Dependencies: none
     "./src/graphics.js", // Dependencies: none
-    "./src/io.js", // Dependencies: jQuery >= 1.12
+    //"./src/io.js", // Dependencies: jQuery >= 1.12
     "./src/validation.js", // Dependencies: none
-    './src/aftc.js',
-    './src/color.js',
+    './src/aftc.js', // Dependencies: none
+    './src/color.js', // Dependencies: none
     //"./src/animation.gsap.js", // Requires: TweenLite.min.js || TweenMax.min.js & ScrollToPlugin.min.js
-    "./src/animation.jquery.js", // Requires: jQuery >= 1.12
+    //"./src/animation.jquery.js", // Requires: jQuery >= 1.12
 ];
 
 

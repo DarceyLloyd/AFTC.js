@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/TweenMax.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/TweenLite.min.js"></script> -->
+    <!-- <script src="../node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script> -->
+    <script src="../src/debug.js"></script>
+    <script src="../src/array.js"></script>
+    <script src="../src/conversion.js"></script>
+    <script src="../src/string.js"></script>
+    <script src="../src/misc.js"></script>
+    <script src="../src/datetime.js"></script>
+    <script src="../src/detection.js"></script>
+    <script src="../src/dom.js"></script>
+    <script src="../src/cookies.js"></script>
+    <script src="../src/form.js"></script>
+    <script src="../src/graphics.js"></script>
+    <script src="../src/io.js"></script>
+    <script src="../src/validation.js"></script>
+    <script src="../src/aftc.js"></script>
+    <script src="../src/color.js"></script>
+    <!-- <script src="../src/animation.jquery.js"></script> -->
+    <!-- <script src="../src/animation.gsap.js"></script> -->
+
+    <style>
+        .box {
+            border: 1px solid #000000;
+            margin: 10px;
+            padding: px;
+            min-height: 50px;
+        }
+    </style>
+
+    <script>
+        var debug;
+
+
+        function init() {
+            // Debug.js usage exmaples
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS")
+
+            debug = document.getElementById("output");
+
+            // Persistive usage (recommended for when your logging to a single output on a page)
+            logTo({elementId: "output1"});
+
+            // Example parseJSONToSelect
+            // Make sure ' are used on the outside, seems " on the outside and ' on the inside will generate an error?!
+            var jsonString = '[{"name":"United Kingdom","code":"GB"},{"name":"United States","code": "US"}]';
+            var jsonObj = JSON.parse(jsonString);
+
+            var ele = document.getElementById("country");
+            parseJSONToSelect(jsonString,ele,"name","code")
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <h2>test: paseJSONToSelect()</h2>
+
+
+    <p>Please view source and review code in script tags</p>
+   
+
+    <form id="frm" name="frm">
+        <select id="country" name="country"></select>
+        <select id="country2" name="country2"></select>
+    </form>
+
+    <div id="output1" class="box">
+       
+    </div>
+
+
+</body>
+
+</html>

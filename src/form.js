@@ -46,7 +46,7 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 	}
 
 
-	if (typeof(showOnCheck) == "undefined"){
+	if (typeof (showOnCheck) == "undefined") {
 		showOnCheck = true;
 	}
 
@@ -70,7 +70,7 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 			}
 			itemsToShowHide.push(element);
 		}
-		
+
 	}
 
 
@@ -103,7 +103,7 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 			style = originalDisplayStyle;
 		}
 
-		log("Setting [" + element.id + "] style.display to [" + style + "]");
+		//log("Setting [" + element.id + "] style.display to [" + style + "]");
 		element.style.display = style;
 
 	}
@@ -155,32 +155,40 @@ window.isNumberKey = function (evt) {
 
 
 
-window.parseJSONFileToSelect = function ($file, $element_id, $label_index, $value_index) {
-	$.ajax({
-		url: $file,
-		type: 'POST',
-		dataType: 'json',
-		success: function ($response) {
-			$.each($response, function ($key, $value) {
-				//log($key + " = " + $value[$value_index]);
-
-				var $select_label = $value[$label_index];
-				var $select_value = $value[$value_index];
-				//log("$select_label:" + $select_label + "   $select_value:" + $select_value);
-
-				if ($select_label.toLowerCase() == "[div]") {
-					$select_label = "-----------------------------";
-					$select_value = "";
-				}
-
-				$('#' + $element_id).append(
-					$('<option>')
-					.text($select_label)
-					.attr('value', $select_value)
-				);
-			});
+window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
+	var element;
+	
+	if (typeof(selectElementIdOrElement) == "string"){
+		element = document.getElementById(selectElementIdOrElement);
+		if (!element){
+			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + selectElementIdOrElement + "]");
 		}
-	});
+	}
+
+	if( typeof(selectElementIdOrElement) == "object"){
+		element = selectElementIdOrElement;
+	}
+
+
+	
+	if (typeof(j) == "string"){
+		j = JSON.parse(j);
+	}
+
+	for (var i = 0; i < j.length; i++) {
+		var label = j[i][labelKey];
+		var data = j[i][valueKey];
+		
+		var option = document.createElement("option");
+		option.text = label;
+		option.value = data;
+		//log(option);
+		element.add(option);
+
+		
+	}
+
+
 }
 
 

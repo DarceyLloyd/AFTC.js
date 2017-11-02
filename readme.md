@@ -46,10 +46,12 @@ npm run gulp-watch
 ```
 
 ### BUILD NOTES: 
-If you already have jQuery as part of your build, aftc.js doesn't need to be built with jQuery, simply comment out the line for jquery in "gulpfile.js" (arount line 8) and re-build via gulp with "gulp build". aftc.min.js will be a fraction of the size without jquery packaged with it!
+The dist files in this version of AFTC.js do not come with jquery packaged into the min and any modules of the AFTC.js tools / utilities suite that requires jQuery have been commented out in the gulp buildfile.
 
+If you want io.js and jquery back in, just uncomment their lines in gulpfile.js and re-build via "gulp build". I have placed notes on which includes require jquery or GSAP.
+
+- <b>Without jQuery - aftc.min.js is less than 20KB!</b>
 - With jQuery - aftc.min.js is 108KB
-- <b>Without jQuery - aftc.min.js is just 13KB!</b>
 - WIthout jQuery, with TweenMax - aftc.min.js is 125KB
 - Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is 43KB!
 
@@ -79,6 +81,8 @@ npm run build
 
 ## <b>What's new?</b>
 
+- form.js no longer requires jquery
+
 - A re-write of logTo (again), I wanted persistant settings for less typing (see usage notes below and tests/logTo.htm)
   - param 1 = msg
   - param 2 (optional) = options object {}
@@ -92,10 +96,14 @@ npm run build
     logToConsoleAlso:boolean (default true),
   }
 
+- Added string.js > cleanJSONString(string), will remove special characters from a json string and return it
+
 - New function added to conversion.js getBooleanFrom(arg)
 - Removed function from conversion.js stringToBool(str)
 
 - Removed centerAbsoluteItem and replaced with centerAbsoluteElement, which has no reliance on jQuery
+
+- Removed dom.js > hideShow, was a pathetic excuse for a function, can be easily done with css or basic js or jquery hide() / show() etc
 
 - getStyle(elementOrElementId,style): Gets computed style of element
 - Removed checkboxHideShow and replace with <b>checkboxToggleContent(elementOrElementId, idOrIds, showOnCheck=true:boolean:optional) {
@@ -269,6 +277,8 @@ Returns the last part of the URL
 ## <b>removeFileFromPath</b>
 Attempts to remove the file from a full file path, eg a/b/c/text.txt would return a/b/c/
 
+## <b>cleanJSONString(string)</b>
+Will remove special characters from a json string and return it for you to JSON.parse
 
 
 
@@ -423,9 +433,6 @@ Attempts to returns the name of the Operating System (OS) of the device/tablet/m
 ## <b>getElementById(id:string)</b>
 You no longer need to type document each time you want to use getElementById.
 
-## <b>hideShow(classNameToShow:String||Array,classNameToHide::String||Array)</b>
-You can hide and show as many elements on the page as you want, just give the function an array of class names to hide or a single string of class names to hide and show.
-
 ## <b>centerAbsoluteElement(element || elementId)</b>
 Attempts to center an absolute positioned element within your browsers current dimensions.
 
@@ -437,7 +444,7 @@ Attempts to center an absolute positioned element within your browsers current d
 <br><br><br><br><br><br>
 
 # <b>form.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.10<br>
+#### <b>Dependencies:</b> NONE<br>
 
 ## <b>removeAllSelectOptions(selectBoxId)</b>
 
