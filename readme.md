@@ -78,6 +78,8 @@ npm run build
 
 - <b>getOS()</b> - Returns an object with os and userAgent, os will be false if not detected correctly. Usage var detected = getOS(); log(detected.os); log(detected.userAgent);
 
+- <b>getOS()</b> - I've added detection for a lot more user agent strings, see tests/detection.htm
+
 - <b>logObjTo(elementId, obj, append)</b> - Want to see what's inside an object {}, logObjTo will dump the trace to a html element for you.
 
 - form.js no longer requires jquery
