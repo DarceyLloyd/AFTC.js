@@ -50,18 +50,19 @@ window.AFTCLogToOptions = {
     element: null,
     clear: false,
     append: true,
-    logToConsoleAlso: true,
+    logToConsole: true,
     addLineBreaks: true
 }
+
 window.logTo = function (msg) {
-
-
     var clear = false;
     var elementIdSupplied = false;
     var elementSupplied = false;
     var argIndex = -1;
 
-    var getOutputElement = function(){
+    var args = arguments;
+
+    var getOutputElement = function () {
         var element = document.getElementById(window.AFTCLogToOptions.elementId);
         if (element) {
             window.AFTCLogToOptions.element = element;
@@ -70,20 +71,20 @@ window.logTo = function (msg) {
         }
     }
 
-    var parseArguments = function(objArgs){
+    var parseArguments = function (objArgs) {
         //log("parsingArguments(objArgs)");
         for (var key in objArgs) {
             var val = objArgs[key];
             //log(key + " = " + val);
-            if (key == "clear"){
+            if (key == "clear") {
                 clear = objArgs[key];
             }
 
-            if (key == "elementId" && val.length > 0){
+            if (key == "elementId" && val.length > 0) {
                 elementIdSupplied = true;
             }
 
-            if (key == "element"){
+            if (key == "element") {
                 elementSupplied = true;
             }
 
@@ -91,7 +92,8 @@ window.logTo = function (msg) {
                 window.AFTCLogToOptions[key] = objArgs[key];
                 //log("SETTING: " + key + " = " + val);
             } else {
-                console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
+                // Disable error as user may actually be trying to log an object
+                //console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
             }
         }
     }
@@ -103,13 +105,13 @@ window.logTo = function (msg) {
     } else if (arguments[1] && typeof (arguments[1]) == "object") {
         argIndex = 1;
         parseArguments(arguments[1]);
-        
+
     }
 
 
 
     // Get element if elementId or element was given (element will override elementid)
-    if (elementIdSupplied){
+    if (elementIdSupplied) {
         getOutputElement();
     }
 
@@ -122,8 +124,8 @@ window.logTo = function (msg) {
     // }
 
 
-    if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined){
-        if (window.AFTCLogToOptions.elementId == "" ){
+    if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined) {
+        if (window.AFTCLogToOptions.elementId == "") {
             var errorMessage = "AFTC.js > logTo(): Usage error. logTo has no element to output too.\n";
             errorMessage += "Please specify an elementId or element via options. eg\n";
             errorMessage += "logTo({elementId:'debugOutput'});\n";
@@ -147,16 +149,18 @@ window.logTo = function (msg) {
 
 
 
+
     if (arguments[0] && typeof (arguments[0]) == "string" && arguments[0].length > 0) {
-    //if (typeof(msg) === "string" && msg.length > 0){        
-        if (window.AFTCLogToOptions.logToConsoleAlso) {
-            console.log(msg);
+        //if (typeof(msg) === "string" && msg.length > 0){        
+
+        if (window.AFTCLogToOptions.logToConsole) {
+            log(msg);
         }
- 
+
         if (window.AFTCLogToOptions.addLineBreaks) {
             msg = msg + "<br>";
         }
-    
+
         if (window.AFTCLogToOptions.append) {
             window.AFTCLogToOptions.element.innerHTML += msg;
         } else {
@@ -166,7 +170,43 @@ window.logTo = function (msg) {
         }
     }
 
+}
 
+
+
+
+
+window.logObjTo = function(elementId, obj, append) {
+    var element = document.getElementById(elementId);
+    if (!element) {
+        throw ("AFTC.JS > logObjTo(elementId,obj): Usage error. Can't find elementId of [" + elementId + "] on the dom!");
+    }
+
+    var msg = "Logging object:<br>\n";
+    for (var key in obj) {
+        msg += "&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + obj[key] + "<br>\n";
+    }
+
+    if (!append) {
+        append = true;
+    }
+
+    if (append){
+        var oldContent = element.innerHTML;
+        element.innerHTML = oldContent + "<br>" + msg;
+    } else {
+        var oldContent = element.innerHTML;
+        element.innerHTML = msg + "<br>" + oldContent;
+    }
+    
+
+
+    log("Logging object:\n");
+    for (var key in obj) {
+        log(key + " = ");
+        log(obj[key] + "\n");
+    }
+    log(" ");
 }
 
 

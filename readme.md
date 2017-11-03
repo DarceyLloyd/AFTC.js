@@ -76,6 +76,10 @@ npm run build
 
 ## <b>What's new?</b>
 
+- <b>getOS()</b> - Returns an object with os and userAgent, os will be false if not detected correctly. Usage var detected = getOS(); log(detected.os); log(detected.userAgent);
+
+- <b>logObjTo(elementId, obj, append)</b> - Want to see what's inside an object {}, logObjTo will dump the trace to a html element for you.
+
 - form.js no longer requires jquery
 
 - A re-write of logTo (again), I wanted persistant settings for less typing (see usage notes below and tests/logTo.htm)
@@ -151,6 +155,9 @@ Want to see your debug on the page / app, logTo is here for you.
   logTo("Hello output 3! (test 2)");
   logTo("Hello output 3! (test 3)");
 ```
+
+## <b>logObjTo(elementId, obj, append)</b>
+Want to see what's inside an object {}, logObjTo will dump the trace to a html element for you.
 
 
 
@@ -411,9 +418,13 @@ Returns the version of IE you are using.
 ## <b>getBrowser()</b>
 Returns the name of the web browser you are using.
 
-## <b>getMobileOperatingSystem()</b>
-Attempts to returns the name of the Operating System (OS) of the device/tablet/mobile you are using.
-
+## <b>getOS()</b>
+Attempts to returns the name of the Operating System (OS) of the laptop/desktop/device/tablet/mobile you are using.
+```
+var detected = getOS();
+log(detected.os);
+log(detected.userAgent);
+```
 
 
 
