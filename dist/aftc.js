@@ -50,18 +50,19 @@ window.AFTCLogToOptions = {
     element: null,
     clear: false,
     append: true,
-    logToConsoleAlso: true,
+    logToConsole: true,
     addLineBreaks: true
 }
+
 window.logTo = function (msg) {
-
-
     var clear = false;
     var elementIdSupplied = false;
     var elementSupplied = false;
     var argIndex = -1;
 
-    var getOutputElement = function(){
+    var args = arguments;
+
+    var getOutputElement = function () {
         var element = document.getElementById(window.AFTCLogToOptions.elementId);
         if (element) {
             window.AFTCLogToOptions.element = element;
@@ -70,20 +71,20 @@ window.logTo = function (msg) {
         }
     }
 
-    var parseArguments = function(objArgs){
+    var parseArguments = function (objArgs) {
         //log("parsingArguments(objArgs)");
         for (var key in objArgs) {
             var val = objArgs[key];
             //log(key + " = " + val);
-            if (key == "clear"){
+            if (key == "clear") {
                 clear = objArgs[key];
             }
 
-            if (key == "elementId" && val.length > 0){
+            if (key == "elementId" && val.length > 0) {
                 elementIdSupplied = true;
             }
 
-            if (key == "element"){
+            if (key == "element") {
                 elementSupplied = true;
             }
 
@@ -91,7 +92,8 @@ window.logTo = function (msg) {
                 window.AFTCLogToOptions[key] = objArgs[key];
                 //log("SETTING: " + key + " = " + val);
             } else {
-                console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
+                // Disable error as user may actually be trying to log an object
+                //console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
             }
         }
     }
@@ -103,13 +105,13 @@ window.logTo = function (msg) {
     } else if (arguments[1] && typeof (arguments[1]) == "object") {
         argIndex = 1;
         parseArguments(arguments[1]);
-        
+
     }
 
 
 
     // Get element if elementId or element was given (element will override elementid)
-    if (elementIdSupplied){
+    if (elementIdSupplied) {
         getOutputElement();
     }
 
@@ -122,8 +124,8 @@ window.logTo = function (msg) {
     // }
 
 
-    if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined){
-        if (window.AFTCLogToOptions.elementId == "" ){
+    if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined) {
+        if (window.AFTCLogToOptions.elementId == "") {
             var errorMessage = "AFTC.js > logTo(): Usage error. logTo has no element to output too.\n";
             errorMessage += "Please specify an elementId or element via options. eg\n";
             errorMessage += "logTo({elementId:'debugOutput'});\n";
@@ -147,16 +149,18 @@ window.logTo = function (msg) {
 
 
 
+
     if (arguments[0] && typeof (arguments[0]) == "string" && arguments[0].length > 0) {
-    //if (typeof(msg) === "string" && msg.length > 0){        
-        if (window.AFTCLogToOptions.logToConsoleAlso) {
-            console.log(msg);
+        //if (typeof(msg) === "string" && msg.length > 0){        
+
+        if (window.AFTCLogToOptions.logToConsole) {
+            log(msg);
         }
- 
+
         if (window.AFTCLogToOptions.addLineBreaks) {
             msg = msg + "<br>";
         }
-    
+
         if (window.AFTCLogToOptions.append) {
             window.AFTCLogToOptions.element.innerHTML += msg;
         } else {
@@ -166,7 +170,43 @@ window.logTo = function (msg) {
         }
     }
 
+}
 
+
+
+
+
+window.logObjTo = function(elementId, obj, append) {
+    var element = document.getElementById(elementId);
+    if (!element) {
+        throw ("AFTC.JS > logObjTo(elementId,obj): Usage error. Can't find elementId of [" + elementId + "] on the dom!");
+    }
+
+    var msg = "Logging object:<br>\n";
+    for (var key in obj) {
+        msg += "&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + obj[key] + "<br>\n";
+    }
+
+    if (!append) {
+        append = true;
+    }
+
+    if (append){
+        var oldContent = element.innerHTML;
+        element.innerHTML = oldContent + "<br>" + msg;
+    } else {
+        var oldContent = element.innerHTML;
+        element.innerHTML = msg + "<br>" + oldContent;
+    }
+    
+
+
+    log("Logging object:\n");
+    for (var key in obj) {
+        log(key + " = ");
+        log(obj[key] + "\n");
+    }
+    log(" ");
 }
 
 
@@ -657,24 +697,175 @@ window.getBrowser = function () {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMobileOperatingSystem = function () {
-	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+window.getOS = function (testAgent) {
+	var userAgent;
 
-	// Windows Phone must come first because its UA also contains "Android"
-	if (/windows phone/i.test(userAgent)) {
-		return "Windows Phone";
+	if (!testAgent){
+		userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	} else {
+		userAgent = testAgent;
 	}
+
+	userAgent = userAgent.toLowerCase();
+
+	
+	
+
+
+	// Windows Phone must come first because its UA also contains "Android"!
+	if (/windows phone/i.test(userAgent)) {
+		return {
+			os:"windows phone",
+			userAgent:userAgent
+		}
+	}
+
 
 	if (/android/i.test(userAgent)) {
-		return "Android";
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
 	}
 
-	// iOS detection from: http://stackoverflow.com/a/9039885/177710
-	if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-		return "iOS";
+	if (/ipad|iphone|ipod/i.test(userAgent)) {
+		return {
+			os:"ios",
+			userAgent:userAgent
+		}
 	}
 
-	return null;
+
+
+	// Windows Phone must come first because its UA also contains "Android"
+	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident/i.test(userAgent)) {
+		return {
+			os:"windows",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/os x/i.test(userAgent)) {
+		return {
+			os:"os x",
+			userAgent:userAgent
+		}
+	}
+
+	if (/macintosh/i.test(userAgent)) {
+		return {
+			os:"os x",
+			userAgent:userAgent
+		}
+	}
+
+	if (/openbsd/i.test(userAgent)) {
+		return {
+			os:"open bsd",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/sunos/i.test(userAgent)) {
+		return {
+			os:"sunos",
+			userAgent:userAgent
+		}
+	}
+
+
+
+
+
+
+	if (/crkey/i.test(userAgent)) {
+		return {
+			os:"chromecast",
+			userAgent:userAgent
+		}
+	}
+
+	if (/appletv/i.test(userAgent)) {
+		return {
+			os:"apple tv",
+			userAgent:userAgent
+		}
+	}
+
+	if (/wiiu/i.test(userAgent)) {
+		return {
+			os:"nintendo wiiu",
+			userAgent:userAgent
+		}
+	}
+
+	if (/nintendo 3ds/i.test(userAgent)) {
+		return {
+			os:"nintendo 3ds",
+			userAgent:userAgent
+		}
+	}
+
+	if (/playstation/i.test(userAgent)) {
+		return {
+			os:"playstation",
+			userAgent:userAgent
+		}
+	}
+
+	if (/kindle/i.test(userAgent)) {
+		return {
+			os:"amazon kindle",
+			userAgent:userAgent
+		}
+	}
+
+	if (/ cros /i.test(userAgent)) {
+		return {
+			os:"chrome os",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	if (/ubuntu/i.test(userAgent)) {
+		return {
+			os:"ubuntu",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/googlebot/i.test(userAgent)) {
+		return {
+			os:"google bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/bingbot/i.test(userAgent)) {
+		return {
+			os:"bing bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/yahoo! slurp/i.test(userAgent)) {
+		return {
+			os:"yahoo bot",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	return {
+		os: false,
+		userAgent:userAgent
+	};
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
