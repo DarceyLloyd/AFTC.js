@@ -1,3 +1,69 @@
+
+// Functions / Utilities
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.addEvent = function (obj, type, callback, eventReturn) {
+    if (obj == null || typeof (obj) == 'undefined') return;
+    if (obj.addEventListener) {
+        //obj.addEventListener(type, callback, false);
+        obj.addEventListener(type, callback, eventReturn ? true : false);
+    } else if (obj.attachEvent) {
+        obj.attachEvent("on" + type, callback);
+    } else {
+        obj["on" + type] = callback;
+    }
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isArray = function (obj) {
+    return !!obj && obj.constructor === Array;
+    //return arr.constructor == Array;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function getFunctionName(fn) {
+    var name = fn.toString();
+    var reg = /function ([^\(]*)/;
+    return reg.exec(name)[1];
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.AFTCElementQueryCache = [];
+window.getElementById = function (id) {
+    if (window.AFTCElementQueryCache[id] != undefined){
+        return window.AFTCElementQueryCache[id];
+    } else {
+        window.AFTCElementQueryCache[id] = document.getElementById(id);
+        return window.AFTCElementQueryCache[id];
+    }
+}
+
+
+window.querySelector = function (id) {
+    if (window.AFTCElementQueryCache[id] != undefined){
+        return window.AFTCElementQueryCache[id];
+    } else {
+        window.AFTCElementQueryCache[id] = document.querySelector(id);
+        return window.AFTCElementQueryCache[id];
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //Returns true if it is a DOM node
 window.isNode = function (o) {
     return (
@@ -54,123 +120,133 @@ window.AFTCLogToOptions = {
     addLineBreaks: true
 }
 
-window.logTo = function (msg) {
-    var clear = false;
-    var elementIdSupplied = false;
-    var elementSupplied = false;
-    var argIndex = -1;
-
-    var args = arguments;
-
-    var getOutputElement = function () {
-        var element = document.getElementById(window.AFTCLogToOptions.elementId);
-        if (element) {
-            window.AFTCLogToOptions.element = element;
-        } else {
-            throw ("AFTC.js > logTo(): Usage error. The elementId [" + window.AFTCLogToOptions.elementId + "] you supplied cannot be found on the DOM!");
-        }
+window.logTo = function (elementId,msg) {
+    var element = document.getElementById(elementId);
+    log(msg);
+    if (element){
+        element.innerHTML += (msg + "<br>");
     }
-
-    var parseArguments = function (objArgs) {
-        //log("parsingArguments(objArgs)");
-        for (var key in objArgs) {
-            var val = objArgs[key];
-            //log(key + " = " + val);
-            if (key == "clear") {
-                clear = objArgs[key];
-            }
-
-            if (key == "elementId" && val.length > 0) {
-                elementIdSupplied = true;
-            }
-
-            if (key == "element") {
-                elementSupplied = true;
-            }
-
-            if (window.AFTCLogToOptions.hasOwnProperty(key)) {
-                window.AFTCLogToOptions[key] = objArgs[key];
-                //log("SETTING: " + key + " = " + val);
-            } else {
-                // Disable error as user may actually be trying to log an object
-                //console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
-            }
-        }
-    }
-
-
-    if (arguments[0] && typeof (arguments[0]) == "object") {
-        argIndex = 0;
-        parseArguments(arguments[0]);
-    } else if (arguments[1] && typeof (arguments[1]) == "object") {
-        argIndex = 1;
-        parseArguments(arguments[1]);
-
-    }
-
-
-
-    // Get element if elementId or element was given (element will override elementid)
-    if (elementIdSupplied) {
-        getOutputElement();
-    }
-
-
-
-    // if (!msg || msg == null || msg == undefined){
-    //     // User should be setting persistent variables
-    // } else {
-    //     // User is attempting to output
-    // }
-
-
-    if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined) {
-        if (window.AFTCLogToOptions.elementId == "") {
-            var errorMessage = "AFTC.js > logTo(): Usage error. logTo has no element to output too.\n";
-            errorMessage += "Please specify an elementId or element via options. eg\n";
-            errorMessage += "logTo({elementId:'debugOutput'});\n";
-            errorMessage += "logTo({element:myElementObject});\n";
-            errorMessage += "logTo('Hello World');\n";
-            errorMessage += "logTo('Hello World',{elementId:'debugOutput'});\n";
-            errorMessage += "logTo('Hello World',{element:myElementObject});\n";
-            errorMessage += "\nIf you don't want to log to a HTML element then just use log!\n";
-            throw (errorMessage);
-        } else {
-            getOutputElement();
-        }
-    }
-
-
-
-
-    if (clear) {
-        window.AFTCLogToOptions.element.innerHTML = "";
-    }
-
-
-
-
-    if (arguments[0] && typeof (arguments[0]) == "string" && arguments[0].length > 0) {
-        //if (typeof(msg) === "string" && msg.length > 0){        
-
-        if (window.AFTCLogToOptions.logToConsole) {
-            log(msg);
-        }
-
-        if (window.AFTCLogToOptions.addLineBreaks) {
-            msg = msg + "<br>";
-        }
-
-        if (window.AFTCLogToOptions.append) {
-            window.AFTCLogToOptions.element.innerHTML += msg;
-        } else {
-            var oldContent = window.AFTCLogToOptions.element.innerHTML;
-            window.AFTCLogToOptions.element.innerHTML = (msg + oldContent);
-            var oldContent = "";
-        }
-    }
-
 }
+
+
+// window.logTo = function (msg) {
+//     var clear = false;
+//     var elementIdSupplied = false;
+//     var elementSupplied = false;
+//     var argIndex = -1;
+
+//     var args = arguments;
+
+//     var getOutputElement = function () {
+//         var element = document.getElementById(window.AFTCLogToOptions.elementId);
+//         if (element) {
+//             window.AFTCLogToOptions.element = element;
+//         } else {
+//             throw ("AFTC.js > logTo(): Usage error. The elementId [" + window.AFTCLogToOptions.elementId + "] you supplied cannot be found on the DOM!");
+//         }
+//     }
+
+//     var parseArguments = function (objArgs) {
+//         //log("parsingArguments(objArgs)");
+//         for (var key in objArgs) {
+//             var val = objArgs[key];
+//             //log(key + " = " + val);
+//             if (key == "clear") {
+//                 clear = objArgs[key];
+//             }
+
+//             if (key == "elementId" && val.length > 0) {
+//                 elementIdSupplied = true;
+//             }
+
+//             if (key == "element") {
+//                 elementSupplied = true;
+//             }
+
+//             if (window.AFTCLogToOptions.hasOwnProperty(key)) {
+//                 window.AFTCLogToOptions[key] = objArgs[key];
+//                 //log("SETTING: " + key + " = " + val);
+//             } else {
+//                 // Disable error as user may actually be trying to log an object
+//                 //console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
+//             }
+//         }
+//     }
+
+
+//     if (arguments[0] && typeof (arguments[0]) == "object") {
+//         argIndex = 0;
+//         parseArguments(arguments[0]);
+//     } else if (arguments[1] && typeof (arguments[1]) == "object") {
+//         argIndex = 1;
+//         parseArguments(arguments[1]);
+
+//     }
+
+
+   
+
+//     // Get element if elementId or element was given (element will override elementid)
+//     if (elementIdSupplied) {
+//         getOutputElement();
+//     }
+
+
+
+//     // if (!msg || msg == null || msg == undefined){
+//     //     // User should be setting persistent variables
+//     // } else {
+//     //     // User is attempting to output
+//     // }
+
+
+//     if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined) {
+//         if (window.AFTCLogToOptions.elementId == "") {
+//             var errorMessage = "AFTC.js > logTo(): Usage error. logTo has no element to output too.\n";
+//             errorMessage += "Please specify an elementId or element via options. eg\n";
+//             errorMessage += "logTo({elementId:'debugOutput'});\n";
+//             errorMessage += "logTo({element:myElementObject});\n";
+//             errorMessage += "logTo('Hello World');\n";
+//             errorMessage += "logTo('Hello World',{elementId:'debugOutput'});\n";
+//             errorMessage += "logTo('Hello World',{element:myElementObject});\n";
+//             errorMessage += "\nIf you don't want to log to a HTML element then just use log!\n";
+//             throw (errorMessage);
+//         } else {
+//             getOutputElement();
+//         }
+//     }
+
+
+
+
+//     if (clear) {
+//         window.AFTCLogToOptions.element.innerHTML = "";
+//     }
+
+
+
+
+//     if (arguments[0] && typeof (arguments[0]) == "string" && arguments[0].length > 0) {
+//         //if (typeof(msg) === "string" && msg.length > 0){        
+
+//         if (window.AFTCLogToOptions.logToConsole) {
+//             log(msg);
+//         }
+
+//         if (window.AFTCLogToOptions.addLineBreaks) {
+//             msg = msg + "<br>";
+//         }
+
+//         if (window.AFTCLogToOptions.append) {
+//             window.AFTCLogToOptions.element.innerHTML += msg;
+//         } else {
+//             var oldContent = window.AFTCLogToOptions.element.innerHTML;
+//             window.AFTCLogToOptions.element.innerHTML = (msg + oldContent);
+//             var oldContent = "";
+//         }
+//     }
+
+// }
 
 
 
@@ -213,7 +289,7 @@ window.logObjTo = function(elementId, obj, append) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.debugWindow = function (input) {
+window.openDebugWindow = function (input) {
     var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
     w.document.title = "Debug";
     w.document.write("<style>body {width:100%;}</style>");
@@ -222,35 +298,315 @@ window.debugWindow = function (input) {
     w.document.close();
     //console.log(response);
 }
-window.stringToDebugWindow = function (input) {
-    debugWindow(input);
-}
 window.stringToPopup = function (input) {
-    debugWindow(input);
+    openDebugWindow(input);
 }
 window.stringToWindow = function (input) {
-    debugWindow(input);
+    openDebugWindow(input);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.dumpArgs = function () {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			console.log("Argument[" + key + "] = " + arguments[0][key]);
+		}
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+var Benchmark = function () {
+    var start = new Date();
+    return {
+        stop: function () {
+            var end = new Date();
+            var time = end.getTime() - start.getTime();
+            return time;
+        }
+    }
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.redirect = function (url) {
+    self.location.href = url;
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.cleanJSONString = function (s) {
+	// preserve newlines, etc - use valid JSON
+	s = s.replace(/\\n/g, "\\n")
+		.replace(/\\'/g, "\\'")
+		.replace(/\\"/g, '\\"')
+		.replace(/\\&/g, "\\&")
+		.replace(/\\r/g, "\\r")
+		.replace(/\\t/g, "\\t")
+		.replace(/\\b/g, "\\b")
+		.replace(/\\f/g, "\\f");
+	// remove non-printable and other non-valid JSON chars
+	s = s.replace(/[\u0000-\u0019]+/g, "");
+	return s;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.escapeHTML = function(text) {  
+    var replacements= {"<": "&lt;", ">": "&gt;","&": "&amp;", "\"": "&quot;"};
+    return text.replace(/[<>&"]/g, function(character) {  
+        return replacements[character];  
+    }); 
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.trimStringLength = function (input, length) {
+	return input.substring(0, length);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getFileExtension = function (str) {
+	var ext = str.split('.').pop();
+	return str;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getLastPartOfUrl = function () {
+	var url = window.location.href;
+	var part = url.substring(url.lastIndexOf('/') + 1);
+	return part;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getFileExtension2 = function (input) {
+	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.removeFileFromPath = function (path) {
+	//var pa = '/this/is/a/folder/aFile.txt';
+	var r = /[^\/]*$/;
+	path = path.replace(r, '');
+	return path;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getRandomInt = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+window.getRandom = function (min, max) {
+    return getRandomInt(min, max);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.randomString = function (length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+window.getRandomString = function(len){
+    return randomString(len);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.guid = function () {
+    function Amiga() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+
+    return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
+        Amiga() + '-' + Amiga() + Amiga() + Amiga();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getArrayOfRandomNumbers = function(arraySize,min,max){
+    var arr = [];
+    for( var i=0; i < arraySize; i++){
+        arr[i] = getRandom(min,max);
+    }
+    return arr;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getArrayOfRandomStrings = function(arraySize,strLength){
+    var arr = [];
+    for( var i=0; i < arraySize; i++){
+        arr[i] = getRandomString(strLength);
+    }
+    return arr;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getWeightedRandom = function (odds, iterations) {
+    if (!odds) {
+        odds = [
+            0.68, // 0
+            0.69, // 1
+            0.698, // 2
+            0.6909, // 3
+            0.68, // 4
+            0.58, // 5
+            0.57, // 6
+            0.56, // 7
+            0.4, // 8
+            0.3, // 9
+        ];
+    }
+    var weights = [];
+    var r = 0;
+    var iMax = 0;
+    var wMax = 0;
+
+    for (var i in odds) {
+        if (!weights[i]) {
+            weights[i] = 0;
+        }
+
+        for (var x = 0; x < iterations; x++) {
+            r = Math.random();
+            //log(r.toFixed(3) + "   " + odds[i].toFixed(3));
+            if (r <= odds[i]) {
+                weights[i] += odds[i];
+            }
+        }
+
+        if (weights[i] > wMax) {
+            wMax = weights[i];
+            iMax = i;
+        }
+    }
+
+    //log(weights);
+    //log("wMax = " + wMax + "   iMax = " + iMax);
+    return iMax;
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.arrayRemoveIndex = function (array, index) {
 	return array.splice(index);
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-window.isArrayInString = function ($string, $array) {
-	return (new RegExp('(' + $array.join('|').replace(/\./g, '\\.') + ')$')).test($string);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isArrayInString = function (string, array) {
+	return (new RegExp('(' + array.join('|').replace(/\./g, '\\.') + ')$')).test(string);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMaxFromArray = function(arr){
+	return Math.max.apply(Math, arr);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMinFromArray = function(arr){
+	return Math.min.apply(Math, arr);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.shuffleArray = function (array) {
+	var methodNo = getRandom(1,2);
+	return window["arrayShuffle"+methodNo](array);
+	var fn = "arrayShuffle"+methodNo;
+	//log(fn);
+	//fn();
+}
+window.arrayShuffle = function (arr) {
+	return shuffleArray(arr);
 }
 
 
 
-window.isArray = function(obj) {
-	return !!obj && obj.constructor === Array;
-	//return arr.constructor == Array;
+window.arrayShuffle1 = function (array) {
+	var currentIndex = array.length,
+		temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
 }
 
 
+window.arrayShuffle2 = function (a) {
+	var x, t, r = new Uint32Array(1);
+	for (var i = 0, c = a.length - 1, m = a.length; i < c; i++, m--) {
+		crypto.getRandomValues(r);
+		x = Math.floor(r / 65536 / 65536 * m) + i;
+		t = a[i], a[i] = a[x], a[x] = t;
+	}
+
+	return a;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.radToDeg = function (input) {
 	return input * (180 / Math.PI);
@@ -344,227 +700,6 @@ window.getBooleanFrom = function(arg){
 	}
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.cleanJSONString = function (s) {
-	// preserve newlines, etc - use valid JSON
-	s = s.replace(/\\n/g, "\\n")
-		.replace(/\\'/g, "\\'")
-		.replace(/\\"/g, '\\"')
-		.replace(/\\&/g, "\\&")
-		.replace(/\\r/g, "\\r")
-		.replace(/\\t/g, "\\t")
-		.replace(/\\b/g, "\\b")
-		.replace(/\\f/g, "\\f");
-	// remove non-printable and other non-valid JSON chars
-	s = s.replace(/[\u0000-\u0019]+/g, "");
-	return s;
-}
-
-
-
-
-
-
-window.randomString = function($length) {
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-	for (var i = 0; i < $length; i++)
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-	return text;
-}
-
-
-window.guid = function() {
-	function Amiga() {
-		return Math.floor((1 + Math.random()) * 0x10000)
-			.toString(16)
-			.substring(1);
-	}
-
-	return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
-		Amiga() + '-' + Amiga() + Amiga() + Amiga();
-}
-
-
-window.trimStringLength = function($input, $length) {
-	return $input.substring(0, $length);
-}
-
-
-window.getFileExtension = function(str){
-	var ext = str.split('.').pop();
-	return str;
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getLastPartOfUrl = function() {
-	var $url = window.location.href;
-	var $part = $url.substring($url.lastIndexOf('/') + 1);
-	return $part;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getFileExtension2 = function($input) {
-	return $input.slice(($input.lastIndexOf(".") - 1 >>> 0) + 2);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.removeFileFromPath = function(path) {
-    //var pa = '/this/is/a/folder/aFile.txt';
-    var r = /[^\/]*$/;
-    path = path.replace(r, '');
-    return path;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.redirect = function (url) {
-	self.location.href = url;
-};
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.dumpArgs = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			console.log("Argument[" + key + "] = " + arguments[0][key]);
-		}
-	}
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArgs = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		return arguments[0];
-	} else {
-		return null;
-	}
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getRandomInt = function (min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFunctionName(fn) {
-	var name = fn.toString();
-	var reg = /function ([^\(]*)/;
-	return reg.exec(name)[1];
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getWeightedRandom = function (odds, iterations) {
-	if (!odds) {
-		odds = [
-			0.68, // 0
-			0.69, // 1
-			0.698, // 2
-			0.6909, // 3
-			0.68, // 4
-			0.58, // 5
-			0.57, // 6
-			0.56, // 7
-			0.4, // 8
-			0.3, // 9
-		];
-	}
-	var weights = [];
-	var r = 0;
-	var iMax = 0;
-	var wMax = 0;
-
-	for (var i in odds) {
-		if (!weights[i]) {
-			weights[i] = 0;
-		}
-
-		for (var x = 0; x < iterations; x++) {
-			r = Math.random();
-			//log(r.toFixed(3) + "   " + odds[i].toFixed(3));
-			if (r <= odds[i]) {
-				weights[i] += odds[i];
-			}
-		}
-
-		if (weights[i] > wMax) {
-			wMax = weights[i];
-			iMax = i;
-		}
-
-	}
-
-	//log(weights);
-	//log("wMax = " + wMax + "   iMax = " + iMax);
-	return iMax;
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-window.getStyle = function (eleOrId, style) {
-	var element;
-
-	if (typeof (eleOrId) == "string") {
-		element = document.getElementById(eleOrId);
-		if (!element) {
-			var msg = "getComputerStyle(elementOrId,style): usage error!";
-			msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
-			throw (msg);
-		}
-	} else {
-		element = eleOrId;
-	}
-
-
-	if (!document.defaultView) {
-		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
-		throw (msg);
-	}
-
-	if (!document.defaultView.getComputedStyle) {
-		var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
-		throw (msg);
-	}
-
-	var sd = document.defaultView.getComputedStyle(element, null);
-
-	if (!sd[style]) {
-		var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
-		msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
-		throw (msg);
-	}
-
-
-	return sd[style];
-
-
-
-}
 
 window.getUkDateFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date
@@ -624,7 +759,7 @@ window.getDateTime = function (local) {
 		datetime = "";
 
 	if (!local) {
-		local = "us";
+		local = "en-GB";
 	}
 
 	switch (local.toLowerCase()) {
@@ -709,7 +844,6 @@ window.getOS = function (testAgent) {
 	userAgent = userAgent.toLowerCase();
 
 	
-	
 
 
 	// Windows Phone must come first because its UA also contains "Android"!
@@ -719,6 +853,15 @@ window.getOS = function (testAgent) {
 			userAgent:userAgent
 		}
 	}
+
+	// Samsung Browser detection S8
+	if (/samsungbrowser/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
 
 
 	if (/android/i.test(userAgent)) {
@@ -748,14 +891,14 @@ window.getOS = function (testAgent) {
 
 	if (/os x/i.test(userAgent)) {
 		return {
-			os:"os x",
+			os:"osx",
 			userAgent:userAgent
 		}
 	}
 
-	if (/macintosh/i.test(userAgent)) {
+	if (/macintosh|osx/i.test(userAgent)) {
 		return {
-			os:"os x",
+			os:"osx",
 			userAgent:userAgent
 		}
 	}
@@ -872,9 +1015,139 @@ window.getOS = function (testAgent) {
 
 
 
-window.getElementById = function (id) {
-	return document.getElementById(id);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getStyle = function (eleOrId, style) {
+    var element;
+
+    if (typeof (eleOrId) == "string") {
+        element = document.getElementById(eleOrId);
+        if (!element) {
+            var msg = "getComputerStyle(elementOrId,style): usage error!";
+            msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
+            throw (msg);
+        }
+    } else {
+        element = eleOrId;
+    }
+
+
+    if (!document.defaultView) {
+        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
+        throw (msg);
+    }
+
+    if (!document.defaultView.getComputedStyle) {
+        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
+        throw (msg);
+    }
+
+    var sd = document.defaultView.getComputedStyle(element, null);
+
+    if (!sd[style]) {
+        var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
+        msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
+        throw (msg);
+    }
+
+    return sd[style];
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// function hasClass(obj, c) {
+//     return new RegExp('(\\s|^)' + class + '(\\s|$)').test(obj.className);
+//   }
+  
+//   function addClass(obj, class) {
+//     if (!hasClass(obj, class)) {
+//       obj.className += ' ' + class;
+//     }
+//   }
+  
+//   function removeClass(obj, class) {
+//     if (hasClass(obj, class)) {
+//       obj.className = obj.className.replace(new RegExp('(\\s|^)' + class + '(\\s|$)'), ' ').replace(/\s+/g, ' ').replace(/^\s|\s$/, '');
+//     }
+//   }
+
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function isBreakPoint(bp) {
+    // The breakpoints that you set in your css
+    var bps = [320, 480, 768, 1024];
+    var w = $(window).width();
+    var min, max;
+    for (var i = 0, l = bps.length; i < l; i++) {
+      if (bps[i] === bp) {
+        min = bps[i-1] || 0;
+        max = bps[i];
+        break;
+      }
+    }
+    return w > min && w <= max;
+  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.AFTCLockBodyParams = {
+	pageYOffset:null,
+	elementId:""
+};
+window.lockBody = function() {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
+				window.AFTCLockBodyParams[key] = arguments[0][key];
+			} else {
+				throw("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
+			}
+		}
+	} else {
+		var usage = "\n";
+		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
+		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
+		usage += "unlockBody();" + "\n";
+		throw(usage);
+	}
+
+    if(window.pageYOffset) {
+        window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+
+        $('html, body').css({
+            top: - (window.AFTCLockBodyParams.pageYOffset)
+        });
+    }
+
+    $('#'+window.AFTCLockBodyParams.elementId).css({
+        height: "100%",
+        overflow: "hidden"
+    });
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.unlockBody = function() {
+    $('#'+window.AFTCLockBodyParams.elementId).css({
+        height: "",
+        overflow: ""
+    });
+
+    $('html, body').css({
+        top: ''
+    });
+
+    window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
+    window.setTimeout(function () {
+        window.AFTCLockBodyParams.pageYOffset = null;
+    }, 0);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -1183,6 +1456,105 @@ window.generateNoise = function(canvasId, width, height, opacity) {
 
 
 
+// This is for animations that have no dependancies (functions that use jquery and gsap have their own files)
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.AFTCFadeObjects = [];
+window.fadeIn = function () {
+    log("fadeIn()");
+
+    var animVo = {
+        elementId: "",
+        element: false,
+        speed: 1000,
+        opacity: 0,
+        displayStyle: "",
+        addClass: "",
+        removeClass: ""
+    }
+
+    var usageInstructions = "\n";
+    usageInstructions += "AFTC.js > animation.js > fadeIn(): Usage instructions:\n";
+
+    if (arguments[0] && typeof (arguments[0]) == "object") {
+        for (var key in arguments[0]) {
+            if (animVo.hasOwnProperty(key)) {
+                if (key == "speed") {
+                    animVo[key] = arguments[0][key] * 1000;
+                } else {
+                    animVo[key] = arguments[0][key];
+                }
+
+            }
+        }
+    } else {
+        // Show error message and usage instructions
+        var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. fadeIn() requires an paramaters object, you gave it nothing!\n";
+        errorMessage += usageInstructions;
+        throw (errorMessage);
+    }
+
+
+    // handle elementId
+    if (animVo.elementId != "") {
+        animVo.element = document.getElementById(animVo.elementId);
+        if (!animVo.element) {
+            // Show error message and usage instructions
+            var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
+            errorMessage += usageInstructions;
+            throw (errorMessage);
+        }
+    }
+
+
+    animVo.element.style.opacity = 0;
+    var opacity = getComputedStyle(animVo.element,null).opacity;
+    animVo.opacity = opacity;
+
+    AFTCFadeObjects.push(animVo);
+
+    fadeInAnimate(animVo.elementId);
+
+}
+
+window.fadeInAnimate = function (elementId) {
+    //log("fadeInAnimate(elementId): elementId = " + elementId);
+
+    var idx = false;
+
+    for (var i = 0; i < AFTCFadeObjects.length; i++) {
+        //log(AFTCFadeObjects[i]);
+        if (AFTCFadeObjects[i].elementId == elementId) {
+            idx = i;
+            break;
+        }
+    }
+
+    if (idx != false){
+        log("vo not found!");
+        return;
+    }
+
+    if (AFTCFadeObjects[idx].opacity < 1){
+        var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
+        log("Setting opacity to "+ targetOpacity);
+        AFTCFadeObjects[idx].opacity = targetOpacity;
+        AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
+        // setTimeout(function(){
+        //     fadeInAnimate(elementId);
+        // },AFTCFadeObjects[idx].speed);
+        requestAnimationFrame(function(){
+                fadeInAnimate(elementId);
+            });
+    }
+}
+
+
+window.fadeOut = function (elementOrElementId, targetOpacity, setDisplayTo) {
+    log("fadeOut()");
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.validateEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -1194,49 +1566,6 @@ window.isValidEmail = function (email) {
 	return validateEmail(email);
 }
 
-/*
- * Author: Darcey@AllForTheCode.co.uk
-*/
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-var AFTC = function () {
-
-    // Var defs
-    var me = this; // Accessor
-
-    var params = {
-        
-    };
-
-    // Process arguments
-    if (arguments[0] && typeof (arguments[0]) == "object") {
-
-        for (var key in arguments[0]) {
-            if (params.hasOwnProperty(key)) {
-                params[key] = arguments[0][key];
-            } else {
-                if (console) {
-                    if (console.error) {
-                        console.error("AFTC : ERROR: Unknown paramater: [" + key + "]");
-                    }
-                }
-            }
-        }
-    }
-
-
-
-    // Public
-    // Give access to the AFTC function/object/class simulation
-    // Can also use this.fn = function() {}
-    return {
-        version: function () {
-            console.log("AFTC.js");
-        }
-    };
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getHSLColor = function (value) {
     //value from 0 to 1

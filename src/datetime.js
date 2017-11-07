@@ -57,7 +57,7 @@ window.getDateTime = function (local) {
 		datetime = "";
 
 	if (!local) {
-		local = "us";
+		local = "en-GB";
 	}
 
 	switch (local.toLowerCase()) {

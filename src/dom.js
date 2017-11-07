@@ -1,6 +1,58 @@
-window.getElementById = function (id) {
-	return document.getElementById(id);
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.AFTCLockBodyParams = {
+	pageYOffset:null,
+	elementId:""
+};
+window.lockBody = function() {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
+				window.AFTCLockBodyParams[key] = arguments[0][key];
+			} else {
+				throw("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
+			}
+		}
+	} else {
+		var usage = "\n";
+		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
+		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
+		usage += "unlockBody();" + "\n";
+		throw(usage);
+	}
+
+    if(window.pageYOffset) {
+        window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+
+        $('html, body').css({
+            top: - (window.AFTCLockBodyParams.pageYOffset)
+        });
+    }
+
+    $('#'+window.AFTCLockBodyParams.elementId).css({
+        height: "100%",
+        overflow: "hidden"
+    });
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.unlockBody = function() {
+    $('#'+window.AFTCLockBodyParams.elementId).css({
+        height: "",
+        overflow: ""
+    });
+
+    $('html, body').css({
+        top: ''
+    });
+
+    window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
+    window.setTimeout(function () {
+        window.AFTCLockBodyParams.pageYOffset = null;
+    }, 0);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 

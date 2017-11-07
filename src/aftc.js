@@ -1,8 +1,9 @@
 /*
  * Author: Darcey@AllForTheCode.co.uk
-*/
+ */
 
 
+// AFTC Suite core function/object/class
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 var AFTC = function () {
 
@@ -10,7 +11,7 @@ var AFTC = function () {
     var me = this; // Accessor
 
     var params = {
-        
+
     };
 
     // Process arguments
@@ -41,3 +42,6 @@ var AFTC = function () {
     };
 }
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+

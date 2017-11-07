@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../dist/aftc.js"></script>
+
+    <style>
+        #abs {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 200px;
+            height: 210px;
+            border: 2px solid #660000;
+            background: #EEEEEE;
+        }
+
+        .box {
+            display: inline-block;
+            border: 1px solid #000000;
+            min-width: 50px;
+            min-height: 50px;
+        }
+
+        button {
+            width: 100%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #990000;
+            color: #FFFFFF;
+        }
+    </style>
+
+    <script>
+        var debug;
+
+
+        function init() {
+            // Debug.js usage exmaples
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS")
+            logTo({elementId:"debug"});
+            
+            
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <h2>test: fadeIn(eleOrEleId,speed) & fadeOut(eleOrEleId,speed)</h2>
+    <h4>Please open console output</h4>
+    <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+
+    <table border=1>
+        <tr>
+            <td><button onclick="fadeIn({
+                elementId:'box1',
+                speed:2,
+            })">fadeIn();</button></td>
+            <td><button onclick="fadeIn('box2',2)">fadeIn("box2",t);</button></td>
+            <td><button onclick="fadeIn('box3',2)">fadeIn("box3",t);</button></td>
+            <td><button onclick="fadeIn('box4',2)">fadeIn("box4",t);</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="fadeOut('box1',2)">fadeOut("box1",t);</button></td>
+            <td><button onclick="fadeOut('box2',2)">fadeOut("box2",t);</button></td>
+            <td><button onclick="fadeOut('box3',2)">fadeOut("box3",t);</button></td>
+            <td><button onclick="fadeOut('box4',2)">fadeOut("box4",t);</button></td>
+        </tr>
+        <tr>
+            <td><span id="box1" class="box" style="background:#FFCC00">box1</span></td>
+            <td><span id="box2" class="box" style="background:#CC0000">box2</span></td>
+            <td><span id="box3" class="box" style="background:#009900">box3</span></td>
+            <td><span id="box4" class="box" style="background:#000099">box4</span></td>
+        </tr>
+    </table>
+
+
+    
+</body>
+
+</html>

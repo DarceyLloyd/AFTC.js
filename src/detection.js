@@ -54,7 +54,6 @@ window.getOS = function (testAgent) {
 	userAgent = userAgent.toLowerCase();
 
 	
-	
 
 
 	// Windows Phone must come first because its UA also contains "Android"!
@@ -64,6 +63,15 @@ window.getOS = function (testAgent) {
 			userAgent:userAgent
 		}
 	}
+
+	// Samsung Browser detection S8
+	if (/samsungbrowser/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
 
 
 	if (/android/i.test(userAgent)) {
@@ -93,14 +101,14 @@ window.getOS = function (testAgent) {
 
 	if (/os x/i.test(userAgent)) {
 		return {
-			os:"os x",
+			os:"osx",
 			userAgent:userAgent
 		}
 	}
 
-	if (/macintosh/i.test(userAgent)) {
+	if (/macintosh|osx/i.test(userAgent)) {
 		return {
-			os:"os x",
+			os:"osx",
 			userAgent:userAgent
 		}
 	}

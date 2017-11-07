@@ -11,108 +11,73 @@
 
 
 ## <b>Requirements:</b>
-Some modules/files require jQuery @1.12 or above, if they do it will be listed in the readme and next to the include line in entry file "aftc.js"
+Some modules/builds require jQuery @1.12 or above, if they do it will be listed the gulpfile.js code comments and here in this readme.
 
-###  <b>Installation</b>
+### <b>Installation</b>
 ```
-npm install aftc.js
-npm run build // distribution version
-npm run dev // devevelopment version
-npm run watch // development version with watch (auto rebuild on file change)
+npm i aftc.js
+gulp build
 ```
 
 ### <b>Build</b>
 You can use webpack or gulp, I pref' gulp at the moment, I am also getting better file sizes minified with gulp than webpack.
 
 ```
-gulp build-dev
-gulp watch-dev
 gulp build
 gulp watch
 ```
 
-or webpack via npm (I recommend using gulp however)
 
-```
-npm run webpack-dev
-npm run webpack-dev-watch
-npm run webpack-dist
-npm run webpack-dist-watch
-```
 
-### BUILD NOTES: 
-The dist files in this version of AFTC.js do not come with jquery packaged into the min and any modules of the AFTC.js tools / utilities suite that requires jQuery have been commented out in the gulp buildfile.
+### <b>BUILD NOTES</b>:
+The dist files in this version of AFTC.js do not come with jquery packaged into them and any modules of the AFTC.js tools / utilities suite that requires jQuery have been commented out in the gulp buildfile.
 
 If you want io.js and jquery back in, just uncomment their lines in gulpfile.js and re-build via "gulp build". I have placed notes on which includes require jquery or GSAP.
 
-- <b>Without jQuery - aftc.min.js is less than 20KB!</b>
-- With jQuery - aftc.min.js is 108KB
-- WIthout jQuery, with TweenMax - aftc.min.js is 125KB
-- Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is 43KB!
+- <b>Without jQuery - aftc.min.js is less than 25KB!</b>
+- With jQuery - aftc.min.js is around 115KB
+- WIthout jQuery, with TweenMax - aftc.min.js is around 125KB
+- Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is around 45KB!
 
 I would recommend using TweenLite and the ScrollToPlugin unless your working with a lot of animation then I would go all out for TweenMax.
 
+<b>If you have jQuery as part of your projects build, then no need to have it as part of the aftc.js build!</b>
+
+<b>NOTE: It is recommended that essentials.js and then debug.js be added first and second or anywhere but in that order.</b>
 
 
 
 <br>
 
-## <b>Usage</b>
+## <b>Gulp Build Guide</b>
 
-- Open directory in VSCode
-- Open "aftc.js"
-- Comment out or uncomment any of the imports that you want or don't want (I've put jQuery in there as an example of how to require that)
+- Open aftc.js directory in VSCode
+- Open "gulpfile.js"
+- Comment out or uncomment any of the imports that you want or don't want
 - Open terminal in VSCode by pressing CTRL + '
 - Type into terminal
 ```
-npm run build
+gulp build
 ```
-- Now you can either copy aftc.min.js to your project or add it to your webpack/gulp concatination and mangle scripts or just add it as a script tag in your HTML.
+- Now you can either copy aftc.min.js to your project or add it to your gulp/webpack concatination and mangle scripts or just add it as a script tag in your HTML.
+
+<b>NOTE: It is recommended that debug.js and essentials.js be the first.</b>
 
 
-
-
-<br><br><br><br><br><br>
+<br>
 
 ## <b>What's new?</b>
-
-- <b>getOS()</b> - Returns an object with os and userAgent, os will be false if not detected correctly. Usage var detected = getOS(); log(detected.os); log(detected.userAgent);
-
-- <b>getOS()</b> - I've added detection for a lot more user agent strings, see tests/detection.htm
-
-- <b>logObjTo(elementId, obj, append)</b> - Want to see what's inside an object {}, logObjTo will dump the trace to a html element for you.
-
-- form.js no longer requires jquery
-
-- A re-write of logTo (again), I wanted persistant settings for less typing (see usage notes below and tests/logTo.htm)
-  - param 1 = msg
-  - param 2 (optional) = options object {}
-  - options are
-  {
-    elementId:string,
-    element:html object,
-    append:boolean,
-    clear:boolean,
-    addLineBreaks:boolean (default true)
-    logToConsoleAlso:boolean (default true),
-  }
-
-- Added string.js > cleanJSONString(string), will remove special characters from a json string and return it
-
-- New function added to conversion.js getBooleanFrom(arg)
-- Removed function from conversion.js stringToBool(str)
-
-- Removed centerAbsoluteItem and replaced with centerAbsoluteElement, which has no reliance on jQuery
-
-- Removed dom.js > hideShow, was a pathetic excuse for a function, can be easily done with css or basic js or jquery hide() / show() etc
-
-- getStyle(elementOrElementId,style): Gets computed style of element
-- Removed checkboxHideShow and replace with <b>checkboxToggleContent(elementOrElementId, idOrIds, showOnCheck=true:boolean:optional) {
-
+- Bit of a re-structure on the files and some new ones created eg essentials.js and styling.js
+- getElementById(str) - No more typing document.getElementById, now its just getElementById
+- querySelector(str) - No more typing document.querySelector, now its just querySelector
+- getElementById(id) - now caches element queries, is a lot lot faster than the normal document.getElementById but you wouldn't notice unless you were running massive queries all the time
+- querySelector(str) - now caches element queries same as getElementById
+- logTo(elementId,message) - reverted back to old version, I over engineered the last version and was no longer happy with it, broke my own rule, "keep it simple!"
 
 
 
 <br><br><br><br><br><br>
+
 
 # <b>So what's inside?</b>
 #### Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
@@ -121,60 +86,77 @@ npm run build
 
 
 
-# <b>debug.js</b>
-#### <b>Dependencies:</b> none<br>
 
-## <b>isElement(obj)</b>
-Checks if your var is an element or not.
+# <b>debug.js</b>
+## isNode(arg)
+returns true if arg is a DOM node
+
+## isElement(arg)
+returns true if arg is a DOM element
 
 ## <b>log(arg)</b>
-Tired of typing console.log all the time? From now on just type log!
+No more typing console.log, now you can just type log!
 
-## <b>logDisable()</b>
-Found your app to be full of log statements? Turn them all off with logEnable()
-
-## <b>logEnable()</b>
-Log not working? Why cant I see any of my console.log short cut output anymore? Turn them back on with this commoand
+## <b>logEnable()</b> & <b>logDisable()</b>
+Disable or Enable log, good for switching debug log outputs on and off quick and easy, can also be done per a file.
 
 ## <b>trace(arg)</b>
-Do you still live in a ActionScript world? trace is back, same as log.
+Still living in the actionscript days? Still sometimes type trace? trace is back! It's just log in disguse!
 
-## <b>logTo(message:string or options:object or both string,settings)</b>
-Want to see your debug on the page / app, logTo is here for you.
+## <b>logTo(elementId,message)</b>
+Want to see your log outputs on the page? logTo will dump them to a HTML element of choice for you, as well as logging them out to the console.
+
+## <b>openDebugWindow(str)</b>
+Aliases: stringToWindow(str) & stringToPopup(str)
+
+Want to output a string to a popup window, just call openDebugWindow("hello world") and it will be done (note: most browsers will block this javascript function thse days, so you may want to click allow on any warnings that appear when you want to use this function)
+
+## <b>dumpArgs()</b>
+Will dump arguments[0] to the console for you in key value pairs, key = value.
+
+
+<br><br><br>
+
+# <b>essentials.js</b>
+
+## <b>addEvent(obj,type,callback,eventReturn)</b>
+Detects addEventListener availability and switches to attachEvent if it's not available.
+
+## <b>isArray(arg)</b>
+returns true if you supply it with an array, false if not.
+
+## <b>getFunctionName(fn)</b>
+Attempts to returns the name of a function.
+
+## <b>getElementById(str)</b>
+No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
+
+## <b>querySelector(str)</b>
+No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
+
+
+
+
+<br><br><br>
+
+# <b>misc.js</b>
+
+## <b>benchmark(benchMarkName)</b>
+A quick and easy benchmarking function.
 ```
-  // Persistive usage (recommended for when your logging to a single output on a page)
-  logTo({elementId: "output1"});
-  logTo("<br>Hello World 1");
-  logTo("Hello World 2");
-  logTo("Hello World 3");
-
-  // Recommended uage for multiple outputs on a page
-  logTo("<br>Hello output 2! (test 1)",{elementId: "output2"});
-  logTo("Hello output 2! (test 2)");
-  logTo("Hello output 2! (test 3)");
-
-  logTo("Hello output 3! (test 1)",{elementId: "output3",clear:true});
-  logTo("Hello output 3! (test 2)");
-  logTo("Hello output 3! (test 3)");
+var bench = Benchmark();
+// Do your stuff
+var benchTime = bench.stop();
+log("Your benchmark was completed in " + benchTime + "ms");
 ```
 
-## <b>logObjTo(elementId, obj, append)</b>
-Want to see what's inside an object {}, logObjTo will dump the trace to a html element for you.
+## <b>redirect(url)</b>
+Redirct to a url of your choice.
 
 
 
-## <b>debugWindow(arg)</b>
-<b>Aliases:</b> stringToDebugWindow(arg); stringToPopup(arg); stringToWindow(arg);<br>
-This will open a debugWindow to which you can specify its contents via arg:string.
+<br><br><br>
 
-
-
-
-
-
-
-
-<br><br><br><br><br><br>
 
 # <b>color.js</b>
 #### <b>Dependencies:</b> NONE<br><br>
@@ -221,50 +203,47 @@ Converts an rgb object to a hsv object.
 
 
 
-
-
-
-
-<br><br><br><br><br><br>
-
-# <b>misc.js</b>
-#### <b>Dependencies:</b> none<br>
-
-## <b>redirect(url)</b>
-Redirects to a specified page
-
-## <b>getArgs</b>
-Returns arguments object if available, null if not;
-
-## <b>dumpArgs</b>
-Dumps each argument with key to the console for debugging, if it exists.
-
-## <b>getRandomInt(min,max)</b>
-Returns a random number/int between two numbers.
-
-## <b>getFunctionName(fn)</b>
-Returns the name of function fn.
-
-## <b>getWeightedRandom(odds,itterations)</b>
-Want a random number set which will give you more of a certain set of number than the anothers? This will help. Specify an array of odds 0=0%, 1 = 100% chance and the number of iterations it will do to run those odds.
-
-## <b>getComputedStyle(elementOrElementId,style)</b>
-Returns the value of an elements computed style.
+<br><br><br>
 
 
 
 
 
+# <b>random.js</b>
+## <b>getRandomString(length:number)</b>
+<b>Aliases:</b> randomString()
 
-<br><br><br><br><br><br>
-
-# <b>string.js</b>
-
-## <b>randomString(length:number)</b>
 Returns a string of random characters between AZ and az to the length you specify.
 
 ## <b>guid()</b>
 Returns a GUID.
+
+## <b>getRandom(min,max)</b>
+Aliases: getRandomInt(min,max);
+
+Returns a random number between the min and max you specify.
+
+## <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
+Returns an array of random numbers.
+
+## <b>getArrayOfRandomStrings(arraySize,strLength)</b>
+Returns an array of random strings.
+
+## <b>getWeightedRandom(odds,iterations)</b>
+Will return a weighted random. If you ever wanted to balance your random numbers to favor a more specific output use this.
+
+
+
+
+
+<br><br><br>
+
+
+
+# <b>string.js</b>
+
+## escapeHTML
+Escapes a HTML string (eg < turns into &amp;lt; etc)
 
 ## <b>trimStringLength(input,length)</b>
 Trims a string to a number (length) of characters.
@@ -287,10 +266,12 @@ Will remove special characters from a json string and return it for you to JSON.
 
 
 
-<br><br><br><br><br><br>
+<br><br><br>
+
+
+
 
 # <b>validation.js</b>
-#### <b>Dependencies:</b> none<br>
 
 ## <b>validateEmail(email)</b>
 <b>Aliases:</b> isValidEmail(email)<br>
@@ -300,35 +281,12 @@ Validates an email adddress (string) via regex.
 
 
 
-<br><br><br><br><br><br>
 
-# <b>animation.jquery.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.12<br>
-
-## <b>scrollToElementID(id, speed, delay)</b>
-Scroll to an element specified by ID on the page, with speed and delay options.
-
-## <b>scrollToElementClass(class, speed, delay)</b>
-Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
-
-<br>
-<br>
-
-# <b>animation.gsap.js</b>
-## <b>If file size matters and jQuery is too big then use this version, make sure you have TweenLite.min.js and ScrollToPlugin.min.js in your gulp build file list.</b>
-#### <b>Dependencies:</b> gsap TweenLite & ScrollToPlugin<br>
-
-## <b>scrollToElementID(id, speed, delay)</b>
-Scroll to an element specified by ID on the page, with speed and delay options.
-
-## <b>scrollToElementClass(class, speed, delay)</b>
-Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
+<br><br><br>
 
 
 
 
-
-<br><br><br><br><br><br>
 
 # <b>array.js</b>
 
@@ -338,12 +296,33 @@ Removed an index from an array.
 ## <b>isArrayInString(string,array)</b>
 Checks to see if any array items match or are in a string.
 
-## <b>isArray(array)</b>
-Checks to see if input is an array or not.
+## <b>getMaxFromArray(array)</b>
+Returns the maximum value from an array.
+
+## <b>getMinFromArray(array)</b>
+Returns the minimum value from an array.
+
+## <b>shuffleArray(array)</b>
+Will shuffle an array and return it to you. There are multiple shuffle functions, if you use this one it will pick one at random. To use them directly use arrayShuffle1(arr) or arrayShuffle2(arr).
+
+## <b>arrayShuffle1(array)</b>
+Returns a shuffled array based on random index picking (classic).
+
+## <b>arrayShuffle2(array)</b>
+Returns a shuffled array based on crypto.getRandomValues (supposed to be the crypto devs method of choice).
 
 
 
-<br><br><br><br><br><br>
+
+
+
+<br><br><br>
+
+
+
+
+
+
 
 # <b>conversion.js</b>
 
@@ -355,18 +334,23 @@ Converts radians to degrees.
 <b>Aliases:</b> deg2rad(degrees)<br>
 Converts degrees to radians.
 
-## <b>boolToString(boolean)</b>
-Converts a boolean to a string.
-
 ## <b>getBooleanFrom(arg)</b>
 Converts strings such as yes, y, 1, true, n, false etc as well as numbers and a few other data types.
 
+## <b>boolToString(boolean)</b>
+Converts a boolean to a string.
 
 
 
 
 
-<br><br><br><br><br><br>
+
+
+<br><br><br>
+
+
+
+
 
 # <b>cookies.js</b>
 
@@ -379,7 +363,12 @@ Reads a javascript cookie.
 
 
 
-<br><br><br><br><br><br>
+
+<br><br><br>
+
+
+
+
 
 # <b>datetime.js</b>
 
@@ -393,12 +382,18 @@ Gets the UK date and time from a MySQL datetime (2016-04-08 21:11:59).
 Gets a MySQL compatible datetime from the javascript Date().
 
 ## <b>getDateTime(local)</b>
-Gets a formatted datetime from the javascript Date() object arg:local:string can be db, us or it will defaults to en-GB.
+Gets a formatted datetime from the javascript Date() object. local:string can be "db", "us" or "gb". It will default to en-GB if local is not supplied.
 
 
 
 
-<br><br><br><br><br><br>
+
+<br><br><br>
+
+
+
+
+
 
 # <b>detection.js</b>
 
@@ -431,25 +426,33 @@ log(detected.userAgent);
 
 
 
+<br><br><br>
 
 
-<br><br><br><br><br><br>
+
+
+
 
 # <b>dom.js</b>
-#### <b>Dependencies:</b> aftc.js/src/array.js<br>
-
-## <b>getElementById(id:string)</b>
-You no longer need to type document each time you want to use getElementById.
+#### <b>Dependencies:</b> aftc.js/src/essentials.js<br>
 
 ## <b>centerAbsoluteElement(element || elementId)</b>
 Attempts to center an absolute positioned element within your browsers current dimensions.
 
+## <b>lockBody({elementId:string})</b>
+## <b>unlockBody()</b>
+These functions can be used to lock and unlock the body element scroll capabilities (overflow). If you are programming overlays / insite popups then you will notice that some mobiles and browsers don't all lock the body scroll behind correctly, this will fix this issue.
 
 
 
 
 
-<br><br><br><br><br><br>
+
+<br><br><br>
+
+
+
+
 
 # <b>form.js</b>
 #### <b>Dependencies:</b> NONE<br>
@@ -465,8 +468,20 @@ Returns true or false if id of the checkbox / radio is checked.
 ## <b>isNumberKey(evt)</b>
 Place on form text inputs to ensure numbers are only entered into it. eg onKeyUp="isNumberKey(event)"
 
-## <b>parseJSONFileToSelect(file, element_id, label_index, value_index)</b>
-Will attempt to load and parse a json file into a form select element.
+## <b>parseJSONToSelect(jsonData, element_id, label_index, value_index)</b>
+Will attempt to parse a json object into a form select element. jsonData needs to be in the format of [{name:"",code:""}]
+
+```
+var jsonString = '
+[{"name":"United Kingdom","code":"GB"},
+{"name":"United States","code": "US"}]
+';
+
+var jsonObj = JSON.parse(jsonString);
+
+var ele = document.getElementById("country");
+parseJSONToSelect(jsonString,ele,"name","code")
+```
 
 ## <b>limitLengthInWords(element, maxWords)</b>
 Will place a limit on the number of words you can enter. eg onKeyUp="limitLengthInWords(this,5)"
@@ -478,7 +493,34 @@ Will place a limit on the number of words you can enter. eg onKeyUp="limitLength
 
 
 
-<br><br><br><br><br><br>
+
+<br><br><br>
+
+
+
+
+
+
+
+# <b>io.js</b>
+#### <b>Dependencies:</b> jQuery >= 1.12<br>
+
+## <b>AJAXLoad($url, $method, $data, $callback)</b>
+Sends data to a specified url, with a specified method (post||get) with a callback on success which will return the response.
+
+## <b>loadJSONFile($url, $callback)</b>
+Loads a json file and sends it to a callback function (onSuccess).
+
+
+
+
+
+
+
+<br><br><br>
+
+
+
 
 # <b>graphics.js</b>
 #### <b>Dependencies:</b> NONE<br>
@@ -501,16 +543,50 @@ Will generate noise / static / perlin noise on a canvas element.
 
 
 
-<br><br><br><br><br><br>
 
-# <b>io.js</b>
+
+<br><br><br>
+
+
+
+
+
+
+
+
+
+
+# <b>animation.jquery.js</b>
 #### <b>Dependencies:</b> jQuery >= 1.12<br>
 
-## <b>AJAXLoad($url, $method, $data, $callback)</b>
-Sends data to a specified url, with a specified method (post||get) with a callback on success which will return the response.
+## <b>scrollToElementID(id, speed, delay)</b>
+Scroll to an element specified by ID on the page, with speed and delay options.
 
-## <b>loadJSONFile($url, $callback)</b>
-Loads a json file and sends it to a callback function (onSuccess).
+## <b>scrollToElementClass(class, speed, delay)</b>
+Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
+
+<br>
+<br>
+
+# <b>animation.gsap.js</b>
+## <b>If file size matters and jQuery is too big then use this version, make sure you have TweenLite.min.js and ScrollToPlugin.min.js in your gulp build file list.</b>
+#### <b>Dependencies:</b> gsap TweenLite & ScrollToPlugin<br>
+
+## <b>scrollToElementID(id, speed, delay)</b>
+Scroll to an element specified by ID on the page, with speed and delay options.
+
+## <b>scrollToElementClass(class, speed, delay)</b>
+Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
+
+
+
+
+
+
+
+
+
+
 
 
 
