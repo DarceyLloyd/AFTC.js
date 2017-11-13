@@ -242,7 +242,10 @@ Will return a weighted random. If you ever wanted to balance your random numbers
 
 # <b>string.js</b>
 
-## escapeHTML
+## <b>getAnchorFromUrl(url)</b>
+Will return the anchor from a url string.
+
+## <b>escapeHTML</b>
 Escapes a HTML string (eg < turns into &amp;lt; etc)
 
 ## <b>trimStringLength(input,length)</b>
@@ -276,6 +279,9 @@ Will remove special characters from a json string and return it for you to JSON.
 ## <b>validateEmail(email)</b>
 <b>Aliases:</b> isValidEmail(email)<br>
 Validates an email adddress (string) via regex.
+
+## <b>isAlphanumeric(str)</b>
+Returns true is str is alphanumeric. [a-z],[A-Z],[0-9] only
 
 
 

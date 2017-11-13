@@ -91,7 +91,7 @@ window.getOS = function (testAgent) {
 
 
 	// Windows Phone must come first because its UA also contains "Android"
-	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident/i.test(userAgent)) {
+	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
 		return {
 			os:"windows",
 			userAgent:userAgent

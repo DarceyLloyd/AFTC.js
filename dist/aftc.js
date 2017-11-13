@@ -63,6 +63,14 @@ window.querySelector = function (id) {
         return window.AFTCElementQueryCache[id];
     }
 }
+
+
+// TODO: Will return an object of elements
+// eg params.dom can be popuplated by single function
+window.getDomElements = function(obj){
+    var dom = {}
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //Returns true if it is a DOM node
 window.isNode = function (o) {
@@ -364,11 +372,16 @@ window.cleanJSONString = function (s) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.escapeHTML = function(text) {  
-    var replacements= {"<": "&lt;", ">": "&gt;","&": "&amp;", "\"": "&quot;"};
-    return text.replace(/[<>&"]/g, function(character) {  
-        return replacements[character];  
-    }); 
+window.escapeHTML = function (text) {
+	var replacements = {
+		"<": "&lt;",
+		">": "&gt;",
+		"&": "&amp;",
+		"\"": "&quot;"
+	};
+	return text.replace(/[<>&"]/g, function (character) {
+		return replacements[character];
+	});
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -414,6 +427,22 @@ window.removeFileFromPath = function (path) {
 	return path;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getAnchorFromUrl = function (url) {
+	return url.slice(url.lastIndexOf('#') + 1);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+window.isAlphanumeric = function (str) { // [a-z],[A-Z],[0-9] only
+	return !(/\W/.test(str));
+}
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -881,7 +910,7 @@ window.getOS = function (testAgent) {
 
 
 	// Windows Phone must come first because its UA also contains "Android"
-	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident/i.test(userAgent)) {
+	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
 		return {
 			os:"windows",
 			userAgent:userAgent
@@ -1015,6 +1044,10 @@ window.getOS = function (testAgent) {
 
 
 
+
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getStyle = function (eleOrId, style) {
     var element;
@@ -1056,32 +1089,37 @@ window.getStyle = function (eleOrId, style) {
 
 
 
-// function hasClass(obj, c) {
-//     return new RegExp('(\\s|^)' + class + '(\\s|$)').test(obj.className);
-//   }
-  
-//   function addClass(obj, class) {
-//     if (!hasClass(obj, class)) {
-//       obj.className += ' ' + class;
-//     }
-//   }
-  
-//   function removeClass(obj, class) {
-//     if (hasClass(obj, class)) {
-//       obj.className = obj.className.replace(new RegExp('(\\s|^)' + class + '(\\s|$)'), ' ').replace(/\s+/g, ' ').replace(/^\s|\s$/, '');
-//     }
-//   }
-
-
-
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function isBreakPoint(bp) {
+window.hasClass = function(element, cls) {
+    return element.classList.contains(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.addClass = function(element,cls){
+    element.classList.add(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.removeClass = function(element,cls){
+    element.classList.remove(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isBreakPoint = function(bp) {
     // The breakpoints that you set in your css
     var bps = [320, 480, 768, 1024];
-    var w = $(window).width();
+    var w = window.innerWidth;
     var min, max;
     for (var i = 0, l = bps.length; i < l; i++) {
       if (bps[i] === bp) {
@@ -1459,102 +1497,292 @@ window.generateNoise = function(canvasId, width, height, opacity) {
 // This is for animations that have no dependancies (functions that use jquery and gsap have their own files)
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.AFTCFadeObjects = [];
-window.fadeIn = function () {
-    log("fadeIn()");
 
-    var animVo = {
-        elementId: "",
-        element: false,
-        speed: 1000,
-        opacity: 0,
-        displayStyle: "",
-        addClass: "",
-        removeClass: ""
-    }
 
-    var usageInstructions = "\n";
-    usageInstructions += "AFTC.js > animation.js > fadeIn(): Usage instructions:\n";
+var AFTC = AFTC || {};
+AFTC.AnimateParams = {
+    animations:[]
+};
+AFTC.Animate = function (elementQuery,duration) {
+    log( arguments[0] );
+    log( arguments[1] );
+    log( arguments[2] );
 
-    if (arguments[0] && typeof (arguments[0]) == "object") {
-        for (var key in arguments[0]) {
-            if (animVo.hasOwnProperty(key)) {
-                if (key == "speed") {
-                    animVo[key] = arguments[0][key] * 1000;
-                } else {
-                    animVo[key] = arguments[0][key];
-                }
-
+    var vo = function(){
+        var v = {
+            elementQuery: "",
+            element: false,
+            duration: 2,
+            changed:false,
+            animations:{
+                opacity:1,
+                left:100
             }
         }
-    } else {
-        // Show error message and usage instructions
-        var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. fadeIn() requires an paramaters object, you gave it nothing!\n";
-        errorMessage += usageInstructions;
-        throw (errorMessage);
+        return v;
     }
 
+    var init = function(){
 
-    // handle elementId
-    if (animVo.elementId != "") {
-        animVo.element = document.getElementById(animVo.elementId);
-        if (!animVo.element) {
-            // Show error message and usage instructions
-            var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
-            errorMessage += usageInstructions;
-            throw (errorMessage);
-        }
     }
 
-
-    animVo.element.style.opacity = 0;
-    var opacity = getComputedStyle(animVo.element,null).opacity;
-    animVo.opacity = opacity;
-
-    AFTCFadeObjects.push(animVo);
-
-    fadeInAnimate(animVo.elementId);
-
-}
-
-window.fadeInAnimate = function (elementId) {
-    //log("fadeInAnimate(elementId): elementId = " + elementId);
-
-    var idx = false;
-
-    for (var i = 0; i < AFTCFadeObjects.length; i++) {
-        //log(AFTCFadeObjects[i]);
-        if (AFTCFadeObjects[i].elementId == elementId) {
-            idx = i;
-            break;
-        }
-    }
-
-    if (idx != false){
-        log("vo not found!");
-        return;
-    }
-
-    if (AFTCFadeObjects[idx].opacity < 1){
-        var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
-        log("Setting opacity to "+ targetOpacity);
-        AFTCFadeObjects[idx].opacity = targetOpacity;
-        AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
-        // setTimeout(function(){
-        //     fadeInAnimate(elementId);
-        // },AFTCFadeObjects[idx].speed);
-        requestAnimationFrame(function(){
-                fadeInAnimate(elementId);
-            });
-    }
+    
+    init();
 }
 
 
-window.fadeOut = function (elementOrElementId, targetOpacity, setDisplayTo) {
-    log("fadeOut()");
+
+window.AFTCAnimateParams = {
+
+};
+
+log(window.animate);
+window.animate = function(){
+
+    // if (arguments[0] && typeof (arguments[0]) == "object") {
+        //         for (var key in arguments[0]) {
+        //             if (animVo.hasOwnProperty(key)) {
+        //                 if (key == "speed") {
+        //                     animVo[key] = arguments[0][key] * 1000;
+        //                 } else {
+        //                     animVo[key] = arguments[0][key];
+        //                 }
+        
+        //             }
+        //         }
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// window.AFTCFadeObjects = [];
+// window.fade = function (elementOrElementId,duration,direction) {
+//     log("AFTC.js > Animation.js > fade(elementOrElementId,duration,direction)");
+//     var animVo = {
+//         elementId: "",
+//         element: false,
+//         duration: 2,
+//         opacity: 0,
+//         displayStyle: "",
+//         addClass: "",
+//         removeClass: ""
+//     }
+    
+//     var usageInstructions = "\n";
+//     usageInstructions += "AFTC.js > animation.js > fadeIn(elementOrElementId,duration,direction): Usage instructions:\n";
+//     usageInstructions += "\t" + "elementOrElementId = string or object" + "\n";
+//     usageInstructions += "\t" + "duration = number (seconds)" + "\n";
+//     usageInstructions += "\t" + "direction = string (in or out)" + "\n";
+
+//     // Set VO params
+//     animVo.duration = duration;
+//     animVo.direction = direction;
+
+//     if (typeof(elementOrElementId) == "string"){
+//         animVo.elementId = elementOrElementId;
+//         animVo.element = getElementById(animVo.elementId);
+//         if (!animVo.element) {
+//             // Show error message and usage instructions
+//             var errorMessage = "AFTC.js > animation.js > fade(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
+//             errorMessage += usageInstructions;
+//             throw (errorMessage);
+//         }
+//     }
+
+//     var opacity = getComputedStyle(animVo.element,null).opacity;
+//     animVo.opacity = opacity;
+//     AFTCFadeObjects.push(animVo);
+
+//     var startTime = false;
+//     var endTime = animVo.duration * 1000;
+//     var animateOut = function(currentTime){
+//         if (!startTime){ startTime = currentTime; }
+//         log("startTime:" + startTime.toFixed(1) + "     currentTime:" + currentTime.toFixed(2) + "     endTime:" + endTime.toFixed(2));
+
+
+//         if (currentTime<endTime){
+//             requestAnimationFrame(animateOut);
+//         }
+        
+//     }
+
+//     if (direction == "in"){
+//         //fadeInAnimate(animVo.elementId);
+        
+//     } else {
+//         //fadeOutAnimate(animVo.elementId);
+//         requestAnimationFrame(animateOut);
+//     }
+    
+// }
+
+// window.fadeInAnimate = function (elementId) {
+//     //log("fadeInAnimate(elementId): elementId = " + elementId);
+
+//     var idx = false;
+
+//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
+//         //log(AFTCFadeObjects[i]);
+//         if (AFTCFadeObjects[i].elementId == elementId) {
+//             idx = i;
+//             break;
+//         }
+//     }
+
+//     if (idx != false){
+//         log("vo not found!");
+//         return;
+//     }
+
+//     if (AFTCFadeObjects[idx].opacity < 1){
+//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
+//         log("Setting opacity to "+ targetOpacity);
+//         AFTCFadeObjects[idx].opacity = targetOpacity;
+//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
+//         requestAnimationFrame(function(){
+//                 fadeInAnimate(elementId);
+//             });
+//     } else {
+//         AFTCFadeObjects[idx].opacity = 1;
+//         AFTCFadeObjects[idx].element.style.opacity = 1;
+//     }
+// }
+
+// window.fadeOutAnimate = function (elementId) {
+//     //log("fadeInAnimate(elementId): elementId = " + elementId);
+
+//     var idx = false;
+
+//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
+//         //log(AFTCFadeObjects[i]);
+//         if (AFTCFadeObjects[i].elementId == elementId) {
+//             idx = i;
+//             break;
+//         }
+//     }
+
+//     if (idx != false){
+//         log("vo not found!");
+//         return;
+//     }
+
+//     if (AFTCFadeObjects[idx].opacity > 0){
+//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
+//         log("Setting opacity to "+ targetOpacity);
+//         AFTCFadeObjects[idx].opacity = targetOpacity;
+//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
+//         // setTimeout(function(){
+//         //     fadeInAnimate(elementId);
+//         // },AFTCFadeObjects[idx].speed);
+//         requestAnimationFrame(function(){
+//                 fadeInAnimate(elementId);
+//             });
+//     } else {
+//         AFTCFadeObjects[idx].opacity = 0;
+//         AFTCFadeObjects[idx].element.style.opacity = 0;
+//     }
+// }
+
+
+
+
+
+
+
+// window.fadeIn = function () {
+//     log("fadeIn()");
+
+//     var animVo = {
+//         elementId: "",
+//         element: false,
+//         speed: 1000,
+//         opacity: 0,
+//         displayStyle: "",
+//         addClass: "",
+//         removeClass: ""
+//     }
+
+//     var usageInstructions = "\n";
+//     usageInstructions += "AFTC.js > animation.js > fadeIn(): Usage instructions:\n";
+
+//     if (arguments[0] && typeof (arguments[0]) == "object") {
+//         for (var key in arguments[0]) {
+//             if (animVo.hasOwnProperty(key)) {
+//                 if (key == "speed") {
+//                     animVo[key] = arguments[0][key] * 1000;
+//                 } else {
+//                     animVo[key] = arguments[0][key];
+//                 }
+
+//             }
+//         }
+//     } else {
+//         // Show error message and usage instructions
+//         var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. fadeIn() requires an paramaters object, you gave it nothing!\n";
+//         errorMessage += usageInstructions;
+//         throw (errorMessage);
+//     }
+
+
+//     // handle elementId
+//     if (animVo.elementId != "") {
+//         animVo.element = document.getElementById(animVo.elementId);
+//         if (!animVo.element) {
+//             // Show error message and usage instructions
+//             var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
+//             errorMessage += usageInstructions;
+//             throw (errorMessage);
+//         }
+//     }
+
+
+//     //animVo.element.style.opacity = 0;
+//     var opacity = getComputedStyle(animVo.element,null).opacity;
+//     animVo.opacity = opacity;
+
+//     AFTCFadeObjects.push(animVo);
+
+//     fadeInAnimate(animVo.elementId);
+
+// }
+
+// window.fadeInAnimate = function (elementId) {
+//     //log("fadeInAnimate(elementId): elementId = " + elementId);
+
+//     var idx = false;
+
+//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
+//         //log(AFTCFadeObjects[i]);
+//         if (AFTCFadeObjects[i].elementId == elementId) {
+//             idx = i;
+//             break;
+//         }
+//     }
+
+//     if (idx != false){
+//         log("vo not found!");
+//         return;
+//     }
+
+//     if (AFTCFadeObjects[idx].opacity < 1){
+//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
+//         log("Setting opacity to "+ targetOpacity);
+//         AFTCFadeObjects[idx].opacity = targetOpacity;
+//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
+//         // setTimeout(function(){
+//         //     fadeInAnimate(elementId);
+//         // },AFTCFadeObjects[idx].speed);
+//         requestAnimationFrame(function(){
+//                 fadeInAnimate(elementId);
+//             });
+//     }
+// }
+
+
+// window.fadeOut = function (elementOrElementId, targetOpacity, setDisplayTo) {
+//     log("fadeOut()");
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.validateEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
