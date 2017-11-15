@@ -17,11 +17,16 @@ window.cleanJSONString = function (s) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.escapeHTML = function(text) {  
-    var replacements= {"<": "&lt;", ">": "&gt;","&": "&amp;", "\"": "&quot;"};
-    return text.replace(/[<>&"]/g, function(character) {  
-        return replacements[character];  
-    }); 
+window.escapeHTML = function (text) {
+	var replacements = {
+		"<": "&lt;",
+		">": "&gt;",
+		"&": "&amp;",
+		"\"": "&quot;"
+	};
+	return text.replace(/[<>&"]/g, function (character) {
+		return replacements[character];
+	});
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -67,3 +72,77 @@ window.removeFileFromPath = function (path) {
 	return path;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getAnchorFromUrl = function (url) {
+	return url.slice(url.lastIndexOf('#') + 1);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
+	return !(/\W/.test(str));
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+if (typeof String.prototype.startsWith != 'function') {
+	String.prototype.startsWith = function (str) {
+		return this.match(new RegExp("^" + str));
+	};
+}
+
+if (typeof String.prototype.endsWith != 'function') {
+	String.prototype.endsWith = function (str) {
+		return this.match(new RegExp(str + "$"));
+	};
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getStringBetween = function(str,start,end){
+	return str.split(start).pop().split(end).shift().trim();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getAllStringsBetween = function(str,start,end){
+	//return str.match(new RegExp(start + "(.*)" + end));
+	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive
+	// return regExString.exec(str);
+	for(var i=0; i<str.length; ++i) {
+		log(str[i]);
+	}
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/*
+window.getAllStringsBetween = function(str,start,end){
+	var arr = str.split(/[:;]/);
+}
+
+
+test.match(new RegExp(firstvariable + "(.*)" + secondvariable));
+
+or
+
+var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")", "ig"); //set ig flag for global search and case insensitive
+
+var testRE = regExString.exec("My cow always gives milk.");
+if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
+{  
+    alert(testRE[1]); //is the matched group if found
+}
+*/

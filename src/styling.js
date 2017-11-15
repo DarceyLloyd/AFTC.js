@@ -1,3 +1,7 @@
+
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getStyle = function (eleOrId, style) {
     var element;
@@ -39,32 +43,37 @@ window.getStyle = function (eleOrId, style) {
 
 
 
-// function hasClass(obj, c) {
-//     return new RegExp('(\\s|^)' + class + '(\\s|$)').test(obj.className);
-//   }
-  
-//   function addClass(obj, class) {
-//     if (!hasClass(obj, class)) {
-//       obj.className += ' ' + class;
-//     }
-//   }
-  
-//   function removeClass(obj, class) {
-//     if (hasClass(obj, class)) {
-//       obj.className = obj.className.replace(new RegExp('(\\s|^)' + class + '(\\s|$)'), ' ').replace(/\s+/g, ' ').replace(/^\s|\s$/, '');
-//     }
-//   }
-
-
-
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function isBreakPoint(bp) {
+window.hasClass = function(element, cls) {
+    return element.classList.contains(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.addClass = function(element,cls){
+    element.classList.add(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.removeClass = function(element,cls){
+    element.classList.remove(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isBreakPoint = function(bp) {
     // The breakpoints that you set in your css
     var bps = [320, 480, 768, 1024];
-    var w = $(window).width();
+    var w = window.innerWidth;
     var min, max;
     for (var i = 0, l = bps.length; i < l; i++) {
       if (bps[i] === bp) {

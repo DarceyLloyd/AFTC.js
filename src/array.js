@@ -14,14 +14,30 @@ window.isArrayInString = function (string, array) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMaxFromArray = function(arr){
+Array.prototype.contains = function (needle) {
+	var len = this.length;
+	for (var i=0; i < len; i++){
+		if (this[i] == needle){
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMaxFromArray = function (arr) {
 	return Math.max.apply(Math, arr);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMinFromArray = function(arr){
+window.getMinFromArray = function (arr) {
 	return Math.min.apply(Math, arr);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -32,9 +48,9 @@ window.getMinFromArray = function(arr){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.shuffleArray = function (array) {
-	var methodNo = getRandom(1,2);
-	return window["arrayShuffle"+methodNo](array);
-	var fn = "arrayShuffle"+methodNo;
+	var methodNo = getRandom(1, 2);
+	return window["arrayShuffle" + methodNo](array);
+	var fn = "arrayShuffle" + methodNo;
 	//log(fn);
 	//fn();
 }

@@ -1,18 +1,36 @@
+// Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.ready = function (callback) {
+	// IE9+
+	if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+		callback();
+	} else {
+		document.addEventListener("DOMContentLoaded", function(){
+			// Adds a little delay but is a good thing
+			setTimeout(callback,10);
+		});
+	}
+}
+window.onReady = function(callback){ window.ready(callback); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.AFTCLockBodyParams = {
-	pageYOffset:null,
-	elementId:""
+	pageYOffset: null,
+	elementId: ""
 };
-window.lockBody = function() {
+window.lockBody = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
 		for (var key in arguments[0]) {
 			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
 				window.AFTCLockBodyParams[key] = arguments[0][key];
 			} else {
-				throw("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
+				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
 			}
 		}
 	} else {
@@ -20,37 +38,37 @@ window.lockBody = function() {
 		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
 		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
 		usage += "unlockBody();" + "\n";
-		throw(usage);
+		throw (usage);
 	}
 
-    if(window.pageYOffset) {
-        window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+	if (window.pageYOffset) {
+		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
 
-        $('html, body').css({
-            top: - (window.AFTCLockBodyParams.pageYOffset)
-        });
-    }
+		$('html, body').css({
+			top: -(window.AFTCLockBodyParams.pageYOffset)
+		});
+	}
 
-    $('#'+window.AFTCLockBodyParams.elementId).css({
-        height: "100%",
-        overflow: "hidden"
-    });
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "100%",
+		overflow: "hidden"
+	});
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.unlockBody = function() {
-    $('#'+window.AFTCLockBodyParams.elementId).css({
-        height: "",
-        overflow: ""
-    });
+window.unlockBody = function () {
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "",
+		overflow: ""
+	});
 
-    $('html, body').css({
-        top: ''
-    });
+	$('html, body').css({
+		top: ''
+	});
 
-    window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-    window.setTimeout(function () {
-        window.AFTCLockBodyParams.pageYOffset = null;
-    }, 0);
+	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
+	window.setTimeout(function () {
+		window.AFTCLockBodyParams.pageYOffset = null;
+	}, 0);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -64,8 +82,8 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 
 	if (typeof (eleOrEleId) === "string") {
 		element = document.getElementById(eleOrEleId);
-		if (!element){
-			throw("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
+		if (!element) {
+			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 		}
 	}
 
@@ -84,9 +102,9 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
 	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
 
-	var offsetWidth = parseInt( element.offsetWidth );
-	var offsetHeight = parseInt( element.offsetHeight );
-	
+	var offsetWidth = parseInt(element.offsetWidth);
+	var offsetHeight = parseInt(element.offsetHeight);
+
 	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
 	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
 

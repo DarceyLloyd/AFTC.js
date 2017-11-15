@@ -1,4 +1,3 @@
-
 // Functions / Utilities
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -16,8 +15,11 @@ window.addEvent = function (obj, type, callback, eventReturn) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-
-
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -46,7 +48,7 @@ function getFunctionName(fn) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.AFTCElementQueryCache = [];
 window.getElementById = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined){
+    if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
         window.AFTCElementQueryCache[id] = document.getElementById(id);
@@ -56,7 +58,7 @@ window.getElementById = function (id) {
 
 
 window.querySelector = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined){
+    if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
         window.AFTCElementQueryCache[id] = document.querySelector(id);
@@ -67,7 +69,7 @@ window.querySelector = function (id) {
 
 // TODO: Will return an object of elements
 // eg params.dom can be popuplated by single function
-window.getDomElements = function(obj){
+window.getDomElements = function (obj) {
     var dom = {}
 }
 
@@ -437,12 +439,70 @@ window.getAnchorFromUrl = function (url) {
 
 
 
-window.isAlphanumeric = function (str) { // [a-z],[A-Z],[0-9] only
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
 	return !(/\W/.test(str));
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+if (typeof String.prototype.startsWith != 'function') {
+	String.prototype.startsWith = function (str) {
+		return this.match(new RegExp("^" + str));
+	};
+}
+
+if (typeof String.prototype.endsWith != 'function') {
+	String.prototype.endsWith = function (str) {
+		return this.match(new RegExp(str + "$"));
+	};
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getStringBetween = function(str,start,end){
+	return str.split(start).pop().split(end).shift().trim();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getAllStringsBetween = function(str,start,end){
+	//return str.match(new RegExp(start + "(.*)" + end));
+	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive
+	// return regExString.exec(str);
+	for(var i=0; i<str.length; ++i) {
+		log(str[i]);
+	}
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/*
+window.getAllStringsBetween = function(str,start,end){
+	var arr = str.split(/[:;]/);
 }
 
 
+test.match(new RegExp(firstvariable + "(.*)" + secondvariable));
 
+or
+
+var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")", "ig"); //set ig flag for global search and case insensitive
+
+var testRE = regExString.exec("My cow always gives milk.");
+if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
+{  
+    alert(testRE[1]); //is the matched group if found
+}
+*/
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -574,14 +634,30 @@ window.isArrayInString = function (string, array) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMaxFromArray = function(arr){
+Array.prototype.contains = function (needle) {
+	var len = this.length;
+	for (var i=0; i < len; i++){
+		if (this[i] == needle){
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMaxFromArray = function (arr) {
 	return Math.max.apply(Math, arr);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMinFromArray = function(arr){
+window.getMinFromArray = function (arr) {
 	return Math.min.apply(Math, arr);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -592,9 +668,9 @@ window.getMinFromArray = function(arr){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.shuffleArray = function (array) {
-	var methodNo = getRandom(1,2);
-	return window["arrayShuffle"+methodNo](array);
-	var fn = "arrayShuffle"+methodNo;
+	var methodNo = getRandom(1, 2);
+	return window["arrayShuffle" + methodNo](array);
+	var fn = "arrayShuffle" + methodNo;
 	//log(fn);
 	//fn();
 }
@@ -1131,21 +1207,39 @@ window.isBreakPoint = function(bp) {
     return w > min && w <= max;
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.ready = function (callback) {
+	// IE9+
+	if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+		callback();
+	} else {
+		document.addEventListener("DOMContentLoaded", function(){
+			// Adds a little delay but is a good thing
+			setTimeout(callback,10);
+		});
+	}
+}
+window.onReady = function(callback){ window.ready(callback); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.AFTCLockBodyParams = {
-	pageYOffset:null,
-	elementId:""
+	pageYOffset: null,
+	elementId: ""
 };
-window.lockBody = function() {
+window.lockBody = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
 		for (var key in arguments[0]) {
 			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
 				window.AFTCLockBodyParams[key] = arguments[0][key];
 			} else {
-				throw("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
+				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
 			}
 		}
 	} else {
@@ -1153,37 +1247,37 @@ window.lockBody = function() {
 		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
 		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
 		usage += "unlockBody();" + "\n";
-		throw(usage);
+		throw (usage);
 	}
 
-    if(window.pageYOffset) {
-        window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+	if (window.pageYOffset) {
+		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
 
-        $('html, body').css({
-            top: - (window.AFTCLockBodyParams.pageYOffset)
-        });
-    }
+		$('html, body').css({
+			top: -(window.AFTCLockBodyParams.pageYOffset)
+		});
+	}
 
-    $('#'+window.AFTCLockBodyParams.elementId).css({
-        height: "100%",
-        overflow: "hidden"
-    });
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "100%",
+		overflow: "hidden"
+	});
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.unlockBody = function() {
-    $('#'+window.AFTCLockBodyParams.elementId).css({
-        height: "",
-        overflow: ""
-    });
+window.unlockBody = function () {
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "",
+		overflow: ""
+	});
 
-    $('html, body').css({
-        top: ''
-    });
+	$('html, body').css({
+		top: ''
+	});
 
-    window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-    window.setTimeout(function () {
-        window.AFTCLockBodyParams.pageYOffset = null;
-    }, 0);
+	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
+	window.setTimeout(function () {
+		window.AFTCLockBodyParams.pageYOffset = null;
+	}, 0);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1197,8 +1291,8 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 
 	if (typeof (eleOrEleId) === "string") {
 		element = document.getElementById(eleOrEleId);
-		if (!element){
-			throw("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
+		if (!element) {
+			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 		}
 	}
 
@@ -1217,9 +1311,9 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
 	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
 
-	var offsetWidth = parseInt( element.offsetWidth );
-	var offsetHeight = parseInt( element.offsetHeight );
-	
+	var offsetWidth = parseInt(element.offsetWidth);
+	var offsetHeight = parseInt(element.offsetHeight);
+
 	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
 	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
 
@@ -1230,7 +1324,6 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 	// element.css("top", ty);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.setCookie = function (name, value) {
@@ -1496,293 +1589,342 @@ window.generateNoise = function(canvasId, width, height, opacity) {
 
 // This is for animations that have no dependancies (functions that use jquery and gsap have their own files)
 
-
-
+/* NOTES:
+- TransitionEnd events can fire multiple times when animating css styles which include other styles such as border, has 4 sides, margin etc (flag and event remove is in place to fix this)
+- left,right,top,bottom wont animate unless the default values have been set, dynamic setting of this style element doesnt work for no reason, so harcoded values are in place
+- TransitionEnd events and removal fire too close to re-addition of event and start of next style animation, delays of 100ms are in place to prevent this from happening
+- Tried revetring to single transitionend with no adding and removing it between animations but this resulted in everything executing at same time again
+*/
 
 var AFTC = AFTC || {};
-AFTC.AnimateParams = {
-    animations:[]
-};
-AFTC.Animate = function (elementQuery,duration) {
-    log( arguments[0] );
-    log( arguments[1] );
-    log( arguments[2] );
+AFTC.Animate = function (elementQuery, onComplete) {
 
-    var vo = function(){
-        var v = {
-            elementQuery: "",
-            element: false,
-            duration: 2,
-            changed:false,
-            animations:{
-                opacity:1,
-                left:100
+    var element = querySelector(elementQuery);
+    if (!this.element) {
+        this.element = getElementById(elementQuery);
+        if (!this.element) {
+            throw ("AFTC.js > animation.js > Animate(elementQuery): Usage error, unable to find element [" + elementQuery + "] on the DOM!");
+        }
+    }
+
+    var transitionedEventAdded = false;
+    var chain = []; // Que of functions to execute
+    var chainActive = false;
+    var hasOnCompleteRun = false;
+
+    function processChain(action, fn) {
+        // log("processChain(action,fn): action = " + action);
+
+        if (action == "complete") {
+            transitionedEventAdded = false;
+            element.removeEventListener("transitionend", false);
+
+            var chainLen = chain.length;
+            // remove index 1
+            if (chainLen > 0) {
+                chain.splice(0, 1);
+
+                // after splice (removal of index 0)
+                chainLen = chain.length;
+                // log("chainLen = " + chainLen);
+                if (chainLen > 0) {
+                    // log("processChain() COMPELTE & RUN NEXT");
+                    //var fnToRun = chain[0];
+                    setTimeout(chain[0],100)
+                    
+                } else {
+                    // log("function chain complete()");
+                    chainActive = false;
+                    processOnComplete();
+                }
+            } else {
+                // Nothing left in chain stack
+                chainActive = false;
+                processOnComplete();
+            }
+        } else if (action == "add") {
+            chain.push(fn);
+            if (!chainActive) {
+                chainActive = true;
+                // log("processChain() ADD & RUN");
+                // chain[0]();
+                setTimeout(chain[0],100)
             }
         }
-        return v;
-    }
-
-    var init = function(){
 
     }
 
-    
-    init();
+    function processOnComplete() {
+        if (typeof (onComplete) != "undefined") {
+            // prevent multi run
+            // animating some styles will result in the TransitionEnd firing multiple times!!!
+            if (!hasOnCompleteRun){
+                hasOnCompleteRun = true;
+                onComplete();
+            }
+        }
+    }
+
+    function setDuration(duration) {
+        // log("setDuration()");
+        // element.style.transition = "all " + duration + "s";
+        element.style.transitionDuration = duration + "s";
+        element.style.webkitTransitionDuration = duration + "s";
+        element.style.mozTransitionDuration = duration + "s";
+        element.style.oTransitionDuration = duration + "s";
+        element.style.msTransitionDuration = duration + "s";
+    }
+
+    function removeDuration() {
+        // log("removeDuration()");
+        // element.style.removeProperty("transition");
+        element.style.removeProperty("transitionDuration");
+        element.style.removeProperty("webkitTransitionDuration");
+        element.style.removeProperty("mozTransitionDuration");
+        element.style.removeProperty("oTransitionDuration");
+        element.style.removeProperty("msTransitionDuration");
+    }
+
+    function validateDuration(duration) {
+        if (typeof (duration) == "undefined") {
+            return duration = 1;
+        } else {
+            return parseFloat(duration);
+        }
+    }
+
+
+    function getSuffixFromValueAndStyle(style,targetValue) {
+        // log("getSuffixFromValueAndStyle()");
+        var isPercentage = false,
+            isPixel = false,
+            isColor = false,
+            isNumber = false,
+            suffix = "";
+
+        // If targetValue is a string we detect its measurement system (px or % or number)
+        if (typeof (targetValue) == "string") {
+            // log("getSuffixFromValueAndStyle(): typeof(targetValue) = string [" + targetValue + "]");
+            //myArray = datastring.split(/[0-9]+/);
+            isPercentage = targetValue.indexOf("%");
+            isPixel = targetValue.indexOf("px");
+            isColor = targetValue.indexOf("#");
+            // log("targetValue = " + targetValue);
+            // log("isPercentage = " + isPercentage);
+            // log("isPixel = " + isPixel);
+            // log("isColor = " + isColor);
+            
+            if (isPercentage == -1 && isPixel == -1 && isColor == -1) {
+                suffix = "number";
+            } else if (isPercentage > -1) {
+                suffix = "%";
+            } else if (isPixel > -1) {
+                suffix = "px";
+            } else if (isColor > -1) {
+                suffix = "#";
+            } else {
+                suffix = "number";
+            }
+        } else {
+
+            // Assume suffix = "px" as mostly everything is
+            var numberStyles = [
+                "opacity"
+            ];
+            if (numberStyles.contains(style)) {
+                suffix = "number";
+            } else {
+                // Default to px
+                suffix = "px";
+            }
+        }
+
+        return suffix;
+    }
+
+
+
+    var onTransitionEndHandler = function(){
+        // log("--- EVENT: TransitionEnd ---");
+        element.removeEventListener("transitionend", onTransitionEndHandler, false);
+        removeDuration();
+        processChain("complete");
+    }
+
+
+
+
+    var animate = function (style, targetValue, duration) {
+        //log("animate()");
+
+
+
+        if (!element.style.hasOwnProperty(style)){
+            var msg = "";
+            msg = "AFTC.js > animation.js > Animate(elementQuery): Usage error, unable to find style [" + style + "] on element [" + elementQuery + "]\n";
+            msg += "Common styles available (there are more) to you are:\n";
+            msg += "\t" + "width" + "\n";
+            msg += "\t" + "height" + "\n";
+            msg += "\t" + "left" + "\n";
+            msg += "\t" + "right" + "\n";
+            msg += "\t" + "top" + "\n";
+            msg += "\t" + "bottom" + "\n";
+            msg += "\t" + "borderWidth" + "\n";
+            msg += "\t" + "margin" + "\n";
+            msg += "\t" + "marginLeft" + "\n";
+            msg += "\t" + "marginRight" + "\n";
+            msg += "\t" + "marginTop" + "\n";
+            msg += "\t" + "marginBottom" + "\n";
+            msg += "\t" + "padding" + "\n";
+            msg += "\t" + "paddingLeft" + "\n";
+            msg += "\t" + "paddingRight" + "\n";
+            msg += "\t" + "paddingTop" + "\n";
+            msg += "\t" + "paddingBottom" + "\n";
+            
+            for (var key in element.style) {
+                var keyFloat = parseFloat(key);
+                if (!isNumeric(keyFloat)){
+                    msg += "\t" + key + "\n";        
+                }
+            }
+            throw (msg);
+            return;
+        }
+
+        var suffix = getSuffixFromValueAndStyle(style,targetValue);
+        
+        // Ensure targetValue is a number / float for everything but colors #
+        if (suffix != "#"){
+            targetValue = parseFloat(targetValue);
+        }
+        
+        var currentValue = element.style[style];
+        var computedValue = getComputedStyle(element,null)[style];
+
+        //log("animate(): suffix = " + suffix);
+        processChain("add", function () {
+            // log("#########################################");
+            // log("### element = " + element)
+            // log("### style = " + style)
+            // log("### targetValue = " + targetValue)
+            // log("### computedValue = " + computedValue);
+            // log("### currentValue = " + currentValue)
+            // log("### typeof(currentValue) = " + typeof(currentValue))
+            // log("### currentValue.length = " + currentValue.length)
+            // log("### suffix = " + suffix)
+            // log("### duration = " + duration)
+            
+            // You must set css left, right, top, bottom, etc or animation wont work
+            // and if you do, you cant run animation straight away after setting the property
+            // you will need to use a timer, I've put a timer in for 50ms delay before animation starts
+            if (currentValue.length == 0){
+                var numberStyles = [
+                    "opacity",
+                    "left",
+                    "right",
+                    "top",
+                    "bottom",
+                    "borderWidth",
+                    "borderSize",
+                ];
+                // log("contains = " + numberStyles.contains(style));
+                if (numberStyles.contains(style)) {
+                    // log("style found!");
+                    element.style[style] = 0;
+                }
+            }
+
+            // element.style.left = 0;
+            // element.style.left = "0";
+            // element.style.left = "0px";
+            // if (element.style.left.length == 0){ log("setting left!"); element.style.left = 0; }
+            // if (element.style.right.length == 0){ element.style.right = 0; }
+            // if (element.style.top.length == 0){ element.style.top = 0; }
+            // if (element.style.bottom.length == 0){ element.style.bottom = 0; }
+
+            setDuration(validateDuration(duration));
+            if (!transitionedEventAdded) {
+                // log("### Adding event [TransitionEnd]");
+                transitionedEventAdded = true;
+                element.addEventListener("transitionend", onTransitionEndHandler, false);
+            }
+
+            var styleValue;
+            if (suffix == "number" || suffix == "#") {
+                styleValue = targetValue;
+            } else {
+                styleValue = (targetValue + suffix);
+            }
+
+            // log("##### Setting style [" + style + "] to [" + styleValue + "]");
+            setTimeout(function(){
+                element.style[style] = styleValue;
+            },50);
+            
+            // log("\n\n\n");
+        });
+        return publicFunctions;
+    }
+
+
+    function set(style,value){
+        processChain("add", function () {
+            element.style[style] = value;
+            processChain("complete");
+        });
+        return publicFunctions;
+    }
+
+
+    function delay(duration){
+        processChain("add", function () {
+            setTimeout(function(){
+                processChain("complete");
+            },(duration*1000));
+
+        });
+        return publicFunctions;
+    }
+
+
+
+
+    var publicFunctions = {
+        delay: function (duration) {
+            return delay(duration);
+        },
+        set: function (style,value) {
+            return set(style,value);
+        },
+        opacity: function (targetValue, duration) {
+            return animate("opacity", targetValue, duration);
+        },
+        prop: function (style,targetValue, duration) {
+            return animate(style, targetValue, duration);
+        }
+    }
+
+
+
+    return publicFunctions;
 }
 
 
 
-window.AFTCAnimateParams = {
-
-};
-
-log(window.animate);
-window.animate = function(){
-
-    // if (arguments[0] && typeof (arguments[0]) == "object") {
-        //         for (var key in arguments[0]) {
-        //             if (animVo.hasOwnProperty(key)) {
-        //                 if (key == "speed") {
-        //                     animVo[key] = arguments[0][key] * 1000;
-        //                 } else {
-        //                     animVo[key] = arguments[0][key];
-        //                 }
-        
-        //             }
-        //         }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.fadeIn = function (elementQuery, duration) {
+    window.fade("in", elementQuery, duration, arguments[2]);
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
-// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// window.AFTCFadeObjects = [];
-// window.fade = function (elementOrElementId,duration,direction) {
-//     log("AFTC.js > Animation.js > fade(elementOrElementId,duration,direction)");
-//     var animVo = {
-//         elementId: "",
-//         element: false,
-//         duration: 2,
-//         opacity: 0,
-//         displayStyle: "",
-//         addClass: "",
-//         removeClass: ""
-//     }
-    
-//     var usageInstructions = "\n";
-//     usageInstructions += "AFTC.js > animation.js > fadeIn(elementOrElementId,duration,direction): Usage instructions:\n";
-//     usageInstructions += "\t" + "elementOrElementId = string or object" + "\n";
-//     usageInstructions += "\t" + "duration = number (seconds)" + "\n";
-//     usageInstructions += "\t" + "direction = string (in or out)" + "\n";
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.fadeOut = function (elementQuery, duration) {
+    window.fade("out", elementQuery, duration, arguments[2]);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//     // Set VO params
-//     animVo.duration = duration;
-//     animVo.direction = direction;
-
-//     if (typeof(elementOrElementId) == "string"){
-//         animVo.elementId = elementOrElementId;
-//         animVo.element = getElementById(animVo.elementId);
-//         if (!animVo.element) {
-//             // Show error message and usage instructions
-//             var errorMessage = "AFTC.js > animation.js > fade(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
-//             errorMessage += usageInstructions;
-//             throw (errorMessage);
-//         }
-//     }
-
-//     var opacity = getComputedStyle(animVo.element,null).opacity;
-//     animVo.opacity = opacity;
-//     AFTCFadeObjects.push(animVo);
-
-//     var startTime = false;
-//     var endTime = animVo.duration * 1000;
-//     var animateOut = function(currentTime){
-//         if (!startTime){ startTime = currentTime; }
-//         log("startTime:" + startTime.toFixed(1) + "     currentTime:" + currentTime.toFixed(2) + "     endTime:" + endTime.toFixed(2));
-
-
-//         if (currentTime<endTime){
-//             requestAnimationFrame(animateOut);
-//         }
-        
-//     }
-
-//     if (direction == "in"){
-//         //fadeInAnimate(animVo.elementId);
-        
-//     } else {
-//         //fadeOutAnimate(animVo.elementId);
-//         requestAnimationFrame(animateOut);
-//     }
-    
-// }
-
-// window.fadeInAnimate = function (elementId) {
-//     //log("fadeInAnimate(elementId): elementId = " + elementId);
-
-//     var idx = false;
-
-//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
-//         //log(AFTCFadeObjects[i]);
-//         if (AFTCFadeObjects[i].elementId == elementId) {
-//             idx = i;
-//             break;
-//         }
-//     }
-
-//     if (idx != false){
-//         log("vo not found!");
-//         return;
-//     }
-
-//     if (AFTCFadeObjects[idx].opacity < 1){
-//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
-//         log("Setting opacity to "+ targetOpacity);
-//         AFTCFadeObjects[idx].opacity = targetOpacity;
-//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
-//         requestAnimationFrame(function(){
-//                 fadeInAnimate(elementId);
-//             });
-//     } else {
-//         AFTCFadeObjects[idx].opacity = 1;
-//         AFTCFadeObjects[idx].element.style.opacity = 1;
-//     }
-// }
-
-// window.fadeOutAnimate = function (elementId) {
-//     //log("fadeInAnimate(elementId): elementId = " + elementId);
-
-//     var idx = false;
-
-//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
-//         //log(AFTCFadeObjects[i]);
-//         if (AFTCFadeObjects[i].elementId == elementId) {
-//             idx = i;
-//             break;
-//         }
-//     }
-
-//     if (idx != false){
-//         log("vo not found!");
-//         return;
-//     }
-
-//     if (AFTCFadeObjects[idx].opacity > 0){
-//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
-//         log("Setting opacity to "+ targetOpacity);
-//         AFTCFadeObjects[idx].opacity = targetOpacity;
-//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
-//         // setTimeout(function(){
-//         //     fadeInAnimate(elementId);
-//         // },AFTCFadeObjects[idx].speed);
-//         requestAnimationFrame(function(){
-//                 fadeInAnimate(elementId);
-//             });
-//     } else {
-//         AFTCFadeObjects[idx].opacity = 0;
-//         AFTCFadeObjects[idx].element.style.opacity = 0;
-//     }
-// }
-
-
-
-
-
-
-
-// window.fadeIn = function () {
-//     log("fadeIn()");
-
-//     var animVo = {
-//         elementId: "",
-//         element: false,
-//         speed: 1000,
-//         opacity: 0,
-//         displayStyle: "",
-//         addClass: "",
-//         removeClass: ""
-//     }
-
-//     var usageInstructions = "\n";
-//     usageInstructions += "AFTC.js > animation.js > fadeIn(): Usage instructions:\n";
-
-//     if (arguments[0] && typeof (arguments[0]) == "object") {
-//         for (var key in arguments[0]) {
-//             if (animVo.hasOwnProperty(key)) {
-//                 if (key == "speed") {
-//                     animVo[key] = arguments[0][key] * 1000;
-//                 } else {
-//                     animVo[key] = arguments[0][key];
-//                 }
-
-//             }
-//         }
-//     } else {
-//         // Show error message and usage instructions
-//         var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. fadeIn() requires an paramaters object, you gave it nothing!\n";
-//         errorMessage += usageInstructions;
-//         throw (errorMessage);
-//     }
-
-
-//     // handle elementId
-//     if (animVo.elementId != "") {
-//         animVo.element = document.getElementById(animVo.elementId);
-//         if (!animVo.element) {
-//             // Show error message and usage instructions
-//             var errorMessage = "AFTC.js > animation.js > fadeIn(): Usage error. Unable to find the elementId [" + animVo.elementId + "] on the DOM!\n";
-//             errorMessage += usageInstructions;
-//             throw (errorMessage);
-//         }
-//     }
-
-
-//     //animVo.element.style.opacity = 0;
-//     var opacity = getComputedStyle(animVo.element,null).opacity;
-//     animVo.opacity = opacity;
-
-//     AFTCFadeObjects.push(animVo);
-
-//     fadeInAnimate(animVo.elementId);
-
-// }
-
-// window.fadeInAnimate = function (elementId) {
-//     //log("fadeInAnimate(elementId): elementId = " + elementId);
-
-//     var idx = false;
-
-//     for (var i = 0; i < AFTCFadeObjects.length; i++) {
-//         //log(AFTCFadeObjects[i]);
-//         if (AFTCFadeObjects[i].elementId == elementId) {
-//             idx = i;
-//             break;
-//         }
-//     }
-
-//     if (idx != false){
-//         log("vo not found!");
-//         return;
-//     }
-
-//     if (AFTCFadeObjects[idx].opacity < 1){
-//         var targetOpacity = parseFloat(AFTCFadeObjects[idx].opacity) + 0.01;
-//         log("Setting opacity to "+ targetOpacity);
-//         AFTCFadeObjects[idx].opacity = targetOpacity;
-//         AFTCFadeObjects[idx].element.style.opacity = targetOpacity;
-//         // setTimeout(function(){
-//         //     fadeInAnimate(elementId);
-//         // },AFTCFadeObjects[idx].speed);
-//         requestAnimationFrame(function(){
-//                 fadeInAnimate(elementId);
-//             });
-//     }
-// }
-
-
-// window.fadeOut = function (elementOrElementId, targetOpacity, setDisplayTo) {
-//     log("fadeOut()");
-// }
-// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.validateEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -8,26 +8,13 @@
     <script src="../dist/aftc.js"></script>
 
     <style>
-        #abs {
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: block;
-            width: 200px;
-            height: 210px;
-            border: 2px solid #660000;
-            background: #EEEEEE;
-        }
-
-        .box {
+        #debug {
             display: inline-block;
             border: 1px solid #000000;
-            min-width: 50px;
             min-height: 50px;
         }
 
         button {
-            width: 100%;
             padding: 5px;
             cursor: pointer;
         }
@@ -36,54 +23,154 @@
             background: #990000;
             color: #FFFFFF;
         }
+
+        .box-container {
+            display: block;
+            position: relative;
+            border: 2px solid #000000;
+            padding: 0;
+            margin: 0;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        #box1 {
+            background:#00FFFF; 
+            border:2px solid #990000;
+        }
+
+
+        #box2 {
+            background:#00FFFF; 
+            border:2px solid #990000;
+        }
+        
+
+        .box {
+            display: block;
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
     </style>
 
     <script>
         var debug;
 
 
+
+        var onCompleteHandler = function () {
+            log("I AM DONE, I AM DUSTED, MY MISSION HERE IS OVER!");
+        }
+
+
+
         function init() {
             // Debug.js usage exmaples
             log("Darcey@AllForTheCode.co.uk - AFTC.JS")
-            logTo({elementId:"debug"});
-            
-            
+
+            debug = querySelector("#debug");
+
+            // Auto run box2 animations
+            animateBox2();
 
         }
+
+
+        function animateBox1(){
+            AFTC.Animate("#box1", animateBox2)
+                .prop("width",100,0.5)
+                .prop("height",100,0.5)
+                .prop("padding",10,0.5)
+                .prop("left",100,0.5)
+                .prop("top",25,0.5)
+                .prop("backgroundColor","#000000",0.5)
+                .prop("color","#FFFFFF",0.5)
+                .prop("borderColor","#00FFFF",0.5)
+                .prop("borderWidth",5,0.5)
+                .prop("borderRadius",50,0.5)
+                .set("fontWeight","bold")
+                .set("fontSize","18px")
+                .set("textAlign","center")
+                .delay(2)
+                .prop("width",50,0.2)
+                .prop("height",50,0.2)
+                .prop("padding",0,0.2)
+                .prop("left",0,0.2)
+                .prop("top",0,0.2)
+                .prop("backgroundColor","#FFCC00",0.2)
+                .prop("color","#000000",0.2)
+                .prop("borderColor","#990000",0.2)
+                .prop("borderWidth",2,0.2)
+                .prop("borderRadius",0,0.2)
+                .set("fontWeight","normal")
+                .set("fontSize","normal")
+                .set("textAlign","inherit");
+        }
+
+
+        
+
+        function animateBox2() {
+  
+            AFTC.Animate("#box2", animateBox2)
+                .prop("width",100,0.5)
+                .prop("height",100,0.5)
+                .prop("padding",10,0.5)
+                .prop("left",100,0.5)
+                .prop("top",25,0.5)
+                .prop("backgroundColor","#000000",0.5)
+                .prop("color","#FFFFFF",0.5)
+                .prop("borderColor","#00FFFF",0.5)
+                .prop("borderWidth",5,0.5)
+                .prop("borderRadius",50,0.5)
+                .set("fontWeight","bold")
+                .set("fontSize","18px")
+                .set("textAlign","center")
+                .delay(2)
+                .prop("width",50,0.2)
+                .prop("height",50,0.2)
+                .prop("padding",0,0.2)
+                .prop("left",0,0.2)
+                .prop("top",0,0.2)
+                .prop("backgroundColor","#FFCC00",0.2)
+                .prop("color","#000000",0.2)
+                .prop("borderColor","#990000",0.2)
+                .prop("borderWidth",2,0.2)
+                .prop("borderRadius",0,0.2)
+                .set("fontWeight","normal")
+                .set("fontSize","normal")
+                .set("textAlign","inherit")
+                .delay(2);
+        }
+
+
+        // Document ready (same as jquery document.ready just, shorter and smaller)
+        ready(init);
     </script>
 </head>
 
-<body onload="init()">
-    <h2>test: fadeIn(eleOrEleId,speed) & fadeOut(eleOrEleId,speed)</h2>
-    <h4>Please open console output</h4>
-    <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+<body>
+    <h2>animate.js</h2>
 
-    <table border=1>
-        <tr>
-            <td><button onclick="fadeIn({
-                elementId:'box1',
-                speed:2,
-            })">fadeIn();</button></td>
-            <td><button onclick="fadeIn('box2',2)">fadeIn("box2",t);</button></td>
-            <td><button onclick="fadeIn('box3',2)">fadeIn("box3",t);</button></td>
-            <td><button onclick="fadeIn('box4',2)">fadeIn("box4",t);</button></td>
-        </tr>
-        <tr>
-            <td><button onclick="fadeOut('box1',2)">fadeOut("box1",t);</button></td>
-            <td><button onclick="fadeOut('box2',2)">fadeOut("box2",t);</button></td>
-            <td><button onclick="fadeOut('box3',2)">fadeOut("box3",t);</button></td>
-            <td><button onclick="fadeOut('box4',2)">fadeOut("box4",t);</button></td>
-        </tr>
-        <tr>
-            <td><span id="box1" class="box" style="background:#FFCC00">box1</span></td>
-            <td><span id="box2" class="box" style="background:#CC0000">box2</span></td>
-            <td><span id="box3" class="box" style="background:#009900">box3</span></td>
-            <td><span id="box4" class="box" style="background:#000099">box4</span></td>
-        </tr>
-    </table>
+    <style>
 
+
+    </style>
+    <button onclick="animateBox1()">animateBox1()</button>
+    <div class="box-container">
+        <div id="box1" class="box" style="background:#00FFFF; border:2px solid #990000;">box 1</div>
+        <div id="box2" class="box" style="background:#FFCC00; border:2px solid #990000;">box 2</div>
+    </div>
 
     
+    <br>
+    
+    <div id="debug"></div>
+
+
+
+
 </body>
 
 </html>

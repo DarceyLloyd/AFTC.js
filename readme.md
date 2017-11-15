@@ -10,8 +10,13 @@
 <br>
 
 
-## <b>Requirements:</b>
-Some modules/builds require jQuery @1.12 or above, if they do it will be listed the gulpfile.js code comments and here in this readme.
+## <b>Files / Modules with dependancies:</b>
+1. <b>animation.gsap.js</b> > scrollToElementId = function (elementId, speed, delay, offset);<br>Requires GSAP (TweenLite & CSS Plugin or just TweenMax)
+
+2. <b>animation.jquery.js</b> > scrollToElementId = function (elementId, speed, delay)<br>Requires jQuery 1.12 or above
+
+Don't need scrollTo functions? Comment it out in gulpfile.js and run gulp build (these are commented out by default).
+
 
 ### <b>Installation</b>
 ```
@@ -34,14 +39,14 @@ The dist files in this version of AFTC.js do not come with jquery packaged into 
 
 If you want io.js and jquery back in, just uncomment their lines in gulpfile.js and re-build via "gulp build". I have placed notes on which includes require jquery or GSAP.
 
-- <b>Without jQuery - aftc.min.js is less than 25KB!</b>
+- <b>Without jQuery - aftc.min.js is less than 22KB!</b>
 - With jQuery - aftc.min.js is around 115KB
 - WIthout jQuery, with TweenMax - aftc.min.js is around 125KB
 - Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is around 45KB!
 
 I would recommend using TweenLite and the ScrollToPlugin unless your working with a lot of animation then I would go all out for TweenMax.
 
-<b>If you have jQuery as part of your projects build, then no need to have it as part of the aftc.js build!</b>
+<b>If you have jQuery as part of your projects build, then no need to have it as part of the aftc.js build! Same for GSAP.</b>
 
 <b>NOTE: It is recommended that essentials.js and then debug.js be added first and second or anywhere but in that order.</b>
 
@@ -67,6 +72,58 @@ gulp build
 <br>
 
 ## <b>What's new?</b>
+
+### 1.2.0 - AFTC.Animate 1.0 has been added! (Only 3kb minified!)
+ -  Added AFTC.Animate(elementQuery,onComplete)<br>
+ Chain animations from here on in via:
+     - .delay(seconds)
+     - .set("cssStyle","value")
+     - .prop("cssStyle",targetValue,duration)
+ ```
+ AFTC.Animate("#box2", animateBox2)
+    .delay(3)
+    .prop("width",100,0.5)
+    .prop("height",100,0.5);
+    .prop("opacity",0,0.5);
+    .prop("backgroundColor","#990000",2)
+```
+
+For further usage details and example in use see tests/animation.htm
+- array.contains(needle)
+```
+var itemList = ["item1","item2"];
+var isItem1InItemList = itemList.contains("item1");
+```
+
+- ready() & onReady()<br>
+No need for typing addEventListener DOMLoaded or using jquery for document.ready, just use
+```
+onReady(function(){
+    // do your thing
+})
+
+// or
+
+ready(function(){
+    // do your thing
+})
+```
+
+- isNumeric()<br>
+A simple check to see if a var is a numeric value
+
+- getAnchorFromUrl(url)
+- isAlphaNumeric(str)
+- String.startsWith(str) - polly fill for older browsers
+- String.endsWith(str) - polly fill for older browsers
+- getStringBetween(str,start,end)
+- getAllStringsBetween(str,start,end)
+- hasClass(element,className)
+- addClass(element,className)
+- removeClass(element,className)
+
+
+### 1.1.1
 - Bit of a re-structure on the files and some new ones created eg essentials.js and styling.js
 - getElementById(str) - No more typing document.getElementById, now its just getElementById
 - querySelector(str) - No more typing document.querySelector, now its just querySelector
@@ -119,20 +176,25 @@ Will dump arguments[0] to the console for you in key value pairs, key = value.
 
 # <b>essentials.js</b>
 
-## <b>addEvent(obj,type,callback,eventReturn)</b>
-Detects addEventListener availability and switches to attachEvent if it's not available.
-
-## <b>isArray(arg)</b>
-returns true if you supply it with an array, false if not.
-
-## <b>getFunctionName(fn)</b>
-Attempts to returns the name of a function.
 
 ## <b>getElementById(str)</b>
 No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
 
 ## <b>querySelector(str)</b>
 No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
+
+## <b>addEvent(obj,type,callback,eventReturn)</b>
+Detects addEventListener availability and switches to attachEvent if it's not available.
+
+## <b>isArray(arg)</b>
+returns true if you supply it with an array, false if not.
+
+## <b>isNumeric(arg)</b>
+returns true if you supply it with an integer,number,float,double, false if not.
+
+## <b>getFunctionName(fn)</b>
+Attempts to returns the name of a function.
+
 
 
 
@@ -152,6 +214,63 @@ log("Your benchmark was completed in " + benchTime + "ms");
 
 ## <b>redirect(url)</b>
 Redirct to a url of your choice.
+
+
+
+
+<br><br><br>
+
+
+# <b>animate.js</b>
+#### <b>Dependencies:</b> NONE<br><br>
+
+# <b>AFTC.Animate(elementQuerySelector,onComplete)</b>
+<b>Animate anything with ease.</b>
+
+You have access to any style in the element.style attributes/properties via the 3 chainable functions.
+
+.prop(style:String,targetValue:number||string,duration:number||float)
+
+.set(style:String,targetValue:number||string)
+
+.delay(duration in seconds)
+
+```
+// You have access to all the props in element.style
+        function animateBox1(){
+            AFTC.Animate("#box1", animateBox2)
+                .prop("width",100,0.5)
+                .prop("height",100,0.5)
+                .prop("padding",10,0.5)
+                .prop("left",100,0.5)
+                .prop("top",25,0.5)
+                .prop("backgroundColor","#000000",0.5)
+                .prop("color","#FFFFFF",0.5)
+                .prop("borderColor","#00FFFF",0.5)
+                .prop("borderWidth",5,0.5)
+                .prop("borderRadius",50,0.5)
+                .set("fontWeight","bold")
+                .set("fontSize","18px")
+                .set("textAlign","center")
+                .delay(2)
+                .prop("width",50,0.2)
+                .prop("height",50,0.2)
+                .prop("padding",0,0.2)
+                .prop("left",0,0.2)
+                .prop("top",0,0.2)
+                .prop("backgroundColor","#FFCC00",0.2)
+                .prop("color","#000000",0.2)
+                .prop("borderColor","#990000",0.2)
+                .prop("borderWidth",2,0.2)
+                .prop("borderRadius",0,0.2)
+                .set("fontWeight","normal")
+                .set("fontSize","normal")
+                .set("textAlign","inherit");
+        }
+```
+
+
+
 
 
 
@@ -260,13 +379,29 @@ Returns the file extension from a supplied file path if available (method2)
 ## <b>getLastPartofUrl()</b>
 Returns the last part of the URL
 
+## <b>getAnchorFromUrl(url)</b>
+Return the anchor from the url.
+
+## <b>isAlphaNumeric(arg)</b>
+Returns true if you supply it with a number||float, false otherwise.
+
 ## <b>removeFileFromPath</b>
 Attempts to remove the file from a full file path, eg a/b/c/text.txt would return a/b/c/
 
 ## <b>cleanJSONString(string)</b>
 Will remove special characters from a json string and return it for you to JSON.parse
 
+## <b>yourString.startsWith(str)</b>
+Return true if yourString starts with str, else false.
 
+## <b>yourString.endsWith(str)</b>
+Returns true if yourString ends with str, else false.
+
+## <b>getStringBetween(str,start,end)</b>
+Returns string between two strings.
+
+## <b>getAllStringsBetween(str,start,end)</b>
+Returns an array of strings it finds of occurances between two strings.
 
 
 <br><br><br>
@@ -279,10 +414,6 @@ Will remove special characters from a json string and return it for you to JSON.
 ## <b>validateEmail(email)</b>
 <b>Aliases:</b> isValidEmail(email)<br>
 Validates an email adddress (string) via regex.
-
-## <b>isAlphanumeric(str)</b>
-Returns true is str is alphanumeric. [a-z],[A-Z],[0-9] only
-
 
 
 
@@ -316,6 +447,9 @@ Returns a shuffled array based on random index picking (classic).
 
 ## <b>arrayShuffle2(array)</b>
 Returns a shuffled array based on crypto.getRandomValues (supposed to be the crypto devs method of choice).
+
+## <b>yourArray.<b>contains</b>(needle)</b>
+Returns true if any items in yourArray match needle, false if not.
 
 
 
@@ -441,6 +575,15 @@ log(detected.userAgent);
 
 # <b>dom.js</b>
 #### <b>Dependencies:</b> aftc.js/src/essentials.js<br>
+
+## <b>ready(function);</b> or <b>onReady(function);</b>
+No more jquery document.ready or addEventListener on DOM loaded, just use ready or onReady.
+```
+onReady(function(){
+
+});
+```
+
 
 ## <b>centerAbsoluteElement(element || elementId)</b>
 Attempts to center an absolute positioned element within your browsers current dimensions.

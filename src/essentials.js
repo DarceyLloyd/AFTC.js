@@ -1,4 +1,3 @@
-
 // Functions / Utilities
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -16,8 +15,11 @@ window.addEvent = function (obj, type, callback, eventReturn) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-
-
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -46,7 +48,7 @@ function getFunctionName(fn) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.AFTCElementQueryCache = [];
 window.getElementById = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined){
+    if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
         window.AFTCElementQueryCache[id] = document.getElementById(id);
@@ -56,11 +58,19 @@ window.getElementById = function (id) {
 
 
 window.querySelector = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined){
+    if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
         window.AFTCElementQueryCache[id] = document.querySelector(id);
         return window.AFTCElementQueryCache[id];
     }
 }
+
+
+// TODO: Will return an object of elements
+// eg params.dom can be popuplated by single function
+window.getDomElements = function (obj) {
+    var dom = {}
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
