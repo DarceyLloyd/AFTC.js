@@ -17,8 +17,6 @@ import "./src/graphics.js"; // Dependencies: none
 import "./src/validation.js"; // Dependencies: none
 import "./src/aftc.js"; // Dependencies: none
 import "./src/color.js"; // Dependencies: none
-import "./src/animation.gsap.js"; // Requires: TweenLite.min.js or TweenMax.min.js & ScrollToPlugin.min.js
-import "./src/animation.jquery.js"; // Requires: jQuery >= 1.12
 
 
 
