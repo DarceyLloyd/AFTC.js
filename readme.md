@@ -34,27 +34,14 @@ gulp watch
 
 
 
-### <b>BUILD NOTES</b>:
-The dist files in this version of AFTC.js do not come with jquery packaged into them and any modules of the AFTC.js tools / utilities suite that requires jQuery have been commented out in the gulp buildfile.
+### <b>Build Guide</b>:
+io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
 
-If you want io.js and jquery back in, just uncomment their lines in gulpfile.js and re-build via "gulp build". I have placed notes on which includes require jquery or GSAP.
+- <b>aftc.min.js is less than 25KB!</b>
 
-- <b>Without jQuery - aftc.min.js is less than 22KB!</b>
-- With jQuery - aftc.min.js is around 115KB
-- WIthout jQuery, with TweenMax - aftc.min.js is around 125KB
-- Without jQuery, with TweenLite & ScrollToPlugin - aftc.min.js is around 45KB!
+<b>NOTE: It is recommended that debug.js and essentials.js be the first and always included as other modules of the aftc.js suite depend on them.</b>
 
-I would recommend using TweenLite and the ScrollToPlugin unless your working with a lot of animation then I would go all out for TweenMax.
-
-<b>If you have jQuery as part of your projects build, then no need to have it as part of the aftc.js build! Same for GSAP.</b>
-
-<b>NOTE: It is recommended that essentials.js and then debug.js be added first and second or anywhere but in that order.</b>
-
-
-
-<br>
-
-## <b>Gulp Build Guide</b>
+### Step by step
 
 - Open aftc.js directory in VSCode
 - Open "gulpfile.js"
@@ -64,9 +51,9 @@ I would recommend using TweenLite and the ScrollToPlugin unless your working wit
 ```
 gulp build
 ```
-- Now you can either copy aftc.min.js to your project or add it to your gulp/webpack concatination and mangle scripts or just add it as a script tag in your HTML.
+- Now you can either copy aftc.min.js to your project or add it to your gulp/webpack concatination and mangle scripts or go pro and add it's individual scripts to your build method.
 
-<b>NOTE: It is recommended that debug.js and essentials.js be the first.</b>
+<b>NOTE: It is recommended that debug.js and essentials.js be the first and always included as other modules of the aftc.js suite depend on them.</b>
 
 
 <br>
