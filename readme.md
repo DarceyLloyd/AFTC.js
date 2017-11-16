@@ -10,7 +10,7 @@
 <br>
 
 
-## <b>Files / Modules with dependancies:</b>
+## <b>Files / Modules with dependencies:</b>
 1. <b>animation.gsap.js</b> > scrollToElementId = function (elementId, speed, delay, offset);<br>Requires GSAP (TweenLite & CSS Plugin or just TweenMax)
 
 2. <b>animation.jquery.js</b> > scrollToElementId = function (elementId, speed, delay)<br>Requires jQuery 1.12 or above
@@ -72,6 +72,11 @@ gulp build
 <br>
 
 ## <b>What's new?</b>
+
+### 1.2.1 - scrollToElement(element||id||query,sec_duration:number,offset:number)
+- scrollToElement(elementId,query,ele,duraction,offset) - no longer dependenct on jQuery or GSAP
+- getElement(element||elementId||querySelector)
+
 
 ### 1.2.0 - AFTC.Animate 1.0 has been added! (Only 3kb minified!)
  -  Added AFTC.Animate(elementQuery,onComplete)<br>
@@ -183,6 +188,9 @@ No more typing document.getElementById(str)! It's shorter and runs much quicker 
 ## <b>querySelector(str)</b>
 No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
 
+## <b>getElement(str)</b>
+Combines element type check, elementId and query selector to return the element to you or false.
+
 ## <b>addEvent(obj,type,callback,eventReturn)</b>
 Detects addEventListener availability and switches to attachEvent if it's not available.
 
@@ -269,6 +277,15 @@ You have access to any style in the element.style attributes/properties via the 
         }
 ```
 
+## <b>scrollToElement(elementId||query||element,duration,offset)</b>
+
+```
+// no offset
+scrollToElement("myElementId",0.5);
+
+// with offset
+scrollToElement("myElementId",0.5,-100);
+```
 
 
 

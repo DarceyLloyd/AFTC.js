@@ -51,8 +51,12 @@ window.getElementById = function (id) {
     if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
+        var element = document.getElementById(id);
+        if (element){
+            window.AFTCElementQueryCache[id] = element;
+        }
         window.AFTCElementQueryCache[id] = document.getElementById(id);
-        return window.AFTCElementQueryCache[id];
+        return element;
     }
 }
 
@@ -61,10 +65,38 @@ window.querySelector = function (id) {
     if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
-        window.AFTCElementQueryCache[id] = document.querySelector(id);
-        return window.AFTCElementQueryCache[id];
+        var element = document.querySelector(id);
+        if (element){
+            window.AFTCElementQueryCache[id] = element;
+        }
+        return element;
     }
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getElement = function(elementOrElementIdOrElementQuery){
+    var element;
+    if (isElement(elementOrElementIdOrElementQuery)){
+        return elementIdOrQuery;
+    }
+
+    element = getElementById(elementOrElementIdOrElementQuery);
+    if (element){
+        return element;
+    }
+
+    element = querySelector(elementOrElementIdOrElementQuery);
+    if (element){
+        return element;
+    }
+
+    // If you get here there
+    return false;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 // TODO: Will return an object of elements
@@ -74,3 +106,11 @@ window.getDomElements = function (obj) {
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+window.isElement = function(element) {
+    // works on major browsers back to IE7
+    return element instanceof Element;  
+}

@@ -7,10 +7,9 @@ var uglify = require('gulp-uglify');
 
 // Configure your build!
 var jsFiles = [
-    //"./node_modules/jquery/dist/jquery.min.js",
-    //"./node_modules/gsap/src/minified/TweenMax.min.js", //113kb (if you need more powerfull animation capabilities)
-    //"./node_modules/gsap/src/minified/TweenLite.min.js", //13kb (basic animation only)
-    //"./node_modules/gsap/src/minified/plugins/ScrollToPlugin.min.js", //4kb
+    //"./node_modules/jquery/dist/jquery.min.js", //People are far too reliant on this library
+    //"./node_modules/gsap/src/minified/TweenMax.min.js", //113kb (The GOD of JavaScript Animation libraries)
+    //"./node_modules/gsap/src/minified/TweenLite.min.js", //13kb (The DemiGOD of JavaScript Animation libraries)
     "./src/essentials.js", // Dependencies: none
     "./src/debug.js", // Dependencies: none
     "./src/misc.js", // Dependencies: none
@@ -29,8 +28,6 @@ var jsFiles = [
     //"./src/io.js", // Dependencies: jQuery >= 1.12
     "./src/validation.js", // Dependencies: none
     './src/color.js', // Dependencies: none
-    //"./src/animation.gsap.js", // Requires: TweenLite.min.js || TweenMax.min.js & ScrollToPlugin.min.js
-    //"./src/animation.jquery.js", // Requires: jQuery >= 1.12
 ];
 
 

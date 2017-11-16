@@ -41,8 +41,8 @@ AFTC.Animate = function (elementQuery, onComplete) {
                 if (chainLen > 0) {
                     // log("processChain() COMPELTE & RUN NEXT");
                     //var fnToRun = chain[0];
-                    setTimeout(chain[0],100)
-                    
+                    setTimeout(chain[0], 100)
+
                 } else {
                     // log("function chain complete()");
                     chainActive = false;
@@ -59,7 +59,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
                 chainActive = true;
                 // log("processChain() ADD & RUN");
                 // chain[0]();
-                setTimeout(chain[0],100)
+                setTimeout(chain[0], 100)
             }
         }
 
@@ -69,7 +69,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
         if (typeof (onComplete) != "undefined") {
             // prevent multi run
             // animating some styles will result in the TransitionEnd firing multiple times!!!
-            if (!hasOnCompleteRun){
+            if (!hasOnCompleteRun) {
                 hasOnCompleteRun = true;
                 onComplete();
             }
@@ -105,7 +105,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
     }
 
 
-    function getSuffixFromValueAndStyle(style,targetValue) {
+    function getSuffixFromValueAndStyle(style, targetValue) {
         // log("getSuffixFromValueAndStyle()");
         var isPercentage = false,
             isPixel = false,
@@ -124,7 +124,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
             // log("isPercentage = " + isPercentage);
             // log("isPixel = " + isPixel);
             // log("isColor = " + isColor);
-            
+
             if (isPercentage == -1 && isPixel == -1 && isColor == -1) {
                 suffix = "number";
             } else if (isPercentage > -1) {
@@ -155,7 +155,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
 
 
-    var onTransitionEndHandler = function(){
+    var onTransitionEndHandler = function () {
         // log("--- EVENT: TransitionEnd ---");
         element.removeEventListener("transitionend", onTransitionEndHandler, false);
         removeDuration();
@@ -170,7 +170,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
 
 
-        if (!element.style.hasOwnProperty(style)){
+        if (!element.style.hasOwnProperty(style)) {
             var msg = "";
             msg = "AFTC.js > animation.js > Animate(elementQuery): Usage error, unable to find style [" + style + "] on element [" + elementQuery + "]\n";
             msg += "Common styles available (there are more) to you are:\n";
@@ -191,26 +191,26 @@ AFTC.Animate = function (elementQuery, onComplete) {
             msg += "\t" + "paddingRight" + "\n";
             msg += "\t" + "paddingTop" + "\n";
             msg += "\t" + "paddingBottom" + "\n";
-            
+
             for (var key in element.style) {
                 var keyFloat = parseFloat(key);
-                if (!isNumeric(keyFloat)){
-                    msg += "\t" + key + "\n";        
+                if (!isNumeric(keyFloat)) {
+                    msg += "\t" + key + "\n";
                 }
             }
             throw (msg);
             return;
         }
 
-        var suffix = getSuffixFromValueAndStyle(style,targetValue);
-        
+        var suffix = getSuffixFromValueAndStyle(style, targetValue);
+
         // Ensure targetValue is a number / float for everything but colors #
-        if (suffix != "#"){
+        if (suffix != "#") {
             targetValue = parseFloat(targetValue);
         }
-        
+
         var currentValue = element.style[style];
-        var computedValue = getComputedStyle(element,null)[style];
+        var computedValue = getComputedStyle(element, null)[style];
 
         //log("animate(): suffix = " + suffix);
         processChain("add", function () {
@@ -224,11 +224,11 @@ AFTC.Animate = function (elementQuery, onComplete) {
             // log("### currentValue.length = " + currentValue.length)
             // log("### suffix = " + suffix)
             // log("### duration = " + duration)
-            
+
             // You must set css left, right, top, bottom, etc or animation wont work
             // and if you do, you cant run animation straight away after setting the property
             // you will need to use a timer, I've put a timer in for 50ms delay before animation starts
-            if (currentValue.length == 0){
+            if (currentValue.length == 0) {
                 var numberStyles = [
                     "opacity",
                     "left",
@@ -268,17 +268,17 @@ AFTC.Animate = function (elementQuery, onComplete) {
             }
 
             // log("##### Setting style [" + style + "] to [" + styleValue + "]");
-            setTimeout(function(){
+            setTimeout(function () {
                 element.style[style] = styleValue;
-            },50);
-            
+            }, 50);
+
             // log("\n\n\n");
         });
         return publicFunctions;
     }
 
 
-    function set(style,value){
+    function set(style, value) {
         processChain("add", function () {
             element.style[style] = value;
             processChain("complete");
@@ -287,11 +287,11 @@ AFTC.Animate = function (elementQuery, onComplete) {
     }
 
 
-    function delay(duration){
+    function delay(duration) {
         processChain("add", function () {
-            setTimeout(function(){
+            setTimeout(function () {
                 processChain("complete");
-            },(duration*1000));
+            }, (duration * 1000));
 
         });
         return publicFunctions;
@@ -304,13 +304,13 @@ AFTC.Animate = function (elementQuery, onComplete) {
         delay: function (duration) {
             return delay(duration);
         },
-        set: function (style,value) {
-            return set(style,value);
+        set: function (style, value) {
+            return set(style, value);
         },
         opacity: function (targetValue, duration) {
             return animate("opacity", targetValue, duration);
         },
-        prop: function (style,targetValue, duration) {
+        prop: function (style, targetValue, duration) {
             return animate(style, targetValue, duration);
         }
     }
@@ -324,7 +324,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.fadeIn = function (elementQuery, duration) {
-    window.fade("in", elementQuery, duration, arguments[2]);
+
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -333,5 +333,131 @@ window.fadeIn = function (elementQuery, duration) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.fadeOut = function (elementQuery, duration) {
     window.fade("out", elementQuery, duration, arguments[2]);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getElementOffsetTop = function (elementIdOrQuery) {
+    var element = getElement(elementIdOrQuery);
+    if (!element) {
+        throw ("AFTC.js > animation.js > getElementOffsetTop(elementIdOrQuery): Usage error, unable to find [" + elementIdOrQuery + "] on the DOM!");
+    }
+
+    var curtop = 0;
+    if (element.offsetParent) {
+        do {
+            curtop += element.offsetTop;
+        } while (element = element.offsetParent);
+        return parseFloat([curtop]);
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.scrollToElement = function (elementIdOrQuery, arg_duration, offset) {
+    var e = getElement(elementIdOrQuery);
+    if (!e) {
+        throw ("AFTC.js > animation.js > scrollToElement(elementIdOrQuery): Usage error, unable to find [" + elementIdOrQuery + "] on the DOM!");
+    }
+
+    var targetY = getElementOffsetTop(elementIdOrQuery);
+    if (typeof (offset) != "undefined") {
+        targetY += parseFloat(offset);
+    }
+
+    // If you dont want scroll just use this next line and return
+    //window.scroll(0, targetY);
+
+    var startY = document.documentElement.scrollTop,
+        currentY = document.documentElement.scrollTop,
+        distance = Math.abs(targetY - startY),
+        duration = arg_duration*1000,
+        startTime = null,
+        endTime,
+        step = 0;
+
+    // Prevent run if at location +/- 3 pixels
+    if (startY > (targetY - 3) && startY < (targetY + 3)) {
+        return false;
+    }
+
+    var direction = "scroll up";
+    if (targetY > startY) {
+        direction = "scroll down";
+    }
+
+    // log("scrollToElement(): startY = " + startY)
+    // log("scrollToElement(): targetY = " + targetY)
+    // log("scrollToElement(): distance = " + distance)    
+    // log("scrollToElement(): currentY = " + currentY)
+    // log("scrollToElement(): direction = " + direction)
+
+
+
+    var animate = function (t) {
+        if (!startTime) {
+            startTime = t;
+            endTime = t + duration;
+            step = (distance / duration);
+        }
+
+        // 1st run startTime and endTime are undefined and NaN, prevent run
+        if (!endTime) {
+            // log("prevent run");
+            requestAnimationFrame(animate);
+            return;
+        }
+
+        currentY = document.documentElement.scrollTop;
+
+        if (direction == "scroll down") {
+            var nextY = startY + (step * (t - startTime));
+            if (nextY > targetY) {
+                nextY = targetY;
+            }
+            // var msg = "";
+            // msg += "start = " + startTime.toFixed(2);
+            // msg += "   end = " + endTime.toFixed(2);
+            // msg += "   startY = " + startY.toFixed(2);
+            // msg += "   targetY = " + targetY.toFixed(2);
+            // msg += "   currentY = " + currentY.toFixed(2);
+            // msg += "   step = " + step.toFixed(2);
+            // msg += "   nextY = " + nextY.toFixed(2);
+            // log(msg);
+
+            if (nextY >= targetY) {
+                delete startTime;
+                delete endTime;
+                delete duration;
+                delete step;
+                window.scrollTo(0, targetY);
+                // log("scroll down animation done");
+                // log("-------------------------------\n\n\n");
+            } else {
+                window.scrollTo(0, nextY);
+                requestAnimationFrame(animate);
+            }
+        } else {
+            var nextY = startY - (step * (t - startTime));
+            if (nextY < targetY) {
+                nextY = targetY;
+            }
+            if (nextY <= targetY) {
+                delete startTime;
+                delete endTime;
+                delete duration;
+                delete step;
+                window.scrollTo(0, targetY);
+            } else {
+                window.scrollTo(0, nextY);
+                requestAnimationFrame(animate);
+            }
+        }
+    }
+    animate();
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
