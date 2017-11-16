@@ -10,12 +10,6 @@
 <br>
 
 
-## <b>Files / Modules with dependencies:</b>
-1. <b>animation.gsap.js</b> > scrollToElementId = function (elementId, speed, delay, offset);<br>Requires GSAP (TweenLite & CSS Plugin or just TweenMax)
-
-2. <b>animation.jquery.js</b> > scrollToElementId = function (elementId, speed, delay)<br>Requires jQuery 1.12 or above
-
-Don't need scrollTo functions? Comment it out in gulpfile.js and run gulp build (these are commented out by default).
 
 
 ### <b>Installation</b>
