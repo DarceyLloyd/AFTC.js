@@ -82,12 +82,6 @@ window.getAnchorFromUrl = function (url) {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
-	return !(/\W/.test(str));
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 
 // es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)

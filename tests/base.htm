@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../dist/aftc.js"></script>
+
+    <style>
+        #abs {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 200px;
+            height: 210px;
+            border: 2px solid #660000;
+            background: #EEEEEE;
+        }
+
+        .box {
+            border: 1px solid #000000;
+        }
+    </style>
+
+    <script>
+        var debug;
+
+        onReady(function(){
+            log("onReady()");
+            
+            // Debug.js usage exmaples
+            configLog({autoLogTo:"debug"});
+            //configLog({autoLogEnable:false});
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS");
+        });
+    </script>
+</head>
+
+<body>
+    <h2>see console</h2>
+    <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+</body>
+
+</html>

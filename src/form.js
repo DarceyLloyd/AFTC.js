@@ -60,10 +60,10 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 		itemsToShowHide.push(element);
 
 	} else if (isArray(ids)) {
-		log("PARSING ARRAY");
+		// log("PARSING ARRAY");
 		for (var index = 0; index < ids.length; index++) {
 			var id = ids[index];
-			log("going to look for element with id of [" + id + "]");
+			// log("going to look for element with id of [" + id + "]");
 			var element = document.getElementById(id);
 			if (!element) {
 				throw ("Unable to find elemnt id [" + id + "] on page!\n" + msg);

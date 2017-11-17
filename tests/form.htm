@@ -24,12 +24,11 @@
 
         function init() {
             // Debug.js usage exmaples
-            log("Darcey@AllForTheCode.co.uk - AFTC.JS")
+            configLog({autoLogTo:"output1"});
+            //configLog({autoLogEnable:false});
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS");
 
-            debug = document.getElementById("output");
-
-            // Persistive usage (recommended for when your logging to a single output on a page)
-            logTo({elementId: "output1"});
+         
 
             // Example parseJSONToSelect
             // Make sure ' are used on the outside, seems " on the outside and ' on the inside will generate an error?!

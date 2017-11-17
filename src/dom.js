@@ -1,18 +1,3 @@
-// Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.ready = function (callback) {
-	// IE9+
-	if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-		callback();
-	} else {
-		document.addEventListener("DOMContentLoaded", function(){
-			// Adds a little delay but is a good thing
-			setTimeout(callback,10);
-		});
-	}
-}
-window.onReady = function(callback){ window.ready(callback); }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 

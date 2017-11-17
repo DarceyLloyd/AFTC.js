@@ -1,6 +1,19 @@
-// Functions / Utilities
+/*
+    Author: Darcey@AllForTheCode.co.uk
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Structure:
+        - Base functions
+        - Common / Crytical / Essential functions
+        - Plug in the rest via gulpfile.js command gulp build and gulp watch
+
+    NOTE: This file has a sequential structure
+*/
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Events / Event related functions
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.addEvent = function (obj, type, callback, eventReturn) {
     if (obj == null || typeof (obj) == 'undefined') return;
     if (obj.addEventListener) {
@@ -12,39 +25,39 @@ window.addEvent = function (obj, type, callback, eventReturn) {
         obj["on" + type] = callback;
     }
 };
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.ready = function (callback) {
+    // IE9+
+    if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+        callback();
+    } else {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Adds a little delay but is a good thing
+            setTimeout(callback, 10);
+        });
+    }
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isArray = function (obj) {
-    return !!obj && obj.constructor === Array;
-    //return arr.constructor == Array;
+window.onReady = function (callback) {
+    window.ready(callback);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function getFunctionName(fn) {
-    var name = fn.toString();
-    var reg = /function ([^\(]*)/;
-    return reg.exec(name)[1];
-};
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 
 
 
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// DOM Element retrieval
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.AFTCElementQueryCache = [];
 window.getElementById = function (id) {
@@ -52,44 +65,41 @@ window.getElementById = function (id) {
         return window.AFTCElementQueryCache[id];
     } else {
         var element = document.getElementById(id);
-        if (element){
+        if (element) {
             window.AFTCElementQueryCache[id] = element;
         }
         window.AFTCElementQueryCache[id] = document.getElementById(id);
         return element;
     }
 }
-
-
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.querySelector = function (id) {
     if (window.AFTCElementQueryCache[id] != undefined) {
         return window.AFTCElementQueryCache[id];
     } else {
         var element = document.querySelector(id);
-        if (element){
+        if (element) {
             window.AFTCElementQueryCache[id] = element;
         }
         return element;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getElement = function(elementOrElementIdOrElementQuery){
+window.getElement = function (elementOrElementIdOrElementQuery) {
     var element;
-    if (isElement(elementOrElementIdOrElementQuery)){
+    if (isElement(elementOrElementIdOrElementQuery)) {
         return elementIdOrQuery;
     }
 
     element = getElementById(elementOrElementIdOrElementQuery);
-    if (element){
+    if (element) {
         return element;
     }
 
     element = querySelector(elementOrElementIdOrElementQuery);
-    if (element){
+    if (element) {
         return element;
     }
 
@@ -97,213 +107,161 @@ window.getElement = function(elementOrElementIdOrElementQuery){
     return false;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// TODO: Will return an object of elements
-// eg params.dom can be popuplated by single function
-window.getDomElements = function (obj) {
+window.getElementFrom = function (arr) {
+    var dom = {};
+    var element;
+    for (var i = 0; i < arr.length; i++) {
+        element = getElementB
+    }
     var dom = {}
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 
 
-window.isElement = function(element) {
-    // works on major browsers back to IE7
-    return element instanceof Element;  
-}
-//Returns true if it is a DOM node
-window.isNode = function (o) {
-    return (
-        typeof Node === "object" ? o instanceof Node :
-        o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string"
-    );
-}
-
-//Returns true if it is a DOM element    
-window.isElement = function (o) {
-    return (
-        typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
-        o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
-    );
-}
 
 
 
-var lazyLog = true;
 
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// DEBUG
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+var AFTCLazyLog = true;
+var AFTCAutoLogTo = {
+    element:false,
+    enabled:false
+};
 window.log = function (arg) {
     if (console) {
-        if (lazyLog) {
-            console.log(arg);
+        if (AFTCLazyLog) {
+            if (typeof (arg) == "undefined") {
+                console.error(arg);
+            } else {
+                console.log(arg);
+            }
+            if (isElement(AFTCAutoLogTo.element) && AFTCAutoLogTo.enabled) {
+                if (typeof(arg) == "object"){
+                    AFTCAutoLogTo.element.innerHTML += "[Object]<br>";
+                    for (var key in arg){
+                        AFTCAutoLogTo.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
+                    }
+                } else {
+                    AFTCAutoLogTo.element.innerHTML += (arg + "<br>");
+                }
+                
+            }
         }
     }
 }
 
+window.configLog = function(){
+
+    // List of commands for identification only, values are meaningless
+    var commands = {
+        autoLogEnable:0,
+        autoLogDisable:0,
+        autoLogTo:0
+    }
+
+    // Process arguments
+    if (arguments[0] && typeof (arguments[0]) == "object") {
+        for (var key in arguments[0]) {
+            if (commands.hasOwnProperty(key)) {
+                // Command found
+                //log("command/key = " + key);
+                var value = arguments[0][key];
+                switch(key){
+                    case "autoLogTo":
+                        var element = getElementById(value);
+                        if (isElement(element)){
+                            AFTCAutoLogTo.element = element;
+                            AFTCAutoLogTo.enabled = true;
+                        } else {
+                            console.error("AFTC.js > configLog({autoLogTo:elementId}): Usage error, can't find [" + value + "] on the DOM");
+                        }
+                    break;
+                    case "autoLogEnable":
+                        if (isBoolean(value) && value) {
+                            AFTCAutoLogTo.enabled = true;
+                        } else if (isBoolean(value) && !value) {
+                            AFTCAutoLogTo.enabled = false;
+                        }
+                    break;
+                    case "autoLogDisable":
+                        if (isBoolean(value) && value) {
+                            AFTCAutoLogTo.enabled = false;
+                        } else if (isBoolean(value) && !value) {
+                            AFTCAutoLogTo.enabled = true;
+                        }
+                    break;
+                }
+            }
+        }
+    }
+
+
+    // var enableAutoLogTo = function(elementId){
+    //     var element = getElementById(elementId);
+    //     if (!element){
+    //         throw("AFTC.js > logEnableAutoLogTo(elementId): Usage error, can't find [" + elementId + "] on the DOM");
+    //         return;
+    //     }
+    //     AFTCAutoLogTo = element;            
+    // };
+    // return {
+    //     enableAutoLogTo:function(elementId){
+    //         enableAutoLogTo(elementId);
+    //     },
+    //     disableAutoLogTo:function(){
+    //         AFTCAutoLogTo = false;
+    //     },
+    //     autoLogTo:function(elementId){
+    //         if (!elementId){
+    //             AFTCAutoLogTo = false;
+    //         } else {
+    //             enableAutoLogTo(elementId);
+    //         }
+    //     },
+    //     enable:function(){
+    //         AFTCLazyLog = true;
+    //     },
+    //     disable:function(){
+    //         AFTCLazyLog = false;
+    //     }
+    // }
+}
+
 window.logEnable = function () {
-    lazyLog = true;
-    log("log() is now enabled.");
+    AFTCLazyLog = true;
 }
 
 window.logDisable = function () {
-    lazyLog = false;
-    log("log() is now disabled.");
+    AFTCLazyLog = false;
 }
 
 window.trace = function (arg) {
-    if (console) {
-        console.trace(arg);
-    }
+    log(arg);
 }
-
-
-
-// Persistive option states
-window.AFTCLogToOptions = {
-    elementId: "",
-    element: null,
-    clear: false,
-    append: true,
-    logToConsole: true,
-    addLineBreaks: true
-}
-
-window.logTo = function (elementId,msg) {
-    var element = document.getElementById(elementId);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.logTo = function (elementId, msg) {
+    var element = getElementById(elementId);
     log(msg);
-    if (element){
+    if (element) {
         element.innerHTML += (msg + "<br>");
     }
 }
-
-
-// window.logTo = function (msg) {
-//     var clear = false;
-//     var elementIdSupplied = false;
-//     var elementSupplied = false;
-//     var argIndex = -1;
-
-//     var args = arguments;
-
-//     var getOutputElement = function () {
-//         var element = document.getElementById(window.AFTCLogToOptions.elementId);
-//         if (element) {
-//             window.AFTCLogToOptions.element = element;
-//         } else {
-//             throw ("AFTC.js > logTo(): Usage error. The elementId [" + window.AFTCLogToOptions.elementId + "] you supplied cannot be found on the DOM!");
-//         }
-//     }
-
-//     var parseArguments = function (objArgs) {
-//         //log("parsingArguments(objArgs)");
-//         for (var key in objArgs) {
-//             var val = objArgs[key];
-//             //log(key + " = " + val);
-//             if (key == "clear") {
-//                 clear = objArgs[key];
-//             }
-
-//             if (key == "elementId" && val.length > 0) {
-//                 elementIdSupplied = true;
-//             }
-
-//             if (key == "element") {
-//                 elementSupplied = true;
-//             }
-
-//             if (window.AFTCLogToOptions.hasOwnProperty(key)) {
-//                 window.AFTCLogToOptions[key] = objArgs[key];
-//                 //log("SETTING: " + key + " = " + val);
-//             } else {
-//                 // Disable error as user may actually be trying to log an object
-//                 //console.error("AFTC.logTo: Usage Error - Unknown paramater [" + key + "]");
-//             }
-//         }
-//     }
-
-
-//     if (arguments[0] && typeof (arguments[0]) == "object") {
-//         argIndex = 0;
-//         parseArguments(arguments[0]);
-//     } else if (arguments[1] && typeof (arguments[1]) == "object") {
-//         argIndex = 1;
-//         parseArguments(arguments[1]);
-
-//     }
-
-
-   
-
-//     // Get element if elementId or element was given (element will override elementid)
-//     if (elementIdSupplied) {
-//         getOutputElement();
-//     }
-
-
-
-//     // if (!msg || msg == null || msg == undefined){
-//     //     // User should be setting persistent variables
-//     // } else {
-//     //     // User is attempting to output
-//     // }
-
-
-//     if (!window.AFTCLogToOptions.element || window.AFTCLogToOptions.element == null || window.AFTCLogToOptions.element == undefined) {
-//         if (window.AFTCLogToOptions.elementId == "") {
-//             var errorMessage = "AFTC.js > logTo(): Usage error. logTo has no element to output too.\n";
-//             errorMessage += "Please specify an elementId or element via options. eg\n";
-//             errorMessage += "logTo({elementId:'debugOutput'});\n";
-//             errorMessage += "logTo({element:myElementObject});\n";
-//             errorMessage += "logTo('Hello World');\n";
-//             errorMessage += "logTo('Hello World',{elementId:'debugOutput'});\n";
-//             errorMessage += "logTo('Hello World',{element:myElementObject});\n";
-//             errorMessage += "\nIf you don't want to log to a HTML element then just use log!\n";
-//             throw (errorMessage);
-//         } else {
-//             getOutputElement();
-//         }
-//     }
-
-
-
-
-//     if (clear) {
-//         window.AFTCLogToOptions.element.innerHTML = "";
-//     }
-
-
-
-
-//     if (arguments[0] && typeof (arguments[0]) == "string" && arguments[0].length > 0) {
-//         //if (typeof(msg) === "string" && msg.length > 0){        
-
-//         if (window.AFTCLogToOptions.logToConsole) {
-//             log(msg);
-//         }
-
-//         if (window.AFTCLogToOptions.addLineBreaks) {
-//             msg = msg + "<br>";
-//         }
-
-//         if (window.AFTCLogToOptions.append) {
-//             window.AFTCLogToOptions.element.innerHTML += msg;
-//         } else {
-//             var oldContent = window.AFTCLogToOptions.element.innerHTML;
-//             window.AFTCLogToOptions.element.innerHTML = (msg + oldContent);
-//             var oldContent = "";
-//         }
-//     }
-
-// }
-
-
-
-
-
-window.logObjTo = function(elementId, obj, append) {
-    var element = document.getElementById(elementId);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.logObjTo = function (elementId, obj, append) {
+    var element = getElementById(elementId);
     if (!element) {
         throw ("AFTC.JS > logObjTo(elementId,obj): Usage error. Can't find elementId of [" + elementId + "] on the dom!");
     }
@@ -317,60 +275,300 @@ window.logObjTo = function(elementId, obj, append) {
         append = true;
     }
 
-    if (append){
+    if (append) {
         var oldContent = element.innerHTML;
         element.innerHTML = oldContent + "<br>" + msg;
     } else {
         var oldContent = element.innerHTML;
         element.innerHTML = msg + "<br>" + oldContent;
     }
-    
 
 
-    log("Logging object:\n");
-    for (var key in obj) {
-        log(key + " = ");
-        log(obj[key] + "\n");
-    }
-    log(" ");
+
+    // log("Logging object:\n");
+    // for (var key in obj) {
+    //     log(key + " = " +  obj[key] + "\n");
+    // }
+    // log(" ");
 }
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.openDebugWindow = function (input) {
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.openDebugWindow = function (str) {
     var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
     w.document.title = "Debug";
     w.document.write("<style>body {width:100%;}</style>");
-    w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + input + "</div>");
-    //w.document.write("<div style='width:100%'>" + response + "</div>");
+    w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + str + "</div>");
+    //w.document.write("<div style='width:100%'>" + str + "</div>");
     w.document.close();
-    //console.log(response);
 }
-window.stringToPopup = function (input) {
-    openDebugWindow(input);
+window.stringToWindow = function (str) {
+    openDebugWindow(str);
 }
-window.stringToWindow = function (input) {
-    openDebugWindow(input);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.dumpArgs = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			console.log("Argument[" + key + "] = " + arguments[0][key]);
-		}
-	}
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Array functions
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.arrayRemoveIndex = function (array, index) {
+    return array.splice(index);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isStringInArray = function (string, array) {
+    return (new RegExp('(' + array.join('|').replace(/\./g, '\\.') + ')$')).test(string);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Array.prototype.contains = function (needle) {
+    var len = this.length;
+    for (var i = 0; i < len; i++) {
+        if (this[i] == needle) {
+            return true;
+            break;
+        }
+    }
+    return false;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMaxFromArray = function (arr) {
+    return Math.max.apply(Math, arr);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getMinFromArray = function (arr) {
+    return Math.min.apply(Math, arr);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.shuffleArray = function (array) {
+    var methodNo = getRandom(1, 2);
+    return window["arrayShuffle" + methodNo](array);
+    var fn = "arrayShuffle" + methodNo;
+    //log(fn);
+    //fn();
+}
+window.arrayShuffle = function (arr) {
+    return shuffleArray(arr);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.arrayShuffle1 = function (array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.arrayShuffle2 = function (a) {
+    var x, t, r = new Uint32Array(1);
+    for (var i = 0, c = a.length - 1, m = a.length; i < c; i++, m--) {
+        crypto.getRandomValues(r);
+        x = Math.floor(r / 65536 / 65536 * m) + i;
+        t = a[i], a[i] = a[x], a[x] = t;
+    }
+
+    return a;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
+	return !(/\W/.test(str));
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isNode = function (o) {
+    return (
+        typeof Node === "object" ? o instanceof Node :
+        o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string"
+    );
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isElement = function (o) {
+    var answer = (
+        typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+        o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
+    );
+
+    if (answer != true){
+        return false;
+    } else {
+        return true;
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isElement2 = function (element) {
+    // works on major browsers back to IE7
+    return element instanceof Element;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.radToDeg = function (input) {
+    return input * (180 / Math.PI);
+}
+window.rad2deg = function (arg) {
+    return radToDeg(arg);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.degToRad = function (input) {
+    return input * (Math.PI / 180);
+}
+window.deg2rad = function (arg) {
+    return degToRad(arg);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.boolToString = function (arg) {
+
+    if (!arg || arg == undefined || typeof (arg) != "boolean") {
+        console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
+        return "error";
+    }
+
+    if (arg) {
+        return "true";
+    } else {
+        return "false";
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.stringToBool = function (str) {
+
+    if (!str || str == undefined || typeof (str) != "string") {
+        console.log("AFTC.js: Conversion.js: stringToBoolean(str): Error - input str is not valid!");
+        return false;
+    }
+
+    switch (str.toLowerCase()) {
+        case "y":
+            return true;
+            break;
+        case "yes":
+            return true;
+            break;
+        case "1":
+            return true;
+            break;
+        case "true":
+            return true;
+            break;
+        case "y":
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getBooleanFrom = function (arg) {
+    if (typeof (arg) == "string") {
+        return stringToBool(arg);
+    }
+
+    if (typeof (arg) == "number") {
+        if (arg <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isBoolean = function(arg){
+    if (typeof(arg) == "boolean"){
+        return true;
+    } else {
+        return false;
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isArray = function (obj) {
+    return !!obj && obj.constructor === Array;
+    //return arr.constructor == Array;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function getFunctionName(fn) {
+    var name = fn.toString();
+    var reg = /function ([^\(]*)/;
+    return reg.exec(name)[1];
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+
+
+
+
+
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Misc features (small ones only)
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.redirect = function (url) {
+    self.location.href = url;
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 var Benchmark = function () {
     var start = new Date();
@@ -384,15 +582,78 @@ var Benchmark = function () {
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.redirect = function (url) {
-    self.location.href = url;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Random generators (small ones)
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getRandomInt = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+window.getRandom = function (min, max) {
+    return getRandomInt(min, max);
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.randomString = function (length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+    for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
+    return text;
+}
+window.getRandomString = function(len){
+    return randomString(len);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.guid = function () {
+    function Amiga() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+
+    return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
+        Amiga() + '-' + Amiga() + Amiga() + Amiga();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getArrayOfRandomNumbers = function(arraySize,min,max){
+    var arr = [];
+    for( var i=0; i < arraySize; i++){
+        arr[i] = getRandom(min,max);
+    }
+    return arr;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getArrayOfRandomStrings = function(arraySize,strLength){
+    var arr = [];
+    for( var i=0; i < arraySize; i++){
+        arr[i] = getRandomString(strLength);
+    }
+    return arr;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -479,12 +740,6 @@ window.getAnchorFromUrl = function (url) {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
-	return !(/\W/.test(str));
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 
 // es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
@@ -543,74 +798,6 @@ if (testRE && testRE.length > 1) //RegEx has found something and has more than o
     alert(testRE[1]); //is the matched group if found
 }
 */
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getRandomInt = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-window.getRandom = function (min, max) {
-    return getRandomInt(min, max);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.randomString = function (length) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-    for (var i = 0; i < length; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
-window.getRandomString = function(len){
-    return randomString(len);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.guid = function () {
-    function Amiga() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
-
-    return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
-        Amiga() + '-' + Amiga() + Amiga() + Amiga();
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArrayOfRandomNumbers = function(arraySize,min,max){
-    var arr = [];
-    for( var i=0; i < arraySize; i++){
-        arr[i] = getRandom(min,max);
-    }
-    return arr;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArrayOfRandomStrings = function(arraySize,strLength){
-    var arr = [];
-    for( var i=0; i < arraySize; i++){
-        arr[i] = getRandomString(strLength);
-    }
-    return arr;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -657,193 +844,6 @@ window.getWeightedRandom = function (odds, iterations) {
     //log("wMax = " + wMax + "   iMax = " + iMax);
     return iMax;
 };
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.arrayRemoveIndex = function (array, index) {
-	return array.splice(index);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isArrayInString = function (string, array) {
-	return (new RegExp('(' + array.join('|').replace(/\./g, '\\.') + ')$')).test(string);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Array.prototype.contains = function (needle) {
-	var len = this.length;
-	for (var i=0; i < len; i++){
-		if (this[i] == needle){
-			return true;
-			break;
-		}
-	}
-	return false;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMaxFromArray = function (arr) {
-	return Math.max.apply(Math, arr);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getMinFromArray = function (arr) {
-	return Math.min.apply(Math, arr);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.shuffleArray = function (array) {
-	var methodNo = getRandom(1, 2);
-	return window["arrayShuffle" + methodNo](array);
-	var fn = "arrayShuffle" + methodNo;
-	//log(fn);
-	//fn();
-}
-window.arrayShuffle = function (arr) {
-	return shuffleArray(arr);
-}
-
-
-
-window.arrayShuffle1 = function (array) {
-	var currentIndex = array.length,
-		temporaryValue, randomIndex;
-
-	// While there remain elements to shuffle...
-	while (0 !== currentIndex) {
-
-		// Pick a remaining element...
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		// And swap it with the current element.
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-
-	return array;
-}
-
-
-window.arrayShuffle2 = function (a) {
-	var x, t, r = new Uint32Array(1);
-	for (var i = 0, c = a.length - 1, m = a.length; i < c; i++, m--) {
-		crypto.getRandomValues(r);
-		x = Math.floor(r / 65536 / 65536 * m) + i;
-		t = a[i], a[i] = a[x], a[x] = t;
-	}
-
-	return a;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.radToDeg = function (input) {
-	return input * (180 / Math.PI);
-}
-window.rad2deg = function(arg){
-	return radToDeg(arg);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.degToRad = function (input) {
-	return input * (Math.PI / 180);
-}
-window.deg2rad = function(arg){
-	return degToRad(arg);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.boolToString = function (arg) {
-
-	if (!arg || arg == undefined || typeof(arg) != "boolean"){
-		console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
-		return "error";
-	}
-	
-	if (arg) {
-		return "true";
-	} else {
-		return "false";
-	}
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.stringToBool = function (str) {
-
-	if (!str || str == undefined || typeof(str) != "string"){
-		console.log("AFTC.js: Conversion.js: stringToBoolean(str): Error - input str is not valid!");
-		return false;
-	}
-
-	switch (str.toLowerCase()) {
-		case "y":
-			return true;
-			break;
-		case "yes":
-			return true;
-			break;
-		case "1":
-			return true;
-			break;
-		case "true":
-			return true;
-			break;
-		case "y":
-			return true;
-			break;
-		default:
-			return false;
-			break;
-	}
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getBooleanFrom = function(arg){
-	if (typeof(arg) == "string"){
-		return stringToBool(arg);
-	}
-	
-	if (typeof(arg) == "number"){
-		if (arg <= 0){
-			return false;
-		} else {
-			return true;
-		}
-	}
-}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 window.getUkDateFromDbDateTime = function (input) {
@@ -933,437 +933,6 @@ window.getDateTime = function (local) {
 }
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.isFireFox = function () {
-	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-	return is_firefox;
-}
-window.isChrome = function () {
-	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-	return is_chrome;
-}
-window.isSafari = function () {
-	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
-	return is_safari;
-}
-window.isIE = function () {
-	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
-	return is_ie;
-}
-window.getIEVersion = function () {
-	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
-	return match ? parseInt(match[1]) : undefined;
-}
-window.getBrowser = function () {
-	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-	if (/trident/i.test(M[1])) {
-		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-		return 'IE';
-	}
-	if (M[1] === 'Chrome') {
-		tem = ua.match(/\bOPR\/(\d+)/);
-		if (tem != null) {
-			return 'Opera';
-		}
-	}
-	M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-	if ((tem = ua.match(/version\/(\d+)/i)) != null) {
-		M.splice(1, 1, tem[1]);
-	}
-	return M[0];
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getOS = function (testAgent) {
-	var userAgent;
-
-	if (!testAgent){
-		userAgent = navigator.userAgent || navigator.vendor || window.opera;
-	} else {
-		userAgent = testAgent;
-	}
-
-	userAgent = userAgent.toLowerCase();
-
-	
-
-
-	// Windows Phone must come first because its UA also contains "Android"!
-	if (/windows phone/i.test(userAgent)) {
-		return {
-			os:"windows phone",
-			userAgent:userAgent
-		}
-	}
-
-	// Samsung Browser detection S8
-	if (/samsungbrowser/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/android/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ipad|iphone|ipod/i.test(userAgent)) {
-		return {
-			os:"ios",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	// Windows Phone must come first because its UA also contains "Android"
-	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
-		return {
-			os:"windows",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/os x/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/macintosh|osx/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/openbsd/i.test(userAgent)) {
-		return {
-			os:"open bsd",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/sunos/i.test(userAgent)) {
-		return {
-			os:"sunos",
-			userAgent:userAgent
-		}
-	}
-
-
-
-
-
-
-	if (/crkey/i.test(userAgent)) {
-		return {
-			os:"chromecast",
-			userAgent:userAgent
-		}
-	}
-
-	if (/appletv/i.test(userAgent)) {
-		return {
-			os:"apple tv",
-			userAgent:userAgent
-		}
-	}
-
-	if (/wiiu/i.test(userAgent)) {
-		return {
-			os:"nintendo wiiu",
-			userAgent:userAgent
-		}
-	}
-
-	if (/nintendo 3ds/i.test(userAgent)) {
-		return {
-			os:"nintendo 3ds",
-			userAgent:userAgent
-		}
-	}
-
-	if (/playstation/i.test(userAgent)) {
-		return {
-			os:"playstation",
-			userAgent:userAgent
-		}
-	}
-
-	if (/kindle/i.test(userAgent)) {
-		return {
-			os:"amazon kindle",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ cros /i.test(userAgent)) {
-		return {
-			os:"chrome os",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/ubuntu/i.test(userAgent)) {
-		return {
-			os:"ubuntu",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/googlebot/i.test(userAgent)) {
-		return {
-			os:"google bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/bingbot/i.test(userAgent)) {
-		return {
-			os:"bing bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/yahoo! slurp/i.test(userAgent)) {
-		return {
-			os:"yahoo bot",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	return {
-		os: false,
-		userAgent:userAgent
-	};
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getStyle = function (eleOrId, style) {
-    var element;
-
-    if (typeof (eleOrId) == "string") {
-        element = document.getElementById(eleOrId);
-        if (!element) {
-            var msg = "getComputerStyle(elementOrId,style): usage error!";
-            msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
-            throw (msg);
-        }
-    } else {
-        element = eleOrId;
-    }
-
-
-    if (!document.defaultView) {
-        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
-        throw (msg);
-    }
-
-    if (!document.defaultView.getComputedStyle) {
-        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
-        throw (msg);
-    }
-
-    var sd = document.defaultView.getComputedStyle(element, null);
-
-    if (!sd[style]) {
-        var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
-        msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
-        throw (msg);
-    }
-
-    return sd[style];
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.hasClass = function(element, cls) {
-    return element.classList.contains(cls);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.addClass = function(element,cls){
-    element.classList.add(cls);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.removeClass = function(element,cls){
-    element.classList.remove(cls);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isBreakPoint = function(bp) {
-    // The breakpoints that you set in your css
-    var bps = [320, 480, 768, 1024];
-    var w = window.innerWidth;
-    var min, max;
-    for (var i = 0, l = bps.length; i < l; i++) {
-      if (bps[i] === bp) {
-        min = bps[i-1] || 0;
-        max = bps[i];
-        break;
-      }
-    }
-    return w > min && w <= max;
-  }
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.ready = function (callback) {
-	// IE9+
-	if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-		callback();
-	} else {
-		document.addEventListener("DOMContentLoaded", function(){
-			// Adds a little delay but is a good thing
-			setTimeout(callback,10);
-		});
-	}
-}
-window.onReady = function(callback){ window.ready(callback); }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.AFTCLockBodyParams = {
-	pageYOffset: null,
-	elementId: ""
-};
-window.lockBody = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
-				window.AFTCLockBodyParams[key] = arguments[0][key];
-			} else {
-				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
-			}
-		}
-	} else {
-		var usage = "\n";
-		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
-		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
-		usage += "unlockBody();" + "\n";
-		throw (usage);
-	}
-
-	if (window.pageYOffset) {
-		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
-
-		$('html, body').css({
-			top: -(window.AFTCLockBodyParams.pageYOffset)
-		});
-	}
-
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "100%",
-		overflow: "hidden"
-	});
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.unlockBody = function () {
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "",
-		overflow: ""
-	});
-
-	$('html, body').css({
-		top: ''
-	});
-
-	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-	window.setTimeout(function () {
-		window.AFTCLockBodyParams.pageYOffset = null;
-	}, 0);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.centerAbsoluteElement = function (eleOrEleId) {
-	var element;
-
-	if (typeof (eleOrEleId) === "string") {
-		element = document.getElementById(eleOrEleId);
-		if (!element) {
-			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
-		}
-	}
-
-	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
-	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
-	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
-	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
-
-	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
-	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
-	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
-	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
-
-	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
-	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
-	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
-	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
-
-	var offsetWidth = parseInt(element.offsetWidth);
-	var offsetHeight = parseInt(element.offsetHeight);
-
-	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
-	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
-
-	element.style.left = tx + "px";
-	element.style.top = ty + "px";
-
-	// element.css("left", tx);
-	// element.css("top", ty);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 window.setCookie = function (name, value) {
@@ -1386,218 +955,16 @@ window.getCookie = function (name) {
 
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.removeAllSelectOptions = function (selectBoxId) {
-	var i,
-		element = document.getElementById(selectBoxId);
-
-	if (element) {
-		for (i = element.options.length - 1; i >= 0; i--) {
-			element.remove(i);
-		}
-	}
-
+window.validateEmail = function (email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
-
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.checkboxToggleContent = function (cb, ids, showOnCheck) {
-	var msg = "aftc.js > checkboxShowHide > incorrect usage!\n";
-	msg += "checkboxHideShow(arg1,arg2,arg3)" + "\n";
-	msg += "arg1 = checkbox element || checkbox element id" + "\n";
-	msg += "arg2 = elementIdToShowHodeToggle || ArrayOfElementIdsToShowHide toggle" + "\n";
-	msg += "arg3 (optional) = boolean : true (default) = show items on check || false = hide items on check" + "\n";
-
-	var checkbox;
-
-	if (typeof (cb) == "string") {
-		checkbox = document.getElementById(cb);
-		if (!cb) {
-			log("checkboxShowHide argument 1 ID was not found on the DOM! Check for typos")
-			throw (msg);
-		}
-	}
-
-	if (cb.type && cb.type != 'checkbox') {
-		log("checkboxShowHide argument 1 was not a checkbox element or id of a checkbox!")
-		throw (msg);
-	}
-
-
-	if (!ids || ids == '' || ids.length < 1) {
-		log("checkboxShowHide argument 2 is not valid!")
-		throw (msg);
-	}
-
-
-	if (typeof (showOnCheck) == "undefined") {
-		showOnCheck = true;
-	}
-
-	var itemsToShowHide = [];
-
-	if (typeof (ids) == "string") {
-		var element = document.getElementById(ids);
-		if (!element) {
-			log("Unable to find elemnt id [" + ids + "] on page!\n" + msg);
-		}
-		itemsToShowHide.push(element);
-
-	} else if (isArray(ids)) {
-		log("PARSING ARRAY");
-		for (var index = 0; index < ids.length; index++) {
-			var id = ids[index];
-			log("going to look for element with id of [" + id + "]");
-			var element = document.getElementById(id);
-			if (!element) {
-				throw ("Unable to find elemnt id [" + id + "] on page!\n" + msg);
-			}
-			itemsToShowHide.push(element);
-		}
-
-	}
-
-
-	// Take note of each elements style.display value as we will want to restore it
-	//.setAttribute('data', "icon:
-	//document.getElementById('item1').dataset.icon
-
-
-	for (var index = 0; index < itemsToShowHide.length; index++) {
-		var element = itemsToShowHide[index];
-		var currentDisplayStyle = element.style.display;
-		var originalDisplayStyle = element.getAttribute("data-display");
-		if (!element.dataset.display) {
-			//displayStyle = getStyle(element,"display"); // This would make it dependent on misc.js
-			var sd = document.defaultView.getComputedStyle(element, null);
-			currentDisplayStyle = sd.display;
-			originalDisplayStyle = currentDisplayStyle;
-			element.setAttribute("data-display", originalDisplayStyle);
-		}
-
-		var style = "";
-
-		if (cb.checked && showOnCheck) {
-			style = originalDisplayStyle;
-		} else if (cb.checked && !showOnCheck) {
-			style = "none";
-		} else if (!cb.checked && showOnCheck) {
-			style = "none";
-		} else {
-			style = originalDisplayStyle;
-		}
-
-		//log("Setting [" + element.id + "] style.display to [" + style + "]");
-		element.style.display = style;
-
-	}
-
-	// log("---");
-	// log("currentDisplayStyle = [" + currentDisplayStyle + "]");
-	// log("originalDisplayStyle = [" + originalDisplayStyle + "]");
-
-	// show by elementId
-	var elementToShow = document.getElementById(ids);
-	if (elementToShow) {
-
-
-	}
-
-	/*
-	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
-	$state = $state.toLowerCase();
-
-	if ($state.checked) {
-		jQuery("#" + $elementIdForHideShow).slideDown();
-	} else {
-		jQuery("#" + $elementIdForHideShow).slideUp();
-	}
-	*/
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.isChecked = function (id) {
-	return document.getElementById(id).checked;
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.isNumberKey = function (evt) {
-	var charCode = (evt.which) ? evt.which : event.keyCode;
-	if (charCode > 31 && (charCode < 48 || charCode > 57))
-		return false;
-
-	return true;
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-
-window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
-	var element;
-	
-	if (typeof(selectElementIdOrElement) == "string"){
-		element = document.getElementById(selectElementIdOrElement);
-		if (!element){
-			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + selectElementIdOrElement + "]");
-		}
-	}
-
-	if( typeof(selectElementIdOrElement) == "object"){
-		element = selectElementIdOrElement;
-	}
-
-
-	
-	if (typeof(j) == "string"){
-		j = JSON.parse(j);
-	}
-
-	for (var i = 0; i < j.length; i++) {
-		var label = j[i][labelKey];
-		var data = j[i][valueKey];
-		
-		var option = document.createElement("option");
-		option.text = label;
-		option.value = data;
-		//log(option);
-		element.add(option);
-
-		
-	}
-
-
+window.isValidEmail = function (email) {
+	return validateEmail(email);
 }
 
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.limitLengthInWords = function (element, maxWords) {
-	var value = element.value,
-		wordCount = value.split(/\S+/).length - 1,
-		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
-	if (wordCount >= maxWords) {
-		element.value = value.match(re);
-		document.getElementById('word_count').innerHTML = "";
-		wcount_valid = true;
-	} else {
-		document.getElementById('word_count').innerHTML = (maxWords - wordCount) + " words remaining";
-		wcount_valid = false;
-	}
-
-	return wcount_valid;
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 
@@ -1628,6 +995,40 @@ window.generateNoise = function(canvasId, width, height, opacity) {
 
 
 // This is for animations that have no dependancies (functions that use jquery and gsap have their own files)
+
+
+// t 0 > 1
+window.AFTCEase = {
+    // no easing, no acceleration
+    linear: function (t) { return t },
+    // accelerating from zero velocity
+    easeInQuad: function (t) { return t*t },
+    // decelerating to zero velocity
+    easeOutQuad: function (t) { return t*(2-t) },
+    // acceleration until halfway, then deceleration
+    easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+    // accelerating from zero velocity 
+    easeInCubic: function (t) { return t*t*t },
+    // decelerating to zero velocity 
+    easeOutCubic: function (t) { return (--t)*t*t+1 },
+    // acceleration until halfway, then deceleration 
+    easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+    // accelerating from zero velocity 
+    easeInQuart: function (t) { return t*t*t*t },
+    // decelerating to zero velocity 
+    easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+    // acceleration until halfway, then deceleration
+    easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+    // accelerating from zero velocity
+    easeInQuint: function (t) { return t*t*t*t*t },
+    // decelerating to zero velocity
+    easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+    // acceleration until halfway, then deceleration 
+    easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+}
+
+
+
 
 /* NOTES:
 - TransitionEnd events can fire multiple times when animating css styles which include other styles such as border, has 4 sides, margin etc (flag and event remove is in place to fix this)
@@ -2090,17 +1491,6 @@ window.scrollToElement = function (elementIdOrQuery, arg_duration, offset) {
     animate();
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-window.validateEmail = function (email) {
-	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	return re.test(email);
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-window.isValidEmail = function (email) {
-	return validateEmail(email);
-}
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getHSLColor = function (value) {
     //value from 0 to 1
@@ -2477,3 +1867,633 @@ AFTC.Color = function (arg_color) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.isFireFox = function () {
+	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	return is_firefox;
+}
+window.isChrome = function () {
+	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	return is_chrome;
+}
+window.isSafari = function () {
+	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+	return is_safari;
+}
+window.isIE = function () {
+	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
+	return is_ie;
+}
+window.getIEVersion = function () {
+	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
+	return match ? parseInt(match[1]) : undefined;
+}
+window.getBrowser = function () {
+	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+	if (/trident/i.test(M[1])) {
+		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+		return 'IE';
+	}
+	if (M[1] === 'Chrome') {
+		tem = ua.match(/\bOPR\/(\d+)/);
+		if (tem != null) {
+			return 'Opera';
+		}
+	}
+	M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+	if ((tem = ua.match(/version\/(\d+)/i)) != null) {
+		M.splice(1, 1, tem[1]);
+	}
+	return M[0];
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getOS = function (testAgent) {
+	var userAgent;
+
+	if (!testAgent){
+		userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	} else {
+		userAgent = testAgent;
+	}
+
+	userAgent = userAgent.toLowerCase();
+
+	
+
+
+	// Windows Phone must come first because its UA also contains "Android"!
+	if (/windows phone/i.test(userAgent)) {
+		return {
+			os:"windows phone",
+			userAgent:userAgent
+		}
+	}
+
+	// Samsung Browser detection S8
+	if (/samsungbrowser/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	if (/android/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
+	if (/ipad|iphone|ipod/i.test(userAgent)) {
+		return {
+			os:"ios",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	// Windows Phone must come first because its UA also contains "Android"
+	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
+		return {
+			os:"windows",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/os x/i.test(userAgent)) {
+		return {
+			os:"osx",
+			userAgent:userAgent
+		}
+	}
+
+	if (/macintosh|osx/i.test(userAgent)) {
+		return {
+			os:"osx",
+			userAgent:userAgent
+		}
+	}
+
+	if (/openbsd/i.test(userAgent)) {
+		return {
+			os:"open bsd",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/sunos/i.test(userAgent)) {
+		return {
+			os:"sunos",
+			userAgent:userAgent
+		}
+	}
+
+
+
+
+
+
+	if (/crkey/i.test(userAgent)) {
+		return {
+			os:"chromecast",
+			userAgent:userAgent
+		}
+	}
+
+	if (/appletv/i.test(userAgent)) {
+		return {
+			os:"apple tv",
+			userAgent:userAgent
+		}
+	}
+
+	if (/wiiu/i.test(userAgent)) {
+		return {
+			os:"nintendo wiiu",
+			userAgent:userAgent
+		}
+	}
+
+	if (/nintendo 3ds/i.test(userAgent)) {
+		return {
+			os:"nintendo 3ds",
+			userAgent:userAgent
+		}
+	}
+
+	if (/playstation/i.test(userAgent)) {
+		return {
+			os:"playstation",
+			userAgent:userAgent
+		}
+	}
+
+	if (/kindle/i.test(userAgent)) {
+		return {
+			os:"amazon kindle",
+			userAgent:userAgent
+		}
+	}
+
+	if (/ cros /i.test(userAgent)) {
+		return {
+			os:"chrome os",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	if (/ubuntu/i.test(userAgent)) {
+		return {
+			os:"ubuntu",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/googlebot/i.test(userAgent)) {
+		return {
+			os:"google bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/bingbot/i.test(userAgent)) {
+		return {
+			os:"bing bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/yahoo! slurp/i.test(userAgent)) {
+		return {
+			os:"yahoo bot",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	return {
+		os: false,
+		userAgent:userAgent
+	};
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.AFTCLockBodyParams = {
+	pageYOffset: null,
+	elementId: ""
+};
+window.lockBody = function () {
+	if (arguments[0] && typeof (arguments[0]) == "object") {
+		for (var key in arguments[0]) {
+			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
+				window.AFTCLockBodyParams[key] = arguments[0][key];
+			} else {
+				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
+			}
+		}
+	} else {
+		var usage = "\n";
+		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
+		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
+		usage += "unlockBody();" + "\n";
+		throw (usage);
+	}
+
+	if (window.pageYOffset) {
+		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+
+		$('html, body').css({
+			top: -(window.AFTCLockBodyParams.pageYOffset)
+		});
+	}
+
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "100%",
+		overflow: "hidden"
+	});
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.unlockBody = function () {
+	$('#' + window.AFTCLockBodyParams.elementId).css({
+		height: "",
+		overflow: ""
+	});
+
+	$('html, body').css({
+		top: ''
+	});
+
+	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
+	window.setTimeout(function () {
+		window.AFTCLockBodyParams.pageYOffset = null;
+	}, 0);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.centerAbsoluteElement = function (eleOrEleId) {
+	var element;
+
+	if (typeof (eleOrEleId) === "string") {
+		element = document.getElementById(eleOrEleId);
+		if (!element) {
+			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
+		}
+	}
+
+	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
+	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
+	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
+	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
+
+	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
+	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
+	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
+	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
+
+	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
+	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
+	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
+	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
+
+	var offsetWidth = parseInt(element.offsetWidth);
+	var offsetHeight = parseInt(element.offsetHeight);
+
+	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
+	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
+
+	element.style.left = tx + "px";
+	element.style.top = ty + "px";
+
+	// element.css("left", tx);
+	// element.css("top", ty);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getStyle = function (eleOrId, style) {
+    var element;
+
+    if (typeof (eleOrId) == "string") {
+        element = document.getElementById(eleOrId);
+        if (!element) {
+            var msg = "getComputerStyle(elementOrId,style): usage error!";
+            msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
+            throw (msg);
+        }
+    } else {
+        element = eleOrId;
+    }
+
+
+    if (!document.defaultView) {
+        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
+        throw (msg);
+    }
+
+    if (!document.defaultView.getComputedStyle) {
+        var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
+        throw (msg);
+    }
+
+    var sd = document.defaultView.getComputedStyle(element, null);
+
+    if (!sd[style]) {
+        var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
+        msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
+        throw (msg);
+    }
+
+    return sd[style];
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.hasClass = function(element, cls) {
+    return element.classList.contains(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.addClass = function(element,cls){
+    element.classList.add(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.removeClass = function(element,cls){
+    element.classList.remove(cls);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isBreakPoint = function(bp) {
+    // The breakpoints that you set in your css
+    var bps = [320, 480, 768, 1024];
+    var w = window.innerWidth;
+    var min, max;
+    for (var i = 0, l = bps.length; i < l; i++) {
+      if (bps[i] === bp) {
+        min = bps[i-1] || 0;
+        max = bps[i];
+        break;
+      }
+    }
+    return w > min && w <= max;
+  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.removeAllSelectOptions = function (selectBoxId) {
+	var i,
+		element = document.getElementById(selectBoxId);
+
+	if (element) {
+		for (i = element.options.length - 1; i >= 0; i--) {
+			element.remove(i);
+		}
+	}
+
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.checkboxToggleContent = function (cb, ids, showOnCheck) {
+	var msg = "aftc.js > checkboxShowHide > incorrect usage!\n";
+	msg += "checkboxHideShow(arg1,arg2,arg3)" + "\n";
+	msg += "arg1 = checkbox element || checkbox element id" + "\n";
+	msg += "arg2 = elementIdToShowHodeToggle || ArrayOfElementIdsToShowHide toggle" + "\n";
+	msg += "arg3 (optional) = boolean : true (default) = show items on check || false = hide items on check" + "\n";
+
+	var checkbox;
+
+	if (typeof (cb) == "string") {
+		checkbox = document.getElementById(cb);
+		if (!cb) {
+			log("checkboxShowHide argument 1 ID was not found on the DOM! Check for typos")
+			throw (msg);
+		}
+	}
+
+	if (cb.type && cb.type != 'checkbox') {
+		log("checkboxShowHide argument 1 was not a checkbox element or id of a checkbox!")
+		throw (msg);
+	}
+
+
+	if (!ids || ids == '' || ids.length < 1) {
+		log("checkboxShowHide argument 2 is not valid!")
+		throw (msg);
+	}
+
+
+	if (typeof (showOnCheck) == "undefined") {
+		showOnCheck = true;
+	}
+
+	var itemsToShowHide = [];
+
+	if (typeof (ids) == "string") {
+		var element = document.getElementById(ids);
+		if (!element) {
+			log("Unable to find elemnt id [" + ids + "] on page!\n" + msg);
+		}
+		itemsToShowHide.push(element);
+
+	} else if (isArray(ids)) {
+		// log("PARSING ARRAY");
+		for (var index = 0; index < ids.length; index++) {
+			var id = ids[index];
+			// log("going to look for element with id of [" + id + "]");
+			var element = document.getElementById(id);
+			if (!element) {
+				throw ("Unable to find elemnt id [" + id + "] on page!\n" + msg);
+			}
+			itemsToShowHide.push(element);
+		}
+
+	}
+
+
+	// Take note of each elements style.display value as we will want to restore it
+	//.setAttribute('data', "icon:
+	//document.getElementById('item1').dataset.icon
+
+
+	for (var index = 0; index < itemsToShowHide.length; index++) {
+		var element = itemsToShowHide[index];
+		var currentDisplayStyle = element.style.display;
+		var originalDisplayStyle = element.getAttribute("data-display");
+		if (!element.dataset.display) {
+			//displayStyle = getStyle(element,"display"); // This would make it dependent on misc.js
+			var sd = document.defaultView.getComputedStyle(element, null);
+			currentDisplayStyle = sd.display;
+			originalDisplayStyle = currentDisplayStyle;
+			element.setAttribute("data-display", originalDisplayStyle);
+		}
+
+		var style = "";
+
+		if (cb.checked && showOnCheck) {
+			style = originalDisplayStyle;
+		} else if (cb.checked && !showOnCheck) {
+			style = "none";
+		} else if (!cb.checked && showOnCheck) {
+			style = "none";
+		} else {
+			style = originalDisplayStyle;
+		}
+
+		//log("Setting [" + element.id + "] style.display to [" + style + "]");
+		element.style.display = style;
+
+	}
+
+	// log("---");
+	// log("currentDisplayStyle = [" + currentDisplayStyle + "]");
+	// log("originalDisplayStyle = [" + originalDisplayStyle + "]");
+
+	// show by elementId
+	var elementToShow = document.getElementById(ids);
+	if (elementToShow) {
+
+
+	}
+
+	/*
+	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
+	$state = $state.toLowerCase();
+
+	if ($state.checked) {
+		jQuery("#" + $elementIdForHideShow).slideDown();
+	} else {
+		jQuery("#" + $elementIdForHideShow).slideUp();
+	}
+	*/
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.isChecked = function (id) {
+	return document.getElementById(id).checked;
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.isNumberKey = function (evt) {
+	var charCode = (evt.which) ? evt.which : event.keyCode;
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+		return false;
+
+	return true;
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
+	var element;
+	
+	if (typeof(selectElementIdOrElement) == "string"){
+		element = document.getElementById(selectElementIdOrElement);
+		if (!element){
+			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + selectElementIdOrElement + "]");
+		}
+	}
+
+	if( typeof(selectElementIdOrElement) == "object"){
+		element = selectElementIdOrElement;
+	}
+
+
+	
+	if (typeof(j) == "string"){
+		j = JSON.parse(j);
+	}
+
+	for (var i = 0; i < j.length; i++) {
+		var label = j[i][labelKey];
+		var data = j[i][valueKey];
+		
+		var option = document.createElement("option");
+		option.text = label;
+		option.value = data;
+		//log(option);
+		element.add(option);
+
+		
+	}
+
+
+}
+
+
+
+
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.limitLengthInWords = function (element, maxWords) {
+	var value = element.value,
+		wordCount = value.split(/\S+/).length - 1,
+		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+	if (wordCount >= maxWords) {
+		element.value = value.match(re);
+		document.getElementById('word_count').innerHTML = "";
+		wcount_valid = true;
+	} else {
+		document.getElementById('word_count').innerHTML = (maxWords - wordCount) + " words remaining";
+		wcount_valid = false;
+	}
+
+	return wcount_valid;
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -

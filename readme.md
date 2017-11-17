@@ -7,18 +7,83 @@
 
 #### <b>Want the NodeJS version? https://github.com/DarceyLloyd/AFTC.Node.Libs</b>
 
-<br>
+<br><br>
 
 
 
 
-### <b>Installation</b>
+
+
+# <b>Main features</b>
+
+## <b>onReady(function) || ready(function)</b>
+No more jQuery for document.ready or addEventListener DOMLoaded etc, just use onReady(fn); or ready(fn);
+
+## <b>log(arg)</b>
+No need to type <b>console.</b>log(arg) anymore! Just type log!
+
+## <b>configLog({options})</b>
+Want to log to a HTML element for visual debug using log?
+```
+// This will dump log usage to a html element with ID of debug
+configLog({autoLogTo:"debug"});
+//configLog({autoLogEnable:false});
+log("Darcey@AllForTheCode.co.uk - AFTC.JS");
+```
+
+## <b>getElementById(str)</b>
+No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
+
+## <b>querySelector(str)</b>
+No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
+
+## <b>AFTC.Animate("#box1", onComplete).ChainFunctions()</b>
+```
+    AFTC.Animate("#box1",myOnCompleteFunction)
+        // Chain functions
+        .delay(1) // delay in seconds
+        .prop("width",100,0.5) // prop(style,targetValue,duration)
+        .prop("opacity",0,0.5);
+        .prop("backgroundColor","#990000",2)
+```
+
+## <b>AFTC.Color(color)</b>
+- <b>lighten</b>(percent);
+- <b>darken</b>(percent);
+- And more, full details below
+
+Lightens or darkens a color like sass and less does.
+```
+    var color = new AFTC.Color([10,20,30]);
+    color.lighten(10);
+    color.darken(10);
+    log("color.getHex() = " + color.getHex());
+    log("color.getRGB().r = " + color.getRGB().r);
+    log("color.getRGB().g = " + color.getRGB().g);
+    log("color.getRGB().b = " + color.getRGB().b);
+    log("color.getRGBString() = " + color.getRGBString());
+    // See example.htm for further usage
+```
+
+## <b>addEvent(obj,type,callback,eventReturn)</b>
+Detects addEventListener availability and switches to attachEvent if it's not available.
+
+
+
+<br><br><br><br>
+
+
+
+
+# <b>Installation</b>
 ```
 npm i aftc.js
 gulp build
 ```
 
-### <b>Build</b>
+<br><br><br><br>
+
+# <b>Build</b>
 You can use webpack or gulp, I pref' gulp at the moment, I am also getting better file sizes minified with gulp than webpack.
 
 ```
@@ -26,119 +91,89 @@ gulp build
 gulp watch
 ```
 
+<br><br><br><br>
 
-
-### <b>Build Guide</b>:
+# <b>Build Guide</b>:
 io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
 
 - <b>aftc.min.js is less than 25KB!</b>
 
-<b>NOTE: It is recommended that debug.js and essentials.js be the first and always included as other modules of the aftc.js suite depend on them.</b>
-
-### Step by step
+## <b>Step by step</b>
 
 - Open aftc.js directory in VSCode
-- Open "gulpfile.js"
-- Comment out or uncomment any of the imports that you want or don't want
+- Open "gulpfile.js" and edit / comment out or uncomment any of the imports that you want or don't want
+
+```
+var jsFiles = [
+    
+    // The base, the essentials, the foundations
+    "./src/base.js", // Dependencies: none
+
+    // Dev assist utility functions / tools
+    "./src/string.js", // Dependencies: none
+    "./src/random.js", // Dependencies: none
+    "./src/conversion.js", // Dependencies: none
+    "./src/datetime.js", // Dependencies: none
+    "./src/cookies.js", // Dependencies: none
+    "./src/validation.js", // Dependencies: none
+    "./src/graphics.js", // Dependencies: none
+
+    // Utilities / tools which focus on a specific area / task(s)
+    "./src/animation.js", // Dependencies: none
+    './src/color.js', // Dependencies: none
+    "./src/detection.js", // Dependencies: none
+    "./src/dom.js", // Dependencies: none
+    "./src/styling.js", // Dependencies: none
+    "./src/form.js", // Dependencies: none
+    // "./src/io.js", // Dependencies: jQuery >= 1.12
+];
+
+```
+
 - Open terminal in VSCode by pressing CTRL + '
 - Type into terminal
 ```
 gulp build
 ```
-- Now you can either copy aftc.min.js to your project or add it to your gulp/webpack concatination and mangle scripts or go pro and add it's individual scripts to your build method.
-
-<b>NOTE: It is recommended that debug.js and essentials.js be the first and always included as other modules of the aftc.js suite depend on them.</b>
-
-
-<br>
-
-## <b>What's new?</b>
-
-### 1.2.1 - scrollToElement(element||id||query,sec_duration:number,offset:number)
-- scrollToElement(elementId,query,ele,duraction,offset) - no longer dependenct on jQuery or GSAP
-- getElement(element||elementId||querySelector)
-
-
-### 1.2.0 - AFTC.Animate 1.0 has been added! (Only 3kb minified!)
- -  Added AFTC.Animate(elementQuery,onComplete)<br>
- Chain animations from here on in via:
-     - .delay(seconds)
-     - .set("cssStyle","value")
-     - .prop("cssStyle",targetValue,duration)
- ```
- AFTC.Animate("#box2", animateBox2)
-    .delay(3)
-    .prop("width",100,0.5)
-    .prop("height",100,0.5);
-    .prop("opacity",0,0.5);
-    .prop("backgroundColor","#990000",2)
-```
-
-For further usage details and example in use see tests/animation.htm
-- array.contains(needle)
-```
-var itemList = ["item1","item2"];
-var isItem1InItemList = itemList.contains("item1");
-```
-
-- ready() & onReady()<br>
-No need for typing addEventListener DOMLoaded or using jquery for document.ready, just use
-```
-onReady(function(){
-    // do your thing
-})
-
-// or
-
-ready(function(){
-    // do your thing
-})
-```
-
-- isNumeric()<br>
-A simple check to see if a var is a numeric value
-
-- getAnchorFromUrl(url)
-- isAlphaNumeric(str)
-- String.startsWith(str) - polly fill for older browsers
-- String.endsWith(str) - polly fill for older browsers
-- getStringBetween(str,start,end)
-- getAllStringsBetween(str,start,end)
-- hasClass(element,className)
-- addClass(element,className)
-- removeClass(element,className)
-
-
-### 1.1.1
-- Bit of a re-structure on the files and some new ones created eg essentials.js and styling.js
-- getElementById(str) - No more typing document.getElementById, now its just getElementById
-- querySelector(str) - No more typing document.querySelector, now its just querySelector
-- getElementById(id) - now caches element queries, is a lot lot faster than the normal document.getElementById but you wouldn't notice unless you were running massive queries all the time
-- querySelector(str) - now caches element queries same as getElementById
-- logTo(elementId,message) - reverted back to old version, I over engineered the last version and was no longer happy with it, broke my own rule, "keep it simple!"
 
 
 
-<br><br><br><br><br><br>
+
+<br><br><br><br>
+
+
+
 
 
 # <b>So what's inside?</b>
 #### Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
-<br>
-<br>
+<br><br>
 
 
 
 
-# <b>debug.js</b>
-## isNode(arg)
-returns true if arg is a DOM node
-
-## isElement(arg)
-returns true if arg is a DOM element
+# <b>base.js</b>
 
 ## <b>log(arg)</b>
-No more typing console.log, now you can just type log!
+No need to type console.log anymore, can also log to html elments (see configLog)
+
+```
+var msg = "Hello World!";
+log("msg = " + msg);
+```
+
+
+## <b>configLog({options})</b>
+```
+// Will also log to HTML element with id debug
+
+configLog({autoLogTo:"debug"});
+//configLog({autoLogEnable:false}); // turn it off
+//configLog({autoLogEnable:true}); // turn it on
+
+var a = 1;
+log("a = " + a);
+```
 
 ## <b>logEnable()</b> & <b>logDisable()</b>
 Disable or Enable log, good for switching debug log outputs on and off quick and easy, can also be done per a file.
@@ -149,19 +184,8 @@ Still living in the actionscript days? Still sometimes type trace? trace is back
 ## <b>logTo(elementId,message)</b>
 Want to see your log outputs on the page? logTo will dump them to a HTML element of choice for you, as well as logging them out to the console.
 
-## <b>openDebugWindow(str)</b>
-Aliases: stringToWindow(str) & stringToPopup(str)
-
-Want to output a string to a popup window, just call openDebugWindow("hello world") and it will be done (note: most browsers will block this javascript function thse days, so you may want to click allow on any warnings that appear when you want to use this function)
-
-## <b>dumpArgs()</b>
-Will dump arguments[0] to the console for you in key value pairs, key = value.
-
-
-<br><br><br>
-
-# <b>essentials.js</b>
-
+## <b>logObjTo(elementId,obj)</b>
+Log an object to a html element.
 
 ## <b>getElementById(str)</b>
 No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
@@ -172,28 +196,75 @@ No more typing document.querySelector(str)! It's shorter and runs much quicker a
 ## <b>getElement(str)</b>
 Combines element type check, elementId and query selector to return the element to you or false.
 
-## <b>addEvent(obj,type,callback,eventReturn)</b>
-Detects addEventListener availability and switches to attachEvent if it's not available.
+# openDebugWindow(str) || stringToWindow(str)
+Opens a window and inserts a string into it.
 
-## <b>isArray(arg)</b>
-returns true if you supply it with an array, false if not.
+# arrayRemoveIndex(array, index)
+Removes an index from an array
 
-## <b>isNumeric(arg)</b>
-returns true if you supply it with an integer,number,float,double, false if not.
+# isStringInArray(string, array)
+Checks if any items in the array match a string
 
-## <b>getFunctionName(fn)</b>
-Attempts to returns the name of a function.
+## yourArray.<b>contains</b>(needle)
+Returns true if any items in yourArray match needle, false if not.
 
+## getMaxFromArray(array)
 
+## getMinFromArray(array)
 
+## shuffleArray(array) || arrayShuffle(array)
+Will randomly use Method 1 and 2 below
 
+## arrayShuffle1(array)
+Method 1
 
-<br><br><br>
+## arrayShuffle2(array)
+Method 2
 
-# <b>misc.js</b>
+## isAlphaNumeric(arg)
+Returns true or false if arg is alpha numeric
 
-## <b>benchmark(benchMarkName)</b>
-A quick and easy benchmarking function.
+## isNode(arg)
+
+## isElement(arg)
+Returns true is arg is an element
+
+## isElement2(arg)
+Returns true is arg is an element
+
+## radToDeg(input) || rad2deg(input)
+Converts radians to degrees
+
+## degToRad(input) || deg2rad(input)
+Converts radians to degrees
+
+## boolToString(arg)
+Converts boolean to string
+
+## stringToBool(arg)
+Converts string to boolean
+
+## getBooleanFrom(arg)
+Attempts to get a boolean from anything you give it
+
+## isBoolean(arg)
+Returns true if arg is boolean, false if its not
+
+## isNumeric(arg)
+Returns true if arg is a number, false if not
+
+## isArray(arg)
+Returns true if arg is an array, false if not
+
+## get FunctionName(fn)
+Attempts to return the name of the function fn
+
+## redirect(url)
+Alternative to typing self.location.href = url;
+
+## Benchmark
+Want to benchmark your scripts?
+
 ```
 var bench = Benchmark();
 // Do your stuff
@@ -201,78 +272,32 @@ var benchTime = bench.stop();
 log("Your benchmark was completed in " + benchTime + "ms");
 ```
 
-## <b>redirect(url)</b>
-Redirct to a url of your choice.
+## getRandomInt(min,max) || getRandom(min,max)
+Returns a random number between min and max
 
+## getRandomString(length)
+Returns a random string of specified length
 
+## guid()
+Returns a GUID
 
+## getArrayOfRandomNumbers(arraySize,min,max)
+Returns array of size of random number between min and max
 
-<br><br><br>
-
-
-# <b>animate.js</b>
-#### <b>Dependencies:</b> NONE<br><br>
-
-# <b>AFTC.Animate(elementQuerySelector,onComplete)</b>
-<b>Animate anything with ease.</b>
-
-You have access to any style in the element.style attributes/properties via the 3 chainable functions.
-
-.prop(style:String,targetValue:number||string,duration:number||float)
-
-.set(style:String,targetValue:number||string)
-
-.delay(duration in seconds)
-
-```
-// You have access to all the props in element.style
-        function animateBox1(){
-            AFTC.Animate("#box1", animateBox2)
-                .prop("width",100,0.5)
-                .prop("height",100,0.5)
-                .prop("padding",10,0.5)
-                .prop("left",100,0.5)
-                .prop("top",25,0.5)
-                .prop("backgroundColor","#000000",0.5)
-                .prop("color","#FFFFFF",0.5)
-                .prop("borderColor","#00FFFF",0.5)
-                .prop("borderWidth",5,0.5)
-                .prop("borderRadius",50,0.5)
-                .set("fontWeight","bold")
-                .set("fontSize","18px")
-                .set("textAlign","center")
-                .delay(2)
-                .prop("width",50,0.2)
-                .prop("height",50,0.2)
-                .prop("padding",0,0.2)
-                .prop("left",0,0.2)
-                .prop("top",0,0.2)
-                .prop("backgroundColor","#FFCC00",0.2)
-                .prop("color","#000000",0.2)
-                .prop("borderColor","#990000",0.2)
-                .prop("borderWidth",2,0.2)
-                .prop("borderRadius",0,0.2)
-                .set("fontWeight","normal")
-                .set("fontSize","normal")
-                .set("textAlign","inherit");
-        }
-```
-
-## <b>scrollToElement(elementId||query||element,duration,offset)</b>
-
-```
-// no offset
-scrollToElement("myElementId",0.5);
-
-// with offset
-scrollToElement("myElementId",0.5,-100);
-```
+## getArrayOfRandomStrings(arraySize,strLength)
+Returns array of size of random strings of size strLength
 
 
 
 
 
-<br><br><br>
+
+
+<br><br><br><br>
+
+
+
+
 
 
 # <b>color.js</b>
@@ -320,31 +345,82 @@ Converts an rgb object to a hsv object.
 
 
 
-<br><br><br>
+<br><br><br><br>
+
+
+
+
+
+# <b>animate.js</b>
+#### <b>Dependencies:</b> NONE<br><br>
+
+# <b>AFTC.Animate(elementQuery,onComplete)</b>
+<b>Animate anything with ease.</b>
+
+You have access to any style in the element.style attributes/properties via the 3 chainable functions.
+
+.prop(style:String,targetValue:number||string,duration:number||float)
+
+.set(style:String,targetValue:number||string)
+
+.delay(duration in seconds)
+
+```
+// You have access to all the props in element.style
+// Will repeat forever as onComplete is set to animateBox1
+function animateBox1(){
+    AFTC.Animate("#box1", animateBox1)
+        .prop("width",100,0.5)
+        .prop("height",100,0.5)
+        .prop("padding",10,0.5)
+        .prop("left",100,0.5)
+        .prop("top",25,0.5)
+        .prop("backgroundColor","#000000",0.5)
+        .prop("color","#FFFFFF",0.5)
+        .prop("borderColor","#00FFFF",0.5)
+        .prop("borderWidth",5,0.5)
+        .prop("borderRadius",50,0.5)
+        .set("fontWeight","bold")
+        .set("fontSize","18px")
+        .set("textAlign","center")
+        .delay(2)
+        .prop("width",50,0.2)
+        .prop("height",50,0.2)
+        .prop("padding",0,0.2)
+        .prop("left",0,0.2)
+        .prop("top",0,0.2)
+        .prop("backgroundColor","#FFCC00",0.2)
+        .prop("color","#000000",0.2)
+        .prop("borderColor","#990000",0.2)
+        .prop("borderWidth",2,0.2)
+        .prop("borderRadius",0,0.2)
+        .set("fontWeight","normal")
+        .set("fontSize","normal")
+        .set("textAlign","inherit");
+}
+```
+
+## <b>scrollToElement(elementId||query||element,duration,offset)</b>
+
+```
+// no offset
+scrollToElement("myElementId",0.5);
+
+// with offset
+scrollToElement("myElementId",0.5,-100);
+```
+
+
+
+
+
+<br><br><br><br>
 
 
 
 
 
 # <b>random.js</b>
-## <b>getRandomString(length:number)</b>
-<b>Aliases:</b> randomString()
-
-Returns a string of random characters between AZ and az to the length you specify.
-
-## <b>guid()</b>
-Returns a GUID.
-
-## <b>getRandom(min,max)</b>
-Aliases: getRandomInt(min,max);
-
-Returns a random number between the min and max you specify.
-
-## <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
-Returns an array of random numbers.
-
-## <b>getArrayOfRandomStrings(arraySize,strLength)</b>
-Returns an array of random strings.
 
 ## <b>getWeightedRandom(odds,iterations)</b>
 Will return a weighted random. If you ever wanted to balance your random numbers to favor a more specific output use this.
@@ -353,7 +429,10 @@ Will return a weighted random. If you ever wanted to balance your random numbers
 
 
 
-<br><br><br>
+
+<br><br><br><br>
+
+
 
 
 
@@ -380,9 +459,6 @@ Returns the last part of the URL
 ## <b>getAnchorFromUrl(url)</b>
 Return the anchor from the url.
 
-## <b>isAlphaNumeric(arg)</b>
-Returns true if you supply it with a number||float, false otherwise.
-
 ## <b>removeFileFromPath</b>
 Attempts to remove the file from a full file path, eg a/b/c/text.txt would return a/b/c/
 
@@ -402,7 +478,12 @@ Returns string between two strings.
 Returns an array of strings it finds of occurances between two strings.
 
 
-<br><br><br>
+
+
+
+
+<br><br><br><br>
+
 
 
 
@@ -417,74 +498,8 @@ Validates an email adddress (string) via regex.
 
 
 
-<br><br><br>
 
-
-
-
-
-# <b>array.js</b>
-
-## <b>arrayRemoveIndex(array,index)</b>
-Removed an index from an array.
-
-## <b>isArrayInString(string,array)</b>
-Checks to see if any array items match or are in a string.
-
-## <b>getMaxFromArray(array)</b>
-Returns the maximum value from an array.
-
-## <b>getMinFromArray(array)</b>
-Returns the minimum value from an array.
-
-## <b>shuffleArray(array)</b>
-Will shuffle an array and return it to you. There are multiple shuffle functions, if you use this one it will pick one at random. To use them directly use arrayShuffle1(arr) or arrayShuffle2(arr).
-
-## <b>arrayShuffle1(array)</b>
-Returns a shuffled array based on random index picking (classic).
-
-## <b>arrayShuffle2(array)</b>
-Returns a shuffled array based on crypto.getRandomValues (supposed to be the crypto devs method of choice).
-
-## <b>yourArray.<b>contains</b>(needle)</b>
-Returns true if any items in yourArray match needle, false if not.
-
-
-
-
-
-
-<br><br><br>
-
-
-
-
-
-
-
-# <b>conversion.js</b>
-
-## <b>radToDeg(radians)</b>
-<b>Aliases:</b> rad2deg(radians)<br>
-Converts radians to degrees.
-
-## <b>degToRad(degrees)</b>
-<b>Aliases:</b> deg2rad(degrees)<br>
-Converts degrees to radians.
-
-## <b>getBooleanFrom(arg)</b>
-Converts strings such as yes, y, 1, true, n, false etc as well as numbers and a few other data types.
-
-## <b>boolToString(boolean)</b>
-Converts a boolean to a string.
-
-
-
-
-
-
-
-<br><br><br>
+<br><br><br><br>
 
 
 
@@ -502,7 +517,10 @@ Reads a javascript cookie.
 
 
 
-<br><br><br>
+
+
+<br><br><br><br>
+
 
 
 
@@ -526,7 +544,9 @@ Gets a formatted datetime from the javascript Date() object. local:string can be
 
 
 
-<br><br><br>
+
+<br><br><br><br>
+
 
 
 
@@ -564,7 +584,9 @@ log(detected.userAgent);
 
 
 
-<br><br><br>
+
+<br><br><br><br>
+
 
 
 
@@ -572,17 +594,6 @@ log(detected.userAgent);
 
 
 # <b>dom.js</b>
-#### <b>Dependencies:</b> aftc.js/src/essentials.js<br>
-
-## <b>ready(function);</b> or <b>onReady(function);</b>
-No more jquery document.ready or addEventListener on DOM loaded, just use ready or onReady.
-```
-onReady(function(){
-
-});
-```
-
-
 ## <b>centerAbsoluteElement(element || elementId)</b>
 Attempts to center an absolute positioned element within your browsers current dimensions.
 
@@ -595,7 +606,8 @@ These functions can be used to lock and unlock the body element scroll capabilit
 
 
 
-<br><br><br>
+<br><br><br><br>
+
 
 
 
@@ -638,11 +650,7 @@ Will place a limit on the number of words you can enter. eg onKeyUp="limitLength
 
 
 
-
-
-
-<br><br><br>
-
+<br><br><br><br>
 
 
 
@@ -663,8 +671,9 @@ Loads a json file and sends it to a callback function (onSuccess).
 
 
 
+<br><br><br><br>
 
-<br><br><br>
+
 
 
 
@@ -692,53 +701,13 @@ Will generate noise / static / perlin noise on a canvas element.
 
 
 
-<br><br><br>
+
+
+<br><br><br><br>
 
 
 
 
-
-
-
-
-
-
-# <b>animation.jquery.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.12<br>
-
-## <b>scrollToElementID(id, speed, delay)</b>
-Scroll to an element specified by ID on the page, with speed and delay options.
-
-## <b>scrollToElementClass(class, speed, delay)</b>
-Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
-
-<br>
-<br>
-
-# <b>animation.gsap.js</b>
-## <b>If file size matters and jQuery is too big then use this version, make sure you have TweenLite.min.js and ScrollToPlugin.min.js in your gulp build file list.</b>
-#### <b>Dependencies:</b> gsap TweenLite & ScrollToPlugin<br>
-
-## <b>scrollToElementID(id, speed, delay)</b>
-Scroll to an element specified by ID on the page, with speed and delay options.
-
-## <b>scrollToElementClass(class, speed, delay)</b>
-Scroll to an element specified by CLASS NAME on the page, width speed and delay options.
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br>
-<br><br><br><br><br><br>
 
 
 ## <b>Found this useful? Please Donate...</b>

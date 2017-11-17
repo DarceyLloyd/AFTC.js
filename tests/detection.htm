@@ -22,16 +22,12 @@
 
         function init() {
             // Debug.js usage exmaples
-            log("Darcey@AllForTheCode.co.uk - AFTC.JS")
+            configLog({autoLogTo:"debug"});
+            //configLog({autoLogEnable:false});
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS");
 
-            // Persistive variable usage of logTo
-            logTo({
-                elementId: "debug",
-                logToConsole: true
-            });
-
-            logTo(getOS().os);
-            logTo(getOS().userAgent);
+            log(getOS().os);
+            log(getOS().userAgent);
 
 
             var userAgentStrings = [];
