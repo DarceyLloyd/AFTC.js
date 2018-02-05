@@ -341,7 +341,8 @@ Converts a number to hex string.
 ## rgb2hsv({r:0,g:0,b:0})</b>
 Converts an rgb object to a hsv object.
 
-
+## getRandomRGBColor()
+returns an rgb string with random color value
 
 
 

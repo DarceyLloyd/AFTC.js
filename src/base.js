@@ -10,6 +10,12 @@
 */
 
 
+// Var defs
+var AFTC = {};
+
+
+
+
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // Events / Event related functions
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -28,7 +34,7 @@ window.addEvent = function (obj, type, callback, eventReturn) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Replacement for jQuerys "$(document).ready(function(){})" for "ready(function(){})"
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.ready = function (callback) {
+window.onReady = function (callback) {
     // IE9+
     if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
         callback();
@@ -39,10 +45,143 @@ window.ready = function (callback) {
         });
     }
 }
-window.onReady = function (callback) {
-    window.ready(callback);
+window.ready = function (callback) {
+    window.onReady(callback);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// AFTC.ResizeManager = {
+//     running:false,
+//     enabled:false,
+//     delay: 100,
+//     stack:[],
+//     enable:function(){
+//         log("AFTC.ResizeManager.enable()");
+//         AFTC.ResizeManager.enabled = true;
+//         window.addEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
+//         window.addEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
+//     },
+//     disable:function(){
+//         log("AFTC.ResizeManager.disable()");
+//         AFTC.ResizeManager.enabled = false;
+//         window.removeEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
+//         window.removeEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
+//     },
+//     add:function (name, fn) {
+//         log("AFTC.ResizeManager.add(): " + name);
+//         var stackItem = {
+//             name:name,
+//             fn:fn
+//         };
+//         AFTC.ResizeManager.stack.push(stackItem);
+//     },
+//     remove:function (name) {
+//         log("AFTC.ResizeManager.remove(): " + name);
+//         var len = AFTC.ResizeManager.stack.length;
+//         for (var i = 0; i < len; i++) {
+//             if (AFTC.ResizeManager.stack[i]){
+//                 //log(AFTC.ResizeManager.stack[i].name);
+//                 if (AFTC.ResizeManager.stack[i].name == name) {
+//                     AFTC.ResizeManager.stack.splice(i, 1);
+//                     AFTC.ResizeManager.remove(name);
+//                     break;
+//                 }
+//             }
+//         }
+//     },
+//     runStackItem: function(i){
+//         var stackItem = AFTC.ResizeManager.stack[i];
+//         window.setTimeout(function(){
+//             if (i == (AFTC.ResizeManager.stack.length-1)){
+//                 AFTC.ResizeManager.running = false;
+//             }
+//             stackItem.fn();
+//         },AFTC.ResizeManager.delay);
+//     },
+//     resizeHandler: function (e) {
+//         if (AFTC.ResizeManager.running) {
+//             return;
+//         }
+//         log("AFTC.ResizeManager.resizeHandler()");
+//         AFTC.ResizeManager.running = true;
+//         var len = AFTC.ResizeManager.stack.length;
+//         var i;
+//         window.setTimeout(function(){
+//             for (i = 0; i < len; i++) {
+//                 AFTC.ResizeManager.runStackItem(i);
+//             }
+//         },AFTC.ResizeManager.delay);
+//     }
+// }
+
+// Array push based not associative object based
+AFTC.ResizeManager = {
+    running:false,
+    enabled:false,
+    delay: 100,
+    stack:[],
+    enable:function(){
+        // log("AFTC.ResizeManager.enable()");
+        AFTC.ResizeManager.enabled = true;
+        window.addEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
+        window.addEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
+    },
+    disable:function(){
+        // log("AFTC.ResizeManager.disable()");
+        AFTC.ResizeManager.enabled = false;
+        window.removeEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
+        window.removeEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
+    },
+    add:function (name, fn) {
+        // log("AFTC.ResizeManager.add(): " + name);
+        var stackItem = {};
+        stackItem.name = name;
+        stackItem.fn = fn;
+        AFTC.ResizeManager.stack.push( stackItem );
+    },
+    remove:function (name) {
+        // log("AFTC.ResizeManager.remove(): " + name);
+        var len = AFTC.ResizeManager.stack.length;
+        for (var i = 0; i < len; i++) {
+            if (AFTC.ResizeManager.stack[i]){
+                //log(AFTC.ResizeManager.stack[i].name);
+                if (AFTC.ResizeManager.stack[i].name == name) {
+                    AFTC.ResizeManager.stack.splice(i, 1);
+                    AFTC.ResizeManager.remove(name);
+                    break;
+                }
+            }
+        }
+    },
+    runStackItem: function(index,stackLength){
+        // log("runStackItem(index:"+index+")");
+        window.setTimeout(function(){
+            if (index == (stackLength-1)){
+                AFTC.ResizeManager.running = false;
+            }
+            AFTC.ResizeManager.stack[index].fn();
+        },AFTC.ResizeManager.delay);
+
+    },
+    resizeHandler: function (e) {
+        if (AFTC.ResizeManager.running) {
+            return;
+        }
+        AFTC.ResizeManager.running = true;
+
+        window.setTimeout(function(){
+            var len = AFTC.ResizeManager.stack.length;
+            for (var i = 0; i < len; i++) {
+                AFTC.ResizeManager.runStackItem(i,len);
+            }
+        },AFTC.ResizeManager.delay);
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -59,63 +198,47 @@ window.onReady = function (callback) {
 // DOM Element retrieval
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.AFTCElementQueryCache = [];
+AFTC.elementCache = [];
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementById = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined) {
-        return window.AFTCElementQueryCache[id];
+    var cached = window.AFTCElementQueryCache[id];
+    if (isElement(cached)){
+        return cached;
     } else {
-        var element = document.getElementById(id);
-        if (element) {
-            window.AFTCElementQueryCache[id] = element;
-        }
-        window.AFTCElementQueryCache[id] = document.getElementById(id);
-        return element;
+        var ele = document.getElementById(id);
+        window.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.querySelector = function (id) {
-    if (window.AFTCElementQueryCache[id] != undefined) {
-        return window.AFTCElementQueryCache[id];
+window.querySelector = function (str) {
+    var cached = window.AFTCElementQueryCache[str];
+    if (isElement(cached)){
+        return cached;
     } else {
-        var element = document.querySelector(id);
-        if (element) {
-            window.AFTCElementQueryCache[id] = element;
-        }
-        return element;
+        var ele = document.querySelector(str);
+        window.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getElement = function (elementOrElementIdOrElementQuery) {
-    var element;
-    if (isElement(elementOrElementIdOrElementQuery)) {
-        return elementIdOrQuery;
+window.getElementsByClassName = function (str) {
+    var cached = window.AFTCElementQueryCache[str];
+    if (isElement(cached)){
+        return cached;
+    } else {
+        var ele = document.getElementsByClassName(str);
+        window.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
-
-    element = getElementById(elementOrElementIdOrElementQuery);
-    if (element) {
-        return element;
-    }
-
-    element = querySelector(elementOrElementIdOrElementQuery);
-    if (element) {
-        return element;
-    }
-
-    // If you get here there
-    return false;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getElementFrom = function (arr) {
-    var dom = {};
-    var element;
-    for (var i = 0; i < arr.length; i++) {
-        element = getElementB
-    }
-    var dom = {}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getElementsByTagName = function (str) {
+    return document.getElementsByTagName(str);
 }
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -133,76 +256,85 @@ window.getElementFrom = function (arr) {
 // DEBUG
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-var AFTCLazyLog = true;
-var AFTCAutoLogTo = {
-    element:false,
-    enabled:false
+AFTC.log = {
+    enabled: true
+};
+AFTC.logTo = {
+    enabled: false,
+    element: false
 };
 window.log = function (arg) {
     if (console) {
-        if (AFTCLazyLog) {
+        if (AFTC.log.enabled) {
             if (typeof (arg) == "undefined") {
                 console.error(arg);
             } else {
                 console.log(arg);
             }
-            if (isElement(AFTCAutoLogTo.element) && AFTCAutoLogTo.enabled) {
-                if (typeof(arg) == "object"){
-                    AFTCAutoLogTo.element.innerHTML += "[Object]<br>";
-                    for (var key in arg){
-                        AFTCAutoLogTo.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
+            if (isElement(AFTC.logTo.element) && AFTC.logTo.enabled) {
+                if (typeof (arg) == "object") {
+                    AFTC.logTo.element.innerHTML += "[Object]<br>";
+                    for (var key in arg) {
+                        AFTC.logTo.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
                     }
                 } else {
-                    AFTCAutoLogTo.element.innerHTML += (arg + "<br>");
+                    AFTC.logTo.element.innerHTML += (arg + "<br>");
                 }
-                
+
             }
         }
     }
 }
 
-window.configLog = function(){
+window.configLog = function () {
+    // Command functions (multiple commands may run the same function)
+    var autoLogTo = function (arg) {
+        var element = getElementById(arg);
+        if (isElement(element)) {
+            AFTC.logTo.element = element;
+            AFTC.logTo.enabled = true;
+        } else {
 
-    // List of commands for identification only, values are meaningless
-    var commands = {
-        autoLogEnable:0,
-        autoLogDisable:0,
-        autoLogTo:0
+        }
     }
+    var autoLogEnable = function (value) {
+        if (isBoolean(value)) {
+            AFTC.logTo.enabled = value;
+        }
+    }
+    var autoLogDisable = function (value) {
+        if (isBoolean(value)) {
+            AFTC.logTo.enabled = !value;
+        }
+    }
+
 
     // Process arguments
     if (arguments[0] && typeof (arguments[0]) == "object") {
         for (var key in arguments[0]) {
-            if (commands.hasOwnProperty(key)) {
-                // Command found
-                //log("command/key = " + key);
-                var value = arguments[0][key];
-                switch(key){
-                    case "autoLogTo":
-                        var element = getElementById(value);
-                        if (isElement(element)){
-                            AFTCAutoLogTo.element = element;
-                            AFTCAutoLogTo.enabled = true;
-                        } else {
-                            console.error("AFTC.js > configLog({autoLogTo:elementId}): Usage error, can't find [" + value + "] on the DOM");
-                        }
+            var value = arguments[0][key];
+
+            switch (key) {
+                case "autoLogTo":
+                    autoLogTo(value);
                     break;
-                    case "autoLogEnable":
-                        if (isBoolean(value) && value) {
-                            AFTCAutoLogTo.enabled = true;
-                        } else if (isBoolean(value) && !value) {
-                            AFTCAutoLogTo.enabled = false;
-                        }
+                case "autoLogEnable":
+                    autoLogEnable(value);
                     break;
-                    case "autoLogDisable":
-                        if (isBoolean(value) && value) {
-                            AFTCAutoLogTo.enabled = false;
-                        } else if (isBoolean(value) && !value) {
-                            AFTCAutoLogTo.enabled = true;
-                        }
+                case "enableAutoLog":
+                    autoLogEnable(value);
                     break;
-                }
+                case "autoLogDisable":
+                    autoLogDisable(value);
+                    break;
+                case "disableAutoLog":
+                    autoLogDisable(value);
+                    break;
+                default:
+                    console.error("AFTC.js > configLog({autoLogTo:elementId}): Usage error, unknown command [" + key + "]!");
+                    break;
             }
+
         }
     }
 
@@ -213,37 +345,37 @@ window.configLog = function(){
     //         throw("AFTC.js > logEnableAutoLogTo(elementId): Usage error, can't find [" + elementId + "] on the DOM");
     //         return;
     //     }
-    //     AFTCAutoLogTo = element;            
+    //     AFTC.logTo = element;
     // };
     // return {
     //     enableAutoLogTo:function(elementId){
     //         enableAutoLogTo(elementId);
     //     },
     //     disableAutoLogTo:function(){
-    //         AFTCAutoLogTo = false;
+    //         AFTC.logTo = false;
     //     },
     //     autoLogTo:function(elementId){
     //         if (!elementId){
-    //             AFTCAutoLogTo = false;
+    //             AFTC.logTo = false;
     //         } else {
     //             enableAutoLogTo(elementId);
     //         }
     //     },
     //     enable:function(){
-    //         AFTCLazyLog = true;
+    //         AFTC.log.enabled = true;
     //     },
     //     disable:function(){
-    //         AFTCLazyLog = false;
+    //         AFTC.log.enabled = false;
     //     }
     // }
 }
 
 window.logEnable = function () {
-    AFTCLazyLog = true;
+    AFTC.log.enabled = true;
 }
 
 window.logDisable = function () {
-    AFTCLazyLog = false;
+    AFTC.log.enabled = false;
 }
 
 window.trace = function (arg) {
@@ -414,7 +546,7 @@ window.arrayShuffle2 = function (a) {
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.isAlphaNumeric = function (str) { // [a-z],[A-Z],[0-9] only
-	return !(/\W/.test(str));
+    return !(/\W/.test(str));
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -432,7 +564,7 @@ window.isElement = function (o) {
         o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
     );
 
-    if (answer != true){
+    if (answer != true) {
         return false;
     } else {
         return true;
@@ -522,8 +654,8 @@ window.getBooleanFrom = function (arg) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.isBoolean = function(arg){
-    if (typeof(arg) == "boolean"){
+window.isBoolean = function (arg) {
+    if (typeof (arg) == "boolean") {
         return true;
     } else {
         return false;
@@ -617,7 +749,7 @@ window.randomString = function (length) {
 
     return text;
 }
-window.getRandomString = function(len){
+window.getRandomString = function (len) {
     return randomString(len);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -634,18 +766,18 @@ window.guid = function () {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArrayOfRandomNumbers = function(arraySize,min,max){
+window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
-    for( var i=0; i < arraySize; i++){
-        arr[i] = getRandom(min,max);
+    for (var i = 0; i < arraySize; i++) {
+        arr[i] = getRandom(min, max);
     }
     return arr;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getArrayOfRandomStrings = function(arraySize,strLength){
+window.getArrayOfRandomStrings = function (arraySize, strLength) {
     var arr = [];
-    for( var i=0; i < arraySize; i++){
+    for (var i = 0; i < arraySize; i++) {
         arr[i] = getRandomString(strLength);
     }
     return arr;
@@ -654,4 +786,3 @@ window.getArrayOfRandomStrings = function(arraySize,strLength){
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
