@@ -201,39 +201,45 @@ AFTC.ResizeManager = {
 AFTC.AFTCElementQueryCache = [];
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementById = function (id) {
-    var cached = window.AFTCElementQueryCache[id];
+    var cached = AFTC.AFTCElementQueryCache[id];
     if (isElement(cached)){
         return cached;
     } else {
         var ele = document.getElementById(id);
-        window.AFTCElementQueryCache[id] = ele;
+        AFTC.AFTCElementQueryCache[id] = ele;
         return ele;
     }
 }
+window.getId = function(id){ return window.getElementById(id); }
+window.byId = function(id){ return window.getElementById(id); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.querySelector = function (str) {
-    var cached = window.AFTCElementQueryCache[str];
+    var cached = AFTC.AFTCElementQueryCache[str];
     if (isElement(cached)){
         return cached;
     } else {
         var ele = document.querySelector(str);
-        window.AFTCElementQueryCache[id] = ele;
+        AFTC.AFTCElementQueryCache[str] = ele;
         return ele;
     }
 }
+window.query = function(id){ return window.querySelector(id); }
+window.cssQuery = function(id){ return window.querySelector(id); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementsByClassName = function (str) {
-    var cached = window.AFTCElementQueryCache[str];
+    var cached = AFTC.AFTCElementQueryCache[str];
     if (isElement(cached)){
         return cached;
     } else {
         var ele = document.getElementsByClassName(str);
-        window.AFTCElementQueryCache[id] = ele;
+        AFTC.AFTCElementQueryCache[str] = ele;
         return ele;
     }
 }
+window.getClass = function(id){ return window.getElementsByClassName(id); }
+window.byClass = function(id){ return window.getElementsByClassName(id); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementsByTagName = function (str) {
@@ -464,6 +470,8 @@ window.isStringInArray = function (string, array) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Array.prototype.contains = function (needle) {
+    if (this.indexOf(needle) > -1) { return true; } else { return false; }
+    /*
     var len = this.length;
     for (var i = 0; i < len; i++) {
         if (this[i] == needle) {
@@ -472,7 +480,23 @@ Array.prototype.contains = function (needle) {
         }
     }
     return false;
+    */
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Array.prototype.remove = function (item) {
+    if(!this.contains(item)) { return this; }
+	return this.splice(this.indexOf(item), 1);
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Array.prototype.empty = function() {
+    for (var i = 0, s = this.length; i < s; i++) { this.pop(); }
+    return this;
+};
+Array.prototype.clear = function() {
+    return this.empty;
+};
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getMaxFromArray = function (arr) {
@@ -576,6 +600,19 @@ window.isElement2 = function (element) {
     // works on major browsers back to IE7
     return element instanceof Element;
 }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.isDOM = function (obj) {
+    // this works for newer browsers
+    try { return obj instanceof HTMLElement; }
+  
+    // this works for older browsers
+    catch (e) {
+      return (typeof obj==="object") &&
+        (obj.nodeType===1) && (typeof obj.style === "object") &&
+        (typeof obj.ownerDocument ==="object");
+    }
+  };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.radToDeg = function (input) {
