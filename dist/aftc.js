@@ -198,50 +198,46 @@ AFTC.ResizeManager = {
 // DOM Element retrieval
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-AFTC.elementCache = [];
+AFTC.AFTCElementQueryCache = [];
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getElementById = function (str) {
-    if (AFTC.elementCache[str] != undefined) {
-        return AFTC.elementCache[str];
+window.getElementById = function (id) {
+    var cached = AFTC.AFTCElementQueryCache[id];
+    if (isElement(cached)){
+        return cached;
     } else {
-        var element = document.getElementById(str);
-        if (element) {
-            AFTC.elementCache[str] = element;
-        }
-        AFTC.elementCache[str] = document.getElementById(str);
-        return element;
+        var ele = document.getElementById(id);
+        AFTC.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.querySelector = function (str) {
-    if (AFTC.elementCache[str] != undefined) {
-        return AFTC.elementCache[str];
+    var cached = AFTC.AFTCElementQueryCache[str];
+    if (isElement(cached)){
+        return cached;
     } else {
-        var element = document.querySelector(str);
-        if (element) {
-            AFTC.elementCache[str] = element;
-        }
-        return element;
-        document.getElementsByClassName
+        var ele = document.querySelector(str);
+        AFTC.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementsByClassName = function (str) {
-    if (AFTC.elementCache[str] != undefined) {
-        return AFTC.elementCache[str];
+    var cached = AFTC.AFTCElementQueryCache[str];
+    if (isElement(cached)){
+        return cached;
     } else {
-        var element = document.getElementsByClassName(str);
-        if (element) {
-            AFTC.elementCache[str] = element;
-        }
-        return element;
+        var ele = document.getElementsByClassName(str);
+        AFTC.AFTCElementQueryCache[id] = ele;
+        return ele;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementsByTagName = function (str) {
+    // TODO
     return document.getElementsByTagName(str);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -198,7 +198,7 @@ AFTC.ResizeManager = {
 // DOM Element retrieval
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-AFTC.elementCache = [];
+AFTC.AFTCElementQueryCache = [];
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getElementById = function (id) {
     var cached = window.AFTCElementQueryCache[id];
