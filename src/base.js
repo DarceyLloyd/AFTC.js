@@ -828,16 +828,86 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
 
 
 
+
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // Misc
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.hide = function(element){
-    if (typeof(element)==="string"){
-        alert("string");
+window.hide = function(element,mode){
+    var elementId = false;
+    if (typeof(element)=="string"){
+        elementId = element;
+        element = getElementById(elementId);
+    } else if (!isElement(element)){
+        console.error("AFTC.js > hide({element}): Usage error, element must be string ID of element or the element itself");
+        return false;
+    }
+
+    if (!element || element == null || element == undefined){
+        console.error("AFTC.js > hide({element}): Unable to find element of id [" + elementId + "]");
+        return false;
+    }
+
+    if (mode == undefined){
+        mode = "display";
+    }
+    mode = mode.toLowerCase();
+    switch (mode){
+        case "opacity":
+            element.style.opacity = 0;
+            break;
+        default:
+            element.setAttribute("old-display-prop",getComputedStyle(element).display);
+            element.style.display = 'none';
+            break;
+    }
+}
+
+window.show = function(element,mode){
+    var elementId = false;
+    if (typeof(element)=="string"){
+        elementId = element;
+        element = getElementById(elementId);
+    } else if (!isElement(element)){
+        console.error("AFTC.js > show({element}): Usage error, element must be string ID of element or the element itself");
+        return false;
+    }
+
+    if (!element || element == null || element == undefined){
+        console.error("AFTC.js > show({element}): Unable to find element of id [" + elementId + "]");
+        return false;
+    }
+
+    if (mode == undefined){
+        mode = "display";
+    }
+    mode = mode.toLowerCase();
+
+    var setDisplay = function(){
+        var oldDisplayValue =element.getAttribute("old-display-prop");
+        log("oldDisplayValue = " + oldDisplayValue);
+        if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1){
+            //log("no old value going to assume display is block");
+            element.style.display = 'none';
+        } else {
+            element.style.display = oldDisplayValue;
+        }
+    }
+
+
+    switch (mode){
+        case "opacity":
+            setDisplay();
+            element.style.opacity = 1;
+            break;
+        default:
+            setDisplay();
+            break;
     }
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 

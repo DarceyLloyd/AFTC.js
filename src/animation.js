@@ -65,7 +65,7 @@ AFTC.Animate = function (elementQuery, onComplete) {
             try {
                 element.removeEventListener("transitionend", false);
             } catch (e){
-                
+
             }
             var chainLen = chain.length;
             // remove index 1
