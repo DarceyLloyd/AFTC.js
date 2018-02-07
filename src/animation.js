@@ -62,8 +62,11 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
         if (action == "complete") {
             transitionedEventAdded = false;
-            element.removeEventListener("transitionend", false);
-
+            try {
+                element.removeEventListener("transitionend", false);
+            } catch (e){
+                
+            }
             var chainLen = chain.length;
             // remove index 1
             if (chainLen > 0) {
@@ -191,7 +194,11 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
     var onTransitionEndHandler = function () {
         // log("--- EVENT: TransitionEnd ---");
-        element.removeEventListener("transitionend", onTransitionEndHandler, false);
+        try {
+            element.removeEventListener("transitionend", onTransitionEndHandler, false);
+        } catch (e){
+
+        }
         removeDuration();
         processChain("complete");
     }

@@ -3,14 +3,16 @@
 
 <b>A collection of utilities / functions I find useful when working with BROWSER based JavaScript.</b>
 
-<br>
-
-#### <b>Want the NodeJS version? https://github.com/DarceyLloyd/AFTC.Node.Libs</b>
-
 <br><br>
 
 
+## Whats new 1.3.9
+ - added window.hide(elementID or element, optional); (optional = mode:string display or opacity)
+ - added window.show(elementID or element, optional); (optional = mode:string display or opacity)
+ - fixed bug on AFTC.Animate
 
+
+<br><br>
 
 
 
@@ -23,7 +25,7 @@ No more jQuery for document.ready or addEventListener DOMLoaded etc, just use on
 No need to type <b>console.</b>log(arg) anymore! Just type log!
 
 ## <b>configLog({options})</b>
-Want to log to a HTML element for visual debug using log?
+Want to log to a HTML element for visual debug using log? You also have logTo(elementId,string);
 ```
 // This will dump log usage to a html element with ID of debug
 configLog({autoLogTo:"debug"});
