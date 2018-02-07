@@ -254,6 +254,41 @@ window.getElementsByTagName = function (str) {
 
 
 
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Styling shortcuts
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.addClass = function(elementOrId,className){
+    if (typeof(className) != "string"){
+        return;
+    }
+
+    if (isElement(elementOrId)){
+        elementOrId.classList.add(className);
+    } else {
+        getElementById(elementOrId).classList.add(className);
+    }
+}
+
+window.removeClass = function(elementOrId,className){
+    if (typeof(className) != "string"){
+        return;
+    }
+
+    if (isElement(elementOrId)){
+        elementOrId.classList.remove(className);
+    } else {
+        log("elementOrId =" + elementOrId);
+        log("className =" + className);
+        getElementById(elementOrId).classList.remove(className);
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
 
 
 
@@ -469,34 +504,48 @@ window.isStringInArray = function (string, array) {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Array.prototype.contains = function (needle) {
-    if (this.indexOf(needle) > -1) { return true; } else { return false; }
-    /*
-    var len = this.length;
-    for (var i = 0; i < len; i++) {
-        if (this[i] == needle) {
-            return true;
-            break;
-        }
-    }
-    return false;
-    */
+
+// Prototypes are getting appends appended to arrays, I dont like this behaviour and is disruptive! going back to functions
+window.arrayContains = function(arr,needle){
+    if (arr.indexOf(needle) > -1) { return true; } else { return false; }
 }
+window.arrayRemove = function(arr,item){
+    if(!window.arrayContains(item)) { return this; }
+    return arr.splice(arr.indexOf(item), 1);
+}
+window.arrayEmpty = function(arr){
+    for (var i = 0, s = arr.length; i < s; i++) { arr.pop(); }
+    return arr;
+}
+window.arrayClear = function(arr){ window.arrayEmpty(arr); }
+// Array.prototype.contains = function (needle) {
+//     if (this.indexOf(needle) > -1) { return true; } else { return false; }
+//     /*
+//     var len = this.length;
+//     for (var i = 0; i < len; i++) {
+//         if (this[i] == needle) {
+//             return true;
+//             break;
+//         }
+//     }
+//     return false;
+//     */
+// }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Array.prototype.remove = function (item) {
-    if(!this.contains(item)) { return this; }
-	return this.splice(this.indexOf(item), 1);
-};
+// Array.prototype.remove = function (item) {
+//     if(!this.contains(item)) { return this; }
+// 	return this.splice(this.indexOf(item), 1);
+// };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Array.prototype.empty = function() {
-    for (var i = 0, s = this.length; i < s; i++) { this.pop(); }
-    return this;
-};
-Array.prototype.clear = function() {
-    return this.empty;
-};
+// Array.prototype.empty = function() {
+//     for (var i = 0, s = this.length; i < s; i++) { this.pop(); }
+//     return this;
+// };
+// Array.prototype.clear = function() {
+//     return this.empty;
+// };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 window.getMaxFromArray = function (arr) {
@@ -833,7 +882,8 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
 // Misc
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.hide = function(element,mode){
+window.hide = function(element){
+    // log("window.hide(" + element + ")");
     var elementId = false;
     if (typeof(element)=="string"){
         elementId = element;
@@ -848,22 +898,17 @@ window.hide = function(element,mode){
         return false;
     }
 
-    if (mode == undefined){
-        mode = "display";
+    var oldValue = getComputedStyle(element).display;
+    if (oldValue != "none"){
+        element.setAttribute("old-display-prop",getComputedStyle(element).display);
     }
-    mode = mode.toLowerCase();
-    switch (mode){
-        case "opacity":
-            element.style.opacity = 0;
-            break;
-        default:
-            element.setAttribute("old-display-prop",getComputedStyle(element).display);
-            element.style.display = 'none';
-            break;
-    }
-}
 
-window.show = function(element,mode){
+    element.style.display = 'none';
+    // log(element.style.display);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.show = function(element,classListToRemoveOnShow,classListToAddOnShow){
+    // log("window.show(" + element + ")");
     var elementId = false;
     if (typeof(element)=="string"){
         elementId = element;
@@ -878,32 +923,41 @@ window.show = function(element,mode){
         return false;
     }
 
-    if (mode == undefined){
-        mode = "display";
-    }
-    mode = mode.toLowerCase();
-
-    var setDisplay = function(){
-        var oldDisplayValue =element.getAttribute("old-display-prop");
-        //log("oldDisplayValue = " + oldDisplayValue);
-        if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1){
-            //log("no old value going to assume display is block");
-            element.style.display = 'block';
-        } else {
-            element.style.display = oldDisplayValue;
+    // REMOVE
+    if (isArray(classListToRemoveOnShow)){
+        for (var key in classListToRemoveOnShow){
+            var className = classListToRemoveOnShow[key];
+            // log("removing class [" + className + "]");
+            removeClass(element,className);
         }
+    }else if (typeof(classListToRemoveOnShow) == "string"){
+        removeClass(element,classListToRemoveOnShow);
+        // log("removing class [" + className + "]");
+    }
+
+    // ADD
+    if (isArray(classListToAddOnShow)){
+        for (var key in classListToAddOnShow){
+            var className = classListToAddOnShow[key];
+            // log("adding class [" + className + "]");
+            addClass(element,className);
+        }
+    }else if (typeof(classListToAddOnShow) == "string"){
+        addClass(element,classListToAddOnShow);
+        // log("adding class [" + className + "]");
     }
 
 
-    switch (mode){
-        case "opacity":
-            setDisplay();
-            element.style.opacity = 1;
-            break;
-        default:
-            setDisplay();
-            break;
+    var oldDisplayValue =element.getAttribute("old-display-prop");
+    //log("oldDisplayValue = " + oldDisplayValue);
+    if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1){
+        // log("no old value going to assume display is block");
+        element.style.display = 'block';
+    } else {
+        element.style.display = oldDisplayValue;
     }
+
+
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

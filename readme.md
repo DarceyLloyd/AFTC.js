@@ -6,10 +6,20 @@
 <br><br>
 
 
-## Whats new 1.3.9
- - added window.hide(elementID or element, optional); (optional = mode:string display or opacity)
- - added window.show(elementID or element, optional); (optional = mode:string display or opacity)
- - fixed bug on AFTC.Animate
+## Whats new 1.3.12
+
+    - added easy css function, addClass(elementOrElementId,className)
+    - added easy css function, removeClass(elementOrElementId,className)
+    - reworked hide to hide(element,classListToRemoveOnShow,classListToAddOnShow) // args 2 and 3 are optional
+    - reworked show to show(element,classListToRemoveOnShow,classListToAddOnShow) // args 2 and 3 are optional
+    - removed array prototypes, I can't get along with my arrays being polluted with function code
+    - added arrayContains(array,needle); // replacement for the removed prototype
+    - added arrayRemove(array,item); // replacement for the removed prototype
+    - added arrayEmpty(array); // replacement for the removed prototype
+    - added arrayClear(array); // replacement for the removed prototype which is an alias of arrayEmpty
+    - added hide(elementID or element, optional); (optional = mode:string display or opacity)
+    - added show(elementID or element, optional); (optional = mode:string display or opacity)
+    - fixed bug on AFTC.Animate
 
 
 <br><br>
@@ -211,6 +221,18 @@ Opens a window and inserts a string into it.
 # arrayRemoveIndex(array, index)
 Removes an index from an array
 
+# window.arrayContains(array,needle)
+Find that thing you been looking for in your arrays
+
+# window.arrayRemove(array,item)
+Remove that item of the array via content match
+
+# window.arrayClear(array)
+Clears that array
+
+# window.arrayEmpty(array)
+Same as clear but called empty! Yes it's an alias!
+
 # isStringInArray(string, array)
 Checks if any items in the array match a string
 
@@ -296,6 +318,17 @@ Returns array of size of random number between min and max
 ## getArrayOfRandomStrings(arraySize,strLength)
 Returns array of size of random strings of size strLength
 
+## addClass(elementOrElementId,className)
+Quick styling code shortcut to add a class ot an element
+
+## removeClass(elementOrElementId,className)
+Quick styling code shortcut to remove a class to an element
+
+## hide(element,classListToRemoveOnShow,classListToAddOnShow)
+Quick hide of an element, combined with the (classListToRemoveOnShow) or (classListToAddOnShow) of the target element
+
+## show(element,classListToRemoveOnShow,classListToAddOnShow)
+Quick show of an element, combined with the (classListToRemoveOnShow) or (classListToAddOnShow) of the target element
 
 
 
