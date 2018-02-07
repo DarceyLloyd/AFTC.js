@@ -885,10 +885,10 @@ window.show = function(element,mode){
 
     var setDisplay = function(){
         var oldDisplayValue =element.getAttribute("old-display-prop");
-        log("oldDisplayValue = " + oldDisplayValue);
+        //log("oldDisplayValue = " + oldDisplayValue);
         if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1){
             //log("no old value going to assume display is block");
-            element.style.display = 'none';
+            element.style.display = 'block';
         } else {
             element.style.display = oldDisplayValue;
         }
