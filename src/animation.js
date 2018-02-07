@@ -103,10 +103,12 @@ AFTC.Animate = function (elementQuery, onComplete) {
     }
 
     function processOnComplete() {
+        //log("processOnComplete()");
         if (typeof (onComplete) != "undefined") {
             // prevent multi run
             // animating some styles will result in the TransitionEnd firing multiple times!!!
             if (!hasOnCompleteRun) {
+                //log("RUNNING ON COMPLETE!");
                 hasOnCompleteRun = true;
                 onComplete();
             }
@@ -205,12 +207,12 @@ AFTC.Animate = function (elementQuery, onComplete) {
 
 
 
-
+    var me = this;
     var animate = function (style, targetValue, duration) {
-        //log("animate()");
-
-
-
+        // For some reason lost scope, was working before, me comes to the resuce
+        // element is undefined || null when you use an id without a # but is found in function start?
+        // TODO: CHECK OUT THIS ISSUE, FIX THE ISSUE AND REMOVE THE HOTFIX
+        element = me.element;
         if (!element.style.hasOwnProperty(style)) {
             var msg = "";
             msg = "AFTC.js > animation.js > Animate(elementQuery): Usage error, unable to find style [" + style + "] on element [" + elementQuery + "]\n";

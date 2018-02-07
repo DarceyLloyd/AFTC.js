@@ -48,6 +48,13 @@ No more typing document.querySelector(str)! It's shorter and runs much quicker a
         .prop("opacity",0,0.5);
         .prop("backgroundColor","#990000",2)
 ```
+or fade and hide etc etc
+
+```
+    AFTC.Animate("elementIdToFadeOut",function(){
+        hide("elementIdToFadeOut"); // hide once opacity reaches zero
+    }).prop("opacity",0,1); // Tweem opacity to 0 in 1 second
+```
 
 ## <b>AFTC.Color(color)</b>
 - <b>lighten</b>(percent);
