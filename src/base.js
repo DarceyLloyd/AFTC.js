@@ -478,6 +478,15 @@ window.stringToWindow = function (str) {
     openDebugWindow(str);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.setHTML = function(element,str){
+    if (typeof(element)=="string"){
+        element = getElementById(element);
+    }
+    if (isElement(element)){
+        element.innerHTML = str;
+    }
+}
+window.html = function(element,str){ window.setHTML(element,str); }
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

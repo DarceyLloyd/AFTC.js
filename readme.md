@@ -6,8 +6,10 @@
 <br><br>
 
 
-## Whats new 1.3.12
+## Whats new 1.3.14
 
+    - added quick set html function, setHTML(elementOrElementId,string)
+    - added quick set html function alias, html(elementOrElementId,string)
     - added easy css function, addClass(elementOrElementId,className)
     - added easy css function, removeClass(elementOrElementId,className)
     - reworked hide to hide(element,classListToRemoveOnShow,classListToAddOnShow) // args 2 and 3 are optional
@@ -329,6 +331,12 @@ Quick hide of an element, combined with the (classListToRemoveOnShow) or (classL
 
 ## show(element,classListToRemoveOnShow,classListToAddOnShow)
 Quick show of an element, combined with the (classListToRemoveOnShow) or (classListToAddOnShow) of the target element
+
+## setHTML(elementOrElementId,string)
+Quick method of writing a string to an element
+
+## html(elementOrElementId,string)
+Alias for setHTML
 
 
 
