@@ -12,7 +12,6 @@ var jsFiles = [
     // Dev assist utility functions / tools (comment out the files you dont want in your aftc.min.js build)
     "./src/string.js", // Dependencies: none
     "./src/random.js", // Dependencies: none
-    "./src/conversion.js", // Dependencies: none
     "./src/datetime.js", // Dependencies: none
     "./src/cookies.js", // Dependencies: none
     "./src/validation.js", // Dependencies: none

@@ -1,14 +1,12 @@
 {
   "name": "aftc.js",
-  "version": "1.3.14",
+  "version": "1.3.16",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
     "webpack-dev": "webpack -d",
     "webpack-dev-watch": "webpack -d --watch",
-    "webpack-dist": "webpack -p",
-    "webpack-dist-watch": "webpack -p --watch",
-    "gulp-build-dev": "gulp build-dev",
-    "gulp-watch-dev": "gulp watch-dev",
+    "webpack-build": "webpack -p",
+    "webpack-build-watch": "webpack -p --watch",
     "gulp-build": "gulp build",
     "gulp-watch": "gulp watch"
   },
@@ -26,7 +24,5 @@
     "gulp-uglify": "^3.0.0",
     "webpack": "^2.4.1"
   },
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }

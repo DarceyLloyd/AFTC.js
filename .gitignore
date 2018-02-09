@@ -27,3 +27,7 @@ composer.lock
 .vscode
 prepros-6.config
 package-lock.json
+
+
+GenerateDocumentation.php
+readme.old
