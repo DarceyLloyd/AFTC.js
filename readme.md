@@ -8,40 +8,48 @@
 
 ## Whats new 1.4.1
 
-    - AFTC.Animate() has taken a re-write to allow for better functionality, eg
-    
-    ````
-        AFTC.Animate("#box1", animateBox2)
-            .prop("width",100,0.5)
-            .prop("height",100,0.5)
-            .prop("padding",10,0.5)
-            .prop("left",100,0.5)
-            .prop("top",25,0.5)
-            .prop("backgroundColor","#000000",0.5)
-            .prop("color","#FFFFFF",0.5)
-            .prop("borderColor","#00FFFF",0.5)
-            .prop("borderWidth",5,0.5)
-            .prop("borderRadius",50,0.5)
+    - AFTC.Animate() has taken a re-write to allow for better functionality, eg:
+
+        var anim1 = new AFTC.Animate("#box1", onCompleteHandler);
+        anim1
+            .anim("width",100,0.5)
+            .anim("height",100,0.5)
+            .anim("padding",10,0.5)
+            .anim("left",100,0.5)
+            .anim("top",25,0.5)
+            .anim("backgroundColor","#000000",0.5)
+            .anim("color","#FFFFFF",0.5)
+            .anim("borderColor","#00FFFF",0.5)
+            .anim("borderWidth",5,0.5)
+            .anim("borderRadius",50,0.5)
             .set("fontWeight","bold")
             .set("fontSize","18px")
             .set("textAlign","center")
             .delay(2)
-            .prop("width",50,0.2)
-            .prop("height",50,0.2)
-            .prop("padding",0,0.2)
-            .prop("left",0,0.2)
-            .prop("top",0,0.2)
-            .prop("backgroundColor","#FFCC00",0.2)
-            .prop("color","#000000",0.2)
-            .prop("borderColor","#990000",0.2)
-            .prop("borderWidth",2,0.2)
-            .prop("borderRadius",0,0.2)
+            .anim("width",50,0.2)
+            .anim("height",50,0.2)
+            .anim("padding",0,0.2)
+            .anim("left",0,0.2)
+            .anim("top",0,0.2)
+            .anim("backgroundColor","#FFCC00",0.2)
+            .anim("color","#000000",0.2)
+            .anim("borderColor","#990000",0.2)
+            .anim("borderWidth",2,0.2)
+            .anim("borderRadius",0,0.2)
             .set("fontWeight","normal")
             .set("fontSize","normal")
             .set("textAlign","inherit");
-        }
-    ````
+            .start();
+
+        Chainable methods are:
+            wait(seconds)
+            set([array of css styles],[values])
+            set(["html","opacity"],["hello",0.5])
+            anim([array of css styles],[values],[durations])
+        etc
+
     See tests/animation.htm for further details
+    
     - Various fixes and additions throughout
     - In progress of testing all tests for 100% migration to this version
 
