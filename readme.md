@@ -9,6 +9,7 @@
 ## Whats new 1.4.1
 
     - AFTC.Animate() has taken a re-write to allow for better functionality, eg
+    
     ````
         AFTC.Animate("#box1", animateBox2)
             .prop("width",100,0.5)
