@@ -6,6 +6,9 @@
 <br><br>
 
 
+### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
+
+
 ## Whats new 1.4.1
 
     - AFTC.Animate() has taken a re-write to allow for better functionality, eg:
