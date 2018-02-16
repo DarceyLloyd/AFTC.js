@@ -220,6 +220,7 @@ gulp build
  --- 
   
 Shortcut for adding events with old browser compatibility  
+
 param | type | optional | description
 --- | --- | --- | ---
 obj | object |  | The object you wish to attach the event listener to | 
