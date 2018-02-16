@@ -215,11 +215,11 @@ gulp build
 
 
 
-
 ## <b>addEvent(obj,type,fn,useCapture)</b>
  --- 
   
 Shortcut for adding events with old browser compatibility  
+
 
 param | type | optional | description
 --- | --- | --- | ---
@@ -238,6 +238,8 @@ useCapture | boolean | optional | Whether the event should be executed in the ca
   
   
 Replacement for jQuerys $(document).ready  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 fn | function |  | inline function or pass it a function for when your page is loaded and ready to be used | 
@@ -255,12 +257,16 @@ enable function stack execution on oritentation and resize change
 disable function stack execution on oritentation and resize change  
 ## <b>add(uid,fn)</b>
 add function to orientation and resize stack  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 uid | string |  | unique id / label of function to add from stack | 
 fn | function |  | function to add to stack | 
 ## <b>remove(uid)</b>
 remove function from orientation and resize stack  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 uid | string |  | unique id / label of function to remove from stack | 
@@ -276,6 +282,8 @@ uid | string |  | unique id / label of function to remove from stack |
   
   
 short cut for document.getElementById, it also caches the query  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 string | id |  | id of html element to retrieve | 
@@ -291,6 +299,8 @@ string | id |  | id of html element to retrieve |
   
   
 Short cut for document.querySelector, it also caches the query  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 str | string |  | the query to be run on the dom | 
@@ -306,6 +316,8 @@ str | string |  | the query to be run on the dom |
   
   
 Short cut for document.getElementsByClassName, it also caches the query  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 str | string |  | the class name to look for | 
@@ -317,6 +329,8 @@ str | string |  | the class name to look for |
  --- 
   
 shortcut for getElementsByTagName  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 str | string |  | tag name to look for | 
@@ -328,6 +342,8 @@ str | string |  | tag name to look for |
  --- 
   
 shortcut to add a css class to a html element  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to | 
@@ -340,6 +356,8 @@ className | string |  | the class name to add |
  --- 
   
 shortcut to remove a class from a html element  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to | 
@@ -352,6 +370,8 @@ className | string |  | the class name to remove |
  --- 
   
 Check to see if an element has a class attached to it  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementOrId | string |  | The elemnt or id of the html element | 
@@ -367,6 +387,8 @@ cls | string |  | class to look for |
   
   
 shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML  
+
+
 param | type | optional | description
 --- | --- | --- | ---
  |  |  |  | 
@@ -388,6 +410,8 @@ log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
 log(MyObject);  
 log(MyClass);  
 ````  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | * |  | what you want to console.log | 
@@ -415,6 +439,8 @@ Disable log()
  --- 
   
 Configuration function for logTo() autologging see examples folder on usage  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 autoLogTo | string |  | html element id to log to | 
@@ -433,6 +459,8 @@ A console.log alternative that will output to a html element and the console at 
 ````  
 logTo("message","Hello World!");  
 ````  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | elementId to output to | 
@@ -445,6 +473,8 @@ str | string |  | what innerHTML will be set to |
  --- 
   
 A console.log alternative that will output an object to a html element and the console nicely formatted at the same time  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | html element id to output to | 
@@ -461,6 +491,8 @@ append | boolean | optional | append text or prepend text |
   
   
 open a popup window with the html you wish to display in it  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 html | dataType |  | the html you wish to display in the popup window | 
@@ -481,6 +513,8 @@ setHTML("header","Welcome");
 var myElement = getElementById("header");  
 setHTML(myElement,"Welcome!");  
 ````  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementOrId | dataType |  | the element or the element id you wish to set the html of | 
@@ -493,6 +527,8 @@ html | dataType |  | the html string to insert into your element |
  --- 
   
 remove a specified index from an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array you wish to remove an index on | 
@@ -508,6 +544,8 @@ index | number |  | the array index you wish to remove |
  --- 
   
 Check to see if a string is in an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 needle | string |  | the string your looking for | 
@@ -520,6 +558,8 @@ haystack | array |  | the array you wish to search |
  --- 
   
 Check to see if your array contains something you want to find  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array you wish to search | 
@@ -535,6 +575,8 @@ needle | string |  | what you want to find |
   
   
 removes an item from an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array you wish to search and remove from | 
@@ -550,6 +592,8 @@ item | string |  | index at which a given element can be found |
   
   
 clears/empties an array for garbage collection  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array to clear / empty | 
@@ -565,6 +609,8 @@ arr | array |  | the array to clear / empty |
   
   
 returns the maximum value in an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array you wish to find the maximum value in | 
@@ -580,6 +626,8 @@ arr | array |  | the array you wish to find the maximum value in |
   
   
 returns the minimum value in an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array you wish to find the minimum value in | 
@@ -590,10 +638,13 @@ arr | array |  | the array you wish to find the minimum value in |
 ## <b>arrayShuffle(arr)</b>
  --- 
 <b>Aliases:</b>
-> shuffleArray  
+> shuffleArray2  
+> shuffleArray3  
   
   
-shuffles an array  
+shuffles an array using a random method out of a choice of 2  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array to shuffle | 
@@ -605,6 +656,8 @@ arr | array |  | the array to shuffle |
  --- 
   
 shuffles an array (method 2)  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | the array to shuffle | 
@@ -616,6 +669,8 @@ arr | array |  | the array to shuffle |
  --- 
   
 shuffles an array (method 2)  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 a | array |  | the array to shuffle | 
@@ -627,6 +682,8 @@ a | array |  | the array to shuffle |
  --- 
   
 check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | string||number |  | variable / value you wish to check | 
@@ -638,6 +695,8 @@ input | string||number |  | variable / value you wish to check |
  --- 
   
 checks if your variable is an element or not  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 o | * |  | variable you wish to check | 
@@ -649,6 +708,8 @@ o | * |  | variable you wish to check |
  --- 
   
 checks to see if your vairable is an element or not  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 element | * |  | the variable you wish to check | 
@@ -660,6 +721,8 @@ element | * |  | the variable you wish to check |
  --- 
   
 checks to see if your variable is a DOM object  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 obj | object |  | variable to check | 
@@ -674,6 +737,8 @@ obj | object |  | variable to check |
   
   
 converts radians to degrees  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | number |  | the radians you wish converted to degrees | 
@@ -688,6 +753,8 @@ input | number |  | the radians you wish converted to degrees |
   
   
 converts degrees to radians  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | number |  | the value you wish converted to radians | 
@@ -699,6 +766,8 @@ input | number |  | the value you wish converted to radians |
  --- 
   
 converts boolean to a string of true or false  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 bool | boolean |  | the boolean you wish to convert | 
@@ -710,6 +779,8 @@ bool | boolean |  | the boolean you wish to convert |
  --- 
   
 converts a boolean to yes or no  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 bool | boolean |  | the boolean you wish to convert | 
@@ -721,6 +792,8 @@ bool | boolean |  | the boolean you wish to convert |
  --- 
   
 converts a string to a boolean (y,yes,"1",no etc)  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 str | string |  | the string you wish to convert | 
@@ -732,6 +805,8 @@ str | string |  | the string you wish to convert |
  --- 
   
 converts an input to a boolean  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | * |  | the variable you wish to convert to a boolean | 
@@ -746,6 +821,8 @@ input | * |  | the variable you wish to convert to a boolean |
   
   
 checks if a variable is a boolean  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 input | * |  | variable to check | 
@@ -760,6 +837,8 @@ input | * |  | variable to check |
   
   
 check if variable is numeric  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 n | * |  | variable to check | 
@@ -771,6 +850,8 @@ n | * |  | variable to check |
  --- 
   
 check if variable is an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | * |  | variable to check | 
@@ -785,6 +866,8 @@ arr | * |  | variable to check |
   
   
 parses all values in array to float  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | array to process | 
@@ -799,6 +882,8 @@ arr | array |  | array to process |
   
   
 parses all values in array to float  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arr | array |  | array to process | 
@@ -813,6 +898,8 @@ arr | array |  | array to process |
   
   
 takes an input and returns it as index[0] of an array  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 v | & |  | value to insert into array | 
@@ -824,6 +911,8 @@ v | & |  | value to insert into array |
  --- 
   
 tries to get the function name of a suppled function  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 fn | function |  | the function wish to get the name of | 
@@ -838,6 +927,8 @@ fn | function |  | the function wish to get the name of |
   
   
 returns a random number / int betwen your specified min and max values  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 min | number |  | the minimum your random number is allowed to go | 
@@ -853,6 +944,8 @@ max | number |  | the maximum your random number is allowed to go |
   
   
 get a random string of a specified length  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 length | number |  | the length of the string you wish to generate | 
@@ -877,6 +970,8 @@ Generates a random id
  --- 
   
 generate an array of random number between your max and min values  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arraySize | number |  | the number of random numbers to generate also the array size that will be returned | 
@@ -890,6 +985,8 @@ max | number |  | the maximum your random number is allowed to be |
  --- 
   
 generate an array of random string of a specified length  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 arraySize | number |  | the number of random strings to generate also the array size that will be returned | 
@@ -913,6 +1010,8 @@ generates a guid
  --- 
   
 no more typing self.location.href, just use redirect(url)  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 url | string |  | the url you wish to redirect to | 
@@ -941,6 +1040,8 @@ log( AFTC.Benchmark().getTime() );
  --- 
   
 hides a html element, can also add or remove any amount of classes on element hide at the same time  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 element | element||string |  | the element or the string id of the element you wish to hide | 
@@ -954,6 +1055,8 @@ classListToAddOnHide | array |  | string of class to remove or array of string c
  --- 
   
 show a html element, can also add or remove any amount of classes on element show at the same time  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 element | element||string |  | the element or the string id of the element you wish to hide | 
@@ -962,6 +1065,7 @@ classListToAddOnShow | array |  | string of class to remove or array of string c
 
  --- 
  <br><br>
+
 
 
 

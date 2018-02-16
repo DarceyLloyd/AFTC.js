@@ -16,10 +16,40 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
  --- 
  <br><br>
 
+## <b>fadeIn(elementId, duration)</b>
+ --- 
+  
+fades in an element over a specified duration  
+
+
+param | type | optional | description
+--- | --- | --- | ---
+ | string | elementId | the id of the html element you wish to fade | 
+ | number | duration | how long you want the fade to run over in seconds | 
+
+ --- 
+ <br><br>
+
+## <b>fadeOut(elementId, duration)</b>
+ --- 
+  
+fades out an element over a specified duration  
+
+
+param | type | optional | description
+--- | --- | --- | ---
+ | string | elementId | the id of the html element you wish to fade | 
+ | number | duration | how long you want the fade to run over in seconds | 
+
+ --- 
+ <br><br>
+
 ## <b>getElementOffsetTop(elementIdOrQuery)</b>
  --- 
   
 Gets an elements top offset  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | the element ID you wish to get the top offset of | 
@@ -31,6 +61,8 @@ elementId | string |  | the element ID you wish to get the top offset of |
  --- 
   
 Scroll to element on page  
+
+
 param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | ID of element you wish to scroll to | 

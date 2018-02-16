@@ -317,7 +317,7 @@ class DDoc
                         $out .= $desc . "  \n";
                     }
                     if (!empty($fvo->params)){
-                        $out .= "param | type | optional | description\n";
+                        $out .= "\n\nparam | type | optional | description\n";
                         $out .= "--- | --- | --- | ---\n";
                         foreach($fvo->params as $param){
                             $out .= $param->name . " | ";
