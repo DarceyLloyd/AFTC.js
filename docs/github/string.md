@@ -2,6 +2,14 @@
  --- 
   
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+
+ --- 
+ <br><br>
+
+## <b>cleanJSONString(s)</b>
+ --- 
+  
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
 param | type | optional | description
 --- | --- | --- | ---
 xxxx | string |  | xxxxxxxxxxxxxxxxxxxx | 

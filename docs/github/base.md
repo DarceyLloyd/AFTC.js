@@ -559,6 +559,48 @@ arr | * |  | variable to check |
  --- 
  <br><br>
 
+## <b>parseArrayToFloat(arr)</b>
+ --- 
+<b>Aliases:</b>
+> arrayToFloat  
+  
+  
+parses all values in array to float  
+param | type | optional | description
+--- | --- | --- | ---
+arr | array |  | array to process | 
+
+ --- 
+ <br><br>
+
+## <b>* @function:parseArrayToInt(arr)</b>
+ --- 
+<b>Aliases:</b>
+> arrayToInt  
+  
+  
+parses all values in array to float  
+param | type | optional | description
+--- | --- | --- | ---
+arr | array |  | array to process | 
+
+ --- 
+ <br><br>
+
+## <b>* @function:convertToArray(v)</b>
+ --- 
+<b>Aliases:</b>
+> valueToArray  
+  
+  
+takes an input and returns it as index[0] of an array  
+param | type | optional | description
+--- | --- | --- | ---
+v | & |  | value to insert into array | 
+
+ --- 
+ <br><br>
+
 ## <b>getFunctionName(fn)</b>
  --- 
   
@@ -595,6 +637,19 @@ get a random string of a specified length
 param | type | optional | description
 --- | --- | --- | ---
 length | number |  | the length of the string you wish to generate | 
+
+ --- 
+ <br><br>
+
+## <b>getUniqueId()</b>
+ --- 
+<b>Aliases:</b>
+> getUID  
+> generateRandomId  
+> generateUID  
+  
+  
+Generates a random id  
 
  --- 
  <br><br>

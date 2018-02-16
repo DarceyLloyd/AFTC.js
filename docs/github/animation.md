@@ -1,45 +1,17 @@
-## <b>AFTC.Animate(elementQuery, onComplete)</b>
+## <b>AFTC.Animate(elementId, onComplete)</b>
  --- 
+@version: 2.3.14  
+@requires: base.js  
   
-Animate anything with ease.  
-You have access to any style in the element.style attributes/properties via the 3 chainable functions.  
-.prop(style:String,targetValue:number||string,duration:number||float)  
-.set(style:String,targetValue:number||string)  
-.delay(duration in seconds)  
+Quick and easy css animation for nearly every css element style  
 ````  
-// You have access to all the props in element.style  
-// Will repeat forever as onComplete is set to animateBox1  
-function animateBox1(){  
-AFTC.Animate("#box1", animateBox1)  
-.prop("width",100,0.5)  
-.prop("height",100,0.5)  
-.prop("padding",10,0.5)  
-.prop("left",100,0.5)  
-.prop("top",25,0.5)  
-.prop("backgroundColor","#000000",0.5)  
-.prop("color","#FFFFFF",0.5)  
-.prop("borderColor","#00FFFF",0.5)  
-.prop("borderWidth",5,0.5)  
-.prop("borderRadius",50,0.5)  
-.set("fontWeight","bold")  
-.set("fontSize","18px")  
-.set("textAlign","center")  
-.delay(2)  
-.prop("width",50,0.2)  
-.prop("height",50,0.2)  
-.prop("padding",0,0.2)  
-.prop("left",0,0.2)  
-.prop("top",0,0.2)  
-.prop("backgroundColor","#FFCC00",0.2)  
-.prop("color","#000000",0.2)  
-.prop("borderColor","#990000",0.2)  
-.prop("borderWidth",2,0.2)  
-.prop("borderRadius",0,0.2)  
-.set("fontWeight","normal")  
-.set("fontSize","normal")  
-.set("textAlign","inherit");  
-}  
+var anim1 = new AFTC.Animate("box1", onCompleteFunction);  
+anim1.wait(2); // wait in 2 seconds  
+anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity  
+anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds  
+anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds  
 ````  
+@link: see usage example in test/animation.htm  
 
  --- 
  <br><br>

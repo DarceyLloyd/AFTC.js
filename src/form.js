@@ -21,7 +21,7 @@ window.removeAllSelectOptions = function (selectBoxId) {
 
 
 /**
- * @function: xxxxxx(xxx)
+ * @function: checkboxToggleContent(xxx)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
@@ -142,7 +142,7 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 
 
 /**
- * @function: xxxxxx(xxx)
+ * @function: isChecked(xxx)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
@@ -155,9 +155,9 @@ window.isChecked = function (id) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isNumberKey(event)
+ * @desc: Checks if evt supplied (use on form input events via onkeyup or onkeydown)
+ * @param event evt: html onkeyup(event) or onkeydown(event)
  */
 window.isNumberKey = function (evt) {
 	var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -173,9 +173,12 @@ window.isNumberKey = function (evt) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: parseJSONToSelect(j, selectElementIdOrElement, labelKey, valueKey)
+ * @desc: parses a json object of key value pairs to a form select element
+ * @param string j: the json data
+ * @param multi selectElementIdOrElement: the json data
+ * @param string labelKey: of key value pair this is the key
+ * @param string valueKey: of key value pair this is the value
  */
 window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
 	var element;

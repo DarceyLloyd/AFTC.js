@@ -17,7 +17,7 @@ var AFTC = AFTC || {}
  * ````
  * @link: see usage example in test/animation.htm
  */
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 AFTC.Animate = function (elementId, onComplete) {
     // log("AFTC.Animate()");
 
@@ -637,22 +637,102 @@ AFTC.Animate = function (elementId, onComplete) {
     init();
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.fadeIn = function (elementQuery, duration) {
-    window.fade("in", elementQuery, duration, arguments[2]);
+
+// AFTC.totParams = {
+//     startTime:0,
+//     endTime:0,
+//     startValue:0,
+//     endValue:0,
+//     duration:0,
+//     active:false,
+//     step:0,
+//     range:0,
+//     onUpdate:false,
+//     onComplete:false
+// }
+// window.tweenValueOverTime = function(start,end,duration,onUpdate,onComplete){
+//     if(AFTC.totParams.active){
+//         console.warn("tweenValueOverTime(): Error: Already running, if you require more advanced value tweening please use AFTC.Animate()");
+//         return;
+//     }
+    
+//     AFTC.totParams.active = true;
+//     AFTC.totParams.duration = duration * 1000;
+//     AFTC.totParams.startTime = new Date().getTime();
+//     AFTC.totParams.endTime = AFTC.totParams.startTime + AFTC.totParams.duration;
+//     AFTC.totParams.startValue = start;
+//     AFTC.totParams.endValue = end;
+//     AFTC.totParams.range = AFTC.totParams.endValue-AFTC.totParams.startValue;
+//     AFTC.totParams.step = AFTC.totParams.range/(duration*1000);
+//     AFTC.totParams.onUpdate = onUpdate;
+//     AFTC.totParams.onComplete = onComplete;
+//     log(AFTC.totParams);
+//     AFTCTweenValueEngine();
+// }
+// window.AFTCTweenValueEngine = function(){
+//     var c = new Date().getTime() - AFTC.totParams.startTime;
+//     var v = 0;
+//     if (c < AFTC.totParams.duration){
+//         v = AFTC.totParams.startValue + AFTC.totParams.step * c;
+//         log(c + " v=" + v);
+//         if (onUpdate){
+//             onUpdate(v);
+//         }
+//         requestAnimationFrame(AFTCTweenValueEngine);
+//     } else {
+//         v = AFTC.totParams.endValue;
+//         log(c + " v=" + v);
+//         log("COMPELTE");
+//         if (onUpdate){
+//             onComplete(v);
+//         }
+//     }
+    
+// }
+
+
+
+/**
+ * @function: fadeIn(elementId, duration)
+ * @desc: fades in an element over a specified duration
+ * @param string elementId : the id of the html element you wish to fade
+ * @param number duration : how long you want the fade to run over in seconds
+ */
+window.fadeIn = function (elementId, duration) {
+    var cleanUp = function(){
+        animation = null;
+        delete(animation);
+    }
+    var animation = new AFTC.Animate(elementId,cleanUp);
+    animation.anim(["opacity"],[1],[duration]);
+    animation.start();
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.fadeOut = function (elementQuery, duration) {
-    window.fade("out", elementQuery, duration, arguments[2]);
+/**
+ * @function: fadeOut(elementId, duration)
+ * @desc: fades out an element over a specified duration
+ * @param string elementId : the id of the html element you wish to fade
+ * @param number duration : how long you want the fade to run over in seconds
+ */
+window.fadeOut = function (elementId, duration) {
+    var cleanUp = function(){
+        animation = null;
+        delete(animation);
+    }
+    var animation = new AFTC.Animate(elementId,cleanUp);
+    animation.anim(["opacity"],[0],[duration]);
+    animation.start();
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
 
 
 /**
@@ -673,7 +753,7 @@ window.getElementOffsetTop = function (elementId) {
     }
     
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -782,4 +862,4 @@ window.scrollToElement = function (elementId, arg_duration, offset) {
     }
     animate();
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

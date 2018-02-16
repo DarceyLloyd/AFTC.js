@@ -6,22 +6,43 @@
 <br><br>
 
 
-## Whats new 1.3.14
+## Whats new 1.4.1
 
-    - added quick set html function, setHTML(elementOrElementId,string)
-    - added quick set html function alias, html(elementOrElementId,string)
-    - added easy css function, addClass(elementOrElementId,className)
-    - added easy css function, removeClass(elementOrElementId,className)
-    - reworked hide to hide(element,classListToRemoveOnShow,classListToAddOnShow) // args 2 and 3 are optional
-    - reworked show to show(element,classListToRemoveOnShow,classListToAddOnShow) // args 2 and 3 are optional
-    - removed array prototypes, I can't get along with my arrays being polluted with function code
-    - added arrayContains(array,needle); // replacement for the removed prototype
-    - added arrayRemove(array,item); // replacement for the removed prototype
-    - added arrayEmpty(array); // replacement for the removed prototype
-    - added arrayClear(array); // replacement for the removed prototype which is an alias of arrayEmpty
-    - added hide(elementID or element, optional); (optional = mode:string display or opacity)
-    - added show(elementID or element, optional); (optional = mode:string display or opacity)
-    - fixed bug on AFTC.Animate
+    - AFTC.Animate() has taken a re-write to allow for better functionality, eg
+    ````
+        AFTC.Animate("#box1", animateBox2)
+            .prop("width",100,0.5)
+            .prop("height",100,0.5)
+            .prop("padding",10,0.5)
+            .prop("left",100,0.5)
+            .prop("top",25,0.5)
+            .prop("backgroundColor","#000000",0.5)
+            .prop("color","#FFFFFF",0.5)
+            .prop("borderColor","#00FFFF",0.5)
+            .prop("borderWidth",5,0.5)
+            .prop("borderRadius",50,0.5)
+            .set("fontWeight","bold")
+            .set("fontSize","18px")
+            .set("textAlign","center")
+            .delay(2)
+            .prop("width",50,0.2)
+            .prop("height",50,0.2)
+            .prop("padding",0,0.2)
+            .prop("left",0,0.2)
+            .prop("top",0,0.2)
+            .prop("backgroundColor","#FFCC00",0.2)
+            .prop("color","#000000",0.2)
+            .prop("borderColor","#990000",0.2)
+            .prop("borderWidth",2,0.2)
+            .prop("borderRadius",0,0.2)
+            .set("fontWeight","normal")
+            .set("fontSize","normal")
+            .set("textAlign","inherit");
+        }
+    ````
+    See tests/animation.htm for further details
+    - Various fixes and additions throughout
+    - In progress of testing all tests for 100% migration to this version
 
 
 <br><br>
@@ -56,14 +77,16 @@ No more typing document.getElementById(str)! It's shorter and runs much quicker 
 ## <b>querySelector(str)</b>
 No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
 
-## <b>AFTC.Animate("#box1", onComplete).ChainFunctions()</b>
+## <b>var myAnimVar = new AFTC.Animate("#box1", onComplete).ChainFunctions()</b>
 ```
-    AFTC.Animate("#box1",myOnCompleteFunction)
+    var myAnimation = new AFTC.Animate("#box1",myOnCompleteFunction)
         // Chain functions
+        myAnimation
         .delay(1) // delay in seconds
-        .prop("width",100,0.5) // prop(style,targetValue,duration)
-        .prop("opacity",0,0.5);
-        .prop("backgroundColor","#990000",2)
+        .anim("width",100,0.5) // prop(style,targetValue,duration)
+        .anim("opacity",0,0.5);
+        .anim("backgroundColor","#990000",2)
+        .start()
 ```
 or fade and hide etc etc
 
@@ -178,568 +201,758 @@ gulp build
 
 
 
+# <b>base.js</b>
+
+
 
 
 ## <b>addEvent(obj,type,fn,useCapture)</b>
-Shortcut for adding events with old browser compatibility<br>
-
+ --- 
+  
+Shortcut for adding events with old browser compatibility  
 param | type | optional | description
 --- | --- | --- | ---
-obj | object | required |  The object you wish to attach the event listener to 
-type | string | required |  The event type (e.type) mousedown, mouseup, click etc 
-fn | function | required |  The function to call when the event is triggered 
-useCapture | boolean | optional |  Whether the event should be executed in the capturing or in the bubbling phase 
-<br>
+obj | object |  | The object you wish to attach the event listener to | 
+type | string |  | The event type (e.type) mousedown, mouseup, click etc | 
+fn | function |  | The function to call when the event is triggered | 
+useCapture | boolean | optional | Whether the event should be executed in the capturing or in the bubbling phase | 
 
-
+ --- 
+ <br><br>
 
 ## <b>onReady(fn)</b>
-Replacement for jQuerys $(document).ready<br>
-
-><b>alias: ready()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> ready  
+  
+  
+Replacement for jQuerys $(document).ready  
 param | type | optional | description
 --- | --- | --- | ---
-fn | function |  |  inline function or pass it a function for when your page is loaded and ready to be used 
-<br>
+fn | function |  | inline function or pass it a function for when your page is loaded and ready to be used | 
 
+ --- 
+ <br><br>
 
+## <b>AFTC.Resizemanager()</b>
+ --- 
+  
+A function stack manager for resize and orientation change events  
+## <b>enable()</b>
+enable function stack execution on oritentation and resize change  
+## <b>disable()</b>
+disable function stack execution on oritentation and resize change  
+## <b>add(uid,fn)</b>
+add function to orientation and resize stack  
+param | type | optional | description
+--- | --- | --- | ---
+uid | string |  | unique id / label of function to add from stack | 
+fn | function |  | function to add to stack | 
+## <b>remove(uid)</b>
+remove function from orientation and resize stack  
+param | type | optional | description
+--- | --- | --- | ---
+uid | string |  | unique id / label of function to remove from stack | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getElementById(id)</b>
-Short cut for document.getElementById, it also caches the query<br>
-
-><b>alias: getId()</b><br>
-
-><b>alias: byId()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> getId  
+> byId  
+  
+  
+short cut for document.getElementById, it also caches the query  
 param | type | optional | description
 --- | --- | --- | ---
-string | id |  |  id of html element to retrieve 
-<br>
+string | id |  | id of html element to retrieve | 
 
-
+ --- 
+ <br><br>
 
 ## <b>querySelector(str)</b>
-Short cut for document.querySelector, it also caches the query<br>
-
-><b>alias: query()</b><br>
-
-><b>alias: cssQuery()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> query  
+> cssQuery  
+  
+  
+Short cut for document.querySelector, it also caches the query  
 param | type | optional | description
 --- | --- | --- | ---
-str | string |  |  the query to be run on the dom 
-<br>
+str | string |  | the query to be run on the dom | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getElementsByClassName(str)</b>
-Short cut for document.getElementsByClassName, it also caches the query<br>
-
-><b>alias: getClass()</b><br>
-
-><b>alias: byClass()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> getClass  
+> byClass  
+  
+  
+Short cut for document.getElementsByClassName, it also caches the query  
 param | type | optional | description
 --- | --- | --- | ---
-str | string |  |  the class name to look for 
-<br>
+str | string |  | the class name to look for | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getElementsByTagName(str)</b>
-Shortcut for getElementsByTagName<br>
-
+ --- 
+  
+shortcut for getElementsByTagName  
 param | type | optional | description
 --- | --- | --- | ---
-str | string |  |  tag name to look for 
-<br>
+str | string |  | tag name to look for | 
 
+ --- 
+ <br><br>
 
-
-## <b>addClass(elementOrId,className)</b>
-Shortcut to add a css class to a html element<br>
-
+## <b>addClass(elementOrId,classname)</b>
+ --- 
+  
+shortcut to add a css class to a html element  
 param | type | optional | description
 --- | --- | --- | ---
-elementOrId | element or string |  |  The elemnt or id of the html element to add a css class to 
-className | string |  |  the class name to add 
-<br>
+elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to | 
+className | string |  | the class name to add | 
 
-
+ --- 
+ <br><br>
 
 ## <b>removeClass(elementOrId,className)</b>
-Shortcut to remove a class from a html element<br>
-
+ --- 
+  
+shortcut to remove a class from a html element  
 param | type | optional | description
 --- | --- | --- | ---
-elementOrId | element or string |  |  The elemnt or id of the html element to add a css class to 
-className | string |  |  the class name to remove 
-<br>
+elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to | 
+className | string |  | the class name to remove | 
 
+ --- 
+ <br><br>
 
-
-## <b>log(arg)</b>
-Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML<br>
-
-><b>alias: trace()</b><br>
-
+## <b>hasClass(elementOrId, cls)</b>
+ --- 
+  
+Check to see if an element has a class attached to it  
 param | type | optional | description
 --- | --- | --- | ---
-arg | * |  |  what you want to console.log 
+elementOrId | string |  | The elemnt or id of the html element | 
+cls | string |  | class to look for | 
 
+ --- 
+ <br><br>
 
-```
-var msg = "Hello World!";
-log("msg = " + msg);
-```
+## <b>AFTC.log{}</b>
+ --- 
+<b>Aliases:</b>
+> trace  
+  
+  
+shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML  
+param | type | optional | description
+--- | --- | --- | ---
+ |  |  |  | 
 
-<br>
+ --- 
+ <br><br>
 
+## <b>log(input)</b>
+ --- 
+<b>Aliases:</b>
+> trace  
+  
+  
+Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML  
+````  
+log("Hello World");  
+log("a = " + a);  
+log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);  
+log(MyObject);  
+log(MyClass);  
+````  
+param | type | optional | description
+--- | --- | --- | ---
+input | * |  | what you want to console.log | 
 
+ --- 
+ <br><br>
 
 ## <b>logEnable()</b>
-Enable log<br>
+ --- 
+  
+Enables log()  
 
-<br>
-
-
+ --- 
+ <br><br>
 
 ## <b>logDisable()</b>
-Disable log<br>
+ --- 
+  
+Disable log()  
 
-<br>
-
+ --- 
+ <br><br>
 
 ## <b>configLog({options})</b>
-```
-// Will also log to HTML element with id debug
-
-configLog({autoLogTo:"debug"});
-//configLog({autoLogEnable:false}); // turn it off
-//configLog({autoLogEnable:true}); // turn it on
-
-var a = 1;
-log("a = " + a);
-```
-
-
-<br>
-
-
-
-
-## <b>logTo(elementId,msg)</b>
-A console.log alternative that will output to a html element and the console at the same time<br>
-
+ --- 
+  
+Configuration function for logTo() autologging see examples folder on usage  
 param | type | optional | description
 --- | --- | --- | ---
-elementId | string |  |  elementId to output to 
-msg | string |  |  what innerHTML will be set to 
-<br>
+autoLogTo | string |  | html element id to log to | 
+autoLogEnable | boolean |  | enable auto log | 
+enableAutoLog | boolean |  | enable auto log | 
+autoLogDisable | boolean |  | disable auto log | 
+disableAutoLog | boolean |  | disable auto log | 
 
+ --- 
+ <br><br>
 
-
-## <b>logObjTo(elementId,obj,append)</b>
-A console.log alternative that will output an object to a html element and the console nicely formatted at the same time<br>
-
+## <b>logTo(elementId,str)</b>
+ --- 
+  
+A console.log alternative that will output to a html element and the console at the same time  
+````  
+logTo("message","Hello World!");  
+````  
 param | type | optional | description
 --- | --- | --- | ---
-elementId | string |  |  html element id to output to 
-obj | object |  |  the object to debug output 
-optional | boolean | append |  append text or prepend text 
-<br>
+elementId | string |  | elementId to output to | 
+str | string |  | what innerHTML will be set to | 
 
+ --- 
+ <br><br>
 
+## <b>logObjTo(elementId,obj,appendOrPrepend)</b>
+ --- 
+  
+A console.log alternative that will output an object to a html element and the console nicely formatted at the same time  
+param | type | optional | description
+--- | --- | --- | ---
+elementId | string |  | html element id to output to | 
+obj | object |  | the object to debug output | 
+append | boolean | optional | append text or prepend text | 
+
+ --- 
+ <br><br>
 
 ## <b>openDebugWindow(html)</b>
-Open a popup window with the html you wish to display in it<br>
-
-><b>alias: stringToWindow()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> stringToWindow  
+  
+  
+open a popup window with the html you wish to display in it  
 param | type | optional | description
 --- | --- | --- | ---
-html | dataType |  |  the html you wish to display in the popup window 
-<br>
+html | dataType |  | the html you wish to display in the popup window | 
 
+ --- 
+ <br><br>
 
-
-## <b>setHTML(elementOrId,str)</b>
-Quick shortcut for outputting html to an element<br>
-
-><b>alias: html()</b><br>
-
+## <b>setHTML(elementOrId,html);</b>
+ --- 
+<b>Aliases:</b>
+> html  
+  
+  
+quick shortcut for outputting html to an element  
+````  
+setHTML("header","Welcome");  
+// or  
+var myElement = getElementById("header");  
+setHTML(myElement,"Welcome!");  
+````  
 param | type | optional | description
 --- | --- | --- | ---
-elementOrId | dataType |  |  the element or the element id you wish to set the html of 
-str | dataType |  |  the html string to insert into your element 
-<br>
+elementOrId | dataType |  | the element or the element id you wish to set the html of | 
+html | dataType |  | the html string to insert into your element | 
 
+ --- 
+ <br><br>
 
-
-## <b>arrayRemoveIndex(array,index)</b>
-Remove a specified index from an array<br>
-
+## <b>arrayRemoveIndex(arr,index)</b>
+ --- 
+  
+remove a specified index from an array  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array you wish to remove an index on 
-index | number |  |  the array index you wish to remove 
-<br>
+arr | array |  | the array you wish to remove an index on | 
+index | number |  | the array index you wish to remove | 
+  
+<b>Return:</b> array
 
 
+ --- 
+ <br><br>
 
-## <b>isStringInArray(str,array)</b>
-Check to see if a string is in an array<br>
-
+## <b>isStringInArray(needle,haystack)</b>
+ --- 
+  
+Check to see if a string is in an array  
 param | type | optional | description
 --- | --- | --- | ---
-str | string |  |  the string your looking for 
-arr | array |  |  the array you wish to search 
-<br>
+needle | string |  | the string your looking for | 
+haystack | array |  | the array you wish to search | 
 
+ --- 
+ <br><br>
 
-
-## <b>arrayContains(arr,needle)</b>
-Check to see if your array contains something you want to find<br>
-
+## <b>arrayContains(haystack,needle)</b>
+ --- 
+  
+Check to see if your array contains something you want to find  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array you wish to search 
-needle | string |  |  what you want to find 
-<br>
+arr | array |  | the array you wish to search | 
+needle | string |  | what you want to find | 
 
-
+ --- 
+ <br><br>
 
 ## <b>arrayRemove(arr,item)</b>
-Removes an item from an array<br>
-
-><b>alias: arrayRemoveItem()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> arrayRemoveItem  
+  
+  
+removes an item from an array  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array you wish to search and remove from 
-item | string |  |   index at which a given element can be found 
-<br>
+arr | array |  | the array you wish to search and remove from | 
+item | string |  | index at which a given element can be found | 
 
-
+ --- 
+ <br><br>
 
 ## <b>arrayEmpty(arr)</b>
-Clears/empties an array for garbage collection<br>
-
-><b>alias: arrayClear()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> arrayClear  
+  
+  
+clears/empties an array for garbage collection  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array to clear / empty 
-<br>
+arr | array |  | the array to clear / empty | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getMaxFromArray(arr)</b>
-Returns the maximum value in an array<br>
-
-><b>alias: arrayGetMax()</b><br>
-
-><b>alias: arrayMax()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> arrayGetMax  
+> arrayMax  
+  
+  
+returns the maximum value in an array  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array you wish to find the maximum value in 
-<br>
+arr | array |  | the array you wish to find the maximum value in | 
 
+ --- 
+ <br><br>
 
-
-## <b>arrayGetMin(arr)</b>
-Returns the minimum value in an array<br>
-
-><b>alias: getMinFromArray()</b><br>
-
-><b>alias: arrayMin()</b><br>
-
+## <b>arrayGetMin</b>
+ --- 
+<b>Aliases:</b>
+> getMinFromArray  
+> arrayMin  
+  
+  
+returns the minimum value in an array  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array you wish to find the minimum value in 
-<br>
+arr | array |  | the array you wish to find the minimum value in | 
 
+ --- 
+ <br><br>
 
-
-## <b>arrayShuffle(array)</b>
-Shuffles an array<br>
-
-><b>alias: shuffleArray()</b><br>
-
+## <b>arrayShuffle(arr)</b>
+ --- 
+<b>Aliases:</b>
+> shuffleArray  
+  
+  
+shuffles an array  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array to shuffle 
-<br>
+arr | array |  | the array to shuffle | 
 
+ --- 
+ <br><br>
 
-
-## <b>arrayShuffle2(array)</b>
-Shuffles an array (method 2)<br>
-
+## <b>arrayShuffle2(arr)</b>
+ --- 
+  
+shuffles an array (method 2)  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array to shuffle 
-<br>
+arr | array |  | the array to shuffle | 
 
-
+ --- 
+ <br><br>
 
 ## <b>arrayShuffle3(a)</b>
-Shuffles an array (method 2)<br>
-
+ --- 
+  
+shuffles an array (method 2)  
 param | type | optional | description
 --- | --- | --- | ---
-arr | array |  |  the array to shuffle 
-<br>
+a | array |  | the array to shuffle | 
 
-
+ --- 
+ <br><br>
 
 ## <b>isAlphaNumeric(input)</b>
-Check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
-
+ --- 
+  
+check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)  
 param | type | optional | description
 --- | --- | --- | ---
-input | string or number |  |  variable / value you wish to check 
-<br>
+input | string||number |  | variable / value you wish to check | 
 
-
+ --- 
+ <br><br>
 
 ## <b>isElement(o)</b>
-Checks if your variable is an element or not<br>
-
+ --- 
+  
+checks if your variable is an element or not  
 param | type | optional | description
 --- | --- | --- | ---
-o | * |  |  variable you wish to check 
-<br>
+o | * |  | variable you wish to check | 
 
-
+ --- 
+ <br><br>
 
 ## <b>isElement2(element)</b>
-Checks to see if your vairable is an element or not<br>
-
+ --- 
+  
+checks to see if your vairable is an element or not  
 param | type | optional | description
 --- | --- | --- | ---
-element | * |  |  the variable you wish to check 
-<br>
+element | * |  | the variable you wish to check | 
 
-
+ --- 
+ <br><br>
 
 ## <b>isDOM(obj)</b>
-Checks to see if your variable is a DOM object<br>
-
+ --- 
+  
+checks to see if your variable is a DOM object  
 param | type | optional | description
 --- | --- | --- | ---
-obj | object |  |  variable to check 
-<br>
+obj | object |  | variable to check | 
 
-
+ --- 
+ <br><br>
 
 ## <b>radToDeg(input)</b>
-Converts radians to degrees<br>
-
-><b>alias: rad2deg()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> rad2deg  
+  
+  
+converts radians to degrees  
 param | type | optional | description
 --- | --- | --- | ---
-input | number |  |  the radians you wish converted to degrees 
-<br>
+input | number |  | the radians you wish converted to degrees | 
 
-
+ --- 
+ <br><br>
 
 ## <b>degToRad(input)</b>
-Converts degrees to radians<br>
-
-><b>alias: deg2rad()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> deg2rad  
+  
+  
+converts degrees to radians  
 param | type | optional | description
 --- | --- | --- | ---
-input | number |  |  the value you wish converted to radians 
-<br>
+input | number |  | the value you wish converted to radians | 
 
-
+ --- 
+ <br><br>
 
 ## <b>boolToString(bool)</b>
-Converts boolean to a string of true or false<br>
-
+ --- 
+  
+converts boolean to a string of true or false  
 param | type | optional | description
 --- | --- | --- | ---
-bool | boolean |  |  the boolean you wish to convert 
-<br>
+bool | boolean |  | the boolean you wish to convert | 
 
+ --- 
+ <br><br>
 
-
-## <b>boolToYesNo(arg)</b>
-Converts a boolean to yes or no<br>
-
+## <b>boolToYesNo(bool)</b>
+ --- 
+  
+converts a boolean to yes or no  
 param | type | optional | description
 --- | --- | --- | ---
-arg | boolean |  |  the boolean you wish to convert 
-<br>
+bool | boolean |  | the boolean you wish to convert | 
 
-
+ --- 
+ <br><br>
 
 ## <b>stringToBool(str)</b>
-Converts a string to a boolean (y,yes,"1",no etc)<br>
-
+ --- 
+  
+converts a string to a boolean (y,yes,"1",no etc)  
 param | type | optional | description
 --- | --- | --- | ---
-str | string |  |  the string you wish to convert 
-<br>
+str | string |  | the string you wish to convert | 
 
+ --- 
+ <br><br>
 
-
-## <b>getBooleanFrom(arg)</b>
-Converts an input to a boolean<br>
-
+## <b>getBooleanFrom(input)</b>
+ --- 
+  
+converts an input to a boolean  
 param | type | optional | description
 --- | --- | --- | ---
-arg | * |  |  the variable you wish to convert to a boolean 
-<br>
+input | * |  | the variable you wish to convert to a boolean | 
 
+ --- 
+ <br><br>
 
-
-## <b>isBoolean(arg)</b>
-Checks if a variable is a boolean<br>
-
-><b>alias: isBool()</b><br>
-
+## <b>isBoolean(input)</b>
+ --- 
+<b>Aliases:</b>
+> isBool  
+  
+  
+checks if a variable is a boolean  
 param | type | optional | description
 --- | --- | --- | ---
-arg | * |  |  variable to check 
-<br>
+input | * |  | variable to check | 
 
-
+ --- 
+ <br><br>
 
 ## <b>isNumeric(n)</b>
-Check if variable is numeric<br>
-
-><b>alias: isNumber()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> isNumber  
+  
+  
+check if variable is numeric  
 param | type | optional | description
 --- | --- | --- | ---
-n | * |  |  variable to check 
-<br>
+n | * |  | variable to check | 
 
+ --- 
+ <br><br>
 
-
-## <b>isArray(arg)</b>
-Check if variable is an array<br>
-
+## <b>isArray(arr)</b>
+ --- 
+  
+check if variable is an array  
 param | type | optional | description
 --- | --- | --- | ---
-arg | * |  |  variable to check 
-<br>
+arr | * |  | variable to check | 
 
+ --- 
+ <br><br>
 
+## <b>parseArrayToFloat(arr)</b>
+ --- 
+<b>Aliases:</b>
+> arrayToFloat  
+  
+  
+parses all values in array to float  
+param | type | optional | description
+--- | --- | --- | ---
+arr | array |  | array to process | 
+
+ --- 
+ <br><br>
+
+## <b>* @function:parseArrayToInt(arr)</b>
+ --- 
+<b>Aliases:</b>
+> arrayToInt  
+  
+  
+parses all values in array to float  
+param | type | optional | description
+--- | --- | --- | ---
+arr | array |  | array to process | 
+
+ --- 
+ <br><br>
+
+## <b>* @function:convertToArray(v)</b>
+ --- 
+<b>Aliases:</b>
+> valueToArray  
+  
+  
+takes an input and returns it as index[0] of an array  
+param | type | optional | description
+--- | --- | --- | ---
+v | & |  | value to insert into array | 
+
+ --- 
+ <br><br>
 
 ## <b>getFunctionName(fn)</b>
-Tries to get the function name of a suppled function<br>
-
+ --- 
+  
+tries to get the function name of a suppled function  
 param | type | optional | description
 --- | --- | --- | ---
-fn | function |  |  the function wish to get the name of 
-<br>
+fn | function |  | the function wish to get the name of | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getRandomInt(min,max)</b>
-Returns a random number / int betwen your specified min and max values<br>
-
-><b>alias: getRandom()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> getRandom  
+  
+  
+returns a random number / int betwen your specified min and max values  
 param | type | optional | description
 --- | --- | --- | ---
-min | number |  |  the minimum your random number is allowed to go 
-max | number |  |  the maximum your random number is allowed to go 
-<br>
+min | number |  | the minimum your random number is allowed to go | 
+max | number |  | the maximum your random number is allowed to go | 
 
-
+ --- 
+ <br><br>
 
 ## <b>randomString(length)</b>
-Get a random string of a specified length<br>
-
-><b>alias: getRandomString()</b><br>
-
+ --- 
+<b>Aliases:</b>
+> getRandomString  
+  
+  
+get a random string of a specified length  
 param | type | optional | description
 --- | --- | --- | ---
-length | number |  |  the length of the string you wish to generate 
-<br>
+length | number |  | the length of the string you wish to generate | 
 
+ --- 
+ <br><br>
 
+## <b>getUniqueId()</b>
+ --- 
+<b>Aliases:</b>
+> getUID  
+> generateRandomId  
+> generateUID  
+  
+  
+Generates a random id  
+
+ --- 
+ <br><br>
 
 ## <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
-Generate an array of random number between your max and min values<br>
-
+ --- 
+  
+generate an array of random number between your max and min values  
 param | type | optional | description
 --- | --- | --- | ---
-arraySize | number |  |  the number of random numbers to generate also the array size that will be returned 
-min | number |  |  the minimum your random number is allowed to be 
-max | number |  |  the maximum your random number is allowed to be 
-<br>
+arraySize | number |  | the number of random numbers to generate also the array size that will be returned | 
+min | number |  | the minimum your random number is allowed to be | 
+max | number |  | the maximum your random number is allowed to be | 
 
-
+ --- 
+ <br><br>
 
 ## <b>getArrayOfRandomStrings(arraySize,strLength)</b>
-Generate an array of random string of a specified length<br>
-
+ --- 
+  
+generate an array of random string of a specified length  
 param | type | optional | description
 --- | --- | --- | ---
-arraySize | number |  |  the number of random strings to generate also the array size that will be returned 
-strLength | number |  |  the length of the strings to be generated 
-<br>
+arraySize | number |  | the number of random strings to generate also the array size that will be returned | 
+strLength | number |  | the length of the strings to be generated | 
 
-
+ --- 
+ <br><br>
 
 ## <b>guid()</b>
-Generates a guid<br>
+ --- 
+<b>Aliases:</b>
+> getGUID  
+  
+  
+generates a guid  
 
-><b>alias: getGUID()</b><br>
-
-<br>
-
-
+ --- 
+ <br><br>
 
 ## <b>redirect(url)</b>
-No more typing self.location.href, just use redirect(url)<br>
-
+ --- 
+  
+no more typing self.location.href, just use redirect(url)  
 param | type | optional | description
 --- | --- | --- | ---
-url | string |  |  the url you wish to redirect to 
-<br>
+url | string |  | the url you wish to redirect to | 
 
-
+ --- 
+ <br><br>
 
 ## <b>AFTC.Benchmark()</b>
-Quick and easy benchmarking, see examples benchmark.htm for usage<br>
+ --- 
+  
+Quick and easy benchmarking, see examples benchmark.htm for usage  
+````  
+AFTC.Benchmark().start();  
+// do you stuff  
+AFTC.Benchmark().end();  
+log( AFTC.Benchmark().getTime() );  
+````  
+@function start: start benchmark  
+@function stop: stop benchmark  
+@function getTime: return benchmark result  
 
-<br>
+ --- 
+ <br><br>
 
-
-
-## <b>hide(element,classListToRemoveOnHide,classListToAddOnHide)</b>
-Hides a html element, can also add or remove any amount of classes on element hide at the same time<br>
-
+## <b>hide(element,classListToRemove,classListToAdd)</b>
+ --- 
+  
+hides a html element, can also add or remove any amount of classes on element hide at the same time  
 param | type | optional | description
 --- | --- | --- | ---
-element | element or string |  |  the element or the string id of the element you wish to hide 
-classListToRemoveOnHide | array |  |  string of class to remove or array of string classes to remove on hide 
-classListToAddOnHide | array |  |  string of class to remove or array of string classes to add on hide 
-<br>
+element | element||string |  | the element or the string id of the element you wish to hide | 
+classListToRemoveOnHide | array |  | string of class to remove or array of string classes to remove on hide | 
+classListToAddOnHide | array |  | string of class to remove or array of string classes to add on hide | 
 
+ --- 
+ <br><br>
 
-
-## <b>show(element,classListToRemoveOnShow,classListToAddOnShow)</b>
-Show a html element, can also add or remove any amount of classes on element show at the same time<br>
-
+## <b>show(element,classListToRemove,classListToSAdd)</b>
+ --- 
+  
+show a html element, can also add or remove any amount of classes on element show at the same time  
 param | type | optional | description
 --- | --- | --- | ---
-element | element or string |  |  the element or the string id of the element you wish to hide 
-classListToRemoveOnShow | array |  |  string of class to remove or array of string classes to remove on show 
-classListToAddOnShow | array |  |  string of class to remove or array of string classes to add on show 
-<br>
+element | element||string |  | the element or the string id of the element you wish to hide | 
+classListToRemoveOnShow | array |  | string of class to remove or array of string classes to remove on show | 
+classListToAddOnShow | array |  | string of class to remove or array of string classes to add on show | 
+
+ --- 
+ <br><br>
+
+
 
 
 

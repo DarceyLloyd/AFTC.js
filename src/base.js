@@ -624,12 +624,14 @@ window.arrayMin = function (arr) { return arrayGetMin(arr); }
 
 /**
  * @function: arrayShuffle(arr)
- * @desc: shuffles an array
+ * @desc: shuffles an array using a random method out of a choice of 2
  * @param array arr: the array to shuffle
- * @alias: shuffleArray
+ * @alias: shuffleArray2
+ * @alias: shuffleArray3
  */
 window.arrayShuffle = function (arr) {
-    var methodNo = getRandom(1, 2);
+    var methodNo = getRandom(2, 3);
+    log(methodNo);
     return window["arrayShuffle" + methodNo](arr);
     var fn = "arrayShuffle" + methodNo;
 }
