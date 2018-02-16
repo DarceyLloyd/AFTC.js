@@ -1,7 +1,11 @@
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.generateNoise = function(canvasId, width, height, opacity) {
 	var canvas = document.getElementById(canvasId),
 		ctx = canvas.getContext('2d'),

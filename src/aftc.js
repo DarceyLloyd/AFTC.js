@@ -10,7 +10,7 @@
 //     // Var defs
 //     var me = this; // Accessor
 //
-//     var params = {
+//     var args = {
 //
 //     };
 //
@@ -18,16 +18,19 @@
 //     if (arguments[0] && typeof (arguments[0]) == "object") {
 //
 //         for (var key in arguments[0]) {
-//             if (params.hasOwnProperty(key)) {
-//                 params[key] = arguments[0][key];
+//             if (args.hasOwnProperty(key)) {
+//                 args[key] = arguments[0][key];
 //             } else {
 //                 if (console) {
 //                     if (console.error) {
-//                         console.error("AFTC : ERROR: Unknown paramater: [" + key + "]");
+//                         console.error("AFTC: ERROR: Unknown argument: [" + key + "]");
 //                     }
 //                 }
 //             }
 //         }
+//     }
+//     var params = {
+//
 //     }
 //
 //

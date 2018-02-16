@@ -10,20 +10,20 @@ var jsFiles = [
     "./src/base.js", // Dependencies: none
 
     // Dev assist utility functions / tools (comment out the files you dont want in your aftc.min.js build)
-    "./src/string.js", // Dependencies: none
-    "./src/random.js", // Dependencies: none
-    "./src/datetime.js", // Dependencies: none
-    "./src/cookies.js", // Dependencies: none
-    "./src/validation.js", // Dependencies: none
-    "./src/graphics.js", // Dependencies: none
+    // "./src/string.js", // Dependencies: none
+    // "./src/random.js", // Dependencies: none
+    // "./src/datetime.js", // Dependencies: none
+    // "./src/cookies.js", // Dependencies: none
+    // "./src/validation.js", // Dependencies: none
+    // "./src/graphics.js", // Dependencies: none
 
     // Utilities / tools which focus on a specific area / task(s), the larger things (comment out the files you dont want in your aftc.min.js build)
     "./src/animation.js", // Dependencies: none
-    './src/color.js', // Dependencies: none
-    "./src/detection.js", // Dependencies: none
-    "./src/dom.js", // Dependencies: none
-    "./src/styling.js", // Dependencies: none
-    "./src/form.js", // Dependencies: none
+    // './src/color.js', // Dependencies: none
+    // "./src/detection.js", // Dependencies: none
+    // "./src/dom.js", // Dependencies: none
+    // "./src/styling.js", // Dependencies: none
+    // "./src/form.js", // Dependencies: none
     // "./src/io.js", // Dependencies: jQuery >= 1.12
     
     // Common 3rd party libraries which I often require (You may find them useful also)

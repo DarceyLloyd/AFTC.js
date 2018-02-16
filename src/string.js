@@ -1,4 +1,18 @@
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: cleanJSONString(s)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ */
+window.generateUniqueId = function (length) {
+
+}
+
+
+
+/**
+ * @function: cleanJSONString(s)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.cleanJSONString = function (s) {
 	// preserve newlines, etc - use valid JSON
 	s = s.replace(/\\n/g, "\\n")
@@ -16,7 +30,11 @@ window.cleanJSONString = function (s) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: escapeHTML(text)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.escapeHTML = function (text) {
 	var replacements = {
 		"<": "&lt;",
@@ -32,7 +50,11 @@ window.escapeHTML = function (text) {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: trimStringLength(input, length)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.trimStringLength = function (input, length) {
 	return input.substring(0, length);
 }
@@ -40,7 +62,11 @@ window.trimStringLength = function (input, length) {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: getFileExtension(str)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getFileExtension = function (str) {
 	var ext = str.split('.').pop();
 	return str;
@@ -48,7 +74,25 @@ window.getFileExtension = function (str) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
+
+/**
+ * @function: getFileExtension2(input)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
+window.getFileExtension2 = function (input) {
+	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/**
+ * @function: getLastPartOfUrl()
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getLastPartOfUrl = function () {
 	var url = window.location.href;
 	var part = url.substring(url.lastIndexOf('/') + 1);
@@ -57,14 +101,12 @@ window.getLastPartOfUrl = function () {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-window.getFileExtension2 = function (input) {
-	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: removeFileFromPath(path)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.removeFileFromPath = function (path) {
 	//var pa = '/this/is/a/folder/aFile.txt';
 	var r = /[^\/]*$/;
@@ -74,7 +116,11 @@ window.removeFileFromPath = function (path) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: getAnchorFromUrl(url)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getAnchorFromUrl = function (url) {
 	return url.slice(url.lastIndexOf('#') + 1);
 }
@@ -84,14 +130,24 @@ window.getAnchorFromUrl = function (url) {
 
 
 
+/**
+ * @function: String.prototype.startsWith(str)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 // es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 if (typeof String.prototype.startsWith != 'function') {
 	String.prototype.startsWith = function (str) {
 		return this.match(new RegExp("^" + str));
 	};
 }
 
+/**
+ * @function: String.prototype.endsWith(str)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
+// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
 if (typeof String.prototype.endsWith != 'function') {
 	String.prototype.endsWith = function (str) {
 		return this.match(new RegExp(str + "$"));
@@ -100,7 +156,11 @@ if (typeof String.prototype.endsWith != 'function') {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: getStringBetween(str,start,end)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getStringBetween = function(str,start,end){
 	return str.split(start).pop().split(end).shift().trim();
 }
@@ -108,7 +168,11 @@ window.getStringBetween = function(str,start,end){
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: getAllStringsBetween(str,start,end)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getAllStringsBetween = function(str,start,end){
 	//return str.match(new RegExp(start + "(.*)" + end));
 	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive

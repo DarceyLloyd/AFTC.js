@@ -1,24 +1,58 @@
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isFireFox = function () {
 	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 	return is_firefox;
 }
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isChrome = function () {
 	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 	return is_chrome;
 }
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isSafari = function () {
 	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 	return is_safari;
 }
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isIE = function () {
 	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
 	return is_ie;
 }
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getIEVersion = function () {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
 	return match ? parseInt(match[1]) : undefined;
 }
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getBrowser = function () {
 	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 	if (/trident/i.test(M[1])) {
@@ -41,7 +75,11 @@ window.getBrowser = function () {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getOS = function (testAgent) {
 	var userAgent;
 

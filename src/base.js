@@ -2,21 +2,16 @@
     Author: Darcey@AllForTheCode.co.uk
     Author: Darcey.Lloyd@gmail.com
 */
-
-
-
 // The AFTC Object - All For The Code and NOTHING but the CODE!
 var AFTC = AFTC || {};
 
 /**
- * @type: function
- * @name: addEvent
+ * @function: addEvent(obj,type,fn,useCapture)
  * @desc: Shortcut for adding events with old browser compatibility
- * @param object required obj: The object you wish to attach the event listener to
- * @param string required type: The event type (e.type) mousedown, mouseup, click etc
- * @param function required fn: The function to call when the event is triggered
+ * @param object obj: The object you wish to attach the event listener to
+ * @param string type: The event type (e.type) mousedown, mouseup, click etc
+ * @param function fn: The function to call when the event is triggered
  * @param boolean optional useCapture: Whether the event should be executed in the capturing or in the bubbling phase
- * @return:
  */
 window.addEvent = function (obj, type, fn, useCapture) {
     if (obj == null || typeof (obj) == 'undefined') return;
@@ -31,11 +26,9 @@ window.addEvent = function (obj, type, fn, useCapture) {
 };
 
 /**
- * @type: function
- * @name: onReady
+ * @function: onReady(fn)
  * @desc: Replacement for jQuerys $(document).ready
  * @param function fn: inline function or pass it a function for when your page is loaded and ready to be used
- * @return:
  * @alias: ready
  */
 window.onReady = function (fn) {
@@ -57,17 +50,19 @@ window.ready = function (fn) {
 
 
 /**
- * @type: object
- * @name: AFTC.ResizeManager
+ * @function: AFTC.Resizemanager()
  * @desc: A function stack manager for resize and orientation change events
- * @function enable: enable function stack execution on oritentation and resize change
- * @function disable: disable function stack execution on oritentation and resize change
- * @function add: add function to orientation and resize stack
+ * @function: enable()
+ * @desc: enable function stack execution on oritentation and resize change
+ * @function: disable()
+ * @desc: disable function stack execution on oritentation and resize change
+ * @function: add(uid,fn)
+ * @desc: add function to orientation and resize stack
  * @param string uid: unique id / label of function to add from stack
  * @param function fn: function to add to stack
- * @function remove: remove function from orientation and resize stack
+ * @function: remove(uid)
+ * @desc: remove function from orientation and resize stack
  * @param string uid: unique id / label of function to remove from stack
- * @return:
  */
 AFTC.ResizeManager = {
     running: false,
@@ -149,11 +144,9 @@ AFTC.ResizeManager = {
 AFTC.AFTCElementQueryCache = [];
 
 /**
- * @type: function
- * @name: getElementById
+ * @function: getElementById(id)
  * @desc: short cut for document.getElementById, it also caches the query
  * @param id string: id of html element to retrieve
- * @return: element
  * @alias: getId
  * @alias: byId
  */
@@ -171,11 +164,9 @@ window.getId = function (id) { return window.getElementById(id); }
 window.byId = function (id) { return window.getElementById(id); }
 
 /**
- * @type: function
- * @name: querySelector
- * @desc: short cut for document.querySelector, it also caches the query
+ * @function: querySelector(str)
+ * @desc: Short cut for document.querySelector, it also caches the query
  * @param string str: the query to be run on the dom
- * @return: element
  * @alias: query
  * @alias: cssQuery
  */
@@ -194,11 +185,9 @@ window.cssQuery = function (id) { return window.querySelector(id); }
 
 
 /**
- * @type: function
- * @name: getElementsByClassName
- * @desc: short cut for document.getElementsByClassName, it also caches the query
+ * @function: getElementsByClassName(str)
+ * @desc: Short cut for document.getElementsByClassName, it also caches the query
  * @param string str: the class name to look for
- * @return: array
  * @alias: getClass
  * @alias: byClass
  */
@@ -218,15 +207,19 @@ window.byClass = function (id) { return window.getElementsByClassName(id); }
 
 
 /**
- * @type: function
- * @name: getElementsByTagName
+ * @function: getElementsByTagName(str)
  * @desc: shortcut for getElementsByTagName
  * @param string str: tag name to look for
- * @return: array
  */
-// TODO: Needs completing see getClass
 window.getElementsByTagName = function (str) {
-    return document.getElementsByTagName(str);
+    var cached = AFTC.AFTCElementQueryCache[str];
+    if (isElement(cached)) {
+        return cached;
+    } else {
+        var ele = document.getElementsByTagName(str);
+        AFTC.AFTCElementQueryCache[str] = ele;
+        return ele;
+    }
 }
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -240,18 +233,12 @@ window.getElementsByTagName = function (str) {
 // Styling shortcuts
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
- * @type: function
- * @name: addClass
+ * @function: addClass(elementOrId,classname)
  * @desc: shortcut to add a css class to a html element
- * @param element||string elementOrId: The elemnt or id of the html element to add a css class to
+ * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
  * @param string className: the class name to add
- * @return:
  */
 window.addClass = function (elementOrId, className) {
-    if (typeof (className) != "string") {
-        return;
-    }
-
     if (isElement(elementOrId)) {
         elementOrId.classList.add(className);
     } else {
@@ -260,24 +247,33 @@ window.addClass = function (elementOrId, className) {
 }
 
 /**
- * @type: function
- * @name: removeClass
+ * @func: removeClass(elementOrId,className)
  * @desc: shortcut to remove a class from a html element
- * @param element||string elementOrId: The elemnt or id of the html element to add a css class to
+ * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
  * @param string className: the class name to remove
- * @return:
  */
 window.removeClass = function (elementOrId, className) {
-    if (typeof (className) != "string") {
-        return;
-    }
-
     if (isElement(elementOrId)) {
         elementOrId.classList.remove(className);
     } else {
         log("elementOrId =" + elementOrId);
         log("className =" + className);
         getElementById(elementOrId).classList.remove(className);
+    }
+}
+
+
+/**
+ * @function: hasClass(elementOrId, cls)
+ * @desc: Check to see if an element has a class attached to it
+ * @param string elementOrId: The elemnt or id of the html element 
+ * @param string cls: class to look for
+ */
+window.hasClass = function(elementOrId, cls) {
+    if (isElement(elementOrId)) {
+        return elementOrId.classList.contains(cls);
+    } else {
+        return getElementById(elementOrId).classList.contains(cls);
     }
 }
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -292,6 +288,14 @@ window.removeClass = function (elementOrId, className) {
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // DEBUG
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+/**
+ * @function: AFTC.log{}
+ * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * @param: boolean enabled: sets window.log to enabled or disabled
+ * @alias: trace
+ */
+
 AFTC.log = {
     enabled: true
 };
@@ -300,10 +304,16 @@ AFTC.logTo = {
     element: false
 };
 /**
- * @type: function
- * @name: log
- * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
- * @param * arg: what you want to console.log
+ * @function: log(input)
+ * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * ````
+ * log("Hello World");
+ * log("a = " + a);
+ * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
+ * log(MyObject);
+ * log(MyClass);
+ * ````
+ * @param * input: what you want to console.log
  * @alias: trace
  */
 window.log = function (arg) {
@@ -335,10 +345,8 @@ window.trace = function (arg) {
 
 
 /**
- * @type: function
- * @name: logEnable
- * @desc: enable log
- * @return:
+ * @function: logEnable()
+ * @desc: Enables log()
  */
 window.logEnable = function () {
     AFTC.log.enabled = true;
@@ -346,10 +354,8 @@ window.logEnable = function () {
 
 
 /**
- * @type: function
- * @name: logDisable
- * @desc: disable log
- * @return:
+ * @function: logDisable()
+ * @desc: Disable log()
  */
 window.logDisable = function () {
     AFTC.log.enabled = false;
@@ -359,16 +365,13 @@ window.logDisable = function () {
 
 
 /**
- * @type: class
- * @name: configLog
- * @desc: a configuration function for log()
- * @param object arguments: {see arguments}
- * @param argument string autoLogTo: html element id to log to
- * @param argument boolean autoLogEnable boolean: enable auto log
- * @param argument boolean enableAutoLog boolean: enable auto log
- * @param argument boolean autoLogDisable boolean: disable auto log
- * @param argument  disableAutoLog boolean: disable auto log
- * @return:
+ * @func: configLog({options})
+ * @desc: Configuration function for logTo() autologging see examples folder on usage
+ * @param string autoLogTo: html element id to log to
+ * @param boolean autoLogEnable: enable auto log
+ * @param boolean enableAutoLog: enable auto log
+ * @param boolean autoLogDisable: disable auto log
+ * @param boolean disableAutoLog: disable auto log
  */
 window.configLog = function () {
     // Command functions (multiple commands may run the same function)
@@ -426,29 +429,29 @@ window.configLog = function () {
 
 
 /**
- * @type: function
- * @name: logTo
+ * @function: logTo(elementId,str)
  * @desc: A console.log alternative that will output to a html element and the console at the same time
+ * ````
+ * logTo("message","Hello World!");
+ * ````
  * @param string elementId: elementId to output to
- * @param string msg: what innerHTML will be set to
- * @return:
+ * @param string str: what innerHTML will be set to
  */
-window.logTo = function (elementId, msg) {
+window.logTo = function (elementId, str) {
     var element = getElementById(elementId);
-    log(msg);
+    log(str);
     if (element) {
-        element.innerHTML += (msg + "<br>");
+        element.innerHTML += (str + "<br>");
     }
 }
 
 
 /**
- * @type: function
- * @name: logObjTo
+ * @function: logObjTo(elementId,obj,appendOrPrepend)
  * @desc: A console.log alternative that will output an object to a html element and the console nicely formatted at the same time
  * @param string elementId: html element id to output to
  * @param object obj: the object to debug output
- * @param boolean append optional: append text or prepend text
+ * @param boolean optional append: append text or prepend text
  * @return:
  */
 window.logObjTo = function (elementId, obj, append) {
@@ -477,8 +480,7 @@ window.logObjTo = function (elementId, obj, append) {
 
 
 /**
- * @type: function
- * @name: openDebugWindow
+ * @function: openDebugWindow(html)
  * @desc: open a popup window with the html you wish to display in it
  * @param dataType html: the html you wish to display in the popup window
  * @return:
@@ -498,19 +500,25 @@ window.stringToWindow = function (html) {
 
 
 /**
- * @type: function
- * @name: setHTML
+ * @function: setHTML(elementOrId,html);
  * @desc: quick shortcut for outputting html to an element
+ * ````
+ * setHTML("header","Welcome");
+ * // or
+ * var myElement = getElementById("header");
+ * setHTML(myElement,"Welcome!");
+ * ````
  * @param dataType elementOrId: the element or the element id you wish to set the html of
- * @param dataType str: the html string to insert into your element
+ * @param dataType html: the html string to insert into your element
  * @return:
  * @alias: html
  */
 window.setHTML = function (elementOrId, str) {
+    var element;
     if (typeof (elementOrId) == "string") {
-        element = getElementById(element);
+        element = getElementById(elementOrId);
     }
-    if (isElement(element)){
+    if (isElement(element)) {
         element.innerHTML = str;
     } else {
         return "unable to retrieve element from [" + elementOrId + "]";
@@ -533,8 +541,7 @@ window.html = function (element, str) { window.setHTML(element, str); }
 // Array functions
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
- * @type: function
- * @name: arrayRemoveIndex
+ * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
  * @param array arr: the array you wish to remove an index on
  * @param number index: the array index you wish to remove
@@ -545,79 +552,67 @@ window.arrayRemoveIndex = function (array, index) {
 }
 
 /**
- * @type: function
- * @name: isStringInArray
- * @desc: check to see if a string is in an array
- * @param string str: the string your looking for
- * @param array arr: the array you wish to search
- * @return: boolean
+ * @function: isStringInArray(needle,haystack)
+ * @desc: Check to see if a string is in an array
+ * @param string needle: the string your looking for
+ * @param array haystack: the array you wish to search
  */
-window.isStringInArray = function (str, array) {
-    return (new RegExp('(' + array.join('|').replace(/\./g, '\\.') + ')$')).test(str);
+window.isStringInArray = function (needle, haystack) {
+    return (new RegExp('(' + haystack.join('|').replace(/\./g, '\\.') + ')$')).test(needle);
 }
 
 /**
- * @type: function
- * @name: arrayContains
- * @desc: check to see if your array contains something you want to find
+ * @function: arrayContains(haystack,needle)
+ * @desc: Check to see if your array contains something you want to find
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
- * @return:
  */
-window.arrayContains = function (arr, needle) {
-    if (arr.indexOf(needle) > -1) { return true; } else { return false; }
+window.arrayContains = function (haystack, needle) {
+    if (haystack.indexOf(needle) > -1) { return true; } else { return false; }
 }
 
 /**
- * @type: function
- * @name: arrayRemove
+ * @function: arrayRemove(arr,item)
  * @desc: removes an item from an array
  * @param array arr: the array you wish to search and remove from
  * @param string item:  index at which a given element can be found
- * @return: array
  * @alias: arrayRemoveItem
  */
 window.arrayRemove = function (arr, item) {
     if (!window.arrayContains(item)) { return this; }
     return arr.splice(arr.indexOf(item), 1);
 }
-window.arrayRemoveItem = function(arr,item) { return arrayRemove(arr,item); }
+window.arrayRemoveItem = function (arr, item) { return arrayRemove(arr, item); }
 
 /**
- * @type: function
- * @name: arrayEmpty
+ * @function: arrayEmpty(arr)
  * @desc: clears/empties an array for garbage collection
  * @param array arr: the array to clear / empty
- * @return:
  * @alias: arrayClear
  */
 window.arrayEmpty = function (arr) {
-    while(arr.length > 0) { arr.pop(); }
+    while (arr.length > 0) { arr.pop(); }
 }
 window.arrayClear = function (arr) { window.arrayEmpty(arr); }
 
 
 /**
- * @type: function
- * @name: getMaxFromArray
+ * @function: getMaxFromArray(arr)
  * @desc: returns the maximum value in an array
  * @param array arr: the array you wish to find the maximum value in
- * @return: number
  * @alias: arrayGetMax
  * @alias: arrayMax
  */
 window.getMaxFromArray = function (arr) {
     return Math.max.apply(Math, arr);
 }
-window.arrayGetMax = function(arr){ return getMaxFromArray(arr); }
-window.arrayMax = function(arr){ return getMaxFromArray(arr); }
+window.arrayGetMax = function (arr) { return getMaxFromArray(arr); }
+window.arrayMax = function (arr) { return getMaxFromArray(arr); }
 
 /**
- * @type: function
- * @name: arrayGetMin
+ * @function: arrayGetMin
  * @desc: returns the minimum value in an array
  * @param array arr: the array you wish to find the minimum value in
- * @return: array
  * @alias: getMinFromArray
  * @alias: arrayMin
  */
@@ -628,30 +623,26 @@ window.getMinFromArray = function (arr) { return arrayGetMin(arr); }
 window.arrayMin = function (arr) { return arrayGetMin(arr); }
 
 /**
- * @type: function
- * @name: arrayShuffle
+ * @function: arrayShuffle(arr)
  * @desc: shuffles an array
  * @param array arr: the array to shuffle
- * @return: array
  * @alias: shuffleArray
  */
-window.arrayShuffle = function (array) {
+window.arrayShuffle = function (arr) {
     var methodNo = getRandom(1, 2);
-    return window["arrayShuffle" + methodNo](array);
+    return window["arrayShuffle" + methodNo](arr);
     var fn = "arrayShuffle" + methodNo;
 }
 window.shuffleArray = function (arr) { return arrayShuffle(arr); }
 
 
 /**
- * @type: function
- * @name: arrayShuffle2
+ * @function: arrayShuffle2(arr)
  * @desc: shuffles an array (method 2)
  * @param array arr: the array to shuffle
- * @return: array
  */
-window.arrayShuffle2 = function (array) {
-    var currentIndex = array.length,
+window.arrayShuffle2 = function (arr) {
+    var currentIndex = arr.length,
         temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -662,20 +653,18 @@ window.arrayShuffle2 = function (array) {
         currentIndex -= 1;
 
         // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        temporaryValue = arr[currentIndex];
+        arr[currentIndex] = arr[randomIndex];
+        arr[randomIndex] = temporaryValue;
     }
 
-    return array;
+    return arr;
 }
 
 /**
- * @type: function
- * @name: arrayShuffle3
+ * @function: arrayShuffle3(a)
  * @desc: shuffles an array (method 2)
- * @param array arr: the array to shuffle
- * @return: array
+ * @param array a: the array to shuffle
  */
 window.arrayShuffle3 = function (a) {
     var x, t, r = new Uint32Array(1);
@@ -703,11 +692,9 @@ window.arrayShuffle3 = function (a) {
 // Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
- * @type: function
- * @name: isAlphaNumeric
+ * @function: isAlphaNumeric(input)
  * @desc: check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)
  * @param string||number input: variable / value you wish to check
- * @return: boolean
  */
 window.isAlphaNumeric = function (input) {
     return !(/\W/.test(input));
@@ -715,11 +702,9 @@ window.isAlphaNumeric = function (input) {
 
 
 /**
- * @type: function
- * @name: isElement
+ * @function: isElement(o)
  * @desc: checks if your variable is an element or not
  * @param * o: variable you wish to check
- * @return: boolean
  */
 window.isElement = function (o) {
     var answer = (
@@ -734,22 +719,18 @@ window.isElement = function (o) {
     }
 }
 /**
- * @type: function
- * @name: isElement2
+ * @function: isElement2(element)
  * @desc: checks to see if your vairable is an element or not
  * @param * element: the variable you wish to check
- * @return: boolean
  */
 window.isElement2 = function (element) {
     // works on major browsers back to IE7
     return element instanceof Element;
 }
 /**
- * @type: function
- * @name: isDOM
+ * @function: isDOM(obj)
  * @desc: checks to see if your variable is a DOM object
  * @param object obj: variable to check
- * @return: boolean
  */
 window.isDOM = function (obj) {
     // this works for newer browsers
@@ -763,11 +744,9 @@ window.isDOM = function (obj) {
     }
 };
 /**
- * @type: function
- * @name: radToDeg
+ * @function: radToDeg(input)
  * @desc: converts radians to degrees
  * @param number input: the radians you wish converted to degrees
- * @return: number
  * @alias: rad2deg
  */
 window.radToDeg = function (input) {
@@ -777,11 +756,9 @@ window.rad2deg = function (arg) { return radToDeg(arg); }
 
 
 /**
- * @type: function
- * @name: degToRad
+ * @function: degToRad(input)
  * @desc: converts degrees to radians
  * @param number input: the value you wish converted to radians
- * @return: number
  * @alias: deg2rad
  */
 window.degToRad = function (input) {
@@ -791,11 +768,9 @@ window.deg2rad = function (arg) { return degToRad(arg); }
 
 
 /**
- * @type: function
- * @name: boolToString
+ * @function: boolToString(bool)
  * @desc: converts boolean to a string of true or false
  * @param boolean bool: the boolean you wish to convert
- * @return: string
  */
 window.boolToString = function (bool) {
 
@@ -815,20 +790,18 @@ window.boolToString = function (bool) {
 
 
 /**
- * @type: function
- * @name: boolToYesNo
+ * @function: boolToYesNo(bool)
  * @desc: converts a boolean to yes or no
- * @param boolean arg: the boolean you wish to convert
- * @return: string 
+ * @param boolean bool: the boolean you wish to convert
  */
-window.boolToYesNo = function (arg) {
+window.boolToYesNo = function (bool) {
 
-    if (!arg || arg == undefined || typeof (arg) != "boolean") {
+    if (!bool || bool == undefined || typeof (bool) != "boolean") {
         console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
         return "error";
     }
 
-    if (arg) {
+    if (bool) {
         return "yes";
     } else {
         return "no";
@@ -837,11 +810,9 @@ window.boolToYesNo = function (arg) {
 
 
 /**
- * @type: function
- * @name: stringToBool
+ * @function: stringToBool(str)
  * @desc: converts a string to a boolean (y,yes,"1",no etc)
  * @param string str: the string you wish to convert
- * @return: boolean
  */
 window.stringToBool = function (str) {
 
@@ -875,23 +846,21 @@ window.stringToBool = function (str) {
 
 
 /**
- * @type: function
- * @name: getBooleanFrom
+ * @function: getBooleanFrom(input)
  * @desc: converts an input to a boolean
- * @param * arg: the variable you wish to convert to a boolean
- * @return: boolean
+ * @param * input: the variable you wish to convert to a boolean
  */
-window.getBooleanFrom = function (arg) {
-    if (arg == null || arg == "" || !arg){
+window.getBooleanFrom = function (input) {
+    if (input == null || input == "" || !input) {
         return false;
     }
 
-    if (typeof (arg) == "string") {
-        return stringToBool(arg);
+    if (typeof (input) == "string") {
+        return stringToBool(input);
     }
 
-    if (typeof (arg) == "number") {
-        if (arg <= 0) {
+    if (typeof (input) == "number") {
+        if (input <= 0) {
             return false;
         } else {
             return true;
@@ -901,29 +870,25 @@ window.getBooleanFrom = function (arg) {
 
 
 /**
- * @type: function
- * @name: isBoolean
+ * @function: isBoolean(input)
  * @desc: checks if a variable is a boolean
- * @param * arg: variable to check
- * @return: boolean
+ * @param * input: variable to check
  * @alias: isBool
  */
-window.isBoolean = function (arg) {
-    if (typeof (arg) == "boolean") {
+window.isBoolean = function (input) {
+    if (typeof (input) == "boolean") {
         return true;
     } else {
         return false;
     }
 }
-window.isBool = function(arg) { return isBoolean(arg); }
+window.isBool = function (input) { return isBoolean(input); }
 
 
 /**
- * @type: function
- * @name: isNumeric
+ * @function: isNumeric(n)
  * @desc: check if variable is numeric
  * @param * n: variable to check
- * @return: boolean
  * @alias: isNumber
  */
 window.isNumeric = function (n) {
@@ -934,24 +899,63 @@ window.isNumber = function (n) { return isNumeric(n); }
 
 
 /**
- * @type: function
- * @name: isArray
+ * @function: isArray(arr)
  * @desc: check if variable is an array
- * @param * arg: variable to check
- * @return: boolean
+ * @param * arr: variable to check
  */
-window.isArray = function (arg) {
-    return !!arg && arg.constructor === Array;
+window.isArray = function (arr) {
+    return !!arr && arr.constructor === Array;
     //return arr.constructor == Array;
 }
 
+/**
+ * @function: parseArrayToFloat(arr)
+ * @desc: parses all values in array to float
+ * @param array arr: array to process
+ * @alias: arrayToFloat
+ */
+window.parseArrayToFloat = function(arr){
+    for(var i=0; i < arr.length; i++){
+        arr[i] = parseFloat(arr[i]);
+    }
+    return arr;
+}
+window.arrayToFloat = function(arr){ return parseArrayToFloat(arr); }
 
 /**
- * @type: function
- * @name: getFunctionName
+ * @function:parseArrayToInt(arr)
+ * @desc: parses all values in array to float
+ * @param array arr: array to process
+ * @alias: arrayToInt
+ */
+window.parseArrayToInt = function(arr){
+    for(var i=0; i < arr.length; i++){
+        arr[i] = parseInt(arr[i]);
+    }
+    return arr;
+}
+window.arrayToInt = function(arr){ return parseArrayToInt(arr); }
+
+
+
+/**
+ * @function:convertToArray(v)
+ * @desc: takes an input and returns it as index[0] of an array
+ * @param & v: value to insert into array
+ * @alias: valueToArray
+ */
+window.convertToArray = function(v){
+    var a = [];
+    a[0] = v;
+    return a;
+}
+window.valueToArray = function(v){ return convertToArray(v); }
+
+
+/**
+ * @function: getFunctionName(fn)
  * @desc: tries to get the function name of a suppled function
  * @param function fn: the function wish to get the name of
- * @return:
  */
 function getFunctionName(fn) {
     var name = fn.toString();
@@ -981,12 +985,10 @@ function getFunctionName(fn) {
 // Random generators (small ones)
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
- * @type: function
- * @name: getRandomInt
+ * @function: getRandomInt(min,max)
  * @desc: returns a random number / int betwen your specified min and max values
  * @param number min: the minimum your random number is allowed to go
  * @param number max: the maximum your random number is allowed to go
- * @return: number
  * @alias: getRandom
  */
 window.getRandomInt = function (min, max) {
@@ -998,19 +1000,18 @@ window.getRandom = function (min, max) {
 
 
 /**
- * @type: function
- * @name: randomString
+ * @function: randomString(length)
  * @desc: get a random string of a specified length
  * @param number length: the length of the string you wish to generate
- * @return: string
  * @alias: getRandomString
  */
 window.randomString = function (length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-    for (var i = 0; i < length; i++)
+    for (var i = 0; i < length; i++){
         text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
     return text;
 }
@@ -1019,15 +1020,27 @@ window.getRandomString = function (len) {
 }
 
 
+/**
+ * @function: getUniqueId()
+ * @desc: Generates a random id
+ * @alias: getUID
+ * @alias: generateRandomId
+ * @alias: generateUID
+ */
+window.getUniqueId = function(){
+    return randomString(5) + Math.random().toString(36).substr(2, 8);
+}
+window.getUID = function(){ return getUniqueId(); }
+window.generateRandomId = function(){ return getUniqueId(); }
+window.generateUID = function(){ return getUniqueId(); }
+
 
 /**
- * @type: function
- * @name: getArrayOfRandomNumbers
+ * @function: getArrayOfRandomNumbers(arraySize,min,max)
  * @desc: generate an array of random number between your max and min values
  * @param number arraySize: the number of random numbers to generate also the array size that will be returned
  * @param number min: the minimum your random number is allowed to be
  * @param number max: the maximum your random number is allowed to be
- * @return: array
  */
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
@@ -1039,13 +1052,10 @@ window.getArrayOfRandomNumbers = function (arraySize, min, max) {
 
 
 /**
- * @type: function
- * @name: getArrayOfRandomStrings
+ * @function: getArrayOfRandomStrings(arraySize,strLength)
  * @desc: generate an array of random string of a specified length
  * @param number arraySize: the number of random strings to generate also the array size that will be returned
  * @param number strLength: the length of the strings to be generated
- * @return: array
-
  */
 window.getArrayOfRandomStrings = function (arraySize, strLength) {
     var arr = [];
@@ -1058,10 +1068,8 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
 
 
 /**
- * @type: function
- * @name: guid
+ * @function: guid()
  * @desc: generates a guid
- * @return: string
  * @alias: getGUID
  */
 window.guid = function () {
@@ -1074,7 +1082,7 @@ window.guid = function () {
     return Amiga() + Amiga() + '-' + Amiga() + '-' + Amiga() + '-' +
         Amiga() + '-' + Amiga() + Amiga() + Amiga();
 }
-window.getGUID = function(){ return guid(); }
+window.getGUID = function () { return guid(); }
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1092,8 +1100,7 @@ window.getGUID = function(){ return guid(); }
 // Misc features (small ones only)
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
- * @type: function
- * @name: redirect
+ * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
  * @param string url: the url you wish to redirect to
  */
@@ -1103,30 +1110,35 @@ window.redirect = function (url) {
 
 
 /**
- * @type: object
- * @name: AFTC.Benchmark
- * @desc: quick and easy benchmarking, see examples benchmark.htm for usage
+ * @function: AFTC.Benchmark()
+ * @desc: Quick and easy benchmarking, see examples benchmark.htm for usage
+ * ````
+ * AFTC.Benchmark().start();
+ * // do you stuff
+ * AFTC.Benchmark().end();
+ * log( AFTC.Benchmark().getTime() );
+ * ````
  * @function start: start benchmark
  * @function stop: stop benchmark
  * @function getTime: return benchmark result
  */
 AFTC.Benchmark = function () {
     var params = {
-        start:0,
-        end:0,
-        time:0
+        start: 0,
+        end: 0,
+        time: 0
     }
 
     return {
-        start:function(){
+        start: function () {
             params.start = new Date();
         },
-        stop:function(){
+        stop: function () {
             params.end = new Date();
             params.time = params.end.getTime() - params.start.getTime();
             return params.time;
         },
-        getTime:function(){
+        getTime: function () {
             return params.time;
         }
     }
@@ -1134,8 +1146,7 @@ AFTC.Benchmark = function () {
 
 
 /**
- * @type: function
- * @name: hide
+ * @function: hide(element,classListToRemove,classListToAdd)
  * @desc: hides a html element, can also add or remove any amount of classes on element hide at the same time
  * @param element||string element: the element or the string id of the element you wish to hide
  * @param array classListToRemoveOnHide: string of class to remove or array of string classes to remove on hide
@@ -1186,14 +1197,14 @@ window.hide = function (element, classListToRemoveOnHide, classListToAddOnHide) 
     if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1) {
         // log("no old value going to assume display is block");
         element.style.display = 'block';
-    } 
+    }
 
     element.style.display = 'none';
 }
 
 
 /**
- * @type: function
+ * @function: show(element,classListToRemove,classListToSAdd)
  * @desc: show a html element, can also add or remove any amount of classes on element show at the same time
  * @param element||string element: the element or the string id of the element you wish to hide
  * @param array classListToRemoveOnShow: string of class to remove or array of string classes to remove on show

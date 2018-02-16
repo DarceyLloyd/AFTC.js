@@ -1,4 +1,8 @@
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.removeAllSelectOptions = function (selectBoxId) {
 	var i,
 		element = document.getElementById(selectBoxId);
@@ -16,7 +20,11 @@ window.removeAllSelectOptions = function (selectBoxId) {
 
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 	var msg = "aftc.js > checkboxShowHide > incorrect usage!\n";
 	msg += "checkboxHideShow(arg1,arg2,arg3)" + "\n";
@@ -133,7 +141,11 @@ window.checkboxToggleContent = function (cb, ids, showOnCheck) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isChecked = function (id) {
 	return document.getElementById(id).checked;
 }
@@ -142,7 +154,11 @@ window.isChecked = function (id) {
 
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.isNumberKey = function (evt) {
 	var charCode = (evt.which) ? evt.which : event.keyCode;
 	if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -155,9 +171,15 @@ window.isNumberKey = function (evt) {
 
 
 
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
 	var element;
-	
+
 	if (typeof(selectElementIdOrElement) == "string"){
 		element = document.getElementById(selectElementIdOrElement);
 		if (!element){
@@ -169,8 +191,6 @@ window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valu
 		element = selectElementIdOrElement;
 	}
 
-
-	
 	if (typeof(j) == "string"){
 		j = JSON.parse(j);
 	}
@@ -178,23 +198,23 @@ window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valu
 	for (var i = 0; i < j.length; i++) {
 		var label = j[i][labelKey];
 		var data = j[i][valueKey];
-		
+
 		var option = document.createElement("option");
 		option.text = label;
 		option.value = data;
 		//log(option);
 		element.add(option);
-
-		
 	}
-
-
 }
 
 
 
 
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.limitLengthInWords = function (element, maxWords) {
 	var value = element.value,
 		wordCount = value.split(/\S+/).length - 1,

@@ -24,6 +24,7 @@ nbproject
 .project
 .settings
 composer.lock
+.vs
 .vscode
 prepros-6.config
 package-lock.json

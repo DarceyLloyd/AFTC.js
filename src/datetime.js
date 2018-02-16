@@ -1,4 +1,8 @@
-
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getUkDateFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date
 	if (input == "" || input == null) {
@@ -10,6 +14,11 @@ window.getUkDateFromDbDateTime = function (input) {
 	return UKDate;
 }
 
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getUkDateTimeFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date time
 	var DateTime = input.split(" ");
@@ -20,7 +29,11 @@ window.getUkDateTimeFromDbDateTime = function (input) {
 	return (UKDate + " " + Time);
 }
 
-
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getSQLDateTime = function () {
 	var now = new Date();
 	var year = now.getFullYear();
@@ -50,7 +63,11 @@ window.getSQLDateTime = function () {
 
 
 
-
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.getDateTime = function (local) {
 	// NOTE: MySQL DB DateTime format: "2016-04-08 21:11:59"
 	var currentdate = new Date(),

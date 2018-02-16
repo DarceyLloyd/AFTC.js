@@ -1,14 +1,17 @@
+// AFTC init
+var AFTC = AFTC || {}
 
 
-
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// AFTC.lockBody params
 window.AFTCLockBodyParams = {
 	pageYOffset: null,
 	elementId: ""
 };
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.lockBody = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
 		for (var key in arguments[0]) {
@@ -40,6 +43,14 @@ window.lockBody = function () {
 	});
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.unlockBody = function () {
 	$('#' + window.AFTCLockBodyParams.elementId).css({
 		height: "",
@@ -61,7 +72,11 @@ window.unlockBody = function () {
 
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/**
+ * @function: xxxxxx(xxx)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
 window.centerAbsoluteElement = function (eleOrEleId) {
 	var element;
 

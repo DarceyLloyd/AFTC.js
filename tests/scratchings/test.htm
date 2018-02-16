@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <style>
+        * {
+            /* -webkit-transition: all 5s ease-in-out !important;
+            -moz-transition: all 5s ease-in-out !important;
+            transition: all 5s ease-in-out !important; */
+        }
+
+        #box {
+            display: table;
+            position: relative;
+            background: #FFCC00;
+        }
+    </style>
+    <script>
+        var e;
+        function log(arg) { console.log(arg); }
+
+        function setStyleDuration(duration) {
+            e.style.transitionDuration = duration + "s";
+            e.style.webkitTransitionDuration = duration + "s";
+            e.style.mozTransitionDuration = duration + "s";
+            e.style.oTransitionDuration = duration + "s";
+            e.style.msTransitionDuration = duration + "s";
+        }
+
+        function removeStyleDuration() {
+            e.style.removeProperty("transitionDuration");
+            e.style.removeProperty("webkitTransitionDuration");
+            e.style.removeProperty("mozTransitionDuration");
+            e.style.removeProperty("oTransitionDuration");
+            e.style.removeProperty("msTransitionDuration");
+        }
+
+        function onTransitionEndHandler() {
+            log("onTransitionEndHandler()");
+        }
+
+        function init() {
+            log("init()");
+            e = document.getElementById("box");
+            setStyleDuration(5);
+            e.addEventListener("transitionend", onTransitionEndHandler, false);
+            e.style.opacity = 0;
+            e.style.height = "10px";
+            e.style.height = "50px";
+            //e.style.height = "100%";
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="box">BOX</div>
+</body>
+
+</html>
