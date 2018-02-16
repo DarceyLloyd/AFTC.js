@@ -82,8 +82,47 @@
 
             debug = querySelector("#debug");
 
-            fadeOut("h2",2);
+            fadeOut("h2", 2);
+
+            var anim1 = new AFTC.Animate("box1");
+            anim1
+                .anim("fontSize", "24px", 0.5)
+                .anim("width", "150px", 0.5)
+                .anim("height", "150px", 0.5)
+                .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
+                .anim("left", "100px", 0.5)
+                .anim("top", "25px", 0.5)
+                .anim("backgroundColor", "RGBA(0,0,0,1)", 0.5)
+                .anim("color", "RGBA(255,255,255,1)", 0.5)
+                .anim("borderColor", "RGBA(0,255,255,1)", 0.5)
+                .anim("borderWidth", "10px", 0.5)
+                .anim("borderRadius", "20px", 0.5)
+                .set("fontWeight", "bold")
+                .set("fontSize", "18px")
+                .set("textAlign", "center")
+                .delay(2)
+                .anim("width", "50px", 0.2)
+                .anim("height", "50px", 0.2)
+                .anim("padding", "0px", 0.2)
+                .anim("left", "0px", 0.2)
+                .anim("top", "0px", 0.2)
+                .anim("backgroundColor", "RGBA(255,125,0,1)", 0.2)
+                .anim("color", "RGBA(0,0,0,1)", 0.2)
+                .anim("borderColor", "RGBA(150,0,0,1)", 0.2)
+                .anim("borderWidth", "2px", 0.2)
+                .anim("borderRadius", "0px", 0.2)
+                .set("fontWeight", "normal")
+                .set("fontSize", "normal")
+                .set("textAlign", "inherit")
+                .start();
+
+
         }
+
+
+
+
+
 
         function animateBox1() {
             // Hide the button

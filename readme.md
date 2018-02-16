@@ -10,36 +10,40 @@
 
     - AFTC.Animate() has taken a re-write to allow for better functionality, eg:
 
-        var anim1 = new AFTC.Animate("#box1", onCompleteHandler);
+        var anim1 = new AFTC.Animate("box1");
         anim1
-            .anim("width",100,0.5)
-            .anim("height",100,0.5)
-            .anim("padding",10,0.5)
-            .anim("left",100,0.5)
-            .anim("top",25,0.5)
-            .anim("backgroundColor","#000000",0.5)
-            .anim("color","#FFFFFF",0.5)
-            .anim("borderColor","#00FFFF",0.5)
-            .anim("borderWidth",5,0.5)
-            .anim("borderRadius",50,0.5)
-            .set("fontWeight","bold")
-            .set("fontSize","18px")
-            .set("textAlign","center")
+            .anim("fontSize", "24px", 0.5)
+            .anim("width", "150px", 0.5)
+            .anim("height", "150px", 0.5)
+            .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
+            .anim("left", "100px", 0.5)
+            .anim("top", "25px", 0.5)
+            .anim("backgroundColor", "RGBA(0,0,0,1)", 0.5)
+            .anim("color", "RGBA(255,255,255,1)", 0.5)
+            .anim("borderColor", "RGBA(0,255,255,1)", 0.5)
+            .anim("borderWidth", "10px", 0.5)
+            .anim("borderRadius", "20px", 0.5)
+            .set("fontWeight", "bold")
+            .set("fontSize", "18px")
+            .set("textAlign", "center")
             .delay(2)
-            .anim("width",50,0.2)
-            .anim("height",50,0.2)
-            .anim("padding",0,0.2)
-            .anim("left",0,0.2)
-            .anim("top",0,0.2)
-            .anim("backgroundColor","#FFCC00",0.2)
-            .anim("color","#000000",0.2)
-            .anim("borderColor","#990000",0.2)
-            .anim("borderWidth",2,0.2)
-            .anim("borderRadius",0,0.2)
-            .set("fontWeight","normal")
-            .set("fontSize","normal")
-            .set("textAlign","inherit");
+            .anim("width", "50px", 0.2)
+            .anim("height", "50px", 0.2)
+            .anim("padding", "0px", 0.2)
+            .anim("left", "0px", 0.2)
+            .anim("top", "0px", 0.2)
+            .anim("backgroundColor", "RGBA(255,125,0,1)", 0.2)
+            .anim("color", "RGBA(0,0,0,1)", 0.2)
+            .anim("borderColor", "RGBA(150,0,0,1)", 0.2)
+            .anim("borderWidth", "2px", 0.2)
+            .anim("borderRadius", "0px", 0.2)
+            .set("fontWeight", "normal")
+            .set("fontSize", "normal")
+            .set("textAlign", "inherit")
             .start();
+
+            // You could put all these into a single anim or set if you wish
+            // All colours are now RGBA values, no hex
 
         Chainable methods are:
             wait(seconds)
@@ -95,6 +99,7 @@ No more typing document.querySelector(str)! It's shorter and runs much quicker a
         .anim("width",100,0.5) // prop(style,targetValue,duration)
         .anim("opacity",0,0.5);
         .anim("backgroundColor","#990000",2)
+        .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
         .start()
 ```
 or fade and hide etc etc
