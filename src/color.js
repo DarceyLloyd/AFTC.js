@@ -4,7 +4,7 @@ var AFTC = AFTC || {}
 
 
 /**
- * @function: xxxxxx(xxx)
+ * @function: getHSLColor(xxx)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
@@ -17,15 +17,14 @@ window.getHSLColor = function (value) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getRandomRGBString()
+ * @desc: returns a random RGB string RGB(xxx,xxx,xxx)
  */
 window.getRandomRGBString = function () {
-    var $r = Math.round(Math.random() * 255);
-    var $g = Math.round(Math.random() * 255);
-    var $b = Math.round(Math.random() * 255);
-    var rgb = "rgb(" + $r + "," + $g + "," + $b + ")";
+    var r = Math.round(Math.random() * 255);
+    var g = Math.round(Math.random() * 255);
+    var b = Math.round(Math.random() * 255);
+    var rgb = "rgb(" + r + "," + g + "," + b + ")";
     return rgb;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

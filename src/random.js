@@ -1,9 +1,14 @@
 
 
+
+
+
+
 /**
- * @function: xxxxxx(xxx)
+ * @function: getWeightedRandom(odds, iterations)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @param string odds: xxxxxxxxxxxxxxxxxxxx
+ * @param string iterations: xxxxxxxxxxxxxxxxxxxx
  */
 window.getWeightedRandom = function (odds, iterations) {
     if (!odds) {
