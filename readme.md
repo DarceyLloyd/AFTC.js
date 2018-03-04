@@ -912,7 +912,7 @@ arr | array |  | array to process |
  --- 
  <br><br>
 
-## <b>* @function:parseArrayToInt(arr)</b>
+## <b>function:parseArrayToInt(arr)</b>
  --- 
 <b>Aliases:</b>
 > arrayToInt  
@@ -928,7 +928,7 @@ arr | array |  | array to process |
  --- 
  <br><br>
 
-## <b>* @function:convertToArray(v)</b>
+## <b>function:convertToArray(v)</b>
  --- 
 <b>Aliases:</b>
 > valueToArray  
@@ -1159,7 +1159,7 @@ data | * |  | array, object, formdata, string or json data you wish to send to t
 dataType | string |  | data type of data object array, object, formdata, form and json | 
 onComplete | function |  | on a successfull xhr request this is the function that will be called | 
   
-<b>Return:</b> * @return object data;
+<b>Return:</b> return object data;
 
 
  --- 
