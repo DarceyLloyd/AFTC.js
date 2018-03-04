@@ -1,4 +1,4 @@
-## <b>xxxxxx(xxx)</b>
+## <b>getHSLColor(xxx)</b>
  --- 
   
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
@@ -11,15 +11,10 @@ xxxx | string |  | xxxxxxxxxxxxxxxxxxxx |
  --- 
  <br><br>
 
-## <b>xxxxxx(xxx)</b>
+## <b>getRandomRGBString()</b>
  --- 
   
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
-
-
-param | type | optional | description
---- | --- | --- | ---
-xxxx | string |  | xxxxxxxxxxxxxxxxxxxx | 
+returns a random RGB string RGB(xxx,xxx,xxx)  
 
  --- 
  <br><br>

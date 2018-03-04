@@ -24,7 +24,7 @@ var jsFiles = [
     "./src/dom.js", // Dependencies: none
     "./src/styling.js", // Dependencies: none
     "./src/form.js", // Dependencies: none
-    // "./src/io.js", // Dependencies: jQuery >= 1.12
+    "./src/io.js", // Dependencies: none
     
     // Common 3rd party libraries which I often require (You may find them useful also)
     //"./node_modules/jquery/dist/jquery.min.js", //People are far too reliant on this library and for no reason

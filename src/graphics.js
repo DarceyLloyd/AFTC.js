@@ -2,19 +2,17 @@
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: generateNoise(canvasId, opacity)
+ * @desc: Generate noise into a canvas element (ensure you set canvase dimensions)
+ * @param string canvasId: Canvas element id to work with
+ * @param number opacity: opacity of noise
  */
-window.generateNoise = function(canvasId, width, height, opacity) {
+window.generateNoise = function(canvasId, opacity) {
 	var canvas = document.getElementById(canvasId),
 		ctx = canvas.getContext('2d'),
 		x, y,
 		number,
 		opacity = opacity || .2;
-
-	canvas.width = width;
-	canvas.height = height;
 
 	for (x = 0; x < canvas.width; x++) {
 		for (y = 0; y < canvas.height; y++) {

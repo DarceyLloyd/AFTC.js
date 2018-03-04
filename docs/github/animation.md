@@ -24,8 +24,8 @@ fades in an element over a specified duration
 
 param | type | optional | description
 --- | --- | --- | ---
- | string | elementId | the id of the html element you wish to fade | 
- | number | duration | how long you want the fade to run over in seconds | 
+elementId | string |  | the id of the html element you wish to fade | 
+duration | number |  | how long you want the fade to run over in seconds | 
 
  --- 
  <br><br>
@@ -38,8 +38,8 @@ fades out an element over a specified duration
 
 param | type | optional | description
 --- | --- | --- | ---
- | string | elementId | the id of the html element you wish to fade | 
- | number | duration | how long you want the fade to run over in seconds | 
+elementId | string |  | the id of the html element you wish to fade | 
+duration | number |  | how long you want the fade to run over in seconds | 
 
  --- 
  <br><br>

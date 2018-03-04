@@ -248,6 +248,7 @@ param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | elementId to output to | 
 str | string |  | what innerHTML will be set to | 
+cls | bool |  | clear before appending html string | 
 
  --- 
  <br><br>

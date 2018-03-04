@@ -9,9 +9,35 @@
 ### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 
-## Whats new 1.4.3
+## Whats new 1.5.0
 
-    - Added getDaysBetween(start,end) to datetime.js
+    - LogTo(htmlElementId,message,clear)
+    Added 3rd parameter for clear element before innerHTML insert or not
+
+    - io.js is finally added @ v1.0.0
+    Let me know if you find bugs, full details on usage can be found in tests/xhr/xhr.htm
+
+````
+var data = "mode=json2";
+xhr1 = AFTC.XHR({
+    url: "./request.php",
+    method: "post",
+    data: data,
+    dataType: "form",
+    onComplete: function (response) {
+        logTo("debug", response);
+        response = JSON.parse(response);
+        // Iterate
+        // for (var index in response) {
+        //     var jObject = response[index];
+        //     logTo("debug", jObject);
+        //     for (var key in jObject) {
+        //         log(key + " = " + response[index][key]);
+        //     }
+        // }
+    }
+});
+````
 
     - AFTC.Animate() has taken a re-write to allow for better functionality, eg:
 
@@ -222,7 +248,6 @@ gulp build
 
 
 # <b>base.js</b>
-
 
 
 ## <b>addEvent(obj,type,fn,useCapture)</b>
@@ -475,6 +500,7 @@ param | type | optional | description
 --- | --- | --- | ---
 elementId | string |  | elementId to output to | 
 str | string |  | what innerHTML will be set to | 
+cls | bool |  | clear before appending html string | 
 
  --- 
  <br><br>
@@ -1082,7 +1108,77 @@ classListToAddOnShow | array |  | string of class to remove or array of string c
 
 
 
+
+
 <br><br><br><br>
+
+
+
+
+
+# <b>io.js</b>
+#### <b>Dependencies:</b> NONE<br><br>
+
+
+## <b>AFTC.XHR(args)</b>
+ --- 
+@version: 1.0.0  
+@requires: base.js  
+  
+Quick and easy xhr/ajax  
+````
+var data = "mode=json2";
+xhr1 = AFTC.XHR({
+    url: "./request.php",
+    method: "post",
+    data: data,
+    dataType: "form",
+    onComplete: function (response) {
+        logTo("debug", response);
+        response = JSON.parse(response);
+        // Iterate
+        // for (var index in response) {
+        //     var jObject = response[index];
+        //     logTo("debug", jObject);
+        //     for (var key in jObject) {
+        //         log(key + " = " + response[index][key]);
+        //     }
+        // }
+    }
+});
+````
+@link: see usage example in tests/xhr/xhr.htm  
+
+
+param | type | optional | description
+--- | --- | --- | ---
+url | string |  | url or file you wish to load | 
+method | string |  | post, get, put, delete etc | 
+data | * |  | array, object, formdata, string or json data you wish to send to the url | 
+dataType | string |  | data type of data object array, object, formdata, form and json | 
+onComplete | function |  | on a successfull xhr request this is the function that will be called | 
+  
+<b>Return:</b> * @return object data;
+
+
+ --- 
+ <br><br>
+
+
+
+
+
+
+
+
+
+<br><br><br><br>
+
+
+
+
+
+
 
 
 

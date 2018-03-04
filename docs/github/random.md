@@ -1,4 +1,4 @@
-## <b>xxxxxx(xxx)</b>
+## <b>getWeightedRandom(odds, iterations)</b>
  --- 
   
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
@@ -6,7 +6,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 param | type | optional | description
 --- | --- | --- | ---
-xxxx | string |  | xxxxxxxxxxxxxxxxxxxx | 
+odds | string |  | xxxxxxxxxxxxxxxxxxxx | 
+iterations | string |  | xxxxxxxxxxxxxxxxxxxx | 
 
  --- 
  <br><br>

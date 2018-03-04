@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../dist/aftc.js"></script>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        var debug,
+            xhr1,
+            xhr2,
+            xhr3,
+            xhr4;
+
+        // Test data sets
+        var data1 = "name=darcey2&email=darcey2@gmail.com&mode=json1";
+
+        var data2 = { mode: "json2", name: "darcey1", email: "darcey1@gmail.com" };
+        data2 = JSON.stringify(data2);
+
+        var data3 = [];
+        data3["name"] = "darcey3";
+        data3["email"] = "darcey3@gmail.com";
+        data3["mode"] = "json1";
+
+        var data4 = new FormData();
+        data4.append("name", "darcey4");
+        data4.append("email", "darcey4@gmail.com");
+        data4.append("mode", "json2");
+
+        var data5 = {
+            name: "Darcey5",
+            email: "darcey5@gmail.com",
+            mode: "image"
+        }
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest1 = function () {
+            logTo("debug", "xhrTest1(): Example 1 - Load JSON file via GET using the 'form' data type (key value pair string)",true);
+            var data = "mode=json1";
+            xhr1 = AFTC.XHR({
+                url: "./request.php",
+                method: "get",
+                data: data,
+                dataType: "form",
+                onComplete: function (response) {
+                    logTo("debug", response);
+                    response = JSON.parse(response);
+                    // Iterate
+                    // for (var index in response) {
+                    //     var jObject = response[index];
+                    //     logTo("debug", jObject);
+                    //     for (var key in jObject) {
+                    //         log(key + " = " + response[index][key]);
+                    //     }
+                    // }
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest2 = function () {
+            logTo("debug", "xhrTest1(): Example 2 - Load JSON file via POST using the 'form' data type (key value pair string)",true);
+            var data = "mode=json2";
+            xhr1 = AFTC.XHR({
+                url: "./request.php",
+                method: "post",
+                data: data,
+                dataType: "form",
+                onComplete: function (response) {
+                    logTo("debug", response);
+                    response = JSON.parse(response);
+                    // Iterate
+                    // for (var index in response) {
+                    //     var jObject = response[index];
+                    //     logTo("debug", jObject);
+                    //     for (var key in jObject) {
+                    //         log(key + " = " + response[index][key]);
+                    //     }
+                    // }
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest3 = function () {
+            logTo("debug", "xhrTest1(): Example 3 - Load JSON file via POST using the 'json' data type (key value pair string)",true);
+            var data = {
+                mode:'json1'
+            };
+            xhr1 = AFTC.XHR({
+                url: "./request.php",
+                method: "post",
+                data: data,
+                dataType: "json",
+                onComplete: function (response) {
+                    logTo("debug", response);
+                    response = JSON.parse(response);
+                    logTo("debug",response[0].name);
+                    // Iterate
+                    for (var index in response) {
+                        var jObject = response[index];
+                        logTo("debug", jObject);
+                        for (var key in jObject) {
+                            var msg = key + " = " + response[index][key];
+                            logTo("debug", msg);
+                        }
+                    }
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest4 = function () {
+            logTo("debug", "xhrTest1(): Example 4 - Load HTML file",true);
+            xhr1 = AFTC.XHR({
+                url: "./test.htm",
+                onComplete: function (response) {
+                    logTo("debug", "<textarea>"+response+"</textarea>");
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest5 = function () {
+            logTo("debug","xhrTest5(): Example 5 - Load an image",true);
+            getElementById('img').innerHTML = "Loading";
+            AFTC.XHR({
+                url: "./request.php",
+                method: "get",
+                data: "mode=image",
+                dataType: "form",
+                onComplete: function (response) {
+                    logTo("debug","xhrTest5(): AFTC.XHR.onComplete():");
+                    var img = document.createElement('image');
+                    img.width = 200;
+                    img.height = 200;
+                    getElementById('img').innerHTML = "<img src='data:image/png;base64," + response + "' height='300px'>";
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest6 = function () {
+            logTo("debug","xhrTest6(): Example 6 - JS Array to PHP to JS",true);
+            
+            var myDataSet = [];
+            myDataSet["name"] = "darcey6";
+            myDataSet["email"] = "darcey6@gmail.com";
+            myDataSet["mode"] = "test";
+
+            AFTC.XHR({
+                url: "./request.php",
+                method: "POST",
+                data: myDataSet,
+                dataType: "array",
+                onComplete: function (response) {
+                    logTo("debug","<pre>"+response+"</pre>");
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest7 = function () {
+            logTo("debug","xhrTest7(): Example 7 - JS Object to PHP to JS",true);
+            
+            var myDataSet = {
+                name:"darcey7",
+                email:"darcey7@gmail.com",
+                mode:"test"
+            };
+
+            AFTC.XHR({
+                url: "./request.php",
+                method: "POST",
+                data: myDataSet,
+                dataType: "object",
+                onComplete: function (response) {
+                    logTo("debug","<pre>"+response+"</pre>");
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var xhrTest8 = function () {
+            logTo("debug","xhrTest8(): Example 8 - FormData() to PHP to JS",true);
+            
+            var myDataSet = new FormData();
+            myDataSet.append("name","darcey8");
+            myDataSet.append("email","darcey8@gmail.com");
+            myDataSet.append("mode","test");
+
+            AFTC.XHR({
+                url: "./request.php",
+                method: "POST",
+                data: myDataSet,
+                dataType: "formdata",
+                onComplete: function (response) {
+                    logTo("debug","<pre>"+response+"</pre>");
+                }
+            });
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+        function init() {
+            // Debug.js usage exmaples
+            log("Darcey@AllForTheCode.co.uk - AFTC.JS");
+        }
+
+
+        onReady(init);
+    </script>
+</head>
+
+<body>
+    <h1 id="h2">io.js</h1>
+    <h3>Please open console for detailed log responses</h3>
+    <ul>
+        <li><a href="#" onclick="xhrTest1()">Load JSON file via GET using the 'form' data type (key value pair string)</a>
+        <li><a href="#" onclick="xhrTest2()">Load JSON file via POST using the 'form' data type (key value pair string)</a>
+        <li><a href="#" onclick="xhrTest3()">Load JSON file via POST using the 'json' data type</a>
+        <li><a href="#" onclick="xhrTest4()">Load HTML file</a>
+        <li><a href="#" onclick="xhrTest5()">Load IMAGE file</a>
+        <li><a href="#" onclick="xhrTest6()">JS Array to PHP to JS</a>
+        <li><a href="#" onclick="xhrTest7()">JS Object to PHP to JS</a>
+        <li><a href="#" onclick="xhrTest8()">JS FormData() to PHP to JS</a>
+    </ul>
+    <div id="debug"></div>
+    <div id="img"></div>
+</body>
+
+</html>

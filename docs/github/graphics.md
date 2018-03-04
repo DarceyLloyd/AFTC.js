@@ -1,12 +1,13 @@
-## <b>xxxxxx(xxx)</b>
+## <b>generateNoise(canvasId, opacity)</b>
  --- 
   
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+Generate noise into a canvas element (ensure you set canvase dimensions)  
 
 
 param | type | optional | description
 --- | --- | --- | ---
-xxxx | string |  | xxxxxxxxxxxxxxxxxxxx | 
+canvasId | string |  | Canvas element id to work with | 
+opacity | number |  | opacity of noise | 
 
  --- 
  <br><br>

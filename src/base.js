@@ -320,7 +320,7 @@ window.log = function (arg) {
     if (console) {
         if (AFTC.log.enabled) {
             if (typeof (arg) == "undefined") {
-                console.error(arg);
+                console.error("AFTC.LOG(arg) ERROR: Your log variable (arg) is \"undefined\"!");
             } else {
                 console.log(arg);
             }
@@ -436,12 +436,20 @@ window.configLog = function () {
  * ````
  * @param string elementId: elementId to output to
  * @param string str: what innerHTML will be set to
+ * @param bool cls: clear before appending html string
  */
-window.logTo = function (elementId, str) {
+window.logTo = function (elementId, str, cls) {
     var element = getElementById(elementId);
     log(str);
     if (element) {
-        element.innerHTML += (str + "<br>");
+        if (cls == undefined){
+            cls = false;
+        }
+        if (cls){
+            element.innerHTML = (str + "<br>");
+        } else {
+            element.innerHTML += (str + "<br>");
+        }
     }
 }
 
