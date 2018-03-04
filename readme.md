@@ -15,6 +15,7 @@
     Added 3rd parameter for clear element before innerHTML insert or not
 
     - io.js is finally added @ v1.0.0
+    NO jQuery reliance and the whole of the AFTC.JS lib weighs less than 40kb!
     Let me know if you find bugs, full details on usage can be found in tests/xhr/xhr.htm
 
 ````
@@ -220,7 +221,7 @@ var jsFiles = [
     "./src/dom.js", // Dependencies: none
     "./src/styling.js", // Dependencies: none
     "./src/form.js", // Dependencies: none
-    // "./src/io.js", // Dependencies: jQuery >= 1.12
+    "./src/io.js", // Dependencies: none
 ];
 
 ```
