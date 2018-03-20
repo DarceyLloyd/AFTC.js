@@ -1,6 +1,6 @@
 {
   "name": "aftc.js",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
     "webpack-dev": "webpack -d",

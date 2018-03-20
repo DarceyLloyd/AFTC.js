@@ -9,7 +9,9 @@
 ### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 
-## Whats new 1.5.0
+## Whats new 1.5.1
+
+    - isMobile(); // returns true || false
 
     - LogTo(htmlElementId,message,clear)
     Added 3rd parameter for clear element before innerHTML insert or not
@@ -1441,6 +1443,9 @@ Gets a formatted datetime from the javascript Date() object. local:string can be
 
 
 # <b>detection.js</b>
+
+## <b>isMobile()</b>
+Return true if mobile
 
 ## <b>isChrome()</b>
 Return true if your browser is Chrome, false if not.

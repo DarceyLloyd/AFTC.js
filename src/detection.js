@@ -1,7 +1,20 @@
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isMobile()
+ * @desc: isMobile
+ * @return boolean
+ */
+window.isMobile = function(){
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * @function: isFireFox()
+ * @desc: Detects FireFox
+ * @return boolean
  */
 window.isFireFox = function () {
 	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -9,9 +22,9 @@ window.isFireFox = function () {
 }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isChrome()
+ * @desc: Detects Chrome
+ * @return boolean
  */
 window.isChrome = function () {
 	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -19,9 +32,9 @@ window.isChrome = function () {
 }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isSafari()
+ * @desc: Detects Safari
+ * @return boolean
  */
 window.isSafari = function () {
 	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
@@ -29,9 +42,9 @@ window.isSafari = function () {
 }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isIE()
+ * @desc: Detects IE
+ * @return boolean
  */
 window.isIE = function () {
 	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
@@ -39,9 +52,9 @@ window.isIE = function () {
 }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getIEVersion()
+ * @desc: Gets version of IE
+ * @return float
  */
 window.getIEVersion = function () {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
@@ -49,9 +62,9 @@ window.getIEVersion = function () {
 }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getBrowser()
+ * @desc: Detects browser
+ * @return string
  */
 window.getBrowser = function () {
 	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -76,9 +89,9 @@ window.getBrowser = function () {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getOS(testUserAgent)
+ * @desc: Attempts to get the os from the user agent or the test user agent
+ * @param string testUserAgent: test user agent string
  */
 window.getOS = function (testAgent) {
 	var userAgent;
