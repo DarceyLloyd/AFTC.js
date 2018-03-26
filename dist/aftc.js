@@ -324,7 +324,7 @@ window.log = function (arg) {
             }
             if (AFTC.log.element != false) {
                 if (typeof (arg) == "object") {
-                    AFTC.logTo.element.innerHTML += "[Object]<br>";
+                    AFTC.log.element.innerHTML += "[Object]<br>";
                     for (var key in arg) {
                         AFTC.log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
                     }
@@ -372,7 +372,7 @@ window.logDisable = function () {
  * @param element||string elementId: elementId to output to
  */
 window.logTo = function (elementOrElementId) {
-    if (elementOrElementId == undefined || elementOrElementId == null){
+    if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false){
         AFTC.log.element = false;
         console.log("AFTC.log(): HTML element output has been disabled.");
         return;
@@ -3799,7 +3799,10 @@ AFTC.XHR = function () {
 		data: false,
 		dataType: false,
 		responseType: false,
-		onComplete: false
+		onComplete: false,
+		onError: false,
+		onProgress: false,
+		onCancel: false
 	};
 
 	// Process arguments
@@ -3818,9 +3821,14 @@ AFTC.XHR = function () {
 		readyState: false,
 		status: false,
 		responseType: false,
-		response: null
+		response: null,
+		percentComplete: 0,
+		isImage: false,
+		imageType: ""
 	};
 	// - - - - - - - - - - - - - - - - - - -
+
+
 
 
 	// - - - - - - - - - - - - - - - - - - -
@@ -3832,6 +3840,12 @@ AFTC.XHR = function () {
 			// code for IE6, IE5
 			params.xhr = new ActiveXObject("Microsoft.XMLHTTP");
 		}
+
+		params.xhr.addEventListener("progress", updateProgress);
+		params.xhr.addEventListener("load", transferComplete);
+		params.xhr.addEventListener("error", transferFailed);
+		params.xhr.addEventListener("abort", transferCanceled);
+
 
 		// format and check args
 		if (!args.method) {
@@ -3847,40 +3861,30 @@ AFTC.XHR = function () {
 		}
 
 		if (args.method == "GET" && args.dataType != "form") {
-			console.error("AFTC.XHR: ERROR: GET only supports the 'form' data type (key value pairs eg a=1&b=2)");
+			msg = "AFTC.XHR: ERROR: GET only supports the 'form' data type (key value pairs eg a=1&b=2)";
+			console.error(msg);
+			if (args.onError) {
+				args.onError(msg);
+			}
 			return false;
 		} else if (args.dataType != "form" && args.dataType != "formdata" && args.dataType != "json" && args.dataType != "array" && args.dataType != "object") {
-			console.error("AFTC.XHR: ERROR: The dataType option only supports 'form', 'formdata', 'json', 'array' or 'object'");
+			msg = "AFTC.XHR: ERROR: The dataType option only supports 'form', 'formdata', 'json', 'array' or 'object'";
+			console.error(msg);
+			if (args.onError) {
+				args.onError(msg);
+			}
 			return false;
 		}
 
 
 		if (!args.url) {
-			console.error("AFTC.XHR: ERROR: Please specify a URL!");
+			msg = "AFTC.XHR: ERROR: Please specify a URL!";
+			console.error(msg);
+			if (args.onError) {
+				args.onError(msg);
+			}
 			return false;
 		}
-		// - - - -
-
-		// Setup onReadStateChange
-		params.xhr.onreadystatechange = function (e) {
-			params.readyState = this.readyState;
-			params.status = this.status;
-
-			if (this.readyState == 4 && this.status == 200) {
-				// log("###### RESPONSE:");
-				// logTo("debug", params.xhr.getResponseHeader("Content-Type"));
-
-				if (String(params.xhr.responseType).toLowerCase() == "json") {
-					params.response = this.response;
-				} else {
-					params.response = this.responseText;
-				}
-
-				if (args.onComplete) {
-					args.onComplete(params.response);
-				}
-			}
-		};
 		// - - - -
 
 		// Set response headers
@@ -3910,20 +3914,11 @@ AFTC.XHR = function () {
 			}
 
 
-			// log("######### SEND ##########");
-			// log("args.method = " + args.method);
-			// log("args.url = " + args.url);
-			// log("args.dataType = " + args.dataType);
-			// log("args.data = " + args.data);
-			// log("params.requestHeader = " + params.requestHeader);
-			// log("----------------------------------");
-
-
 			params.xhr.open(args.method, args.url, true);
-			if (params.requestHeader){
+			if (params.requestHeader) {
 				params.xhr.setRequestHeader("Content-Type", params.requestHeader);
 			}
-			
+
 
 			switch (args.method) {
 				case "GET":
@@ -3935,13 +3930,101 @@ AFTC.XHR = function () {
 			}
 
 			log("getResponseHeader = " + params.xhr.getResponseHeader("Content-Type"));
-			
+
 		}
 		// - - - -
 
 	}
 	// - - - - - - - - - - - - - - - - - - -
 
+
+
+	// - - - - - - - - - - - - - - - - - - -
+	function responseError(msg, e) {
+		console.error(msg);
+		if (args.onError) {
+			if (!e) {
+				args.onError(params.xhr);
+			} else {
+				args.onError(e);
+			}
+		}
+		return false;
+	}
+	// - - - - - - - - - - - - - - - - - - -
+
+
+	// - - - - - - - - - - - - - - - - - - -
+	function updateProgress(e) {
+		params.percentComplete = 0;
+		if (e.lengthComputable) {
+			params.percentComplete = (100 / e.total) * e.loaded;
+			params.percentComplete = parseFloat(params.percentComplete.toFixed(2));
+		} else {
+			params.percentComplete = 0;
+		}
+		if (args.onProgress) {
+			args.onProgress(params.percentComplete);
+		} else {
+			return params.percentComplete;
+		}
+	}
+	// - - - - - - - - - - - - - - - - - - -
+
+
+
+	// - - - - - - - - - - - - - - - - - - -
+	function transferComplete(e) {
+		log("AFTC.XHR.transferComplete()");
+		if (params.xhr.readyState == 4) {
+			if (params.xhr.status == "404") {
+				responseError("AFTC.XHR: ERROR: Please check your URL [" + args.url + "] NOT FOUND.", params.xhr);
+			} else {
+				if (args.onComplete) {
+					args.onComplete(params.xhr.responseText);
+				}
+			}
+		} else {
+			responseError("AFTC.XHR: ERROR: Please review event details!", e);
+		}
+	}
+	// - - - - - - - - - - - - - - - - - - -
+	// - - - - - - - - - - - - - - - - - - -
+	function transferFailed(e) {
+		log("AFTC.XHR.transferFailed()");
+		if (args.onError) {
+			args.onError(e);
+		}
+	}
+	// - - - - - - - - - - - - - - - - - - -
+	// - - - - - - - - - - - - - - - - - - -
+	function transferCanceled(e) {
+		log("AFTC.XHR.transferCanceled()");
+		if (args.onCancel) {
+			args.onCancel(e);
+		}
+	}
+	// - - - - - - - - - - - - - - - - - - -
+
+
+
+
+	// - - - - - - - - - - - - - - - - - - -
+	function cleanUpEventListeners() {
+		try {
+			params.xhr.removeEventListener("progress", updateProgress);
+		} catch (e) { }
+		try {
+			params.xhr.removeEventListener("load", transferComplete);
+		} catch (e) { }
+		try {
+			params.xhr.removeEventListener("error", transferFailed);
+		} catch (e) { }
+		try {
+			params.xhr.removeEventListener("abort", transferCanceled);
+		} catch (e) { }
+	}
+	// - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -3981,109 +4064,26 @@ AFTC.XHR = function () {
 	// - - - - - - - - - - - - - - - - - - -
 
 
-	// // - - - - - - - - - - - - - - - - - - -
-	// function processData() {
-	// 	// Process data
-	// 	if (!args.data) {
-	// 		params.xhr.send();
-	// 		return true;
-	// 	}
-
-	// 	// Prevent json on get
-	// 	if (args.method == "get" && args.dataType != "form" && args.dataType != "formdata") {
-	// 		console.error("AFTC.XHR: ERROR: GET only supports data types of 'form' and 'formdata', [" + args.dataType + "] was set!");
-	// 		return false;
-	// 		// dataType:form and typeof(data):string
-	// 		if (args.dataType == "form" && typeof (args.data) == "string") {
-	// 			// add string to url
-	// 			params.getURL = params.getURL + "?" + args.data;
-	// 			return true;
-	// 		}
-	// 	}
-
-
-	// 	// Tests
-	// 	// GET Requires string data to be appended to url
-	// 	// args.method = "get";
-	// 	// args.dataType = "argon";
-	// 	// args.data = "a=1&b=2&mode=test";
-	// 	// args.data = [];
-	// 	// args.data["name"] = "Darcey";
-	// 	// args.data["email"] = "Darcey@AllForTheCode.co.uk";
-	// 	// args.data = new FormData();
-	// 	// args.data.append("name", "Darcey Lloyd");
-	// 	// args.data.append("email", "darcey.lloyd@gmail.com");
-
-
-	// 	var urlParams = "";
-
-	// 	// GET only data parsers
-	// 	if (args.method == "get") {
-	// 		// GET sends variables via url string
-	// 		if (args.dataType == "form" && typeof (args.data) == "string") {
-	// 			params.data = args.data; // params is final data, args is arg / original data
-	// 			params.url = args.url + "?" + params.data;
-	// 			return true;
-	// 		}
-
-	// 		// GET sends variables via url string, iterate through FormData appending to url string
-	// 		if (args.data.append || args.dataType == "formdata") {
-	// 			// FormData
-	// 			urlParams = "";
-	// 			log(args.data.entries());
-	// 			for (var pair of args.data.entries()) {
-	// 				if (urlParams != "") {
-	// 					urlParams += "&";
-	// 				}
-	// 				urlParams += pair[0] + "=" + pair[1];
-	// 				// log(pair[0] + ', ' + pair[1]);
-	// 			}
-	// 			params.dataType = "form";
-	// 			params.url = args.url + "?" + urlParams;
-	// 			return true;
-	// 		}
-
-	// 		// GET sends variables via url string, iterate through array/object appending to url string
-	// 		if (isArray(args.data) || typeof (args.data) == "object") {
-	// 			// Array || Object
-	// 			urlParams = "";
-	// 			for (var key in args.data) {
-	// 				if (urlParams != "") {
-	// 					urlParams += "&";
-	// 				}
-	// 				urlParams += key + "=" + args.data[key];
-	// 			}
-	// 			params.dataType = "form";
-	// 			params.url = args.url + "?" + urlParams;
-	// 			return true;
-	// 		}
-	// 	} else {
-	// 		// POST sends variables via string, formdata or json, iterate through array/object creating FormData object
-	// 		if (isArray(args.data) || typeof (args.data) == "object") {
-	// 			// Array || Object
-	// 			params.data = new FormData();
-	// 			for (var key in args.data) {
-	// 				params.data.append(key, args.data[key]);
-	// 			}
-	// 			params.dataType = "formdata";
-	// 			params.url = args.url;
-	// 			return true;
-	// 		}
-	// 	}
-
-	// 	// default
-	// 	params.dataType = args.dataType;
-	// 	params.url = args.url;
-	// 	return true;
-	// }
-	// // - - - - - - - - - - - - - - - - - - -
-
 
 
 
 
 	// Constructor simulation
 	init();
+	// - - - - - - - - - - - - - - - - - - -
+
+
+	// utils
+	function isImage() {
+		var sfx = ["jpg","jpeg","png","gif"];
+		for (var i=0; i < sfx.length; i++){
+			if (args.url.indexOf(sfx[i]) > -1){
+				params.imageType = sfx[i];
+				params.isImage = true;
+				break;
+			}
+		}
+	}
 	// - - - - - - - - - - - - - - - - - - -
 
 
@@ -4104,68 +4104,4 @@ AFTC.XHR = function () {
 
 
 
-
-
-
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-// window.AJAXLoad = function($url, $method, $data, $callback) {
-
-// 	$.ajax({
-// 		method: $method,
-// 		url: $url,
-// 		data: $data,
-// 		success: function (response) {
-// 			$callback(response);
-// 			//return response;
-// 		},
-// 		error: function (jqXHR, textStatus) {
-// 			var msg = "";
-// 			msg += "AFTC.JS: AJAXLoad(): ERROR\n";
-// 			msg += "\t" + "URL: [" + $url + "]\n";
-// 			msg += "\t" + "method: [" + $method + "]\n";
-// 			msg += "\t" + "data: [" + $data + "]\n";
-// 			msg += "\t" + "status: [" + ajax.status + "]\n";
-// 			msg += "\t" + "statusText: [" + ajax.statusText + "]\n";
-// 			msg += "\t" + "jqXHR: [" + jqXHR + "]\n";
-// 			msg += "\t" + "textStatus: [" + textStatus + "]\n";
-// 			log(msg);
-// 		}
-// 	});
-// }
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-// window.loadJSONFile = function($url, $callback) {
-// 	/*
-// 	 var $data = $.getJSON($file, function(result){
-// 	 $.each(result, function(key, val){
-// 	 //$("div").append(field + " ");
-// 	 //log(val);
-// 	 });
-// 	 return result;
-// 	 });
-// 	 */
-
-// 	var ajax = $.ajax({
-// 		dataType: "json",
-// 		url: $url,
-// 		global: false,
-// 		success: function (data) {
-// 			$callback(data);
-// 		},
-// 		error: function (data) {
-// 			var msg = "";
-// 			msg += "loadJSONFile: ERROR\n";
-// 			msg += "\t" + "URL: [" + $url + "]\n";
-// 			//msg += "\t" + "ID: [" + $id + "]\n";
-// 			//msg += "\t" + "method: [" + $method + "]\n";
-// 			msg += "\t" + "data: [" + data + "]\n";
-// 			msg += "\t" + "status: [" + ajax.status + "]\n";
-// 			msg += "\t" + "statusText: [" + ajax.statusText + "]\n";
-// 			log(msg);
-// 		}
-// 	});
-// }
 

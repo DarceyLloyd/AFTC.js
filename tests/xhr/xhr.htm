@@ -40,24 +40,29 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest1 = function () {
-            logTo("debug", "xhrTest1(): Example 1 - Load JSON file via GET using the 'form' data type (key value pair string)",true);
+            log("xhrTest1(): Example 1 - Load JSON file via GET using the 'form' data type (key value pair string)",true);
             var data = "mode=json1";
             xhr1 = AFTC.XHR({
                 url: "./request.php",
                 method: "get",
                 data: data,
                 dataType: "form",
-                onComplete: function (response) {
-                    logTo("debug", response);
-                    response = JSON.parse(response);
+                onComplete: function (res) {
+                    log("onComplete():");
+                    response = JSON.parse(res);
+                    log(res);
                     // Iterate
                     // for (var index in response) {
                     //     var jObject = response[index];
-                    //     logTo("debug", jObject);
+                    //     log(jObject);
                     //     for (var key in jObject) {
                     //         log(key + " = " + response[index][key]);
                     //     }
                     // }
+                },
+                onError: function (e){
+                    log("onError(e):");
+                    console.log(e);
                 }
             });
         }
@@ -65,7 +70,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest2 = function () {
-            logTo("debug", "xhrTest1(): Example 2 - Load JSON file via POST using the 'form' data type (key value pair string)",true);
+            log("xhrTest1(): Example 2 - Load JSON file via POST using the 'form' data type (key value pair string)",true);
             var data = "mode=json2";
             xhr1 = AFTC.XHR({
                 url: "./request.php",
@@ -73,12 +78,12 @@
                 data: data,
                 dataType: "form",
                 onComplete: function (response) {
-                    logTo("debug", response);
+                    log(response);
                     response = JSON.parse(response);
                     // Iterate
                     // for (var index in response) {
                     //     var jObject = response[index];
-                    //     logTo("debug", jObject);
+                    //     log(jObject);
                     //     for (var key in jObject) {
                     //         log(key + " = " + response[index][key]);
                     //     }
@@ -91,7 +96,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest3 = function () {
-            logTo("debug", "xhrTest1(): Example 3 - Load JSON file via POST using the 'json' data type (key value pair string)",true);
+            log("xhrTest1(): Example 3 - Load JSON file via POST using the 'json' data type (key value pair string)",true);
             var data = {
                 mode:'json1'
             };
@@ -101,16 +106,16 @@
                 data: data,
                 dataType: "json",
                 onComplete: function (response) {
-                    logTo("debug", response);
+                    log(response);
                     response = JSON.parse(response);
-                    logTo("debug",response[0].name);
+                    log(response[0].name);
                     // Iterate
                     for (var index in response) {
                         var jObject = response[index];
-                        logTo("debug", jObject);
+                        log(jObject);
                         for (var key in jObject) {
                             var msg = key + " = " + response[index][key];
-                            logTo("debug", msg);
+                            log(msg);
                         }
                     }
                 }
@@ -121,11 +126,11 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest4 = function () {
-            logTo("debug", "xhrTest1(): Example 4 - Load HTML file",true);
+            log("xhrTest1(): Example 4 - Load HTML file",true);
             xhr1 = AFTC.XHR({
                 url: "./test.htm",
                 onComplete: function (response) {
-                    logTo("debug", "<textarea>"+response+"</textarea>");
+                    log("<textarea>"+response+"</textarea>");
                 }
             });
         }
@@ -135,7 +140,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest5 = function () {
-            logTo("debug","xhrTest5(): Example 5 - Load an image",true);
+            log("xhrTest5(): Example 5 - Load an image from php",true);
             getElementById('img').innerHTML = "Loading";
             AFTC.XHR({
                 url: "./request.php",
@@ -143,11 +148,12 @@
                 data: "mode=image",
                 dataType: "form",
                 onComplete: function (response) {
-                    logTo("debug","xhrTest5(): AFTC.XHR.onComplete():");
+                    log("xhrTest5(): AFTC.XHR.onComplete():");
+                    // log(response);
                     var img = document.createElement('image');
                     img.width = 200;
                     img.height = 200;
-                    getElementById('img').innerHTML = "<img src='data:image/png;base64," + response + "' height='300px'>";
+                    getElementById('img').innerHTML = "<img src='data:image/png;base64," + response.responseText + "' height='300px'>";
                 }
             });
         }
@@ -156,7 +162,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest6 = function () {
-            logTo("debug","xhrTest6(): Example 6 - JS Array to PHP to JS",true);
+            log("xhrTest6(): Example 6 - JS Array to PHP to JS",true);
             
             var myDataSet = [];
             myDataSet["name"] = "darcey6";
@@ -169,7 +175,7 @@
                 data: myDataSet,
                 dataType: "array",
                 onComplete: function (response) {
-                    logTo("debug","<pre>"+response+"</pre>");
+                    log("<pre>"+response+"</pre>");
                 }
             });
         }
@@ -180,7 +186,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest7 = function () {
-            logTo("debug","xhrTest7(): Example 7 - JS Object to PHP to JS",true);
+            log("xhrTest7(): Example 7 - JS Object to PHP to JS",true);
             
             var myDataSet = {
                 name:"darcey7",
@@ -194,7 +200,7 @@
                 data: myDataSet,
                 dataType: "object",
                 onComplete: function (response) {
-                    logTo("debug","<pre>"+response+"</pre>");
+                    log("<pre>"+response+"</pre>");
                 }
             });
         }
@@ -204,7 +210,7 @@
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         var xhrTest8 = function () {
-            logTo("debug","xhrTest8(): Example 8 - FormData() to PHP to JS",true);
+            log("xhrTest8(): Example 8 - FormData() to PHP to JS",true);
             
             var myDataSet = new FormData();
             myDataSet.append("name","darcey8");
@@ -217,7 +223,7 @@
                 data: myDataSet,
                 dataType: "formdata",
                 onComplete: function (response) {
-                    logTo("debug","<pre>"+response+"</pre>");
+                    log("<pre>"+response+"</pre>");
                 }
             });
         }
@@ -227,6 +233,7 @@
 
         function init() {
             // Debug.js usage exmaples
+            logTo("debug");
             log("Darcey@AllForTheCode.co.uk - AFTC.JS");
         }
 

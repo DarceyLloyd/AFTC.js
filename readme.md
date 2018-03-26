@@ -10,6 +10,7 @@
 
 
 ## Whats new
+    - Enhanced some of the XHR functions in io.js for better onError, onCancel and onProgress features
 
     - log now does what logTo used to and logTo has been re-purposed to enabling that feature in log eg
     ````
@@ -32,6 +33,15 @@ xhr1 = AFTC.XHR({
     method: "post",
     data: data,
     dataType: "form",
+    onProgress: function (percentLoaded) {
+
+    },
+    onError: function (e){
+        log(e);
+    },
+    onCancel: function (e){
+        log(e);
+    },
     onComplete: function (response) {
         logTo("debug", response);
         response = JSON.parse(response);

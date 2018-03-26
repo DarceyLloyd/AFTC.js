@@ -324,7 +324,7 @@ window.log = function (arg) {
             }
             if (AFTC.log.element != false) {
                 if (typeof (arg) == "object") {
-                    AFTC.logTo.element.innerHTML += "[Object]<br>";
+                    AFTC.log.element.innerHTML += "[Object]<br>";
                     for (var key in arg) {
                         AFTC.log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
                     }
@@ -372,7 +372,7 @@ window.logDisable = function () {
  * @param element||string elementId: elementId to output to
  */
 window.logTo = function (elementOrElementId) {
-    if (elementOrElementId == undefined || elementOrElementId == null){
+    if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false){
         AFTC.log.element = false;
         console.log("AFTC.log(): HTML element output has been disabled.");
         return;
