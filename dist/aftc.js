@@ -3080,7 +3080,8 @@ window.isIE = function () {
  */
 window.isOpera = function() {
 	var isChromium = window.chrome;
-    var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
+	// var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
+	var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
 	if(isChromium !== null && isOpera == true) {
 		// is Opera (chromium)
 	} else { 

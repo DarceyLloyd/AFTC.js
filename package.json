@@ -1,6 +1,6 @@
 {
   "name": "aftc.js",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
     "webpack-dev": "webpack -d",
@@ -18,7 +18,7 @@
   "author": "darcey.lloyd@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "gsap": "^1.19.1",
+    "gsap": "^1.20.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^3.0.0",
