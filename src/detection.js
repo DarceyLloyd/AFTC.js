@@ -4,12 +4,47 @@
  * @return boolean
  */
 window.isMobile = function(){
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	// Windows Phone must come first because its UA also contains "Android"!
+	var ua = navigator.userAgent.toLowerCase();
+	if (/windows phone/i.test(ua)) {
 		return true;
 	} else {
-		return false;
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
+
+window.isAndroid = function(){
+	var ua = navigator.userAgent.toLowerCase();
+	if (/windows phone/i.test(ua)) {
+		return false;
+	} else {
+		var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+		return isAndroid;
+	}
+}
+
+window.iOS = function() {
+	var iDevices = [
+	  'iPad Simulator',
+	  'iPhone Simulator',
+	  'iPod Simulator',
+	  'iPad',
+	  'iPhone',
+	  'iPod'
+	];
+  
+	if (!!navigator.platform) {
+	  while (iDevices.length) {
+		if (navigator.platform === iDevices.pop()){ return true; }
+	  }
+	}
+  
+	return false;
+  }
 
 /**
  * @function: isFireFox()
@@ -49,6 +84,27 @@ window.isSafari = function () {
 window.isIE = function () {
 	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
 	return is_ie;
+}
+
+
+/**
+ * @function: isOpera()
+ * @desc: Detects Opera
+ * @return boolean
+ */
+window.isOpera = function() {
+	var isChromium = window.chrome;
+    var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
+	if(isChromium !== null && isOpera == true) {
+		// is Opera (chromium)
+	} else { 
+		// not Opera (chromium) 
+	}
+	if (isOpera){
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /**

@@ -297,10 +297,8 @@ window.hasClass = function(elementOrId, cls) {
  */
 
 AFTC.log = {
-    enabled: true
-};
-AFTC.logTo = {
-    enabled: false,
+    enabled: true,
+    elementId: "",
     element: false
 };
 /**
@@ -324,14 +322,14 @@ window.log = function (arg) {
             } else {
                 console.log(arg);
             }
-            if (isElement(AFTC.logTo.element) && AFTC.logTo.enabled) {
+            if (AFTC.log.element != false) {
                 if (typeof (arg) == "object") {
                     AFTC.logTo.element.innerHTML += "[Object]<br>";
                     for (var key in arg) {
-                        AFTC.logTo.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
+                        AFTC.log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
                     }
                 } else {
-                    AFTC.logTo.element.innerHTML += (arg + "<br>");
+                    AFTC.log.element.innerHTML += (arg + "<br>");
                 }
 
             }
@@ -364,91 +362,33 @@ window.logDisable = function () {
 
 
 
-/**
- * @func: configLog({options})
- * @desc: Configuration function for logTo() autologging see examples folder on usage
- * @param string autoLogTo: html element id to log to
- * @param boolean autoLogEnable: enable auto log
- * @param boolean enableAutoLog: enable auto log
- * @param boolean autoLogDisable: disable auto log
- * @param boolean disableAutoLog: disable auto log
- */
-window.configLog = function () {
-    // Command functions (multiple commands may run the same function)
-    var autoLogTo = function (arg) {
-        var element = getElementById(arg);
-        if (isElement(element)) {
-            AFTC.logTo.element = element;
-            AFTC.logTo.enabled = true;
-        } else {
-
-        }
-    }
-    var autoLogEnable = function (value) {
-        if (isBoolean(value)) {
-            AFTC.logTo.enabled = value;
-        }
-    }
-    var autoLogDisable = function (value) {
-        if (isBoolean(value)) {
-            AFTC.logTo.enabled = !value;
-        }
-    }
-
-
-    // Process arguments
-    if (arguments[0] && typeof (arguments[0]) == "object") {
-        for (var key in arguments[0]) {
-            var value = arguments[0][key];
-
-            switch (key) {
-                case "autoLogTo":
-                    autoLogTo(value);
-                    break;
-                case "autoLogEnable":
-                    autoLogEnable(value);
-                    break;
-                case "enableAutoLog":
-                    autoLogEnable(value);
-                    break;
-                case "autoLogDisable":
-                    autoLogDisable(value);
-                    break;
-                case "disableAutoLog":
-                    autoLogDisable(value);
-                    break;
-                default:
-                    console.error("AFTC.js > configLog({autoLogTo:elementId}): Usage error, unknown command [" + key + "]!");
-                    break;
-            }
-
-        }
-    }
-}
-
-
 
 /**
- * @function: logTo(elementId,str)
- * @desc: A console.log alternative that will output to a html element and the console at the same time
+ * @function: logTo(elementOrElementId)
+ * @desc: When using log you output will also be output to that html element
  * ````
- * logTo("message","Hello World!");
+ * logTo("footer");
  * ````
- * @param string elementId: elementId to output to
- * @param string str: what innerHTML will be set to
- * @param bool cls: clear before appending html string
+ * @param element||string elementId: elementId to output to
  */
-window.logTo = function (elementId, str, cls) {
-    var element = getElementById(elementId);
-    log(str);
-    if (element) {
-        if (cls == undefined){
-            cls = false;
+window.logTo = function (elementOrElementId) {
+    if (elementOrElementId == undefined || elementOrElementId == null){
+        AFTC.log.element = false;
+        console.log("AFTC.log(): HTML element output has been disabled.");
+        return;
+    }
+    var element;
+    if (typeof(elementOrElementId) == "string"){
+        element = getElementById(elementOrElementId);
+        if (isElement(element)){
+            AFTC.log.element = element;
+            console.log("AFTC.log(): Has now been configured to output to a HTML element.");
         }
-        if (cls){
-            element.innerHTML = (str + "<br>");
-        } else {
-            element.innerHTML += (str + "<br>");
+        return;
+    } else {
+        if (isElement(elementOrElementId)){
+            AFTC.log.element = element;
+            console.log("AFTC.log(): Has now been configured to output to a HTML element.");
         }
     }
 }

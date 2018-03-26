@@ -9,12 +9,17 @@
 ### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 
-## Whats new 1.5.1
+## Whats new
+
+    - log now does what logTo used to and logTo has been re-purposed to enabling that feature in log eg
+    ````
+    logTo("footer");
+    log("This text will appear in the element with an id of footer");
+    ````
+
+    - Various detection updates and fixes (opera, android, isMobile etc)
 
     - isMobile(); // returns true || false
-
-    - LogTo(htmlElementId,message,clear)
-    Added 3rd parameter for clear element before innerHTML insert or not
 
     - io.js is finally added @ v1.0.0
     NO jQuery reliance and the whole of the AFTC.JS lib weighs less than 40kb!
@@ -1444,8 +1449,17 @@ Gets a formatted datetime from the javascript Date() object. local:string can be
 
 # <b>detection.js</b>
 
+## <b>isAndroid()</b>
+Return true if mobile.
+
+## <b>iOS()</b>
+Return true or false
+
 ## <b>isMobile()</b>
-Return true if mobile
+Return true if mobile.
+
+## <b>isOpera()</b>
+Return true if your browser is Opera, false if not.
 
 ## <b>isChrome()</b>
 Return true if your browser is Chrome, false if not.
