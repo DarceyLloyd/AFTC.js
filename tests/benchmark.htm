@@ -14,16 +14,16 @@
             // Debug.js usage exmaples
             
             var debugElement = document.getElementById("debug");
-            logTo("debug","AFTC.JS");
+            logTo("debug");
             var benchy = new AFTC.Benchmark();
-            logTo("debug","Benchmark started");
+            log("Benchmark started");
             benchy.start();
             for (var i=0; i <= 10000000; i++){
                 $a = Math.sin(i+1) + 12 / 2 * 45;
             }
             benchy.stop();
-            logTo("debug","Benchmark ended!");
-            logTo("debug","Benchmakr completed in " + benchy.getTime() + " seconds");
+            log("Benchmark ended!");
+            log("Benchmakr completed in " + benchy.getTime() + " seconds");
 
         }
 

@@ -1078,10 +1078,15 @@ url | string |  | the url you wish to redirect to |
   
 Quick and easy benchmarking, see examples benchmark.htm for usage  
 ````  
-AFTC.Benchmark().start();  
-// do you stuff  
-AFTC.Benchmark().end();  
-log( AFTC.Benchmark().getTime() );  
+var benchy = new AFTC.Benchmark();
+log("Benchmark started");
+benchy.start();
+for (var i=0; i <= 10000000; i++){
+    var a = Math.sin(i+1) + 12 / 2 * 45; // test
+}
+benchy.stop();
+log("Benchmark ended!");
+log("Benchmakr completed in " + benchy.getTime() + " seconds");
 ````  
 @function start: start benchmark  
 @function stop: stop benchmark  

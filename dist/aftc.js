@@ -374,7 +374,7 @@ window.logDisable = function () {
 window.logTo = function (elementOrElementId) {
     if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false){
         AFTC.log.element = false;
-        console.log("AFTC.log(): HTML element output has been disabled.");
+        // console.log("AFTC.log(): HTML element output has been disabled.");
         return;
     }
     var element;
@@ -382,7 +382,7 @@ window.logTo = function (elementOrElementId) {
         element = getElementById(elementOrElementId);
         if (isElement(element)){
             AFTC.log.element = element;
-            console.log("AFTC.log(): Has now been configured to output to a HTML element.");
+            // console.log("AFTC.log(): Has now been configured to output to a HTML element.");
         }
         return;
     } else {
