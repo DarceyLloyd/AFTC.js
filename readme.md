@@ -1132,6 +1132,45 @@ classListToAddOnShow | array |  | string of class to remove or array of string c
 
 
 
+## <b>isEven(n)</b>
+ --- 
+  
+Checks if n is even
+
+param | type | optional | description
+--- | --- | --- | ---
+n | number |  | value you wish to check | 
+  
+<b>Return:</b> boolean
+
+
+ --- 
+ <br><br>
+
+
+
+
+
+ ## <b>osOdd(n)</b>
+ --- 
+  
+Checks if n is odd
+
+param | type | optional | description
+--- | --- | --- | ---
+n | number |  | value you wish to check | 
+  
+<b>Return:</b> boolean
+
+
+ --- 
+ <br><br>
+
+
+
+
+
+
 
 
 
@@ -1228,6 +1267,9 @@ Lightens or darkens a color like sass and less does.
     log("color.getRGBString() = " + color.getRGBString());
     // See example.htm for further usage
 ```
+
+## <b>getRandomColor()</b>
+Returns an RGB object
 
 ## <b>getHSLColor(float)</b>
 Returns a HSL Colour from a float, input range is 0 to 1
