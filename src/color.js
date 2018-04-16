@@ -30,11 +30,25 @@ window.getRandomRGBString = function () {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
+/**
+ * @function: getRandomColor()
+ * @desc: returns a random RGB object o.r, o.g, o.g
+ */
+window.getRandomColor = function () {
+    var o = {
+        r:Math.round(Math.random() * 255),
+        g:Math.round(Math.random() * 255),
+        b:Math.round(Math.random() * 255),
+    };
+    return o;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getRandomHexColor()
+ * @desc: gets a random hex color
+ * @return string: hex color
  */
 window.getRandomHexColor = function () {
     var hex = Math.floor(Math.random() * 0xFFFFFF);
@@ -44,9 +58,9 @@ window.getRandomHexColor = function () {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getRandomRGBColor()
+ * @desc: getRandomRGBColor
+ * @return string: rgb color
  */
 window.getRandomRGBColor = function(){
     rand = "rgb("+
@@ -59,9 +73,12 @@ window.getRandomRGBColor = function(){
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: rgb2Hex(r,g,b)
+ * @desc: rgb to hex
+ * @param number r: red
+ * @param number g: green
+ * @param number b: blue
+ * @return string: hex color
  */
 window.rgb2Hex = function (r, g, b) {
     if (r > 255 || g > 255 || b > 255)
@@ -74,9 +91,12 @@ window.rgb2Hex = function (r, g, b) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: rgbToHex(r,g,b)
+ * @desc: rgb to hex
+ * @param number r: red
+ * @param number g: green
+ * @param number b: blue
+ * @return string: hex color
  */
 window.rgbToHex = function (r, g, b) {
     function getHex(c) {
@@ -95,9 +115,10 @@ window.rgbToHex = function (r, g, b) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: hexToRgb(hex)
+ * @desc: hexToRgb
+ * @param string hex: hex color
+ * @return string: rgb color
  */
 window.hexToRgb = function (hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -112,9 +133,10 @@ window.hexToRgb = function (hex) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: numberToHex(num)
+ * @desc: numberToHex
+ * @param number num: decimal base 10
+ * @return string: hexidecimal value
  */
 window.numberToHex = function (num) {
     return num.toString(16);

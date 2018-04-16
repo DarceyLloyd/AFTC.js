@@ -266,7 +266,7 @@ window.removeClass = function (elementOrId, className) {
 /**
  * @function: hasClass(elementOrId, cls)
  * @desc: Check to see if an element has a class attached to it
- * @param string elementOrId: The elemnt or id of the html element 
+ * @param string elementOrId: The elemnt or id of the html element
  * @param string cls: class to look for
  */
 window.hasClass = function(elementOrId, cls) {
@@ -291,7 +291,7 @@ window.hasClass = function(elementOrId, cls) {
 
 /**
  * @function: AFTC.log{}
- * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
  * @param: boolean enabled: sets window.log to enabled or disabled
  * @alias: trace
  */
@@ -303,7 +303,7 @@ AFTC.log = {
 };
 /**
  * @function: log(input)
- * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
  * ````
  * log("Hello World");
  * log("a = " + a);
@@ -639,8 +639,28 @@ window.arrayShuffle3 = function (a) {
 
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions
+// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions etc
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+/**
+ * @function: isEven(n)
+ * @desc: check if input is even
+ * @param number n: variable / value you wish to test
+ */
+function isEven(n) {
+    return n % 2 == 0;
+ }
+
+ /**
+ * @function: isOdd(n)
+ * @desc: check if input is odd
+ * @param number n: variable / value you wish to test
+ */
+ function isOdd(n) {
+    return Math.abs(n % 2) == 1;
+ }
+
+
 /**
  * @function: isAlphaNumeric(input)
  * @desc: check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)
