@@ -10,6 +10,8 @@
 
 
 ## Whats new
+    - Added isOdd(n), isEven(n), getRandomColor() which returns an RGB object
+
     - Enhanced some of the XHR functions in io.js for better onError, onCancel and onProgress features
 
     - log now does what logTo used to and logTo has been re-purposed to enabling that feature in log eg
