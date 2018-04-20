@@ -647,7 +647,7 @@ window.arrayShuffle3 = function (a) {
  * @desc: check if input is even
  * @param number n: variable / value you wish to test
  */
-function isEven(n) {
+window.isEven = function(n) {
     return n % 2 == 0;
  }
 
@@ -656,7 +656,7 @@ function isEven(n) {
  * @desc: check if input is odd
  * @param number n: variable / value you wish to test
  */
- function isOdd(n) {
+ window.isOdd = function(n) {
     return Math.abs(n % 2) == 1;
  }
 
@@ -967,6 +967,18 @@ window.getRandomInt = function (min, max) {
 window.getRandom = function (min, max) {
     return getRandomInt(min, max);
 }
+
+
+
+/**
+ * @function: getRandomFloat(min,max)
+ * @desc: returns a random floating point number betwen your specified min and max values
+ * @param number min: min value
+ * @param number max: max value
+ */
+window.getRandomFloat = function (min, max) {
+    return (Math.random() * (max - min) + min);
+};
 
 
 /**
