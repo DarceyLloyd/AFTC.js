@@ -266,7 +266,7 @@ window.removeClass = function (elementOrId, className) {
 /**
  * @function: hasClass(elementOrId, cls)
  * @desc: Check to see if an element has a class attached to it
- * @param string elementOrId: The elemnt or id of the html element 
+ * @param string elementOrId: The elemnt or id of the html element
  * @param string cls: class to look for
  */
 window.hasClass = function(elementOrId, cls) {
@@ -291,7 +291,7 @@ window.hasClass = function(elementOrId, cls) {
 
 /**
  * @function: AFTC.log{}
- * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
  * @param: boolean enabled: sets window.log to enabled or disabled
  * @alias: trace
  */
@@ -303,7 +303,7 @@ AFTC.log = {
 };
 /**
  * @function: log(input)
- * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML 
+ * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
  * ````
  * log("Hello World");
  * log("a = " + a);
@@ -639,8 +639,28 @@ window.arrayShuffle3 = function (a) {
 
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions
+// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions etc
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+/**
+ * @function: isEven(n)
+ * @desc: check if input is even
+ * @param number n: variable / value you wish to test
+ */
+window.isEven = function(n) {
+    return n % 2 == 0;
+ }
+
+ /**
+ * @function: isOdd(n)
+ * @desc: check if input is odd
+ * @param number n: variable / value you wish to test
+ */
+ window.isOdd = function(n) {
+    return Math.abs(n % 2) == 1;
+ }
+
+
 /**
  * @function: isAlphaNumeric(input)
  * @desc: check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)
@@ -947,6 +967,18 @@ window.getRandomInt = function (min, max) {
 window.getRandom = function (min, max) {
     return getRandomInt(min, max);
 }
+
+
+
+/**
+ * @function: getRandomFloat(min,max)
+ * @desc: returns a random floating point number betwen your specified min and max values
+ * @param number min: min value
+ * @param number max: max value
+ */
+window.getRandomFloat = function (min, max) {
+    return (Math.random() * (max - min) + min);
+};
 
 
 /**
@@ -2583,11 +2615,25 @@ window.getRandomRGBString = function () {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
+/**
+ * @function: getRandomColor()
+ * @desc: returns a random RGB object o.r, o.g, o.g
+ */
+window.getRandomColor = function () {
+    var o = {
+        r:Math.round(Math.random() * 255),
+        g:Math.round(Math.random() * 255),
+        b:Math.round(Math.random() * 255),
+    };
+    return o;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getRandomHexColor()
+ * @desc: gets a random hex color
+ * @return string: hex color
  */
 window.getRandomHexColor = function () {
     var hex = Math.floor(Math.random() * 0xFFFFFF);
@@ -2597,9 +2643,9 @@ window.getRandomHexColor = function () {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getRandomRGBColor()
+ * @desc: getRandomRGBColor
+ * @return string: rgb color
  */
 window.getRandomRGBColor = function(){
     rand = "rgb("+
@@ -2612,9 +2658,12 @@ window.getRandomRGBColor = function(){
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: rgb2Hex(r,g,b)
+ * @desc: rgb to hex
+ * @param number r: red
+ * @param number g: green
+ * @param number b: blue
+ * @return string: hex color
  */
 window.rgb2Hex = function (r, g, b) {
     if (r > 255 || g > 255 || b > 255)
@@ -2627,9 +2676,12 @@ window.rgb2Hex = function (r, g, b) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: rgbToHex(r,g,b)
+ * @desc: rgb to hex
+ * @param number r: red
+ * @param number g: green
+ * @param number b: blue
+ * @return string: hex color
  */
 window.rgbToHex = function (r, g, b) {
     function getHex(c) {
@@ -2648,9 +2700,10 @@ window.rgbToHex = function (r, g, b) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: hexToRgb(hex)
+ * @desc: hexToRgb
+ * @param string hex: hex color
+ * @return string: rgb color
  */
 window.hexToRgb = function (hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -2665,9 +2718,10 @@ window.hexToRgb = function (hex) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: numberToHex(num)
+ * @desc: numberToHex
+ * @param number num: decimal base 10
+ * @return string: hexidecimal value
  */
 window.numberToHex = function (num) {
     return num.toString(16);
