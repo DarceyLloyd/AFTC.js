@@ -3,32 +3,64 @@
 
 <b>A collection of utilities / functions I find useful when working with BROWSER based JavaScript.</b>
 
-<br><br>
+<br>
 
 
 ### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 
-## Whats new
-    - Added getRandomFloat(min,max);
+# <b>Whats new</b>
+
+#### NEW: Moved AFTC.Resizemanager() & AFTC.Benchmark from base.js and into misc.js as they shouldn't be part of the base, you can now edit the gulp build file to exclude or include them as you wish
+
+#### NEW: goFullScreen()
+
+````
+goFullScreen(); // will use document.body
+
+var myDiv = getElementById("container");
+goFullScreen(myDiv); // will go full screen on the div
+````
+
+#### NEW: AFTC.Point(x,y)
+```
+var p1 = new AFTC.Point(1,2);
+log(p1); // outputs object point with x=1 and y = 2
+log(p1.x); // outputs 1
+log(p1.y); // outputs 2
+```
+
+#### NEW: exitFullScreen();
+
+#### NEW: exitFullScreen();
+
+#### NEW: getRandomColor();
+```
+// Returns an RGB Object
+var color = getRandomColor();
+log(color.r); // outputs red value
+log(color.g); // outputs green value
+log(color.b); // outputs blue value
+```
+
+#### NEW: getRandomFloat(min,max);
     
-    - Added isOdd(n), isEven(n), getRandomColor() which returns an RGB object
+#### NEW: isOdd(n), isEven(n), getRandomColor() which returns an RGB object
 
-    - Enhanced some of the XHR functions in io.js for better onError, onCancel and onProgress features
+#### NEW: some of the XHR functions in io.js for better onError, onCancel and onProgress features
 
-    - log now does what logTo used to and logTo has been re-purposed to enabling that feature in log eg
-    ````
-    logTo("footer");
-    log("This text will appear in the element with an id of footer");
-    ````
+#### NEW: log now does what logTo used to and logTo has been re-purposed to enabling that feature in log eg
 
-    - Various detection updates and fixes (opera, android, isMobile etc)
+````
+logTo("footer");
+log("This text will appear in the element with an id of footer");
+````
 
-    - isMobile(); // returns true || false
+#### NEW: isMobile(); // returns true || false
 
-    - io.js is finally added @ v1.0.0
-    NO jQuery reliance and the whole of the AFTC.JS lib weighs less than 40kb!
-    Let me know if you find bugs, full details on usage can be found in tests/xhr/xhr.htm
+#### NEW: io.js
+NO jQuery reliance and the whole of the AFTC.JS lib weighs less than 40kb!
+Let me know if you find bugs, full details on usage can be found in tests/xhr/xhr.htm
 
 ````
 var data = "mode=json2";
@@ -61,54 +93,55 @@ xhr1 = AFTC.XHR({
 });
 ````
 
-    - AFTC.Animate() has taken a re-write to allow for better functionality, eg:
+#### NEW: AFTC.Animate() has taken a re-write to allow for better functionality, eg:
 
-        var anim1 = new AFTC.Animate("box1");
-        anim1
-            .anim("fontSize", "24px", 0.5)
-            .anim("width", "150px", 0.5)
-            .anim("height", "150px", 0.5)
-            .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
-            .anim("left", "100px", 0.5)
-            .anim("top", "25px", 0.5)
-            .anim("backgroundColor", "RGBA(0,0,0,1)", 0.5)
-            .anim("color", "RGBA(255,255,255,1)", 0.5)
-            .anim("borderColor", "RGBA(0,255,255,1)", 0.5)
-            .anim("borderWidth", "10px", 0.5)
-            .anim("borderRadius", "20px", 0.5)
-            .set("fontWeight", "bold")
-            .set("fontSize", "18px")
-            .set("textAlign", "center")
-            .delay(2)
-            .anim("width", "50px", 0.2)
-            .anim("height", "50px", 0.2)
-            .anim("padding", "0px", 0.2)
-            .anim("left", "0px", 0.2)
-            .anim("top", "0px", 0.2)
-            .anim("backgroundColor", "RGBA(255,125,0,1)", 0.2)
-            .anim("color", "RGBA(0,0,0,1)", 0.2)
-            .anim("borderColor", "RGBA(150,0,0,1)", 0.2)
-            .anim("borderWidth", "2px", 0.2)
-            .anim("borderRadius", "0px", 0.2)
-            .set("fontWeight", "normal")
-            .set("fontSize", "normal")
-            .set("textAlign", "inherit")
-            .start();
+```
+    // .anim(cssStyle,targetValue,animationDuration)
 
-            // You could put all these into a single anim or set if you wish
-            // All colours are now RGBA values, no hex
+    var anim1 = new AFTC.Animate("box1");
+    anim1
+        .anim("fontSize", "24px", 0.5)
+        .anim("width", "150px", 0.5)
+        .anim("height", "150px", 0.5)
+        .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
+        .anim("left", "100px", 0.5)
+        .anim("top", "25px", 0.5)
+        .anim("backgroundColor", "RGBA(0,0,0,1)", 0.5)
+        .anim("color", "RGBA(255,255,255,1)", 0.5)
+        .anim("borderColor", "RGBA(0,255,255,1)", 0.5)
+        .anim("borderWidth", "10px", 0.5)
+        .anim("borderRadius", "20px", 0.5)
+        .set("fontWeight", "bold")
+        .set("fontSize", "18px")
+        .set("textAlign", "center")
+        .delay(2)
+        .anim("width", "50px", 0.2)
+        .anim("height", "50px", 0.2)
+        .anim("padding", "0px", 0.2)
+        .anim("left", "0px", 0.2)
+        .anim("top", "0px", 0.2)
+        .anim("backgroundColor", "RGBA(255,125,0,1)", 0.2)
+        .anim("color", "RGBA(0,0,0,1)", 0.2)
+        .anim("borderColor", "RGBA(150,0,0,1)", 0.2)
+        .anim("borderWidth", "2px", 0.2)
+        .anim("borderRadius", "0px", 0.2)
+        .set("fontWeight", "normal")
+        .set("fontSize", "normal")
+        .set("textAlign", "inherit")
+        .start();
 
-        Chainable methods are:
-            wait(seconds)
-            set([array of css styles],[values])
-            set(["html","opacity"],["hello",0.5])
-            anim([array of css styles],[values],[durations])
-        etc
+        // You could put all these into a single anim or set if you wish
+        // All colours are now RGBA values, no hex
 
-    See tests/animation.htm for further details
+    Chainable methods are:
+        wait(seconds)
+        set([array of css styles],[values])
+        set(["html","opacity"],["hello",0.5])
+        anim([array of css styles],[values],[durations])
+    etc
 
-    - Various fixes and additions throughout
-    - In progress of testing all tests for 100% migration to this version
+````
+### See tests/animation.htm for further usage details / examples
 
 
 <br><br>
@@ -119,6 +152,11 @@ xhr1 = AFTC.XHR({
 
 ## <b>onReady(function) || ready(function)</b>
 No more jQuery for document.ready or addEventListener DOMLoaded etc, just use onReady(fn); or ready(fn);
+```
+onReady(function(){
+    // The DOM is ready for use do your thing!
+})
+```
 
 ## <b>log(arg)</b>
 No need to type <b>console.</b>log(arg) anymore! Just type log!
@@ -128,20 +166,32 @@ var msg = "Hello World!";
 log("msg = " + msg);
 ```
 
-## <b>configLog({options})</b>
-Want to log to a HTML element for visual debug using log? You also have logTo(elementId,string);
+## <b>logTo(element)</b>
+Want to log to a HTML element for visual debug using log? Just set a logTo target and use log (see above) as normal, your outputs will appear in both your console and html element. Want to turn it off just set logTo() with a null or undefined.
 ```
-// This will dump log usage to a html element with ID of debug
-configLog({autoLogTo:"debug"});
-//configLog({autoLogEnable:false});
-log("Darcey@AllForTheCode.co.uk - AFTC.JS");
+// Logging to console and html element
+logTo("output");
+log("Hello Console & HTML element of ID output");
+logTo(); // turn off html element logging
+log("Hello console! only");
 ```
 
 ## <b>getElementById(str)</b>
 No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
+```
+// AFTC.js caches this query so if you use getElement again it wont look it up on the DOM but will return it from the cache
+
+var container = getElementById("container"); // No need for document.
+```
+
 
 ## <b>querySelector(str)</b>
 No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
+```
+// AFTC.js caches this query so if you use querySelector again it wont look it up on the DOM but will return it from the cache
+
+var item1 = querySelector("#container .item1"); // No need for document.
+```
 
 ## <b>var myAnimVar = new AFTC.Animate("#box1", onComplete).ChainFunctions()</b>
 ```
@@ -243,6 +293,7 @@ var jsFiles = [
     "./src/styling.js", // Dependencies: none
     "./src/form.js", // Dependencies: none
     "./src/io.js", // Dependencies: none
+    "./src/misc.js", // Dependencies: none (very good chance you wont need to include this, so comment out if you dont)
 ];
 
 ```

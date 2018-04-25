@@ -25,6 +25,7 @@ var jsFiles = [
     "./src/styling.js", // Dependencies: none
     "./src/form.js", // Dependencies: none
     "./src/io.js", // Dependencies: none
+    "./src/misc.js", // Dependencies: none
     
     // Common 3rd party libraries which I often require (You may find them useful also)
     //"./node_modules/jquery/dist/jquery.min.js", //People are far too reliant on this library and for no reason

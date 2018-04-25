@@ -49,89 +49,6 @@ window.ready = function (fn) {
 
 
 
-/**
- * @function: AFTC.Resizemanager()
- * @desc: A function stack manager for resize and orientation change events
- * @function: enable()
- * @desc: enable function stack execution on oritentation and resize change
- * @function: disable()
- * @desc: disable function stack execution on oritentation and resize change
- * @function: add(uid,fn)
- * @desc: add function to orientation and resize stack
- * @param string uid: unique id / label of function to add from stack
- * @param function fn: function to add to stack
- * @function: remove(uid)
- * @desc: remove function from orientation and resize stack
- * @param string uid: unique id / label of function to remove from stack
- */
-AFTC.ResizeManager = {
-    running: false,
-    enabled: false,
-    delay: 100,
-    stack: [],
-    enable: function () {
-        // log("AFTC.ResizeManager.enable()");
-        AFTC.ResizeManager.enabled = true;
-        window.addEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
-        window.addEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
-    },
-    disable: function () {
-        // log("AFTC.ResizeManager.disable()");
-        AFTC.ResizeManager.enabled = false;
-        window.removeEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
-        window.removeEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
-    },
-    add: function (uid, fn) {
-        // log("AFTC.ResizeManager.add(): " + uid);
-        var stackItem = {};
-        stackItem.uid = uid;
-        stackItem.fn = fn;
-        AFTC.ResizeManager.stack.push(stackItem);
-    },
-    remove: function (uid) {
-        // log("AFTC.ResizeManager.remove(): " + uid);
-        var len = AFTC.ResizeManager.stack.length;
-        for (var i = 0; i < len; i++) {
-            if (AFTC.ResizeManager.stack[i]) {
-                //log(AFTC.ResizeManager.stack[i].uid);
-                if (AFTC.ResizeManager.stack[i].uid == uid) {
-                    AFTC.ResizeManager.stack.splice(i, 1);
-                    AFTC.ResizeManager.remove(uid);
-                    break;
-                }
-            }
-        }
-    },
-    runStackItem: function (index, stackLength) {
-        // log("runStackItem(index:"+index+")");
-        window.setTimeout(function () {
-            if (index == (stackLength - 1)) {
-                AFTC.ResizeManager.running = false;
-            }
-            AFTC.ResizeManager.stack[index].fn();
-        }, AFTC.ResizeManager.delay);
-
-    },
-    resizeHandler: function (e) {
-        if (AFTC.ResizeManager.running) {
-            return;
-        }
-        AFTC.ResizeManager.running = true;
-
-        window.setTimeout(function () {
-            var len = AFTC.ResizeManager.stack.length;
-            for (var i = 0; i < len; i++) {
-                AFTC.ResizeManager.runStackItem(i, len);
-            }
-        }, AFTC.ResizeManager.delay);
-    }
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
 
 
 
@@ -269,7 +186,7 @@ window.removeClass = function (elementOrId, className) {
  * @param string elementOrId: The elemnt or id of the html element
  * @param string cls: class to look for
  */
-window.hasClass = function(elementOrId, cls) {
+window.hasClass = function (elementOrId, cls) {
     if (isElement(elementOrId)) {
         return elementOrId.classList.contains(cls);
     } else {
@@ -372,21 +289,21 @@ window.logDisable = function () {
  * @param element||string elementId: elementId to output to
  */
 window.logTo = function (elementOrElementId) {
-    if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false){
+    if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false) {
         AFTC.log.element = false;
         // console.log("AFTC.log(): HTML element output has been disabled.");
         return;
     }
     var element;
-    if (typeof(elementOrElementId) == "string"){
+    if (typeof (elementOrElementId) == "string") {
         element = getElementById(elementOrElementId);
-        if (isElement(element)){
+        if (isElement(element)) {
             AFTC.log.element = element;
             // console.log("AFTC.log(): Has now been configured to output to a HTML element.");
         }
         return;
     } else {
-        if (isElement(elementOrElementId)){
+        if (isElement(elementOrElementId)) {
             AFTC.log.element = element;
             console.log("AFTC.log(): Has now been configured to output to a HTML element.");
         }
@@ -647,18 +564,18 @@ window.arrayShuffle3 = function (a) {
  * @desc: check if input is even
  * @param number n: variable / value you wish to test
  */
-window.isEven = function(n) {
+window.isEven = function (n) {
     return n % 2 == 0;
- }
+}
 
- /**
- * @function: isOdd(n)
- * @desc: check if input is odd
- * @param number n: variable / value you wish to test
- */
- window.isOdd = function(n) {
+/**
+* @function: isOdd(n)
+* @desc: check if input is odd
+* @param number n: variable / value you wish to test
+*/
+window.isOdd = function (n) {
     return Math.abs(n % 2) == 1;
- }
+}
 
 
 /**
@@ -868,13 +785,15 @@ window.isNumber = function (n) { return isNumeric(n); }
 
 
 
+
+
 /**
- * @function: isArray(arr)
+ * @function: isArray(input)
  * @desc: check if variable is an array
  * @param * arr: variable to check
  */
-window.isArray = function (arr) {
-    return !!arr && arr.constructor === Array;
+window.isArray = function (input) {
+    return !!input && input.constructor === Array;
     //return arr.constructor == Array;
 }
 
@@ -884,13 +803,13 @@ window.isArray = function (arr) {
  * @param array arr: array to process
  * @alias: arrayToFloat
  */
-window.parseArrayToFloat = function(arr){
-    for(var i=0; i < arr.length; i++){
+window.parseArrayToFloat = function (arr) {
+    for (var i = 0; i < arr.length; i++) {
         arr[i] = parseFloat(arr[i]);
     }
     return arr;
 }
-window.arrayToFloat = function(arr){ return parseArrayToFloat(arr); }
+window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
 
 /**
  * @function:parseArrayToInt(arr)
@@ -898,13 +817,13 @@ window.arrayToFloat = function(arr){ return parseArrayToFloat(arr); }
  * @param array arr: array to process
  * @alias: arrayToInt
  */
-window.parseArrayToInt = function(arr){
-    for(var i=0; i < arr.length; i++){
+window.parseArrayToInt = function (arr) {
+    for (var i = 0; i < arr.length; i++) {
         arr[i] = parseInt(arr[i]);
     }
     return arr;
 }
-window.arrayToInt = function(arr){ return parseArrayToInt(arr); }
+window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
 
 
 
@@ -914,12 +833,12 @@ window.arrayToInt = function(arr){ return parseArrayToInt(arr); }
  * @param & v: value to insert into array
  * @alias: valueToArray
  */
-window.convertToArray = function(v){
+window.convertToArray = function (v) {
     var a = [];
     a[0] = v;
     return a;
 }
-window.valueToArray = function(v){ return convertToArray(v); }
+window.valueToArray = function (v) { return convertToArray(v); }
 
 
 /**
@@ -991,7 +910,7 @@ window.randomString = function (length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-    for (var i = 0; i < length; i++){
+    for (var i = 0; i < length; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
@@ -1009,12 +928,12 @@ window.getRandomString = function (len) {
  * @alias: generateRandomId
  * @alias: generateUID
  */
-window.getUniqueId = function(){
+window.getUniqueId = function () {
     return randomString(5) + Math.random().toString(36).substr(2, 8);
 }
-window.getUID = function(){ return getUniqueId(); }
-window.generateRandomId = function(){ return getUniqueId(); }
-window.generateUID = function(){ return getUniqueId(); }
+window.getUID = function () { return getUniqueId(); }
+window.generateRandomId = function () { return getUniqueId(); }
+window.generateUID = function () { return getUniqueId(); }
 
 
 /**
@@ -1091,41 +1010,6 @@ window.redirect = function (url) {
 };
 
 
-/**
- * @function: AFTC.Benchmark()
- * @desc: Quick and easy benchmarking, see examples benchmark.htm for usage
- * ````
- * AFTC.Benchmark().start();
- * // do you stuff
- * AFTC.Benchmark().end();
- * log( AFTC.Benchmark().getTime() );
- * ````
- * @function start: start benchmark
- * @function stop: stop benchmark
- * @function getTime: return benchmark result
- */
-AFTC.Benchmark = function () {
-    var params = {
-        start: 0,
-        end: 0,
-        time: 0
-    }
-
-    return {
-        start: function () {
-            params.start = new Date();
-        },
-        stop: function () {
-            params.end = new Date();
-            params.time = params.end.getTime() - params.start.getTime();
-            return params.time;
-        },
-        getTime: function () {
-            return params.time;
-        }
-    }
-}
-
 
 /**
  * @function: hide(element,classListToRemove,classListToAdd)
@@ -1188,7 +1072,7 @@ window.hide = function (element, classListToRemoveOnHide, classListToAddOnHide) 
 /**
  * @function: show(element,classListToRemove,classListToSAdd)
  * @desc: show a html element, can also add or remove any amount of classes on element show at the same time
- * @param element||string element: the element or the string id of the element you wish to hide
+ * @param array of elements||string element: the element or the string id of the element you wish to hide
  * @param array classListToRemoveOnShow: string of class to remove or array of string classes to remove on show
  * @param array classListToAddOnShow: string of class to remove or array of string classes to add on show
  */
@@ -1243,6 +1127,51 @@ window.show = function (element, classListToRemoveOnShow, classListToAddOnShow) 
     }
 
 
+}
+
+
+
+window.goFullScreen = function (element) {
+    var target = document.body;
+    if (element != undefined){
+        if (isElement(element)) {
+            target = element;
+        }
+    }
+    
+    if (target.requestFullscreen) {
+        target.requestFullscreen();
+    } else if (target.webkitRequestFullscreen) {
+        target.webkitRequestFullscreen();
+    } else if (target.mozRequestFullScreen) {
+        target.mozRequestFullScreen();
+    } else if (target.msRequestFullscreen) {
+        target.msRequestFullscreen();
+    } else {
+        console.error('Fullscreen API is not supported.');
+    }
+}
+
+window.exitFullScreen = function () {
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	} else if (document.webkitExitFullscreen) {
+		document.webkitExitFullscreen();
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	} else if (document.msExitFullscreen) {
+		document.msExitFullscreen();
+	} else {
+		console.error('Fullscreen API is not supported.');
+	}
+}
+
+
+AFTC.Point = function (x, y) {
+    if (!x) { x = 0; }
+    if (!y) { y = 0; }
+    this.x = x;
+    this.y = y;
 }
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

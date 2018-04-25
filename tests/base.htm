@@ -26,14 +26,17 @@
 
     <script>
         var debug;
+        var ele;
 
-        onReady(function(){
+        onReady(function () {
+            logTo("debug");
             log("onReady()");
-            
-            // Debug.js usage exmaples
-            configLog({autoLogTo:"debug"});
-            //configLog({autoLogEnable:false});
-            log("Darcey@AllForTheCode.co.uk - AFTC.JS");
+            logTo();// turn off loging to html element
+            log("darcey@aftc.io - AFTC.JS");
+            var ele = querySelector("#container .item1");
+            log(ele);
+
+
         });
     </script>
 </head>
@@ -41,6 +44,9 @@
 <body>
     <h2>see console</h2>
     <div id="debug" style="border:1px solid #000000; margin: 10px; padding: px; min-height:50px;"></div>
+    <button onclick="goFullScreen()">GO FULLSCREEN</button>
+    <button onclick="exitFullScreen()">EXIT FULLSCREEN</button>
+    <div id="container"><div class="item1"></div></div>
 </body>
 
 </html>
