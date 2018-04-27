@@ -183,7 +183,7 @@ AFTC.XHR = function () {
 					break;
 			}
 
-			log("getResponseHeader = " + params.xhr.getResponseHeader("Content-Type"));
+			// log("getResponseHeader = " + params.xhr.getResponseHeader("Content-Type"));
 
 		}
 		// - - - -
@@ -229,7 +229,7 @@ AFTC.XHR = function () {
 
 	// - - - - - - - - - - - - - - - - - - -
 	function transferComplete(e) {
-		log("AFTC.XHR.transferComplete()");
+		// log("AFTC.XHR.transferComplete()");
 		if (params.xhr.readyState == 4) {
 			if (params.xhr.status == "404") {
 				responseError("AFTC.XHR: ERROR: Please check your URL [" + args.url + "] NOT FOUND.", params.xhr);
