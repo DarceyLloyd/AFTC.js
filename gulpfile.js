@@ -60,13 +60,13 @@ var js2 = [
     "./src2/core/video.js",
     "./src2/core/misc.js",
     // Nice to have, but not essential
-    "./src2/AFTC/AFTC.Animate.js",
+    "./src2/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
     // "./src2/AFTC/AFTC.AR.js",
     // "./src2/AFTC/AFTC.Benchmark.js",
-    "./src2/AFTC/AFTC.Canvas.js",
+    "./src2/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
     // "./src2/AFTC/AFTC.CheckboxHideShow.js",
-    "./src2/AFTC/AFTC.Color.js",
-    "./src2/AFTC/AFTC.DOM.HideShow.js", // Enables hide() show()
+    "./src2/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
+    "./src2/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()
     // "./src2/AFTC/AFTC.ResizeManager.js",
     // "./src2/AFTC/AFTC.VR.js",
     "./src2/AFTC/AFTC.XHR.js",

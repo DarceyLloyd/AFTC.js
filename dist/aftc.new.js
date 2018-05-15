@@ -1806,13 +1806,21 @@ window.centerAbsoluteElement = function (eleOrEleId) {
  * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
  * @param string className: the class name to add
  */
-window.addClass = function (elementOrId, className) {
-    if (isElement(elementOrId)) {
-        elementOrId.classList.add(className);
+window.addClass = function (elementOrId, classNames) {
+    var element;
+    if (typeof(elementOrId) == "string"){
+        element = getElementById(elementOrId);
+    }
+
+    if (isArray(classNames)){
+        for (var i=0; i < classNames.length; i++){
+            element.classList.add(classNames[i]);
+        }
     } else {
-        getElementById(elementOrId).classList.add(className);
+        element.classList.add(classNames);
     }
 }
+window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, classNames); }
 
 /**
  * @func: removeClass(elementOrId,className)
@@ -1829,6 +1837,7 @@ window.removeClass = function (elementOrId, className) {
         getElementById(elementOrId).classList.remove(className);
     }
 }
+window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementOrId, classNames); }
 
 
 /**
@@ -3272,63 +3281,12 @@ var AFTC = AFTC || {}
 
 
 
-
-/**
- * @function: setHTML(elementOrId,html);
- * @desc: quick shortcut for outputting html to an element
- * ````
- * setHTML("header","Welcome");
- * // or
- * var myElement = getElementById("header");
- * setHTML(myElement,"Welcome!");
- * ````
- * @param dataType elementOrId: the element or the element id you wish to set the html of
- * @param dataType html: the html string to insert into your element
- * @return:
- * @alias: html
- */
-window.setHTML = function (elementOrId, str) {
-    var element;
-    if (typeof (elementOrId) == "string") {
-        element = getElementById(elementOrId);
-    }
-    if (isElement(element)) {
-        element.innerHTML = str;
-    } else {
-        return "unable to retrieve element from [" + elementOrId + "]";
-    }
-}
-window.html = function (element, str) { window.setHTML(element, str); }
-
-
-/**
- * @function: getElementOffsetTop(elementIdOrQuery)
- * @desc: Gets an elements top offset
- * @param string elementId: the element ID you wish to get the top offset of
- */
-window.getElementOffsetTop = function (elementId) {
-    var element = getElementById(elementId);
-    var curtop = 0;
-    if (isElement(element)) {
-        if (element.offsetParent) {
-            do {
-                curtop += element.offsetTop;
-            } while (element = element.offsetParent);
-            return parseFloat([curtop]);
-        }
-    }
-}
-window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementId); }
-
-
-
-AFTC.DOM = {};
-AFTC.DOM.HideShow = function () {
+AFTC.Visibility = function () {
     // if (!(this instanceof arguments.callee)) {
-    //     throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+    //     throw new Error("\nAFTC.Visibility: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
     // }
-    // if (!(this instanceof AFTC.DOM.HideShow)) {
-    //     throw new Error("AFTC.DOM.HideShow needs to be called with the new keyword");
+    // if (!(this instanceof AFTC.Visibility)) {
+    //     throw new Error("AFTC.Visibility needs to be called with the new keyword");
     // }
 
     var me = this;
@@ -3506,147 +3464,31 @@ AFTC.DOM.HideShow = function () {
 window.show = function () {
     if (typeof(arguments[0]) == "string"){
         var args = { id :arguments[0] }
-        AFTC.DOM.HideShow(args).show();
+        AFTC.Visibility(args).show();
     } else if (isElement(arguments[0])){
         var args = { element :arguments[0] }
-        AFTC.DOM.HideShow(args).show();
+        AFTC.Visibility(args).show();
     } else {
-        AFTC.DOM.HideShow(arguments[0]).show();
+        AFTC.Visibility(arguments[0]).show();
     }
 }
+window.fadeIn = function(){ window.show(arguments[0]); }
 
 window.hide = function () {
     if (typeof(arguments[0]) == "string"){
         var args = { id :arguments[0] }
-        AFTC.DOM.HideShow(args).hide();
+        AFTC.Visibility(args).hide();
     } else if (isElement(arguments[0])){
         var args = { element :arguments[0] }
-        AFTC.DOM.HideShow(args).hide();
+        AFTC.Visibility(args).hide();
     } else {
-        AFTC.DOM.HideShow(arguments[0]).hide();
+        AFTC.Visibility(arguments[0]).hide();
     }
 }
+window.fadeOut = function(){ window.hide(arguments[0]); }
 
 
 
-
-
-
-
-
-
-
-
-// AFTC.lockBody params
-window.AFTCLockBodyParams = {
-	pageYOffset: null,
-	elementId: ""
-};
-/**
- * @function: lockBody()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.lockBody = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
-				window.AFTCLockBodyParams[key] = arguments[0][key];
-			} else {
-				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
-			}
-		}
-	} else {
-		var usage = "\n";
-		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
-		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
-		usage += "unlockBody();" + "\n";
-		throw (usage);
-	}
-
-	if (window.pageYOffset) {
-		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
-
-		$('html, body').css({
-			top: -(window.AFTCLockBodyParams.pageYOffset)
-		});
-	}
-
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "100%",
-		overflow: "hidden"
-	});
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: unlockBody()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.unlockBody = function () {
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "",
-		overflow: ""
-	});
-
-	$('html, body').css({
-		top: ''
-	});
-
-	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-	window.setTimeout(function () {
-		window.AFTCLockBodyParams.pageYOffset = null;
-	}, 0);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-/**
- * @function: centerAbsoluteElement(eleOrEleId)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.centerAbsoluteElement = function (eleOrEleId) {
-	var element;
-
-	if (typeof (eleOrEleId) === "string") {
-		element = document.getElementById(eleOrEleId);
-		if (!element) {
-			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
-		}
-	}
-
-	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
-	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
-	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
-	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
-
-	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
-	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
-	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
-	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
-
-	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
-	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
-	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
-	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
-
-	var offsetWidth = parseInt(element.offsetWidth);
-	var offsetHeight = parseInt(element.offsetHeight);
-
-	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
-	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
-
-	element.style.left = tx + "px";
-	element.style.top = ty + "px";
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // AFTC init
 var AFTC = AFTC || {}
 
