@@ -180,7 +180,9 @@ gulp watch
 <br><br><br><br>
 
 <details>
-    <summary><h1><b>Build Guide</b>:</h1></summary>
+    <summary>
+## <b>Build Guide</b>:</h1>
+    </summary>
 io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
 
 - <b>aftc.min.js with everything plugged in is less than 35KB!</b>
