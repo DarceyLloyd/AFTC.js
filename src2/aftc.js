@@ -136,6 +136,7 @@ AFTC.Log = {
                 if (AFTC.Log.element != false) {
                     if (isElement(arg)) {
                         // AFTC.Log.element.innerHTML += ("[HTMLElement]<br>");
+                        AFTC.Log.element.innerHTML += (arg+"<br>");
                     } else {
                         if (typeof (arg) == "object") {
                             AFTC.Log.element.innerHTML += "[object]<br>";
