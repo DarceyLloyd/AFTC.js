@@ -139,7 +139,7 @@ AFTC.Log = {
                         AFTC.Log.element.innerHTML += (arg+"<br>");
                     } else {
                         if (typeof (arg) == "object") {
-                            AFTC.Log.element.innerHTML += "[object]<br>";
+                            AFTC.Log.element.innerHTML += "[object||array]<br>";
                             for (var key in arg) {
                                 AFTC.Log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;[" + key + "] = " + arg[key] + "<br>");
                             }
