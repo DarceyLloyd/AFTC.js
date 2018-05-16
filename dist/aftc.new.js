@@ -172,6 +172,16 @@ window.logDisable = function () { AFTC.Log.enabled = false; }
 window.log.disable = function () { AFTC.Log.enabled = false; }
 window.logToDisable = function () { AFTC.Log.to(false); }
 window.disableLogTo = function () { AFTC.Log.to(false); }
+
+
+
+window.cls = function(){
+    if (console){
+        if (console.clear){
+            console.clear();
+        }
+    }
+}
 /*
  * Author: Darcey.Lloyd@gmail.com
  */
