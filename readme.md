@@ -1,7 +1,7 @@
 # <b>AFTC.js</b>
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-<b>A collection of utilities / functions I find useful when working with BROWSER based JavaScript.</b>
+<b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
 <br>
 
@@ -9,7 +9,12 @@
 ### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 
-# <b>Whats new</b>
+
+
+<details>
+ <summary># <b>Whats new</b></summary>
+
+
 
 #### NEW: Moved AFTC.Resizemanager() & AFTC.Benchmark from base.js and into misc.js as they shouldn't be part of the base, you can now edit the gulp build file to exclude or include them as you wish
 
@@ -142,6 +147,13 @@ xhr1 = AFTC.XHR({
 
 ````
 ### See tests/animation.htm for further usage details / examples
+
+
+</details>
+
+
+
+
 
 
 <br><br>
@@ -1735,13 +1747,6 @@ Will generate noise / static / perlin noise on a canvas element.
 
 
 
-<details>
- <summary>Summary</summary>
-
-```js
-const x = 1
-```
-</details>
 
 
 
@@ -1753,5 +1758,5 @@ Any and all donations to help keep active development and the lights on are more
 
 <br><br><br><br><br><br>
 
-[![Hire](https://www.allforthecode.co.uk/images/pph_widget.jpg)](http://pph.me/Darcey)
+[![Hire](https://www.allforthecode.com/images/pph_widget.jpg)](http://pph.me/Darcey)
 
