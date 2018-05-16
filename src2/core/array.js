@@ -31,9 +31,10 @@ window.isStringInArray = function (needle, haystack) {
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
  */
-window.arrayContains = function (haystack, needle) {
+window.arrayContains = function (needle,haystack) {
     if (haystack.indexOf(needle) > -1) { return true; } else { return false; }
 }
+window.isInArray = function (needle,haystack) { return window.arrayContains(needle,haystack); }
 
 /**
  * @function: arrayRemove(arr,item)
@@ -42,11 +43,12 @@ window.arrayContains = function (haystack, needle) {
  * @param string item:  index at which a given element can be found
  * @alias: arrayRemoveItem
  */
-window.arrayRemove = function (arr, item) {
+window.arrayRemove = function (item,arr) {
     if (!window.arrayContains(item)) { return this; }
-    return arr.splice(arr.indexOf(item), 1);
+    arr.splice(arr.indexOf(item), 1);
+    return arr;
 }
-window.arrayRemoveItem = function (arr, item) { return arrayRemove(arr, item); }
+window.arrayRemoveItem = function (item,arr) { return arrayRemove(item,arr); }
 
 /**
  * @function: arrayEmpty(arr)
