@@ -58,12 +58,23 @@ window.cleanJSONString = function (s) {
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
+/*
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+*/
 window.escapeHTML = function (text) {
 	var replacements = {
 		"<": "&lt;",
 		">": "&gt;",
 		"&": "&amp;",
-		"\"": "&quot;"
+		"\"": "&quot;",
+		"`": "&#039;"
 	};
 	return text.replace(/[<>&"]/g, function (character) {
 		return replacements[character];
@@ -184,7 +195,7 @@ if (typeof String.prototype.endsWith != 'function') {
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-window.getStringBetween = function(str,start,end){
+window.getStringBetween = function (str, start, end) {
 	return str.split(start).pop().split(end).shift().trim();
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -196,11 +207,11 @@ window.getStringBetween = function(str,start,end){
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-window.getAllStringsBetween = function(str,start,end){
+window.getAllStringsBetween = function (str, start, end) {
 	//return str.match(new RegExp(start + "(.*)" + end));
 	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive
 	// return regExString.exec(str);
-	for(var i=0; i<str.length; ++i) {
+	for (var i = 0; i < str.length; ++i) {
 		log(str[i]);
 	}
 }
