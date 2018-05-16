@@ -344,12 +344,9 @@ Detects addEventListener availability and switches to attachEvent if it's not av
 
 
 <details>
- <summary>
-    ## <b>addEvent(obj,type,fn,useCapture)</b>
-    --- 
- </summary>
+ <summary><b>addEvent(obj,type,fn,useCapture)</b></summary>
+---
 Shortcut for adding events with old browser compatibility
-
 
 param | type | optional | description
 --- | --- | --- | ---
