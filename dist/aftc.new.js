@@ -86,7 +86,7 @@ window.getElementByClassName = function (className) { return AFTC.GetElement.by(
 window.getElementsByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName); }
 window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName)[0]; }
 
-HTMLElement.getElementByClassName = function (className) { console.log("HERE"); return AFTC.GetElement.by("class", className)[0]; }
+// HTMLElement.getElementByClassName = function (className) { console.log("HERE"); return AFTC.GetElement.by("class", className)[0]; }
 
 
 /**
@@ -281,8 +281,9 @@ window.ready = function (fn) {
  * @param number index: the array index you wish to remove
  * @return: array
  */
-window.arrayRemoveIndex = function (array, index) {
-    return array.splice(index);
+window.arrayRemoveIndex = function (arr, index) {
+    arr.splice(index,1);
+    return arr;
 }
 
 /**

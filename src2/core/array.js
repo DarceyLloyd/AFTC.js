@@ -10,8 +10,9 @@
  * @param number index: the array index you wish to remove
  * @return: array
  */
-window.arrayRemoveIndex = function (array, index) {
-    return array.splice(index);
+window.arrayRemoveIndex = function (arr, index) {
+    arr.splice(index,1);
+    return arr;
 }
 
 /**
