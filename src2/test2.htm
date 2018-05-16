@@ -38,131 +38,29 @@
     </style>
     <script src="../dist/aftc.new.js"></script>
     <script>
-        function box4ShowComplete() {
-            log("box4ShowComplete()");
-        }
-        function box5ShowComplete() {
-            log("box5ShowComplete()");
-        }
-        function box6ShowComplete() {
-            log("box6ShowComplete()");
-        }
-
-        function box7HideComplete() {
-            log("box7HideComplete()")
-        }
-        function box8HideComplete() {
-            log("box8HideComplete()")
-        }
-        function box9HideComplete() {
-            log("box9HideComplete()")
-        }
-
-        function toggleBox(no) {
-            var box = getElementById("box" + no);
-            if (box.style.display == "none" || box.style.display == "") {
-                show("box"+no);
-            } else {
-                hide("box"+no);
-            }
-        }
-
         onReady(function () {
-            logTo("output"); // logTo via element ID as string
+            logTo("debug"); // logTo via element ID as string
             log("darcey@aftc.io");
 
             // Basic use
             var box1 = getElementById("box1");
-            hide(box1);
-            hide("box2");
-            hide("box3");
-
-            addClass(box1,"classA");
-
-            // Adanced use show()
-            show({
-                id: "box4",
-                delay: 1, // want a delay?
-                duration: 2, // want your show to animate over a duration?
-                display: "inline-block", // block is default, want table or inline etc set it yourself
-                onStartRemoveClassList: ["hidden"], // class or class's to remove on start
-                onComplete: box4ShowComplete // run this function when done
-            });
-
-            show({
-                id: "box5",
-                delay: 2,
-                duration: 2,
-                display: "inline-block",
-                onStartRemoveClassList: "hidden",
-                onComplete: box5ShowComplete
-            });
-
-            show({
-                id: "box6",
-                delay: 3,
-                duration: 2,
-                display: "inline-block",
-                onStartRemoveClassList: "hidden",
-                onComplete: box6ShowComplete
-            });
-
-
-            // Adanced use hide()
-            hide({
-                id: "box7",
-                delay: 3,
-                duration: 3,
-                onComplete: box7HideComplete
-            });
-
-            hide({
-                id: "box8",
-                delay: 4,
-                duration: 3,
-                onComplete: box8HideComplete
-            });
-
-            hide({
-                id: "box9",
-                delay: 5,
-                duration: 3,
-                animateHeight: true,
-                onComplete: box9HideComplete
-            });
+            log(box1);
+            
         })
     </script>
 </head>
 
 <body>
-    <h4>Basic hide() show() example:</h4>
+    <h4>Title:</h4>
     <div id="container1" class="box">
-        Tick the boxes to run hide show in the toggleBox function
-        <br>
-        <input type="checkbox" id="cb1" style="width:20px; height:20px" onclick="toggleBox(1)" />
-        <input type="checkbox" id="cb1" style="width:20px; height:20px" onclick="toggleBox(2)" />
-        <input type="checkbox" id="cb1" style="width:20px; height:20px" onclick="toggleBox(3)" />
         <div id="box1" class="box">box 1</div>
         <div id="box2" class="box">box 2</div>
         <div id="box3" class="box">box 3</div>
     </div>
-    <h4>Adanved show() example:</h4>
-    <div id="container2" class="box">
-        <div id="box4" class="box hidden">box 4</div>
-        <div id="box5" class="box hidden">box 5</div>
-        <div id="box6" class="box hidden">box 6</div>
-    </div>
-    <h4>Advanced hide() example:</h4>
-    <div id="container3" class="box">
-        <div id="box7" class="box">box 7</div>
-        <div id="box8" class="box">box 8</div>
-        <div id="box9" class="box">box 9</div>
-    </div>
-
-    <hr>
+    
 
     <h3>Debug (see conseole for more details):</h3>
-    <div id="output" class="box"></div>
+    <div id="debug" class="box"></div>
 
 </body>
 
