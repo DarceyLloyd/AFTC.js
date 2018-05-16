@@ -160,6 +160,80 @@ xhr1 = AFTC.XHR({
 
 
 
+
+# <b>Installation</b>
+```
+npm i aftc.js
+gulp build
+```
+
+<br><br><br><br>
+
+# <b>Build</b>
+You can use webpack or gulp, I pref' gulp at the moment.
+
+```
+gulp build
+gulp watch
+```
+
+<br><br><br><br>
+
+# <b>Build Guide</b>:
+io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
+
+- <b>aftc.min.js with everything plugged in is less than 35KB!</b>
+
+## <b>Step by step</b>
+
+- Open aftc.js directory in VSCode
+- Open "gulpfile.js" and edit / comment out or uncomment any of the imports that you want or don't want
+
+```
+var jsFiles = [
+
+    // The base, the essentials, the foundations
+    "./src/base.js", // Dependencies: none
+
+    // Dev assist utility functions / tools
+    "./src/string.js", // Dependencies: none
+    "./src/random.js", // Dependencies: none
+    "./src/conversion.js", // Dependencies: none
+    "./src/datetime.js", // Dependencies: none
+    "./src/cookies.js", // Dependencies: none
+    "./src/validation.js", // Dependencies: none
+    "./src/graphics.js", // Dependencies: none
+
+    // Utilities / tools which focus on a specific area / task(s)
+    "./src/animation.js", // Dependencies: none
+    './src/color.js', // Dependencies: none
+    "./src/detection.js", // Dependencies: none
+    "./src/dom.js", // Dependencies: none
+    "./src/styling.js", // Dependencies: none
+    "./src/form.js", // Dependencies: none
+    "./src/io.js", // Dependencies: none
+    "./src/misc.js", // Dependencies: none (very good chance you wont need to include this, so comment out if you dont)
+];
+
+```
+
+- Open terminal in VSCode by pressing CTRL + '
+- Type into terminal
+```
+gulp build
+```
+
+
+
+
+<br><br><br><br>
+
+
+
+
+
+
+
 # <b>Main features</b>
 
 ## <b>onReady(function) || ready(function)</b>
@@ -254,73 +328,6 @@ Detects addEventListener availability and switches to attachEvent if it's not av
 
 
 
-# <b>Installation</b>
-```
-npm i aftc.js
-gulp build
-```
-
-<br><br><br><br>
-
-# <b>Build</b>
-You can use webpack or gulp, I pref' gulp at the moment.
-
-```
-gulp build
-gulp watch
-```
-
-<br><br><br><br>
-
-# <b>Build Guide</b>:
-io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
-
-- <b>aftc.min.js with everything plugged in is less than 35KB!</b>
-
-## <b>Step by step</b>
-
-- Open aftc.js directory in VSCode
-- Open "gulpfile.js" and edit / comment out or uncomment any of the imports that you want or don't want
-
-```
-var jsFiles = [
-
-    // The base, the essentials, the foundations
-    "./src/base.js", // Dependencies: none
-
-    // Dev assist utility functions / tools
-    "./src/string.js", // Dependencies: none
-    "./src/random.js", // Dependencies: none
-    "./src/conversion.js", // Dependencies: none
-    "./src/datetime.js", // Dependencies: none
-    "./src/cookies.js", // Dependencies: none
-    "./src/validation.js", // Dependencies: none
-    "./src/graphics.js", // Dependencies: none
-
-    // Utilities / tools which focus on a specific area / task(s)
-    "./src/animation.js", // Dependencies: none
-    './src/color.js', // Dependencies: none
-    "./src/detection.js", // Dependencies: none
-    "./src/dom.js", // Dependencies: none
-    "./src/styling.js", // Dependencies: none
-    "./src/form.js", // Dependencies: none
-    "./src/io.js", // Dependencies: none
-    "./src/misc.js", // Dependencies: none (very good chance you wont need to include this, so comment out if you dont)
-];
-
-```
-
-- Open terminal in VSCode by pressing CTRL + '
-- Type into terminal
-```
-gulp build
-```
-
-
-
-
-<br><br><br><br>
-
 
 
 
@@ -335,9 +342,12 @@ gulp build
 # <b>base.js</b>
 
 
-## <b>addEvent(obj,type,fn,useCapture)</b>
- ---
 
+<details>
+ <summary>
+    ## <b>addEvent(obj,type,fn,useCapture)</b>
+    --- 
+ </summary>
 Shortcut for adding events with old browser compatibility
 
 
@@ -349,7 +359,12 @@ fn | function |  | The function to call when the event is triggered |
 useCapture | boolean | optional | Whether the event should be executed in the capturing or in the bubbling phase |
 
  ---
- <br><br>
+</details>
+<br><br>
+
+
+
+
 
 ## <b>onReady(fn)</b>
  ---
