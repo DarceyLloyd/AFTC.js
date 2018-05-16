@@ -181,7 +181,11 @@ window.cls = function(){
             console.clear();
         }
     }
+    if (AFTC.Log.element){
+        AFTC.Log.element.innerHTML = "";
+    }
 }
+window.clearLog = function(){ cls(); }
 /*
  * Author: Darcey.Lloyd@gmail.com
  */
