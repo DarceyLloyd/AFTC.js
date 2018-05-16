@@ -161,8 +161,6 @@ window.trace = function (arg) { AFTC.Log.out(arg); }
  */
 window.logEnable = function () { AFTC.Log.enabled = true; }
 window.log.enable = function () { AFTC.Log.enabled = true; }
-window.logToEnable = function () { AFTC.Log.to(true); }
-window.enableLogTo = function () { AFTC.Log.to(true); }
 
 
 /**
