@@ -1735,6 +1735,16 @@ Will generate noise / static / perlin noise on a canvas element.
 
 
 
+<details>
+ <summary>Summary</summary>
+
+```js
+const x = 1
+```
+</details>
+
+
+
 
 ## <b>Found this useful? Please Donate...</b>
 Any and all donations to help keep active development and the lights on are more than welcome.
