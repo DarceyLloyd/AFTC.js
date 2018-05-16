@@ -49,7 +49,7 @@ log(color.b); // outputs blue value
 ```
 
 #### NEW: getRandomFloat(min,max);
-    
+
 #### NEW: isOdd(n), isEven(n), getRandomColor() which returns an RGB object
 
 #### NEW: some of the XHR functions in io.js for better onError, onCancel and onProgress features
@@ -345,8 +345,6 @@ Detects addEventListener availability and switches to attachEvent if it's not av
 
 <details>
  <summary><b>addEvent(obj,type,fn,useCapture)</b></summary>
- 
- ---
 
 Shortcut for adding events with old browser compatibility
 
@@ -1065,9 +1063,9 @@ returns a random number / int betwen your specified min and max values
 
 
 ## <b>getRandomFloat(min,max)</b>
- --- 
-  
-returns a random floating point number betwen your specified min and max values  
+ ---
+
+returns a random floating point number betwen your specified min and max values
 
 
 
