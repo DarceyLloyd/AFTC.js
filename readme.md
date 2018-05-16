@@ -12,7 +12,7 @@
 
 
 <details>
- <summary># <b>Whats new</b></summary>
+ <summary><b>Whats new</b><br>Click for details...</summary>
 
 
 
@@ -150,8 +150,11 @@ xhr1 = AFTC.XHR({
 
 
 </details>
+
  ---
+ 
 <br><br>
+
 
 
 
@@ -161,9 +164,10 @@ xhr1 = AFTC.XHR({
 npm i aftc.js
 gulp build
 ```
- ---
-<br><br>
 
+ ---
+
+<br><br>
 
 
 
