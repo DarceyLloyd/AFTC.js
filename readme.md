@@ -161,15 +161,24 @@ xhr1 = AFTC.XHR({
 
 
 
-# <b>Installation</b>
+#### <b>Installation</b>
 ```
 npm i aftc.js
 gulp build
 ```
 
-<br><br><br><br>
+<br><br>
 
-# <b>Build</b>
+
+
+
+
+
+<details>
+    <summary><b>Build Guide</b>:<br>
+    Click to for details...
+    </summary>
+
 You can use webpack or gulp, I pref' gulp at the moment.
 
 ```
@@ -177,17 +186,9 @@ gulp build
 gulp watch
 ```
 
-<br><br><br><br>
+ ---
 
-<details>
-    <summary>
-## <b>Build Guide</b>:</h1>
-    </summary>
-io.js is the only module which has jquery as a dependancy, I have it commented out in the build, if you wish to include it, uncomment io.js in gulpfile.js and re-build, note if you do not have jquery included on your page or as part of your build io.js will fail.
-
-- <b>aftc.min.js with everything plugged in is less than 35KB!</b>
-
-## <b>Step by step</b>
+#### <b>Step by step</b>
 
 - Open aftc.js directory in VSCode
 - Open "gulpfile.js" and edit / comment out or uncomment any of the imports that you want or don't want
