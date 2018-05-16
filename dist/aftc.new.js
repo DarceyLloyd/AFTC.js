@@ -338,6 +338,9 @@ window.getMaxFromArray = function (arr) {
 window.arrayGetMax = function (arr) { return getMaxFromArray(arr); }
 window.arrayMax = function (arr) { return getMaxFromArray(arr); }
 
+
+
+
 /**
  * @function: arrayGetMin
  * @desc: returns the minimum value in an array
@@ -345,11 +348,14 @@ window.arrayMax = function (arr) { return getMaxFromArray(arr); }
  * @alias: getMinFromArray
  * @alias: arrayMin
  */
-window.arrayGetMin = function (arr) {
+window.getMinFromArray = function (arr) {
     return Math.min.apply(Math, arr);
 }
-window.getMinFromArray = function (arr) { return arrayGetMin(arr); }
-window.arrayMin = function (arr) { return arrayGetMin(arr); }
+window.arrayGetMin = function (arr) { return getMinFromArray(arr); }
+window.arrayMin = function (arr) { return getMinFromArray(arr); }
+
+
+
 
 /**
  * @function: arrayShuffle(arr)
@@ -360,7 +366,6 @@ window.arrayMin = function (arr) { return arrayGetMin(arr); }
  */
 window.arrayShuffle = function (arr) {
     var methodNo = getRandom(2, 3);
-    log(methodNo);
     return window["arrayShuffle" + methodNo](arr);
     var fn = "arrayShuffle" + methodNo;
 }
