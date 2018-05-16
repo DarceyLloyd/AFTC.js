@@ -129,7 +129,7 @@ AFTC.Log = {
         if (console) {
             if (AFTC.Log.enabled) {
                 if (typeof (arg) == "undefined") {
-                    console.error("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
+                    console.warn("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
                 } else {
                     console.log(arg);
                 }
@@ -297,7 +297,7 @@ window.isStringInArray = function (needle, haystack) {
 }
 
 /**
- * @function: arrayContains(haystack,needle)
+ * @function: arrayContains(needle,haystack)
  * @desc: Check to see if your array contains something you want to find
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
@@ -307,19 +307,7 @@ window.arrayContains = function (needle,haystack) {
 }
 window.isInArray = function (needle,haystack) { return window.arrayContains(needle,haystack); }
 
-/**
- * @function: arrayRemove(arr,item)
- * @desc: removes an item from an array
- * @param array arr: the array you wish to search and remove from
- * @param string item:  index at which a given element can be found
- * @alias: arrayRemoveItem
- */
-window.arrayRemove = function (item,arr) {
-    if (!window.arrayContains(item)) { return this; }
-    arr.splice(arr.indexOf(item), 1);
-    return arr;
-}
-window.arrayRemoveItem = function (item,arr) { return arrayRemove(item,arr); }
+
 
 /**
  * @function: arrayEmpty(arr)
@@ -331,6 +319,10 @@ window.arrayEmpty = function (arr) {
     while (arr.length > 0) { arr.pop(); }
 }
 window.arrayClear = function (arr) { window.arrayEmpty(arr); }
+
+
+
+
 
 
 /**

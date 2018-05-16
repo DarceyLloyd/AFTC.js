@@ -129,7 +129,7 @@ AFTC.Log = {
         if (console) {
             if (AFTC.Log.enabled) {
                 if (typeof (arg) == "undefined") {
-                    console.error("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
+                    console.warn("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
                 } else {
                     console.log(arg);
                 }
