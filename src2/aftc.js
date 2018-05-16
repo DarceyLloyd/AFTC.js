@@ -86,7 +86,7 @@ window.getElementByClassName = function (className) { return AFTC.GetElement.by(
 window.getElementsByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName); }
 window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName)[0]; }
 
-HTMLElement.getElementByClassName = function (className) { console.log("HERE"); return AFTC.GetElement.by("class", className)[0]; }
+// HTMLElement.getElementByClassName = function (className) { console.log("HERE"); return AFTC.GetElement.by("class", className)[0]; }
 
 
 /**
