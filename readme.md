@@ -150,12 +150,7 @@ xhr1 = AFTC.XHR({
 
 
 </details>
-
-
-
-
-
-
+ ---
 <br><br>
 
 
@@ -166,7 +161,7 @@ xhr1 = AFTC.XHR({
 npm i aftc.js
 gulp build
 ```
-
+ ---
 <br><br>
 
 
@@ -227,9 +222,9 @@ var jsFiles = [
 gulp build
 ```
 
-<br><br>
 </details>
-
+ ---
+<br><br>
 
 
 
