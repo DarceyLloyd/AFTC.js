@@ -1635,4 +1635,4 @@ Any and all donations to help keep active development and the lights on are more
 <br><br><br><br><br><br>
 
 
-<a href="http://pph.me/Darcey" rel="I AM AVAILABLE FOR HIRE">![Foo](https://www.allforthecode.com/images/pph_widget.jpg)]</a>
+<a href="http://pph.me/Darcey" rel="I AM AVAILABLE FOR HIRE"><img src="https://www.allforthecode.com/images/pph_widget.jpg"/></a>
