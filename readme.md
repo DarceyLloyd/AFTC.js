@@ -5,14 +5,10 @@
 
 <br>
 
-
-### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
-
-
-
+#### <b>If you use AFTC.js and find any issues, please let me know.</b><br><br><br>
 
 <details>
- <summary><b>Whats new</b><br>Click for details...</summary>
+ <summary><b>Whats new</b></summary>
 
 
 
@@ -34,8 +30,6 @@ log(p1); // outputs object point with x=1 and y = 2
 log(p1.x); // outputs 1
 log(p1.y); // outputs 2
 ```
-
-#### NEW: exitFullScreen();
 
 #### NEW: exitFullScreen();
 
@@ -174,9 +168,7 @@ gulp build
 
 
 <details>
-    <summary><b>Build Guide</b>:<br>
-    Click to for details...
-    </summary>
+    <summary><b>Build Guide</b>:</summary>
 
 You can use webpack or gulp, I pref' gulp at the moment.
 
@@ -227,7 +219,9 @@ gulp build
 ```
 
 </details>
+
  ---
+ 
 <br><br>
 
 
@@ -322,7 +316,7 @@ Lightens or darkens a color like sass and less does.
 ## <b>addEvent(obj,type,callback,eventReturn)</b>
 Detects addEventListener availability and switches to attachEvent if it's not available.
 
-
+ ---
 
 <br><br><br><br>
 
@@ -358,8 +352,10 @@ type | string |  | The event type (e.type) mousedown, mouseup, click etc |
 fn | function |  | The function to call when the event is triggered |
 useCapture | boolean | optional | Whether the event should be executed in the capturing or in the bubbling phase |
 
- ---
 </details>
+
+ ---
+ 
 <br><br>
 
 
