@@ -1634,5 +1634,11 @@ Any and all donations to help keep active development and the lights on are more
 
 <br><br><br><br><br><br>
 
+[![Hire](https://www.allforthecode.com/images/pph_widget.jpg)](http://pph.me/Darcey)
 
 <a href="http://pph.me/Darcey" rel="I AM AVAILABLE FOR HIRE"><img src="https://www.allforthecode.com/images/pph_widget.jpg" width="400" height="139"/>CLICK HERE TO HIRE ME</a>
+
+![Hire](http://www.allforthecode.com/images/pph_widget.jpg)
+
+[![Hire](http://dev.aftc.io/utils/GetCrossDomainImage.php?src=http://www.allforthecode.com/images/pph_widget.jpg)](http://pph.me/Darcey)
+
