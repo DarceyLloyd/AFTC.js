@@ -1642,3 +1642,5 @@ Any and all donations to help keep active development and the lights on are more
 
 [![Hire](http://dev.aftc.io/utils/GetCrossDomainImage.php?src=http://www.allforthecode.com/images/pph_widget.jpg)](http://pph.me/Darcey)
 
+<a href="http://pph.me/Darcey">![Hire](http://www.allforthecode.com/images/pph_widget.jpg)</a>
+
