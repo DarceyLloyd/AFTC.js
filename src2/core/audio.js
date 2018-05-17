@@ -25,7 +25,7 @@ window.playSound = function(url, vol, loop, onComplete) {
     }
 
     if (onComplete) {
-        snd.addEventListener("ended",onComplete,false);
+        sound.addEventListener("ended",onComplete,false);
     }
     sound.play();
     return sound;
