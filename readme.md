@@ -8,7 +8,6 @@
 
  - A bit of a clean up and new documentation examples created on codepen for each and every function (Work in progress)
 
-
 </details>
 
  ---
@@ -1635,5 +1634,5 @@ Any and all donations to help keep active development and the lights on are more
 
 <br><br><br><br><br><br>
 
-[![Hire](https://www.allforthecode.com/images/pph_widget.jpg)](http://pph.me/Darcey)
 
+<a href="http://pph.me/Darcey" rel="I AM AVAILABLE FOR HIRE">![Foo](https://www.allforthecode.com/images/pph_widget.jpg)]</a>
