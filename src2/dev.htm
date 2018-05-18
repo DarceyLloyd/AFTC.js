@@ -13,19 +13,11 @@
     <script src="../src2/aftc.js"></script>
     <script src="../src2/core/events.js"></script>
     <script src="../src2/core/is.js"></script>
+    <script src="../src2/core/detection.js"></script>
     <script src="../src2/core/dom.js"></script>
+    <script src="../src2/core/audio.js"></script>
     <script src="../src2/AFTC/AFTC.Audio.js"></script>
     <script>
-
-        window.playSound2 = function (url, vol, loop, onComplete) {
-            var sound = new AFTC.Audio({
-                url: url,
-                volume: vol,
-                repeat: loop,
-                onComplete: onComplete
-            });
-            sound.play();
-        }
 
 
 
@@ -57,19 +49,22 @@
 
         function playsSoundUsingMethod1() {
             log("playsSoundUsingMethod1()");
-            playSound2(
-                "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
-                0.5,
-                0,
-                playSoundMethod1CompleteHandler
+            playSound(
+                "https://dev.aftc.io/assets/sounds/beats/beat_01.mp3", // url
+                0.5, // vol
+                false, // loop
+                playSoundMethod1CompleteHandler // onComplete
             );
         }
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
+
+
         // Method 2
         // Setup variables on global scope not in onReady / ready scope
         var sound2;
+        var sound3;
 
         // Create a function to wrap everything into
         function playsSoundUsingMethod2() {
@@ -90,32 +85,88 @@
         onReady(function () {
             // page/dom is ready
 
-
-            // Setup console.log (no need to type console. with aftc.js!)
-            logTo("debug"); // Enable log to output to a html element of id "output"
-            cls(); // Clear console & html logTo element if set
+            logTo("debug5"); // I want to log to div id debug5 also!
+            cls(); // Clear console & html logTo element
 
 
             // Method 1
             var btn1 = getElementById("btn1");
-            btn1.addEventListener("click", playsSoundUsingMethod1, false); // Native JS Way
+            // btn1.addEventListener("click", playsSoundUsingMethod1, false); // Native JS Way calling a function (cleaner)
+            // or
+            // All in 1, messier but everything in 1 location
+            btn1.addEventListener("click", function () {
+                log("playsSoundUsingMethod1()");
+                playSound(
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.mp3", // url
+                    0.5, // vol
+                    false, // loop
+                    playSoundMethod1CompleteHandler // onComplete
+                );
+            }, false); // Native JS Way calling a function (cleaner)
+            // or
             // addEvent(btn1,"click",playsSoundUsingMethod1); // The AFTC.JS Way
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
 
 
             // Method 2
             // Create instance of AFTC.Sound in the var sound2
             sound2 = new AFTC.Audio({
-                url: "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
+                url: [
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.wav",
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.mp3"
+                ],
+                //url: "https://dev.aftc.io/assets/sounds/beats/beat_01.mp3", // url can be a single file (string) also, best to use mp3 for max compatibility
                 volume: 0.5,
-                repeat: 2,
-                offsetLoopBy: 0.3,
+                repeat: 1,
                 onComplete: playSoundMethod2CompleteHandler
             });
             // Setup button click use
             var btn2 = getElementById("btn2");
             btn2.addEventListener("click", playsSoundUsingMethod2, false); // Native JS way
             // addEvent(btn2,"click",playsSoundUsingMethod2); // The AFTC.JS Way
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+            // Method 2 Looped
+            // NOTES ON LOOPING
+            /*
+            1. You will get better results if you supply an array of audio formats wav, ogg and mp3
+            2. If you want to offset the loop, detect the browser and set the offsetLoopBy value unique for each
+            3. If you want to loop forever use repeat:-1 (NOTE Repeat doesn't work on Edge if you don't use an array of urls (Edge BUG))
+            */
+            // Create instance of AFTC.Sound in the var sound2
+            sound3 = new AFTC.Audio({
+                url: [
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.wav",
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
+                    "https://dev.aftc.io/assets/sounds/beats/beat_01.mp3"
+                ],
+                volume: 0.5,
+                repeat: 2,
+                offsetLoopBy: 0.09,
+                onComplete: playSoundMethod2CompleteHandler
+            });
+
+            // Setup button click use
+            var btn3 = getElementById("btn3");
+            btn3.addEventListener("click", function () {
+                sound3.play();
+            }, false);
+
+            var btn4 = getElementById("btn4");
+            btn4.addEventListener("click", function () {
+                sound3.stop();
+            }, false);
+
+            var btn5 = getElementById("btn5");
+            btn5.addEventListener("click", function () {
+                sound3.resume();
+            }, false);
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -126,22 +177,27 @@
 
 <body>
     <h4>Title:</h4>
-    <div id="container1" class="box">
-        <button id="btn1">BTN 1</button>
-        <button id="btn2">BTN 2</button>
+    <div id="container1" class="box padding-10">
+        <button id="btn1">Play method 1</button>
+        <hr>
+        <button id="btn2">Play method 2</button>
+        <hr>
+        <button id="btn3">Play method 2 Looped</button>
+        <button id="btn4">Pause method 2 Looped</button>
+        <button id="btn5">Resume method 2 Looped</button>
     </div>
 
 
     <h3>Debug (see conseole for more details):</h3>
 
     <div id="container1" class="flex-row box">
-        <div id="debug1" class="flex-col-25 box"></div>
-        <div id="debug2" class="inline box"></div>
-        <div id="debug3" class="inline box"></div>
-        <div id="debug4" class="inline box"></div>
+        <div id="debug1" class="flex-4-col box">debug1</div>
+        <div id="debug2" class="flex-4-col box">debug2</div>
+        <div id="debug3" class="flex-4-col box">debug3</div>
+        <div id="debug4" class="flex-4-col box">debug4</div>
     </div>
     <br>
-    <div id="debug5" class="inline box"></div>
+    <div id="debug5" class="box"></div>
 
 </body>
 

@@ -32,12 +32,16 @@ window.addEvent = function (obj, type, fn, useCapture) {
 window.onReady = function (fn) {
     // IE9+
     if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-        fn();
+        // Adds a little delay but is a good thing
+        setTimeout(fn, 10);
     } else {
-        document.addEventListener("DOMContentLoaded", function () {
-            // Adds a little delay but is a good thing
-            setTimeout(fn, 10);
-        });
+        if (document.addEventListener){
+            document.addEventListener("DOMContentLoaded", function () {
+                // Adds a little delay but is a good thing
+                setTimeout(fn, 10);
+            });
+        }
+        
     }
 }
 window.ready = function (fn) {

@@ -3,18 +3,21 @@
  */
 
 window.playSound = function(url, vol, loop, onComplete) {
-    var path = url;
-    var sound = new Audio(path);
+    var sound = new Audio(url);
     vol ? sound.volume = vol : sound.volume = 1;
     if (loop) {
-        sound.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        }, false);
+        sound.loop = true;
+        // sound.addEventListener('ended', function () {
+        //     log("ENDED!");
+        //     this.currentTime = 0;
+        //     this.play();
+        // }, false);
     }
 
     if (onComplete) {
-        sound.addEventListener("ended",onComplete,false);
+        try {
+            sound.removeEventListener("ended",onComplete,false);
+        } catch (e) {}
     }
     sound.play();
     return sound;

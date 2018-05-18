@@ -4,6 +4,17 @@
 
 
 
+ /**
+ * @function: isInString(find,source)
+ * @desc: check for string in string
+ * @param string find: The string to look for
+ * @param string source: The string to look in
+ */
+window.isInString = function (find,source) {
+    return source.indexOf(find) !== -1;
+}
+
+
 /**
  * @function: isEven(n)
  * @desc: check if input is even

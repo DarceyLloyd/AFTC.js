@@ -57,8 +57,9 @@ window.iOS = function() {
  * @return boolean
  */
 window.isFireFox = function () {
-	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-	return is_firefox;
+	// var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	// return is_firefox;
+	return (typeof InstallTrigger !== 'undefined');
 }
 
 /**
@@ -67,9 +68,26 @@ window.isFireFox = function () {
  * @return boolean
  */
 window.isChrome = function () {
-	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-	return is_chrome;
+	// var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	var chrome = !!window.chrome && !!window.chrome.webstore;
+	return chrome;
 }
+
+
+/**
+ * @function: isEdge()
+ * @desc: Detects Edge
+ * @return boolean
+ */
+window.isEdge = function () {
+	//var isEdge = !isIE && !!window.StyleMedia; // Edge 20+
+	var edge = false;
+	if (/Edge\/\d./i.test(navigator.userAgent)) {
+		edge = true;
+	}
+	return edge;
+}
+
 
 /**
  * @function: isSafari()
@@ -77,8 +95,9 @@ window.isChrome = function () {
  * @return boolean
  */
 window.isSafari = function () {
-	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
-	return is_safari;
+	// var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+	// return is_safari;
+	return /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
 }
 
 /**
@@ -87,8 +106,11 @@ window.isSafari = function () {
  * @return boolean
  */
 window.isIE = function () {
-	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
-	return is_ie;
+	// var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
+	// return is_ie;
+	// params.isIE = navigator.userAgent.match(/MSIE|Trident/);
+	// params.isIE = document.documentMode; // IS9 and above
+	return /*@cc_on!@*/false || !!document.documentMode; // Internet Explorer 6-11
 }
 
 
@@ -98,19 +120,11 @@ window.isIE = function () {
  * @return boolean
  */
 window.isOpera = function() {
-	var isChromium = window.chrome;
+	// var isChromium = window.chrome;
 	// var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
-	var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
-	if(isChromium !== null && isOpera == true) {
-		// is Opera (chromium)
-	} else { 
-		// not Opera (chromium) 
-	}
-	if (isOpera){
-		return true;
-	} else {
-		return false;
-	}
+	// var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
+	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	return isOpera;
 }
 
 /**
