@@ -88,25 +88,12 @@ window.arrayMin = function (arr) { return getMinFromArray(arr); }
 
 /**
  * @function: arrayShuffle(arr)
- * @desc: shuffles an array using a random method out of a choice of 2
+ * @desc: shuffles an array (method 1)
  * @param array arr: the array to shuffle
- * @alias: shuffleArray2
- * @alias: shuffleArray3
+ * @alias: shuffle
+ * @alias: arrayShuffle
  */
 window.arrayShuffle = function (arr) {
-    var methodNo = getRandom(2, 3);
-    return window["arrayShuffle" + methodNo](arr);
-    var fn = "arrayShuffle" + methodNo;
-}
-window.shuffleArray = function (arr) { return arrayShuffle(arr); }
-
-
-/**
- * @function: arrayShuffle2(arr)
- * @desc: shuffles an array (method 2)
- * @param array arr: the array to shuffle
- */
-window.arrayShuffle2 = function (arr) {
     var currentIndex = arr.length,
         temporaryValue, randomIndex;
 
@@ -125,13 +112,18 @@ window.arrayShuffle2 = function (arr) {
 
     return arr;
 }
+window.shuffle = function(arr){ return arrayShuffle(arr); }
+window.shuffleArray = function(arr){ return arrayShuffle(arr); }
+
 
 /**
- * @function: arrayShuffle3(a)
+ * @function: arrayShuffle2(arr)
  * @desc: shuffles an array (method 2)
- * @param array a: the array to shuffle
+ * @param array arr: the array to shuffle
+ * @alias: shuffle2
+ * @alias: arrayShuffle2
  */
-window.arrayShuffle3 = function (a) {
+window.arrayShuffle2 = function (a) {
     var x, t, r = new Uint32Array(1);
     for (var i = 0, c = a.length - 1, m = a.length; i < c; i++ , m--) {
         crypto.getRandomValues(r);
@@ -141,6 +133,8 @@ window.arrayShuffle3 = function (a) {
 
     return a;
 }
+window.shuffle2 = function(arr){ return arrayShuffle2(arr); }
+window.shuffleArray2 = function(arr){ return arrayShuffle2(arr); }
 
 
 
