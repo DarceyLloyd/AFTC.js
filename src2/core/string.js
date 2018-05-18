@@ -96,6 +96,14 @@ window.trimStringLength = function (input, length) {
 
 
 
+window.trimRightBy = function(str,trimBy){
+	return ( str.substring(0, str.length - trimBy) );
+}
+
+
+
+
+
 /**
  * @function: getFileExtension(str)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
