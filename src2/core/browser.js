@@ -4,26 +4,12 @@
 
 
 /**
- * @function: redirect(url,target)
+ * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
  * @param string url: the url you wish to redirect to
  */
-window.redirect = function (url,target,name,specs,replace) {
-    if (!target){
-        self.location.href = url;
-    } else {
-        if (!name){
-            name = "Win" + Math.floor(Math.random()*999999);
-        }
-        if (!specs){
-            specs = "";
-        }
-        if (!replace){
-            replace = false;
-        }
-        window.open(url,target,name,specs,replace);
-    }
-    
+window.redirect = function (url) {
+    self.location.href = url;
 };
 
 
