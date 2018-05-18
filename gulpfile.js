@@ -61,15 +61,15 @@ var js2 = [
     // Nice to have, but not essential
     "./src2/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src2/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
-    // "./src2/AFTC/AFTC.AR.js",
-    // "./src2/AFTC/AFTC.Benchmark.js",
+    // "./src2/AFTC/AFTC.AR.js", // EMPTY
+    // "./src2/AFTC/AFTC.Benchmark.js", // Meh
     "./src2/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
     // "./src2/AFTC/AFTC.CheckboxHideShow.js",
     "./src2/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
     "./src2/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()
-    // "./src2/AFTC/AFTC.ResizeManager.js",
-    // "./src2/AFTC/AFTC.VR.js",
-    "./src2/AFTC/AFTC.XHR.js",
+    // "./src2/AFTC/AFTC.ResizeManager.js", // Debating whether or not to remove
+    // "./src2/AFTC/AFTC.VR.js", // EMPTY
+    "./src2/AFTC/AFTC.XHR.js", // Everyone needs some IO, I know I do...
     
 ];
 
