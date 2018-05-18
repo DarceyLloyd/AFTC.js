@@ -1,11 +1,11 @@
-@import url(https://rawgit.com/DarceyLloyd/AFTC.css/master/dist/aftc.no-reset.min.css);
+
 
 
 html, body {
     background: #E5E5E5;
-      font-family: Arial, Helvetica;
-      font-size: 14px;
-      box-sizing: border-box;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    box-sizing: border-box;
   }
 
 
