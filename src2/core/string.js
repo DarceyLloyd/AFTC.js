@@ -95,10 +95,15 @@ window.trimStringLength = function (input, length) {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-
-window.trimRightBy = function(str,trimBy){
+/**
+ * @function: trimStringBy(input, trimBy)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
+window.trimStringBy = function(str,trimBy){
 	return ( str.substring(0, str.length - trimBy) );
 }
+window.rTrim = function(str,trimBy){ return trimStringBy(str,trimBy); }
 
 
 

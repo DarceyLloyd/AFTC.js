@@ -286,7 +286,7 @@ window.ready = function (fn) {
  * @return: array
  */
 window.arrayRemoveIndex = function (arr, index) {
-    arr.splice(index,1);
+    arr.splice(index, 1);
     return arr;
 }
 
@@ -306,10 +306,10 @@ window.isStringInArray = function (needle, haystack) {
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
  */
-window.arrayContains = function (needle,haystack) {
+window.arrayContains = function (needle, haystack) {
     if (haystack.indexOf(needle) > -1) { return true; } else { return false; }
 }
-window.isInArray = function (needle,haystack) { return window.arrayContains(needle,haystack); }
+window.isInArray = function (needle, haystack) { return window.arrayContains(needle, haystack); }
 
 
 
@@ -415,6 +415,29 @@ window.arrayShuffle3 = function (a) {
     }
 
     return a;
+}
+
+
+
+
+window.arrayToSingleLineString = function (arr) {
+    var html = "[";
+    for (i = 0; i < arr.length; i++) {
+        switch (typeof (arr[i])) {
+            case "number":
+                html += arr[i] + ",";
+                break;
+            case "string":
+                html += "'" + arr[i] + "',";
+                break;
+            default:
+                html += "" + typeof (arr[i]) + ",";
+                break;
+        }
+    }
+    html = trimStringLength(html, html.length - 1);
+    html += "]";
+    return html;
 }
 /*
  * Author: Darcey.Lloyd@gmail.com
@@ -836,6 +859,19 @@ window.trimStringLength = function (input, length) {
 	return input.substring(0, length);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/**
+ * @function: trimStringBy(input, trimBy)
+ * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
+window.trimStringBy = function(str,trimBy){
+	return ( str.substring(0, str.length - trimBy) );
+}
+window.rTrim = function(str,trimBy){ return trimStringBy(str,trimBy); }
+
+
 
 
 
