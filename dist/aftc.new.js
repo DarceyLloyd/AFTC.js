@@ -433,6 +433,9 @@ window.arrayToSingleLineString = function (arr) {
     html += "]";
     return html;
 }
+window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
+window.array2String = function(arr){ return arrayToSingleLineString(arr); }
+
 /*
  * Author: Darcey.Lloyd@gmail.com
  */
