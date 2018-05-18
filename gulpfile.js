@@ -56,10 +56,10 @@ var js2 = [
     "./src2/core/cookies.js",
     "./src2/core/form.js",
     "./src2/core/geometry.js",
-    "./src2/core/audio.js",
     "./src2/core/video.js",
     "./src2/core/misc.js",
     // Nice to have, but not essential
+    "./src2/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src2/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
     // "./src2/AFTC/AFTC.AR.js",
     // "./src2/AFTC/AFTC.Benchmark.js",

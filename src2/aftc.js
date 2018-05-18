@@ -22,7 +22,7 @@ AFTC.ArgsToObject = function (args, obj, strict) {
                 if (obj.hasOwnProperty(key)) {
                     obj[key] = args[key];
                 } else {
-                    console.error("AFTC.ArgsToObject(): Argument [" + key + "] is not supported.");
+                    console.warn("AFTC.ArgsToObject(): Argument [" + key + "] is not supported.");
                 }
             } else {
                 obj[key] = args[key];

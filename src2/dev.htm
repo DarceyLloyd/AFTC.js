@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>darcey@aftc.io</title>
+    <link rel="stylesheet" href="https://rawgit.com/DarceyLloyd/AFTC.css/master/dist/aftc.min.css">
+    <link rel="stylesheet" href="../link_files/codepen.css">
+
+    <!-- <script src="../dist/aftc.new.js"></script> -->
+    <script src="../src2/aftc.js"></script>
+    <script src="../src2/core/events.js"></script>
+    <script src="../src2/core/is.js"></script>
+    <script src="../src2/core/dom.js"></script>
+    <script src="../src2/AFTC/AFTC.Audio.js"></script>
+    <script>
+
+        window.playSound2 = function (url, vol, loop, onComplete) {
+            var sound = new AFTC.Audio({
+                url: url,
+                volume: vol,
+                repeat: loop,
+                onComplete: onComplete
+            });
+            sound.play();
+        }
+
+
+
+
+        // I will illustrate 2 methods of doing this
+
+        // Method 1
+        // This will create a new audio object each time you click button 1,
+        // this audio object should be garbage collected by JS when it can automatically
+
+        // Method 2
+        // This will create a AFTC.Sound instance, which you can use to play a
+        // specified sound and re-use the AFTC.Sound instance to play the sound again
+        // without creating a new AFTC.Sound instance or Audio object/instance.
+
+        // AFTC.Sound usage
+        // url : string : A path to an mp3 file somewhere
+        // volume : float : A value from 0 to 1 (0.5 is 50% volume)
+        // loop : int : A value from -1 to 9999999 (-1 to loop forever, 0 play once, or leave out default is 0)
+        // onComplete: function : The function to run when sound playback has complete
+
+        // NOTE: It is recommended that you use Method 2
+
+
+        // Method 1
+        function playSoundMethod1CompleteHandler() {
+            log("Method 1 sound playback complete!");
+        }
+
+        function playsSoundUsingMethod1() {
+            log("playsSoundUsingMethod1()");
+            playSound2(
+                "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
+                0.5,
+                0,
+                playSoundMethod1CompleteHandler
+            );
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        // Method 2
+        // Setup variables on global scope not in onReady / ready scope
+        var sound2;
+
+        // Create a function to wrap everything into
+        function playsSoundUsingMethod2() {
+            log("playsSoundUsingMethod2()");
+            sound2.play();
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        // Method 2 on sound complete function handler
+        function playSoundMethod2CompleteHandler() {
+            log("Method 2 sound playback complete!");
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+        // Only run when page/dom is ready
+        onReady(function () {
+            // page/dom is ready
+
+
+            // Setup console.log (no need to type console. with aftc.js!)
+            logTo("debug"); // Enable log to output to a html element of id "output"
+            cls(); // Clear console & html logTo element if set
+
+
+            // Method 1
+            var btn1 = getElementById("btn1");
+            btn1.addEventListener("click", playsSoundUsingMethod1, false); // Native JS Way
+            // addEvent(btn1,"click",playsSoundUsingMethod1); // The AFTC.JS Way
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            // Method 2
+            // Create instance of AFTC.Sound in the var sound2
+            sound2 = new AFTC.Audio({
+                url: "https://dev.aftc.io/assets/sounds/beats/beat_01.ogg",
+                volume: 0.5,
+                repeat: 2,
+                offsetLoopBy: 0.3,
+                onComplete: playSoundMethod2CompleteHandler
+            });
+            // Setup button click use
+            var btn2 = getElementById("btn2");
+            btn2.addEventListener("click", playsSoundUsingMethod2, false); // Native JS way
+            // addEvent(btn2,"click",playsSoundUsingMethod2); // The AFTC.JS Way
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        });
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    </script>
+</head>
+
+<body>
+    <h4>Title:</h4>
+    <div id="container1" class="box">
+        <button id="btn1">BTN 1</button>
+        <button id="btn2">BTN 2</button>
+    </div>
+
+
+    <h3>Debug (see conseole for more details):</h3>
+
+    <div id="container1" class="flex-row box">
+        <div id="debug1" class="flex-col-25 box"></div>
+        <div id="debug2" class="inline box"></div>
+        <div id="debug3" class="inline box"></div>
+        <div id="debug4" class="inline box"></div>
+    </div>
+    <br>
+    <div id="debug5" class="inline box"></div>
+
+</body>
+
+</html>
