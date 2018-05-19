@@ -41,13 +41,13 @@ window.iOS = function() {
 	  'iPhone',
 	  'iPod'
 	];
-  
+
 	if (!!navigator.platform) {
 	  while (iDevices.length) {
 		if (navigator.platform === iDevices.pop()){ return true; }
 	  }
 	}
-  
+
 	return false;
   }
 
@@ -180,7 +180,7 @@ window.getOS = function (testAgent) {
 
 	userAgent = userAgent.toLowerCase();
 
-	
+
 
 
 	// Windows Phone must come first because its UA also contains "Android"!
