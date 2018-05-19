@@ -60,78 +60,11 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
 
 
 
-// AFTC.lockBody params
-window.AFTCLockBodyParams = {
-	pageYOffset: null,
-	elementId: ""
-};
-/**
- * @function: lockBody()
- * @desc: Attempts to lock the html body to prevent scrolling
- */
-window.lockBody = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
-				window.AFTCLockBodyParams[key] = arguments[0][key];
-			} else {
-				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
-			}
-		}
-	} else {
-		var usage = "\n";
-		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
-		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
-		usage += "unlockBody();" + "\n";
-		throw (usage);
-	}
-
-	if (window.pageYOffset) {
-		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
-
-		$('html, body').css({
-			top: -(window.AFTCLockBodyParams.pageYOffset)
-		});
-	}
-
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "100%",
-		overflow: "hidden"
-	});
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: unlockBody()
- * @desc: Attempts to unlock the html body to prevent scrolling
- */
-window.unlockBody = function () {
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "",
-		overflow: ""
-	});
-
-	$('html, body').css({
-		top: ''
-	});
-
-	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-	window.setTimeout(function () {
-		window.AFTCLockBodyParams.pageYOffset = null;
-	}, 0);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
 
 /**
  * @function: centerAbsoluteElement(eleOrEleId)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Center element that is absolute positioned
+ * @param element || string eleOrEleId: element or id of element to center
  */
 window.centerAbsoluteElement = function (eleOrEleId) {
 	var element;
