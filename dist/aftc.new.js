@@ -1365,7 +1365,7 @@ window.getDateTime = function (local) {
 		case "db":
 			datetime = getSQLDateTime();
 			break;
-		case "us":
+		case "en-GB":
 			datetime = currentdate.toLocaleString('en-US', {
 				hour12: false,
 				month: "numeric",
