@@ -1260,8 +1260,24 @@ window.getDaysBetweenDates = function(start, end){ return getDaysBetween(start, 
 
 
 
+/**
+ * @function: getUKDateFromDate(date)
+ * @desc: Formats a date in the UK format
+ * @param Date date
+ */
 window.getUKDateFromDate = function(dte){
 	var output = dte.getDay() + "-" + (dte.getMonth()+1) + "-" + dte.getFullYear();
+	return output;
+}
+
+
+/**
+ * @function: getUSDateFromDate(date)
+ * @desc: Formats a date in the US format
+ * @param Date date
+ */
+window.getUSDateFromDate = function(dte){
+	var output = dte.getFullYear() + "-" + (dte.getMonth()+1) + "-" + (dte.getDay()+1)
 	return output;
 }
 
