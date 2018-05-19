@@ -9,7 +9,7 @@
     }
     var me = this;
     var vars = {
-        
+
     }
 
     new AFTC.ArgsToObject(arguments[0], vars);
