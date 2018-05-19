@@ -36,7 +36,7 @@ window.html = function (element, str) { window.setHTML(element, str); }
 
 
 /**
- * @function: getElementOffsetTop(elementIdOrQuery)
+ * @function: getElementOffsetTop(elementId)
  * @desc: Gets an elements top offset
  * @param string elementId: the element ID you wish to get the top offset of
  */
@@ -67,8 +67,7 @@ window.AFTCLockBodyParams = {
 };
 /**
  * @function: lockBody()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Attempts to lock the html body to prevent scrolling
  */
 window.lockBody = function () {
 	if (arguments[0] && typeof (arguments[0]) == "object") {
@@ -106,8 +105,7 @@ window.lockBody = function () {
 
 /**
  * @function: unlockBody()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Attempts to unlock the html body to prevent scrolling
  */
 window.unlockBody = function () {
 	$('#' + window.AFTCLockBodyParams.elementId).css({
