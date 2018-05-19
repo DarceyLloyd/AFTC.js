@@ -1131,14 +1131,12 @@ window.stringToBool = function (str) {
         case "true":
             return true;
             break;
-        case "y":
-            return true;
-            break;
         default:
             return false;
             break;
     }
 }
+window.stringToBoolean = function(str) { return stringToBool(str); }
 
 
 
@@ -1147,7 +1145,7 @@ window.stringToBool = function (str) {
  * @desc: converts an input to a boolean
  * @param * input: the variable you wish to convert to a boolean
  */
-window.getBooleanFrom = function (input) {
+window.toBoolean = function (input) {
     if (input == null || input == "" || !input) {
         return false;
     }
@@ -1163,7 +1161,10 @@ window.getBooleanFrom = function (input) {
             return true;
         }
     }
+
+    return true;
 }
+window.getBooleanFrom = function(input) { return toBoolean(input); }
 
 
 
