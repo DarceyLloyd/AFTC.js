@@ -1952,12 +1952,12 @@ window.removeClass = function (elementOrId, className) {
         element = getElementById(elementOrId);
     }
 
-    if (isArray(classNames)){
-        for (var i=0; i < classNames.length; i++){
-            element.classList.remove(classNames[i]);
+    if (isArray(className)){
+        for (var i=0; i < className.length; i++){
+            element.classList.remove(className[i]);
         }
     } else {
-        element.classList.remove(classNames);
+        element.classList.remove(className);
     }
 }
 window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementOrId, classNames); }
