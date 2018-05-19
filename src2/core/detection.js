@@ -1,8 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: isMobile()
  * @desc: isMobile

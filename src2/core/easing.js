@@ -1,8 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 // This is for animations that have no dependancies (functions that use jquery and gsap have their own files)
 // t 0 > 1
 AFTC.AFTCEaseEQ = {

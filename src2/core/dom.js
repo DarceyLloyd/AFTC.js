@@ -1,12 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-var AFTC = AFTC || {}
-
-
-
-
 /**
  * @function: setHTML(elementOrId,html);
  * @desc: quick shortcut for outputting html to an element

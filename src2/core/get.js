@@ -1,9 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: getFunctionName(fn)
  * @desc: tries to get the function name of a suppled function

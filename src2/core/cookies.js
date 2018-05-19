@@ -1,9 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: setCookie(name, value)
  * @desc: Sets a cookie by name with a value

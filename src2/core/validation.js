@@ -1,12 +1,8 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: validateEmail(email)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Validats an email address
+ * @param string email: email address
+ * @returns boolean
  */
 window.validateEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

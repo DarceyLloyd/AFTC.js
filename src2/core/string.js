@@ -1,10 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
-
 /**
  * @function: xxxxxx(xxx)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

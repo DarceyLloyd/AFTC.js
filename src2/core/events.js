@@ -1,7 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
 /**
  * @function: addEvent(obj,type,fn,useCapture)
  * @desc: Shortcut for adding events with old browser compatibility

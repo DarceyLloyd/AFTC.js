@@ -1,19 +1,14 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
+//  AFTC.VLog = function(){
+//     if (!(this instanceof arguments.callee)) {
+//         throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+//     }
+//     var me = this;
+//     var vars = {
 
+//     }
 
- AFTC.VLog = function(){
-    if (!(this instanceof arguments.callee)) {
-        throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
-    }
-    var me = this;
-    var vars = {
-
-    }
-
-    new AFTC.ArgsToObject(arguments[0], vars);
- };
+//     new AFTC.ArgsToObject(arguments[0], vars);
+//  };
 
 
 

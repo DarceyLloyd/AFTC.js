@@ -1,10 +1,4 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
- /**
+/**
  * @function: isInString(find,source)
  * @desc: check for string in string
  * @param string find: The string to look for

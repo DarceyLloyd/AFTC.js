@@ -1,8 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array

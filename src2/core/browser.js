@@ -1,8 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)

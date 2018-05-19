@@ -1,8 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: getRandomInt(min,max)
  * @desc: returns a random number / int betwen your specified min and max values

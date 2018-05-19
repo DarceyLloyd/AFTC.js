@@ -1,9 +1,3 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: radToDeg(input)
  * @desc: converts radians to degrees

@@ -1,8 +1,7 @@
-
 /**
- * @function: isChecked(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isChecked(elementId)
+ * @desc: Checks to if checkbox is checked or not
+ * @param string elementId: element id of the form element to check
  */
 window.isChecked = function (id) {
 	return document.getElementById(id).checked;
