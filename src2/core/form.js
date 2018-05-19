@@ -33,9 +33,9 @@ window.isNumberKey = function (evt) {
 
 
 /**
- * @function: removeAllSelectOptions(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: removeAllSelectOptions(elementOrId)
+ * @desc: Removes all the options in a select
+ * @param element || string: element or id string
  */
 window.removeAllSelectOptions = function (elementOrId) {
     var element;
@@ -71,7 +71,7 @@ window.removeAllSelectOptions = function (elementOrId) {
  * @param string label: of key value pair this is the key
  * @param string value: of key value pair this is the value
  */
-window.parseJSONToSelect = function (j, elementOrId, label, value) {
+window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
 	var element;
 
 	if (typeof(elementOrId) == "string"){
@@ -90,8 +90,8 @@ window.parseJSONToSelect = function (j, elementOrId, label, value) {
 	}
 
 	for (var i = 0; i < j.length; i++) {
-		var label = j[i][label];
-		var data = j[i][value];
+		var label = j[i][labelKey];
+		var data = j[i][valueKey];
 
 		var option = document.createElement("option");
 		option.text = label;
