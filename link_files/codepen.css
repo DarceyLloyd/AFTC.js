@@ -1,10 +1,16 @@
+/* @import url(https://rawgit.com/DarceyLloyd/AFTC.js/master/link_files/codepen.css); */
 @import url(https://rawgit.com/DarceyLloyd/AFTC.css/master/dist/aftc.no-reset.min.css);
 
 
 html, body {
   background: #E5E5E5;
   font-family: Arial, Helvetica;
+  font-size: 0.98em;
   box-sizing: border-box;
+}
+
+p {
+  font-size: 0.96em;
 }
 
 
@@ -12,6 +18,18 @@ h1, h2, h3, h4, h5 {
   margin: 0 0 14px 0;
   padding: 0;
 }
+
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+
+#info-box h1 { font-size: 1.1em; }
+#info-box h2 { font-size: 1em; }
+#info-box h3 { font-size: 0.9em; }
+#info-box h4 { font-size: 0.8em; }
+#info-box li { font-size: 0.9em; }
 
 
 button {
@@ -182,5 +200,6 @@ a:hover {
 /* END OF TEMPLATE STYLES */
 
 /* Styles used in  */
+
 
 
