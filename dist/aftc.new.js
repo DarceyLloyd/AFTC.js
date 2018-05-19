@@ -1080,6 +1080,7 @@ window.boolToString = function (bool) {
         return "false";
     }
 }
+window.booleanToString = function(bool) { return boolToString(bool); }
 
 
 
@@ -1102,11 +1103,12 @@ window.boolToYesNo = function (bool) {
         return "no";
     }
 }
+window.booleanToYesNo = function(bool) { return boolToYesNo(bool); }
 
 
 /**
  * @function: stringToBool(str)
- * @desc: converts a string to a boolean (y,yes,"1",no etc)
+ * @desc: Converts a string to a boolean (y,yes,"1",no etc)
  * @param string str: the string you wish to convert
  */
 window.stringToBool = function (str) {
