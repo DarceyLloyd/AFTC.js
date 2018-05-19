@@ -30,16 +30,17 @@ window.deg2rad = function (arg) { return degToRad(arg); }
 
 
 /**
- * @function: numberToHex(num)
- * @desc: numberToHex
+ * @function: toHex(num)
+ * @desc: Converts a number to hex
  * @param number num: decimal base 10
  * @return string: hexidecimal value
  */
-window.numberToHex = function (num) {
+window.toHex = function (num) {
     return num.toString(16);
 }
-window.decToHex = function(num) { return numberToHex(num); }
-window.decimalToHex = function(num) { return numberToHex(num); }
+window.decToHex = function(num) { return toHex(num); }
+window.decimalToHex = function(num) { return toHex(num); }
+window.numberToHex = function(num) { return toHex(num); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
