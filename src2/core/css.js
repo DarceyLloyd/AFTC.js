@@ -36,12 +36,17 @@ window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, cla
  * @param string className: the class name to remove
  */
 window.removeClass = function (elementOrId, className) {
-    if (isElement(elementOrId)) {
-        elementOrId.classList.remove(className);
+    var element;
+    if (typeof(elementOrId) == "string"){
+        element = getElementById(elementOrId);
+    }
+
+    if (isArray(classNames)){
+        for (var i=0; i < classNames.length; i++){
+            element.classList.remove(classNames[i]);
+        }
     } else {
-        log("elementOrId =" + elementOrId);
-        log("className =" + className);
-        getElementById(elementOrId).classList.remove(className);
+        element.classList.remove(classNames);
     }
 }
 window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementOrId, classNames); }
