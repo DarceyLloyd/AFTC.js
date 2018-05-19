@@ -159,4 +159,3 @@ window.arrayToSingleLineString = function (arr) {
     return html;
 }
 window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
-window.array2String = function(arr){ return arrayToSingleLineString(arr); }
