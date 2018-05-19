@@ -194,14 +194,29 @@ window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
 
 
 /**
- * @function:convertToArray(v)
+ * @function:toArray(v)
  * @desc: takes an input and returns it as index[0] of an array
- * @param & v: value to insert into array
+ * @param * arg: value to insert into array
+ * @alias: convertToArray
  * @alias: valueToArray
  */
-window.convertToArray = function (v) {
+window.toArray = function (arg) {
     var a = [];
-    a[0] = v;
-    return a;
+    switch (typeof(arg)){
+        case "object":
+            if (isArray(arg)){
+                return arg;
+            } else {
+                for (var prop in arg){
+                    a.push(arg[prop]);
+                }
+                return a;
+            }
+            return [arg];
+        break;
+        default:
+            return [arg];
+        break;
+    }
 }
-window.valueToArray = function (v) { return convertToArray(v); }
+window.convertToArray = function (v) { return toArray(v); }
