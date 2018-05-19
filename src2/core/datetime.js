@@ -22,6 +22,12 @@ window.getDaysBetweenDates = function(start, end){ return getDaysBetween(start, 
 
 
 
+window.getUKDateFromDate = function(dte){
+	var output = dte.getDay() + "-" + (dte.getMonth()+1) + "-" + dte.getFullYear();
+	return output;
+}
+
+
 
 /**
  * @function: getUkDateFromDbDateTime(input)
