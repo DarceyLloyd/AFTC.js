@@ -35,3 +35,6 @@ window.openDebugWindow = function (html) {
 window.stringToWindow = function (html) {
     openDebugWindow(html);
 }
+window.htmlToWindow = function (html) {
+    openDebugWindow(html);
+}
