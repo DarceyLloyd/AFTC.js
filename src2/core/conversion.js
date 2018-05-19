@@ -159,8 +159,14 @@ window.getBooleanFrom = function(input) { return toBoolean(input); }
  * @alias: arrayToFloat
  */
 window.parseArrayToFloat = function (arr) {
+    var converted;
     for (var i = 0; i < arr.length; i++) {
-        arr[i] = parseFloat(arr[i]);
+        converted = parseFloat(arr[i]);
+        if (isNaN(converted)){
+            arr[i] = 0;
+        } else {
+            arr[i] = converted;
+        }
     }
     return arr;
 }
@@ -174,7 +180,12 @@ window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
  */
 window.parseArrayToInt = function (arr) {
     for (var i = 0; i < arr.length; i++) {
-        arr[i] = parseInt(arr[i]);
+        converted = parseInt(arr[i]);
+        if (isNaN(converted)){
+            arr[i] = 0;
+        } else {
+            arr[i] = converted;
+        }
     }
     return arr;
 }
