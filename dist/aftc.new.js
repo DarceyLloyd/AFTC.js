@@ -2078,6 +2078,7 @@ window.removeAllSelectOptions = function (elementOrId) {
 	}
 
 }
+window.clearSelect = function(elementOrId) { removeAllSelectOptions(elementOrId); }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
