@@ -66,26 +66,3 @@ window.hasClass = function (elementOrId, cls) {
 
 
 
-
-
-
-/**
- * @function: isBreakPoint(bp)
- * @desc: Returns the breakpoint your in
- * @param array bp: [320, 480, 768, 1024] etc
- */
-window.isBreakPoint = function(bp) {
-    // The breakpoints that you set in your css
-    var bps = [320, 480, 768, 1024];
-    var w = window.innerWidth;
-    var min, max;
-    for (var i = 0, l = bps.length; i < l; i++) {
-      if (bps[i] === bp) {
-        min = bps[i-1] || 0;
-        max = bps[i];
-        break;
-      }
-    }
-    return w > min && w <= max;
-  }
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
