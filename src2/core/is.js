@@ -7,6 +7,7 @@
 window.isInString = function (find,source) {
     return source.indexOf(find) !== -1;
 }
+window.inString = function (find,source) { return isInString(find,source); }
 
 
 /**
