@@ -759,8 +759,8 @@ window.limitLengthInWords = function (str, maxWords) {
 
 /**
  * @function: cleanJSONString(s)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Attempts to clean a json string
+ * @param string s: input string
  */
 window.cleanJSONString = function (s) {
 	// preserve newlines, etc - use valid JSON
@@ -780,8 +780,8 @@ window.cleanJSONString = function (s) {
 
 
 /**
- * @function: escapeHTML(text)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @function: escapeHTML(input)
+ * @desc: Attempts to escape a html string
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
 /*
@@ -794,7 +794,7 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
  }
 */
-window.escapeHTML = function (text) {
+window.escapeHTML = function (input) {
 	var replacements = {
 		"<": "&lt;",
 		">": "&gt;",
@@ -2057,6 +2057,15 @@ AFTC.Rectangle = function (x1, y1, x2, y2) {
 }
 AFTC.Rect = AFTC.Rectangle;
 
+/**
+ * @function: cycle(pos, max)
+ * @desc: cycles from 0 to max based on pos, will cycle back to 0 if over max
+ * @param number pos: position of max
+ * @param number max: max number to cycle to
+ */
+function cycle(pos, max) {
+    return (pos % max + max) % max;
+}
 
 
 // REF: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
