@@ -172,10 +172,9 @@ window.getAnchorFromUrl = function (url) {
 
 /**
  * @function: String.prototype.startsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: ES6 supports the startsWith(), this is for pre ES6 support
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
 if (typeof String.prototype.startsWith != 'function') {
 	String.prototype.startsWith = function (str) {
 		return this.match(new RegExp("^" + str));
@@ -184,10 +183,10 @@ if (typeof String.prototype.startsWith != 'function') {
 
 /**
  * @function: String.prototype.endsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: ES6 supports endsWith(), this is for pre ES6 support
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
+//
 if (typeof String.prototype.endsWith != 'function') {
 	String.prototype.endsWith = function (str) {
 		return this.match(new RegExp(str + "$"));
@@ -240,7 +239,7 @@ var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")",
 
 var testRE = regExString.exec("My cow always gives milk.");
 if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
-{  
+{
     alert(testRE[1]); //is the matched group if found
 }
 */
