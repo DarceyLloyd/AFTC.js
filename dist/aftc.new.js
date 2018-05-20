@@ -614,7 +614,11 @@ window.getRandomString = function (len) { return randomString(len); }
  * @alias: generateUID
  */
 window.getUID = function (len) {
-    return Math.random().toString((len*3)).substr(2, len);
+    if (len > 34){
+        console.error("getUID(length): Limit error: Length must be 34 or lower");
+    } else {
+        return Math.random().toString(36).substr(2, len);
+    }
 }
 window.getUniqueId = function (len) { return getUID(len); }
 window.generateUID = function (len) { return getUID(len); }
