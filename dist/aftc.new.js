@@ -186,22 +186,17 @@ window.cls = function(){
     }
 }
 window.clearLog = function(){ cls(); }
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
+//  AFTC.VLog = function(){
+//     if (!(this instanceof arguments.callee)) {
+//         throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+//     }
+//     var me = this;
+//     var vars = {
 
+//     }
 
- AFTC.VLog = function(){
-    if (!(this instanceof arguments.callee)) {
-        throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
-    }
-    var me = this;
-    var vars = {
-
-    }
-
-    new AFTC.ArgsToObject(arguments[0], vars);
- };
+//     new AFTC.ArgsToObject(arguments[0], vars);
+//  };
 
 
 
@@ -226,10 +221,6 @@ window.stringToWindow = function (html) {
 window.htmlToWindow = function (html) {
     openDebugWindow(html);
 }
-
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
 
 /**
  * @function: addEvent(obj,type,fn,useCapture)
@@ -276,11 +267,6 @@ window.onReady = function (fn) {
 window.ready = function (fn) {
     window.onReady(fn);
 }
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
@@ -438,12 +424,6 @@ window.arrayToSingleLineString = function (arr) {
 }
 window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: getFunctionName(fn)
  * @desc: tries to get the function name of a suppled function
@@ -454,13 +434,7 @@ function getFunctionName(fn) {
     var reg = /function ([^\(]*)/;
     return reg.exec(name)[1];
 };
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
- /**
+/**
  * @function: isInString(find,source)
  * @desc: check for string in string
  * @param string find: The string to look for
@@ -469,6 +443,7 @@ function getFunctionName(fn) {
 window.isInString = function (find,source) {
     return source.indexOf(find) !== -1;
 }
+window.inString = function (find,source) { return isInString(find,source); }
 
 
 /**
@@ -585,11 +560,6 @@ window.isArray = function (input) {
     //return arr.constructor == Array;
 }
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: getRandomInt(min,max)
  * @desc: returns a random number / int betwen your specified min and max values
@@ -600,9 +570,7 @@ window.isArray = function (input) {
 window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-window.getRandom = function (min, max) {
-    return getRandomInt(min, max);
-}
+window.randomInt = function (min, max) { return getRandomInt(min, max); }
 
 
 
@@ -615,6 +583,7 @@ window.getRandom = function (min, max) {
 window.getRandomFloat = function (min, max) {
     return (Math.random() * (max - min) + min);
 };
+window.randomFloat = function (min, max) { return getRandomFloat(min, max); }
 
 
 /**
@@ -763,13 +732,6 @@ window.getWeightedRandom = function (odds, iterations) {
     return iMax;
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
-
 /**
  * @function: xxxxxx(xxx)
  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -1016,12 +978,6 @@ if (testRE && testRE.length > 1) //RegEx has found something and has more than o
     alert(testRE[1]); //is the matched group if found
 }
 */
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: radToDeg(input)
  * @desc: converts radians to degrees
@@ -1390,15 +1346,11 @@ window.getDateTime = function (local) {
 }
 
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: validateEmail(email)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Validats an email address
+ * @param string email: email address
+ * @returns boolean
  */
 window.validateEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -1407,11 +1359,6 @@ window.validateEmail = function (email) {
 window.isValidEmail = function (email) {
 	return validateEmail(email);
 }
-
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
 
 /**
  * @function: isMobile()
@@ -1762,15 +1709,6 @@ window.getOS = function (testAgent) {
 
 
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-var AFTC = AFTC || {}
-
-
-
-
 /**
  * @function: setHTML(elementOrId,html);
  * @desc: quick shortcut for outputting html to an element
@@ -1865,12 +1803,6 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 	element.style.top = ty + "px";
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 // Styling shortcuts
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1939,11 +1871,6 @@ window.hasClass = function (elementOrId, cls) {
 
 
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 /**
  * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
@@ -1988,12 +1915,6 @@ window.exitFullScreen = function () {
 		console.error('Fullscreen API is not supported.');
 	}
 }
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
-
 /**
  * @function: setCookie(name, value)
  * @desc: Sets a cookie by name with a value
@@ -2023,11 +1944,10 @@ window.getCookie = function (name) {
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
-
 /**
- * @function: isChecked(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isChecked(elementId)
+ * @desc: Checks to if checkbox is checked or not
+ * @param string elementId: element id of the form element to check
  */
 window.isChecked = function (id) {
 	return document.getElementById(id).checked;
@@ -2126,11 +2046,6 @@ window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
 		element.add(option);
 	}
 }
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
 AFTC.Point = function (x, y) {
     !x ? this.x = 0 : this.x = x;
     !y ? this.y = 0 : this.y = y;
@@ -2142,11 +2057,7 @@ AFTC.Rectangle = function (x1, y1, x2, y2) {
     !x2 ? this.x2 = 0 : this.x2 = x2;
     !y2 ? this.y2 = 0 : this.y2 = y2;
 }
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-
+AFTC.Rect = AFTC.Rectangle;
 
 
 
