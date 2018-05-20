@@ -78,3 +78,43 @@ AFTC.Rectangle = function (x1, y1, x2, y2) {
     !y2 ? this.y2 = 0 : this.y2 = y2;
 }
 AFTC.Rect = AFTC.Rectangle;
+
+
+
+
+AFTC.Velocity = function(vx,vy) {
+
+    !vx ? this.vx = 0 : this.vx = vx;
+    !vy ? this.vy = 0 : this.vy = vy;
+
+    this.flip = function() {
+        // reflection on both axis
+        this.vx *= -1;
+        this.vy *= -1;
+        return this;
+    }
+
+    this.flipX = function() {
+        // reflection on x axis
+        this.vx *= -1;
+        return this;
+    }
+
+    this.flipY = function() {
+        // reflection on y axis
+        this.vy *= -1;
+        return this;
+    }
+
+    this.multiply = function(scalar) {
+        this.vx *= scalar;
+        this.vy *= scalar;
+        return this;
+    }
+
+    this.divide = function(scalar) {
+        this.vx /= scalar;
+        this.vy /= scalar;
+        return this;
+    }
+}
