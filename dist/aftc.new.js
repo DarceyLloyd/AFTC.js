@@ -602,9 +602,7 @@ window.randomString = function (length) {
 
     return text;
 }
-window.getRandomString = function (len) {
-    return randomString(len);
-}
+window.getRandomString = function (len) { return randomString(len); }
 
 
 /**
@@ -618,7 +616,6 @@ window.getUniqueId = function () {
     return randomString(5) + Math.random().toString(36).substr(2, 8);
 }
 window.getUID = function () { return getUniqueId(); }
-window.generateRandomId = function () { return getUniqueId(); }
 window.generateUID = function () { return getUniqueId(); }
 
 
