@@ -44,17 +44,17 @@ window.getRandomString = function (len) { return randomString(len); }
 
 
 /**
- * @function: getUniqueId()
+ * @function: getUID(length)
  * @desc: Generates a random id
+ * @param number length: length of the unique id to generate
  * @alias: getUID
- * @alias: generateRandomId
  * @alias: generateUID
  */
-window.getUniqueId = function () {
-    return randomString(5) + Math.random().toString(36).substr(2, 8);
+window.getUID = function (len) {
+    return Math.random().toString((len*3)).substr(2, len);
 }
-window.getUID = function () { return getUniqueId(); }
-window.generateUID = function () { return getUniqueId(); }
+window.getUniqueId = function (len) { return getUID(len); }
+window.generateUID = function (len) { return getUID(len); }
 
 
 /**
@@ -105,7 +105,6 @@ window.guid = function () {
         Amiga() + '-' + Amiga() + Amiga() + Amiga();
 }
 window.getGUID = function () { return guid(); }
-window.generateUniqueId = function () { return guid(); }
 
 
 
