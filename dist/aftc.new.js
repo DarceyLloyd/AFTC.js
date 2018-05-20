@@ -734,24 +734,22 @@ window.getWeightedRandom = function (odds, iterations) {
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: limitLengthInWords(str, maxWords)
+ * @desc: Limit a string in length of words
+ * @param string str: the original string to limit
+ * @param number maxWords: the number of words you wish to limit to
+ * @return object: {output:string,remaining:number}
  */
-window.limitLengthInWords = function (element, maxWords) {
-	var value = element.value,
-		wordCount = value.split(/\S+/).length - 1,
-		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+window.limitLengthInWords = function (str, maxWords) {
+	var wordCount = str.split(/\S+/).length - 1;
+	var re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+	var output = "";
 	if (wordCount >= maxWords) {
-		element.value = value.match(re);
-		document.getElementById('word_count').innerHTML = "";
-		wcount_valid = true;
+		output = str.match(re);
 	} else {
-		document.getElementById('word_count').innerHTML = (maxWords - wordCount) + " words remaining";
-		wcount_valid = false;
-	}
-
-	return wcount_valid;
+    output = str;
+  }
+	return {output:output,remaining:(maxWords - wordCount)};
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
@@ -907,10 +905,9 @@ window.getAnchorFromUrl = function (url) {
 
 /**
  * @function: String.prototype.startsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: ES6 supports the startsWith(), this is for pre ES6 support
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
 if (typeof String.prototype.startsWith != 'function') {
 	String.prototype.startsWith = function (str) {
 		return this.match(new RegExp("^" + str));
@@ -919,10 +916,10 @@ if (typeof String.prototype.startsWith != 'function') {
 
 /**
  * @function: String.prototype.endsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: ES6 supports endsWith(), this is for pre ES6 support
  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
  */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
+//
 if (typeof String.prototype.endsWith != 'function') {
 	String.prototype.endsWith = function (str) {
 		return this.match(new RegExp(str + "$"));
@@ -975,7 +972,7 @@ var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")",
 
 var testRE = regExString.exec("My cow always gives milk.");
 if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
-{  
+{
     alert(testRE[1]); //is the matched group if found
 }
 */

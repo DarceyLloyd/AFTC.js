@@ -1,22 +1,20 @@
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: limitLengthInWords(str, maxWords)
+ * @desc: Limit a string in length of words
+ * @param string str: the original string to limit
+ * @param number maxWords: the number of words you wish to limit to
+ * @return object: {output:string,remaining:number}
  */
-window.limitLengthInWords = function (element, maxWords) {
-	var value = element.value,
-		wordCount = value.split(/\S+/).length - 1,
-		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+window.limitLengthInWords = function (str, maxWords) {
+	var wordCount = str.split(/\S+/).length - 1;
+	var re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+	var output = "";
 	if (wordCount >= maxWords) {
-		element.value = value.match(re);
-		document.getElementById('word_count').innerHTML = "";
-		wcount_valid = true;
+		output = str.match(re);
 	} else {
-		document.getElementById('word_count').innerHTML = (maxWords - wordCount) + " words remaining";
-		wcount_valid = false;
-	}
-
-	return wcount_valid;
+    output = str;
+  }
+	return {output:output,remaining:(maxWords - wordCount)};
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
