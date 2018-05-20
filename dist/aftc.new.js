@@ -571,7 +571,8 @@ window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 window.randomInt = function (min, max) { return getRandomInt(min, max); }
-
+window.getRandom = function (min, max) { return getRandomInt(min, max); }
+window.random = function (min, max) { return getRandomInt(min, max); }
 
 
 /**
@@ -629,7 +630,7 @@ window.generateUID = function (len) { return getUID(len); }
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
     for (var i = 0; i < arraySize; i++) {
-        arr[i] = getRandom(min, max);
+        arr[i] = getRandomInt(min, max);
     }
     return arr;
 }
