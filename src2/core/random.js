@@ -123,7 +123,7 @@ window.getGUID = function () { return guid(); }
 
 /**
  * @function: getWeightedRandom(odds, iterations)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: Get a weighted random based on odds and iterations
  * @param string odds: xxxxxxxxxxxxxxxxxxxx
  * @param string iterations: xxxxxxxxxxxxxxxxxxxx
  */
