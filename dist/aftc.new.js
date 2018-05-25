@@ -897,10 +897,11 @@ window.removeFileFromPath = function (path) {
 
 /**
  * @function: getAnchorFromUrl(url)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Get anchor from url
+ * @param string url: The url to get the anchor from
  */
 window.getAnchorFromUrl = function (url) {
+	if (!url){ url = window.location.href; }
 	return url.slice(url.lastIndexOf('#') + 1);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
