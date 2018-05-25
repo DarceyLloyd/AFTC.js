@@ -23,6 +23,7 @@ AFTC.Canvas = function () {
         id: false, canvas: false
     }
     var params = {
+        dpr: 1,
         canvas: false,
         context: false,
     };
@@ -38,6 +39,8 @@ AFTC.Canvas = function () {
             params.canvas = document.createElement("canvas");
         }
         params.context = params.canvas.getContext('2d');
+
+        params.dpr = window.devicePixelRatio || 1;
     }
 
     this.drawCircle = function (args) {
