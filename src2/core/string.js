@@ -105,11 +105,11 @@ window.rTrim = function(str,trimBy){ return trimStringBy(str,trimBy); }
 
 
 /**
- * @function: getFileExtension(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getFileExtension(input)
+ * @desc: Attempts to get the file extension from a file path string
+ * @param string str: the file path string
  */
-window.getFileExtension = function (str) {
+window.getFileExtension = function (input) {
 	var ext = str.split('.').pop();
 	return str;
 }
@@ -119,8 +119,8 @@ window.getFileExtension = function (str) {
 
 /**
  * @function: getFileExtension2(input)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Attempts to get the file extension from a file path string
+ * @param string str: the file path string
  */
 window.getFileExtension2 = function (input) {
 	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
