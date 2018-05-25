@@ -12,9 +12,9 @@ window.limitLengthInWords = function (str, maxWords) {
 	if (wordCount >= maxWords) {
 		output = str.match(re);
 	} else {
-    output = str;
-  }
-	return {output:output,remaining:(maxWords - wordCount)};
+		output = str;
+	}
+	return { output: output, remaining: (maxWords - wordCount) };
 }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
@@ -60,7 +60,7 @@ function escapeHtml(unsafe) {
  }
 */
 window.escapeHTML = function (input) {
-	if (typeof(input) != "string"){ console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
+	if (typeof (input) != "string") { console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
 
 	var replacements = {
 		"<": "&lt;",
@@ -95,10 +95,10 @@ window.setStringLength = function (input, len) {
  * @param string input: The string you want to trim
  * @param trimBy number: How many characters do you want to trim off the end
  */
-window.trimStringBy = function(str,trimBy){
-	return ( str.substring(0, str.length - trimBy) );
+window.trimStringBy = function (str, trimBy) {
+	return (str.substring(0, str.length - trimBy));
 }
-window.rTrim = function(str,trimBy){ return trimStringBy(str,trimBy); }
+window.rTrim = function (str, trimBy) { return trimStringBy(str, trimBy); }
 
 
 
@@ -136,7 +136,7 @@ window.getFileExtension2 = function (input) {
  * @param string url: url to process
  */
 window.getLastPartOfUrl = function (url) {
-	if (!url){
+	if (!url) {
 		url = window.location.href;
 	}
 	var part = url.substring(url.lastIndexOf('/') + 1);
@@ -166,15 +166,15 @@ window.removeFileFromPath = function (path) {
  * @param string url: The url to get the anchor from
  */
 window.getAnchor = function (url) {
-	if (!url){ url = window.location.href; }
-	var anchorAvailable = isInString("#",url);
-	if (anchorAvailable){
+	if (!url) { url = window.location.href; }
+	var anchorAvailable = isInString("#", url);
+	if (anchorAvailable) {
 		return url.slice(url.lastIndexOf('#') + 1);
 	} else {
 		return false;
 	}
 }
-window.getAnchorFromUrl = function(url){ return window.getAnchor(url); }
+window.getAnchorFromUrl = function (url) { return window.getAnchor(url); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -222,16 +222,54 @@ window.getStringBetween = function (str, start, end) {
 
 /**
  * @function: getAllStringsBetween(str,start,end)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Gets all strings between two other strings (multi match)
+ * @param string str: input string to check
+ * @param string start: start string marker
+ * @param string end: end string marker
  */
 window.getAllStringsBetween = function (str, start, end) {
-	//return str.match(new RegExp(start + "(.*)" + end));
-	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive
-	// return regExString.exec(str);
-	for (var i = 0; i < str.length; ++i) {
-		log(str[i]);
+	var orig = str;
+	var results = [];
+	// log(orig);
+	// log("--------");
+
+	function getBetween() {
+		// log("CHECKING: " + str);
+		var startMatchIndex = str.indexOf(start); // Find start match
+		// log("startMatchIndex: " + startMatchIndex);
+		if (startMatchIndex == -1) { return false; }
+
+		var startCutIndex = start.length + startMatchIndex; // calc start cut index
+		// log("startCutIndex: " + startCutIndex);
+
+		str = str.substring(startCutIndex, str.length); // LTrim to start cut index
+		// log("CUT: " + str);
+
+		var endMatchIndex = str.indexOf(end); // find end match index
+		// log("endMatchIndex: " + endMatchIndex);
+		if (endMatchIndex == -1) { return false; }
+
+		var between = str.substring(0, endMatchIndex); // get string between
+		// log("between: " + between);
+		var endCutIndex = end.length + endMatchIndex;
+		//log("endCutIndex: " + endCutIndex);
+		str = str.substring(endCutIndex, str.length); // cut off end string
+		//log("FINAL: " + str);
+		return between;
 	}
+	var lim = 500; // Want to loop forever? 500 seems like areasonable limit
+	var pos = 0;
+	var result = true;
+	while (pos <= lim && result != false) {
+		pos++;
+		result = getBetween();
+		if (result) {
+			//log("between["+i+"] = " + result);
+			results.push(result);
+			//log("");
+		}
+	}
+	return results;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
