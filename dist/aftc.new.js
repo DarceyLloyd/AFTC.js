@@ -883,8 +883,8 @@ window.getLastPartOfUrl = function (url) {
 
 /**
  * @function: removeFileFromPath(path)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Attempts to remove the file from a file path string
+ * @param string path: path
  */
 window.removeFileFromPath = function (path) {
 	//var pa = '/this/is/a/folder/aFile.txt';
