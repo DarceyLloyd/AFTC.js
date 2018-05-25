@@ -207,9 +207,11 @@ if (typeof String.prototype.endsWith != 'function') {
 
 
 /**
- * @function: getStringBetween(str,start,end)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getStringBetween(input,start,end)
+ * @desc: Gets a string between two other strings
+ * @param string input: input string to check
+ * @param string start: start string marker
+ * @param string end: end string marker
  */
 window.getStringBetween = function (str, start, end) {
 	return str.split(start).pop().split(end).shift().trim();
