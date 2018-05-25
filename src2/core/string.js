@@ -161,11 +161,11 @@ window.removeFileFromPath = function (path) {
 
 
 /**
- * @function: getAnchorFromUrl(url)
+ * @function: getAnchor(url)
  * @desc: Get anchor from url
  * @param string url: The url to get the anchor from
  */
-window.getAnchorFromUrl = function (url) {
+window.getAnchor = function (url) {
 	if (!url){ url = window.location.href; }
 	var anchorAvailable = isInString("#",url);
 	if (anchorAvailable){
@@ -173,8 +173,8 @@ window.getAnchorFromUrl = function (url) {
 	} else {
 		return false;
 	}
-	
 }
+window.getAnchorFromUrl = function(url){ return window.getAnchor(url); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -184,7 +184,7 @@ window.getAnchorFromUrl = function (url) {
 /**
  * @function: String.prototype.startsWith(str)
  * @desc: ES6 supports the startsWith(), this is for pre ES6 support
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @param string str: string to check
  */
 if (typeof String.prototype.startsWith != 'function') {
 	String.prototype.startsWith = function (str) {
@@ -195,7 +195,7 @@ if (typeof String.prototype.startsWith != 'function') {
 /**
  * @function: String.prototype.endsWith(str)
  * @desc: ES6 supports endsWith(), this is for pre ES6 support
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @param string str: string to check
  */
 //
 if (typeof String.prototype.endsWith != 'function') {
