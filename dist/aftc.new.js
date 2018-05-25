@@ -828,12 +828,24 @@ window.setStringLength = function (input, len) {
  * @function: trimStringBy(input, trimBy)
  * @desc: Trims the length of a string by a value
  * @param string input: The string you want to trim
- * @param trimBy number: How many characters do you want to trim off the end
+ * @param number trimBy: How many characters do you want to trim off the end
  */
 window.trimStringBy = function (str, trimBy) {
 	return (str.substring(0, str.length - trimBy));
 }
 window.rTrim = function (str, trimBy) { return trimStringBy(str, trimBy); }
+
+
+/**
+ * @function: leftTrim(str, by)
+ * @desc: Trims the left of a string by a specified amount
+ * @param string str: The string you want to trim
+ * @param number by: How many characters do you want to trim off the end
+ */
+window.lTrim = function (str, by) {
+	return str.substring(by, str.length);
+}
+window.leftTrim = function (str, by) { return lTrim(str, by); }
 
 
 
@@ -1010,25 +1022,6 @@ window.getAllStringsBetween = function (str, start, end) {
 
 
 
-
-/*
-window.getAllStringsBetween = function(str,start,end){
-	var arr = str.split(/[:;]/);
-}
-
-
-test.match(new RegExp(firstvariable + "(.*)" + secondvariable));
-
-or
-
-var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")", "ig"); //set ig flag for global search and case insensitive
-
-var testRE = regExString.exec("My cow always gives milk.");
-if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
-{
-    alert(testRE[1]); //is the matched group if found
-}
-*/
 /**
  * @function: radToDeg(input)
  * @desc: converts radians to degrees
