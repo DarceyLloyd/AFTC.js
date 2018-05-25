@@ -83,12 +83,12 @@ AFTC.Color = function () {
       b: false,
       a: false,
     };
-  
+
     if (arguments[0] && typeof (arguments[0]) == "object") {
       new AFTC.ArgsToObject(arguments[0], args);
       params.random = false;
     }
-    
+
     function initHex(){
       args.hex = args.hex.replace("#", "");
       var HexBits = args.hex.match(/.{1,2}/g)
@@ -97,7 +97,7 @@ AFTC.Color = function () {
       params.b = hexToDec(HexBits[2]);
       params.a = 1;
     }
-  
+
     function init() {
       if (params.random) {
         me.randomizeColor();
@@ -127,21 +127,21 @@ AFTC.Color = function () {
       // log(args);
       // log(params);
     }
-  
+
     function hexToDec(v) {
       return parseInt(v, 16);
     }
-  
+
     function decToHex(v) {
       var hex = v.toString(16);
       return hex.length == 1 ? "0" + hex : hex;
     }
-  
-  
-    // Utility functions 
+
+
+    // Utility functions
     function lighten(percent,r,g,b){
       var step = 255/100; // step for 255 as a %
-      
+
       function getTargetPercent(color,percent){
         var currentP = (100/255) * color;
         var targetP = currentP + percent;
@@ -154,10 +154,10 @@ AFTC.Color = function () {
       if (g){params.g = getTargetPercent(params.g,percent);}
       if (b){params.b = getTargetPercent(params.b,percent);}
     }
-    
+
     function darken(percent,r,g,b){
       var step = 255/100; // step for 255 as a %
-      
+
       function getTargetPercent(color,percent){
         var currentP = (100/255) * color;
         var targetP = currentP - percent;
@@ -170,8 +170,8 @@ AFTC.Color = function () {
       if (g){params.g = getTargetPercent(params.g,percent);}
       if (b){params.b = getTargetPercent(params.b,percent);}
     }
-    
-  
+
+
     this.lighten = function(percent,specifics){
       if (!specifics){
         lighten(percent,true,true,true);
@@ -184,9 +184,9 @@ AFTC.Color = function () {
         if (specifics.b){ enableB = specifics.b; }
         lighten(percent,specifics.r,specifics.g,specifics.b);
       }
-      
+
     }
-    
+
     this.darken = function(percent,specifics){
       if (!specifics){
         darken(percent,true,true,true);
@@ -200,8 +200,8 @@ AFTC.Color = function () {
         darken(percent,specifics.r,specifics.g,specifics.b);
       }
     }
-  
-  
+
+
     // Public function
     this.randomizeColor = function () {
       params.r = Math.round(Math.random() * 255);
@@ -209,7 +209,7 @@ AFTC.Color = function () {
       params.b = Math.round(Math.random() * 255);
       params.a = 1;
     }
-  
+
     this.getRGBSstring = function () {
       var c = "RGB(" + params.r + "," + params.g + "," + params.b + ")";
       return c;
@@ -231,10 +231,10 @@ AFTC.Color = function () {
     this.rgba = function () { return this.getRGBA(); }
     this.setRGB = function(r,g,b) { params.r = r; params.g = g; params.b = b;}
     this.setHex = function(hex){ params.x = hex; initHex(); }
-  
+
     init();
   }
-  
+
 
 
 
