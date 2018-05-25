@@ -902,7 +902,13 @@ window.removeFileFromPath = function (path) {
  */
 window.getAnchorFromUrl = function (url) {
 	if (!url){ url = window.location.href; }
-	return url.slice(url.lastIndexOf('#') + 1);
+	var anchorAvailable = isInString("#",url);
+	if (anchorAvailable){
+		return url.slice(url.lastIndexOf('#') + 1);
+	} else {
+		return false;
+	}
+	
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
