@@ -866,12 +866,14 @@ window.getFileExtension2 = function (input) {
 
 
 /**
- * @function: getLastPartOfUrl()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: getLastPartOfUrl(url)
+ * @desc: Gets the last part of a URL
+ * @param string url: url to process
  */
-window.getLastPartOfUrl = function () {
-	var url = window.location.href;
+window.getLastPartOfUrl = function (url) {
+	if (!url){
+		url = window.location.href;
+	}
 	var part = url.substring(url.lastIndexOf('/') + 1);
 	return part;
 }
