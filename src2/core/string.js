@@ -61,7 +61,7 @@ function escapeHtml(unsafe) {
 */
 window.escapeHTML = function (input) {
 	if (typeof(input) != "string"){ console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
-	
+
 	var replacements = {
 		"<": "&lt;",
 		">": "&gt;",
@@ -78,20 +78,22 @@ window.escapeHTML = function (input) {
 
 
 /**
- * @function: trimStringLength(input, length)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: setStringLength(input, len)
+ * @desc: sets the length of a string from left to right
+ * @param string input: what string do you want to set the length of?
+ * @param number length: the length you want the string to be
  */
-window.trimStringLength = function (input, length) {
-	return input.substring(0, length);
+window.trimStringLength = function (input, len) {
+	return input.substring(0, len);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 /**
  * @function: trimStringBy(input, trimBy)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Trims the length of a string by a value
+ * @param string input: The string you want to trim
+ * @param trimBy number: How many characters do you want to trim off the end
  */
 window.trimStringBy = function(str,trimBy){
 	return ( str.substring(0, str.length - trimBy) );
