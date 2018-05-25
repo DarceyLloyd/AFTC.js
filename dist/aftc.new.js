@@ -818,7 +818,7 @@ window.escapeHTML = function (input) {
  * @param string input: what string do you want to set the length of?
  * @param number length: the length you want the string to be
  */
-window.trimStringLength = function (input, len) {
+window.setStringLength = function (input, len) {
 	return input.substring(0, len);
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
