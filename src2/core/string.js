@@ -110,8 +110,8 @@ window.rTrim = function(str,trimBy){ return trimStringBy(str,trimBy); }
  * @param string str: the file path string
  */
 window.getFileExtension = function (input) {
-	var ext = str.split('.').pop();
-	return str;
+	var ext = input.split('.').pop();
+	return ext;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
