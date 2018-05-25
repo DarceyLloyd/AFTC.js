@@ -60,6 +60,8 @@ function escapeHtml(unsafe) {
  }
 */
 window.escapeHTML = function (input) {
+	if (typeof(input) != "string"){ console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
+	
 	var replacements = {
 		"<": "&lt;",
 		">": "&gt;",
@@ -67,7 +69,7 @@ window.escapeHTML = function (input) {
 		"\"": "&quot;",
 		"`": "&#039;"
 	};
-	return text.replace(/[<>&"]/g, function (character) {
+	return input.replace(/[<>&"]/g, function (character) {
 		return replacements[character];
 	});
 }
