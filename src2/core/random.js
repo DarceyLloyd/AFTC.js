@@ -13,6 +13,28 @@ window.getRandom = function (min, max) { return getRandomInt(min, max); }
 window.random = function (min, max) { return getRandomInt(min, max); }
 
 
+
+/**
+ * @function: getRandomThatsNot(min,max,not)
+ * @desc: returns a random int betwen your specified min and max values but never the not value
+ * @param number min: the minimum your random number is allowed to go
+ * @param number max: the maximum your random number is allowed to go
+ * @alias: getRandom
+ */
+window.getRandomThatsNot = function(min,max,not){
+    var r = not; var lim = 100; var runs = 0;
+    while (r==not && runs < lim){
+        runs++;
+        r = getRandomInt(min,max);
+    }
+    if (runs>=lim){
+        return false;
+    } else {
+        return r;
+    }
+}
+
+
 /**
  * @function: getRandomFloat(min,max)
  * @desc: returns a random floating point number betwen your specified min and max values

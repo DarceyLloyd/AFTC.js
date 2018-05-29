@@ -1,18 +1,14 @@
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-/**
- * @function: getHSLColor(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getHSLColor = function (value) {
-  //value from 0 to 1
-  var hue = ((1 - value) * 120).toString(10);
-  return ["hsl(", hue, ",100%,50%)"].join("");
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// /**
+//  * @function: getHSLColor(xxx)
+//  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+//  */
+// window.getHSLColor = function (value) {
+//   //value from 0 to 1
+//   var hue = ((1 - value) * 120).toString(10);
+//   return ["hsl(", hue, ",100%,50%)"].join("");
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 /**
@@ -69,7 +65,13 @@ window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
 
 
 
-
+/**
+ * @class: AFTC.Color({params})
+ * @desc: Color allows you to create, convert, lighten or darken colours and more.
+ * @param object params: parameters object
+ * @return object: [AFTC.Color]
+ * @link: https://codepen.io/AllForTheCode/pen/mLZRge
+ */
 AFTC.Color = function () {
   var me = this;
   var args = {

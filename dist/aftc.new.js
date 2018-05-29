@@ -575,6 +575,28 @@ window.getRandom = function (min, max) { return getRandomInt(min, max); }
 window.random = function (min, max) { return getRandomInt(min, max); }
 
 
+
+/**
+ * @function: getRandomThatsNot(min,max,not)
+ * @desc: returns a random int betwen your specified min and max values but never the not value
+ * @param number min: the minimum your random number is allowed to go
+ * @param number max: the maximum your random number is allowed to go
+ * @alias: getRandom
+ */
+window.getRandomThatsNot = function(min,max,not){
+    var r = not; var lim = 100; var runs = 0;
+    while (r==not && runs < lim){
+        runs++;
+        r = getRandomInt(min,max);
+    }
+    if (runs>=lim){
+        return false;
+    } else {
+        return r;
+    }
+}
+
+
 /**
  * @function: getRandomFloat(min,max)
  * @desc: returns a random floating point number betwen your specified min and max values
@@ -3586,21 +3608,17 @@ AFTC.Canvas = function () {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-/*
- * Author: Darcey.Lloyd@gmail.com
- */
-
-/**
- * @function: getHSLColor(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getHSLColor = function (value) {
-  //value from 0 to 1
-  var hue = ((1 - value) * 120).toString(10);
-  return ["hsl(", hue, ",100%,50%)"].join("");
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// /**
+//  * @function: getHSLColor(xxx)
+//  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+//  */
+// window.getHSLColor = function (value) {
+//   //value from 0 to 1
+//   var hue = ((1 - value) * 120).toString(10);
+//   return ["hsl(", hue, ",100%,50%)"].join("");
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 /**
@@ -3657,7 +3675,13 @@ window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
 
 
 
-
+/**
+ * @class: AFTC.Color({params})
+ * @desc: Color allows you to create, convert, lighten or darken colours and more.
+ * @param object params: parameters object
+ * @return object: [AFTC.Color]
+ * @link: https://codepen.io/AllForTheCode/pen/mLZRge
+ */
 AFTC.Color = function () {
   var me = this;
   var args = {
