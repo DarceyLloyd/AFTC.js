@@ -82,10 +82,18 @@ window.escapeHTML = function (input) {
  * @desc: sets the length of a string from left to right
  * @param string input: what string do you want to set the length of?
  * @param number length: the length you want the string to be
+ * @alias cutStringTo
+ * @alias cutString
+ * @alias cutStringLength
+ * @alias setStrLen
  */
-window.setStringLength = function (input, len) {
-	return input.substring(0, len);
+window.cutStringTo = function (s, len) {
+	return s.substring(0, len);
 }
+window.cutString = function (s, len) { return cutStringTo(s,len); }
+window.cutStringLength = function (s, len) { return cutStringTo(s,len); }
+window.setStrLen = function (s, len) { return cutStringTo(s,len); }
+window.setStringLength = function (s, len) { return cutStringTo(s,len); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 

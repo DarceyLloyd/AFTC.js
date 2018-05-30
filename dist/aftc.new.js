@@ -839,10 +839,18 @@ window.escapeHTML = function (input) {
  * @desc: sets the length of a string from left to right
  * @param string input: what string do you want to set the length of?
  * @param number length: the length you want the string to be
+ * @alias cutStringTo
+ * @alias cutString
+ * @alias cutStringLength
+ * @alias setStrLen
  */
-window.setStringLength = function (input, len) {
-	return input.substring(0, len);
+window.cutStringTo = function (s, len) {
+	return s.substring(0, len);
 }
+window.cutString = function (s, len) { return cutStringTo(s,len); }
+window.cutStringLength = function (s, len) { return cutStringTo(s,len); }
+window.setStrLen = function (s, len) { return cutStringTo(s,len); }
+window.setStringLength = function (s, len) { return cutStringTo(s,len); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -2291,11 +2299,12 @@ AFTC.Audio = function () {
     var me = this;
     var args = {
         url: false,
+        base64:false,
         volume: 1,
         repeat: 0,
         preload: true,
         onComplete: false,
-        offsetLoopBy: 0
+        offsetLoopBy: 0,
     };
     var params = {
         audio: false,
@@ -2380,7 +2389,7 @@ AFTC.Audio = function () {
             msg += "You are using an obsolete or incapable web browser, audio may not function correctly!\n";
 
             if (params.isIE) {
-                msg += "If you have to use a microsoft web browser please use MS Edge, however this may still not function correctly\n.";
+                msg += "If you have to use a microsoft web browser please use MS Edge, however this may still not function correctly.\n";
                 msg += "It is recommended that you use Chrome, Firefox or Opera web browsers.";
                 console.warn(msg);
             } else if (params.isEdge) {
@@ -2404,7 +2413,12 @@ AFTC.Audio = function () {
                 throw new Error("\nAFTC.Audio: USAGE ERROR: IE doesn't support OGG playback!\nPlease use MP3!");
             }
 
-            params.audio.setAttribute('src', args.url);
+
+            if (args.base64){
+                params.audio.src = args.url;
+            } else {
+                params.audio.setAttribute('src', args.url);
+            }
         }
 
     }

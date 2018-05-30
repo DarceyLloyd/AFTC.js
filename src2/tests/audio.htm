@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>darcey@aftc.io</title>
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/DarceyLloyd/AFTC.js/master/link_files/codepen.css">
+    <style>
+        .box {
+            border: 1px solid #464646;
+        }
+    </style>
+    <script src="../../dist/aftc.new.js"></script>
+    <script>
+        // Resource:
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+        // https://www.w3schools.com/jsref/dom_obj_audio.asp
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        AFTC.Audio2 = function () {
+            if (!(this instanceof arguments.callee)) {
+                var msg = "\nAFTC.Audio: USAGE ERROR: Constructor called as a function.\n";
+                msg += "Please use new AFTC.Audio({params})";
+                throw new Error(msg);
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // Accessor
+            var me = this;
+
+            // Vo's
+            var preloaderFileVo = function () {
+                var me = this;
+                this.src = false;
+                this.ext = false;
+                this.content_type = false;
+                this.base64 = false;
+                this.loaded = false;
+                this.xhr = new XMLHttpRequest();
+
+                this.load = function () {
+                    log("PRELOADING SRC: " + this.src);
+                    this.ext = getFileExtension(this.src);
+                    this.xhr.onreadystatechange = function () {
+                        // log(this.readyState);
+                        if (this.readyState == 4 && this.status == 200) {
+                            //s = new Audio(this.responseText);
+                        }
+                    };
+                    this.xhr.open("GET", this.src, true);
+                    this.xhr.send();
+                }
+
+                function loaded(e) {
+                    log("LOADED");
+                    me.loaded = true;
+                    me.content_type = me.xhr.getResponseHeader("content-type");
+                    if (isInString("text/html",me.content_type)){
+                        me.base64 = true;
+                        var partial = rTrim(me.xhr.responseText,20);
+                        log(partial);
+                    }
+                    setupSound();
+                }
+
+                this.xhr.addEventListener("load", loaded);
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // Args
+            var args = {
+                src: false,
+                base64: false,
+                cache: true,
+                volume: 1,
+                repeat: 0,
+                preload: true,
+                offsetLoopBy: 0,
+                loopByOffset: false,
+                onUpdate: false,
+                onReady: false,
+                onComplete: false,
+            };
+            new AFTC.ArgsToObject(arguments[0], args);
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            // Params
+            var params = {
+                preloader: {
+                    files: [], // array of preloaderFileVo's
+                    fileCount: 0
+                },
+                audio: false,
+                playing: false,
+                playCount: 0,
+                totalPlayCount: 0,
+                offsetLoopDuration: 0,
+                onPlayTimer: false
+            };
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            function init() {
+                // Preloader
+                setupPreloader();
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            function setupPreloader() {
+                // Preloading
+                var i;
+
+                log("args.src = " + args.src);
+
+                if (typeof (args.src) != "string") {
+                    params.preloader.fileCount = args.src.length;
+                    for (i = 0; i < args.src.length; i++) {
+                        var vo = new preloaderFileVo();
+                        vo.src = args.src[i];
+                        if (!args.cache) {
+                            vo.src = vo.src + "?r=" + getRandomInt(1, 99999999);
+                        }
+                        params.preloader.files.push(vo);
+                    }
+                } else {
+                    params.preloader.fileCount = 1;
+                    var vo = new preloaderFileVo();
+                    vo.src = args.src;
+                    if (!args.cache) {
+                        vo.src = vo.src + "?r=" + getRandomInt(1, 99999999);
+                    }
+                    params.preloader.files.push(vo);
+                }
+
+                // Preload!
+
+                for (i = 0; i < params.preloader.fileCount; i++) {
+                    var vo = params.preloader.files[i];
+                    vo.load();
+                }
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            function checkAllLoaded() {
+                var loaded = true;
+                for (i = 0; i < params.preloader.fileCount; i++) {
+                    var vo = params.preloader.files[i];
+                    if (!vo.loaded) { loaded = false; }
+                }
+                // log("checkAllLoaded(): loaded = " + loaded);
+
+                if (loaded) {
+                    setupSound();
+                }
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            function setupSound() {
+                params.audio = document.createElement('audio');
+                params.audio.volume = args.volume;
+                params.audio.preload = "auto"; // auto || metadata || none
+
+                // params.audio.addEventListener('timeupdate', onTimeUpdate, false);
+                // params.audio.addEventListener("ended", playCompleteViaEvent, false);
+                params.audio.addEventListener("canplay", function(e){
+                    log("UNABLE TO PLAY: " );
+                });
+
+                // params.audio.addEventListener("onloadeddata",function(){ log("LOADED"); }); // DOESNT WORK BUT SHOULD!
+                params.audio.onloadeddata = function () {
+                    params.loaded = true;
+                    log("onloadeddata()");
+                };
+
+                // Sounds can have multiple formats attached to them, just like video
+                if (params.preloader.fileCount > 1) {
+                    log("MUTLI");
+                    var html = "";
+                    for (var i = 0; i < params.preloader.fileCount; i++) {
+                        var vo = params.preloader.files[i];
+                        html += '<source src="' + vo.src + '" type="' + vo.content_type + '" />'
+                    }
+                    params.audio.innerHTML = html;
+                } else {
+                    log("SINGLE");
+                    var vo = params.preloader.files[0];
+                    if (vo.base64) {
+                        params.audio.src = vo.xhr.responseText;
+                    } else {
+                        params.audio.setAttribute('src', vo.src);
+                    }
+                }
+            }
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+            // Play monitor loop
+            function playBackMonitor() {
+                if (!params.playing) { return false; }
+
+                // https://www.w3schools.com/jsref/dom_obj_audio.asp
+                if (args.onUpdate) {
+                    var info = {
+                        audio: params.audio,
+                        currentSrc: params.audio.currentSrc,
+                        currentTime: params.audio.currentTime,
+                        duration: params.audio.duration,
+                        offsetLoopDuration: params.offsetLoopDuration,
+                        ended: params.audio.ended,
+                        playbackRate: params.audio.playbackRate,
+                        volume: params.audio.volume,
+                        playCount: params.playCount,
+                        totalPlayCount: params.totalPlayCount
+                    };
+                    args.onUpdate(info);
+                }
+
+                // WARNING: TRYING TO PERFORM LOOP CALCULATIONS IN THIS FUNCTION WILL FAIL
+                // FOR SOME REASON VALUES AND VARIOUS AUDIO VALUES CANNOT BE SET HERE
+                sampleCheck();
+
+                // if (!params.audio.ended){
+                //     requestAnimationFrame(playBackMonitor);
+                // }
+            }
+
+            params.t = 0;
+            function sampleCheck() {
+                params.t++;
+                //setHTML("out1","moo");
+                setHTML("out1", "t = " + params.t);
+                setHTML("out2", "params.playCount = " + params.playCount);
+                setHTML("out3", "totalPlayCount = " + (args.repeat + 1));
+                setHTML("out4", "params.audio.ended = " + params.audio.ended);
+
+                var endTime = params.audio.duration - args.offsetLoopBy;
+                if (params.audio.currentTime >= endTime) {
+                    params.playCount++;
+
+                    if (params.playCount > params.totalPlayCount) {
+                        params.audio.currentTime = 0;
+                        params.audio.play();
+                        if (params.audio.ended == true) {
+                            log("ENDED - REPLAYING!");
+                            // params.audio.currentTime = 0;
+
+                        }
+                    }
+                }
+            }
+
+
+
+            // Utility
+            function startPlaybackMonitor() {
+                params.playing = true;
+            }
+
+            // Public
+            this.play = function (time) {
+                params.offsetLoopDuration = params.audio.duration - args.offsetLoopBy;
+                params.totalPlayCount = (args.repeat + 1);
+                params.playCount = 1;
+                time ? time : time = 0; // true || false
+                log(time);
+                params.audio.currentTime = time;
+                params.playing = true;
+                params.audio.play();
+                params.onPlayTimer = setInterval(playBackMonitor, 10);
+            }
+
+            this.stop = function () {
+                clearInterval(params.onPlayTimer);
+                params.audio.pause();
+                params.onPlayTimer = false;
+                params.audio.currentTime = 0;
+                params.playing = false;
+            }
+
+            this.stop = function () {
+                clearInterval(params.onPlayTimer);
+                params.audio.pause();
+                params.onPlayTimer = false;
+                params.audio.currentTime = 0;
+                params.playing = false;
+            }
+
+            // Constructor simulation
+            init();
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        var file = "http://dev.aftc.io/utils/GetBase64StringFrom.php?src=http://dev.aftc.io/assets/sounds/beats/beat_01.wav";
+        //var file = "../beats/beat_01.wav";
+        var files = [
+            "../beats/beat_01.wav", // Chrome, Firefox, Opera, Edge
+            "../beats/beat_01.ogg", // Chrome, Firefox, Opera, Edge
+            "../beats/beat_01.mp3" // Chrome, Firefox, Opera, Edge, IE
+        ];
+        var sound1;
+
+        function setupAudioPlayer() {
+            log("setupAudioPlayer()");
+
+            sound1 = new AFTC.Audio2({
+                src: file,
+                base64: true,
+                cache: true,
+                volume: 0.4,
+                repeat: 1, // Total 2 plays
+                preload: true,
+                offsetLoopBy: 0.1,
+                loopByOffset: false,
+                onUpdate: onPlayUpdate,
+                onReady: sound1OnReady,
+                onComplete: sound1OnComplete
+            });
+
+            var btn1 = getElementById("btn1");
+            var btn2 = getElementById("btn2");
+            var btn3 = getElementById("btn3");
+            var btn4 = getElementById("btn4");
+
+            btn1.addEventListener("click", function () {
+                sound1.play();
+            });
+
+            btn2.addEventListener("click", function () {
+                sound1.pause();
+            });
+
+            btn3.addEventListener("click", function () {
+                sound1.resume();
+            });
+
+            btn4.addEventListener("click", function () {
+                sound1.stop();
+            });
+        }
+
+        function sound1OnComplete() {
+            log("Sound1 playback complete!");
+        }
+
+
+        function sound1OnReady() {
+            log("Sound1 is ready!");
+        }
+
+        function onPlayUpdate(info) {
+            var msg = "";
+            msg += info.playCount + "/" + info.totalPlayCount + " - ";
+            msg += info.playCount + "/" + info.totalPlayCount + " - ";
+            msg += info.currentTime.toFixed(3) + "/" + info.duration.toFixed(3) + " - ";
+            msg += info.offsetLoopDuration.toFixed(3);
+            setHTML("info",msg);
+        }
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        onReady(function () {
+            cls();
+            logTo("debug");
+            log("darcey@aftc.io");
+            setupAudioPlayer();
+        });
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    </script>
+</head>
+
+<body>
+    <h2>Sound Player</h2>
+    <div id="sound-player">
+        <button id="btn1">PLAY</button>
+        <button id="btn2">PAUSE</button>
+        <button id="btn3">RESUME</button>
+        <button id="btn4">STOP</button>
+        <br>
+        <div id="info" class="box"></div>
+    </div>
+    <hr>
+    <div id="out1" class="box"></div>
+    <div id="out2" class="box"></div>
+    <div id="out3" class="box"></div>
+    <div id="out4" class="box"></div>
+    <hr>
+    <h3>Please open console...</h3>
+    <div id="debug" class="box"></div>
+
+</body>
+
+</html>
