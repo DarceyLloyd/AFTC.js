@@ -249,7 +249,7 @@ function generateReadme($comments){
 <details>
     <summary><b>More information</b></summary>
 [table]
-[return]
+<b>Returns:</b> [return]
 [alias]
 </details>
 
@@ -340,10 +340,11 @@ function generateReadme($comments){
         }
 
         // Return
-        if ($commentVo->return != ""){
-            $out = str_replace("[title]",$commentVo->name,$out);
+        // out("return = " . $commentVo->return . " len = " . strlen($commentVo->return));
+        if ($commentVo->return != "" || strlen($commentVo->return) == 0){
+            $out = str_replace("[return]",$commentVo->return,$out);
         } else {
-            $out = str_replace("[title]","",$out);
+            $out = str_replace("[return]","",$out);
         }
 
 

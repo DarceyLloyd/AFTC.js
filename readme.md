@@ -100,7 +100,7 @@ Quick and easy args to object<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> null
 #### Alias's:
  - argsTo
 
@@ -132,7 +132,7 @@ Gets an element from the DOM by ID. NOTE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> html element
 #### Alias's:
  - getId
  - byId
@@ -165,7 +165,7 @@ Gets an element from the DOM via DOM Query. NOTE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> html element
 #### Alias's:
  - query
 
@@ -197,7 +197,7 @@ Gets an array of element from the DOM that have a specific name. NOTE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> array of html elements
 #### Alias's:
  - log
  - trace
@@ -230,7 +230,7 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> html elements
 #### Alias's:
  - log
  - trace
@@ -263,7 +263,7 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> array of html elements
 #### Alias's:
  - log
  - trace
@@ -296,7 +296,7 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> html elements
 #### Alias's:
  - log
  - trace
@@ -329,7 +329,7 @@ Gets an array of html elements from the DOM that has a specific tag name. NOTE<b
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> array of html elements
 #### Alias's:
  - log
  - trace
@@ -360,7 +360,7 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> html element
 #### Alias's:
  - log
  - trace
@@ -398,7 +398,7 @@ log(MyClass);
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - log
  - trace
@@ -432,7 +432,7 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - window.log.enable();
 
@@ -464,7 +464,7 @@ Enables log and trace<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - window.log.enable();
 
@@ -497,7 +497,7 @@ Enables log and trace<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - window.log.disable();
 
@@ -530,7 +530,7 @@ open a popup window with the html you wish to display in it<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - stringToWindow
 
@@ -575,7 +575,7 @@ Shortcut for adding events with old browser compatibility<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - ready
 
@@ -605,7 +605,7 @@ Replacement for jQuerys $(document).ready<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - ready
 
@@ -640,7 +640,7 @@ remove a specified index from an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> array
 #### Alias's:
  - arrayClear
 
@@ -675,7 +675,7 @@ Check to see if a string is in an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayClear
 
@@ -710,7 +710,7 @@ Check to see if your array contains something you want to find<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayClear
 
@@ -740,7 +740,7 @@ clears/empties an array for garbage collection<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayClear
 
@@ -770,7 +770,7 @@ returns the maximum value in an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayGetMax
  - arrayMax
@@ -801,7 +801,7 @@ returns the minimum value in an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getMinFromArray
  - arrayMin
@@ -832,7 +832,7 @@ shuffles an array (method 1)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - shuffle
  - arrayShuffle
@@ -863,7 +863,7 @@ shuffles an array (method 2)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - shuffle2
  - arrayShuffle2
@@ -894,7 +894,7 @@ takes an input and returns it as index[0] of an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - valueToArray
 
@@ -924,7 +924,7 @@ tries to get the function name of a suppled function<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -959,7 +959,7 @@ check for string in string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -989,7 +989,7 @@ check if input is even<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1019,7 +1019,7 @@ check if input is odd<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1049,7 +1049,7 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1079,7 +1079,7 @@ checks if your variable is an element or not<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1109,7 +1109,7 @@ checks to see if your vairable is an element or not<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1139,7 +1139,7 @@ checks to see if your variable is a DOM object<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1169,7 +1169,7 @@ checks if a variable is a boolean<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isBool
 
@@ -1199,7 +1199,7 @@ check if variable is numeric<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - isNumber
 
@@ -1229,7 +1229,7 @@ check if variable is an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getRandom
 
@@ -1264,7 +1264,7 @@ returns a random number / int betwen your specified min and max values<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getRandom
 
@@ -1299,7 +1299,7 @@ returns a random int betwen your specified min and max values but never the not 
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getRandom
 
@@ -1334,7 +1334,7 @@ returns a random floating point number betwen your specified min and max values<
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getRandomString
 
@@ -1364,7 +1364,7 @@ get a random string of a specified length<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getRandomString
 
@@ -1394,7 +1394,7 @@ Generates a random id<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getUID
  - generateUID
@@ -1435,7 +1435,7 @@ generate an array of random number between your max and min values<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getGUID
 
@@ -1470,7 +1470,7 @@ generate an array of random string of a specified length<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getGUID
 
@@ -1505,7 +1505,7 @@ generates a guid<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getGUID
 
@@ -1540,7 +1540,7 @@ Get a weighted random based on odds and iterations<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - 
  - 
@@ -1578,7 +1578,7 @@ Limit a string in length of words<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> {output
 #### Alias's:
  - 
  - 
@@ -1611,7 +1611,7 @@ Attempts to clean a json string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - 
  - 
@@ -1644,7 +1644,7 @@ Attempts to escape a html string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - 
  - 
@@ -1682,7 +1682,7 @@ sets the length of a string from left to right<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - 
  - 
@@ -1720,7 +1720,7 @@ Trims the length of a string by a value<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1755,7 +1755,7 @@ Trims the left of a string by a specified amount<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1785,7 +1785,7 @@ Attempts to get the file extension from a file path string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1815,7 +1815,7 @@ Attempts to get the file extension from a file path string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1845,7 +1845,7 @@ Gets the last part of a URL<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1875,7 +1875,7 @@ Attempts to remove the file from a file path string<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1905,7 +1905,7 @@ Get anchor from url<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1935,7 +1935,7 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -1965,7 +1965,7 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -2005,7 +2005,7 @@ Gets a string between two other strings<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -2045,7 +2045,7 @@ Gets all strings between two other strings (multi match)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -2075,7 +2075,7 @@ converts radians to degrees<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - rad2deg
 
@@ -2105,7 +2105,7 @@ converts degrees to radians<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - deg2rad
 
@@ -2135,7 +2135,7 @@ Converts a number to hex<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> hexidecimal value
 #### Alias's:
  - arrayToFloat
 
@@ -2165,7 +2165,7 @@ converts boolean to a string of true or false<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToFloat
 
@@ -2195,7 +2195,7 @@ converts a boolean to yes or no<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToFloat
 
@@ -2225,7 +2225,7 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToFloat
 
@@ -2255,7 +2255,7 @@ converts an input to a boolean<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToFloat
 
@@ -2285,7 +2285,7 @@ parses all values in array to float<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToFloat
 
@@ -2315,7 +2315,7 @@ parses all values in array to float<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - arrayToInt
 
@@ -2345,7 +2345,7 @@ takes an input and returns it as index[0] of an array<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - convertToArray
  - valueToArray
@@ -2381,7 +2381,7 @@ Gets the number of whole days between a start and end date<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - getNoOfDaysBetween
  - getDaysBetweenDates
@@ -2412,7 +2412,7 @@ Formats a date in the UK format<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2442,7 +2442,7 @@ Formats a date in the US format<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2472,7 +2472,7 @@ get a uk date from a mysql db date value<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2502,7 +2502,7 @@ get a uk date from a mysql db date time value<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2532,7 +2532,7 @@ gets the date time now for sql insert<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2562,7 +2562,7 @@ gets the date time at a specified local<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2592,7 +2592,7 @@ Validats an email address<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2622,7 +2622,7 @@ isMobile<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2652,7 +2652,7 @@ Detects FireFox<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2682,7 +2682,7 @@ Detects Chrome<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2712,7 +2712,7 @@ Detects Edge<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2742,7 +2742,7 @@ Detects Safari<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2772,7 +2772,7 @@ Detects IE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2802,7 +2802,7 @@ Detects Opera<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2832,7 +2832,7 @@ Gets version of IE<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2862,7 +2862,7 @@ Detects browser<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2892,7 +2892,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2933,7 +2933,7 @@ setHTML(myElement,"Welcome!");
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 #### Alias's:
  - html
 
@@ -2963,7 +2963,7 @@ Gets an elements top offset<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -2991,7 +2991,7 @@ Center element that is absolute positioned<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3024,7 +3024,7 @@ shortcut to add a css class to a html element<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3057,7 +3057,7 @@ shortcut to remove a class from a html element<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3090,7 +3090,7 @@ Check to see if an element has a class attached to it<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3118,7 +3118,7 @@ no more typing self.location.href, just use redirect(url)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3151,7 +3151,7 @@ Sets a cookie by name with a value<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3179,7 +3179,7 @@ Gets the value of a cookie by name<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3207,7 +3207,7 @@ Checks to if checkbox is checked or not<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3235,7 +3235,7 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3263,7 +3263,7 @@ Removes all the options in a select<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3306,7 +3306,7 @@ parses a json object of key value pairs to a form select element<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3339,7 +3339,7 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3379,7 +3379,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3414,7 +3414,7 @@ fades in an element over a specified duration<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3447,7 +3447,7 @@ fades out an element over a specified duration<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3485,7 +3485,7 @@ Scroll to element on page<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3520,7 +3520,7 @@ Scroll to element on page<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3558,7 +3558,7 @@ Scroll to element on page<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3596,7 +3596,7 @@ rgb to hex<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> hex color
 [alias]
 </details>
 
@@ -3634,7 +3634,7 @@ rgb to hex<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> hex color
 [alias]
 </details>
 
@@ -3662,7 +3662,7 @@ hexToRgb<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> rgb color
 [alias]
 </details>
 
@@ -3690,7 +3690,7 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> [AFTC.Color]
 [alias]
 </details>
 
@@ -3735,7 +3735,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
@@ -3780,7 +3780,7 @@ Quick and easy xhr/ajax<br>
 	</tr>
 </table>
 
-[return]
+<b>Returns:</b> 
 [alias]
 </details>
 
