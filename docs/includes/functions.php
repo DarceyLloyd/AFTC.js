@@ -120,6 +120,8 @@ function getAnchors($path){
         }
     }
 
+    $out .= "<br><br><hr><br><br>";
+
     return $out;
 }
 
@@ -305,96 +307,96 @@ function generateReadme($comments){
 
     $out = "";
     foreach ($comments as $key => $commentVo) {
-        $out .= $comment_template;
-        // trace($commentVo->name);
-
-        // Title
-        $out = str_replace("[title]",$commentVo->name,$out);
-
-        // Description
-        $desc = "";
-        $code_started = false;
-        foreach ($commentVo->desc as $line) {
-            if (isInString("````",$line)){
-                if (!$code_started){
-                    // code comment open
-                    $code_started = true;
-                    $desc .= "\n" . $line . "\n";
+        if (strlen($commentVo->name) > 0){
+            $out .= $comment_template;
+            // trace($commentVo->name);
+    
+            // Title
+            $out = str_replace("[title]",$commentVo->name,$out);
+    
+            // Description
+            $desc = "";
+            $code_started = false;
+            foreach ($commentVo->desc as $line) {
+                if (isInString("````",$line)){
+                    if (!$code_started){
+                        // code comment open
+                        $code_started = true;
+                        $desc .= "\n" . $line . "\n";
+                    } else {
+                        // code comment close
+                        $code_started = false;
+                        $desc .= "````";
+                    }
                 } else {
-                    // code comment close
-                    $code_started = false;
-                    $desc .= "````";
+                    if ($code_started){
+                        // inner code comment (not 1st and not last)
+                        $desc .= $line . "\n";
+                    } else {
+                        // Standard description line
+                        $desc .= $line . "<br>";
+                    }
                 }
+            }
+            $out = str_replace("[desc]",$desc,$out);
+    
+            // Links
+            if (count($commentVo->links)>0){
+                // out("LINKS FOUND = " . count($commentVo->links));
+                // print_r($commentVo->links);
+                $links = "#### Usage examples:\n";
+                $cnt = 0;
+                foreach ($commentVo->links as $link) {
+                    // trace($link);
+                    $cnt ++;
+                    $html_link = "Usage example " . $cnt;
+                    $links .= " - <a href='" . $link . "' target='_blank'>" . $link . "</a>\n";
+                }
+                $out = str_replace("[links]",$links,$out);
             } else {
-                if ($code_started){
-                    // inner code comment (not 1st and not last)
-                    $desc .= $line . "\n";
-                } else {
-                    // Standard description line
-                    $desc .= $line . "<br>";
-                }
+                $out = str_replace("[links]","",$out);
             }
-        }
-        $out = str_replace("[desc]",$desc,$out);
-
-        // Links
-        if (count($commentVo->links)>0){
-            // out("LINKS FOUND = " . count($commentVo->links));
-            // print_r($commentVo->links);
-            $links = "#### Usage examples:\n";
-            $cnt = 0;
-            foreach ($commentVo->links as $link) {
-                // trace($link);
-                $cnt ++;
-                $html_link = "Usage example " . $cnt;
-                $links .= " - <a href='" . $link . "' target='_blank'>" . $link . "</a>\n";
-            }
-            $out = str_replace("[links]",$links,$out);
-        } else {
-            $out = str_replace("[links]","",$out);
-        }
-
-        // Params table
-        if (count($commentVo->params)>0){
-            $table = "\n";
-            $table .= " #### Parameters: \n";
-            $table .= "<table>\n";
-            $table .= "\t<tr>\n";
-                $table .= "\t\t<th>Name</th>" . "\n";
-                $table .= "\t\t<th>Type</th>" . "\n";
-                $table .= "\t\t<th>Description</th>" . "\n";
-            $table .= "\t</tr>\n";
-            foreach ($commentVo->params as $param) {
+    
+            // Params table
+            if (count($commentVo->params)>0){
+                $table = "\n";
+                $table .= " #### Parameters: \n";
+                $table .= "<table>\n";
                 $table .= "\t<tr>\n";
-                $table .= "\t\t<td>" . $param->name . "</td>" . "\n";
-                $table .= "\t\t<td>" . $param->data_type . "</td>" . "\n";
-                $table .= "\t\t<td>" . $param->desc . "</td>" . "\n";
+                    $table .= "\t\t<th>Name</th>" . "\n";
+                    $table .= "\t\t<th>Type</th>" . "\n";
+                    $table .= "\t\t<th>Description</th>" . "\n";
                 $table .= "\t</tr>\n";
+                foreach ($commentVo->params as $param) {
+                    $table .= "\t<tr>\n";
+                    $table .= "\t\t<td>" . $param->name . "</td>" . "\n";
+                    $table .= "\t\t<td>" . $param->data_type . "</td>" . "\n";
+                    $table .= "\t\t<td>" . $param->desc . "</td>" . "\n";
+                    $table .= "\t</tr>\n";
+                }
+                $table .= "</table>\n";
+                $out = str_replace("[table]",$table,$out);
             }
-            $table .= "</table>\n";
-            $out = str_replace("[table]",$table,$out);
-        }
-
-        // Alias
-        if (count($commentVo->alias)>0){
-            $alias = "#### Alias's:\n";
-            foreach ($commentVo->alias as $alt) {
-                $alias .= " - " . $alt . "\n";
+    
+            // Alias
+            if (count($commentVo->alias)>0){
+                $alias = "#### Alias's:\n";
+                foreach ($commentVo->alias as $alt) {
+                    $alias .= " - " . $alt . "\n";
+                }
+                $out = str_replace("[alias]",$alias,$out);
             }
-            $out = str_replace("[alias]",$alias,$out);
-        }
+    
+            // Return
+            // out("return = " . $commentVo->return . " len = " . strlen($commentVo->return));
+            if ($commentVo->return != "" || strlen($commentVo->return) == 0){
+                $out = str_replace("[return]",$commentVo->return,$out);
+            } else {
+                $out = str_replace("[return]","",$out);
+            }
+        } // END - if ($commentVo->$name != ""){
 
-        // Return
-        // out("return = " . $commentVo->return . " len = " . strlen($commentVo->return));
-        if ($commentVo->return != "" || strlen($commentVo->return) == 0){
-            $out = str_replace("[return]",$commentVo->return,$out);
-        } else {
-            $out = str_replace("[return]","",$out);
-        }
-
-
-
-    } // Exit for loop
+    } // END - foreach ($comments as $key => $commentVo) {
     //echo($out);
 
     // file_put_contents("./docs.md",$out);

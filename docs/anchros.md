@@ -116,3 +116,4 @@
  <a href='#tohexnum'>toHex(num)</a><br>
  <a href='#trimstringbyinputtrimby'>trimStringBy(input, trimBy)</a><br>
  <a href='#validateemailemail'>validateEmail(email)</a><br>
+<br><br><hr><br><br>

@@ -187,43 +187,7 @@ var aftc_modules = [
  <a href='#tohexnum'>toHex(num)</a><br>
  <a href='#trimstringbyinputtrimby'>trimStringBy(input, trimBy)</a><br>
  <a href='#validateemailemail'>validateEmail(email)</a><br>
-
-### <b></b>
-
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementORstring</td>
-		<td>elementOrId</td>
-		<td>The elemnt or id of the html element to add a css class to</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>className</td>
-		<td>the class name to add</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - log
- - trace
-
-</details>
-
-
-
-<hr><br><br><br>
-    
+<br><br><hr><br><br>
 ### <b>addClass(elementOrId,classname)</b>
 shortcut to add a css class to a html element<br>
 
