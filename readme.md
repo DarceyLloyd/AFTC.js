@@ -209,8 +209,8 @@ var aftc_modules = [
 #### Browse on codepen
 <a href='https://codepen.io/AllForTheCode/pens/public/?grid_type=list' target='_blank'>https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 <br><br><hr><br><br>
-### <b>addClass(elementOrId,classname)</b>
-Add a css class to a html element<br>
+### <b>argsToObject(fArgs, obj, strict)</b>
+Quick and easy args to object<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -223,86 +223,36 @@ Add a css class to a html element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>elementOrId</td>
-		<td>elementORstring</td>
-		<td>The elemnt or id of the html element to add a css class to</td>
-	</tr>
-	<tr>
-		<td>className</td>
-		<td>string</td>
-		<td>the class name to add</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - 
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxvYmW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvYmW</a>
-
-
-<hr><br><br><br>
-    
-### <b>addEvent(obj,type,fn,useCapture)</b>
-Shortcut for adding events with old browser compatibility<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
+		<td>args</td>
+		<td>object</td>
+		<td>arguments (from the function structure, typically code will always be 'arguments'</td>
 	</tr>
 	<tr>
 		<td>obj</td>
 		<td>object</td>
-		<td>The object you wish to attach the event listener to</td>
+		<td>object to parse into</td>
 	</tr>
 	<tr>
-		<td>type</td>
-		<td>string</td>
-		<td>The event type (e.type) mousedown, mouseup, click etc</td>
-	</tr>
-	<tr>
-		<td>fn</td>
-		<td>function</td>
-		<td>The function to call when the event is triggered</td>
-	</tr>
-	<tr>
-		<td>useCapture</td>
+		<td>strict</td>
 		<td>boolean</td>
-		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
+		<td>console.warn any args that have been supplied that don't exist in args</td>
 	</tr>
 </table>
 
-<b>Returns:</b> 
+<b>Returns:</b> null
 #### Alias's:
- - log
- - trace
+ - argsTo
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/VxExLg' target='_blank'>https://codepen.io/AllForTheCode/pen/VxExLg</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
 
 
 <hr><br><br><br>
     
-### <b>AFTC.Animate(elementId, onComplete)</b>
-Quick and easy css animation for nearly every css element style<br>
-````
-var anim1 = new AFTC.Animate("box1", onCompleteFunction);
-anim1.wait(2); // wait in 2 seconds
-anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
-anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
-anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
-````
+### <b>getElementById(id)</b>
+Gets an element from the DOM by ID. NOTE<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -315,75 +265,27 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>s</td>
-		<td>src</td>
-		<td>String or Array of urls/paths to sound files</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>cache</td>
-		<td>To cache or not to cache</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>volume</td>
-		<td>0 to 1</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>repeat</td>
-		<td>-1 forever, 0 play once only, or the number of times to repeat</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>preload</td>
-		<td>true or false</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>offsetLoopBy</td>
-		<td>the sample offset from the end that you wish to loop by can help remove loop gaps</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onUpdate</td>
-		<td>the function you wish to run when your sound is playing provides and info object</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onReady</td>
-		<td>the function you wish to run when your sound is ready and can play</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onComplete</td>
-		<td>the function you wish to run when your sound has finished playing</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>hideWarnings</td>
-		<td>hides notices in console for compatibility issues when not using mp3 etc</td>
+		<td>id</td>
+		<td>string</td>
+		<td>The ID of the DOM element you wish to find</td>
 	</tr>
 </table>
 
-<b>Returns:</b> 
+<b>Returns:</b> html element
 #### Alias's:
- - log
- - trace
+ - getId
+ - byId
 
 </details>
 
 #### Usage examples:
- - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
- - <a href='https://codepen.io/AllForTheCode/pen/MXYGob' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYGob</a>
- - <a href='https://codepen.io/AllForTheCode/pen/MXYPqq' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYPqq</a>
- - <a href='https://codepen.io/AllForTheCode/pen/xzbymv' target='_blank'>https://codepen.io/AllForTheCode/pen/xzbymv</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/PedyNO' target='_blank'>https://codepen.io/AllForTheCode/pen/PedyNO</a>
 
 
 <hr><br><br><br>
     
-### <b>AFTC.Audio({options})</b>
-An audio player with preloading capabilities, looping abilities and loop offset capabilities<br>
+### <b>querySelector(query)</b>
+Gets an element from the DOM via DOM Query. NOTE<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -396,72 +298,26 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>s</td>
-		<td>src</td>
-		<td>String or Array of urls/paths to sound files</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>cache</td>
-		<td>To cache or not to cache</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>volume</td>
-		<td>0 to 1</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>repeat</td>
-		<td>-1 forever, 0 play once only, or the number of times to repeat</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>preload</td>
-		<td>true or false</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>offsetLoopBy</td>
-		<td>the sample offset from the end that you wish to loop by can help remove loop gaps</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onUpdate</td>
-		<td>the function you wish to run when your sound is playing provides and info object</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onReady</td>
-		<td>the function you wish to run when your sound is ready and can play</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>onComplete</td>
-		<td>the function you wish to run when your sound has finished playing</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>hideWarnings</td>
-		<td>hides notices in console for compatibility issues when not using mp3 etc</td>
+		<td>query</td>
+		<td>string</td>
+		<td>The DOM Query / css element path you wish to find</td>
 	</tr>
 </table>
 
-<b>Returns:</b> 
+<b>Returns:</b> html element
 #### Alias's:
- - log
- - trace
+ - query
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/NzWrvm' target='_blank'>https://codepen.io/AllForTheCode/pen/NzWrvm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MGqPrN' target='_blank'>https://codepen.io/AllForTheCode/pen/MGqPrN</a>
 
 
 <hr><br><br><br>
     
-### <b>AFTC.Color({params})</b>
-Color allows you to create, convert, lighten or darken colours and more.<br>
+### <b>getElementsByName(name)</b>
+Gets an array of element from the DOM that have a specific name. NOTE<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -474,13 +330,13 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>object</td>
-		<td>params</td>
-		<td>parameters object</td>
+		<td>name</td>
+		<td>string</td>
+		<td>The name of the DOM element you wish to find</td>
 	</tr>
 </table>
 
-<b>Returns:</b> [AFTC.Color]
+<b>Returns:</b> array of html elements
 #### Alias's:
  - log
  - trace
@@ -488,7 +344,168 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
+
+
+<hr><br><br><br>
+    
+### <b>getElementByName(name)</b>
+Gets the first element from the DOM that has a specific name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>The name of the DOM element you wish to find</td>
+	</tr>
+</table>
+
+<b>Returns:</b> html elements
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
+
+
+<hr><br><br><br>
+    
+### <b>getElementsByClassName(className)</b>
+Gets an array of html elements from the DOM that have a specific class name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>className</td>
+		<td>string</td>
+		<td>The class the DOM element(s) use you wish to find</td>
+	</tr>
+</table>
+
+<b>Returns:</b> array of html elements
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
+
+
+<hr><br><br><br>
+    
+### <b>getElementByClassName(className)</b>
+Gets the first html element from the DOM that has a specific class name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>className</td>
+		<td>string</td>
+		<td>The class name the DOM element uses you wish to find</td>
+	</tr>
+</table>
+
+<b>Returns:</b> html elements
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
+
+
+<hr><br><br><br>
+    
+### <b>getElementsByTagName(tagName)</b>
+Gets an array of html elements from the DOM that has a specific tag name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+<b>Returns:</b> array of html elements
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>getElementByTagName(tagName)</b>
+Gets the first html element from the DOM that has a specific tag name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+<b>Returns:</b> html element
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
 
 
 <hr><br><br><br>
@@ -534,8 +551,8 @@ log(MyClass);
 
 <hr><br><br><br>
     
-### <b>AFTC.Point(x,y)</b>
-2D Point<br>
+### <b>logTo(element)</b>
+Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -548,31 +565,26 @@ log(MyClass);
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>x</td>
-		<td>number</td>
-		<td>x coordinate</td>
-	</tr>
-	<tr>
-		<td>y</td>
-		<td>number</td>
-		<td>y coordinate</td>
+		<td>element</td>
+		<td>string</td>
+		<td>The id of html element you wish to console.log to</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - argsTo
+ - window.log.enable();
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/qYLzzm' target='_blank'>https://codepen.io/AllForTheCode/pen/qYLzzm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 
 <hr><br><br><br>
     
-### <b>AFTC.Rectangle(x, y, w, h)</b>
-Rectangle class, allos you to set x, y, width and height or a rectangle<br>
+### <b>logEnable()</b>
+Enables log and trace<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -585,78 +597,27 @@ Rectangle class, allos you to set x, y, width and height or a rectangle<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>x</td>
-		<td>number</td>
-		<td>x coordinate</td>
-	</tr>
-	<tr>
-		<td>y</td>
-		<td>number</td>
-		<td>y coordinate</td>
-	</tr>
-	<tr>
-		<td>w</td>
-		<td>number</td>
-		<td>w width</td>
-	</tr>
-	<tr>
-		<td>h</td>
-		<td>number</td>
-		<td>h height</td>
-	</tr>
-</table>
-
-<b>Returns:</b> AFTC.Rectangle
-#### Alias's:
- - argsTo
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/JvQRKg' target='_blank'>https://codepen.io/AllForTheCode/pen/JvQRKg</a>
-
-
-<hr><br><br><br>
-    
-### <b>AFTC.Velocity(vx,vy)</b>
-AFTC.Velocity class helper<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>vx</td>
-		<td>number</td>
-		<td>velocity vector x</td>
-	</tr>
-	<tr>
-		<td>vy</td>
-		<td>number</td>
-		<td>velocity vector y</td>
+		<td>html</td>
+		<td>string</td>
+		<td>the html you wish to display in the popup window</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - argsTo
+ - window.log.enable();
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/erxRBo' target='_blank'>https://codepen.io/AllForTheCode/pen/erxRBo</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 
 <hr><br><br><br>
     
-### <b>AFTC.XHR({options})</b>
-Quick and easy xhr/ajax<br>
+### <b>logDisable()</b>
+Disables log and trace<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -669,37 +630,173 @@ Quick and easy xhr/ajax<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>args</td>
-		<td>object</td>
-		<td>arguments (from the function structure, typically code will always be 'arguments'</td>
+		<td>html</td>
+		<td>string</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - window.log.disable();
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+
+<hr><br><br><br>
+    
+### <b>logToDisable()</b>
+Disables log and trace to a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>html</td>
+		<td>string</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - disableLogTo();
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+
+<hr><br><br><br>
+    
+### <b>cls()</b>
+Clears the console if supported<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>html</td>
+		<td>string</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - clearLog();
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+
+<hr><br><br><br>
+    
+### <b>openDebugWindow(html)</b>
+open a popup window with the html you wish to display in it<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>html</td>
+		<td>string</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - stringToWindow
+ - htmlToWindow
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
+
+
+<hr><br><br><br>
+    
+### <b>addEvent(obj,type,fn,useCapture)</b>
+Shortcut for adding events with old browser compatibility<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
 	</tr>
 	<tr>
 		<td>obj</td>
 		<td>object</td>
-		<td>object to parse into</td>
+		<td>The object you wish to attach the event listener to</td>
 	</tr>
 	<tr>
-		<td>strict</td>
+		<td>type</td>
+		<td>string</td>
+		<td>The event type (e.type) mousedown, mouseup, click etc</td>
+	</tr>
+	<tr>
+		<td>fn</td>
+		<td>function</td>
+		<td>The function to call when the event is triggered</td>
+	</tr>
+	<tr>
+		<td>useCapture</td>
 		<td>boolean</td>
-		<td>console.warn any args that have been supplied that don't exist in args</td>
+		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - argsTo
+ - ready
 
 </details>
 
 #### Usage examples:
- - <a href='* @params seelink seelink : please review link' target='_blank'>* @params seelink seelink : please review link</a>
- - <a href='https://codepen.io/AllForTheCode/pen/dKodKx' target='_blank'>https://codepen.io/AllForTheCode/pen/dKodKx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/VxExLg' target='_blank'>https://codepen.io/AllForTheCode/pen/VxExLg</a>
 
 
 <hr><br><br><br>
     
-### <b>argsToObject(fArgs, obj, strict)</b>
-Quick and easy args to object<br>
+### <b>onReady(fn)</b>
+A replacement for using body onload and no need for jQuery's $(document).ready<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -712,30 +809,94 @@ Quick and easy args to object<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>args</td>
-		<td>object</td>
-		<td>arguments (from the function structure, typically code will always be 'arguments'</td>
-	</tr>
-	<tr>
-		<td>obj</td>
-		<td>object</td>
-		<td>object to parse into</td>
-	</tr>
-	<tr>
-		<td>strict</td>
-		<td>boolean</td>
-		<td>console.warn any args that have been supplied that don't exist in args</td>
+		<td>fn</td>
+		<td>function</td>
+		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
 	</tr>
 </table>
 
-<b>Returns:</b> null
+<b>Returns:</b> 
 #### Alias's:
- - argsTo
+ - ready
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/GdYxVa' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYxVa</a>
+
+
+<hr><br><br><br>
+    
+### <b>arrayRemoveIndex(arr,index)</b>
+remove a specified index from an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>arr</td>
+		<td>array</td>
+		<td>the array you wish to remove an index on</td>
+	</tr>
+	<tr>
+		<td>index</td>
+		<td>number</td>
+		<td>the array index you wish to remove</td>
+	</tr>
+</table>
+
+<b>Returns:</b> array
+#### Alias's:
+ - isInArray
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLzyGP' target='_blank'>https://codepen.io/AllForTheCode/pen/mLzyGP</a>
+
+
+<hr><br><br><br>
+    
+### <b>isStringInArray(needle,haystack)</b>
+Check to see if a string is in an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>needle</td>
+		<td>string</td>
+		<td>what you want to search for in each array index</td>
+	</tr>
+	<tr>
+		<td>haystack</td>
+		<td>string</td>
+		<td>the array you want to search</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isInArray
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrZrBM' target='_blank'>https://codepen.io/AllForTheCode/pen/QrZrBM</a>
 
 
 <hr><br><br><br>
@@ -809,6 +970,39 @@ clears/empties an array for garbage collection<br>
 
 <hr><br><br><br>
     
+### <b>getMaxFromArray(arr)</b>
+returns the maximum value in an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to find the maximum value in</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - arrayGetMax
+ - arrayMax
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdYGjW' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYGjW</a>
+
+
+<hr><br><br><br>
+    
 ### <b>arrayGetMin(arr)</b>
 returns the minimum value in an array<br>
 
@@ -838,44 +1032,6 @@ returns the minimum value in an array<br>
 
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/bMmKBa' target='_blank'>https://codepen.io/AllForTheCode/pen/bMmKBa</a>
-
-
-<hr><br><br><br>
-    
-### <b>arrayRemoveIndex(arr,index)</b>
-remove a specified index from an array<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>arr</td>
-		<td>array</td>
-		<td>the array you wish to remove an index on</td>
-	</tr>
-	<tr>
-		<td>index</td>
-		<td>number</td>
-		<td>the array index you wish to remove</td>
-	</tr>
-</table>
-
-<b>Returns:</b> array
-#### Alias's:
- - shuffle
- - arrayShuffle
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/mLzyGP' target='_blank'>https://codepen.io/AllForTheCode/pen/mLzyGP</a>
 
 
 <hr><br><br><br>
@@ -978,167 +1134,6 @@ Converts an array to a single line string (usefull for debug)<br>
 
 <hr><br><br><br>
     
-### <b>boolToString(bool)</b>
-converts boolean to a string of true or false<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>boolean</td>
-		<td>the boolean you wish to convert</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - clearLog();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/PeXEbg' target='_blank'>https://codepen.io/AllForTheCode/pen/PeXEbg</a>
-
-
-<hr><br><br><br>
-    
-### <b>boolToYesNo(bool)</b>
-converts a boolean to yes or no<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>boolean</td>
-		<td>the boolean you wish to convert</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - clearLog();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/zjypZz' target='_blank'>https://codepen.io/AllForTheCode/pen/zjypZz</a>
-
-
-<hr><br><br><br>
-    
-### <b>centerAbsoluteElement(elementId)</b>
-Center element that is absolute positioned<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementId</td>
-		<td>string</td>
-		<td>element or id of element to center</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - clearLog();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ZRGabV' target='_blank'>https://codepen.io/AllForTheCode/pen/ZRGabV</a>
-
-
-<hr><br><br><br>
-    
-### <b>cleanJSONString(s)</b>
-Attempts to clean a json string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>string</td>
-		<td>input string</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - clearLog();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxMRER' target='_blank'>https://codepen.io/AllForTheCode/pen/BxMRER</a>
-
-
-<hr><br><br><br>
-    
-### <b>cls()</b>
-Clears the console if supported<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>val</td>
-		<td>*</td>
-		<td>value to make into array an array</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - clearLog();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-<hr><br><br><br>
-    
 ### <b>convertToArray(val)</b>
 takes an input and returns it as index[0] of an array<br>
 
@@ -1171,845 +1166,6 @@ takes an input and returns it as index[0] of an array<br>
 
 <hr><br><br><br>
     
-### <b>cutStringTo(input, len)</b>
-sets the length of a string from left to right<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>string</td>
-		<td>what string do you want to set the length of?</td>
-	</tr>
-	<tr>
-		<td>length</td>
-		<td>number</td>
-		<td>the length you want the string to be</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - cutStringTo
- - cutString
- - cutStringLength
- - setStrLen
- - trimStringLength
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/VxJKEm' target='_blank'>https://codepen.io/AllForTheCode/pen/VxJKEm</a>
-
-
-<hr><br><br><br>
-    
-### <b>cycle(pos, max)</b>
-cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>pos</td>
-		<td>number</td>
-		<td>position of max</td>
-	</tr>
-	<tr>
-		<td>max</td>
-		<td>number</td>
-		<td>max number to cycle to</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - deg2rad
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxMZBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/BxMZBZ</a>
-
-
-<hr><br><br><br>
-    
-### <b>degToRad(input)</b>
-converts degrees to radians<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>input</td>
-		<td>the value you wish converted to radians</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - deg2rad
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/jxXYbE' target='_blank'>https://codepen.io/AllForTheCode/pen/jxXYbE</a>
-
-
-<hr><br><br><br>
-    
-### <b>escapeHTML(input)</b>
-Attempts to escape a html string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>string</td>
-		<td>the string you wish to escape</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/PerGRJ' target='_blank'>https://codepen.io/AllForTheCode/pen/PerGRJ</a>
-
-
-<hr><br><br><br>
-    
-### <b>exitFullScreen()</b>
-Exits full screen mode<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>input string to check</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>start</td>
-		<td>start string marker</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>end</td>
-		<td>end string marker</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
-
-
-<hr><br><br><br>
-    
-### <b>getAllStringsBetween(str,start,end)</b>
-Gets all strings between two other strings (multi match)<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>input string to check</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>start</td>
-		<td>start string marker</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>end</td>
-		<td>end string marker</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
-
-
-<hr><br><br><br>
-    
-### <b>getAnchor(url)</b>
-Get anchor from url<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>url</td>
-		<td>The url to get the anchor from</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
-
-
-<hr><br><br><br>
-    
-### <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
-generate an array of random number between your max and min values<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>arraySize</td>
-		<td>number</td>
-		<td>the number of random numbers to generate also the array size that will be returned</td>
-	</tr>
-	<tr>
-		<td>min</td>
-		<td>number</td>
-		<td>the minimum your random number is allowed to be</td>
-	</tr>
-	<tr>
-		<td>max</td>
-		<td>number</td>
-		<td>the maximum your random number is allowed to be</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/NMoGdz' target='_blank'>https://codepen.io/AllForTheCode/pen/NMoGdz</a>
-
-
-<hr><br><br><br>
-    
-### <b>getArrayOfRandomStrings(arraySize,strLength)</b>
-generate an array of random string of a specified length<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>arraySize</td>
-		<td>number</td>
-		<td>the number of random strings to generate also the array size that will be returned</td>
-	</tr>
-	<tr>
-		<td>strLength</td>
-		<td>number</td>
-		<td>the length of the strings to be generated</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BVNJvB' target='_blank'>https://codepen.io/AllForTheCode/pen/BVNJvB</a>
-
-
-<hr><br><br><br>
-    
-### <b>getBooleanFrom(input)</b>
-converts an input to a boolean<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>*</td>
-		<td>input</td>
-		<td>the variable you wish to convert to a boolean</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/XqoVea' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoVea</a>
-
-
-<hr><br><br><br>
-    
-### <b>getBrowser()</b>
-Detects browser<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>string</td>
-		<td>name of the cookie to get</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/GdPaQZ' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaQZ</a>
-
-
-<hr><br><br><br>
-    
-### <b>getCookie(name)</b>
-Gets the value of a cookie by name<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>string</td>
-		<td>name of the cookie to get</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
-
-
-<hr><br><br><br>
-    
-### <b>getDateTime(local)</b>
-gets the date time at a specified local<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>local</td>
-		<td>string</td>
-		<td>options are us or do not supply for en-gb</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/GdPaYj' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaYj</a>
-
-
-<hr><br><br><br>
-    
-### <b>getDaysBetween(startDateTime, endDateTime)</b>
-Gets the number of whole days between a start and end date<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>startDateTime</td>
-		<td>DateTime</td>
-		<td>start date</td>
-	</tr>
-	<tr>
-		<td>endDateTime</td>
-		<td>DateTime</td>
-		<td>end date</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVqaGZ' target='_blank'>https://codepen.io/AllForTheCode/pen/pVqaGZ</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementByClassName(className)</b>
-Gets the first html element from the DOM that has a specific class name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>className</td>
-		<td>string</td>
-		<td>The class name the DOM element uses you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> html elements
-#### Alias's:
- - getId
- - byId
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementById(id)</b>
-Gets an element from the DOM by ID. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>string</td>
-		<td>The ID of the DOM element you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> html element
-#### Alias's:
- - getId
- - byId
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/PedyNO' target='_blank'>https://codepen.io/AllForTheCode/pen/PedyNO</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementByName(name)</b>
-Gets the first element from the DOM that has a specific name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>string</td>
-		<td>The name of the DOM element you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> html elements
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementByTagName(tagName)</b>
-Gets the first html element from the DOM that has a specific tag name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>tagName</td>
-		<td>string</td>
-		<td>the tag name you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> html element
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>getElementOffsetTop(elementId)</b>
-Gets an elements top offset<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementId</td>
-		<td>string</td>
-		<td>the element ID you wish to get the top offset of</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/GdPaLr' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaLr</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementsByClassName(className)</b>
-Gets an array of html elements from the DOM that have a specific class name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>className</td>
-		<td>string</td>
-		<td>The class the DOM element(s) use you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> array of html elements
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementsByName(name)</b>
-Gets an array of element from the DOM that have a specific name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>string</td>
-		<td>The name of the DOM element you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> array of html elements
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
-
-
-<hr><br><br><br>
-    
-### <b>getElementsByTagName(tagName)</b>
-Gets an array of html elements from the DOM that has a specific tag name. NOTE<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>tagName</td>
-		<td>string</td>
-		<td>the tag name you wish to find</td>
-	</tr>
-</table>
-
-<b>Returns:</b> array of html elements
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>getFileExtension(input)</b>
-Attempts to get the file extension from a file path string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>the file path string</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/OZeRqv' target='_blank'>https://codepen.io/AllForTheCode/pen/OZeRqv</a>
-
-
-<hr><br><br><br>
-    
-### <b>getFileExtension2(input)</b>
-Attempts to get the file extension from a file path string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>the file path string</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/OZeRqv' target='_blank'>https://codepen.io/AllForTheCode/pen/OZeRqv</a>
-
-
-<hr><br><br><br>
-    
 ### <b>getFunctionName(fn)</b>
 tries to get the function name of a suppled function<br>
 
@@ -2032,8 +1188,7 @@ tries to get the function name of a suppled function<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - arrayGetMax
- - arrayMax
+ - isBool
 
 </details>
 
@@ -2043,8 +1198,8 @@ tries to get the function name of a suppled function<br>
 
 <hr><br><br><br>
     
-### <b>getIEVersion()</b>
-Gets version of IE<br>
+### <b>isInString(find,source)</b>
+check for string in string<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2058,59 +1213,30 @@ Gets version of IE<br>
 	</tr>
 	<tr>
 		<td>string</td>
-		<td>url</td>
-		<td>url to process</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - arrayGetMax
- - arrayMax
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxveJp' target='_blank'>https://codepen.io/AllForTheCode/pen/BxveJp</a>
-
-
-<hr><br><br><br>
-    
-### <b>getLastPartOfUrl(url)</b>
-Gets the last part of a URL<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
+		<td>find</td>
+		<td>The string to look for</td>
 	</tr>
 	<tr>
 		<td>string</td>
-		<td>url</td>
-		<td>url to process</td>
+		<td>source</td>
+		<td>The string to look in</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - arrayGetMax
- - arrayMax
+ - isBool
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzNwNv' target='_blank'>https://codepen.io/AllForTheCode/pen/gzNwNv</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/jxdONK' target='_blank'>https://codepen.io/AllForTheCode/pen/jxdONK</a>
 
 
 <hr><br><br><br>
     
-### <b>getMaxFromArray(arr)</b>
-returns the maximum value in an array<br>
+### <b>isEven(n)</b>
+check if input is even<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2123,27 +1249,26 @@ returns the maximum value in an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
-		<td>arr</td>
-		<td>the array you wish to find the maximum value in</td>
+		<td>n</td>
+		<td>number</td>
+		<td>variable / value you wish to test</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - arrayGetMax
- - arrayMax
+ - isBool
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/GdYGjW' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYGjW</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/rvPNBR' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNBR</a>
 
 
 <hr><br><br><br>
     
-### <b>getOS(testUserAgent)</b>
-Attempts to get the os from the user agent or the test user agent<br>
+### <b>isOdd(n)</b>
+check if input is odd<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2156,9 +1281,233 @@ Attempts to get the os from the user agent or the test user agent<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>testUserAgent</td>
-		<td>test user agent string</td>
+		<td>n</td>
+		<td>number</td>
+		<td>variable value you wish to test</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzqOOW' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqOOW</a>
+
+
+<hr><br><br><br>
+    
+### <b>isAlphaNumeric(input)</b>
+check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string||number</td>
+		<td>input</td>
+		<td>variable / value you wish to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVGooO' target='_blank'>https://codepen.io/AllForTheCode/pen/pVGooO</a>
+
+
+<hr><br><br><br>
+    
+### <b>isElement(o)</b>
+checks if your variable is an element or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>o</td>
+		<td>*</td>
+		<td>variable you wish to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
+
+
+<hr><br><br><br>
+    
+### <b>isElement2(element)</b>
+checks to see if your vairable is an element or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>*</td>
+		<td>the variable you wish to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
+
+
+<hr><br><br><br>
+    
+### <b>isDOM(obj)</b>
+checks to see if your variable is a DOM object<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>obj</td>
+		<td>object</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/JvxjYo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjYo</a>
+
+
+<hr><br><br><br>
+    
+### <b>isBoolean(input)</b>
+checks if a variable is a boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>*</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/JvxjGo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjGo</a>
+
+
+<hr><br><br><br>
+    
+### <b>isNumeric(n)</b>
+check if variable is numeric<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>n</td>
+		<td>*</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isNumber
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/bMzGEL' target='_blank'>https://codepen.io/AllForTheCode/pen/bMzGEL</a>
+
+
+<hr><br><br><br>
+    
+### <b>isArray(input)</b>
+check if variable is an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>*</td>
+		<td>variable to check</td>
 	</tr>
 </table>
 
@@ -2169,79 +1518,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/erbaVj' target='_blank'>https://codepen.io/AllForTheCode/pen/erbaVj</a>
-
-
-<hr><br><br><br>
-    
-### <b>getRandomColor()</b>
-returns a random RGB object o.r, o.g, o.g<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>min</td>
-		<td>number</td>
-		<td>min value</td>
-	</tr>
-	<tr>
-		<td>max</td>
-		<td>number</td>
-		<td>max value</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getRandom
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>getRandomFloat(min,max)</b>
-returns a random floating point number betwen your specified min and max values<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>min</td>
-		<td>number</td>
-		<td>min value</td>
-	</tr>
-	<tr>
-		<td>max</td>
-		<td>number</td>
-		<td>max value</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getRandom
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzqaYm' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqaYm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/rvPNeg' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNeg</a>
 
 
 <hr><br><br><br>
@@ -2320,8 +1597,8 @@ returns a random int betwen your specified min and max values but never the not 
 
 <hr><br><br><br>
     
-### <b>getSQLDateTime()</b>
-gets the date time now for sql insert<br>
+### <b>getRandomFloat(min,max)</b>
+returns a random floating point number betwen your specified min and max values<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2334,37 +1611,31 @@ gets the date time now for sql insert<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>input</td>
-		<td>input string to check</td>
+		<td>min</td>
+		<td>number</td>
+		<td>min value</td>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>start</td>
-		<td>start string marker</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>end</td>
-		<td>end string marker</td>
+		<td>max</td>
+		<td>number</td>
+		<td>max value</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - getUID
- - generateUID
+ - getRandomString
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/wjRbEe' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRbEe</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/gzqaYm' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqaYm</a>
 
 
 <hr><br><br><br>
     
-### <b>getStringBetween(input,start,end)</b>
-Gets a string between two other strings<br>
+### <b>randomString(length)</b>
+get a random string of a specified length<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2377,31 +1648,20 @@ Gets a string between two other strings<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>input</td>
-		<td>input string to check</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>start</td>
-		<td>start string marker</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>end</td>
-		<td>end string marker</td>
+		<td>length</td>
+		<td>number</td>
+		<td>the length of the string you wish to generate</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - getUID
- - generateUID
+ - getRandomString
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/QrYjwr' target='_blank'>https://codepen.io/AllForTheCode/pen/QrYjwr</a>
 
 
 <hr><br><br><br>
@@ -2439,8 +1699,8 @@ Generates a random id<br>
 
 <hr><br><br><br>
     
-### <b>getUKDateFromDate(dte)</b>
-Formats a date in the UK format<br>
+### <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
+generate an array of random number between your max and min values<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2453,9 +1713,19 @@ Formats a date in the UK format<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>dte</td>
-		<td>Date</td>
-		<td></td>
+		<td>arraySize</td>
+		<td>number</td>
+		<td>the number of random numbers to generate also the array size that will be returned</td>
+	</tr>
+	<tr>
+		<td>min</td>
+		<td>number</td>
+		<td>the minimum your random number is allowed to be</td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>number</td>
+		<td>the maximum your random number is allowed to be</td>
 	</tr>
 </table>
 
@@ -2466,13 +1736,13 @@ Formats a date in the UK format<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyEMwp' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEMwp</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMoGdz' target='_blank'>https://codepen.io/AllForTheCode/pen/NMoGdz</a>
 
 
 <hr><br><br><br>
     
-### <b>getUkDateFromDbDateTime(input)</b>
-get a uk date from a mysql db date value<br>
+### <b>getArrayOfRandomStrings(arraySize,strLength)</b>
+generate an array of random string of a specified length<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2485,9 +1755,14 @@ get a uk date from a mysql db date value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>input</td>
-		<td>MySQLDateTimeString</td>
-		<td>MySQL DB DateTime</td>
+		<td>arraySize</td>
+		<td>number</td>
+		<td>the number of random strings to generate also the array size that will be returned</td>
+	</tr>
+	<tr>
+		<td>strLength</td>
+		<td>number</td>
+		<td>the length of the strings to be generated</td>
 	</tr>
 </table>
 
@@ -2498,13 +1773,13 @@ get a uk date from a mysql db date value<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxvePW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvePW</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/BVNJvB' target='_blank'>https://codepen.io/AllForTheCode/pen/BVNJvB</a>
 
 
 <hr><br><br><br>
     
-### <b>getUkDateTimeFromDbDateTime(input)</b>
-get a uk date from a mysql db date time value<br>
+### <b>guid()</b>
+generates a guid<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2517,9 +1792,14 @@ get a uk date from a mysql db date time value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>input</td>
-		<td>MySQLDateTimeString</td>
-		<td>MySQL DB DateTime</td>
+		<td>odds</td>
+		<td>array</td>
+		<td>array of odds</td>
+	</tr>
+	<tr>
+		<td>iterations</td>
+		<td>number</td>
+		<td>number of iterations to run on each number test</td>
 	</tr>
 </table>
 
@@ -2530,39 +1810,7 @@ get a uk date from a mysql db date time value<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/MGZdBB' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdBB</a>
-
-
-<hr><br><br><br>
-    
-### <b>getUSDateFromDate(dte)</b>
-Formats a date in the US format<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>dte</td>
-		<td>Date</td>
-		<td></td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getGUID
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/XqoEWL' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoEWL</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MGLayZ' target='_blank'>https://codepen.io/AllForTheCode/pen/MGLayZ</a>
 
 
 <hr><br><br><br>
@@ -2594,7 +1842,11 @@ Get a weighted random based on odds and iterations<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - getGUID
+ - cutStringTo
+ - cutString
+ - cutStringLength
+ - setStrLen
+ - trimStringLength
 
 </details>
 
@@ -2604,8 +1856,8 @@ Get a weighted random based on odds and iterations<br>
 
 <hr><br><br><br>
     
-### <b>goFullScreen(element)</b>
-Go full screen, on an element if specified or whole browser if left out<br>
+### <b>limitLengthInWords(str, maxWords)</b>
+Limit a string in length of words<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2618,514 +1870,35 @@ Go full screen, on an element if specified or whole browser if left out<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>element</td>
-		<td>element</td>
-		<td>optional - html element that you want to go full screen on, leave out for whole browser</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getGUID
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
-
-
-<hr><br><br><br>
-    
-### <b>guid()</b>
-generates a guid<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementOrId</td>
+		<td>str</td>
 		<td>string</td>
-		<td>The elemnt or id of the html element</td>
+		<td>the original string to limit</td>
 	</tr>
 	<tr>
-		<td>cls</td>
-		<td>string</td>
-		<td>class to look for</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getGUID
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/MGLayZ' target='_blank'>https://codepen.io/AllForTheCode/pen/MGLayZ</a>
-
-
-<hr><br><br><br>
-    
-### <b>hasClass(elementOrId, cls)</b>
-Check to see if an element has a class attached to it<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementOrId</td>
-		<td>string</td>
-		<td>The elemnt or id of the html element</td>
-	</tr>
-	<tr>
-		<td>cls</td>
-		<td>string</td>
-		<td>class to look for</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/dewdwY' target='_blank'>https://codepen.io/AllForTheCode/pen/dewdwY</a>
-
-
-<hr><br><br><br>
-    
-### <b>hexToRgb(hex)</b>
-hexToRgb<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>hex</td>
-		<td>hex color</td>
-	</tr>
-</table>
-
-<b>Returns:</b> rgb color
-#### Alias's:
- - isBool
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>iOS()</b>
-Detects if the device you are using is iOS or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string||number</td>
-		<td>input</td>
-		<td>variable / value you wish to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ELGzXO' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGzXO</a>
-
-
-<hr><br><br><br>
-    
-### <b>isAlphaNumeric(input)</b>
-check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string||number</td>
-		<td>input</td>
-		<td>variable / value you wish to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVGooO' target='_blank'>https://codepen.io/AllForTheCode/pen/pVGooO</a>
-
-
-<hr><br><br><br>
-    
-### <b>isAndroid()</b>
-Detects if the device you are using is android or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>*</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyEmgN' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEmgN</a>
-
-
-<hr><br><br><br>
-    
-### <b>isArray(input)</b>
-check if variable is an array<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>*</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/rvPNeg' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNeg</a>
-
-
-<hr><br><br><br>
-    
-### <b>isBoolean(input)</b>
-checks if a variable is a boolean<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>*</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isBool
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/JvxjGo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjGo</a>
-
-
-<hr><br><br><br>
-    
-### <b>isChecked(elementId)</b>
-Checks to if checkbox is checked or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementId</td>
-		<td>string</td>
-		<td>element id of the form element to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/KRbjpx' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbjpx</a>
-
-
-<hr><br><br><br>
-    
-### <b>isChrome()</b>
-Detects Chrome<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>obj</td>
-		<td>object</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xjmNLM' target='_blank'>https://codepen.io/AllForTheCode/pen/xjmNLM</a>
-
-
-<hr><br><br><br>
-    
-### <b>isDOM(obj)</b>
-checks to see if your variable is a DOM object<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>obj</td>
-		<td>object</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/JvxjYo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjYo</a>
-
-
-<hr><br><br><br>
-    
-### <b>isEdge()</b>
-Detects Edge<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>o</td>
-		<td>*</td>
-		<td>variable you wish to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/aGPrLP' target='_blank'>https://codepen.io/AllForTheCode/pen/aGPrLP</a>
-
-
-<hr><br><br><br>
-    
-### <b>isElement(o)</b>
-checks if your variable is an element or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>o</td>
-		<td>*</td>
-		<td>variable you wish to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
-
-
-<hr><br><br><br>
-    
-### <b>isElement2(element)</b>
-checks to see if your vairable is an element or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>element</td>
-		<td>*</td>
-		<td>the variable you wish to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
-
-
-<hr><br><br><br>
-    
-### <b>isEven(n)</b>
-check if input is even<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>n</td>
+		<td>maxWords</td>
 		<td>number</td>
-		<td>variable / value you wish to test</td>
+		<td>the number of words you wish to limit to</td>
 	</tr>
 </table>
 
-<b>Returns:</b> 
+<b>Returns:</b> {output
 #### Alias's:
- - isNumber
+ - cutStringTo
+ - cutString
+ - cutStringLength
+ - setStrLen
+ - trimStringLength
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/rvPNBR' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNBR</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/xjMdye' target='_blank'>https://codepen.io/AllForTheCode/pen/xjMdye</a>
 
 
 <hr><br><br><br>
     
-### <b>isFireFox()</b>
-Detects FireFox<br>
+### <b>cleanJSONString(s)</b>
+Attempts to clean a json string<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3138,31 +1911,66 @@ Detects FireFox<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>s</td>
 		<td>string</td>
-		<td>find</td>
-		<td>The string to look for</td>
+		<td>input string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - cutStringTo
+ - cutString
+ - cutStringLength
+ - setStrLen
+ - trimStringLength
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxMRER' target='_blank'>https://codepen.io/AllForTheCode/pen/BxMRER</a>
+
+
+<hr><br><br><br>
+    
+### <b>escapeHTML(input)</b>
+Attempts to escape a html string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
 	</tr>
 	<tr>
+		<td>input</td>
 		<td>string</td>
-		<td>source</td>
-		<td>The string to look in</td>
+		<td>the string you wish to escape</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - isNumber
+ - cutStringTo
+ - cutString
+ - cutStringLength
+ - setStrLen
+ - trimStringLength
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/mLaYMe' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaYMe</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/PerGRJ' target='_blank'>https://codepen.io/AllForTheCode/pen/PerGRJ</a>
 
 
 <hr><br><br><br>
     
-### <b>isIE()</b>
-Detects IE<br>
+### <b>cutStringTo(input, len)</b>
+sets the length of a string from left to right<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3175,196 +1983,35 @@ Detects IE<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>input</td>
 		<td>string</td>
-		<td>find</td>
-		<td>The string to look for</td>
+		<td>what string do you want to set the length of?</td>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>source</td>
-		<td>The string to look in</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/MGZdOG' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdOG</a>
-
-
-<hr><br><br><br>
-    
-### <b>isInString(find,source)</b>
-check for string in string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>find</td>
-		<td>The string to look for</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>source</td>
-		<td>The string to look in</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/jxdONK' target='_blank'>https://codepen.io/AllForTheCode/pen/jxdONK</a>
-
-
-<hr><br><br><br>
-    
-### <b>isMobile()</b>
-Detects if the device you are using is a mobile or not<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>evt</td>
-		<td>event</td>
-		<td>html onkeyup(event) or onkeydown(event)</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/KRbLdm' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbLdm</a>
-
-
-<hr><br><br><br>
-    
-### <b>isNumberKey(evt)</b>
-Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>evt</td>
-		<td>event</td>
-		<td>html onkeyup(event) or onkeydown(event)</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/vjvqLg' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvqLg</a>
-
-
-<hr><br><br><br>
-    
-### <b>isNumeric(n)</b>
-check if variable is numeric<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>n</td>
-		<td>*</td>
-		<td>variable to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - isNumber
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/bMzGEL' target='_blank'>https://codepen.io/AllForTheCode/pen/bMzGEL</a>
-
-
-<hr><br><br><br>
-    
-### <b>isOdd(n)</b>
-check if input is odd<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>n</td>
+		<td>length</td>
 		<td>number</td>
-		<td>variable value you wish to test</td>
+		<td>the length you want the string to be</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - lTrim
+ - cutStringTo
+ - cutString
+ - cutStringLength
+ - setStrLen
+ - trimStringLength
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzqOOW' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqOOW</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/VxJKEm' target='_blank'>https://codepen.io/AllForTheCode/pen/VxJKEm</a>
 
 
 <hr><br><br><br>
     
-### <b>isOpera()</b>
-Detects Opera<br>
+### <b>trimStringBy(input, trimBy)</b>
+Trims the length of a string by a value<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3377,99 +2024,25 @@ Detects Opera<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>needle</td>
+		<td>input</td>
 		<td>string</td>
-		<td>what you want to search for in each array index</td>
+		<td>The string you want to trim</td>
 	</tr>
 	<tr>
-		<td>haystack</td>
-		<td>string</td>
-		<td>the array you want to search</td>
+		<td>trimBy</td>
+		<td>number</td>
+		<td>How many characters do you want to trim off the end</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - lTrim
+ - tTrim
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/dewEJb' target='_blank'>https://codepen.io/AllForTheCode/pen/dewEJb</a>
-
-
-<hr><br><br><br>
-    
-### <b>isSafari()</b>
-Detects Safari<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>needle</td>
-		<td>string</td>
-		<td>what you want to search for in each array index</td>
-	</tr>
-	<tr>
-		<td>haystack</td>
-		<td>string</td>
-		<td>the array you want to search</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - lTrim
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzZJXr' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZJXr</a>
-
-
-<hr><br><br><br>
-    
-### <b>isStringInArray(needle,haystack)</b>
-Check to see if a string is in an array<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>needle</td>
-		<td>string</td>
-		<td>what you want to search for in each array index</td>
-	</tr>
-	<tr>
-		<td>haystack</td>
-		<td>string</td>
-		<td>the array you want to search</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - lTrim
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/QrZrBM' target='_blank'>https://codepen.io/AllForTheCode/pen/QrZrBM</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/BxgLvr' target='_blank'>https://codepen.io/AllForTheCode/pen/BxgLvr</a>
 
 
 <hr><br><br><br>
@@ -3511,8 +2084,476 @@ Trims the left of a string by a specified amount<br>
 
 <hr><br><br><br>
     
-### <b>limitLengthInWords(str, maxWords)</b>
-Limit a string in length of words<br>
+### <b>getFileExtension(input)</b>
+Attempts to get the file extension from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the file path string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/OZeRqv' target='_blank'>https://codepen.io/AllForTheCode/pen/OZeRqv</a>
+
+
+<hr><br><br><br>
+    
+### <b>getFileExtension2(input)</b>
+Attempts to get the file extension from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the file path string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/OZeRqv' target='_blank'>https://codepen.io/AllForTheCode/pen/OZeRqv</a>
+
+
+<hr><br><br><br>
+    
+### <b>getLastPartOfUrl(url)</b>
+Gets the last part of a URL<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>url to process</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzNwNv' target='_blank'>https://codepen.io/AllForTheCode/pen/gzNwNv</a>
+
+
+<hr><br><br><br>
+    
+### <b>removeFileFromPath(path)</b>
+Attempts to remove the file from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>path</td>
+		<td>path</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrXGWY' target='_blank'>https://codepen.io/AllForTheCode/pen/QrXGWY</a>
+
+
+<hr><br><br><br>
+    
+### <b>getAnchor(url)</b>
+Get anchor from url<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>The url to get the anchor from</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>String.prototype.startsWith(str)</b>
+ES6 supports the startsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>String.prototype.endsWith(str)</b>
+ES6 supports endsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>getStringBetween(input,start,end)</b>
+Gets a string between two other strings<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>input</td>
+		<td>input string to check</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>start</td>
+		<td>start string marker</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>end</td>
+		<td>end string marker</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>getAllStringsBetween(str,start,end)</b>
+Gets all strings between two other strings (multi match)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>input string to check</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>start</td>
+		<td>start string marker</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>end</td>
+		<td>end string marker</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>radToDeg(input)</b>
+converts radians to degrees<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>number</td>
+		<td>the radians you wish converted to degrees</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/wjRpBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRpBZ</a>
+
+
+<hr><br><br><br>
+    
+### <b>degToRad(input)</b>
+converts degrees to radians<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>input</td>
+		<td>the value you wish converted to radians</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - deg2rad
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/jxXYbE' target='_blank'>https://codepen.io/AllForTheCode/pen/jxXYbE</a>
+
+
+<hr><br><br><br>
+    
+### <b>toHex(num)</b>
+Converts a number to hex<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>num</td>
+		<td>number</td>
+		<td>decimal base 10</td>
+	</tr>
+</table>
+
+<b>Returns:</b> hexidecimal value
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGoKX' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGoKX</a>
+
+
+<hr><br><br><br>
+    
+### <b>boolToString(bool)</b>
+converts boolean to a string of true or false<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>boolean</td>
+		<td>the boolean you wish to convert</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/PeXEbg' target='_blank'>https://codepen.io/AllForTheCode/pen/PeXEbg</a>
+
+
+<hr><br><br><br>
+    
+### <b>boolToYesNo(bool)</b>
+converts a boolean to yes or no<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>boolean</td>
+		<td>the boolean you wish to convert</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/zjypZz' target='_blank'>https://codepen.io/AllForTheCode/pen/zjypZz</a>
+
+
+<hr><br><br><br>
+    
+### <b>stringToBool(str)</b>
+Converts a string to a boolean (y,yes,"1",no etc)<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3527,29 +2568,24 @@ Limit a string in length of words<br>
 	<tr>
 		<td>str</td>
 		<td>string</td>
-		<td>the original string to limit</td>
-	</tr>
-	<tr>
-		<td>maxWords</td>
-		<td>number</td>
-		<td>the number of words you wish to limit to</td>
+		<td>the string you wish to convert</td>
 	</tr>
 </table>
 
-<b>Returns:</b> {output
+<b>Returns:</b> 
 #### Alias's:
- - window.log.disable();
+ - arrayToFloat
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xjMdye' target='_blank'>https://codepen.io/AllForTheCode/pen/xjMdye</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/vjvpmQ' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvpmQ</a>
 
 
 <hr><br><br><br>
     
-### <b>logDisable()</b>
-Disables log and trace<br>
+### <b>getBooleanFrom(input)</b>
+converts an input to a boolean<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3562,184 +2598,20 @@ Disables log and trace<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>element</td>
-		<td>string</td>
-		<td>The id of html element you wish to console.log to</td>
+		<td>*</td>
+		<td>input</td>
+		<td>the variable you wish to convert to a boolean</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - window.log.disable();
+ - arrayToFloat
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-<hr><br><br><br>
-    
-### <b>logEnable()</b>
-Enables log and trace<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>element</td>
-		<td>string</td>
-		<td>The id of html element you wish to console.log to</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - window.log.enable();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-<hr><br><br><br>
-    
-### <b>logTo(element)</b>
-Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>element</td>
-		<td>string</td>
-		<td>The id of html element you wish to console.log to</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - disableLogTo();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-<hr><br><br><br>
-    
-### <b>logToDisable()</b>
-Disables log and trace to a html element<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>fn</td>
-		<td>function</td>
-		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - disableLogTo();
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-<hr><br><br><br>
-    
-### <b>onReady(fn)</b>
-A replacement for using body onload and no need for jQuery's $(document).ready<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>fn</td>
-		<td>function</td>
-		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - ready
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/GdYxVa' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYxVa</a>
-
-
-<hr><br><br><br>
-    
-### <b>openDebugWindow(html)</b>
-open a popup window with the html you wish to display in it<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>html</td>
-		<td>string</td>
-		<td>the html you wish to display in the popup window</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - stringToWindow
- - htmlToWindow
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/XqoVea' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoVea</a>
 
 
 <hr><br><br><br>
@@ -3808,8 +2680,8 @@ parses all values in array to float<br>
 
 <hr><br><br><br>
     
-### <b>parseJSONToSelect(j, selectElementIdOrElement, label, value)</b>
-parses a json object of key value pairs to a form select element<br>
+### <b>toArray(v)</b>
+takes an input and returns it as index[0] of an array<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3822,41 +2694,27 @@ parses a json object of key value pairs to a form select element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>j</td>
-		<td>string</td>
-		<td>the json data</td>
-	</tr>
-	<tr>
-		<td>selectElementIdOrElement</td>
-		<td>elementOrIdString</td>
-		<td>the json data</td>
-	</tr>
-	<tr>
-		<td>label</td>
-		<td>string</td>
-		<td>of key value pair this is the key</td>
-	</tr>
-	<tr>
-		<td>value</td>
-		<td>string</td>
-		<td>of key value pair this is the value</td>
+		<td>*</td>
+		<td>arg</td>
+		<td>value to insert into array</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - query
+ - convertToArray
+ - valueToArray
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/QrzazK' target='_blank'>https://codepen.io/AllForTheCode/pen/QrzazK</a>
 
 
 <hr><br><br><br>
     
-### <b>querySelector(query)</b>
-Gets an element from the DOM via DOM Query. NOTE<br>
+### <b>getDaysBetween(startDateTime, endDateTime)</b>
+Gets the number of whole days between a start and end date<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3869,26 +2727,96 @@ Gets an element from the DOM via DOM Query. NOTE<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>query</td>
-		<td>string</td>
-		<td>The DOM Query / css element path you wish to find</td>
+		<td>startDateTime</td>
+		<td>DateTime</td>
+		<td>start date</td>
+	</tr>
+	<tr>
+		<td>endDateTime</td>
+		<td>DateTime</td>
+		<td>end date</td>
 	</tr>
 </table>
 
-<b>Returns:</b> html element
+<b>Returns:</b> 
 #### Alias's:
- - query
+ - getNoOfDaysBetween
+ - getDaysBetweenDates
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/MGqPrN' target='_blank'>https://codepen.io/AllForTheCode/pen/MGqPrN</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/pVqaGZ' target='_blank'>https://codepen.io/AllForTheCode/pen/pVqaGZ</a>
 
 
 <hr><br><br><br>
     
-### <b>radToDeg(input)</b>
-converts radians to degrees<br>
+### <b>getUKDateFromDate(dte)</b>
+Formats a date in the UK format<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dte</td>
+		<td>Date</td>
+		<td></td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEMwp' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEMwp</a>
+
+
+<hr><br><br><br>
+    
+### <b>getUSDateFromDate(dte)</b>
+Formats a date in the US format<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dte</td>
+		<td>Date</td>
+		<td></td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/XqoEWL' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoEWL</a>
+
+
+<hr><br><br><br>
+    
+### <b>getUkDateFromDbDateTime(input)</b>
+get a uk date from a mysql db date value<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3902,174 +2830,8 @@ converts radians to degrees<br>
 	</tr>
 	<tr>
 		<td>input</td>
-		<td>number</td>
-		<td>the radians you wish converted to degrees</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - rad2deg
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/wjRpBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRpBZ</a>
-
-
-<hr><br><br><br>
-    
-### <b>randomString(length)</b>
-get a random string of a specified length<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>length</td>
-		<td>number</td>
-		<td>the length of the string you wish to generate</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getRandomString
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/QrYjwr' target='_blank'>https://codepen.io/AllForTheCode/pen/QrYjwr</a>
-
-
-<hr><br><br><br>
-    
-### <b>redirect(url)</b>
-no more typing self.location.href, just use redirect(url)<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>url</td>
-		<td>string</td>
-		<td>the url you wish to redirect to</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - 
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyEpPY' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEpPY</a>
-
-
-<hr><br><br><br>
-    
-### <b>removeAllSelectOptions(elementId)</b>
-Removes all the options in a select<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementId</td>
-		<td>string</td>
-		<td>id of select element</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - 
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/mLaZEm' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaZEm</a>
- - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
-
-
-<hr><br><br><br>
-    
-### <b>removeClass(elementOrId,className)</b>
-shortcut to remove a class from a html element<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementOrId</td>
-		<td>elementORstring</td>
-		<td>The elemnt or id of the html element to add a css class to</td>
-	</tr>
-	<tr>
-		<td>className</td>
-		<td>string</td>
-		<td>the class name to remove</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - 
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/gzZvKL' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZvKL</a>
-
-
-<hr><br><br><br>
-    
-### <b>removeFileFromPath(path)</b>
-Attempts to remove the file from a file path string<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>path</td>
-		<td>path</td>
+		<td>MySQLDateTimeString</td>
+		<td>MySQL DB DateTime</td>
 	</tr>
 </table>
 
@@ -4080,13 +2842,13 @@ Attempts to remove the file from a file path string<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/QrXGWY' target='_blank'>https://codepen.io/AllForTheCode/pen/QrXGWY</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/BxvePW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvePW</a>
 
 
 <hr><br><br><br>
     
-### <b>rgb2Hex(r,g,b)</b>
-rgb to hex<br>
+### <b>getUkDateTimeFromDbDateTime(input)</b>
+get a uk date from a mysql db date time value<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4099,99 +2861,9 @@ rgb to hex<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
-		<td>r</td>
-		<td>red</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>g</td>
-		<td>green</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>b</td>
-		<td>blue</td>
-	</tr>
-</table>
-
-<b>Returns:</b> hex color
-#### Alias's:
- - html
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>rgbToHex(r,g,b)</b>
-rgb to hex<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>r</td>
-		<td>red</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>g</td>
-		<td>green</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>b</td>
-		<td>blue</td>
-	</tr>
-</table>
-
-<b>Returns:</b> hex color
-#### Alias's:
- - html
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>scrollToElement(elementId, duration, offset)</b>
-Scroll to element on page<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementId</td>
-		<td>string</td>
-		<td>ID of element you wish to scroll to</td>
-	</tr>
-	<tr>
-		<td>duration</td>
-		<td>float</td>
-		<td>Duration in seconds</td>
-	</tr>
-	<tr>
-		<td>offset</td>
-		<td>number</td>
-		<td>How much to offset scroll by</td>
+		<td>input</td>
+		<td>MySQLDateTimeString</td>
+		<td>MySQL DB DateTime</td>
 	</tr>
 </table>
 
@@ -4202,13 +2874,13 @@ Scroll to element on page<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/eKNeVq' target='_blank'>https://codepen.io/AllForTheCode/pen/eKNeVq</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MGZdBB' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdBB</a>
 
 
 <hr><br><br><br>
     
-### <b>setCookie(name, value)</b>
-Sets a cookie by name with a value<br>
+### <b>getSQLDateTime()</b>
+gets the date time now for sql insert<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4221,14 +2893,9 @@ Sets a cookie by name with a value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>name</td>
+		<td>local</td>
 		<td>string</td>
-		<td>name of the cookie</td>
-	</tr>
-	<tr>
-		<td>value</td>
-		<td>string</td>
-		<td>value of the cookie</td>
+		<td>options are us or do not supply for en-gb</td>
 	</tr>
 </table>
 
@@ -4239,7 +2906,455 @@ Sets a cookie by name with a value<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/wjRbEe' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRbEe</a>
+
+
+<hr><br><br><br>
+    
+### <b>getDateTime(local)</b>
+gets the date time at a specified local<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>local</td>
+		<td>string</td>
+		<td>options are us or do not supply for en-gb</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaYj' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaYj</a>
+
+
+<hr><br><br><br>
+    
+### <b>validateEmail(email)</b>
+Validats an email address<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>email</td>
+		<td>email address</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xjogjy' target='_blank'>https://codepen.io/AllForTheCode/pen/xjogjy</a>
+
+
+<hr><br><br><br>
+    
+### <b>isMobile()</b>
+Detects if the device you are using is a mobile or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/KRbLdm' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbLdm</a>
+
+
+<hr><br><br><br>
+    
+### <b>isAndroid()</b>
+Detects if the device you are using is android or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEmgN' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEmgN</a>
+
+
+<hr><br><br><br>
+    
+### <b>iOS()</b>
+Detects if the device you are using is iOS or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGzXO' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGzXO</a>
+
+
+<hr><br><br><br>
+    
+### <b>isFireFox()</b>
+Detects FireFox<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLaYMe' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaYMe</a>
+
+
+<hr><br><br><br>
+    
+### <b>isChrome()</b>
+Detects Chrome<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xjmNLM' target='_blank'>https://codepen.io/AllForTheCode/pen/xjmNLM</a>
+
+
+<hr><br><br><br>
+    
+### <b>isEdge()</b>
+Detects Edge<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/aGPrLP' target='_blank'>https://codepen.io/AllForTheCode/pen/aGPrLP</a>
+
+
+<hr><br><br><br>
+    
+### <b>isSafari()</b>
+Detects Safari<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzZJXr' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZJXr</a>
+
+
+<hr><br><br><br>
+    
+### <b>isIE()</b>
+Detects IE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/MGZdOG' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdOG</a>
+
+
+<hr><br><br><br>
+    
+### <b>isOpera()</b>
+Detects Opera<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/dewEJb' target='_blank'>https://codepen.io/AllForTheCode/pen/dewEJb</a>
+
+
+<hr><br><br><br>
+    
+### <b>getIEVersion()</b>
+Gets version of IE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxveJp' target='_blank'>https://codepen.io/AllForTheCode/pen/BxveJp</a>
+
+
+<hr><br><br><br>
+    
+### <b>getBrowser()</b>
+Detects browser<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaQZ' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaQZ</a>
+
+
+<hr><br><br><br>
+    
+### <b>getOS(testUserAgent)</b>
+Attempts to get the os from the user agent or the test user agent<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/erbaVj' target='_blank'>https://codepen.io/AllForTheCode/pen/erbaVj</a>
 
 
 <hr><br><br><br>
@@ -4284,8 +3399,8 @@ setHTML("header","Welcome");
 
 <hr><br><br><br>
     
-### <b>String.prototype.endsWith(str)</b>
-ES6 supports endsWith(), this is for pre ES6 support<br>
+### <b>getElementOffsetTop(elementId)</b>
+Gets an elements top offset<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4298,27 +3413,26 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>elementId</td>
 		<td>string</td>
-		<td>str</td>
-		<td>string to check</td>
+		<td>the element ID you wish to get the top offset of</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - convertToArray
- - valueToArray
+ - 
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaLr' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaLr</a>
 
 
 <hr><br><br><br>
     
-### <b>String.prototype.startsWith(str)</b>
-ES6 supports the startsWith(), this is for pre ES6 support<br>
+### <b>centerAbsoluteElement(elementId)</b>
+Center element that is absolute positioned<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4331,27 +3445,26 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>elementId</td>
 		<td>string</td>
-		<td>str</td>
-		<td>string to check</td>
+		<td>element or id of element to center</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - convertToArray
- - valueToArray
+ - 
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/ZRGabV' target='_blank'>https://codepen.io/AllForTheCode/pen/ZRGabV</a>
 
 
 <hr><br><br><br>
     
-### <b>stringToBool(str)</b>
-Converts a string to a boolean (y,yes,"1",no etc)<br>
+### <b>scrollToElement(elementId, duration, offset)</b>
+Scroll to element on page<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4364,129 +3477,36 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>str</td>
+		<td>elementId</td>
 		<td>string</td>
-		<td>the string you wish to convert</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - convertToArray
- - valueToArray
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/vjvpmQ' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvpmQ</a>
-
-
-<hr><br><br><br>
-    
-### <b>toArray(v)</b>
-takes an input and returns it as index[0] of an array<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
+		<td>ID of element you wish to scroll to</td>
 	</tr>
 	<tr>
-		<td>*</td>
-		<td>arg</td>
-		<td>value to insert into array</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - convertToArray
- - valueToArray
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/QrzazK' target='_blank'>https://codepen.io/AllForTheCode/pen/QrzazK</a>
-
-
-<hr><br><br><br>
-    
-### <b>toHex(num)</b>
-Converts a number to hex<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
+		<td>duration</td>
+		<td>float</td>
+		<td>Duration in seconds</td>
 	</tr>
 	<tr>
-		<td>num</td>
+		<td>offset</td>
 		<td>number</td>
-		<td>decimal base 10</td>
-	</tr>
-</table>
-
-<b>Returns:</b> hexidecimal value
-#### Alias's:
- - tTrim
-
-</details>
-
-#### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/ELGoKX' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGoKX</a>
-
-
-<hr><br><br><br>
-    
-### <b>trimStringBy(input, trimBy)</b>
-Trims the length of a string by a value<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>input</td>
-		<td>string</td>
-		<td>The string you want to trim</td>
-	</tr>
-	<tr>
-		<td>trimBy</td>
-		<td>number</td>
-		<td>How many characters do you want to trim off the end</td>
+		<td>How much to offset scroll by</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - tTrim
+ - 
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/BxgLvr' target='_blank'>https://codepen.io/AllForTheCode/pen/BxgLvr</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/eKNeVq' target='_blank'>https://codepen.io/AllForTheCode/pen/eKNeVq</a>
 
 
 <hr><br><br><br>
     
-### <b>validateEmail(email)</b>
-Validats an email address<br>
+### <b>addClass(elementOrId,classname)</b>
+Add a css class to a html element<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -4499,9 +3519,88 @@ Validats an email address<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>elementOrId</td>
+		<td>elementORstring</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+	<tr>
+		<td>className</td>
 		<td>string</td>
-		<td>email</td>
-		<td>email address</td>
+		<td>the class name to add</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxvYmW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvYmW</a>
+
+
+<hr><br><br><br>
+    
+### <b>removeClass(elementOrId,className)</b>
+shortcut to remove a class from a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementOrId</td>
+		<td>elementORstring</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+	<tr>
+		<td>className</td>
+		<td>string</td>
+		<td>the class name to remove</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzZvKL' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZvKL</a>
+
+
+<hr><br><br><br>
+    
+### <b>hasClass(elementOrId, cls)</b>
+Check to see if an element has a class attached to it<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementOrId</td>
+		<td>string</td>
+		<td>The elemnt or id of the html element</td>
+	</tr>
+	<tr>
+		<td>cls</td>
+		<td>string</td>
+		<td>class to look for</td>
 	</tr>
 </table>
 
@@ -4510,7 +3609,743 @@ Validats an email address<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xjogjy' target='_blank'>https://codepen.io/AllForTheCode/pen/xjogjy</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/dewdwY' target='_blank'>https://codepen.io/AllForTheCode/pen/dewdwY</a>
+
+
+<hr><br><br><br>
+    
+### <b>redirect(url)</b>
+no more typing self.location.href, just use redirect(url)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>url</td>
+		<td>string</td>
+		<td>the url you wish to redirect to</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEpPY' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEpPY</a>
+
+
+<hr><br><br><br>
+    
+### <b>goFullScreen(element)</b>
+Go full screen, on an element if specified or whole browser if left out<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>element</td>
+		<td>optional - html element that you want to go full screen on, leave out for whole browser</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
+
+
+<hr><br><br><br>
+    
+### <b>exitFullScreen()</b>
+Exits full screen mode<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>name of the cookie</td>
+	</tr>
+	<tr>
+		<td>value</td>
+		<td>string</td>
+		<td>value of the cookie</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
+
+
+<hr><br><br><br>
+    
+### <b>setCookie(name, value)</b>
+Sets a cookie by name with a value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>name of the cookie</td>
+	</tr>
+	<tr>
+		<td>value</td>
+		<td>string</td>
+		<td>value of the cookie</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
+
+
+<hr><br><br><br>
+    
+### <b>getCookie(name)</b>
+Gets the value of a cookie by name<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>name of the cookie to get</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
+
+
+<hr><br><br><br>
+    
+### <b>isChecked(elementId)</b>
+Checks to if checkbox is checked or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementId</td>
+		<td>string</td>
+		<td>element id of the form element to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/KRbjpx' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbjpx</a>
+
+
+<hr><br><br><br>
+    
+### <b>isNumberKey(evt)</b>
+Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>evt</td>
+		<td>event</td>
+		<td>html onkeyup(event) or onkeydown(event)</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/vjvqLg' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvqLg</a>
+
+
+<hr><br><br><br>
+    
+### <b>removeAllSelectOptions(elementId)</b>
+Removes all the options in a select<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementId</td>
+		<td>string</td>
+		<td>id of select element</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLaZEm' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaZEm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
+
+
+<hr><br><br><br>
+    
+### <b>parseJSONToSelect(j, selectElementIdOrElement, label, value)</b>
+parses a json object of key value pairs to a form select element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>j</td>
+		<td>string</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
+		<td>selectElementIdOrElement</td>
+		<td>elementOrIdString</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
+		<td>label</td>
+		<td>string</td>
+		<td>of key value pair this is the key</td>
+	</tr>
+	<tr>
+		<td>value</td>
+		<td>string</td>
+		<td>of key value pair this is the value</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Point(x,y)</b>
+2D Point<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>number</td>
+		<td>x coordinate</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>number</td>
+		<td>y coordinate</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/qYLzzm' target='_blank'>https://codepen.io/AllForTheCode/pen/qYLzzm</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Rectangle(x, y, w, h)</b>
+Rectangle class, allos you to set x, y, width and height or a rectangle<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>number</td>
+		<td>x coordinate</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>number</td>
+		<td>y coordinate</td>
+	</tr>
+	<tr>
+		<td>w</td>
+		<td>number</td>
+		<td>w width</td>
+	</tr>
+	<tr>
+		<td>h</td>
+		<td>number</td>
+		<td>h height</td>
+	</tr>
+</table>
+
+<b>Returns:</b> AFTC.Rectangle
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/JvQRKg' target='_blank'>https://codepen.io/AllForTheCode/pen/JvQRKg</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Velocity(vx,vy)</b>
+AFTC.Velocity class helper<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>vx</td>
+		<td>number</td>
+		<td>velocity vector x</td>
+	</tr>
+	<tr>
+		<td>vy</td>
+		<td>number</td>
+		<td>velocity vector y</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/erxRBo' target='_blank'>https://codepen.io/AllForTheCode/pen/erxRBo</a>
+
+
+<hr><br><br><br>
+    
+### <b>cycle(pos, max)</b>
+cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>pos</td>
+		<td>number</td>
+		<td>position of max</td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>number</td>
+		<td>max number to cycle to</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxMZBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/BxMZBZ</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Audio({options})</b>
+An audio player with preloading capabilities, looping abilities and loop offset capabilities<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>src</td>
+		<td>String or Array of urls/paths to sound files</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>cache</td>
+		<td>To cache or not to cache</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>volume</td>
+		<td>0 to 1</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>repeat</td>
+		<td>-1 forever, 0 play once only, or the number of times to repeat</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>preload</td>
+		<td>true or false</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>offsetLoopBy</td>
+		<td>the sample offset from the end that you wish to loop by can help remove loop gaps</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onUpdate</td>
+		<td>the function you wish to run when your sound is playing provides and info object</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onReady</td>
+		<td>the function you wish to run when your sound is ready and can play</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onComplete</td>
+		<td>the function you wish to run when your sound has finished playing</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>hideWarnings</td>
+		<td>hides notices in console for compatibility issues when not using mp3 etc</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/NzWrvm' target='_blank'>https://codepen.io/AllForTheCode/pen/NzWrvm</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Animate(elementId, onComplete)</b>
+Quick and easy css animation for nearly every css element style<br>
+````
+var anim1 = new AFTC.Animate("box1", onCompleteFunction);
+anim1.wait(2); // wait in 2 seconds
+anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
+anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
+anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
+````
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MXYGob' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYGob</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MXYPqq' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYPqq</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/xzbymv' target='_blank'>https://codepen.io/AllForTheCode/pen/xzbymv</a>
+
+
+<hr><br><br><br>
+    
+### <b>rgb2Hex(r,g,b)</b>
+rgb to hex<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
+
+<b>Returns:</b> hex color
+[alias]
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>rgbToHex(r,g,b)</b>
+rgb to hex<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
+
+<b>Returns:</b> hex color
+[alias]
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>hexToRgb(hex)</b>
+hexToRgb<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>hex</td>
+		<td>hex color</td>
+	</tr>
+</table>
+
+<b>Returns:</b> rgb color
+[alias]
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Color({params})</b>
+Color allows you to create, convert, lighten or darken colours and more.<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>params</td>
+		<td>parameters object</td>
+	</tr>
+</table>
+
+<b>Returns:</b> [AFTC.Color]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+
+<hr><br><br><br>
+    
+### <b>getRandomColor()</b>
+returns a random RGB object o.r, o.g, o.g<br>
+
+<details>
+    <summary><b>More information</b></summary>
+[table]
+<b>Returns:</b> 
+[alias]
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.XHR({options})</b>
+Quick and easy xhr/ajax<br>
+
+<details>
+    <summary><b>More information</b></summary>
+[table]
+<b>Returns:</b> 
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='* @params seelink seelink : please review link' target='_blank'>* @params seelink seelink : please review link</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/dKodKx' target='_blank'>https://codepen.io/AllForTheCode/pen/dKodKx</a>
 
 
 <hr><br><br><br>
