@@ -293,6 +293,8 @@ function generateReadme($comments){
 
         // Links
         if (count($commentVo->links)>0){
+            // out("LINKS FOUND = " . count($commentVo->links));
+            // print_r($commentVo->links);
             $links = "#### Usage examples:\n";
             $cnt = 0;
             foreach ($commentVo->links as $link) {
@@ -302,6 +304,8 @@ function generateReadme($comments){
                 $links .= " - <a href='" . $link . "' target='_blank'>" . $link . "</a>\n";
             }
             $out = str_replace("[links]",$links,$out);
+        } else {
+            $out = str_replace("[links]","",$out);
         }
 
         // Params table
