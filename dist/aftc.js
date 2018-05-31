@@ -4588,18 +4588,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpReq
  /**
  * @function: AFTC.XHR({options})
  * @desc: Quick and easy xhr/ajax
- * ````
- * var data = "mode=json";
- * xhr1 = AFTC.XHR({
- * 		url: "./request.php",
- *  	method: "post",
- *  	data: data,
- *  	dataType: "form",
- * 		onError: function (response) {}
- * 		onProgress: function (response) {}
- *  	onComplete: function (response) {}
- * });
- * ````
+ * @params seelink seelink : please review link
  * @link: https://codepen.io/AllForTheCode/pen/dKodKx
  */
 

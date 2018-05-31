@@ -657,11 +657,6 @@ AFTC.Velocity class helper<br>
     
 ### <b>AFTC.XHR({options})</b>
 Quick and easy xhr/ajax<br>
-````
-var data = "mode=json";
-xhr1 = AFTC.XHR({
-url
-
 
 <details>
     <summary><b>More information</b></summary>
@@ -697,6 +692,7 @@ url
 </details>
 
 #### Usage examples:
+ - <a href='* @params seelink seelink : please review link' target='_blank'>* @params seelink seelink : please review link</a>
  - <a href='https://codepen.io/AllForTheCode/pen/dKodKx' target='_blank'>https://codepen.io/AllForTheCode/pen/dKodKx</a>
 
 
