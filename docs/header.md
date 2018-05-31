@@ -10,6 +10,15 @@ npm i aftc.js
 gulp build
 ```
 
+Then include the version you wish to use, your options are:
+
+ - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
+ - aftc.core.min.js - this is the aftc.js core compressed
+ - aftc.js - this is the full aftc.js package uncompressed with all the extras
+ - aftc.min.js - this is the full aftc.js package compressed, with all the extras
+
+##### NOTE: You can always customise your build of the AFTC.JS, see the Build Guide below.
+
  ---
 
 <br><br>
@@ -32,29 +41,18 @@ gulp build
 - Open "gulpfile.js" and edit / comment out or uncomment any of the imports that you want or don't want
 
 ```
-var jsFiles = [
-
-    // The base, the essentials, the foundations
-    "./src/base.js", // Dependencies: none
-
-    // Dev assist utility functions / tools
-    "./src/string.js", // Dependencies: none
-    "./src/random.js", // Dependencies: none
-    "./src/conversion.js", // Dependencies: none
-    "./src/datetime.js", // Dependencies: none
-    "./src/cookies.js", // Dependencies: none
-    "./src/validation.js", // Dependencies: none
-    "./src/graphics.js", // Dependencies: none
-
-    // Utilities / tools which focus on a specific area / task(s)
-    "./src/animation.js", // Dependencies: none
-    './src/color.js', // Dependencies: none
-    "./src/detection.js", // Dependencies: none
-    "./src/dom.js", // Dependencies: none
-    "./src/styling.js", // Dependencies: none
-    "./src/form.js", // Dependencies: none
-    "./src/io.js", // Dependencies: none
-    "./src/misc.js", // Dependencies: none (very good chance you wont need to include this, so comment out if you dont)
+// The extras, the modules, the ooo or to some, the bloat
+// Nice to have, but not essential
+var aftc_modules = [
+    "./dist/aftc.core.js", // The AFTC Core
+    "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
+    "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
+    "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
+    // "./src/AFTC/AFTC.CheckboxHideShow.js", // Up for review - to be updated or removed
+    "./src/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
+    "./src/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()
+    // "./src/AFTC/AFTC.ResizeManager.js", // Up for review - to be updated or removed
+    "./src/AFTC/AFTC.XHR.js", // Everyone needs some IO, I know I do...
 ];
 
 ```

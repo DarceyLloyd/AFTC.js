@@ -135,7 +135,7 @@ window.getElementByName = function (name) { return AFTC.GetElement.by("name", na
  */
 window.getElementsByClassName = function (className) { return AFTC.GetElement.by("class", className); }
 /**
- * @function: getElementByClassName(xxxx)
+ * @function: getElementByClassName(className)
  * @desc: Gets the first html element from the DOM that has a specific class name. NOTE: AFTC.JS DOM queries are cached and faster than the normal document. version!
  * @param className string: The class name the DOM element uses you wish to find
  * @return: html elements
