@@ -105,6 +105,7 @@ Quick and easy args to object<br>
  - argsTo
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
 
@@ -137,6 +138,7 @@ Gets an element from the DOM by ID. NOTE<br>
  - byId
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/PedyNO' target='_blank'>https://codepen.io/AllForTheCode/pen/PedyNO</a>
 
@@ -168,6 +170,7 @@ Gets an element from the DOM via DOM Query. NOTE<br>
  - query
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/MGqPrN' target='_blank'>https://codepen.io/AllForTheCode/pen/MGqPrN</a>
 
@@ -200,6 +203,7 @@ Gets an array of element from the DOM that have a specific name. NOTE<br>
  - trace
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
 
@@ -232,6 +236,7 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
  - trace
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
 
@@ -264,6 +269,7 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
  - trace
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
 
@@ -296,6 +302,7 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
  - trace
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
 
@@ -330,6 +337,7 @@ Gets an array of html elements from the DOM that has a specific tag name. NOTE<b
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getElementByTagName(tagName)</b>
@@ -358,6 +366,7 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
  - trace
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -395,6 +404,7 @@ log(MyClass);
  - trace
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
@@ -427,6 +437,7 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
  - window.log.enable();
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
@@ -458,6 +469,7 @@ Enables log and trace<br>
  - window.log.enable();
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
@@ -490,6 +502,7 @@ Enables log and trace<br>
  - window.log.disable();
 
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
@@ -522,6 +535,7 @@ open a popup window with the html you wish to display in it<br>
  - stringToWindow
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -568,6 +582,7 @@ Shortcut for adding events with old browser compatibility<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>onReady(fn)</b>
@@ -595,6 +610,7 @@ Replacement for jQuerys $(document).ready<br>
  - ready
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -631,6 +647,7 @@ remove a specified index from an array<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isStringInArray(needle,haystack)</b>
@@ -663,6 +680,7 @@ Check to see if a string is in an array<br>
  - arrayClear
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -699,6 +717,7 @@ Check to see if your array contains something you want to find<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>arrayEmpty(arr)</b>
@@ -726,6 +745,7 @@ clears/empties an array for garbage collection<br>
  - arrayClear
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -758,6 +778,7 @@ returns the maximum value in an array<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>arrayGetMin</b>
@@ -786,6 +807,7 @@ returns the minimum value in an array<br>
  - arrayMin
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -818,6 +840,7 @@ shuffles an array (method 1)<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>arrayShuffle2(arr)</b>
@@ -846,6 +869,7 @@ shuffles an array (method 2)<br>
  - arrayShuffle2
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -877,6 +901,7 @@ takes an input and returns it as index[0] of an array<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getFunctionName(fn)</b>
@@ -904,6 +929,7 @@ tries to get the function name of a suppled function<br>
  - isBool
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -940,6 +966,7 @@ check for string in string<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isEven(n)</b>
@@ -967,6 +994,7 @@ check if input is even<br>
  - isBool
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -998,6 +1026,7 @@ check if input is odd<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isAlphaNumeric(input)</b>
@@ -1025,6 +1054,7 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
  - isBool
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1056,6 +1086,7 @@ checks if your variable is an element or not<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isElement2(element)</b>
@@ -1083,6 +1114,7 @@ checks to see if your vairable is an element or not<br>
  - isBool
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1114,6 +1146,7 @@ checks to see if your variable is a DOM object<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isBoolean(input)</b>
@@ -1141,6 +1174,7 @@ checks if a variable is a boolean<br>
  - isBool
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1172,6 +1206,7 @@ check if variable is numeric<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isArray(input)</b>
@@ -1199,6 +1234,7 @@ check if variable is an array<br>
  - getRandom
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1235,6 +1271,7 @@ returns a random number / int betwen your specified min and max values<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getRandomThatsNot(min,max,not)</b>
@@ -1267,6 +1304,7 @@ returns a random int betwen your specified min and max values but never the not 
  - getRandom
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1303,6 +1341,7 @@ returns a random floating point number betwen your specified min and max values<
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>randomString(length)</b>
@@ -1330,6 +1369,7 @@ get a random string of a specified length<br>
  - getRandomString
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1360,6 +1400,7 @@ Generates a random id<br>
  - generateUID
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1401,6 +1442,7 @@ generate an array of random number between your max and min values<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getArrayOfRandomStrings(arraySize,strLength)</b>
@@ -1435,6 +1477,7 @@ generate an array of random string of a specified length<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>guid()</b>
@@ -1467,6 +1510,7 @@ generates a guid<br>
  - getGUID
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1506,6 +1550,7 @@ Get a weighted random based on odds and iterations<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>limitLengthInWords(str, maxWords)</b>
@@ -1543,6 +1588,7 @@ Limit a string in length of words<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>cleanJSONString(s)</b>
@@ -1575,6 +1621,7 @@ Attempts to clean a json string<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>escapeHTML(input)</b>
@@ -1605,6 +1652,7 @@ Attempts to escape a html string<br>
  - 
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1644,6 +1692,7 @@ sets the length of a string from left to right<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>trimStringBy(input, trimBy)</b>
@@ -1676,6 +1725,7 @@ Trims the length of a string by a value<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1712,6 +1762,7 @@ Trims the left of a string by a specified amount<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getFileExtension(input)</b>
@@ -1739,6 +1790,7 @@ Attempts to get the file extension from a file path string<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1770,6 +1822,7 @@ Attempts to get the file extension from a file path string<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getLastPartOfUrl(url)</b>
@@ -1797,6 +1850,7 @@ Gets the last part of a URL<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1828,6 +1882,7 @@ Attempts to remove the file from a file path string<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getAnchor(url)</b>
@@ -1855,6 +1910,7 @@ Get anchor from url<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1886,6 +1942,7 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>String.prototype.endsWith(str)</b>
@@ -1913,6 +1970,7 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -1954,6 +2012,7 @@ Gets a string between two other strings<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getAllStringsBetween(str,start,end)</b>
@@ -1993,6 +2052,7 @@ Gets all strings between two other strings (multi match)<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>radToDeg(input)</b>
@@ -2020,6 +2080,7 @@ converts radians to degrees<br>
  - rad2deg
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2051,6 +2112,7 @@ converts degrees to radians<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>toHex(num)</b>
@@ -2078,6 +2140,7 @@ Converts a number to hex<br>
  - arrayToFloat
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2109,6 +2172,7 @@ converts boolean to a string of true or false<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>boolToYesNo(bool)</b>
@@ -2136,6 +2200,7 @@ converts a boolean to yes or no<br>
  - arrayToFloat
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2167,6 +2232,7 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getBooleanFrom(input)</b>
@@ -2194,6 +2260,7 @@ converts an input to a boolean<br>
  - arrayToFloat
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2225,6 +2292,7 @@ parses all values in array to float<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>parseArrayToInt(arr)</b>
@@ -2252,6 +2320,7 @@ parses all values in array to float<br>
  - arrayToInt
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2282,6 +2351,7 @@ takes an input and returns it as index[0] of an array<br>
  - valueToArray
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2319,6 +2389,7 @@ Gets the number of whole days between a start and end date<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getUKDateFromDate(date)</b>
@@ -2346,6 +2417,7 @@ Formats a date in the UK format<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2377,6 +2449,7 @@ Formats a date in the US format<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getUkDateFromDbDateTime(input)</b>
@@ -2404,6 +2477,7 @@ get a uk date from a mysql db date value<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2435,6 +2509,7 @@ get a uk date from a mysql db date time value<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getSQLDateTime()</b>
@@ -2462,6 +2537,7 @@ gets the date time now for sql insert<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2493,6 +2569,7 @@ gets the date time at a specified local<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>validateEmail(email)</b>
@@ -2520,6 +2597,7 @@ Validats an email address<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2551,6 +2629,7 @@ isMobile<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isFireFox()</b>
@@ -2578,6 +2657,7 @@ Detects FireFox<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2609,6 +2689,7 @@ Detects Chrome<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isEdge()</b>
@@ -2636,6 +2717,7 @@ Detects Edge<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2667,6 +2749,7 @@ Detects Safari<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isIE()</b>
@@ -2694,6 +2777,7 @@ Detects IE<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2725,6 +2809,7 @@ Detects Opera<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getIEVersion()</b>
@@ -2752,6 +2837,7 @@ Gets version of IE<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2783,6 +2869,7 @@ Detects browser<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getOS(testUserAgent)</b>
@@ -2810,6 +2897,7 @@ Attempts to get the os from the user agent or the test user agent<br>
  - html
 
 </details>
+
 
 
 <hr><br><br><br>
@@ -2852,6 +2940,7 @@ setHTML(myElement,"Welcome!");
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getElementOffsetTop(elementId)</b>
@@ -2879,6 +2968,7 @@ Gets an elements top offset<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>centerAbsoluteElement(eleOrEleId)</b>
@@ -2904,6 +2994,7 @@ Center element that is absolute positioned<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -2938,6 +3029,7 @@ shortcut to add a css class to a html element<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b></b>
@@ -2968,6 +3060,7 @@ shortcut to remove a class from a html element<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3002,6 +3095,7 @@ Check to see if an element has a class attached to it<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>redirect(url)</b>
@@ -3027,6 +3121,7 @@ no more typing self.location.href, just use redirect(url)<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3061,6 +3156,7 @@ Sets a cookie by name with a value<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>getCookie(name)</b>
@@ -3086,6 +3182,7 @@ Gets the value of a cookie by name<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3115,6 +3212,7 @@ Checks to if checkbox is checked or not<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>isNumberKey(event)</b>
@@ -3142,6 +3240,7 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>removeAllSelectOptions(elementOrId)</b>
@@ -3167,6 +3266,7 @@ Removes all the options in a select<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3211,6 +3311,7 @@ parses a json object of key value pairs to a form select element<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>cycle(pos, max)</b>
@@ -3241,6 +3342,7 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3280,6 +3382,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 [return]
 [alias]
 </details>
+
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
@@ -3316,6 +3419,7 @@ fades in an element over a specified duration<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>fadeOut(elementId, duration)</b>
@@ -3346,6 +3450,7 @@ fades out an element over a specified duration<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3385,6 +3490,7 @@ Scroll to element on page<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>AFTC.Canvas({id||canvas})</b>
@@ -3417,6 +3523,7 @@ Scroll to element on page<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3456,6 +3563,7 @@ Scroll to element on page<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>rgb2Hex(r,g,b)</b>
@@ -3491,6 +3599,7 @@ rgb to hex<br>
 [return]
 [alias]
 </details>
+
 
 
 <hr><br><br><br>
@@ -3530,6 +3639,7 @@ rgb to hex<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>hexToRgb(hex)</b>
@@ -3557,6 +3667,7 @@ hexToRgb<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>AFTC.Color({params})</b>
@@ -3582,6 +3693,7 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 [return]
 [alias]
 </details>
+
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
@@ -3628,6 +3740,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 </details>
 
 
+
 <hr><br><br><br>
     
 ### <b>AFTC.XHR(args)</b>
@@ -3670,6 +3783,7 @@ Quick and easy xhr/ajax<br>
 [return]
 [alias]
 </details>
+
 #### Usage examples:
  - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
 

@@ -252,6 +252,7 @@ function generateReadme($comments){
 [return]
 [alias]
 </details>
+
 [links]
 
 <hr><br><br><br>
