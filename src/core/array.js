@@ -164,7 +164,7 @@ window.arrayToSingleLineString = function (arr) {
                 break;
         }
     }
-    html = trimStringLength(html, html.length - 1);
+    html = cutStringTo(html, html.length - 1);
     html += "]";
     return html;
 }

@@ -527,7 +527,7 @@ window.arrayToSingleLineString = function (arr) {
                 break;
         }
     }
-    html = trimStringLength(html, html.length - 1);
+    html = cutStringTo(html, html.length - 1);
     html += "]";
     return html;
 }
@@ -797,7 +797,7 @@ window.generateUID = function (len) { return getUID(len); }
  * @param arraySize number: the number of random numbers to generate also the array size that will be returned
  * @param min number: the minimum your random number is allowed to be
  * @param max number: the maximum your random number is allowed to be
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/NMoGdz
  */
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];

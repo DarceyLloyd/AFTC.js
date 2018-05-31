@@ -438,7 +438,7 @@ log(MyClass);
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/qYLzzm' target='_blank'>https://codepen.io/AllForTheCode/pen/qYLzzm</a>
 
 
 <hr><br><br><br>
@@ -485,7 +485,7 @@ Rectangle class, allos you to set x, y, width and height or a rectangle<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/JvQRKg' target='_blank'>https://codepen.io/AllForTheCode/pen/JvQRKg</a>
 
 
 <hr><br><br><br>
@@ -522,7 +522,7 @@ AFTC.Velocity class helper<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/erxRBo' target='_blank'>https://codepen.io/AllForTheCode/pen/erxRBo</a>
 
 
 <hr><br><br><br>
@@ -1061,13 +1061,13 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>pos</td>
+		<td>number</td>
 		<td>position of max</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>max number to cycle to</td>
 	</tr>
 </table>
@@ -1078,6 +1078,8 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxMZBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/BxMZBZ</a>
 
 
 <hr><br><br><br>
@@ -1274,18 +1276,18 @@ generate an array of random number between your max and min values<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>arraySize</td>
+		<td>number</td>
 		<td>the number of random numbers to generate also the array size that will be returned</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>min</td>
+		<td>number</td>
 		<td>the minimum your random number is allowed to be</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>the maximum your random number is allowed to be</td>
 	</tr>
 </table>
@@ -1297,6 +1299,8 @@ generate an array of random number between your max and min values<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -1315,13 +1319,13 @@ generate an array of random string of a specified length<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>arraySize</td>
+		<td>number</td>
 		<td>the number of random strings to generate also the array size that will be returned</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>strLength</td>
+		<td>number</td>
 		<td>the length of the strings to be generated</td>
 	</tr>
 </table>
@@ -1333,6 +1337,8 @@ generate an array of random string of a specified length<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -1843,8 +1849,8 @@ tries to get the function name of a suppled function<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>function</td>
 		<td>fn</td>
+		<td>function</td>
 		<td>the function wish to get the name of</td>
 	</tr>
 </table>
@@ -1856,6 +1862,8 @@ tries to get the function name of a suppled function<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/YLBKRy' target='_blank'>https://codepen.io/AllForTheCode/pen/YLBKRy</a>
 
 
 <hr><br><br><br>
@@ -2003,13 +2011,13 @@ returns a random RGB object o.r, o.g, o.g<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>min</td>
+		<td>number</td>
 		<td>min value</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>max value</td>
 	</tr>
 </table>
@@ -2038,13 +2046,13 @@ returns a random floating point number betwen your specified min and max values<
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>min</td>
+		<td>number</td>
 		<td>min value</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>max value</td>
 	</tr>
 </table>
@@ -2055,6 +2063,8 @@ returns a random floating point number betwen your specified min and max values<
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzqaYm' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqaYm</a>
 
 
 <hr><br><br><br>
@@ -2073,13 +2083,13 @@ returns a random number / int betwen your specified min and max values<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>min</td>
+		<td>number</td>
 		<td>the minimum your random number is allowed to go</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>the maximum your random number is allowed to go</td>
 	</tr>
 </table>
@@ -2090,6 +2100,8 @@ returns a random number / int betwen your specified min and max values<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/PeVqLp' target='_blank'>https://codepen.io/AllForTheCode/pen/PeVqLp</a>
 
 
 <hr><br><br><br>
@@ -2108,13 +2120,13 @@ returns a random int betwen your specified min and max values but never the not 
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>min</td>
+		<td>number</td>
 		<td>the minimum your random number is allowed to go</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>max</td>
+		<td>number</td>
 		<td>the maximum your random number is allowed to go</td>
 	</tr>
 </table>
@@ -2125,6 +2137,8 @@ returns a random int betwen your specified min and max values but never the not 
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/yEBZNq' target='_blank'>https://codepen.io/AllForTheCode/pen/yEBZNq</a>
 
 
 <hr><br><br><br>
@@ -2227,8 +2241,8 @@ Generates a random id<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>length</td>
+		<td>number</td>
 		<td>length of the unique id to generate</td>
 	</tr>
 </table>
@@ -2240,6 +2254,8 @@ Generates a random id<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/NMoGGY' target='_blank'>https://codepen.io/AllForTheCode/pen/NMoGGY</a>
 
 
 <hr><br><br><br>
@@ -2386,14 +2402,14 @@ Get a weighted random based on odds and iterations<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>odds</td>
-		<td>xxxxxxxxxxxxxxxxxxxx</td>
+		<td>array</td>
+		<td>array of odds</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>iterations</td>
-		<td>xxxxxxxxxxxxxxxxxxxx</td>
+		<td>number</td>
+		<td>number of iterations to run on each number test</td>
 	</tr>
 </table>
 
@@ -2403,6 +2419,8 @@ Get a weighted random based on odds and iterations<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -2470,6 +2488,8 @@ generates a guid<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -2599,6 +2619,8 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVGooO' target='_blank'>https://codepen.io/AllForTheCode/pen/pVGooO</a>
 
 
 <hr><br><br><br>
@@ -2617,8 +2639,8 @@ Detects if the device you are using is android or not<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>input</td>
 		<td>*</td>
-		<td>arr</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -2649,8 +2671,8 @@ check if variable is an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>input</td>
 		<td>*</td>
-		<td>arr</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -2661,6 +2683,8 @@ check if variable is an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/rvPNeg' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNeg</a>
 
 
 <hr><br><br><br>
@@ -2679,8 +2703,8 @@ checks if a variable is a boolean<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>input</td>
+		<td>*</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -2691,6 +2715,8 @@ checks if a variable is a boolean<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/JvxjGo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjGo</a>
 
 
 <hr><br><br><br>
@@ -2741,8 +2767,8 @@ Detects Chrome<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>object</td>
 		<td>obj</td>
+		<td>object</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -2773,8 +2799,8 @@ checks to see if your variable is a DOM object<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>object</td>
 		<td>obj</td>
+		<td>object</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -2785,6 +2811,8 @@ checks to see if your variable is a DOM object<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/JvxjYo' target='_blank'>https://codepen.io/AllForTheCode/pen/JvxjYo</a>
 
 
 <hr><br><br><br>
@@ -2803,8 +2831,8 @@ Detects Edge<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>o</td>
+		<td>*</td>
 		<td>variable you wish to check</td>
 	</tr>
 </table>
@@ -2835,8 +2863,8 @@ checks if your variable is an element or not<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>o</td>
+		<td>*</td>
 		<td>variable you wish to check</td>
 	</tr>
 </table>
@@ -2847,6 +2875,8 @@ checks if your variable is an element or not<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
 
 
 <hr><br><br><br>
@@ -2865,8 +2895,8 @@ checks to see if your vairable is an element or not<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>element</td>
+		<td>*</td>
 		<td>the variable you wish to check</td>
 	</tr>
 </table>
@@ -2877,6 +2907,8 @@ checks to see if your vairable is an element or not<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyvwPK' target='_blank'>https://codepen.io/AllForTheCode/pen/RyvwPK</a>
 
 
 <hr><br><br><br>
@@ -2895,8 +2927,8 @@ check if input is even<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>n</td>
+		<td>number</td>
 		<td>variable / value you wish to test</td>
 	</tr>
 </table>
@@ -2907,6 +2939,8 @@ check if input is even<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/rvPNBR' target='_blank'>https://codepen.io/AllForTheCode/pen/rvPNBR</a>
 
 
 <hr><br><br><br>
@@ -3016,6 +3050,8 @@ check for string in string<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/jxdONK' target='_blank'>https://codepen.io/AllForTheCode/pen/jxdONK</a>
 
 
 <hr><br><br><br>
@@ -3098,8 +3134,8 @@ check if variable is numeric<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>n</td>
+		<td>*</td>
 		<td>variable to check</td>
 	</tr>
 </table>
@@ -3110,6 +3146,8 @@ check if variable is numeric<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/bMzGEL' target='_blank'>https://codepen.io/AllForTheCode/pen/bMzGEL</a>
 
 
 <hr><br><br><br>
@@ -3128,9 +3166,9 @@ check if input is odd<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>n</td>
-		<td>variable / value you wish to test</td>
+		<td>number</td>
+		<td>variable value you wish to test</td>
 	</tr>
 </table>
 
@@ -3140,6 +3178,8 @@ check if input is odd<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzqOOW' target='_blank'>https://codepen.io/AllForTheCode/pen/gzqOOW</a>
 
 
 <hr><br><br><br>
@@ -3710,8 +3750,8 @@ get a random string of a specified length<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>length</td>
+		<td>number</td>
 		<td>the length of the string you wish to generate</td>
 	</tr>
 </table>
@@ -3722,6 +3762,8 @@ get a random string of a specified length<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrYjwr' target='_blank'>https://codepen.io/AllForTheCode/pen/QrYjwr</a>
 
 
 <hr><br><br><br>
@@ -4084,6 +4126,7 @@ sets the length of a string from left to right<br>
 
 <b>Returns:</b> 
 #### Alias's:
+ - 
  - 
  - 
  - 

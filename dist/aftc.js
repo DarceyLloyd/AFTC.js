@@ -552,7 +552,8 @@ window.valueToArray = function(v){ return convertToArray(v); }
 /**
  * @function: getFunctionName(fn)
  * @desc: tries to get the function name of a suppled function
- * @param function fn: the function wish to get the name of
+ * @param fn function: the function wish to get the name of
+ * @link: https://codepen.io/AllForTheCode/pen/YLBKRy
  */
 function getFunctionName(fn) {
     var name = fn.toString();
@@ -564,6 +565,7 @@ function getFunctionName(fn) {
  * @desc: check for string in string
  * @param string find: The string to look for
  * @param string source: The string to look in
+ * @link: https://codepen.io/AllForTheCode/pen/jxdONK
  */
 window.isInString = function (find,source) {
     return source.indexOf(find) !== -1;
@@ -574,7 +576,8 @@ window.inString = function (find,source) { return isInString(find,source); }
 /**
  * @function: isEven(n)
  * @desc: check if input is even
- * @param number n: variable / value you wish to test
+ * @param n number: variable / value you wish to test
+ * @link: https://codepen.io/AllForTheCode/pen/rvPNBR
  */
 window.isEven = function (n) {
     return n % 2 == 0;
@@ -583,7 +586,8 @@ window.isEven = function (n) {
 /**
 * @function: isOdd(n)
 * @desc: check if input is odd
-* @param number n: variable / value you wish to test
+* @param n number: variable value you wish to test
+* @link: https://codepen.io/AllForTheCode/pen/gzqOOW
 */
 window.isOdd = function (n) {
     return Math.abs(n % 2) == 1;
@@ -594,6 +598,7 @@ window.isOdd = function (n) {
  * @function: isAlphaNumeric(input)
  * @desc: check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)
  * @param string||number input: variable / value you wish to check
+ * @link: https://codepen.io/AllForTheCode/pen/pVGooO
  */
 window.isAlphaNumeric = function (input) {
     return !(/\W/.test(input));
@@ -603,7 +608,8 @@ window.isAlphaNumeric = function (input) {
 /**
  * @function: isElement(o)
  * @desc: checks if your variable is an element or not
- * @param * o: variable you wish to check
+ * @param o *: variable you wish to check
+ * @link: https://codepen.io/AllForTheCode/pen/RyvwPK
  */
 window.isElement = function (o) {
     var answer = (
@@ -617,19 +623,25 @@ window.isElement = function (o) {
         return true;
     }
 }
+
+
 /**
  * @function: isElement2(element)
  * @desc: checks to see if your vairable is an element or not
- * @param * element: the variable you wish to check
+ * @param element *: the variable you wish to check
+ * @link: https://codepen.io/AllForTheCode/pen/RyvwPK
  */
 window.isElement2 = function (element) {
     // works on major browsers back to IE7
     return element instanceof Element;
 }
+
+
 /**
  * @function: isDOM(obj)
  * @desc: checks to see if your variable is a DOM object
- * @param object obj: variable to check
+ * @param obj object: variable to check
+ * @link: https://codepen.io/AllForTheCode/pen/JvxjYo
  */
 window.isDOM = function (obj) {
     // this works for newer browsers
@@ -647,8 +659,9 @@ window.isDOM = function (obj) {
 /**
  * @function: isBoolean(input)
  * @desc: checks if a variable is a boolean
- * @param * input: variable to check
+ * @param input *: variable to check
  * @alias: isBool
+ * @link: https://codepen.io/AllForTheCode/pen/JvxjGo
  */
 window.isBoolean = function (input) {
     if (typeof (input) == "boolean") {
@@ -664,8 +677,9 @@ window.isBool = function (input) { return isBoolean(input); }
 /**
  * @function: isNumeric(n)
  * @desc: check if variable is numeric
- * @param * n: variable to check
+ * @param n *: variable to check
  * @alias: isNumber
+ * @link: https://codepen.io/AllForTheCode/pen/bMzGEL
  */
 window.isNumeric = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -678,7 +692,8 @@ window.isNumber = function (n) { return isNumeric(n); }
 /**
  * @function: isArray(input)
  * @desc: check if variable is an array
- * @param * arr: variable to check
+ * @param input *: variable to check
+ * @link: https://codepen.io/AllForTheCode/pen/rvPNeg
  */
 window.isArray = function (input) {
     return !!input && input.constructor === Array;
@@ -688,9 +703,10 @@ window.isArray = function (input) {
 /**
  * @function: getRandomInt(min,max)
  * @desc: returns a random number / int betwen your specified min and max values
- * @param number min: the minimum your random number is allowed to go
- * @param number max: the maximum your random number is allowed to go
+ * @param min number: the minimum your random number is allowed to go
+ * @param max number: the maximum your random number is allowed to go
  * @alias: getRandom
+ * @link: https://codepen.io/AllForTheCode/pen/PeVqLp
  */
 window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -704,9 +720,10 @@ window.random = function (min, max) { return getRandomInt(min, max); }
 /**
  * @function: getRandomThatsNot(min,max,not)
  * @desc: returns a random int betwen your specified min and max values but never the not value
- * @param number min: the minimum your random number is allowed to go
- * @param number max: the maximum your random number is allowed to go
+ * @param min number: the minimum your random number is allowed to go
+ * @param max number: the maximum your random number is allowed to go
  * @alias: getRandom
+ * @link: https://codepen.io/AllForTheCode/pen/yEBZNq
  */
 window.getRandomThatsNot = function(min,max,not){
     var r = not; var lim = 100; var runs = 0;
@@ -725,8 +742,9 @@ window.getRandomThatsNot = function(min,max,not){
 /**
  * @function: getRandomFloat(min,max)
  * @desc: returns a random floating point number betwen your specified min and max values
- * @param number min: min value
- * @param number max: max value
+ * @param min number: min value
+ * @param max number: max value
+ * @link: https://codepen.io/AllForTheCode/pen/gzqaYm
  */
 window.getRandomFloat = function (min, max) {
     return (Math.random() * (max - min) + min);
@@ -737,8 +755,9 @@ window.randomFloat = function (min, max) { return getRandomFloat(min, max); }
 /**
  * @function: randomString(length)
  * @desc: get a random string of a specified length
- * @param number length: the length of the string you wish to generate
+ * @param length number: the length of the string you wish to generate
  * @alias: getRandomString
+ * @link: https://codepen.io/AllForTheCode/pen/QrYjwr
  */
 window.randomString = function (length) {
     var text = "";
@@ -756,9 +775,10 @@ window.getRandomString = function (len) { return randomString(len); }
 /**
  * @function: getUID(length)
  * @desc: Generates a random id
- * @param number length: length of the unique id to generate
+ * @param length number: length of the unique id to generate
  * @alias: getUID
  * @alias: generateUID
+ * @link: https://codepen.io/AllForTheCode/pen/NMoGGY
  */
 window.getUID = function (len) {
     if (len > 34){
@@ -774,9 +794,10 @@ window.generateUID = function (len) { return getUID(len); }
 /**
  * @function: getArrayOfRandomNumbers(arraySize,min,max)
  * @desc: generate an array of random number between your max and min values
- * @param number arraySize: the number of random numbers to generate also the array size that will be returned
- * @param number min: the minimum your random number is allowed to be
- * @param number max: the maximum your random number is allowed to be
+ * @param arraySize number: the number of random numbers to generate also the array size that will be returned
+ * @param min number: the minimum your random number is allowed to be
+ * @param max number: the maximum your random number is allowed to be
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
@@ -790,8 +811,9 @@ window.getArrayOfRandomNumbers = function (arraySize, min, max) {
 /**
  * @function: getArrayOfRandomStrings(arraySize,strLength)
  * @desc: generate an array of random string of a specified length
- * @param number arraySize: the number of random strings to generate also the array size that will be returned
- * @param number strLength: the length of the strings to be generated
+ * @param arraySize number: the number of random strings to generate also the array size that will be returned
+ * @param strLength number: the length of the strings to be generated
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getArrayOfRandomStrings = function (arraySize, strLength) {
     var arr = [];
@@ -807,6 +829,7 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
  * @function: guid()
  * @desc: generates a guid
  * @alias: getGUID
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.guid = function () {
     function Amiga() {
@@ -833,8 +856,9 @@ window.getGUID = function () { return guid(); }
 /**
  * @function: getWeightedRandom(odds, iterations)
  * @desc: Get a weighted random based on odds and iterations
- * @param string odds: xxxxxxxxxxxxxxxxxxxx
- * @param string iterations: xxxxxxxxxxxxxxxxxxxx
+ * @param odds array: array of odds
+ * @param iterations number: number of iterations to run on each number test
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getWeightedRandom = function (odds, iterations) {
     if (!odds) {
@@ -968,6 +992,7 @@ window.escapeHTML = function (input) {
  * @alias cutString
  * @alias cutStringLength
  * @alias setStrLen
+ * @alias trimStringLength
  */
 window.cutStringTo = function (s, len) {
 	return s.substring(0, len);
@@ -976,6 +1001,7 @@ window.cutString = function (s, len) { return cutStringTo(s,len); }
 window.cutStringLength = function (s, len) { return cutStringTo(s,len); }
 window.setStrLen = function (s, len) { return cutStringTo(s,len); }
 window.setStringLength = function (s, len) { return cutStringTo(s,len); }
+window.trimStringLength = function (s, len) { return cutStringTo(s,len); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -2413,7 +2439,7 @@ window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
  * @method: angleRadians: angleRadians
  * @method: angleDeg: angleDeg
  * @method: rotate: rotate
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/qYLzzm
  */
 
 AFTC.Point = function (x, y) {
@@ -2498,7 +2524,7 @@ AFTC.Point = function (x, y) {
  * @method: setW: setW
  * @method: setH: setH
  * @return: AFTC.Rectangle
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/JvQRKg
  */
 
 AFTC.Rectangle = function (x, y, w, h) {
@@ -2556,7 +2582,7 @@ AFTC.Rect = AFTC.Rectangle;
  * @method flipY: flipY
  * @method multiply: multiply
  * @method divide: divide
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/erxRBo
  */
 AFTC.Velocity = function (vx, vy) {
 
@@ -2598,8 +2624,9 @@ AFTC.Velocity = function (vx, vy) {
 /**
  * @function: cycle(pos, max)
  * @desc: cycles from 0 to max based on pos, will cycle back to 0 if over max
- * @param number pos: position of max
- * @param number max: max number to cycle to
+ * @param pos number: position of max
+ * @param max number: max number to cycle to
+ * @link: https://codepen.io/AllForTheCode/pen/BxMZBZ
  */
 function cycle(pos, max) {
     return (pos % max + max) % max;
