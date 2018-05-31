@@ -72,7 +72,7 @@ gulp build
 <br><br>
 
 
-### <b>ArgsToObject(args, obj)</b>
+### <b>argsToObject(args, obj)</b>
 Quick and easy args to object<br>return<br>
 
 <details>
