@@ -1,11 +1,10 @@
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Styling shortcuts
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
  * @function: addClass(elementOrId,classname)
- * @desc: shortcut to add a css class to a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to add
+ * @desc: Add a css class to a html element
+ * @param elementOrId elementORstring: The elemnt or id of the html element to add a css class to
+ * @param className string: the class name to add
+ * @alias addClassTo
+ * @link: https://codepen.io/AllForTheCode/pen/BxvYmW
  */
 window.addClass = function (elementOrId, classNames) {
     var element;
@@ -26,8 +25,10 @@ window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, cla
 /**
  * @function: removeClass(elementOrId,className)
  * @desc: shortcut to remove a class from a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to remove
+ * @param elementOrId elementORstring: The elemnt or id of the html element to add a css class to
+ * @param className string: the class name to remove
+ * @alias removeClassFrom
+ * @link: https://codepen.io/AllForTheCode/pen/gzZvKL
  */
 window.removeClass = function (elementOrId, className) {
     var element;
@@ -49,8 +50,9 @@ window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementO
 /**
  * @function: hasClass(elementOrId, cls)
  * @desc: Check to see if an element has a class attached to it
- * @param string elementOrId: The elemnt or id of the html element
- * @param string cls: class to look for
+ * @param elementOrId string: The elemnt or id of the html element
+ * @param cls string: class to look for
+ * @link: https://codepen.io/AllForTheCode/pen/dewdwY
  */
 window.hasClass = function (elementOrId, cls) {
     if (isElement(elementOrId)) {
@@ -59,9 +61,3 @@ window.hasClass = function (elementOrId, cls) {
         return getElementById(elementOrId).classList.contains(cls);
     }
 }
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-

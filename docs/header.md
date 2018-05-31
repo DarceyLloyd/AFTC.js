@@ -3,6 +3,16 @@
 
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
+<br>
+
+### <b>What's new</b>
+
+ - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!
+
+ <br>
+ <hr>
+ <br>
+
 
 ### <b>Installation</b>
 ```

@@ -1,10 +1,11 @@
 /**
  * @function: getDaysBetween(startDateTime, endDateTime)
  * @desc: Gets the number of whole days between a start and end date
- * @param DateTime startDateTime: start date
- * @param DateTime endDateTime: end date
+ * @param startDateTime DateTime: start date
+ * @param endDateTime DateTime: end date
  * @alias: getNoOfDaysBetween
  * @alias: getDaysBetweenDates
+ * @link: https://codepen.io/AllForTheCode/pen/pVqaGZ
  */
 window.getDaysBetween = function(startDateTime, endDateTime) {
 	var msPerDay = 8.64e7;
@@ -23,9 +24,10 @@ window.getDaysBetweenDates = function(start, end){ return getDaysBetween(start, 
 
 
 /**
- * @function: getUKDateFromDate(date)
+ * @function: getUKDateFromDate(dte)
  * @desc: Formats a date in the UK format
- * @param Date date
+ * @param dte Date
+ * @link: https://codepen.io/AllForTheCode/pen/RyEMwp
  */
 window.getUKDateFromDate = function(dte){
 	var output = dte.getDay() + "-" + (dte.getMonth()+1) + "-" + dte.getFullYear();
@@ -34,9 +36,10 @@ window.getUKDateFromDate = function(dte){
 
 
 /**
- * @function: getUSDateFromDate(date)
+ * @function: getUSDateFromDate(dte)
  * @desc: Formats a date in the US format
- * @param Date date
+ * @param dte Date
+ * @link: https://codepen.io/AllForTheCode/pen/XqoEWL
  */
 window.getUSDateFromDate = function(dte){
 	var output = dte.getFullYear() + "-" + (dte.getMonth()+1) + "-" + (dte.getDay()+1)
@@ -48,7 +51,8 @@ window.getUSDateFromDate = function(dte){
 /**
  * @function: getUkDateFromDbDateTime(input)
  * @desc: get a uk date from a mysql db date value
- * @param MySQLDateTimeString input: MySQL DB DateTime
+ * @param input MySQLDateTimeString: MySQL DB DateTime
+ * @link: https://codepen.io/AllForTheCode/pen/BxvePW
  */
 window.getUkDateFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date
@@ -64,7 +68,8 @@ window.getUkDateFromDbDateTime = function (input) {
 /**
  * @function: getUkDateTimeFromDbDateTime(input)
  * @desc: get a uk date from a mysql db date time value
- * @param MySQLDateTimeString input: MySQL DB DateTime
+ * @param input MySQLDateTimeString: MySQL DB DateTime
+ * @link: https://codepen.io/AllForTheCode/pen/MGZdBB
  */
 window.getUkDateTimeFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date time
@@ -79,6 +84,7 @@ window.getUkDateTimeFromDbDateTime = function (input) {
 /**
  * @function: getSQLDateTime()
  * @desc: gets the date time now for sql insert
+ * @link: https://codepen.io/AllForTheCode/pen/wjRbEe
  */
 window.getSQLDateTime = function () {
 	var now = new Date();
@@ -112,7 +118,8 @@ window.getSQLDateTime = function () {
 /**
  * @function: getDateTime(local)
  * @desc: gets the date time at a specified local
- * @param string optional local: options are us or do not supply for en-gb
+ * @param local string: options are us or do not supply for en-gb
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaYj
  */
 window.getDateTime = function (local) {
 	// NOTE: MySQL DB DateTime format: "2016-04-08 21:11:59"

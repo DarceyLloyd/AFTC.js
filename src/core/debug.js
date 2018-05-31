@@ -1,23 +1,11 @@
-//  AFTC.VLog = function(){
-//     if (!(this instanceof arguments.callee)) {
-//         throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
-//     }
-//     var me = this;
-//     var vars = {
-
-//     }
-
-//     new AFTC.ArgsToObject(arguments[0], vars);
-//  };
-
-
-
 /**
  * @function: openDebugWindow(html)
  * @desc: open a popup window with the html you wish to display in it
- * @param dataType html: the html you wish to display in the popup window
+ * @param html string: the html you wish to display in the popup window
  * @return:
  * @alias: stringToWindow
+ * @alias: htmlToWindow
+ * @link: https://codepen.io/AllForTheCode/pen/ELGWpE
  */
 window.openDebugWindow = function (html) {
     var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
@@ -27,9 +15,5 @@ window.openDebugWindow = function (html) {
     //w.document.write("<div style='width:100%'>" + str + "</div>");
     w.document.close();
 }
-window.stringToWindow = function (html) {
-    openDebugWindow(html);
-}
-window.htmlToWindow = function (html) {
-    openDebugWindow(html);
-}
+window.stringToWindow = function (html) { openDebugWindow(html); }
+window.htmlToWindow = function (html) { openDebugWindow(html);}

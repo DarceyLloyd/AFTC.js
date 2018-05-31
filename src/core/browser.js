@@ -1,8 +1,8 @@
 /**
  * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
- * @param string url: the url you wish to redirect to
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @param url string: the url you wish to redirect to
+ * @link: https://codepen.io/AllForTheCode/pen/RyEpPY
  */
 window.redirect = function (url) {
     self.location.href = url;

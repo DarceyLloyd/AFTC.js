@@ -1,8 +1,9 @@
 /**
  * @function: radToDeg(input)
  * @desc: converts radians to degrees
- * @param number input: the radians you wish converted to degrees
+ * @param input number: the radians you wish converted to degrees
  * @alias: rad2deg
+ * @link: https://codepen.io/AllForTheCode/pen/wjRpBZ
  */
 window.radToDeg = function (input) {
     return input * (180 / Math.PI);
@@ -15,6 +16,7 @@ window.rad2deg = function (arg) { return radToDeg(arg); }
  * @desc: converts degrees to radians
  * @param number input: the value you wish converted to radians
  * @alias: deg2rad
+ * @link: https://codepen.io/AllForTheCode/pen/jxXYbE
  */
 window.degToRad = function (input) {
     return input * (Math.PI / 180);
@@ -26,8 +28,9 @@ window.deg2rad = function (arg) { return degToRad(arg); }
 /**
  * @function: toHex(num)
  * @desc: Converts a number to hex
- * @param number num: decimal base 10
+ * @param num number: decimal base 10
  * @return string: hexidecimal value
+ * @link: https://codepen.io/AllForTheCode/pen/ELGoKX
  */
 window.toHex = function (num) {
     return num.toString(16);
@@ -43,7 +46,8 @@ window.numberToHex = function(num) { return toHex(num); }
 /**
  * @function: boolToString(bool)
  * @desc: converts boolean to a string of true or false
- * @param boolean bool: the boolean you wish to convert
+ * @param bool boolean: the boolean you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/PeXEbg
  */
 window.boolToString = function (bool) {
 
@@ -66,7 +70,8 @@ window.booleanToString = function(bool) { return boolToString(bool); }
 /**
  * @function: boolToYesNo(bool)
  * @desc: converts a boolean to yes or no
- * @param boolean bool: the boolean you wish to convert
+ * @param bool boolean: the boolean you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/zjypZz
  */
 window.boolToYesNo = function (bool) {
 
@@ -87,7 +92,8 @@ window.booleanToYesNo = function(bool) { return boolToYesNo(bool); }
 /**
  * @function: stringToBool(str)
  * @desc: Converts a string to a boolean (y,yes,"1",no etc)
- * @param string str: the string you wish to convert
+ * @param str string: the string you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/vjvpmQ
  */
 window.stringToBool = function (str) {
 
@@ -122,6 +128,7 @@ window.stringToBoolean = function(str) { return stringToBool(str); }
  * @function: getBooleanFrom(input)
  * @desc: converts an input to a boolean
  * @param * input: the variable you wish to convert to a boolean
+ * @link: https://codepen.io/AllForTheCode/pen/XqoVea
  */
 window.toBoolean = function (input) {
     if (input == null || input == "" || !input) {
@@ -151,6 +158,7 @@ window.getBooleanFrom = function(input) { return toBoolean(input); }
  * @desc: parses all values in array to float
  * @param array arr: array to process
  * @alias: arrayToFloat
+ * @link: https://codepen.io/AllForTheCode/pen/erbyVR
  */
 window.parseArrayToFloat = function (arr) {
     var converted;
@@ -171,6 +179,7 @@ window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
  * @desc: parses all values in array to float
  * @param array arr: array to process
  * @alias: arrayToInt
+ * @link: https://codepen.io/AllForTheCode/pen/yjGpqM
  */
 window.parseArrayToInt = function (arr) {
     for (var i = 0; i < arr.length; i++) {
@@ -188,11 +197,12 @@ window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
 
 
 /**
- * @function:toArray(v)
+ * @function: toArray(v)
  * @desc: takes an input and returns it as index[0] of an array
  * @param * arg: value to insert into array
  * @alias: convertToArray
  * @alias: valueToArray
+ * @link: https://codepen.io/AllForTheCode/pen/QrzazK
  */
 window.toArray = function (arg) {
     var a = [];

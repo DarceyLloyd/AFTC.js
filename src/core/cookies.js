@@ -1,8 +1,9 @@
 /**
  * @function: setCookie(name, value)
  * @desc: Sets a cookie by name with a value
- * @param string name: name of the cookie
- * @param * value: value of the cookie
+ * @param name string: name of the cookie
+ * @param value string: value of the cookie
+ * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
 window.setCookie = function (name, value) {
 	//document.cookie = name + "=" + value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
@@ -17,7 +18,8 @@ window.setCookie = function (name, value) {
 /**
  * @function: getCookie(name)
  * @desc: Gets the value of a cookie by name
- * @param string name: name of the cookie
+ * @param name string: name of the cookie to get 
+ * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
 window.getCookie = function (name) {
 	//return .cookie(name);

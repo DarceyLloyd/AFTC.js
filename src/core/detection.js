@@ -1,7 +1,8 @@
 /**
  * @function: isMobile()
- * @desc: isMobile
+ * @desc: Detects if the device you are using is a mobile or not
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/KRbLdm
  */
 window.isMobile = function(){
 	// Windows Phone must come first because its UA also contains "Android"!
@@ -17,6 +18,12 @@ window.isMobile = function(){
 	}
 }
 
+/**
+ * @function: isAndroid()
+ * @desc: Detects if the device you are using is android or not
+ * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/RyEmgN
+ */
 window.isAndroid = function(){
 	var ua = navigator.userAgent.toLowerCase();
 	if (/windows phone/i.test(ua)) {
@@ -27,6 +34,12 @@ window.isAndroid = function(){
 	}
 }
 
+/**
+ * @function: iOS()
+ * @desc: Detects if the device you are using is iOS or not
+ * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/ELGzXO
+ */
 window.iOS = function() {
 	var iDevices = [
 	  'iPad Simulator',
@@ -46,10 +59,12 @@ window.iOS = function() {
 	return false;
   }
 
+
 /**
  * @function: isFireFox()
  * @desc: Detects FireFox
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/mLaYMe
  */
 window.isFireFox = function () {
 	// var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -61,6 +76,7 @@ window.isFireFox = function () {
  * @function: isChrome()
  * @desc: Detects Chrome
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/xjmNLM
  */
 window.isChrome = function () {
 	// var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -73,6 +89,7 @@ window.isChrome = function () {
  * @function: isEdge()
  * @desc: Detects Edge
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/aGPrLP
  */
 window.isEdge = function () {
 	//var isEdge = !isIE && !!window.StyleMedia; // Edge 20+
@@ -88,6 +105,7 @@ window.isEdge = function () {
  * @function: isSafari()
  * @desc: Detects Safari
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/gzZJXr
  */
 window.isSafari = function () {
 	// var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
@@ -99,6 +117,7 @@ window.isSafari = function () {
  * @function: isIE()
  * @desc: Detects IE
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/MGZdOG
  */
 window.isIE = function () {
 	// var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
@@ -113,6 +132,7 @@ window.isIE = function () {
  * @function: isOpera()
  * @desc: Detects Opera
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/dewEJb
  */
 window.isOpera = function() {
 	// var isChromium = window.chrome;
@@ -126,6 +146,7 @@ window.isOpera = function() {
  * @function: getIEVersion()
  * @desc: Gets version of IE
  * @return float
+ * @link: https://codepen.io/AllForTheCode/pen/BxveJp
  */
 window.getIEVersion = function () {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
@@ -136,6 +157,7 @@ window.getIEVersion = function () {
  * @function: getBrowser()
  * @desc: Detects browser
  * @return string
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaQZ
  */
 window.getBrowser = function () {
 	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -163,6 +185,7 @@ window.getBrowser = function () {
  * @function: getOS(testUserAgent)
  * @desc: Attempts to get the os from the user agent or the test user agent
  * @param string testUserAgent: test user agent string
+ * @link: https://codepen.io/AllForTheCode/pen/erbaVj
  */
 window.getOS = function (testAgent) {
 	var userAgent;

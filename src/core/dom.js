@@ -1,16 +1,13 @@
 /**
  * @function: setHTML(elementOrId,html);
- * @desc: quick shortcut for outputting html to an element
+ * @desc: Quick shortcut for outputting html to an element
  * ````
  * setHTML("header","Welcome");
- * // or
- * var myElement = getElementById("header");
- * setHTML(myElement,"Welcome!");
  * ````
- * @param dataType elementOrId: the element or the element id you wish to set the html of
- * @param dataType html: the html string to insert into your element
- * @return:
+ * @param elementOrId stringIdOrHtmlElement: the element or the element id you wish to set the html of
+ * @param html string: the html string to insert into your element
  * @alias: html
+ * @link: https://codepen.io/AllForTheCode/pen/KRbLER
  */
 window.setHTML = function (elementOrId, str) {
     var element;
@@ -29,7 +26,8 @@ window.html = function (element, str) { window.setHTML(element, str); }
 /**
  * @function: getElementOffsetTop(elementId)
  * @desc: Gets an elements top offset
- * @param string elementId: the element ID you wish to get the top offset of
+ * @param elementId string: the element ID you wish to get the top offset of
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaLr
  */
 window.getElementOffsetTop = function (elementId) {
     var element = getElementById(elementId);
@@ -53,19 +51,17 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
 
 
 /**
- * @function: centerAbsoluteElement(eleOrEleId)
+ * @function: centerAbsoluteElement(elementId)
  * @desc: Center element that is absolute positioned
- * @param element || string eleOrEleId: element or id of element to center
+ * @param elementId string: element or id of element to center
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxxxxxxx
  */
-window.centerAbsoluteElement = function (eleOrEleId) {
-	var element;
-
-	if (typeof (eleOrEleId) === "string") {
-		element = document.getElementById(eleOrEleId);
-		if (!element) {
-			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
-		}
+window.centerAbsoluteElement = function (elementId) {
+	var element = document.getElementById(elementId);		
+	if (!element) {
+		throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 	}
+
 
 	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
 	// var marginR = parseInt( getComputedStyle(element,null).marginRight );

@@ -1,8 +1,8 @@
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
- * @param array arr: the array you wish to remove an index on
- * @param number index: the array index you wish to remove
+ * @param arr array: the array you wish to remove an index on
+ * @param index number: the array index you wish to remove
  * @return: array
  * @link: https://codepen.io/AllForTheCode/pen/mLzyGP
  */
@@ -14,8 +14,8 @@ window.arrayRemoveIndex = function (arr, index) {
 /**
  * @function: isStringInArray(needle,haystack)
  * @desc: Check to see if a string is in an array
- * @param string needle: the string your looking for
- * @param array haystack: the array you wish to search
+ * @param needle string: what you want to search for in each array index
+ * @param haystack string: the array you want to search
  * @link: https://codepen.io/AllForTheCode/pen/QrZrBM
  */
 window.isStringInArray = function (needle, haystack) {
@@ -25,8 +25,8 @@ window.isStringInArray = function (needle, haystack) {
 /**
  * @function: arrayContains(needle,haystack)
  * @desc: Check to see if your array contains something you want to find
- * @param array arr: the array you wish to search
- * @param string needle: what you want to find
+ * @param needle string: what you want to search for in each array index
+ * @param haystack string: the array you want to search
  * @alias: isInArray
  * @link: https://codepen.io/AllForTheCode/pen/VxExVw
  */
@@ -72,9 +72,9 @@ window.arrayMax = function (arr) { return getMaxFromArray(arr); }
 
 
 /**
- * @function: arrayGetMin
+ * @function: arrayGetMin(arr)
  * @desc: returns the minimum value in an array
- * @param array arr: the array you wish to find the minimum value in
+ * @param arr array: the array you wish to find the minimum value in
  * @alias: getMinFromArray
  * @alias: arrayMin
  * @link: https://codepen.io/AllForTheCode/pen/bMmKBa
@@ -91,7 +91,7 @@ window.arrayMin = function (arr) { return getMinFromArray(arr); }
 /**
  * @function: arrayShuffle(arr)
  * @desc: shuffles an array (method 1)
- * @param array arr: the array to shuffle
+ * @param arr array: the array to shuffle
  * @alias: shuffle
  * @alias: arrayShuffle
  * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
@@ -122,7 +122,7 @@ window.shuffleArray = function(arr){ return arrayShuffle(arr); }
 /**
  * @function: arrayShuffle2(arr)
  * @desc: shuffles an array (method 2)
- * @param array arr: the array to shuffle
+ * @param arr array: the array to shuffle
  * @alias: shuffle2
  * @alias: arrayShuffle2
  * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
@@ -145,7 +145,7 @@ window.shuffleArray2 = function(arr){ return arrayShuffle2(arr); }
 /**
  * @function: arrayToSingleLineString(arr)
  * @desc: Converts an array to a single line string (usefull for debug)
- * @param array arr: the convert
+ * @param arr array: the convert
  * @alias: arrayToString
  * @link: https://codepen.io/AllForTheCode/pen/XqoVEe
  */
@@ -173,9 +173,9 @@ window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
 
 
 /**
- * @function: convertToArray(v)
+ * @function: convertToArray(val)
  * @desc: takes an input and returns it as index[0] of an array
- * @param & v: value to insert into array
+ * @param val *: value to make into array an array
  * @alias: valueToArray
  * @link: https://codepen.io/AllForTheCode/pen/QrzazK
  */
