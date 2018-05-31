@@ -115,4 +115,7 @@
  <a href='#tohexnum'>toHex(num)</a><br>
  <a href='#trimstringbyinputtrimby'>trimStringBy(input, trimBy)</a><br>
  <a href='#validateemailemail'>validateEmail(email)</a><br>
+<br><br>
+#### Browse on codepen
+<a href='https://codepen.io/AllForTheCode/pens/public/?grid_type=list' target='_blank'>https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 <br><br><hr><br><br>

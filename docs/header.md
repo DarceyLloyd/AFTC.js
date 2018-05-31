@@ -7,7 +7,8 @@
 
 ### <b>What's new</b>
 
- - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!
+ - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!<br>
+ You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 
  <br>
  <hr>

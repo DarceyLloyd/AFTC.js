@@ -80,11 +80,6 @@ function trimAndReplace($replace,$with,$source){
 }
 
 
-Class anchorVo{
-    public $name = "";
-    public $link = "";
-}
-
 
 function getAnchors($path){
     $anchors = [];
@@ -119,6 +114,10 @@ function getAnchors($path){
             $out .= " <a href='#" . $link . "'>" . $value . "</a><br>\n";
         }
     }
+
+    $out .= "<br><br>\n";
+    $out .= "#### Browse on codepen\n";
+    $out .= "<a href='https://codepen.io/AllForTheCode/pens/public/?grid_type=list' target='_blank'>https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>\n";
 
     $out .= "<br><br><hr><br><br>";
 
