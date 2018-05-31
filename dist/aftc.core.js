@@ -135,7 +135,7 @@ window.getElementByName = function (name) { return AFTC.GetElement.by("name", na
  */
 window.getElementsByClassName = function (className) { return AFTC.GetElement.by("class", className); }
 /**
- * @function: getElementByClassName(xxxx)
+ * @function: getElementByClassName(className)
  * @desc: Gets the first html element from the DOM that has a specific class name. NOTE: AFTC.JS DOM queries are cached and faster than the normal document. version!
  * @param className string: The class name the DOM element uses you wish to find
  * @return: html elements
@@ -381,6 +381,7 @@ window.ready = function (fn) {
  * @param array arr: the array you wish to remove an index on
  * @param number index: the array index you wish to remove
  * @return: array
+ * @link: https://codepen.io/AllForTheCode/pen/mLzyGP
  */
 window.arrayRemoveIndex = function (arr, index) {
     arr.splice(index, 1);
@@ -392,6 +393,7 @@ window.arrayRemoveIndex = function (arr, index) {
  * @desc: Check to see if a string is in an array
  * @param string needle: the string your looking for
  * @param array haystack: the array you wish to search
+ * @link: https://codepen.io/AllForTheCode/pen/QrZrBM
  */
 window.isStringInArray = function (needle, haystack) {
     return (new RegExp('(' + haystack.join('|').replace(/\./g, '\\.') + ')$')).test(needle);
@@ -402,6 +404,8 @@ window.isStringInArray = function (needle, haystack) {
  * @desc: Check to see if your array contains something you want to find
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
+ * @alias: isInArray
+ * @link: https://codepen.io/AllForTheCode/pen/VxExVw
  */
 window.arrayContains = function (needle, haystack) {
     if (haystack.indexOf(needle) > -1) { return true; } else { return false; }
@@ -415,6 +419,7 @@ window.isInArray = function (needle, haystack) { return window.arrayContains(nee
  * @desc: clears/empties an array for garbage collection
  * @param array arr: the array to clear / empty
  * @alias: arrayClear
+ * @link: https://codepen.io/AllForTheCode/pen/ELdRYJ
  */
 window.arrayEmpty = function (arr) {
     while (arr.length > 0) { arr.pop(); }
@@ -432,6 +437,7 @@ window.arrayClear = function (arr) { window.arrayEmpty(arr); }
  * @param array arr: the array you wish to find the maximum value in
  * @alias: arrayGetMax
  * @alias: arrayMax
+ * @link: https://codepen.io/AllForTheCode/pen/GdYGjW
  */
 window.getMaxFromArray = function (arr) {
     return Math.max.apply(Math, arr);
@@ -448,6 +454,7 @@ window.arrayMax = function (arr) { return getMaxFromArray(arr); }
  * @param array arr: the array you wish to find the minimum value in
  * @alias: getMinFromArray
  * @alias: arrayMin
+ * @link: https://codepen.io/AllForTheCode/pen/bMmKBa
  */
 window.getMinFromArray = function (arr) {
     return Math.min.apply(Math, arr);
@@ -464,6 +471,7 @@ window.arrayMin = function (arr) { return getMinFromArray(arr); }
  * @param array arr: the array to shuffle
  * @alias: shuffle
  * @alias: arrayShuffle
+ * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
  */
 window.arrayShuffle = function (arr) {
     var currentIndex = arr.length,
@@ -494,6 +502,7 @@ window.shuffleArray = function(arr){ return arrayShuffle(arr); }
  * @param array arr: the array to shuffle
  * @alias: shuffle2
  * @alias: arrayShuffle2
+ * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
  */
 window.arrayShuffle2 = function (a) {
     var x, t, r = new Uint32Array(1);
@@ -510,7 +519,13 @@ window.shuffleArray2 = function(arr){ return arrayShuffle2(arr); }
 
 
 
-
+/**
+ * @function: arrayToSingleLineString(arr)
+ * @desc: Converts an array to a single line string (usefull for debug)
+ * @param array arr: the convert
+ * @alias: arrayToString
+ * @link: https://codepen.io/AllForTheCode/pen/XqoVEe
+ */
 window.arrayToSingleLineString = function (arr) {
     var html = "[";
     for (i = 0; i < arr.length; i++) {
@@ -535,10 +550,11 @@ window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
 
 
 /**
- * @function:convertToArray(v)
+ * @function: convertToArray(v)
  * @desc: takes an input and returns it as index[0] of an array
  * @param & v: value to insert into array
  * @alias: valueToArray
+ * @link: https://codepen.io/AllForTheCode/pen/QrzazK
  */
 window.convertToArray = function(v){
     var a = [];
@@ -2025,7 +2041,7 @@ window.addClass = function (elementOrId, classNames) {
 window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, classNames); }
 
 /**
- * @func: removeClass(elementOrId,className)
+ * @function: removeClass(elementOrId,className)
  * @desc: shortcut to remove a class from a html element
  * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
  * @param string className: the class name to remove
@@ -2071,12 +2087,19 @@ window.hasClass = function (elementOrId, cls) {
  * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
  * @param string url: the url you wish to redirect to
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.redirect = function (url) {
     self.location.href = url;
 };
 
 
+/**
+ * @function: goFullScreen(element)
+ * @desc: Go full screen, on an element if specified or whole browser if left out
+ * @param element element: optional - html element that you want to go full screen on, leave out for whole browser
+ * @link: https://codepen.io/AllForTheCode/pen/ELGWpE
+ */
 window.goFullScreen = function (element) {
     var target = document.body;
     if (element != undefined){
@@ -2098,6 +2121,12 @@ window.goFullScreen = function (element) {
     }
 }
 
+
+/**
+ * @function: exitFullScreen()
+ * @desc: Exits full screen mode
+ * @link: https://codepen.io/AllForTheCode/pen/ELGWpE
+ */
 window.exitFullScreen = function () {
 	if (document.exitFullscreen) {
 		document.exitFullscreen();

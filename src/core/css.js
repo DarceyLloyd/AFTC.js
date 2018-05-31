@@ -24,7 +24,7 @@ window.addClass = function (elementOrId, classNames) {
 window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, classNames); }
 
 /**
- * @func: removeClass(elementOrId,className)
+ * @function: removeClass(elementOrId,className)
  * @desc: shortcut to remove a class from a html element
  * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
  * @param string className: the class name to remove

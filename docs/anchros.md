@@ -12,14 +12,17 @@
  <a href='#arrayremoveindexarrindex'>arrayRemoveIndex(arr,index)</a><br>
  <a href='#arrayshufflearr'>arrayShuffle(arr)</a><br>
  <a href='#arrayshuffle2arr'>arrayShuffle2(arr)</a><br>
+ <a href='#arraytosinglelinestringarr'>arrayToSingleLineString(arr)</a><br>
  <a href='#booltostringbool'>boolToString(bool)</a><br>
  <a href='#booltoyesnobool'>boolToYesNo(bool)</a><br>
  <a href='#centerabsoluteelementeleoreleid'>centerAbsoluteElement(eleOrEleId)</a><br>
  <a href='#cleanjsonstrings'>cleanJSONString(s)</a><br>
+ <a href='#cls'>cls()</a><br>
  <a href='#converttoarrayv'>convertToArray(v)</a><br>
  <a href='#cycleposmax'>cycle(pos, max)</a><br>
  <a href='#degtoradinput'>degToRad(input)</a><br>
  <a href='#escapehtmlinput'>escapeHTML(input)</a><br>
+ <a href='#exitfullscreen'>exitFullScreen()</a><br>
  <a href='#fadeinelementidduration'>fadeIn(elementId, duration)</a><br>
  <a href='#fadeoutelementidduration'>fadeOut(elementId, duration)</a><br>
  <a href='#getallstringsbetweenstrstartend'>getAllStringsBetween(str,start,end)</a><br>
@@ -31,7 +34,7 @@
  <a href='#getcookiename'>getCookie(name)</a><br>
  <a href='#getdatetimelocal'>getDateTime(local)</a><br>
  <a href='#getdaysbetweenstartdatetimeenddatetime'>getDaysBetween(startDateTime, endDateTime)</a><br>
- <a href='#getelementbyclassnamexxxx'>getElementByClassName(xxxx)</a><br>
+ <a href='#getelementbyclassnameclassname'>getElementByClassName(className)</a><br>
  <a href='#getelementbyidid'>getElementById(id)</a><br>
  <a href='#getelementbynamename'>getElementByName(name)</a><br>
  <a href='#getelementbytagnametagname'>getElementByTagName(tagName)</a><br>
@@ -58,6 +61,7 @@
  <a href='#getukdatetimefromdbdatetimeinput'>getUkDateTimeFromDbDateTime(input)</a><br>
  <a href='#getusdatefromdatedate'>getUSDateFromDate(date)</a><br>
  <a href='#getweightedrandomoddsiterations'>getWeightedRandom(odds, iterations)</a><br>
+ <a href='#gofullscreenelement'>goFullScreen(element)</a><br>
  <a href='#guid'>guid()</a><br>
  <a href='#hasclasselementoridcls'>hasClass(elementOrId, cls)</a><br>
  <a href='#hextorgbhex'>hexToRgb(hex)</a><br>
@@ -86,6 +90,7 @@
  <a href='#logdisable'>logDisable()</a><br>
  <a href='#logenable'>logEnable()</a><br>
  <a href='#logtoelement'>logTo(element)</a><br>
+ <a href='#logtodisable'>logToDisable()</a><br>
  <a href='#onreadyfn'>onReady(fn)</a><br>
  <a href='#opendebugwindowhtml'>openDebugWindow(html)</a><br>
  <a href='#parsearraytofloatarr'>parseArrayToFloat(arr)</a><br>
@@ -96,6 +101,7 @@
  <a href='#randomstringlength'>randomString(length)</a><br>
  <a href='#redirecturl'>redirect(url)</a><br>
  <a href='#removeallselectoptionselementorid'>removeAllSelectOptions(elementOrId)</a><br>
+ <a href='#removeclasselementoridclassname'>removeClass(elementOrId,className)</a><br>
  <a href='#removefilefrompathpath'>removeFileFromPath(path)</a><br>
  <a href='#rgb2hexrgb'>rgb2Hex(r,g,b)</a><br>
  <a href='#rgbtohexrgb'>rgbToHex(r,g,b)</a><br>
