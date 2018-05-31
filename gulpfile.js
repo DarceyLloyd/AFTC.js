@@ -33,7 +33,7 @@ var aftc_modules = [
     "./dist/aftc.core.js", // The AFTC Core (required)
     "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
-    "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
+    // "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas(); (WORK IN PROGRESS);
     // "./src/AFTC/AFTC.CheckboxHideShow.js", // Up for review - to be updated or removed
     "./src/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
     "./src/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()

@@ -73,7 +73,6 @@ var aftc_modules = [
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
- <a href='#aftccanvasidcanvas'>AFTC.Canvas({id||canvas})</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
  <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
@@ -291,14 +290,9 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>canvasId</td>
-		<td>Canvas element id to work with</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>opacity</td>
-		<td>opacity of noise</td>
+		<td>object</td>
+		<td>params</td>
+		<td>parameters object</td>
 	</tr>
 </table>
 
@@ -311,44 +305,6 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
-
-
-<hr><br><br><br>
-    
-### <b>AFTC.Canvas({id||canvas})</b>
-<br>
-````
-````
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>canvasId</td>
-		<td>Canvas element id to work with</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>opacity</td>
-		<td>opacity of noise</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - log
- - trace
-
-</details>
-
 
 
 <hr><br><br><br>

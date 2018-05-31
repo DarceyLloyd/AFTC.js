@@ -2,7 +2,6 @@
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
- <a href='#aftccanvasidcanvas'>AFTC.Canvas({id||canvas})</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
  <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
