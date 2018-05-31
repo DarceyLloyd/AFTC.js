@@ -302,6 +302,7 @@ function generateReadme($comments){
 <details>
     <summary><b>More information</b></summary>
 [table]
+[methods]
 <b>Returns:</b> [return]
 [alias]
 </details>
@@ -382,6 +383,29 @@ function generateReadme($comments){
                 }
                 $table .= "</table>\n";
                 $out = str_replace("[table]",$table,$out);
+            } else {
+                $out = str_replace("[table]","",$out);
+            }
+
+            // Methods
+            if (count($commentVo->methods)>0){
+                $table = "\n";
+                $table .= " #### Methods: \n";
+                $table .= "<table>\n";
+                $table .= "\t<tr>\n";
+                    $table .= "\t\t<th>Name</th>" . "\n";
+                    $table .= "\t\t<th>Description</th>" . "\n";
+                $table .= "\t</tr>\n";
+                foreach ($commentVo->methods as $method) {
+                    $table .= "\t<tr>\n";
+                    $table .= "\t\t<td>" . $method->name . "</td>" . "\n";
+                    $table .= "\t\t<td>" . $method->desc . "</td>" . "\n";
+                    $table .= "\t</tr>\n";
+                }
+                $table .= "</table>\n";
+                $out = str_replace("[methods]",$table,$out);
+            } else {
+                $out = str_replace("[methods]","",$out);
             }
     
             // Alias
@@ -391,11 +415,13 @@ function generateReadme($comments){
                     $alias .= " - " . $alt . "\n";
                 }
                 $out = str_replace("[alias]",$alias,$out);
+            } else {
+                $out = str_replace("[alias]","",$out);
             }
     
             // Return
             // out("return = " . $commentVo->return . " len = " . strlen($commentVo->return));
-            if ($commentVo->return != "" || strlen($commentVo->return) == 0){
+            if (strlen($commentVo->return) > 0){
                 $out = str_replace("[return]",$commentVo->return,$out);
             } else {
                 $out = str_replace("[return]","",$out);

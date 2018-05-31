@@ -11,6 +11,10 @@
  * @params onReady function: the function you wish to run when your sound is ready and can play
  * @params onComplete function: the function you wish to run when your sound has finished playing
  * @params hideWarnings boolean: hides notices in console for compatibility issues when not using mp3 etc
+ * @method play: Play audio
+ * @method stop: Stop audio
+ * @method pause: Pause audio
+ * @method resume: Resume ausio
  * @link: https://codepen.io/AllForTheCode/pen/NzWrvm
  */
 

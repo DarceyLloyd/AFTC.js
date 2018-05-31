@@ -1487,7 +1487,7 @@ window.getUKDateFromDate = function(dte){
 /**
  * @function: getUSDateFromDate(dte)
  * @desc: Formats a date in the US format
- * @param dte Date
+ * @param dte Date: date
  * @link: https://codepen.io/AllForTheCode/pen/XqoEWL
  */
 window.getUSDateFromDate = function(dte){

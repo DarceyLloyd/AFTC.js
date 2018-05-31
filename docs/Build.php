@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once("./includes/vos.php");
 
     $file = "../dist/aftc.js";
+    // $file = "../src/AFTC/AFTC.Color.js";
+
     $anchors = getAnchors($file);
     file_put_contents("./anchros.md",$anchors);
     // print_r($anchors);
@@ -43,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //return strcmp($a->name, $b->name); // Case sensitive sorting 
         return strcasecmp($a->name, $b->name); // Binary safe case-insensitive string comparison 
     }
-    //usort($comments, "cmp");
+    usort($comments, "cmp"); // this works
     //usort($comments, array($comments, "cmp"));
 
 

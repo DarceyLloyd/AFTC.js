@@ -17,7 +17,7 @@
  * @param number r: red
  * @param number g: green
  * @param number b: blue
- * @return string: hex color
+ * @return hex color
  */
 window.rgb2Hex = function (r, g, b) {
   return ((r << 16) | (g << 8) | b).toString(16);
@@ -30,7 +30,7 @@ window.rgb2Hex = function (r, g, b) {
  * @param number r: red
  * @param number g: green
  * @param number b: blue
- * @return string: hex color
+ * @return hex color
  */
 window.rgbToHex = function (r, g, b) {
   function getHex(c) {
@@ -48,7 +48,7 @@ window.rgbToHex = function (r, g, b) {
  * @function: hexToRgb(hex)
  * @desc: hexToRgb
  * @param string hex: hex color
- * @return string: rgb color
+ * @return rgb color
  */
 window.hexToRgb = function (hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -69,7 +69,21 @@ window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
  * @class: AFTC.Color({params})
  * @desc: Color allows you to create, convert, lighten or darken colours and more.
  * @param object params: parameters object
- * @return object: [AFTC.Color]
+ * @method lighten(percent,spectrum): lighten the color by precent and optional spectrum {r:bool,g;bool,b:bool}
+ * @method darken(percent,spectrum): darken the color by precent and optional spectrum {r:bool,g;bool,b:bool}
+ * @method randomizeColor: randomises the colour
+ * @method getRGBSstring: returns the RGB value of the color
+ * @method getRGBASstring: returns the RGBA value of the color
+ * @method getHexString: returns the HEX value of the color
+ * @method getHex: returns the HEX value of the color
+ * @method hex: returns the HEX value of the color
+ * @method getRGB: returns the RGB value of the color
+ * @method rgb: returns the RGB value of the color
+ * @method getRGBA: returns the RGBA value of the color
+ * @method rgba: returns the RGBA value of the color
+ * @method setRGB: returns the RGB value of the color
+ * @method setHex: returns the HEX value of the color
+ * @return AFTC.Color
  * @link: https://codepen.io/AllForTheCode/pen/mLZRge
  */
 AFTC.Color = function () {
