@@ -8,7 +8,8 @@
 ### <b>What's new</b>
 
  - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!<br>
- You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
+ You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a><br>
+ 1.6.x is quite the clean up and documentation refresh
 
  <br>
  <hr>
@@ -23,10 +24,10 @@ gulp build
 
 Then include the version you wish to use, your options are:
 
- - <b>aftc.min.js</b> - this is the full aftc.js package compressed, with all the extras (43KB);
+ - <b>aftc.min.js</b> - this is the full aftc.js package compressed, with all the extras (42KB);
  - aftc.js - this is the full aftc.js package uncompressed with all the extras
 
- - aftc.core.min.js - this is the aftc.js core compressed (22KB)
+ - aftc.core.min.js - this is the aftc.js core compressed (23KB)
  - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
  
  
