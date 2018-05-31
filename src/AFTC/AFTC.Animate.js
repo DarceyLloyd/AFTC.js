@@ -646,39 +646,39 @@ AFTC.Animate = function (elementId, onComplete) {
 
 
 
-/**
- * @function: fadeIn(elementId, duration)
- * @desc: fades in an element over a specified duration
- * @param string elementId: the id of the html element you wish to fade
- * @param number duration: how long you want the fade to run over in seconds
- */
-window.fadeIn = function (elementId, duration) {
-    var cleanUp = function(){
-        animation = null;
-        delete(animation);
-    }
-    var animation = new AFTC.Animate(elementId,cleanUp);
-    animation.anim(["opacity"],[1],[duration]);
-    animation.start();
-}
+// /**
+//  * @function: fadeIn(elementId, duration)
+//  * @desc: fades in an element over a specified duration
+//  * @param string elementId: the id of the html element you wish to fade
+//  * @param number duration: how long you want the fade to run over in seconds
+//  */
+// window.fadeIn = function (elementId, duration) {
+//     var cleanUp = function(){
+//         animation = null;
+//         delete(animation);
+//     }
+//     var animation = new AFTC.Animate(elementId,cleanUp);
+//     animation.anim(["opacity"],[1],[duration]);
+//     animation.start();
+// }
 
 
-/**
- * @function: fadeOut(elementId, duration)
- * @desc: fades out an element over a specified duration
- * @param string elementId: the id of the html element you wish to fade
- * @param number duration: how long you want the fade to run over in seconds
- */
-window.fadeOut = function (elementId, duration) {
-    var cleanUp = function(){
-        animation = null;
-        delete(animation);
-    }
-    var animation = new AFTC.Animate(elementId,cleanUp);
-    animation.anim(["opacity"],[0],[duration]);
-    animation.start();
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// /**
+//  * @function: fadeOut(elementId, duration)
+//  * @desc: fades out an element over a specified duration
+//  * @param string elementId: the id of the html element you wish to fade
+//  * @param number duration: how long you want the fade to run over in seconds
+//  */
+// window.fadeOut = function (elementId, duration) {
+//     var cleanUp = function(){
+//         animation = null;
+//         delete(animation);
+//     }
+//     var animation = new AFTC.Animate(elementId,cleanUp);
+//     animation.anim(["opacity"],[0],[duration]);
+//     animation.start();
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 

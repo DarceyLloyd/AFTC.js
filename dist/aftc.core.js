@@ -2001,15 +2001,14 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
  * @function: centerAbsoluteElement(elementId)
  * @desc: Center element that is absolute positioned
  * @param elementId string: element or id of element to center
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/ZRGabV
  */
 window.centerAbsoluteElement = function (elementId) {
 	var element = document.getElementById(elementId);		
 	if (!element) {
 		throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 	}
-
-
+	
 	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
 	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
 	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
@@ -2034,7 +2033,10 @@ window.centerAbsoluteElement = function (elementId) {
 	element.style.left = tx + "px";
 	element.style.top = ty + "px";
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
 /**
  * @function: addClass(elementOrId,classname)
  * @desc: Add a css class to a html element

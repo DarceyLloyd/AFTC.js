@@ -294,26 +294,14 @@ window.cls = function () {
     }
 }
 window.clearLog = function () { cls(); }
-//  AFTC.VLog = function(){
-//     if (!(this instanceof arguments.callee)) {
-//         throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
-//     }
-//     var me = this;
-//     var vars = {
-
-//     }
-
-//     new AFTC.ArgsToObject(arguments[0], vars);
-//  };
-
-
-
 /**
  * @function: openDebugWindow(html)
  * @desc: open a popup window with the html you wish to display in it
- * @param dataType html: the html you wish to display in the popup window
+ * @param html string: the html you wish to display in the popup window
  * @return:
  * @alias: stringToWindow
+ * @alias: htmlToWindow
+ * @link: https://codepen.io/AllForTheCode/pen/ELGWpE
  */
 window.openDebugWindow = function (html) {
     var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
@@ -323,12 +311,8 @@ window.openDebugWindow = function (html) {
     //w.document.write("<div style='width:100%'>" + str + "</div>");
     w.document.close();
 }
-window.stringToWindow = function (html) {
-    openDebugWindow(html);
-}
-window.htmlToWindow = function (html) {
-    openDebugWindow(html);
-}
+window.stringToWindow = function (html) { openDebugWindow(html); }
+window.htmlToWindow = function (html) { openDebugWindow(html);}
 
 /**
  * @function: addEvent(obj,type,fn,useCapture)
@@ -378,8 +362,8 @@ window.ready = function (fn) {
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
- * @param array arr: the array you wish to remove an index on
- * @param number index: the array index you wish to remove
+ * @param arr array: the array you wish to remove an index on
+ * @param index number: the array index you wish to remove
  * @return: array
  * @link: https://codepen.io/AllForTheCode/pen/mLzyGP
  */
@@ -391,8 +375,8 @@ window.arrayRemoveIndex = function (arr, index) {
 /**
  * @function: isStringInArray(needle,haystack)
  * @desc: Check to see if a string is in an array
- * @param string needle: the string your looking for
- * @param array haystack: the array you wish to search
+ * @param needle string: what you want to search for in each array index
+ * @param haystack string: the array you want to search
  * @link: https://codepen.io/AllForTheCode/pen/QrZrBM
  */
 window.isStringInArray = function (needle, haystack) {
@@ -402,8 +386,8 @@ window.isStringInArray = function (needle, haystack) {
 /**
  * @function: arrayContains(needle,haystack)
  * @desc: Check to see if your array contains something you want to find
- * @param array arr: the array you wish to search
- * @param string needle: what you want to find
+ * @param needle string: what you want to search for in each array index
+ * @param haystack string: the array you want to search
  * @alias: isInArray
  * @link: https://codepen.io/AllForTheCode/pen/VxExVw
  */
@@ -449,9 +433,9 @@ window.arrayMax = function (arr) { return getMaxFromArray(arr); }
 
 
 /**
- * @function: arrayGetMin
+ * @function: arrayGetMin(arr)
  * @desc: returns the minimum value in an array
- * @param array arr: the array you wish to find the minimum value in
+ * @param arr array: the array you wish to find the minimum value in
  * @alias: getMinFromArray
  * @alias: arrayMin
  * @link: https://codepen.io/AllForTheCode/pen/bMmKBa
@@ -468,7 +452,7 @@ window.arrayMin = function (arr) { return getMinFromArray(arr); }
 /**
  * @function: arrayShuffle(arr)
  * @desc: shuffles an array (method 1)
- * @param array arr: the array to shuffle
+ * @param arr array: the array to shuffle
  * @alias: shuffle
  * @alias: arrayShuffle
  * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
@@ -499,7 +483,7 @@ window.shuffleArray = function(arr){ return arrayShuffle(arr); }
 /**
  * @function: arrayShuffle2(arr)
  * @desc: shuffles an array (method 2)
- * @param array arr: the array to shuffle
+ * @param arr array: the array to shuffle
  * @alias: shuffle2
  * @alias: arrayShuffle2
  * @link: https://codepen.io/AllForTheCode/pen/wjYjmo
@@ -522,7 +506,7 @@ window.shuffleArray2 = function(arr){ return arrayShuffle2(arr); }
 /**
  * @function: arrayToSingleLineString(arr)
  * @desc: Converts an array to a single line string (usefull for debug)
- * @param array arr: the convert
+ * @param arr array: the convert
  * @alias: arrayToString
  * @link: https://codepen.io/AllForTheCode/pen/XqoVEe
  */
@@ -550,9 +534,9 @@ window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
 
 
 /**
- * @function: convertToArray(v)
+ * @function: convertToArray(val)
  * @desc: takes an input and returns it as index[0] of an array
- * @param & v: value to insert into array
+ * @param val *: value to make into array an array
  * @alias: valueToArray
  * @link: https://codepen.io/AllForTheCode/pen/QrzazK
  */
@@ -1194,8 +1178,9 @@ window.getAllStringsBetween = function (str, start, end) {
 /**
  * @function: radToDeg(input)
  * @desc: converts radians to degrees
- * @param number input: the radians you wish converted to degrees
+ * @param input number: the radians you wish converted to degrees
  * @alias: rad2deg
+ * @link: https://codepen.io/AllForTheCode/pen/wjRpBZ
  */
 window.radToDeg = function (input) {
     return input * (180 / Math.PI);
@@ -1208,6 +1193,7 @@ window.rad2deg = function (arg) { return radToDeg(arg); }
  * @desc: converts degrees to radians
  * @param number input: the value you wish converted to radians
  * @alias: deg2rad
+ * @link: https://codepen.io/AllForTheCode/pen/jxXYbE
  */
 window.degToRad = function (input) {
     return input * (Math.PI / 180);
@@ -1219,8 +1205,9 @@ window.deg2rad = function (arg) { return degToRad(arg); }
 /**
  * @function: toHex(num)
  * @desc: Converts a number to hex
- * @param number num: decimal base 10
+ * @param num number: decimal base 10
  * @return string: hexidecimal value
+ * @link: https://codepen.io/AllForTheCode/pen/ELGoKX
  */
 window.toHex = function (num) {
     return num.toString(16);
@@ -1236,7 +1223,8 @@ window.numberToHex = function(num) { return toHex(num); }
 /**
  * @function: boolToString(bool)
  * @desc: converts boolean to a string of true or false
- * @param boolean bool: the boolean you wish to convert
+ * @param bool boolean: the boolean you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/PeXEbg
  */
 window.boolToString = function (bool) {
 
@@ -1259,7 +1247,8 @@ window.booleanToString = function(bool) { return boolToString(bool); }
 /**
  * @function: boolToYesNo(bool)
  * @desc: converts a boolean to yes or no
- * @param boolean bool: the boolean you wish to convert
+ * @param bool boolean: the boolean you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/zjypZz
  */
 window.boolToYesNo = function (bool) {
 
@@ -1280,7 +1269,8 @@ window.booleanToYesNo = function(bool) { return boolToYesNo(bool); }
 /**
  * @function: stringToBool(str)
  * @desc: Converts a string to a boolean (y,yes,"1",no etc)
- * @param string str: the string you wish to convert
+ * @param str string: the string you wish to convert
+ * @link: https://codepen.io/AllForTheCode/pen/vjvpmQ
  */
 window.stringToBool = function (str) {
 
@@ -1315,6 +1305,7 @@ window.stringToBoolean = function(str) { return stringToBool(str); }
  * @function: getBooleanFrom(input)
  * @desc: converts an input to a boolean
  * @param * input: the variable you wish to convert to a boolean
+ * @link: https://codepen.io/AllForTheCode/pen/XqoVea
  */
 window.toBoolean = function (input) {
     if (input == null || input == "" || !input) {
@@ -1344,6 +1335,7 @@ window.getBooleanFrom = function(input) { return toBoolean(input); }
  * @desc: parses all values in array to float
  * @param array arr: array to process
  * @alias: arrayToFloat
+ * @link: https://codepen.io/AllForTheCode/pen/erbyVR
  */
 window.parseArrayToFloat = function (arr) {
     var converted;
@@ -1364,6 +1356,7 @@ window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
  * @desc: parses all values in array to float
  * @param array arr: array to process
  * @alias: arrayToInt
+ * @link: https://codepen.io/AllForTheCode/pen/yjGpqM
  */
 window.parseArrayToInt = function (arr) {
     for (var i = 0; i < arr.length; i++) {
@@ -1381,11 +1374,12 @@ window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
 
 
 /**
- * @function:toArray(v)
+ * @function: toArray(v)
  * @desc: takes an input and returns it as index[0] of an array
  * @param * arg: value to insert into array
  * @alias: convertToArray
  * @alias: valueToArray
+ * @link: https://codepen.io/AllForTheCode/pen/QrzazK
  */
 window.toArray = function (arg) {
     var a = [];
@@ -1411,10 +1405,11 @@ window.convertToArray = function (v) { return toArray(v); }
 /**
  * @function: getDaysBetween(startDateTime, endDateTime)
  * @desc: Gets the number of whole days between a start and end date
- * @param DateTime startDateTime: start date
- * @param DateTime endDateTime: end date
+ * @param startDateTime DateTime: start date
+ * @param endDateTime DateTime: end date
  * @alias: getNoOfDaysBetween
  * @alias: getDaysBetweenDates
+ * @link: https://codepen.io/AllForTheCode/pen/pVqaGZ
  */
 window.getDaysBetween = function(startDateTime, endDateTime) {
 	var msPerDay = 8.64e7;
@@ -1433,9 +1428,10 @@ window.getDaysBetweenDates = function(start, end){ return getDaysBetween(start, 
 
 
 /**
- * @function: getUKDateFromDate(date)
+ * @function: getUKDateFromDate(dte)
  * @desc: Formats a date in the UK format
- * @param Date date
+ * @param dte Date
+ * @link: https://codepen.io/AllForTheCode/pen/RyEMwp
  */
 window.getUKDateFromDate = function(dte){
 	var output = dte.getDay() + "-" + (dte.getMonth()+1) + "-" + dte.getFullYear();
@@ -1444,9 +1440,10 @@ window.getUKDateFromDate = function(dte){
 
 
 /**
- * @function: getUSDateFromDate(date)
+ * @function: getUSDateFromDate(dte)
  * @desc: Formats a date in the US format
- * @param Date date
+ * @param dte Date
+ * @link: https://codepen.io/AllForTheCode/pen/XqoEWL
  */
 window.getUSDateFromDate = function(dte){
 	var output = dte.getFullYear() + "-" + (dte.getMonth()+1) + "-" + (dte.getDay()+1)
@@ -1458,7 +1455,8 @@ window.getUSDateFromDate = function(dte){
 /**
  * @function: getUkDateFromDbDateTime(input)
  * @desc: get a uk date from a mysql db date value
- * @param MySQLDateTimeString input: MySQL DB DateTime
+ * @param input MySQLDateTimeString: MySQL DB DateTime
+ * @link: https://codepen.io/AllForTheCode/pen/BxvePW
  */
 window.getUkDateFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date
@@ -1474,7 +1472,8 @@ window.getUkDateFromDbDateTime = function (input) {
 /**
  * @function: getUkDateTimeFromDbDateTime(input)
  * @desc: get a uk date from a mysql db date time value
- * @param MySQLDateTimeString input: MySQL DB DateTime
+ * @param input MySQLDateTimeString: MySQL DB DateTime
+ * @link: https://codepen.io/AllForTheCode/pen/MGZdBB
  */
 window.getUkDateTimeFromDbDateTime = function (input) {
 	// "2016-04-08 21:11:59" to UK date time
@@ -1489,6 +1488,7 @@ window.getUkDateTimeFromDbDateTime = function (input) {
 /**
  * @function: getSQLDateTime()
  * @desc: gets the date time now for sql insert
+ * @link: https://codepen.io/AllForTheCode/pen/wjRbEe
  */
 window.getSQLDateTime = function () {
 	var now = new Date();
@@ -1522,7 +1522,8 @@ window.getSQLDateTime = function () {
 /**
  * @function: getDateTime(local)
  * @desc: gets the date time at a specified local
- * @param string optional local: options are us or do not supply for en-gb
+ * @param local string: options are us or do not supply for en-gb
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaYj
  */
 window.getDateTime = function (local) {
 	// NOTE: MySQL DB DateTime format: "2016-04-08 21:11:59"
@@ -1574,8 +1575,9 @@ window.isValidEmail = function (email) { return isEmail(email); }
 
 /**
  * @function: isMobile()
- * @desc: isMobile
+ * @desc: Detects if the device you are using is a mobile or not
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/KRbLdm
  */
 window.isMobile = function(){
 	// Windows Phone must come first because its UA also contains "Android"!
@@ -1591,6 +1593,12 @@ window.isMobile = function(){
 	}
 }
 
+/**
+ * @function: isAndroid()
+ * @desc: Detects if the device you are using is android or not
+ * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/RyEmgN
+ */
 window.isAndroid = function(){
 	var ua = navigator.userAgent.toLowerCase();
 	if (/windows phone/i.test(ua)) {
@@ -1601,6 +1609,12 @@ window.isAndroid = function(){
 	}
 }
 
+/**
+ * @function: iOS()
+ * @desc: Detects if the device you are using is iOS or not
+ * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/ELGzXO
+ */
 window.iOS = function() {
 	var iDevices = [
 	  'iPad Simulator',
@@ -1620,10 +1634,12 @@ window.iOS = function() {
 	return false;
   }
 
+
 /**
  * @function: isFireFox()
  * @desc: Detects FireFox
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/mLaYMe
  */
 window.isFireFox = function () {
 	// var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -1635,6 +1651,7 @@ window.isFireFox = function () {
  * @function: isChrome()
  * @desc: Detects Chrome
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/xjmNLM
  */
 window.isChrome = function () {
 	// var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -1647,6 +1664,7 @@ window.isChrome = function () {
  * @function: isEdge()
  * @desc: Detects Edge
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/aGPrLP
  */
 window.isEdge = function () {
 	//var isEdge = !isIE && !!window.StyleMedia; // Edge 20+
@@ -1662,6 +1680,7 @@ window.isEdge = function () {
  * @function: isSafari()
  * @desc: Detects Safari
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/gzZJXr
  */
 window.isSafari = function () {
 	// var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
@@ -1673,6 +1692,7 @@ window.isSafari = function () {
  * @function: isIE()
  * @desc: Detects IE
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/MGZdOG
  */
 window.isIE = function () {
 	// var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
@@ -1687,6 +1707,7 @@ window.isIE = function () {
  * @function: isOpera()
  * @desc: Detects Opera
  * @return boolean
+ * @link: https://codepen.io/AllForTheCode/pen/dewEJb
  */
 window.isOpera = function() {
 	// var isChromium = window.chrome;
@@ -1700,6 +1721,7 @@ window.isOpera = function() {
  * @function: getIEVersion()
  * @desc: Gets version of IE
  * @return float
+ * @link: https://codepen.io/AllForTheCode/pen/BxveJp
  */
 window.getIEVersion = function () {
 	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
@@ -1710,6 +1732,7 @@ window.getIEVersion = function () {
  * @function: getBrowser()
  * @desc: Detects browser
  * @return string
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaQZ
  */
 window.getBrowser = function () {
 	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -1737,6 +1760,7 @@ window.getBrowser = function () {
  * @function: getOS(testUserAgent)
  * @desc: Attempts to get the os from the user agent or the test user agent
  * @param string testUserAgent: test user agent string
+ * @link: https://codepen.io/AllForTheCode/pen/erbaVj
  */
 window.getOS = function (testAgent) {
 	var userAgent;
@@ -1923,17 +1947,14 @@ window.getOS = function (testAgent) {
 
 /**
  * @function: setHTML(elementOrId,html);
- * @desc: quick shortcut for outputting html to an element
+ * @desc: Quick shortcut for outputting html to an element
  * ````
  * setHTML("header","Welcome");
- * // or
- * var myElement = getElementById("header");
- * setHTML(myElement,"Welcome!");
  * ````
- * @param dataType elementOrId: the element or the element id you wish to set the html of
- * @param dataType html: the html string to insert into your element
- * @return:
+ * @param elementOrId stringIdOrHtmlElement: the element or the element id you wish to set the html of
+ * @param html string: the html string to insert into your element
  * @alias: html
+ * @link: https://codepen.io/AllForTheCode/pen/KRbLER
  */
 window.setHTML = function (elementOrId, str) {
     var element;
@@ -1952,7 +1973,8 @@ window.html = function (element, str) { window.setHTML(element, str); }
 /**
  * @function: getElementOffsetTop(elementId)
  * @desc: Gets an elements top offset
- * @param string elementId: the element ID you wish to get the top offset of
+ * @param elementId string: the element ID you wish to get the top offset of
+ * @link: https://codepen.io/AllForTheCode/pen/GdPaLr
  */
 window.getElementOffsetTop = function (elementId) {
     var element = getElementById(elementId);
@@ -1976,20 +1998,17 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
 
 
 /**
- * @function: centerAbsoluteElement(eleOrEleId)
+ * @function: centerAbsoluteElement(elementId)
  * @desc: Center element that is absolute positioned
- * @param element || string eleOrEleId: element or id of element to center
+ * @param elementId string: element or id of element to center
+ * @link: https://codepen.io/AllForTheCode/pen/ZRGabV
  */
-window.centerAbsoluteElement = function (eleOrEleId) {
-	var element;
-
-	if (typeof (eleOrEleId) === "string") {
-		element = document.getElementById(eleOrEleId);
-		if (!element) {
-			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
-		}
+window.centerAbsoluteElement = function (elementId) {
+	var element = document.getElementById(elementId);		
+	if (!element) {
+		throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 	}
-
+	
 	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
 	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
 	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
@@ -2014,15 +2033,17 @@ window.centerAbsoluteElement = function (eleOrEleId) {
 	element.style.left = tx + "px";
 	element.style.top = ty + "px";
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Styling shortcuts
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
 /**
  * @function: addClass(elementOrId,classname)
- * @desc: shortcut to add a css class to a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to add
+ * @desc: Add a css class to a html element
+ * @param elementOrId elementORstring: The elemnt or id of the html element to add a css class to
+ * @param className string: the class name to add
+ * @alias addClassTo
+ * @link: https://codepen.io/AllForTheCode/pen/BxvYmW
  */
 window.addClass = function (elementOrId, classNames) {
     var element;
@@ -2043,8 +2064,10 @@ window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, cla
 /**
  * @function: removeClass(elementOrId,className)
  * @desc: shortcut to remove a class from a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to remove
+ * @param elementOrId elementORstring: The elemnt or id of the html element to add a css class to
+ * @param className string: the class name to remove
+ * @alias removeClassFrom
+ * @link: https://codepen.io/AllForTheCode/pen/gzZvKL
  */
 window.removeClass = function (elementOrId, className) {
     var element;
@@ -2066,8 +2089,9 @@ window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementO
 /**
  * @function: hasClass(elementOrId, cls)
  * @desc: Check to see if an element has a class attached to it
- * @param string elementOrId: The elemnt or id of the html element
- * @param string cls: class to look for
+ * @param elementOrId string: The elemnt or id of the html element
+ * @param cls string: class to look for
+ * @link: https://codepen.io/AllForTheCode/pen/dewdwY
  */
 window.hasClass = function (elementOrId, cls) {
     if (isElement(elementOrId)) {
@@ -2076,18 +2100,11 @@ window.hasClass = function (elementOrId, cls) {
         return getElementById(elementOrId).classList.contains(cls);
     }
 }
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
 /**
  * @function: redirect(url)
  * @desc: no more typing self.location.href, just use redirect(url)
- * @param string url: the url you wish to redirect to
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @param url string: the url you wish to redirect to
+ * @link: https://codepen.io/AllForTheCode/pen/RyEpPY
  */
 window.redirect = function (url) {
     self.location.href = url;
@@ -2143,8 +2160,9 @@ window.exitFullScreen = function () {
 /**
  * @function: setCookie(name, value)
  * @desc: Sets a cookie by name with a value
- * @param string name: name of the cookie
- * @param * value: value of the cookie
+ * @param name string: name of the cookie
+ * @param value string: value of the cookie
+ * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
 window.setCookie = function (name, value) {
 	//document.cookie = name + "=" + value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
@@ -2159,7 +2177,8 @@ window.setCookie = function (name, value) {
 /**
  * @function: getCookie(name)
  * @desc: Gets the value of a cookie by name
- * @param string name: name of the cookie
+ * @param name string: name of the cookie to get 
+ * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
 window.getCookie = function (name) {
 	//return .cookie(name);
@@ -3832,39 +3851,39 @@ AFTC.Animate = function (elementId, onComplete) {
 
 
 
-/**
- * @function: fadeIn(elementId, duration)
- * @desc: fades in an element over a specified duration
- * @param string elementId: the id of the html element you wish to fade
- * @param number duration: how long you want the fade to run over in seconds
- */
-window.fadeIn = function (elementId, duration) {
-    var cleanUp = function(){
-        animation = null;
-        delete(animation);
-    }
-    var animation = new AFTC.Animate(elementId,cleanUp);
-    animation.anim(["opacity"],[1],[duration]);
-    animation.start();
-}
+// /**
+//  * @function: fadeIn(elementId, duration)
+//  * @desc: fades in an element over a specified duration
+//  * @param string elementId: the id of the html element you wish to fade
+//  * @param number duration: how long you want the fade to run over in seconds
+//  */
+// window.fadeIn = function (elementId, duration) {
+//     var cleanUp = function(){
+//         animation = null;
+//         delete(animation);
+//     }
+//     var animation = new AFTC.Animate(elementId,cleanUp);
+//     animation.anim(["opacity"],[1],[duration]);
+//     animation.start();
+// }
 
 
-/**
- * @function: fadeOut(elementId, duration)
- * @desc: fades out an element over a specified duration
- * @param string elementId: the id of the html element you wish to fade
- * @param number duration: how long you want the fade to run over in seconds
- */
-window.fadeOut = function (elementId, duration) {
-    var cleanUp = function(){
-        animation = null;
-        delete(animation);
-    }
-    var animation = new AFTC.Animate(elementId,cleanUp);
-    animation.anim(["opacity"],[0],[duration]);
-    animation.start();
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// /**
+//  * @function: fadeOut(elementId, duration)
+//  * @desc: fades out an element over a specified duration
+//  * @param string elementId: the id of the html element you wish to fade
+//  * @param number duration: how long you want the fade to run over in seconds
+//  */
+// window.fadeOut = function (elementId, duration) {
+//     var cleanUp = function(){
+//         animation = null;
+//         delete(animation);
+//     }
+//     var animation = new AFTC.Animate(elementId,cleanUp);
+//     animation.anim(["opacity"],[0],[duration]);
+//     animation.start();
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -4265,7 +4284,7 @@ AFTC.Visibility = function () {
         onComplete: false
     }
 
-    new AFTC.ArgsToObject(arguments[0], vars);
+    argsToObject(arguments[0], vars);
 
     function getElement() {
         if (!vars.element && vars.id) {

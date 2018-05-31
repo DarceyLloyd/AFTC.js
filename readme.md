@@ -3,6 +3,16 @@
 
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
+<br>
+
+### <b>What's new</b>
+
+ - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!
+
+ <br>
+ <hr>
+ <br>
+
 
 ### <b>Installation</b>
 ```
@@ -81,23 +91,21 @@ var aftc_modules = [
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
  <a href='#arraycontainsneedlehaystack'>arrayContains(needle,haystack)</a><br>
  <a href='#arrayemptyarr'>arrayEmpty(arr)</a><br>
- <a href='#arraygetmin'>arrayGetMin</a><br>
+ <a href='#arraygetminarr'>arrayGetMin(arr)</a><br>
  <a href='#arrayremoveindexarrindex'>arrayRemoveIndex(arr,index)</a><br>
  <a href='#arrayshufflearr'>arrayShuffle(arr)</a><br>
  <a href='#arrayshuffle2arr'>arrayShuffle2(arr)</a><br>
  <a href='#arraytosinglelinestringarr'>arrayToSingleLineString(arr)</a><br>
  <a href='#booltostringbool'>boolToString(bool)</a><br>
  <a href='#booltoyesnobool'>boolToYesNo(bool)</a><br>
- <a href='#centerabsoluteelementeleoreleid'>centerAbsoluteElement(eleOrEleId)</a><br>
+ <a href='#centerabsoluteelementelementid'>centerAbsoluteElement(elementId)</a><br>
  <a href='#cleanjsonstrings'>cleanJSONString(s)</a><br>
  <a href='#cls'>cls()</a><br>
- <a href='#converttoarrayv'>convertToArray(v)</a><br>
+ <a href='#converttoarrayval'>convertToArray(val)</a><br>
  <a href='#cycleposmax'>cycle(pos, max)</a><br>
  <a href='#degtoradinput'>degToRad(input)</a><br>
  <a href='#escapehtmlinput'>escapeHTML(input)</a><br>
  <a href='#exitfullscreen'>exitFullScreen()</a><br>
- <a href='#fadeinelementidduration'>fadeIn(elementId, duration)</a><br>
- <a href='#fadeoutelementidduration'>fadeOut(elementId, duration)</a><br>
  <a href='#getallstringsbetweenstrstartend'>getAllStringsBetween(str,start,end)</a><br>
  <a href='#getanchorurl'>getAnchor(url)</a><br>
  <a href='#getarrayofrandomnumbersarraysizeminmax'>getArrayOfRandomNumbers(arraySize,min,max)</a><br>
@@ -129,16 +137,18 @@ var aftc_modules = [
  <a href='#getsqldatetime'>getSQLDateTime()</a><br>
  <a href='#getstringbetweeninputstartend'>getStringBetween(input,start,end)</a><br>
  <a href='#getuidlength'>getUID(length)</a><br>
- <a href='#getukdatefromdatedate'>getUKDateFromDate(date)</a><br>
+ <a href='#getukdatefromdatedte'>getUKDateFromDate(dte)</a><br>
  <a href='#getukdatefromdbdatetimeinput'>getUkDateFromDbDateTime(input)</a><br>
  <a href='#getukdatetimefromdbdatetimeinput'>getUkDateTimeFromDbDateTime(input)</a><br>
- <a href='#getusdatefromdatedate'>getUSDateFromDate(date)</a><br>
+ <a href='#getusdatefromdatedte'>getUSDateFromDate(dte)</a><br>
  <a href='#getweightedrandomoddsiterations'>getWeightedRandom(odds, iterations)</a><br>
  <a href='#gofullscreenelement'>goFullScreen(element)</a><br>
  <a href='#guid'>guid()</a><br>
  <a href='#hasclasselementoridcls'>hasClass(elementOrId, cls)</a><br>
  <a href='#hextorgbhex'>hexToRgb(hex)</a><br>
+ <a href='#ios'>iOS()</a><br>
  <a href='#isalphanumericinput'>isAlphaNumeric(input)</a><br>
+ <a href='#isandroid'>isAndroid()</a><br>
  <a href='#isarrayinput'>isArray(input)</a><br>
  <a href='#isbooleaninput'>isBoolean(input)</a><br>
  <a href='#ischeckedelementid'>isChecked(elementId)</a><br>
@@ -191,7 +201,7 @@ var aftc_modules = [
  <a href='#validateemailemail'>validateEmail(email)</a><br>
 <br><br><hr><br><br>
 ### <b>addClass(elementOrId,classname)</b>
-shortcut to add a css class to a html element<br>
+Add a css class to a html element<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -204,24 +214,25 @@ shortcut to add a css class to a html element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>elementORstring</td>
 		<td>elementOrId</td>
+		<td>elementORstring</td>
 		<td>The elemnt or id of the html element to add a css class to</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>className</td>
+		<td>string</td>
 		<td>the class name to add</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - log
- - trace
+ - 
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxvYmW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvYmW</a>
 
 
 <hr><br><br><br>
@@ -491,14 +502,14 @@ Check to see if your array contains something you want to find<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
-		<td>arr</td>
-		<td>the array you wish to search</td>
+		<td>needle</td>
+		<td>string</td>
+		<td>what you want to search for in each array index</td>
 	</tr>
 	<tr>
+		<td>haystack</td>
 		<td>string</td>
-		<td>needle</td>
-		<td>what you want to find</td>
+		<td>the array you want to search</td>
 	</tr>
 </table>
 
@@ -546,7 +557,7 @@ clears/empties an array for garbage collection<br>
 
 <hr><br><br><br>
     
-### <b>arrayGetMin</b>
+### <b>arrayGetMin(arr)</b>
 returns the minimum value in an array<br>
 
 <details>
@@ -560,8 +571,8 @@ returns the minimum value in an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>arr</td>
+		<td>array</td>
 		<td>the array you wish to find the minimum value in</td>
 	</tr>
 </table>
@@ -593,13 +604,13 @@ remove a specified index from an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>arr</td>
+		<td>array</td>
 		<td>the array you wish to remove an index on</td>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>index</td>
+		<td>number</td>
 		<td>the array index you wish to remove</td>
 	</tr>
 </table>
@@ -631,8 +642,8 @@ shuffles an array (method 1)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>arr</td>
+		<td>array</td>
 		<td>the array to shuffle</td>
 	</tr>
 </table>
@@ -664,8 +675,8 @@ shuffles an array (method 2)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>arr</td>
+		<td>array</td>
 		<td>the array to shuffle</td>
 	</tr>
 </table>
@@ -697,8 +708,8 @@ Converts an array to a single line string (usefull for debug)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>arr</td>
+		<td>array</td>
 		<td>the convert</td>
 	</tr>
 </table>
@@ -729,8 +740,8 @@ converts boolean to a string of true or false<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>boolean</td>
 		<td>bool</td>
+		<td>boolean</td>
 		<td>the boolean you wish to convert</td>
 	</tr>
 </table>
@@ -741,6 +752,8 @@ converts boolean to a string of true or false<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/PeXEbg' target='_blank'>https://codepen.io/AllForTheCode/pen/PeXEbg</a>
 
 
 <hr><br><br><br>
@@ -759,8 +772,8 @@ converts a boolean to yes or no<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>boolean</td>
 		<td>bool</td>
+		<td>boolean</td>
 		<td>the boolean you wish to convert</td>
 	</tr>
 </table>
@@ -771,11 +784,13 @@ converts a boolean to yes or no<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/zjypZz' target='_blank'>https://codepen.io/AllForTheCode/pen/zjypZz</a>
 
 
 <hr><br><br><br>
     
-### <b>centerAbsoluteElement(eleOrEleId)</b>
+### <b>centerAbsoluteElement(elementId)</b>
 Center element that is absolute positioned<br>
 
 <details>
@@ -789,8 +804,8 @@ Center element that is absolute positioned<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>element</td>
-		<td>||</td>
+		<td>elementId</td>
+		<td>string</td>
 		<td>element or id of element to center</td>
 	</tr>
 </table>
@@ -801,6 +816,8 @@ Center element that is absolute positioned<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ZRGabV' target='_blank'>https://codepen.io/AllForTheCode/pen/ZRGabV</a>
 
 
 <hr><br><br><br>
@@ -849,9 +866,9 @@ Clears the console if supported<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>&</td>
-		<td>v</td>
-		<td>value to insert into array</td>
+		<td>val</td>
+		<td>*</td>
+		<td>value to make into array an array</td>
 	</tr>
 </table>
 
@@ -868,7 +885,7 @@ Clears the console if supported<br>
 
 <hr><br><br><br>
     
-### <b>convertToArray(v)</b>
+### <b>convertToArray(val)</b>
 takes an input and returns it as index[0] of an array<br>
 
 <details>
@@ -882,9 +899,9 @@ takes an input and returns it as index[0] of an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>&</td>
-		<td>v</td>
-		<td>value to insert into array</td>
+		<td>val</td>
+		<td>*</td>
+		<td>value to make into array an array</td>
 	</tr>
 </table>
 
@@ -961,6 +978,8 @@ converts degrees to radians<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/jxXYbE' target='_blank'>https://codepen.io/AllForTheCode/pen/jxXYbE</a>
 
 
 <hr><br><br><br>
@@ -1011,13 +1030,18 @@ Exits full screen mode<br>
 	</tr>
 	<tr>
 		<td>string</td>
-		<td>elementId</td>
-		<td>the id of the html element you wish to fade</td>
+		<td>str</td>
+		<td>input string to check</td>
 	</tr>
 	<tr>
-		<td>number</td>
-		<td>duration</td>
-		<td>how long you want the fade to run over in seconds</td>
+		<td>string</td>
+		<td>start</td>
+		<td>start string marker</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>end</td>
+		<td>end string marker</td>
 	</tr>
 </table>
 
@@ -1030,78 +1054,6 @@ Exits full screen mode<br>
 
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
-
-
-<hr><br><br><br>
-    
-### <b>fadeIn(elementId, duration)</b>
-fades in an element over a specified duration<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>elementId</td>
-		<td>the id of the html element you wish to fade</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>duration</td>
-		<td>how long you want the fade to run over in seconds</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>fadeOut(elementId, duration)</b>
-fades out an element over a specified duration<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>elementId</td>
-		<td>the id of the html element you wish to fade</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>duration</td>
-		<td>how long you want the fade to run over in seconds</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getNoOfDaysBetween
- - getDaysBetweenDates
-
-</details>
-
 
 
 <hr><br><br><br>
@@ -1282,6 +1234,8 @@ converts an input to a boolean<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/XqoVea' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoVea</a>
 
 
 <hr><br><br><br>
@@ -1300,9 +1254,9 @@ Detects browser<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>name</td>
-		<td>name of the cookie</td>
+		<td>string</td>
+		<td>name of the cookie to get</td>
 	</tr>
 </table>
 
@@ -1313,6 +1267,8 @@ Detects browser<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaQZ' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaQZ</a>
 
 
 <hr><br><br><br>
@@ -1331,9 +1287,9 @@ Gets the value of a cookie by name<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>name</td>
-		<td>name of the cookie</td>
+		<td>string</td>
+		<td>name of the cookie to get</td>
 	</tr>
 </table>
 
@@ -1344,6 +1300,8 @@ Gets the value of a cookie by name<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
 
 
 <hr><br><br><br>
@@ -1362,8 +1320,8 @@ gets the date time at a specified local<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>local</td>
 		<td>string</td>
-		<td>optional</td>
 		<td>options are us or do not supply for en-gb</td>
 	</tr>
 </table>
@@ -1375,6 +1333,8 @@ gets the date time at a specified local<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaYj' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaYj</a>
 
 
 <hr><br><br><br>
@@ -1393,13 +1353,13 @@ Gets the number of whole days between a start and end date<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>DateTime</td>
 		<td>startDateTime</td>
+		<td>DateTime</td>
 		<td>start date</td>
 	</tr>
 	<tr>
-		<td>DateTime</td>
 		<td>endDateTime</td>
+		<td>DateTime</td>
 		<td>end date</td>
 	</tr>
 </table>
@@ -1411,6 +1371,8 @@ Gets the number of whole days between a start and end date<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVqaGZ' target='_blank'>https://codepen.io/AllForTheCode/pen/pVqaGZ</a>
 
 
 <hr><br><br><br>
@@ -1559,8 +1521,8 @@ Gets an elements top offset<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>elementId</td>
+		<td>string</td>
 		<td>the element ID you wish to get the top offset of</td>
 	</tr>
 </table>
@@ -1572,6 +1534,8 @@ Gets an elements top offset<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdPaLr' target='_blank'>https://codepen.io/AllForTheCode/pen/GdPaLr</a>
 
 
 <hr><br><br><br>
@@ -1793,6 +1757,8 @@ Gets version of IE<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxveJp' target='_blank'>https://codepen.io/AllForTheCode/pen/BxveJp</a>
 
 
 <hr><br><br><br>
@@ -1887,6 +1853,8 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/erbaVj' target='_blank'>https://codepen.io/AllForTheCode/pen/erbaVj</a>
 
 
 <hr><br><br><br>
@@ -2068,6 +2036,8 @@ gets the date time now for sql insert<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/wjRbEe' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRbEe</a>
 
 
 <hr><br><br><br>
@@ -2144,7 +2114,7 @@ Generates a random id<br>
 
 <hr><br><br><br>
     
-### <b>getUKDateFromDate(date)</b>
+### <b>getUKDateFromDate(dte)</b>
 Formats a date in the UK format<br>
 
 <details>
@@ -2158,8 +2128,8 @@ Formats a date in the UK format<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>dte</td>
 		<td>Date</td>
-		<td>date</td>
 		<td></td>
 	</tr>
 </table>
@@ -2170,6 +2140,8 @@ Formats a date in the UK format<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEMwp' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEMwp</a>
 
 
 <hr><br><br><br>
@@ -2188,8 +2160,8 @@ get a uk date from a mysql db date value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>MySQLDateTimeString</td>
 		<td>input</td>
+		<td>MySQLDateTimeString</td>
 		<td>MySQL DB DateTime</td>
 	</tr>
 </table>
@@ -2200,6 +2172,8 @@ get a uk date from a mysql db date value<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/BxvePW' target='_blank'>https://codepen.io/AllForTheCode/pen/BxvePW</a>
 
 
 <hr><br><br><br>
@@ -2218,8 +2192,8 @@ get a uk date from a mysql db date time value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>MySQLDateTimeString</td>
 		<td>input</td>
+		<td>MySQLDateTimeString</td>
 		<td>MySQL DB DateTime</td>
 	</tr>
 </table>
@@ -2230,11 +2204,13 @@ get a uk date from a mysql db date time value<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/MGZdBB' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdBB</a>
 
 
 <hr><br><br><br>
     
-### <b>getUSDateFromDate(date)</b>
+### <b>getUSDateFromDate(dte)</b>
 Formats a date in the US format<br>
 
 <details>
@@ -2248,8 +2224,8 @@ Formats a date in the US format<br>
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td>dte</td>
 		<td>Date</td>
-		<td>date</td>
 		<td></td>
 	</tr>
 </table>
@@ -2260,6 +2236,8 @@ Formats a date in the US format<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/XqoEWL' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoEWL</a>
 
 
 <hr><br><br><br>
@@ -2345,13 +2323,13 @@ generates a guid<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>elementOrId</td>
+		<td>string</td>
 		<td>The elemnt or id of the html element</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>cls</td>
+		<td>string</td>
 		<td>class to look for</td>
 	</tr>
 </table>
@@ -2380,13 +2358,13 @@ Check to see if an element has a class attached to it<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>elementOrId</td>
+		<td>string</td>
 		<td>The elemnt or id of the html element</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>cls</td>
+		<td>string</td>
 		<td>class to look for</td>
 	</tr>
 </table>
@@ -2397,6 +2375,8 @@ Check to see if an element has a class attached to it<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/dewdwY' target='_blank'>https://codepen.io/AllForTheCode/pen/dewdwY</a>
 
 
 <hr><br><br><br>
@@ -2431,6 +2411,38 @@ hexToRgb<br>
 
 <hr><br><br><br>
     
+### <b>iOS()</b>
+Detects if the device you are using is iOS or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string||number</td>
+		<td>input</td>
+		<td>variable / value you wish to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGzXO' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGzXO</a>
+
+
+<hr><br><br><br>
+    
 ### <b>isAlphaNumeric(input)</b>
 check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
@@ -2457,6 +2469,38 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
 </details>
 
+
+
+<hr><br><br><br>
+    
+### <b>isAndroid()</b>
+Detects if the device you are using is android or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>arr</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEmgN' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEmgN</a>
 
 
 <hr><br><br><br>
@@ -2577,6 +2621,8 @@ Detects Chrome<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xjmNLM' target='_blank'>https://codepen.io/AllForTheCode/pen/xjmNLM</a>
 
 
 <hr><br><br><br>
@@ -2637,6 +2683,8 @@ Detects Edge<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/aGPrLP' target='_blank'>https://codepen.io/AllForTheCode/pen/aGPrLP</a>
 
 
 <hr><br><br><br>
@@ -2762,6 +2810,8 @@ Detects FireFox<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLaYMe' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaYMe</a>
 
 
 <hr><br><br><br>
@@ -2797,6 +2847,8 @@ Detects IE<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/MGZdOG' target='_blank'>https://codepen.io/AllForTheCode/pen/MGZdOG</a>
 
 
 <hr><br><br><br>
@@ -2837,7 +2889,7 @@ check for string in string<br>
 <hr><br><br><br>
     
 ### <b>isMobile()</b>
-isMobile<br>
+Detects if the device you are using is a mobile or not<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2862,6 +2914,8 @@ isMobile<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/KRbLdm' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbLdm</a>
 
 
 <hr><br><br><br>
@@ -2970,14 +3024,14 @@ Detects Opera<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>needle</td>
-		<td>the string your looking for</td>
+		<td>string</td>
+		<td>what you want to search for in each array index</td>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>haystack</td>
-		<td>the array you wish to search</td>
+		<td>string</td>
+		<td>the array you want to search</td>
 	</tr>
 </table>
 
@@ -2987,6 +3041,8 @@ Detects Opera<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/dewEJb' target='_blank'>https://codepen.io/AllForTheCode/pen/dewEJb</a>
 
 
 <hr><br><br><br>
@@ -3005,14 +3061,14 @@ Detects Safari<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>needle</td>
-		<td>the string your looking for</td>
+		<td>string</td>
+		<td>what you want to search for in each array index</td>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>haystack</td>
-		<td>the array you wish to search</td>
+		<td>string</td>
+		<td>the array you want to search</td>
 	</tr>
 </table>
 
@@ -3022,6 +3078,8 @@ Detects Safari<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzZJXr' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZJXr</a>
 
 
 <hr><br><br><br>
@@ -3040,14 +3098,14 @@ Check to see if a string is in an array<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>needle</td>
-		<td>the string your looking for</td>
+		<td>string</td>
+		<td>what you want to search for in each array index</td>
 	</tr>
 	<tr>
-		<td>array</td>
 		<td>haystack</td>
-		<td>the array you wish to search</td>
+		<td>string</td>
+		<td>the array you want to search</td>
 	</tr>
 </table>
 
@@ -3308,8 +3366,8 @@ open a popup window with the html you wish to display in it<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>dataType</td>
 		<td>html</td>
+		<td>string</td>
 		<td>the html you wish to display in the popup window</td>
 	</tr>
 </table>
@@ -3317,9 +3375,12 @@ open a popup window with the html you wish to display in it<br>
 <b>Returns:</b> 
 #### Alias's:
  - stringToWindow
+ - htmlToWindow
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
 
 
 <hr><br><br><br>
@@ -3350,6 +3411,8 @@ parses all values in array to float<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/erbyVR' target='_blank'>https://codepen.io/AllForTheCode/pen/erbyVR</a>
 
 
 <hr><br><br><br>
@@ -3380,6 +3443,8 @@ parses all values in array to float<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/yjGpqM' target='_blank'>https://codepen.io/AllForTheCode/pen/yjGpqM</a>
 
 
 <hr><br><br><br>
@@ -3475,8 +3540,8 @@ converts radians to degrees<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>input</td>
+		<td>number</td>
 		<td>the radians you wish converted to degrees</td>
 	</tr>
 </table>
@@ -3487,6 +3552,8 @@ converts radians to degrees<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/wjRpBZ' target='_blank'>https://codepen.io/AllForTheCode/pen/wjRpBZ</a>
 
 
 <hr><br><br><br>
@@ -3535,20 +3602,20 @@ no more typing self.location.href, just use redirect(url)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>url</td>
+		<td>string</td>
 		<td>the url you wish to redirect to</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - html
+ - 
 
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/RyEpPY' target='_blank'>https://codepen.io/AllForTheCode/pen/RyEpPY</a>
 
 
 <hr><br><br><br>
@@ -3575,7 +3642,7 @@ Removes all the options in a select<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - html
+ - 
 
 </details>
 
@@ -3597,23 +3664,25 @@ shortcut to remove a class from a html element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>elementORstring</td>
 		<td>elementOrId</td>
+		<td>elementORstring</td>
 		<td>The elemnt or id of the html element to add a css class to</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>className</td>
+		<td>string</td>
 		<td>the class name to remove</td>
 	</tr>
 </table>
 
 <b>Returns:</b> 
 #### Alias's:
- - html
+ - 
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzZvKL' target='_blank'>https://codepen.io/AllForTheCode/pen/gzZvKL</a>
 
 
 <hr><br><br><br>
@@ -3782,13 +3851,13 @@ Sets a cookie by name with a value<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>name</td>
+		<td>string</td>
 		<td>name of the cookie</td>
 	</tr>
 	<tr>
-		<td>*</td>
 		<td>value</td>
+		<td>string</td>
 		<td>value of the cookie</td>
 	</tr>
 </table>
@@ -3799,17 +3868,16 @@ Sets a cookie by name with a value<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/RyBMwq' target='_blank'>https://codepen.io/AllForTheCode/pen/RyBMwq</a>
 
 
 <hr><br><br><br>
     
 ### <b>setHTML(elementOrId,html);</b>
-quick shortcut for outputting html to an element<br>
+Quick shortcut for outputting html to an element<br>
 ````
 setHTML("header","Welcome");
-// or
-var myElement = getElementById("header");
-setHTML(myElement,"Welcome!");
 ````
 
 <details>
@@ -3823,13 +3891,13 @@ setHTML(myElement,"Welcome!");
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>dataType</td>
 		<td>elementOrId</td>
+		<td>stringIdOrHtmlElement</td>
 		<td>the element or the element id you wish to set the html of</td>
 	</tr>
 	<tr>
-		<td>dataType</td>
 		<td>html</td>
+		<td>string</td>
 		<td>the html string to insert into your element</td>
 	</tr>
 </table>
@@ -3840,6 +3908,8 @@ setHTML(myElement,"Welcome!");
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/KRbLER' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbLER</a>
 
 
 <hr><br><br><br>
@@ -3958,8 +4028,8 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>str</td>
+		<td>string</td>
 		<td>the string you wish to convert</td>
 	</tr>
 </table>
@@ -3971,6 +4041,8 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/vjvpmQ' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvpmQ</a>
 
 
 <hr><br><br><br>
@@ -4002,6 +4074,8 @@ takes an input and returns it as index[0] of an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrzazK' target='_blank'>https://codepen.io/AllForTheCode/pen/QrzazK</a>
 
 
 <hr><br><br><br>
@@ -4020,8 +4094,8 @@ Converts a number to hex<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>number</td>
 		<td>num</td>
+		<td>number</td>
 		<td>decimal base 10</td>
 	</tr>
 </table>
@@ -4030,6 +4104,8 @@ Converts a number to hex<br>
 [alias]
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGoKX' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGoKX</a>
 
 
 <hr><br><br><br>

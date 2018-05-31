@@ -29,7 +29,7 @@ AFTC.Visibility = function () {
         onComplete: false
     }
 
-    new AFTC.ArgsToObject(arguments[0], vars);
+    argsToObject(arguments[0], vars);
 
     function getElement() {
         if (!vars.element && vars.id) {
