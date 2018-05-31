@@ -145,21 +145,25 @@ function getComments($path){
                 $right = trim($right);
                 
                 if (isInString("function",$left)){
+                    // Function
                     // out("Found: Function: " . $right);
                     $commentVo->type = "function";
                     $commentVo->name = $right;
                     $previous = ""; // reset
                 } else if (isInString("class",$left)){
+                    // Class
                     // out("Found: Class: " . $right);
                     $commentVo->type = "class";
                     $commentVo->name = $right;
                     $previous = ""; // reset
                 } else if (isInString("desc",$left)){
+                    // Desc
                     // out("Found: Desc: " . $right);
                     $description_started = true;
                     $previous = "desc";
                     array_push($commentVo->desc,$right);
                 } else if (isInString("alias",$left)){
+                    // Alias
                     // out("Found: Alias: " . $right);
                     $previous = ""; // reset
                     array_push($commentVo->alias,$right);
@@ -169,7 +173,13 @@ function getComments($path){
                     // out("Found: Link: " . $link);
                     $previous = ""; // reset
                     array_push($commentVo->links,$link);
+                } else if (isInString("return",$left)){
+                    // Return
+                    //out("Found: Return: " . $right);
+                    $commentVo->return = trim($right);
+                    $previous = ""; // reset
                 } else if (isInString("method",$left)){
+                    // Methods
                     // out("Found: Method: [" . $left . "] - [" . $right . "]");
                     $mvo = new MethodVo();
                     $mvo->name = trimAndReplace("* method","",$left);
@@ -177,6 +187,7 @@ function getComments($path){
                     $previous = ""; // reset
                     array_push($commentVo->methods,$mvo);
                 } else if (isInString("param",$left)){
+                    // Params
                     //out("Found: Param: [" . $left . "] - [" . $right . "]");
                     $cLine = trimAndReplace(["* @param","* param"],"",$cLine);
                     // out("Found: Param: " . $cLine);
@@ -303,6 +314,16 @@ function generateReadme($comments){
             }
             $out = str_replace("[alias]",$alias,$out);
         }
+
+        // Return
+        if ($commentVo->return != ""){
+            $out = str_replace("[title]",$commentVo->name,$out);
+        } else {
+            $out = str_replace("[title]","",$out);
+        }
+
+
+
     } // Exit for loop
     //echo($out);
 

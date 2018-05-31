@@ -72,8 +72,8 @@ gulp build
 <br><br>
 
 
-### <b>argsToObject(args, obj)</b>
-Quick and easy args to object<br>return<br>
+### <b>argsToObject(fArgs, obj, strict)</b>
+Quick and easy args to object<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -214,7 +214,7 @@ Disable log()<br>
 <hr>
     
 ### <b>openDebugWindow(html)</b>
-open a popup window with the html you wish to display in it<br>return<br>
+open a popup window with the html you wish to display in it<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -322,7 +322,7 @@ Replacement for jQuerys $(document).ready<br>
 <hr>
     
 ### <b>arrayRemoveIndex(arr,index)</b>
-remove a specified index from an array<br>return<br>
+remove a specified index from an array<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -1294,7 +1294,7 @@ Get a weighted random based on odds and iterations<br>
 <hr>
     
 ### <b>limitLengthInWords(str, maxWords)</b>
-Limit a string in length of words<br>return object<br>
+Limit a string in length of words<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -1873,7 +1873,7 @@ converts degrees to radians<br>
 <hr>
     
 ### <b>toHex(num)</b>
-Converts a number to hex<br>return string<br>
+Converts a number to hex<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2345,7 +2345,7 @@ gets the date time at a specified local<br>
 <hr>
     
 ### <b>validateEmail(email)</b>
-Validats an email address<br>returns boolean<br>
+Validats an email address<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2376,7 +2376,7 @@ Validats an email address<br>returns boolean<br>
 <hr>
     
 ### <b>isMobile()</b>
-isMobile<br>return boolean<br>
+isMobile<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2407,7 +2407,7 @@ isMobile<br>return boolean<br>
 <hr>
     
 ### <b>isFireFox()</b>
-Detects FireFox<br>return boolean<br>
+Detects FireFox<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2438,7 +2438,7 @@ Detects FireFox<br>return boolean<br>
 <hr>
     
 ### <b>isChrome()</b>
-Detects Chrome<br>return boolean<br>
+Detects Chrome<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2469,7 +2469,7 @@ Detects Chrome<br>return boolean<br>
 <hr>
     
 ### <b>isEdge()</b>
-Detects Edge<br>return boolean<br>
+Detects Edge<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2500,7 +2500,7 @@ Detects Edge<br>return boolean<br>
 <hr>
     
 ### <b>isSafari()</b>
-Detects Safari<br>return boolean<br>
+Detects Safari<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2531,7 +2531,7 @@ Detects Safari<br>return boolean<br>
 <hr>
     
 ### <b>isIE()</b>
-Detects IE<br>return boolean<br>
+Detects IE<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2562,7 +2562,7 @@ Detects IE<br>return boolean<br>
 <hr>
     
 ### <b>isOpera()</b>
-Detects Opera<br>return boolean<br>
+Detects Opera<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2593,7 +2593,7 @@ Detects Opera<br>return boolean<br>
 <hr>
     
 ### <b>getIEVersion()</b>
-Gets version of IE<br>return float<br>
+Gets version of IE<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2624,7 +2624,7 @@ Gets version of IE<br>return float<br>
 <hr>
     
 ### <b>getBrowser()</b>
-Detects browser<br>return string<br>
+Detects browser<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2692,7 +2692,7 @@ setHTML("header","Welcome");
 // or
 var myElement = getElementById("header");
 setHTML(myElement,"Welcome!");
-````return<br>
+````
 
 <details>
     <summary><b>More information</b></summary>
@@ -3358,7 +3358,7 @@ Scroll to element on page<br>
 <hr>
     
 ### <b>rgb2Hex(r,g,b)</b>
-rgb to hex<br>return string<br>
+rgb to hex<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3397,7 +3397,7 @@ rgb to hex<br>return string<br>
 <hr>
     
 ### <b>rgbToHex(r,g,b)</b>
-rgb to hex<br>return string<br>
+rgb to hex<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3436,7 +3436,7 @@ rgb to hex<br>return string<br>
 <hr>
     
 ### <b>hexToRgb(hex)</b>
-hexToRgb<br>return string<br>
+hexToRgb<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3465,7 +3465,7 @@ hexToRgb<br>return string<br>
 <hr>
     
 ### <b>AFTC.Color({params})</b>
-Color allows you to create, convert, lighten or darken colours and more.<br>return object<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>
 
 <details>
     <summary><b>More information</b></summary>
