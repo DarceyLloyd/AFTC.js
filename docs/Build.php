@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response .= "<h4><b>No of comments to be generatd: </b> " . count($comments) . "</h4>";
     //trace("No of comments processed = " . count($comments));
     // $comments = getComments("./aftc.js");
-    print_r($comments);
-    die();
+    //print_r($comments);
+    //die();
     
     $header = file_get_contents("./header.md");
     $footer = file_get_contents("./footer.md");

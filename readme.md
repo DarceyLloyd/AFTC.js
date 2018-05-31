@@ -83,14 +83,17 @@ var aftc_modules = [
  <a href='#arrayremoveindexarrindex'>arrayRemoveIndex(arr,index)</a><br>
  <a href='#arrayshufflearr'>arrayShuffle(arr)</a><br>
  <a href='#arrayshuffle2arr'>arrayShuffle2(arr)</a><br>
+ <a href='#arraytosinglelinestringarr'>arrayToSingleLineString(arr)</a><br>
  <a href='#booltostringbool'>boolToString(bool)</a><br>
  <a href='#booltoyesnobool'>boolToYesNo(bool)</a><br>
  <a href='#centerabsoluteelementeleoreleid'>centerAbsoluteElement(eleOrEleId)</a><br>
  <a href='#cleanjsonstrings'>cleanJSONString(s)</a><br>
+ <a href='#cls'>cls()</a><br>
  <a href='#converttoarrayv'>convertToArray(v)</a><br>
  <a href='#cycleposmax'>cycle(pos, max)</a><br>
  <a href='#degtoradinput'>degToRad(input)</a><br>
  <a href='#escapehtmlinput'>escapeHTML(input)</a><br>
+ <a href='#exitfullscreen'>exitFullScreen()</a><br>
  <a href='#fadeinelementidduration'>fadeIn(elementId, duration)</a><br>
  <a href='#fadeoutelementidduration'>fadeOut(elementId, duration)</a><br>
  <a href='#getallstringsbetweenstrstartend'>getAllStringsBetween(str,start,end)</a><br>
@@ -102,7 +105,7 @@ var aftc_modules = [
  <a href='#getcookiename'>getCookie(name)</a><br>
  <a href='#getdatetimelocal'>getDateTime(local)</a><br>
  <a href='#getdaysbetweenstartdatetimeenddatetime'>getDaysBetween(startDateTime, endDateTime)</a><br>
- <a href='#getelementbyclassnamexxxx'>getElementByClassName(xxxx)</a><br>
+ <a href='#getelementbyclassnameclassname'>getElementByClassName(className)</a><br>
  <a href='#getelementbyidid'>getElementById(id)</a><br>
  <a href='#getelementbynamename'>getElementByName(name)</a><br>
  <a href='#getelementbytagnametagname'>getElementByTagName(tagName)</a><br>
@@ -129,6 +132,7 @@ var aftc_modules = [
  <a href='#getukdatetimefromdbdatetimeinput'>getUkDateTimeFromDbDateTime(input)</a><br>
  <a href='#getusdatefromdatedate'>getUSDateFromDate(date)</a><br>
  <a href='#getweightedrandomoddsiterations'>getWeightedRandom(odds, iterations)</a><br>
+ <a href='#gofullscreenelement'>goFullScreen(element)</a><br>
  <a href='#guid'>guid()</a><br>
  <a href='#hasclasselementoridcls'>hasClass(elementOrId, cls)</a><br>
  <a href='#hextorgbhex'>hexToRgb(hex)</a><br>
@@ -157,6 +161,7 @@ var aftc_modules = [
  <a href='#logdisable'>logDisable()</a><br>
  <a href='#logenable'>logEnable()</a><br>
  <a href='#logtoelement'>logTo(element)</a><br>
+ <a href='#logtodisable'>logToDisable()</a><br>
  <a href='#onreadyfn'>onReady(fn)</a><br>
  <a href='#opendebugwindowhtml'>openDebugWindow(html)</a><br>
  <a href='#parsearraytofloatarr'>parseArrayToFloat(arr)</a><br>
@@ -167,6 +172,7 @@ var aftc_modules = [
  <a href='#randomstringlength'>randomString(length)</a><br>
  <a href='#redirecturl'>redirect(url)</a><br>
  <a href='#removeallselectoptionselementorid'>removeAllSelectOptions(elementOrId)</a><br>
+ <a href='#removeclasselementoridclassname'>removeClass(elementOrId,className)</a><br>
  <a href='#removefilefrompathpath'>removeFileFromPath(path)</a><br>
  <a href='#rgb2hexrgb'>rgb2Hex(r,g,b)</a><br>
  <a href='#rgbtohexrgb'>rgbToHex(r,g,b)</a><br>
@@ -183,7 +189,7 @@ var aftc_modules = [
  <a href='#validateemailemail'>validateEmail(email)</a><br>
 
 ### <b></b>
-shortcut to remove a class from a html element<br>
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -203,7 +209,7 @@ shortcut to remove a class from a html element<br>
 	<tr>
 		<td>string</td>
 		<td>className</td>
-		<td>the class name to remove</td>
+		<td>the class name to add</td>
 	</tr>
 </table>
 
@@ -218,8 +224,8 @@ shortcut to remove a class from a html element<br>
 
 <hr><br><br><br>
     
-### <b></b>
-
+### <b>addClass(elementOrId,classname)</b>
+shortcut to add a css class to a html element<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -232,14 +238,60 @@ shortcut to remove a class from a html element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>canvasId</td>
-		<td>Canvas element id to work with</td>
+		<td>elementORstring</td>
+		<td>elementOrId</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
 	</tr>
 	<tr>
-		<td>number</td>
-		<td>opacity</td>
-		<td>opacity of noise</td>
+		<td>string</td>
+		<td>className</td>
+		<td>the class name to add</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>addEvent(obj,type,fn,useCapture)</b>
+Shortcut for adding events with old browser compatibility<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>obj</td>
+		<td>The object you wish to attach the event listener to</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>type</td>
+		<td>The event type (e.type) mousedown, mouseup, click etc</td>
+	</tr>
+	<tr>
+		<td>function</td>
+		<td>fn</td>
+		<td>The function to call when the event is triggered</td>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>optional</td>
+		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
 	</tr>
 </table>
 
@@ -460,146 +512,6 @@ Quick and easy xhr/ajax<br>
 
 <hr><br><br><br>
     
-### <b>String.prototype.endsWith(str)</b>
-ES6 supports endsWith(), this is for pre ES6 support<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>string to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - argsTo
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>String.prototype.startsWith(str)</b>
-ES6 supports the startsWith(), this is for pre ES6 support<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>str</td>
-		<td>string to check</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - argsTo
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>addClass(elementOrId,classname)</b>
-shortcut to add a css class to a html element<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>elementORstring</td>
-		<td>elementOrId</td>
-		<td>The elemnt or id of the html element to add a css class to</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>className</td>
-		<td>the class name to add</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - argsTo
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>addEvent(obj,type,fn,useCapture)</b>
-Shortcut for adding events with old browser compatibility<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>object</td>
-		<td>obj</td>
-		<td>The object you wish to attach the event listener to</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>type</td>
-		<td>The event type (e.type) mousedown, mouseup, click etc</td>
-	</tr>
-	<tr>
-		<td>function</td>
-		<td>fn</td>
-		<td>The function to call when the event is triggered</td>
-	</tr>
-	<tr>
-		<td>boolean</td>
-		<td>optional</td>
-		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - argsTo
-
-</details>
-
-
-
-<hr><br><br><br>
-    
 ### <b>argsToObject(fArgs, obj, strict)</b>
 Quick and easy args to object<br>
 
@@ -669,10 +581,12 @@ Check to see if your array contains something you want to find<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - arrayClear
+ - isInArray
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/VxExVw' target='_blank'>https://codepen.io/AllForTheCode/pen/VxExVw</a>
 
 
 <hr><br><br><br>
@@ -703,6 +617,8 @@ clears/empties an array for garbage collection<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELdRYJ' target='_blank'>https://codepen.io/AllForTheCode/pen/ELdRYJ</a>
 
 
 <hr><br><br><br>
@@ -734,6 +650,8 @@ returns the minimum value in an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/bMmKBa' target='_blank'>https://codepen.io/AllForTheCode/pen/bMmKBa</a>
 
 
 <hr><br><br><br>
@@ -770,6 +688,8 @@ remove a specified index from an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLzyGP' target='_blank'>https://codepen.io/AllForTheCode/pen/mLzyGP</a>
 
 
 <hr><br><br><br>
@@ -801,6 +721,8 @@ shuffles an array (method 1)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/wjYjmo' target='_blank'>https://codepen.io/AllForTheCode/pen/wjYjmo</a>
 
 
 <hr><br><br><br>
@@ -832,6 +754,40 @@ shuffles an array (method 2)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/wjYjmo' target='_blank'>https://codepen.io/AllForTheCode/pen/wjYjmo</a>
+
+
+<hr><br><br><br>
+    
+### <b>arrayToSingleLineString(arr)</b>
+Converts an array to a single line string (usefull for debug)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the convert</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - arrayToString
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/XqoVEe' target='_blank'>https://codepen.io/AllForTheCode/pen/XqoVEe</a>
 
 
 <hr><br><br><br>
@@ -858,7 +814,7 @@ converts boolean to a string of true or false<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - valueToArray
+ - clearLog();
 
 </details>
 
@@ -888,7 +844,7 @@ converts a boolean to yes or no<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - valueToArray
+ - clearLog();
 
 </details>
 
@@ -918,7 +874,7 @@ Center element that is absolute positioned<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - valueToArray
+ - clearLog();
 
 </details>
 
@@ -948,10 +904,43 @@ Attempts to clean a json string<br>
 
 <b>Returns:</b> 
 #### Alias's:
- - valueToArray
+ - clearLog();
 
 </details>
 
+
+
+<hr><br><br><br>
+    
+### <b>cls()</b>
+Clears the console if supported<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>&</td>
+		<td>v</td>
+		<td>value to insert into array</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - clearLog();
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 
 <hr><br><br><br>
@@ -982,6 +971,8 @@ takes an input and returns it as index[0] of an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrzazK' target='_blank'>https://codepen.io/AllForTheCode/pen/QrzazK</a>
 
 
 <hr><br><br><br>
@@ -1078,6 +1069,44 @@ Attempts to escape a html string<br>
 
 </details>
 
+
+
+<hr><br><br><br>
+    
+### <b>exitFullScreen()</b>
+Exits full screen mode<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>the id of the html element you wish to fade</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>duration</td>
+		<td>how long you want the fade to run over in seconds</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - getNoOfDaysBetween
+ - getDaysBetweenDates
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
 
 
 <hr><br><br><br>
@@ -1463,7 +1492,7 @@ Gets the number of whole days between a start and end date<br>
 
 <hr><br><br><br>
     
-### <b>getElementByClassName(xxxx)</b>
+### <b>getElementByClassName(className)</b>
 Gets the first html element from the DOM that has a specific class name. NOTE<br>
 
 <details>
@@ -1903,6 +1932,8 @@ returns the maximum value in an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdYGjW' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYGjW</a>
 
 
 <hr><br><br><br>
@@ -2220,36 +2251,6 @@ Formats a date in the UK format<br>
 
 <hr><br><br><br>
     
-### <b>getUSDateFromDate(date)</b>
-Formats a date in the US format<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>Date</td>
-		<td>date</td>
-		<td></td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
-#### Alias's:
- - getGUID
-
-</details>
-
-
-
-<hr><br><br><br>
-    
 ### <b>getUkDateFromDbDateTime(input)</b>
 get a uk date from a mysql db date value<br>
 
@@ -2310,6 +2311,36 @@ get a uk date from a mysql db date time value<br>
 
 <hr><br><br><br>
     
+### <b>getUSDateFromDate(date)</b>
+Formats a date in the US format<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Date</td>
+		<td>date</td>
+		<td></td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - getGUID
+
+</details>
+
+
+
+<hr><br><br><br>
+    
 ### <b>getWeightedRandom(odds, iterations)</b>
 Get a weighted random based on odds and iterations<br>
 
@@ -2341,6 +2372,38 @@ Get a weighted random based on odds and iterations<br>
 
 </details>
 
+
+
+<hr><br><br><br>
+    
+### <b>goFullScreen(element)</b>
+Go full screen, on an element if specified or whole browser if left out<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>element</td>
+		<td>optional - html element that you want to go full screen on, leave out for whole browser</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - getGUID
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/ELGWpE' target='_blank'>https://codepen.io/AllForTheCode/pen/ELGWpE</a>
 
 
 <hr><br><br><br>
@@ -3071,6 +3134,8 @@ Check to see if a string is in an array<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/QrZrBM' target='_blank'>https://codepen.io/AllForTheCode/pen/QrZrBM</a>
 
 
 <hr><br><br><br>
@@ -3146,7 +3211,7 @@ Limit a string in length of words<br>
 <hr><br><br><br>
     
 ### <b>logDisable()</b>
-Enables log and trace<br>
+Disables log and trace<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3233,11 +3298,44 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
 
 <b>Returns:</b> 
 #### Alias's:
- - ready
+ - disableLogTo();
 
 </details>
 
 #### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+
+<hr><br><br><br>
+    
+### <b>logToDisable()</b>
+Disables log and trace to a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>function</td>
+		<td>fn</td>
+		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - disableLogTo();
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 
@@ -3526,6 +3624,8 @@ no more typing self.location.href, just use redirect(url)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -3547,6 +3647,41 @@ Removes all the options in a select<br>
 		<td>element</td>
 		<td>||</td>
 		<td>element or id string</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>removeClass(elementOrId,className)</b>
+shortcut to remove a class from a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementORstring</td>
+		<td>elementOrId</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>className</td>
+		<td>the class name to remove</td>
 	</tr>
 </table>
 
@@ -3817,6 +3952,68 @@ sets the length of a string from left to right<br>
  - 
  - 
  - 
+
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>String.prototype.endsWith(str)</b>
+ES6 supports endsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - convertToArray
+ - valueToArray
+
+</details>
+
+
+
+<hr><br><br><br>
+    
+### <b>String.prototype.startsWith(str)</b>
+ES6 supports the startsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - convertToArray
+ - valueToArray
 
 </details>
 
