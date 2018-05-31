@@ -93,13 +93,17 @@ function getComments($path){
     $description_complete = false;
     $previous = "";
 
+    $comment_count = 0;
+
     while (($line = fgets($file)) !== false) {
+        
+
         // Clean up line read and trim
         $cLine = str_replace($filter, "", $line);
         $cLine = rtrim(ltrim($cLine));
 
         $lineFirstChar = cutStringTo($cLine,1);
-        
+
         // reset for next comment
         if ($comment_started && $comment_complete){
             array_push($comments,$commentVo);
@@ -113,8 +117,10 @@ function getComments($path){
 
         // Work out if the line we are on is a comment or not and clean it up
         $comment_found = false;
+        // out("CHECKING: " . $cLine);
         if (!$comment_started) {
             if (isInString("/**",$cLine)){
+                // out("-- comment start");
                 $comment_started = true;
                 $comment_found = true;
                 $cLine = trimAndReplace("/**","",$cLine);
@@ -122,11 +128,13 @@ function getComments($path){
             }
         } else {
             if (isInString("*/",$cLine)){
+                // out("-- comment end");
                 $comment_complete = true;
                 $comment_found = true;
                 $cLine = trimAndReplace("*/","",$cLine);
                 // array_push($comment,$cLine);
             } else if ($lineFirstChar == "*"){
+                // out("-- found comment line");
                 //$cLine = trimAndReplace("*","",$cLine);
                 $cLine = trim($cLine);
                 $comment_found = true;
@@ -136,6 +144,14 @@ function getComments($path){
 
         // Populate commentVo with line data
         if ($comment_found){
+            // Run lim for dev
+            // $comment_count++;
+            // if ($comment_count > 90){
+            //     die();
+            // }
+            //out("--- " . $comment_count);
+            
+
             $bits = explode(":",$cLine);
             $left = $bits[0];
             if (strlen($left) > 0){
@@ -144,13 +160,13 @@ function getComments($path){
                 $left = trimAndReplace("@","",$left);
                 $right = trim($right);
                 
-                if (isInString("function",$left)){
+                if (isInString("@function:",$cLine)){
                     // Function
                     // out("Found: Function: " . $right);
                     $commentVo->type = "function";
                     $commentVo->name = $right;
                     $previous = ""; // reset
-                } else if (isInString("class",$left)){
+                } else if (isInString("@class:",$cLine)){
                     // Class
                     // out("Found: Class: " . $right);
                     $commentVo->type = "class";

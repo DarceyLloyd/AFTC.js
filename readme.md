@@ -240,7 +240,7 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
 
 <hr><br><br><br>
     
-### <b>The class the DOM element(s) use you wish to find</b>
+### <b>getElementsByClassName(className)</b>
 Gets an array of html elements from the DOM that have a specific class name. NOTE<br>
 
 <details>
@@ -254,9 +254,9 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>tagName</td>
+		<td>className</td>
 		<td>string</td>
-		<td>the tag name you wish to find</td>
+		<td>The class the DOM element(s) use you wish to find</td>
 	</tr>
 </table>
 
@@ -272,7 +272,7 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
 
 <hr><br><br><br>
     
-### <b>The class name the DOM element uses you wish to find</b>
+### <b>getElementByClassName(xxxx)</b>
 Gets the first html element from the DOM that has a specific class name. NOTE<br>
 
 <details>
@@ -286,9 +286,9 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>tagName</td>
+		<td>className</td>
 		<td>string</td>
-		<td>the tag name you wish to find</td>
+		<td>The class name the DOM element uses you wish to find</td>
 	</tr>
 </table>
 
@@ -536,7 +536,7 @@ open a popup window with the html you wish to display in it<br>
 
 <hr><br><br><br>
     
-### <b>The function to call when the event is triggered</b>
+### <b>addEvent(obj,type,fn,useCapture)</b>
 Shortcut for adding events with old browser compatibility<br>
 
 <details>
@@ -560,6 +560,11 @@ Shortcut for adding events with old browser compatibility<br>
 		<td>The event type (e.type) mousedown, mouseup, click etc</td>
 	</tr>
 	<tr>
+		<td>function</td>
+		<td>fn</td>
+		<td>The function to call when the event is triggered</td>
+	</tr>
+	<tr>
 		<td>boolean</td>
 		<td>optional</td>
 		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
@@ -577,7 +582,7 @@ Shortcut for adding events with old browser compatibility<br>
 
 <hr><br><br><br>
     
-### <b>inline function or pass it a function for when your page is loaded and ready to be used</b>
+### <b>onReady(fn)</b>
 Replacement for jQuerys $(document).ready<br>
 
 <details>
@@ -591,14 +596,9 @@ Replacement for jQuerys $(document).ready<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>array</td>
-		<td>arr</td>
-		<td>the array you wish to remove an index on</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>index</td>
-		<td>the array index you wish to remove</td>
+		<td>function</td>
+		<td>fn</td>
+		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
 	</tr>
 </table>
 
@@ -911,7 +911,7 @@ takes an input and returns it as index[0] of an array<br>
 
 <hr><br><br><br>
     
-### <b>the function wish to get the name of</b>
+### <b>getFunctionName(fn)</b>
 tries to get the function name of a suppled function<br>
 
 <details>
@@ -925,14 +925,9 @@ tries to get the function name of a suppled function<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>find</td>
-		<td>The string to look for</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>source</td>
-		<td>The string to look in</td>
+		<td>function</td>
+		<td>fn</td>
+		<td>the function wish to get the name of</td>
 	</tr>
 </table>
 
@@ -3077,7 +3072,7 @@ Center element that is absolute positioned<br>
 
 <hr><br><br><br>
     
-### <b>the class name to add</b>
+### <b>addClass(elementOrId,classname)</b>
 shortcut to add a css class to a html element<br>
 
 <details>
@@ -3095,6 +3090,11 @@ shortcut to add a css class to a html element<br>
 		<td>elementOrId</td>
 		<td>The elemnt or id of the html element to add a css class to</td>
 	</tr>
+	<tr>
+		<td>string</td>
+		<td>className</td>
+		<td>the class name to add</td>
+	</tr>
 </table>
 
 [return]
@@ -3106,7 +3106,7 @@ shortcut to add a css class to a html element<br>
 
 <hr><br><br><br>
     
-### <b>the class name to remove</b>
+### <b></b>
 shortcut to remove a class from a html element<br>
 
 <details>
@@ -3123,6 +3123,11 @@ shortcut to remove a class from a html element<br>
 		<td>elementORstring</td>
 		<td>elementOrId</td>
 		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>className</td>
+		<td>the class name to remove</td>
 	</tr>
 </table>
 
@@ -3813,6 +3818,11 @@ returns a random RGB object o.r, o.g, o.g<br>
 		<td>dataType</td>
 		<td>data type of data object array, object, formdata, form and json</td>
 	</tr>
+	<tr>
+		<td>function</td>
+		<td>onComplete</td>
+		<td>on a successfull xhr request this is the function that will be called</td>
+	</tr>
 </table>
 
 [return]
@@ -3824,7 +3834,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 <hr><br><br><br>
     
-### <b>on a successfull xhr request this is the function that will be called</b>
+### <b>AFTC.XHR(args)</b>
 Quick and easy xhr/ajax<br>
 ````
 ````
@@ -3853,6 +3863,11 @@ Quick and easy xhr/ajax<br>
 		<td>string</td>
 		<td>dataType</td>
 		<td>data type of data object array, object, formdata, form and json</td>
+	</tr>
+	<tr>
+		<td>function</td>
+		<td>onComplete</td>
+		<td>on a successfull xhr request this is the function that will be called</td>
 	</tr>
 </table>
 
