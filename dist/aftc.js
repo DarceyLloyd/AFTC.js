@@ -12,7 +12,7 @@ var AFTC = AFTC || {}
  * @param args object: arguments (from the function structure, typically code will always be 'arguments'
  * @param obj object: object to parse into
  * @param strict boolean: console.warn any args that have been supplied that don't exist in args
- * @return: A fist full of dollars!
+ * @return: null
  * @alias: argsTo
  * @link: https://codepen.io/AllForTheCode/pen/PaqbKN
  */
