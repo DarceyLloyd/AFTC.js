@@ -92,12 +92,19 @@ function getAnchors($path){
     while (($line = fgets($file)) !== false) {
         $cLine = trimAndReplace($filter,"",$line);
 
+        // out("CHECKING: " . $cLine);
+
         if (isInString("@function",$cLine)){
             // function found
             $cLine = trimAndReplace($function_filter,"",$line);
-            $lower = strtolower( $cLine );
-            array_push($anchors,$cLine);
-            // out($cLine);
+            if (isInString("//",$cLine)){
+
+            } else {
+                // out("FOUND");
+                array_push($anchors,$cLine);
+                // out($cLine);
+            }
+            
             
         }
     }

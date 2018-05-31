@@ -30,7 +30,28 @@ var aftc_core = [
 // The extras, the modules, the ooo or to some, the bloat
 // Nice to have, but not essential
 var aftc_modules = [
-    "./dist/aftc.core.js", // The AFTC Core (required)
+    // The AFTC Core (required) START
+    "./src/aftc.js",
+    "./src/core/debug.js",
+    "./src/core/events.js",
+    "./src/core/array.js",
+    "./src/core/get.js",
+    "./src/core/is.js",
+    "./src/core/random.js",
+    "./src/core/string.js",
+    "./src/core/conversion.js",
+    "./src/core/datetime.js",
+    "./src/core/validation.js",
+    "./src/core/detection.js",
+    "./src/core/dom.js",
+    "./src/core/css.js",
+    "./src/core/browser.js",
+    "./src/core/cookies.js",
+    "./src/core/form.js",
+    "./src/core/geometry.js",
+    "./src/core/video.js",
+    "./src/core/misc.js",
+    // The AFTC Core (required) END
     "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
     // "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas(); (WORK IN PROGRESS);

@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file = "../dist/aftc.js";
     $anchors = getAnchors($file);
     file_put_contents("./anchros.md",$anchors);
+    // print_r($anchors);
+    // die();
     
     $comments = getComments($file);
     
