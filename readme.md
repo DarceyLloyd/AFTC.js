@@ -12,10 +12,13 @@ gulp build
 
 Then include the version you wish to use, your options are:
 
- - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
- - aftc.core.min.js - this is the aftc.js core compressed
+ - <b>aftc.min.js</b> - this is the full aftc.js package compressed, with all the extras (43KB);
  - aftc.js - this is the full aftc.js package uncompressed with all the extras
- - aftc.min.js - this is the full aftc.js package compressed, with all the extras
+
+ - aftc.core.min.js - this is the aftc.js core compressed (22KB)
+ - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
+ 
+ 
 
 ##### NOTE: You can always customise your build of the AFTC.JS, see the Build Guide below.
 
