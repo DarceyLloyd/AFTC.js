@@ -114,8 +114,8 @@ function getAnchors($path){
             $link = strtolower( $value );
             $link = preg_replace("/[^A-Za-z0-9 ]/", '', $link); // leaves brackets in
             //$link = preg_replace("/[\W_]+/u", '', $link); // also leaves links in!
-            $chars = ["\\","|","(",")","[","]","&",",","`"," "];
-            $link = str_replace($chars,"",$value);
+            $chars = ["\\","|","(",")","[","]","&",",","`"," ","{","}"];
+            $link = strtolower( str_replace($chars,"",$link) );
             $out .= " <a href='#" . $link . "'>" . $value . "</a><br>\n";
         }
     }
