@@ -13,7 +13,7 @@
  * @method: angleRadians: angleRadians
  * @method: angleDeg: angleDeg
  * @method: rotate: rotate
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/qYLzzm
  */
 
 AFTC.Point = function (x, y) {
@@ -98,7 +98,7 @@ AFTC.Point = function (x, y) {
  * @method: setW: setW
  * @method: setH: setH
  * @return: AFTC.Rectangle
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/JvQRKg
  */
 
 AFTC.Rectangle = function (x, y, w, h) {
@@ -156,7 +156,7 @@ AFTC.Rect = AFTC.Rectangle;
  * @method flipY: flipY
  * @method multiply: multiply
  * @method divide: divide
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/erxRBo
  */
 AFTC.Velocity = function (vx, vy) {
 

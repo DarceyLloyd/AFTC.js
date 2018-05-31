@@ -1,6 +1,6 @@
 {
   "name": "aftc.js",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
     "gulp-build": "gulp build",

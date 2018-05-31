@@ -86,6 +86,7 @@ window.escapeHTML = function (input) {
  * @alias cutString
  * @alias cutStringLength
  * @alias setStrLen
+ * @alias trimStringLength
  */
 window.cutStringTo = function (s, len) {
 	return s.substring(0, len);
@@ -94,6 +95,7 @@ window.cutString = function (s, len) { return cutStringTo(s,len); }
 window.cutStringLength = function (s, len) { return cutStringTo(s,len); }
 window.setStrLen = function (s, len) { return cutStringTo(s,len); }
 window.setStringLength = function (s, len) { return cutStringTo(s,len); }
+window.trimStringLength = function (s, len) { return cutStringTo(s,len); }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
