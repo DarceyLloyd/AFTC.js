@@ -3,6 +3,9 @@
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
+ <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
+ <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
+ <a href='#aftcvelocityvxvy'>AFTC.Velocity(vx,vy)</a><br>
  <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
  <a href='#arraycontainsneedlehaystack'>arrayContains(needle,haystack)</a><br>
@@ -78,7 +81,7 @@
  <a href='#isie'>isIE()</a><br>
  <a href='#isinstringfindsource'>isInString(find,source)</a><br>
  <a href='#ismobile'>isMobile()</a><br>
- <a href='#isnumberkeyevent'>isNumberKey(event)</a><br>
+ <a href='#isnumberkeyevt'>isNumberKey(evt)</a><br>
  <a href='#isnumericn'>isNumeric(n)</a><br>
  <a href='#isoddn'>isOdd(n)</a><br>
  <a href='#isopera'>isOpera()</a><br>
@@ -99,11 +102,12 @@
  <a href='#radtodeginput'>radToDeg(input)</a><br>
  <a href='#randomstringlength'>randomString(length)</a><br>
  <a href='#redirecturl'>redirect(url)</a><br>
- <a href='#removeallselectoptionselementorid'>removeAllSelectOptions(elementOrId)</a><br>
+ <a href='#removeallselectoptionselementid'>removeAllSelectOptions(elementId)</a><br>
  <a href='#removeclasselementoridclassname'>removeClass(elementOrId,className)</a><br>
  <a href='#removefilefrompathpath'>removeFileFromPath(path)</a><br>
  <a href='#rgb2hexrgb'>rgb2Hex(r,g,b)</a><br>
  <a href='#rgbtohexrgb'>rgbToHex(r,g,b)</a><br>
+ <a href='#scrolltoelementelementiddurationoffset'>scrollToElement(elementId, duration, offset)</a><br>
  <a href='#setcookienamevalue'>setCookie(name, value)</a><br>
  <a href='#sethtmlelementoridhtml'>setHTML(elementOrId,html);</a><br>
  <a href='#setstringlengthinputlen'>setStringLength(input, len)</a><br>

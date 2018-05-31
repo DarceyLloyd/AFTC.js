@@ -1,10 +1,11 @@
 /**
  * @function: addEvent(obj,type,fn,useCapture)
  * @desc: Shortcut for adding events with old browser compatibility
- * @param object obj: The object you wish to attach the event listener to
- * @param string type: The event type (e.type) mousedown, mouseup, click etc
- * @param function fn: The function to call when the event is triggered
- * @param boolean optional useCapture: Whether the event should be executed in the capturing or in the bubbling phase
+ * @param obj object: The object you wish to attach the event listener to
+ * @param type string: The event type (e.type) mousedown, mouseup, click etc
+ * @param fn function: The function to call when the event is triggered
+ * @param useCapture boolean: Whether the event should be executed in the capturing or in the bubbling phase
+ * @link: https://codepen.io/AllForTheCode/pen/VxExLg
  */
 window.addEvent = function (obj, type, fn, useCapture) {
     if (obj == null || typeof (obj) == 'undefined') return;
@@ -21,9 +22,10 @@ window.addEvent = function (obj, type, fn, useCapture) {
 
 /**
  * @function: onReady(fn)
- * @desc: Replacement for jQuerys $(document).ready
- * @param function fn: inline function or pass it a function for when your page is loaded and ready to be used
+ * @desc: A replacement for using body onload and no need for jQuery's $(document).ready
+ * @param fn function: inline function or pass it a function for when your page is loaded and ready to be used
  * @alias: ready
+ * @link: https://codepen.io/AllForTheCode/pen/GdYxVa
  */
 window.onReady = function (fn) {
     // IE9+

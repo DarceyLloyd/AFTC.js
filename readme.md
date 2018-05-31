@@ -88,6 +88,9 @@ var aftc_modules = [
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
+ <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
+ <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
+ <a href='#aftcvelocityvxvy'>AFTC.Velocity(vx,vy)</a><br>
  <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
  <a href='#arraycontainsneedlehaystack'>arrayContains(needle,haystack)</a><br>
@@ -163,7 +166,7 @@ var aftc_modules = [
  <a href='#isie'>isIE()</a><br>
  <a href='#isinstringfindsource'>isInString(find,source)</a><br>
  <a href='#ismobile'>isMobile()</a><br>
- <a href='#isnumberkeyevent'>isNumberKey(event)</a><br>
+ <a href='#isnumberkeyevt'>isNumberKey(evt)</a><br>
  <a href='#isnumericn'>isNumeric(n)</a><br>
  <a href='#isoddn'>isOdd(n)</a><br>
  <a href='#isopera'>isOpera()</a><br>
@@ -184,11 +187,12 @@ var aftc_modules = [
  <a href='#radtodeginput'>radToDeg(input)</a><br>
  <a href='#randomstringlength'>randomString(length)</a><br>
  <a href='#redirecturl'>redirect(url)</a><br>
- <a href='#removeallselectoptionselementorid'>removeAllSelectOptions(elementOrId)</a><br>
+ <a href='#removeallselectoptionselementid'>removeAllSelectOptions(elementId)</a><br>
  <a href='#removeclasselementoridclassname'>removeClass(elementOrId,className)</a><br>
  <a href='#removefilefrompathpath'>removeFileFromPath(path)</a><br>
  <a href='#rgb2hexrgb'>rgb2Hex(r,g,b)</a><br>
  <a href='#rgbtohexrgb'>rgbToHex(r,g,b)</a><br>
+ <a href='#scrolltoelementelementiddurationoffset'>scrollToElement(elementId, duration, offset)</a><br>
  <a href='#setcookienamevalue'>setCookie(name, value)</a><br>
  <a href='#sethtmlelementoridhtml'>setHTML(elementOrId,html);</a><br>
  <a href='#setstringlengthinputlen'>setStringLength(input, len)</a><br>
@@ -254,23 +258,23 @@ Shortcut for adding events with old browser compatibility<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>object</td>
 		<td>obj</td>
+		<td>object</td>
 		<td>The object you wish to attach the event listener to</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>type</td>
+		<td>string</td>
 		<td>The event type (e.type) mousedown, mouseup, click etc</td>
 	</tr>
 	<tr>
-		<td>function</td>
 		<td>fn</td>
+		<td>function</td>
 		<td>The function to call when the event is triggered</td>
 	</tr>
 	<tr>
+		<td>useCapture</td>
 		<td>boolean</td>
-		<td>optional</td>
 		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
 	</tr>
 </table>
@@ -282,6 +286,8 @@ Shortcut for adding events with old browser compatibility<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/VxExLg' target='_blank'>https://codepen.io/AllForTheCode/pen/VxExLg</a>
 
 
 <hr><br><br><br>
@@ -396,6 +402,127 @@ log(MyClass);
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Point(x,y)</b>
+2D Point<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>number</td>
+		<td>x coordinate</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>number</td>
+		<td>y coordinate</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - argsTo
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Rectangle(x, y, w, h)</b>
+Rectangle class, allos you to set x, y, width and height or a rectangle<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>number</td>
+		<td>x coordinate</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>number</td>
+		<td>y coordinate</td>
+	</tr>
+	<tr>
+		<td>w</td>
+		<td>number</td>
+		<td>w width</td>
+	</tr>
+	<tr>
+		<td>h</td>
+		<td>number</td>
+		<td>h height</td>
+	</tr>
+</table>
+
+<b>Returns:</b> AFTC.Rectangle
+#### Alias's:
+ - argsTo
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Velocity(vx,vy)</b>
+AFTC.Velocity class helper<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>vx</td>
+		<td>number</td>
+		<td>velocity vector x</td>
+	</tr>
+	<tr>
+		<td>vy</td>
+		<td>number</td>
+		<td>velocity vector y</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - argsTo
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
 
 
 <hr><br><br><br>
@@ -2582,8 +2709,8 @@ Checks to if checkbox is checked or not<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>elementId</td>
+		<td>string</td>
 		<td>element id of the form element to check</td>
 	</tr>
 </table>
@@ -2594,6 +2721,8 @@ Checks to if checkbox is checked or not<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/KRbjpx' target='_blank'>https://codepen.io/AllForTheCode/pen/KRbjpx</a>
 
 
 <hr><br><br><br>
@@ -2905,8 +3034,8 @@ Detects if the device you are using is a mobile or not<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>event</td>
 		<td>evt</td>
+		<td>event</td>
 		<td>html onkeyup(event) or onkeydown(event)</td>
 	</tr>
 </table>
@@ -2923,7 +3052,7 @@ Detects if the device you are using is a mobile or not<br>
 
 <hr><br><br><br>
     
-### <b>isNumberKey(event)</b>
+### <b>isNumberKey(evt)</b>
 Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 <details>
@@ -2937,8 +3066,8 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>event</td>
 		<td>evt</td>
+		<td>event</td>
 		<td>html onkeyup(event) or onkeydown(event)</td>
 	</tr>
 </table>
@@ -2949,6 +3078,8 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/vjvqLg' target='_blank'>https://codepen.io/AllForTheCode/pen/vjvqLg</a>
 
 
 <hr><br><br><br>
@@ -3306,8 +3437,8 @@ Disables log and trace to a html element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>function</td>
 		<td>fn</td>
+		<td>function</td>
 		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
 	</tr>
 </table>
@@ -3326,7 +3457,7 @@ Disables log and trace to a html element<br>
 <hr><br><br><br>
     
 ### <b>onReady(fn)</b>
-Replacement for jQuerys $(document).ready<br>
+A replacement for using body onload and no need for jQuery's $(document).ready<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -3339,8 +3470,8 @@ Replacement for jQuerys $(document).ready<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>function</td>
 		<td>fn</td>
+		<td>function</td>
 		<td>inline function or pass it a function for when your page is loaded and ready to be used</td>
 	</tr>
 </table>
@@ -3351,6 +3482,8 @@ Replacement for jQuerys $(document).ready<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/GdYxVa' target='_blank'>https://codepen.io/AllForTheCode/pen/GdYxVa</a>
 
 
 <hr><br><br><br>
@@ -3466,23 +3599,23 @@ parses a json object of key value pairs to a form select element<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>j</td>
-		<td>the json data</td>
-	</tr>
-	<tr>
-		<td>multi</td>
-		<td>selectElementIdOrElement</td>
-		<td>the json data</td>
-	</tr>
-	<tr>
 		<td>string</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
+		<td>selectElementIdOrElement</td>
+		<td>elementOrIdString</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
 		<td>label</td>
+		<td>string</td>
 		<td>of key value pair this is the key</td>
 	</tr>
 	<tr>
-		<td>string</td>
 		<td>value</td>
+		<td>string</td>
 		<td>of key value pair this is the value</td>
 	</tr>
 </table>
@@ -3493,6 +3626,8 @@ parses a json object of key value pairs to a form select element<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
 
 
 <hr><br><br><br>
@@ -3623,7 +3758,7 @@ no more typing self.location.href, just use redirect(url)<br>
 
 <hr><br><br><br>
     
-### <b>removeAllSelectOptions(elementOrId)</b>
+### <b>removeAllSelectOptions(elementId)</b>
 Removes all the options in a select<br>
 
 <details>
@@ -3637,9 +3772,9 @@ Removes all the options in a select<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>element</td>
-		<td>||</td>
-		<td>element or id string</td>
+		<td>elementId</td>
+		<td>string</td>
+		<td>id of select element</td>
 	</tr>
 </table>
 
@@ -3649,6 +3784,9 @@ Removes all the options in a select<br>
 
 </details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLaZEm' target='_blank'>https://codepen.io/AllForTheCode/pen/mLaZEm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/rvoEME' target='_blank'>https://codepen.io/AllForTheCode/pen/rvoEME</a>
 
 
 <hr><br><br><br>
@@ -3796,6 +3934,48 @@ rgb to hex<br>
 
 </details>
 
+
+
+<hr><br><br><br>
+    
+### <b>scrollToElement(elementId, duration, offset)</b>
+Scroll to element on page<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementId</td>
+		<td>string</td>
+		<td>ID of element you wish to scroll to</td>
+	</tr>
+	<tr>
+		<td>duration</td>
+		<td>float</td>
+		<td>Duration in seconds</td>
+	</tr>
+	<tr>
+		<td>offset</td>
+		<td>number</td>
+		<td>How much to offset scroll by</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/eKNeVq' target='_blank'>https://codepen.io/AllForTheCode/pen/eKNeVq</a>
 
 
 <hr><br><br><br>

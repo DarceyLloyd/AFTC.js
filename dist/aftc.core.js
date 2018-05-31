@@ -317,10 +317,11 @@ window.htmlToWindow = function (html) { openDebugWindow(html);}
 /**
  * @function: addEvent(obj,type,fn,useCapture)
  * @desc: Shortcut for adding events with old browser compatibility
- * @param object obj: The object you wish to attach the event listener to
- * @param string type: The event type (e.type) mousedown, mouseup, click etc
- * @param function fn: The function to call when the event is triggered
- * @param boolean optional useCapture: Whether the event should be executed in the capturing or in the bubbling phase
+ * @param obj object: The object you wish to attach the event listener to
+ * @param type string: The event type (e.type) mousedown, mouseup, click etc
+ * @param fn function: The function to call when the event is triggered
+ * @param useCapture boolean: Whether the event should be executed in the capturing or in the bubbling phase
+ * @link: https://codepen.io/AllForTheCode/pen/VxExLg
  */
 window.addEvent = function (obj, type, fn, useCapture) {
     if (obj == null || typeof (obj) == 'undefined') return;
@@ -337,9 +338,10 @@ window.addEvent = function (obj, type, fn, useCapture) {
 
 /**
  * @function: onReady(fn)
- * @desc: Replacement for jQuerys $(document).ready
- * @param function fn: inline function or pass it a function for when your page is loaded and ready to be used
+ * @desc: A replacement for using body onload and no need for jQuery's $(document).ready
+ * @param fn function: inline function or pass it a function for when your page is loaded and ready to be used
  * @alias: ready
+ * @link: https://codepen.io/AllForTheCode/pen/GdYxVa
  */
 window.onReady = function (fn) {
     // IE9+
@@ -2302,7 +2304,8 @@ window.getCookie = function (name) {
 /**
  * @function: isChecked(elementId)
  * @desc: Checks to if checkbox is checked or not
- * @param string elementId: element id of the form element to check
+ * @param elementId string: element id of the form element to check
+ * @link: https://codepen.io/AllForTheCode/pen/KRbjpx
  */
 window.isChecked = function (id) {
 	return document.getElementById(id).checked;
@@ -2313,9 +2316,10 @@ window.isChecked = function (id) {
 
 
 /**
- * @function: isNumberKey(event)
+ * @function: isNumberKey(evt)
  * @desc: Checks if evt supplied (use on form input events via onkeyup or onkeydown)
- * @param event evt: html onkeyup(event) or onkeydown(event)
+ * @param evt event: html onkeyup(event) or onkeydown(event)
+ * @link: https://codepen.io/AllForTheCode/pen/vjvqLg
  */
 window.isNumberKey = function (evt) {
 	var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -2333,25 +2337,17 @@ window.isNumberKey = function (evt) {
 
 
 /**
- * @function: removeAllSelectOptions(elementOrId)
+ * @function: removeAllSelectOptions(elementId)
  * @desc: Removes all the options in a select
- * @param element || string: element or id string
+ * @param elementId string: id of select element 
+ * @link: https://codepen.io/AllForTheCode/pen/mLaZEm
+ * @link: https://codepen.io/AllForTheCode/pen/rvoEME
  */
-window.removeAllSelectOptions = function (elementOrId) {
-    var element;
-	if (typeof(elementOrId) == "string"){
-		element = document.getElementById(elementOrId);
-		if (!element){
-			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + elementOrId + "]");
-		}
+window.removeAllSelectOptions = function (elementId) {
+    var element = document.getElementById(elementId);
+	for (var i = element.options.length - 1; i >= 0; i--) {
+		element.remove(i);
 	}
-
-	if (element) {
-		for (var i = element.options.length - 1; i >= 0; i--) {
-			element.remove(i);
-		}
-	}
-
 }
 window.clearSelect = function(elementOrId) { removeAllSelectOptions(elementOrId); }
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -2367,10 +2363,11 @@ window.clearSelect = function(elementOrId) { removeAllSelectOptions(elementOrId)
 /**
  * @function: parseJSONToSelect(j, selectElementIdOrElement, label, value)
  * @desc: parses a json object of key value pairs to a form select element
- * @param string j: the json data
- * @param multi selectElementIdOrElement: the json data
- * @param string label: of key value pair this is the key
- * @param string value: of key value pair this is the value
+ * @param j string: the json data
+ * @param selectElementIdOrElement elementOrIdString: the json data
+ * @param label string: of key value pair this is the key
+ * @param value string: of key value pair this is the value
+ * @link: https://codepen.io/AllForTheCode/pen/rvoEME
  */
 window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
 	var element;
@@ -2401,10 +2398,23 @@ window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
 		element.add(option);
 	}
 }
-// AFTC.Point = function (x, y) {
-//     !x ? this.x = 0 : this.x = x;
-//     !y ? this.y = 0 : this.y = y;
-// }
+ /**
+ * @function: AFTC.Point(x,y)
+ * @desc: 2D Point
+ * @param x number: x coordinate
+ * @param y number: y coordinate
+ * @method: position: position
+ * @method: clone: clone
+ * @method: delta: delta
+ * @method: distance: distance
+ * @method: moveTo: moveTo
+ * @method: moveAtAngle: moveAtAngle
+ * @method: applyVelocity: applyVelocity
+ * @method: angleRadians: angleRadians
+ * @method: angleDeg: angleDeg
+ * @method: rotate: rotate
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
 
 AFTC.Point = function (x, y) {
 
@@ -2474,6 +2484,23 @@ AFTC.Point = function (x, y) {
 }
 
 
+ /**
+ * @function: AFTC.Rectangle(x, y, w, h)
+ * @desc: Rectangle class, allos you to set x, y, width and height or a rectangle
+ * @param x number: x coordinate
+ * @param y number: y coordinate
+ * @param w number: w width
+ * @param h number: h height
+ * @method: offsetOuter: offsetOuter
+ * @method: offsetInner: offsetInner
+ * @method: setX: setX
+ * @method: setY: setY
+ * @method: setW: setW
+ * @method: setH: setH
+ * @return: AFTC.Rectangle
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
+
 AFTC.Rectangle = function (x, y, w, h) {
     !x ? this.x = 0 : this.x = x;
     !y ? this.y = 0 : this.y = y;
@@ -2519,6 +2546,18 @@ AFTC.Rect = AFTC.Rectangle;
 
 
 
+ /**
+ * @function: AFTC.Velocity(vx,vy)
+ * @desc: AFTC.Velocity class helper
+ * @param vx number: velocity vector x
+ * @param vy number: velocity vector y
+ * @method flip: flip
+ * @method flipX: flipX
+ * @method flipY: flipY
+ * @method multiply: multiply
+ * @method divide: divide
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
 AFTC.Velocity = function (vx, vy) {
 
     !vx ? this.vx = 0 : this.vx = vx;

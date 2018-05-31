@@ -1,7 +1,20 @@
-// AFTC.Point = function (x, y) {
-//     !x ? this.x = 0 : this.x = x;
-//     !y ? this.y = 0 : this.y = y;
-// }
+ /**
+ * @function: AFTC.Point(x,y)
+ * @desc: 2D Point
+ * @param x number: x coordinate
+ * @param y number: y coordinate
+ * @method: position: position
+ * @method: clone: clone
+ * @method: delta: delta
+ * @method: distance: distance
+ * @method: moveTo: moveTo
+ * @method: moveAtAngle: moveAtAngle
+ * @method: applyVelocity: applyVelocity
+ * @method: angleRadians: angleRadians
+ * @method: angleDeg: angleDeg
+ * @method: rotate: rotate
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
 
 AFTC.Point = function (x, y) {
 
@@ -71,6 +84,23 @@ AFTC.Point = function (x, y) {
 }
 
 
+ /**
+ * @function: AFTC.Rectangle(x, y, w, h)
+ * @desc: Rectangle class, allos you to set x, y, width and height or a rectangle
+ * @param x number: x coordinate
+ * @param y number: y coordinate
+ * @param w number: w width
+ * @param h number: h height
+ * @method: offsetOuter: offsetOuter
+ * @method: offsetInner: offsetInner
+ * @method: setX: setX
+ * @method: setY: setY
+ * @method: setW: setW
+ * @method: setH: setH
+ * @return: AFTC.Rectangle
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
+
 AFTC.Rectangle = function (x, y, w, h) {
     !x ? this.x = 0 : this.x = x;
     !y ? this.y = 0 : this.y = y;
@@ -116,6 +146,18 @@ AFTC.Rect = AFTC.Rectangle;
 
 
 
+ /**
+ * @function: AFTC.Velocity(vx,vy)
+ * @desc: AFTC.Velocity class helper
+ * @param vx number: velocity vector x
+ * @param vy number: velocity vector y
+ * @method flip: flip
+ * @method flipX: flipX
+ * @method flipY: flipY
+ * @method multiply: multiply
+ * @method divide: divide
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ */
 AFTC.Velocity = function (vx, vy) {
 
     !vx ? this.vx = 0 : this.vx = vx;
