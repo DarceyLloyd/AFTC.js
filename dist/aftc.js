@@ -27,7 +27,7 @@ argsToObject = function (fArgs, obj, strict) {
                     if (obj.hasOwnProperty(key)) {
                         obj[key] = args[key];
                     } else {
-                        console.warn("argsToObject(): Argument [" + key + "] is not supported.");
+                        console.warn("AFTC.ArgsToObject(): Argument [" + key + "] is not supported.");
                     }
                 } else {
                     obj[key] = args[key];
@@ -2522,7 +2522,7 @@ AFTC.Audio = function () {
         onComplete: false,
         hideWarnings: false,
     };
-    new AFTC.ArgsToObject(arguments[0], args);
+    argsToObject(arguments, args);
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -4083,9 +4083,7 @@ AFTC.Color = function () {
     a: false,
   };
 
-  if (arguments[0] && typeof (arguments[0]) == "object") {
-    new AFTC.ArgsToObject(arguments[0], args);
-  }
+  argsToObject(arguments, args);
 
 
   function init() {
@@ -4284,7 +4282,7 @@ AFTC.Visibility = function () {
         onComplete: false
     }
 
-    argsToObject(arguments[0], vars);
+    argsToObject(arguments, vars);
 
     function getElement() {
         if (!vars.element && vars.id) {

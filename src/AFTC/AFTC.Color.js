@@ -85,9 +85,7 @@ AFTC.Color = function () {
     a: false,
   };
 
-  if (arguments[0] && typeof (arguments[0]) == "object") {
-    new AFTC.ArgsToObject(arguments[0], args);
-  }
+  argsToObject(arguments, args);
 
 
   function init() {
