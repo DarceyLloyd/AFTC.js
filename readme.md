@@ -3,20 +3,6 @@
 
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
-<details>
- <summary><b>Whats new</b></summary>
-
- - A bit of a clean up and new documentation examples created on codepen for each and every function (Work in progress)
-
-</details>
-
- ---
- 
-<br><br>
-
-
-
-
 
 #### <b>Installation</b>
 ```
@@ -29,17 +15,13 @@ gulp build
 <br><br>
 
 
-
-
-
 <details>
     <summary><b>Build Guide</b>:</summary>
 
-You can use webpack or gulp, I pref' gulp at the moment.
+I pref' gulp at the moment.
 
 ```
 gulp build
-gulp watch
 ```
 
  ---
@@ -90,315 +72,49 @@ gulp build
 <br><br>
 
 
-
-
-
-
-# <b>Main features</b>
-
-## <b>onReady(function) || ready(function)</b>
-No more jQuery for document.ready or addEventListener DOMLoaded etc, just use onReady(fn); or ready(fn);
-```
-onReady(function(){
-    // The DOM is ready for use do your thing!
-})
-```
-
-## <b>log(arg)</b>
-No need to type <b>console.</b>log(arg) anymore! Just type log!
-
-```
-var msg = "Hello World!";
-log("msg = " + msg);
-```
-
-## <b>logTo(element)</b>
-Want to log to a HTML element for visual debug using log? Just set a logTo target and use log (see above) as normal, your outputs will appear in both your console and html element. Want to turn it off just set logTo() with a null or undefined.
-```
-// Logging to console and html element
-logTo("output");
-log("Hello Console & HTML element of ID output");
-logTo(); // turn off html element logging
-log("Hello console! only");
-```
-
-## <b>getElementById(str)</b>
-No more typing document.getElementById(str)! It's shorter and runs much quicker as it also caches element id queries.
-```
-// AFTC.js caches this query so if you use getElement again it wont look it up on the DOM but will return it from the cache
-
-var container = getElementById("container"); // No need for document.
-```
-
-
-## <b>querySelector(str)</b>
-No more typing document.querySelector(str)! It's shorter and runs much quicker as it also caches dom element searches.
-```
-// AFTC.js caches this query so if you use querySelector again it wont look it up on the DOM but will return it from the cache
-
-var item1 = querySelector("#container .item1"); // No need for document.
-```
-
-## <b>var myAnimVar = new AFTC.Animate("#box1", onComplete).ChainFunctions()</b>
-```
-    var myAnimation = new AFTC.Animate("#box1",myOnCompleteFunction)
-        // Chain functions
-        myAnimation
-        .delay(1) // delay in seconds
-        .anim("width",100,0.5) // prop(style,targetValue,duration)
-        .anim("opacity",0,0.5);
-        .anim("backgroundColor","#990000",2)
-        .anim(["paddingLeft", "paddingRight", "paddingTop", "paddingBottom"], ["10px", "10px", "10px", "10px"], [0.5, 0.5, 0.5, 0.5])
-        .start()
-```
-or fade and hide etc etc
-
-```
-    var myFade = AFTC.Animate("elementIdToFadeOut");
-    myFade.anim("opacity",0,1); // Tweem opacity to 0 in 1 second
-    myFade.set("dispaly","none"); // hide element fully
-    myFade.start();
-```
-
-## <b>AFTC.Color(color)</b>
-- <b>lighten</b>(percent);
-- <b>darken</b>(percent);
-- And more, full details below
-
-Lightens or darkens a color like sass and less does.
-```
-    var color = new AFTC.Color([10,20,30]);
-    color.lighten(10);
-    color.darken(10);
-    log("color.getHex() = " + color.getHex());
-    log("color.getRGB().r = " + color.getRGB().r);
-    log("color.getRGB().g = " + color.getRGB().g);
-    log("color.getRGB().b = " + color.getRGB().b);
-    log("color.getRGBString() = " + color.getRGBString());
-    // See example.htm for further usage
-```
-
-## <b>addEvent(obj,type,callback,eventReturn)</b>
-Detects addEventListener availability and switches to attachEvent if it's not available.
-
- ---
-
-<br><br><br><br>
-
-
-
-
-
-
-
-
-# <b>So what's inside?</b>
-#### Here is the list of functions in each of the files, pick and choose what you want to pack into aftc.js
-<br><br>
-
-
-
-
-# <b>base.js</b>
-
-
+### <b>ArgsToObject(args, obj)</b>
+Quick and easy args to object<br>return<br>
 
 <details>
- <summary><b>addEvent(obj,type,fn,useCapture)</b><br>
- Shortcut for adding events with old browser compatibility
- </summary>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>args</td>
+		<td>object</td>
+		<td>arguments (from the function structure, typically code will always be 'arguments'</td>
+	</tr>
+	<tr>
+		<td>obj</td>
+		<td>object</td>
+		<td>object to parse into</td>
+	</tr>
+	<tr>
+		<td>strict</td>
+		<td>boolean</td>
+		<td>console.warn any args that have been supplied that don't exist in args</td>
+	</tr>
+</table>
 
-
-param | type | optional | description
---- | --- | --- | ---
-obj | object |  | The object you wish to attach the event listener to |
-type | string |  | The event type (e.type) mousedown, mouseup, click etc |
-fn | function |  | The function to call when the event is triggered |
-useCapture | boolean | optional | Whether the event should be executed in the capturing or in the bubbling phase |
+[return]
+#### Alias's:
+ - argsTo
 
 </details>
 
- ---
- 
-<br><br>
-
-
-
-
-
-## <b>onReady(fn)</b>
- ---
-<b>Aliases:</b>
-> ready
-
-
-Replacement for jQuerys $(document).ready
-
-
-param | type | optional | description
---- | --- | --- | ---
-fn | function |  | inline function or pass it a function for when your page is loaded and ready to be used |
-
- ---
- <br><br>
-
-## <b>AFTC.Resizemanager()</b>
- ---
-
-A function stack manager for resize and orientation change events
-## <b>enable()</b>
-enable function stack execution on oritentation and resize change
-## <b>disable()</b>
-disable function stack execution on oritentation and resize change
-## <b>add(uid,fn)</b>
-add function to orientation and resize stack
-
-
-param | type | optional | description
---- | --- | --- | ---
-uid | string |  | unique id / label of function to add from stack |
-fn | function |  | function to add to stack |
-## <b>remove(uid)</b>
-remove function from orientation and resize stack
-
-
-param | type | optional | description
---- | --- | --- | ---
-uid | string |  | unique id / label of function to remove from stack |
-
- ---
- <br><br>
-
-## <b>getElementById(id)</b>
- ---
-<b>Aliases:</b>
-> getId
-> byId
-
-
-short cut for document.getElementById, it also caches the query
-
-
-param | type | optional | description
---- | --- | --- | ---
-string | id |  | id of html element to retrieve |
-
- ---
- <br><br>
-
-## <b>querySelector(str)</b>
- ---
-<b>Aliases:</b>
-> query
-> cssQuery
-
-
-Short cut for document.querySelector, it also caches the query
-
-
-param | type | optional | description
---- | --- | --- | ---
-str | string |  | the query to be run on the dom |
-
- ---
- <br><br>
-
-## <b>getElementsByClassName(str)</b>
- ---
-<b>Aliases:</b>
-> getClass
-> byClass
-
-
-Short cut for document.getElementsByClassName, it also caches the query
-
-
-param | type | optional | description
---- | --- | --- | ---
-str | string |  | the class name to look for |
-
- ---
- <br><br>
-
-## <b>getElementsByTagName(str)</b>
- ---
-
-shortcut for getElementsByTagName
-
-
-param | type | optional | description
---- | --- | --- | ---
-str | string |  | tag name to look for |
-
- ---
- <br><br>
-
-## <b>addClass(elementOrId,classname)</b>
- ---
-
-shortcut to add a css class to a html element
-
-
-param | type | optional | description
---- | --- | --- | ---
-elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to |
-className | string |  | the class name to add |
-
- ---
- <br><br>
-
-## <b>removeClass(elementOrId,className)</b>
- ---
-
-shortcut to remove a class from a html element
-
-
-param | type | optional | description
---- | --- | --- | ---
-elementOrId | elementORstring |  | The elemnt or id of the html element to add a css class to |
-className | string |  | the class name to remove |
-
- ---
- <br><br>
-
-## <b>hasClass(elementOrId, cls)</b>
- ---
-
-Check to see if an element has a class attached to it
-
-
-param | type | optional | description
---- | --- | --- | ---
-elementOrId | string |  | The elemnt or id of the html element |
-cls | string |  | class to look for |
-
- ---
- <br><br>
-
-## <b>AFTC.log{}</b>
- ---
-<b>Aliases:</b>
-> trace
-
-
-shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
-
-
-param | type | optional | description
---- | --- | --- | ---
- |  |  |  |
-
- ---
- <br><br>
-
-## <b>log(input)</b>
- ---
-<b>Aliases:</b>
-> trace
-
-
-Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
+
+<hr>
+    
+### <b>AFTC.Log</b>
+Shortcut for console.log with some formatting capabilities<br>
 ````
 log("Hello World");
 log("a = " + a);
@@ -407,1222 +123,3459 @@ log(MyObject);
 log(MyClass);
 ````
 
+<details>
+    <summary><b>More information</b></summary>
 
-param | type | optional | description
---- | --- | --- | ---
-input | * |  | what you want to console.log |
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>input</td>
+		<td>what you want to console.log</td>
+	</tr>
+</table>
 
- ---
- <br><br>
+[return]
+#### Alias's:
+ - trace
 
-## <b>logEnable()</b>
- ---
+</details>
 
-Enables log()
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
- ---
- <br><br>
+<hr>
+    
+### <b>logEnable() | log.enable()</b>
+Enables log()<br>
 
-## <b>logDisable()</b>
- ---
+<details>
+    <summary><b>More information</b></summary>
 
-Disable log()
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dataType</td>
+		<td>html</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
 
- ---
- <br><br>
+[return]
+#### Alias's:
+ - stringToWindow
 
-## <b>configLog({options})</b>
- ---
+</details>
 
-Configuration function for logTo() autologging see examples folder on usage
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
+<hr>
+    
+### <b>logDisable() | log.disable()</b>
+Disable log()<br>
 
-param | type | optional | description
---- | --- | --- | ---
-autoLogTo | string |  | html element id to log to |
-autoLogEnable | boolean |  | enable auto log |
-enableAutoLog | boolean |  | enable auto log |
-autoLogDisable | boolean |  | disable auto log |
-disableAutoLog | boolean |  | disable auto log |
+<details>
+    <summary><b>More information</b></summary>
 
- ---
- <br><br>
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dataType</td>
+		<td>html</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
 
-## <b>logTo(elementId,str)</b>
- ---
+[return]
+#### Alias's:
+ - stringToWindow
 
-A console.log alternative that will output to a html element and the console at the same time
-````
-logTo("message","Hello World!");
-````
+</details>
 
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
-param | type | optional | description
---- | --- | --- | ---
-elementId | string |  | elementId to output to |
-str | string |  | what innerHTML will be set to |
-cls | bool |  | clear before appending html string |
+<hr>
+    
+### <b>openDebugWindow(html)</b>
+open a popup window with the html you wish to display in it<br>return<br>
 
- ---
- <br><br>
+<details>
+    <summary><b>More information</b></summary>
 
-## <b>logObjTo(elementId,obj,appendOrPrepend)</b>
- ---
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dataType</td>
+		<td>html</td>
+		<td>the html you wish to display in the popup window</td>
+	</tr>
+</table>
 
-A console.log alternative that will output an object to a html element and the console nicely formatted at the same time
+[return]
+#### Alias's:
+ - stringToWindow
 
+</details>
 
-param | type | optional | description
---- | --- | --- | ---
-elementId | string |  | html element id to output to |
-obj | object |  | the object to debug output |
-append | boolean | optional | append text or prepend text |
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
- ---
- <br><br>
+<hr>
+    
+### <b>The function to call when the event is triggered</b>
+Shortcut for adding events with old browser compatibility<br>
 
-## <b>openDebugWindow(html)</b>
- ---
-<b>Aliases:</b>
-> stringToWindow
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>obj</td>
+		<td>The object you wish to attach the event listener to</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>type</td>
+		<td>The event type (e.type) mousedown, mouseup, click etc</td>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>optional</td>
+		<td>Whether the event should be executed in the capturing or in the bubbling phase</td>
+	</tr>
+</table>
 
-open a popup window with the html you wish to display in it
+[return]
+#### Alias's:
+ - ready
 
+</details>
 
-param | type | optional | description
---- | --- | --- | ---
-html | dataType |  | the html you wish to display in the popup window |
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
- ---
- <br><br>
+<hr>
+    
+### <b>inline function or pass it a function for when your page is loaded and ready to be used</b>
+Replacement for jQuerys $(document).ready<br>
 
-## <b>setHTML(elementOrId,html);</b>
- ---
-<b>Aliases:</b>
-> html
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to remove an index on</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>index</td>
+		<td>the array index you wish to remove</td>
+	</tr>
+</table>
 
-quick shortcut for outputting html to an element
+[return]
+#### Alias's:
+ - ready
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayRemoveIndex(arr,index)</b>
+remove a specified index from an array<br>return<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to remove an index on</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>index</td>
+		<td>the array index you wish to remove</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayClear
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isStringInArray(needle,haystack)</b>
+Check to see if a string is in an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>needle</td>
+		<td>the string your looking for</td>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>haystack</td>
+		<td>the array you wish to search</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayClear
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayContains(needle,haystack)</b>
+Check to see if your array contains something you want to find<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to search</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>needle</td>
+		<td>what you want to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayClear
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayEmpty(arr)</b>
+clears/empties an array for garbage collection<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array to clear / empty</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayClear
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getMaxFromArray(arr)</b>
+returns the maximum value in an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to find the maximum value in</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayGetMax
+ - arrayMax
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayGetMin</b>
+returns the minimum value in an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array you wish to find the minimum value in</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getMinFromArray
+ - arrayMin
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayShuffle(arr)</b>
+shuffles an array (method 1)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array to shuffle</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - shuffle
+ - arrayShuffle
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>arrayShuffle2(arr)</b>
+shuffles an array (method 2)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>the array to shuffle</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - shuffle2
+ - arrayShuffle2
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>convertToArray(v)</b>
+takes an input and returns it as index[0] of an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>&</td>
+		<td>v</td>
+		<td>value to insert into array</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - valueToArray
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>the function wish to get the name of</b>
+tries to get the function name of a suppled function<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>find</td>
+		<td>The string to look for</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>source</td>
+		<td>The string to look in</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isInString(find,source)</b>
+check for string in string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>find</td>
+		<td>The string to look for</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>source</td>
+		<td>The string to look in</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isEven(n)</b>
+check if input is even<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>n</td>
+		<td>variable / value you wish to test</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isOdd(n)</b>
+check if input is odd<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>n</td>
+		<td>variable / value you wish to test</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isAlphaNumeric(input)</b>
+check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string||number</td>
+		<td>input</td>
+		<td>variable / value you wish to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isElement(o)</b>
+checks if your variable is an element or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>o</td>
+		<td>variable you wish to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isElement2(element)</b>
+checks to see if your vairable is an element or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>element</td>
+		<td>the variable you wish to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isDOM(obj)</b>
+checks to see if your variable is a DOM object<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>obj</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isBoolean(input)</b>
+checks if a variable is a boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>input</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isBool
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isNumeric(n)</b>
+check if variable is numeric<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>n</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - isNumber
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isArray(input)</b>
+check if variable is an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>arr</td>
+		<td>variable to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getRandom
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getRandomInt(min,max)</b>
+returns a random number / int betwen your specified min and max values<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>min</td>
+		<td>the minimum your random number is allowed to go</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>max</td>
+		<td>the maximum your random number is allowed to go</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getRandom
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getRandomThatsNot(min,max,not)</b>
+returns a random int betwen your specified min and max values but never the not value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>min</td>
+		<td>the minimum your random number is allowed to go</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>max</td>
+		<td>the maximum your random number is allowed to go</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getRandom
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getRandomFloat(min,max)</b>
+returns a random floating point number betwen your specified min and max values<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>min</td>
+		<td>min value</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>max</td>
+		<td>max value</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getRandomString
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>randomString(length)</b>
+get a random string of a specified length<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>length</td>
+		<td>the length of the string you wish to generate</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getRandomString
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getUID(length)</b>
+Generates a random id<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>length</td>
+		<td>length of the unique id to generate</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getUID
+ - generateUID
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
+generate an array of random number between your max and min values<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>arraySize</td>
+		<td>the number of random numbers to generate also the array size that will be returned</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>min</td>
+		<td>the minimum your random number is allowed to be</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>max</td>
+		<td>the maximum your random number is allowed to be</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getGUID
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getArrayOfRandomStrings(arraySize,strLength)</b>
+generate an array of random string of a specified length<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>arraySize</td>
+		<td>the number of random strings to generate also the array size that will be returned</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>strLength</td>
+		<td>the length of the strings to be generated</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getGUID
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>guid()</b>
+generates a guid<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>odds</td>
+		<td>xxxxxxxxxxxxxxxxxxxx</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>iterations</td>
+		<td>xxxxxxxxxxxxxxxxxxxx</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getGUID
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getWeightedRandom(odds, iterations)</b>
+Get a weighted random based on odds and iterations<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>odds</td>
+		<td>xxxxxxxxxxxxxxxxxxxx</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>iterations</td>
+		<td>xxxxxxxxxxxxxxxxxxxx</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - 
+ - 
+ - 
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>limitLengthInWords(str, maxWords)</b>
+Limit a string in length of words<br>return object<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the original string to limit</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>maxWords</td>
+		<td>the number of words you wish to limit to</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - 
+ - 
+ - 
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>cleanJSONString(s)</b>
+Attempts to clean a json string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>s</td>
+		<td>input string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - 
+ - 
+ - 
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>escapeHTML(input)</b>
+Attempts to escape a html string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>xxxx</td>
+		<td>xxxxxxxxxxxxxxxxxxxx</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - 
+ - 
+ - 
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>setStringLength(input, len)</b>
+sets the length of a string from left to right<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>input</td>
+		<td>what string do you want to set the length of?</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>length</td>
+		<td>the length you want the string to be</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - 
+ - 
+ - 
+ - 
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>trimStringBy(input, trimBy)</b>
+Trims the length of a string by a value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>input</td>
+		<td>The string you want to trim</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>trimBy</td>
+		<td>How many characters do you want to trim off the end</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>leftTrim(str, by)</b>
+Trims the left of a string by a specified amount<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>The string you want to trim</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>by</td>
+		<td>How many characters do you want to trim off the end</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getFileExtension(input)</b>
+Attempts to get the file extension from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the file path string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getFileExtension2(input)</b>
+Attempts to get the file extension from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the file path string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getLastPartOfUrl(url)</b>
+Gets the last part of a URL<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>url to process</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>removeFileFromPath(path)</b>
+Attempts to remove the file from a file path string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>path</td>
+		<td>path</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getAnchor(url)</b>
+Get anchor from url<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>The url to get the anchor from</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>String.prototype.startsWith(str)</b>
+ES6 supports the startsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>String.prototype.endsWith(str)</b>
+ES6 supports endsWith(), this is for pre ES6 support<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>string to check</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getStringBetween(input,start,end)</b>
+Gets a string between two other strings<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>input</td>
+		<td>input string to check</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>start</td>
+		<td>start string marker</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>end</td>
+		<td>end string marker</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getAllStringsBetween(str,start,end)</b>
+Gets all strings between two other strings (multi match)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>input string to check</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>start</td>
+		<td>start string marker</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>end</td>
+		<td>end string marker</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>radToDeg(input)</b>
+converts radians to degrees<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>input</td>
+		<td>the radians you wish converted to degrees</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - rad2deg
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>degToRad(input)</b>
+converts degrees to radians<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>input</td>
+		<td>the value you wish converted to radians</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - deg2rad
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>toHex(num)</b>
+Converts a number to hex<br>return string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>num</td>
+		<td>decimal base 10</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>boolToString(bool)</b>
+converts boolean to a string of true or false<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>bool</td>
+		<td>the boolean you wish to convert</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>boolToYesNo(bool)</b>
+converts a boolean to yes or no<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>bool</td>
+		<td>the boolean you wish to convert</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>stringToBool(str)</b>
+Converts a string to a boolean (y,yes,"1",no etc)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>str</td>
+		<td>the string you wish to convert</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getBooleanFrom(input)</b>
+converts an input to a boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>input</td>
+		<td>the variable you wish to convert to a boolean</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>parseArrayToFloat(arr)</b>
+parses all values in array to float<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>array to process</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToFloat
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>parseArrayToInt(arr)</b>
+parses all values in array to float<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>array</td>
+		<td>arr</td>
+		<td>array to process</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - arrayToInt
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>toArray(v)</b>
+takes an input and returns it as index[0] of an array<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>arg</td>
+		<td>value to insert into array</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - convertToArray
+ - valueToArray
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getDaysBetween(startDateTime, endDateTime)</b>
+Gets the number of whole days between a start and end date<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>DateTime</td>
+		<td>startDateTime</td>
+		<td>start date</td>
+	</tr>
+	<tr>
+		<td>DateTime</td>
+		<td>endDateTime</td>
+		<td>end date</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getNoOfDaysBetween
+ - getDaysBetweenDates
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getUKDateFromDate(date)</b>
+Formats a date in the UK format<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Date</td>
+		<td>date</td>
+		<td></td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getUSDateFromDate(date)</b>
+Formats a date in the US format<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>Date</td>
+		<td>date</td>
+		<td></td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getUkDateFromDbDateTime(input)</b>
+get a uk date from a mysql db date value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>MySQLDateTimeString</td>
+		<td>input</td>
+		<td>MySQL DB DateTime</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getUkDateTimeFromDbDateTime(input)</b>
+get a uk date from a mysql db date time value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>MySQLDateTimeString</td>
+		<td>input</td>
+		<td>MySQL DB DateTime</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getSQLDateTime()</b>
+gets the date time now for sql insert<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>optional</td>
+		<td>options are us or do not supply for en-gb</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getDateTime(local)</b>
+gets the date time at a specified local<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>optional</td>
+		<td>options are us or do not supply for en-gb</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>validateEmail(email)</b>
+Validats an email address<br>returns boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>email</td>
+		<td>email address</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isMobile()</b>
+isMobile<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isFireFox()</b>
+Detects FireFox<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isChrome()</b>
+Detects Chrome<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isEdge()</b>
+Detects Edge<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isSafari()</b>
+Detects Safari<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isIE()</b>
+Detects IE<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isOpera()</b>
+Detects Opera<br>return boolean<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getIEVersion()</b>
+Gets version of IE<br>return float<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getBrowser()</b>
+Detects browser<br>return string<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getOS(testUserAgent)</b>
+Attempts to get the os from the user agent or the test user agent<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>testUserAgent</td>
+		<td>test user agent string</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>setHTML(elementOrId,html);</b>
+quick shortcut for outputting html to an element<br>
 ````
 setHTML("header","Welcome");
 // or
 var myElement = getElementById("header");
 setHTML(myElement,"Welcome!");
+````return<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>dataType</td>
+		<td>elementOrId</td>
+		<td>the element or the element id you wish to set the html of</td>
+	</tr>
+	<tr>
+		<td>dataType</td>
+		<td>html</td>
+		<td>the html string to insert into your element</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - html
+
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getElementOffsetTop(elementId)</b>
+Gets an elements top offset<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>the element ID you wish to get the top offset of</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>centerAbsoluteElement(eleOrEleId)</b>
+Center element that is absolute positioned<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>||</td>
+		<td>element or id of element to center</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>the class name to add</b>
+shortcut to add a css class to a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementORstring</td>
+		<td>elementOrId</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>the class name to remove</b>
+shortcut to remove a class from a html element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>elementORstring</td>
+		<td>elementOrId</td>
+		<td>The elemnt or id of the html element to add a css class to</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>hasClass(elementOrId, cls)</b>
+Check to see if an element has a class attached to it<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementOrId</td>
+		<td>The elemnt or id of the html element</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>cls</td>
+		<td>class to look for</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>redirect(url)</b>
+no more typing self.location.href, just use redirect(url)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>the url you wish to redirect to</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>setCookie(name, value)</b>
+Sets a cookie by name with a value<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>name</td>
+		<td>name of the cookie</td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>value</td>
+		<td>value of the cookie</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>getCookie(name)</b>
+Gets the value of a cookie by name<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>name</td>
+		<td>name of the cookie</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isChecked(elementId)</b>
+Checks to if checkbox is checked or not<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>element id of the form element to check</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>isNumberKey(event)</b>
+Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>event</td>
+		<td>evt</td>
+		<td>html onkeyup(event) or onkeydown(event)</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>removeAllSelectOptions(elementOrId)</b>
+Removes all the options in a select<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>||</td>
+		<td>element or id string</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>parseJSONToSelect(j, selectElementIdOrElement, label, value)</b>
+parses a json object of key value pairs to a form select element<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>j</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
+		<td>multi</td>
+		<td>selectElementIdOrElement</td>
+		<td>the json data</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>label</td>
+		<td>of key value pair this is the key</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>value</td>
+		<td>of key value pair this is the value</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>cycle(pos, max)</b>
+cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>pos</td>
+		<td>position of max</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>max</td>
+		<td>max number to cycle to</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>AFTC.Animate(elementId, onComplete)</b>
+Quick and easy css animation for nearly every css element style<br>
+````
+var anim1 = new AFTC.Animate("box1", onCompleteFunction);
+anim1.wait(2); // wait in 2 seconds
+anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
+anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
+anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
 ````
 
-
-param | type | optional | description
---- | --- | --- | ---
-elementOrId | dataType |  | the element or the element id you wish to set the html of |
-html | dataType |  | the html string to insert into your element |
-
- ---
- <br><br>
-
-## <b>arrayRemoveIndex(arr,index)</b>
- ---
-
-remove a specified index from an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array you wish to remove an index on |
-index | number |  | the array index you wish to remove |
-
-<b>Return:</b> array
-
-
- ---
- <br><br>
-
-## <b>isStringInArray(needle,haystack)</b>
- ---
-
-Check to see if a string is in an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-needle | string |  | the string your looking for |
-haystack | array |  | the array you wish to search |
-
- ---
- <br><br>
-
-## <b>arrayContains(haystack,needle)</b>
- ---
-
-Check to see if your array contains something you want to find
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array you wish to search |
-needle | string |  | what you want to find |
-
- ---
- <br><br>
-
-## <b>arrayRemove(arr,item)</b>
- ---
-<b>Aliases:</b>
-> arrayRemoveItem
-
-
-removes an item from an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array you wish to search and remove from |
-item | string |  | index at which a given element can be found |
-
- ---
- <br><br>
-
-## <b>arrayEmpty(arr)</b>
- ---
-<b>Aliases:</b>
-> arrayClear
-
-
-clears/empties an array for garbage collection
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array to clear / empty |
-
- ---
- <br><br>
-
-## <b>getMaxFromArray(arr)</b>
- ---
-<b>Aliases:</b>
-> arrayGetMax
-> arrayMax
-
-
-returns the maximum value in an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array you wish to find the maximum value in |
-
- ---
- <br><br>
-
-## <b>arrayGetMin</b>
- ---
-<b>Aliases:</b>
-> getMinFromArray
-> arrayMin
-
-
-returns the minimum value in an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array you wish to find the minimum value in |
-
- ---
- <br><br>
-
-## <b>arrayShuffle(arr)</b>
- ---
-<b>Aliases:</b>
-> shuffleArray2
-> shuffleArray3
-
-
-shuffles an array using a random method out of a choice of 2
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array to shuffle |
-
- ---
- <br><br>
-
-## <b>arrayShuffle2(arr)</b>
- ---
-
-shuffles an array (method 2)
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | the array to shuffle |
-
- ---
- <br><br>
-
-## <b>arrayShuffle3(a)</b>
- ---
-
-shuffles an array (method 2)
-
-
-param | type | optional | description
---- | --- | --- | ---
-a | array |  | the array to shuffle |
-
- ---
- <br><br>
-
-## <b>isAlphaNumeric(input)</b>
- ---
-
-check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)
-
-
-param | type | optional | description
---- | --- | --- | ---
-input | string||number |  | variable / value you wish to check |
-
- ---
- <br><br>
-
-## <b>isElement(o)</b>
- ---
-
-checks if your variable is an element or not
-
-
-param | type | optional | description
---- | --- | --- | ---
-o | * |  | variable you wish to check |
-
- ---
- <br><br>
-
-## <b>isElement2(element)</b>
- ---
-
-checks to see if your vairable is an element or not
-
-
-param | type | optional | description
---- | --- | --- | ---
-element | * |  | the variable you wish to check |
-
- ---
- <br><br>
-
-## <b>isDOM(obj)</b>
- ---
-
-checks to see if your variable is a DOM object
-
-
-param | type | optional | description
---- | --- | --- | ---
-obj | object |  | variable to check |
-
- ---
- <br><br>
-
-## <b>radToDeg(input)</b>
- ---
-<b>Aliases:</b>
-> rad2deg
-
-
-converts radians to degrees
-
-
-param | type | optional | description
---- | --- | --- | ---
-input | number |  | the radians you wish converted to degrees |
-
- ---
- <br><br>
-
-## <b>degToRad(input)</b>
- ---
-<b>Aliases:</b>
-> deg2rad
-
-
-converts degrees to radians
-
-
-param | type | optional | description
---- | --- | --- | ---
-input | number |  | the value you wish converted to radians |
-
- ---
- <br><br>
-
-## <b>boolToString(bool)</b>
- ---
-
-converts boolean to a string of true or false
-
-
-param | type | optional | description
---- | --- | --- | ---
-bool | boolean |  | the boolean you wish to convert |
-
- ---
- <br><br>
-
-## <b>boolToYesNo(bool)</b>
- ---
-
-converts a boolean to yes or no
-
-
-param | type | optional | description
---- | --- | --- | ---
-bool | boolean |  | the boolean you wish to convert |
-
- ---
- <br><br>
-
-## <b>stringToBool(str)</b>
- ---
-
-converts a string to a boolean (y,yes,"1",no etc)
-
-
-param | type | optional | description
---- | --- | --- | ---
-str | string |  | the string you wish to convert |
-
- ---
- <br><br>
-
-## <b>getBooleanFrom(input)</b>
- ---
-
-converts an input to a boolean
-
-
-param | type | optional | description
---- | --- | --- | ---
-input | * |  | the variable you wish to convert to a boolean |
-
- ---
- <br><br>
-
-## <b>isBoolean(input)</b>
- ---
-<b>Aliases:</b>
-> isBool
-
-
-checks if a variable is a boolean
-
-
-param | type | optional | description
---- | --- | --- | ---
-input | * |  | variable to check |
-
- ---
- <br><br>
-
-## <b>isNumeric(n)</b>
- ---
-<b>Aliases:</b>
-> isNumber
-
-
-check if variable is numeric
-
-
-param | type | optional | description
---- | --- | --- | ---
-n | * |  | variable to check |
-
- ---
- <br><br>
-
-## <b>isArray(arr)</b>
- ---
-
-check if variable is an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | * |  | variable to check |
-
- ---
- <br><br>
-
-## <b>parseArrayToFloat(arr)</b>
- ---
-<b>Aliases:</b>
-> arrayToFloat
-
-
-parses all values in array to float
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | array to process |
-
- ---
- <br><br>
-
-## <b>function:parseArrayToInt(arr)</b>
- ---
-<b>Aliases:</b>
-> arrayToInt
-
-
-parses all values in array to float
-
-
-param | type | optional | description
---- | --- | --- | ---
-arr | array |  | array to process |
-
- ---
- <br><br>
-
-## <b>function:convertToArray(v)</b>
- ---
-<b>Aliases:</b>
-> valueToArray
-
-
-takes an input and returns it as index[0] of an array
-
-
-param | type | optional | description
---- | --- | --- | ---
-v | & |  | value to insert into array |
-
- ---
- <br><br>
-
-## <b>getFunctionName(fn)</b>
- ---
-
-tries to get the function name of a suppled function
-
-
-param | type | optional | description
---- | --- | --- | ---
-fn | function |  | the function wish to get the name of |
-
- ---
- <br><br>
-
-## <b>getRandomInt(min,max)</b>
- ---
-<b>Aliases:</b>
-> getRandom
-
-
-returns a random number / int betwen your specified min and max values
-
-
-## <b>getRandomFloat(min,max)</b>
- ---
-
-returns a random floating point number betwen your specified min and max values
-
-
-
-
-param | type | optional | description
---- | --- | --- | ---
-min | number |  | the minimum your random number is allowed to go |
-max | number |  | the maximum your random number is allowed to go |
-
- ---
- <br><br>
-
-## <b>randomString(length)</b>
- ---
-<b>Aliases:</b>
-> getRandomString
-
-
-get a random string of a specified length
-
-
-param | type | optional | description
---- | --- | --- | ---
-length | number |  | the length of the string you wish to generate |
-
- ---
- <br><br>
-
-## <b>getUniqueId()</b>
- ---
-<b>Aliases:</b>
-> getUID
-> generateRandomId
-> generateUID
-
-
-Generates a random id
-
- ---
- <br><br>
-
-## <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
- ---
-
-generate an array of random number between your max and min values
-
-
-param | type | optional | description
---- | --- | --- | ---
-arraySize | number |  | the number of random numbers to generate also the array size that will be returned |
-min | number |  | the minimum your random number is allowed to be |
-max | number |  | the maximum your random number is allowed to be |
-
- ---
- <br><br>
-
-## <b>getArrayOfRandomStrings(arraySize,strLength)</b>
- ---
-
-generate an array of random string of a specified length
-
-
-param | type | optional | description
---- | --- | --- | ---
-arraySize | number |  | the number of random strings to generate also the array size that will be returned |
-strLength | number |  | the length of the strings to be generated |
-
- ---
- <br><br>
-
-## <b>guid()</b>
- ---
-<b>Aliases:</b>
-> getGUID
-
-
-generates a guid
-
- ---
- <br><br>
-
-## <b>redirect(url)</b>
- ---
-
-no more typing self.location.href, just use redirect(url)
-
-
-param | type | optional | description
---- | --- | --- | ---
-url | string |  | the url you wish to redirect to |
-
- ---
- <br><br>
-
-## <b>AFTC.Benchmark()</b>
- ---
-
-Quick and easy benchmarking, see examples benchmark.htm for usage
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>the id of the html element you wish to fade</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>duration</td>
+		<td>how long you want the fade to run over in seconds</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+<hr>
+    
+### <b>fadeIn(elementId, duration)</b>
+fades in an element over a specified duration<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>the id of the html element you wish to fade</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>duration</td>
+		<td>how long you want the fade to run over in seconds</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+<hr>
+    
+### <b>fadeOut(elementId, duration)</b>
+fades out an element over a specified duration<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>the id of the html element you wish to fade</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>duration</td>
+		<td>how long you want the fade to run over in seconds</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+<hr>
+    
+### <b>scrollToElement(elementId, arg_duration, offset)</b>
+Scroll to element on page<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>elementId</td>
+		<td>ID of element you wish to scroll to</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>arg_duration</td>
+		<td>Duration in seconds</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>offset</td>
+		<td>How much to offset scroll by</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+<hr>
+    
+### <b>AFTC.Canvas({id||canvas})</b>
+<br>
 ````
-var benchy = new AFTC.Benchmark();
-log("Benchmark started");
-benchy.start();
-for (var i=0; i <= 10000000; i++){
-    var a = Math.sin(i+1) + 12 / 2 * 45; // test
-}
-benchy.stop();
-log("Benchmark ended!");
-log("Benchmakr completed in " + benchy.getTime() + " seconds");
 ````
-@function start: start benchmark
-@function stop: stop benchmark
-@function getTime: return benchmark result
 
- ---
- <br><br>
+<details>
+    <summary><b>More information</b></summary>
 
-## <b>hide(element,classListToRemove,classListToAdd)</b>
- ---
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>canvasId</td>
+		<td>Canvas element id to work with</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>opacity</td>
+		<td>opacity of noise</td>
+	</tr>
+</table>
 
-hides a html element, can also add or remove any amount of classes on element hide at the same time
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
-param | type | optional | description
---- | --- | --- | ---
-element | element||string |  | the element or the string id of the element you wish to hide |
-classListToRemoveOnHide | array |  | string of class to remove or array of string classes to remove on hide |
-classListToAddOnHide | array |  | string of class to remove or array of string classes to add on hide |
-
- ---
- <br><br>
-
-## <b>show(element,classListToRemove,classListToSAdd)</b>
- ---
-
-show a html element, can also add or remove any amount of classes on element show at the same time
-
-
-param | type | optional | description
---- | --- | --- | ---
-element | element||string |  | the element or the string id of the element you wish to hide |
-classListToRemoveOnShow | array |  | string of class to remove or array of string classes to remove on show |
-classListToAddOnShow | array |  | string of class to remove or array of string classes to add on show |
-
- ---
- <br><br>
+<hr>
+    
+### <b></b>
 
 
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
 
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
-## <b>isEven(n)</b>
- ---
+<hr>
+    
+### <b>rgb2Hex(r,g,b)</b>
+rgb to hex<br>return string<br>
 
-Checks if n is even
+<details>
+    <summary><b>More information</b></summary>
 
-param | type | optional | description
---- | --- | --- | ---
-n | number |  | value you wish to check |
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
 
-<b>Return:</b> boolean
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
- ---
- <br><br>
+<hr>
+    
+### <b>rgbToHex(r,g,b)</b>
+rgb to hex<br>return string<br>
 
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>r</td>
+		<td>red</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>g</td>
+		<td>green</td>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>b</td>
+		<td>blue</td>
+	</tr>
+</table>
 
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
- ## <b>osOdd(n)</b>
- ---
+<hr>
+    
+### <b>hexToRgb(hex)</b>
+hexToRgb<br>return string<br>
 
-Checks if n is odd
+<details>
+    <summary><b>More information</b></summary>
 
-param | type | optional | description
---- | --- | --- | ---
-n | number |  | value you wish to check |
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>hex</td>
+		<td>hex color</td>
+	</tr>
+</table>
 
-<b>Return:</b> boolean
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
- ---
- <br><br>
+<hr>
+    
+### <b>AFTC.Color({params})</b>
+Color allows you to create, convert, lighten or darken colours and more.<br>return object<br>
 
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>params</td>
+		<td>parameters object</td>
+	</tr>
+</table>
 
+[return]
+[alias]
+</details>
 
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
+<hr>
+    
+### <b>getRandomColor()</b>
+returns a random RGB object o.r, o.g, o.g<br>
 
+<details>
+    <summary><b>More information</b></summary>
 
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>url or file you wish to load</td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>data</td>
+		<td>array, object, formdata, string or json data you wish to send to the url</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>dataType</td>
+		<td>data type of data object array, object, formdata, form and json</td>
+	</tr>
+</table>
 
+[return]
+[alias]
+</details>
 
-<br><br><br><br>
+#### Usage examples:
+ - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
 
-
-
-
-
-# <b>io.js</b>
-#### <b>Dependencies:</b> NONE<br><br>
-
-
-## <b>AFTC.XHR(args)</b>
- ---
-@version: 1.0.0
-@requires: base.js
-
-Quick and easy xhr/ajax
+<hr>
+    
+### <b>on a successfull xhr request this is the function that will be called</b>
+Quick and easy xhr/ajax<br>
 ````
-var data = "mode=json2";
-xhr1 = AFTC.XHR({
-    url: "./request.php",
-    method: "post",
-    data: data,
-    dataType: "form",
-    onComplete: function (response) {
-        logTo("debug", response);
-        response = JSON.parse(response);
-        // Iterate
-        // for (var index in response) {
-        //     var jObject = response[index];
-        //     logTo("debug", jObject);
-        //     for (var key in jObject) {
-        //         log(key + " = " + response[index][key]);
-        //     }
-        // }
-    }
-});
 ````
-@link: see usage example in tests/xhr/xhr.htm
 
-
-param | type | optional | description
---- | --- | --- | ---
-url | string |  | url or file you wish to load |
-method | string |  | post, get, put, delete etc |
-data | * |  | array, object, formdata, string or json data you wish to send to the url |
-dataType | string |  | data type of data object array, object, formdata, form and json |
-onComplete | function |  | on a successfull xhr request this is the function that will be called |
-
-<b>Return:</b> return object data;
-
-
- ---
- <br><br>
-
-
-
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-# <b>color.js</b>
-#### <b>Dependencies:</b> NONE<br><br>
-
-# <b>AFTC.Color(color)</b>
-### <b>lighten</b>(percent);
-### <b>darken</b>(percent);
-Lightens or darkens a color like sass and less does.
-```
-    var color = new AFTC.Color([10,20,30]);
-    color.lighten(10);
-    color.darken(10);
-    log("color.getHex() = " + color.getHex());
-    log("color.getRGB().r = " + color.getRGB().r);
-    log("color.getRGB().g = " + color.getRGB().g);
-    log("color.getRGB().b = " + color.getRGB().b);
-    log("color.getRGBString() = " + color.getRGBString());
-    // See example.htm for further usage
-```
-
-## <b>getRandomColor()</b>
-Returns an RGB object
-
-## <b>getHSLColor(float)</b>
-Returns a HSL Colour from a float, input range is 0 to 1
-
-## <b>getRandomRGBString()</b>
-Returns a random RGB string eg "rgb(R,G,B)"
-
-## <b>getRandomHexColor()</b>
-Returns a random hex color
-
-## <b>rgbToHex(r,g,b)</b>
-Alternate version rgb2hex(r,g,b);
-Converts a RGB value to a HEX value.
-
-## <b>hexToRgb()</b>
-Converts hex to rgb, returns object{}
-
-## <b>numberToHex(num)</b>
-Converts a number to hex string.
-
-## rgb2hsv({r:0,g:0,b:0})</b>
-Converts an rgb object to a hsv object.
-
-## getRandomRGBColor()
-returns an rgb string with random color value
-
-
-
-<br><br><br><br>
-
-
-
-
-
-# <b>animate.js</b>
-#### <b>Dependencies:</b> NONE<br><br>
-
-# <b>AFTC.Animate(elementQuery,onComplete)</b>
-<b>Animate anything with ease.</b>
-
-You have access to any style in the element.style attributes/properties via the 3 chainable functions.
-
-.prop(style:String,targetValue:number||string,duration:number||float)
-
-.set(style:String,targetValue:number||string)
-
-.delay(duration in seconds)
-
-```
-// You have access to all the props in element.style
-// Will repeat forever as onComplete is set to animateBox1
-function animateBox1(){
-    AFTC.Animate("#box1", animateBox1)
-        .prop("width",100,0.5)
-        .prop("height",100,0.5)
-        .prop("padding",10,0.5)
-        .prop("left",100,0.5)
-        .prop("top",25,0.5)
-        .prop("backgroundColor","#000000",0.5)
-        .prop("color","#FFFFFF",0.5)
-        .prop("borderColor","#00FFFF",0.5)
-        .prop("borderWidth",5,0.5)
-        .prop("borderRadius",50,0.5)
-        .set("fontWeight","bold")
-        .set("fontSize","18px")
-        .set("textAlign","center")
-        .delay(2)
-        .prop("width",50,0.2)
-        .prop("height",50,0.2)
-        .prop("padding",0,0.2)
-        .prop("left",0,0.2)
-        .prop("top",0,0.2)
-        .prop("backgroundColor","#FFCC00",0.2)
-        .prop("color","#000000",0.2)
-        .prop("borderColor","#990000",0.2)
-        .prop("borderWidth",2,0.2)
-        .prop("borderRadius",0,0.2)
-        .set("fontWeight","normal")
-        .set("fontSize","normal")
-        .set("textAlign","inherit");
-}
-```
-
-## <b>scrollToElement(elementId||query||element,duration,offset)</b>
-
-```
-// no offset
-scrollToElement("myElementId",0.5);
-
-// with offset
-scrollToElement("myElementId",0.5,-100);
-```
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-# <b>random.js</b>
-
-## <b>getWeightedRandom(odds,iterations)</b>
-Will return a weighted random. If you ever wanted to balance your random numbers to favor a more specific output use this.
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-# <b>string.js</b>
-
-## <b>getAnchorFromUrl(url)</b>
-Will return the anchor from a url string.
-
-## <b>escapeHTML</b>
-Escapes a HTML string (eg < turns into &amp;lt; etc)
-
-## <b>trimStringLength(input,length)</b>
-Trims a string to a number (length) of characters.
-
-## <b>getFileExtension(file)</b>
-Returns the file extension from a supplied file path if available
-
-## <b>getFileExtension2(file)</b>
-Returns the file extension from a supplied file path if available (method2)
-
-## <b>getLastPartofUrl()</b>
-Returns the last part of the URL
-
-## <b>getAnchorFromUrl(url)</b>
-Return the anchor from the url.
-
-## <b>removeFileFromPath</b>
-Attempts to remove the file from a full file path, eg a/b/c/text.txt would return a/b/c/
-
-## <b>cleanJSONString(string)</b>
-Will remove special characters from a json string and return it for you to JSON.parse
-
-## <b>yourString.startsWith(str)</b>
-Return true if yourString starts with str, else false.
-
-## <b>yourString.endsWith(str)</b>
-Returns true if yourString ends with str, else false.
-
-## <b>getStringBetween(str,start,end)</b>
-Returns string between two strings.
-
-## <b>getAllStringsBetween(str,start,end)</b>
-Returns an array of strings it finds of occurances between two strings.
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-# <b>validation.js</b>
-
-## <b>validateEmail(email)</b>
-<b>Aliases:</b> isValidEmail(email)<br>
-Validates an email adddress (string) via regex.
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-# <b>cookies.js</b>
-
-## <b>setCookie(name,value)</b>
-Sets a javascript cookie.
-
-## <b>getCookie(name)</b>
-Reads a javascript cookie.
-
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-# <b>datetime.js</b>
-
-## <b>getUkDateFromDbDateTime(arg)</b>
-Gets a UK date from a MySQL datetime (2016-04-08 21:11:59).
-
-## <b>getUkDateTimeFromDbDateTime(arg)</b>
-Gets the UK date and time from a MySQL datetime (2016-04-08 21:11:59).
-
-## <b>getSQLDateTime()</b>
-Gets a MySQL compatible datetime from the javascript Date().
-
-## <b>getDateTime(local)</b>
-Gets a formatted datetime from the javascript Date() object. local:string can be "db", "us" or "gb". It will default to en-GB if local is not supplied.
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-
-# <b>detection.js</b>
-
-## <b>isAndroid()</b>
-Return true if mobile.
-
-## <b>iOS()</b>
-Return true or false
-
-## <b>isMobile()</b>
-Return true if mobile.
-
-## <b>isOpera()</b>
-Return true if your browser is Opera, false if not.
-
-## <b>isChrome()</b>
-Return true if your browser is Chrome, false if not.
-
-## <b>isFireFox()</b>
-Return true if your browser is FireFox, false if not.
-
-## <b>isSafari()</b>
-Returns true if your browser is Safari, false if not.
-
-## <b>isIE()</b>
-Returns true if your browser is IE, false if not.
-
-## <b>getIEVersion()</b>
-Returns the version of IE you are using.
-
-## <b>getBrowser()</b>
-Returns the name of the web browser you are using.
-
-## <b>getOS()</b>
-Attempts to returns the name of the Operating System (OS) of the laptop/desktop/device/tablet/mobile you are using.
-```
-var detected = getOS();
-log(detected.os);
-log(detected.userAgent);
-```
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-
-# <b>dom.js</b>
-## <b>centerAbsoluteElement(element || elementId)</b>
-Attempts to center an absolute positioned element within your browsers current dimensions.
-
-## <b>lockBody({elementId:string})</b>
-## <b>unlockBody()</b>
-These functions can be used to lock and unlock the body element scroll capabilities (overflow). If you are programming overlays / insite popups then you will notice that some mobiles and browsers don't all lock the body scroll behind correctly, this will fix this issue.
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-# <b>form.js</b>
-#### <b>Dependencies:</b> NONE<br>
-
-## <b>removeAllSelectOptions(selectBoxId)</b>
-
-## <b>checkBoxReveal(checkboxID,elementIdForHideShow)</b>
-Put in the html onclick or any function for a checkbox click to hide or show any element on the page synchronised with state of checkbox.
-
-## <b>isChecked(id:string)</b>
-Returns true or false if id of the checkbox / radio is checked.
-
-## <b>isNumberKey(evt)</b>
-Place on form text inputs to ensure numbers are only entered into it. eg onKeyUp="isNumberKey(event)"
-
-## <b>parseJSONToSelect(jsonData, element_id, label_index, value_index)</b>
-Will attempt to parse a json object into a form select element. jsonData needs to be in the format of [{name:"",code:""}]
-
-```
-var jsonString = '
-[{"name":"United Kingdom","code":"GB"},
-{"name":"United States","code": "US"}]
-';
-
-var jsonObj = JSON.parse(jsonString);
-
-var ele = document.getElementById("country");
-parseJSONToSelect(jsonString,ele,"name","code")
-```
-
-## <b>limitLengthInWords(element, maxWords)</b>
-Will place a limit on the number of words you can enter. eg onKeyUp="limitLengthInWords(this,5)"
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-# <b>io.js</b>
-#### <b>Dependencies:</b> jQuery >= 1.12<br>
-
-## <b>AJAXLoad($url, $method, $data, $callback)</b>
-Sends data to a specified url, with a specified method (post||get) with a callback on success which will return the response.
-
-## <b>loadJSONFile($url, $callback)</b>
-Loads a json file and sends it to a callback function (onSuccess).
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
-
-# <b>graphics.js</b>
-#### <b>Dependencies:</b> NONE<br>
-
-## <b>getHSLColor(float)</b>
-Returns a HSL Colour from a float, input range is 0 to 1
-
-## <b>getRandomRGBString()</b>
-Returns a random RGB string eg "rgb(R,G,B)"
-
-## <b>getRandomHexColor()</b>
-Returns a random hex color
-
-## <b>rgbToHex(r,g,b)</b>
-Converts a RGB value to a HEX value.
-
-## <b>generateNoise(canvasId, width, height, arg_opacity)</b>
-Will generate noise / static / perlin noise on a canvas element.
-
-
-
-
-
-
-
-
-<br><br><br><br>
-
-
-
-
-
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>url</td>
+		<td>url or file you wish to load</td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td>data</td>
+		<td>array, object, formdata, string or json data you wish to send to the url</td>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>dataType</td>
+		<td>data type of data object array, object, formdata, form and json</td>
+	</tr>
+</table>
+
+[return]
+[alias]
+</details>
+
+#### Usage examples:
+ - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
+
+<hr>
+    <br><br><br>
+
+
+<br><br><br>
 
 
 
@@ -1632,8 +3585,7 @@ Any and all donations to help keep active development and the lights on are more
 
 [![paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-<br><br><br><br><br><br>
+<br><br><br><br>
 
 
-<a href="http://pph.me/Darcey" target="_blank" title="I am available for hire, click here!">![Hire](http://www.allforthecode.com/images/pph_widget.jpg)</a>
-
+<a href="http://pph.me/Darcey" target="_blank" title="I am available for hire, click here!">![Hire](https://www.allforthecode.com/images/pph_widget.jpg)</a>

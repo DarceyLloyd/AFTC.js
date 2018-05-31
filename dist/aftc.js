@@ -1,9 +1,234 @@
 /*
-    Author: Darcey@AllForTheCode.co.uk
-    Author: Darcey.Lloyd@gmail.com
-*/
-// The AFTC Object - All For The Code and NOTHING but the CODE!
-var AFTC = AFTC || {};
+ * Author: darcey@aftc.io || darcey.lloyd@gmail.com
+ */
+
+// AFTC Core
+var AFTC = AFTC || {}
+
+
+/**
+ * @function: ArgsToObject(args, obj)
+ * @desc: Quick and easy args to object
+ * @param args object: arguments (from the function structure, typically code will always be 'arguments'
+ * @param obj object: object to parse into
+ * @param strict boolean: console.warn any args that have been supplied that don't exist in args
+ * @return: null
+ * @alias: argsTo
+ * @link: https://codepen.io/AllForTheCode/pen/PaqbKN
+ */
+AFTC.ArgsToObject = function (fArgs, obj, strict) {
+    if (fArgs[0] && typeof (fArgs[0]) == "object") {
+        var args = fArgs[0];
+
+        if (!strict){ strict = true; }
+        if (args && typeof (args) == "object") {
+            for (var key in args) {
+                if (strict){
+                    if (obj.hasOwnProperty(key)) {
+                        obj[key] = args[key];
+                    } else {
+                        console.warn("AFTC.ArgsToObject(): Argument [" + key + "] is not supported.");
+                    }
+                } else {
+                    obj[key] = args[key];
+                }
+            }
+        }
+
+    }
+};
+AFTC.ArgsTo = function (args, obj, strict){ new AFTC.ArgsToObject(args,obj,strict); }
+
+
+AFTC.GetElement = {
+    vars: {
+        cache: []
+    },
+    by: function (type, arg) {
+        var cached = AFTC.GetElement.vars.cache[arg] || false;
+        if (cached) {
+            return cached;
+        } else {
+            switch (type.toLowerCase()) {
+                case "id":
+                    AFTC.GetElement.vars.cache[arg] = document.getElementById(arg);
+                    return AFTC.GetElement.vars.cache[arg];
+                    break;
+                case "class":
+                    AFTC.GetElement.vars.cache[arg] = document.getElementsByClassName(arg);
+                    return AFTC.GetElement.vars.cache[arg];
+                    break;
+                case "query":
+                    AFTC.GetElement.vars.cache[arg] = document.querySelector(arg);
+                    return AFTC.GetElement.vars.cache[arg];
+                    break;
+                case "tag":
+                    AFTC.GetElement.vars.cache[arg] = document.getElementsByTagName(arg);
+                    return AFTC.GetElement.vars.cache[arg];
+                    break;
+                case "name":
+                    AFTC.GetElement.vars.cache[arg] = document.getElementsByName(arg);
+                    return AFTC.GetElement.vars.cache[arg];
+                    break;
+            }
+        }
+    }
+};
+window.getElementById = function (id) {
+    return AFTC.GetElement.by("id", id);
+}
+window.getId = function (id) { return window.getElementById(id); }
+window.byId = function (id) { return window.getElementById(id); }
+
+window.querySelector = function (query) {
+    return AFTC.GetElement.by("query", query);
+}
+window.query = function (query) { return window.querySelector(query); }
+
+window.getElementsByName = function (name) { return AFTC.GetElement.by("name", name); }
+window.getElementByName = function (name) { return AFTC.GetElement.by("name", name)[0]; }
+
+window.getElementsByClassName = function (className) { return AFTC.GetElement.by("class", className); }
+window.getElementByClassName = function (className) { return AFTC.GetElement.by("class", className)[0]; }
+
+window.getElementsByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName); }
+window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag", tagName)[0]; }
+
+// HTMLElement.getElementByClassName = function (className) { console.log("HERE"); return AFTC.GetElement.by("class", className)[0]; }
+
+
+/**
+ * @function: AFTC.Log
+ * @desc: Shortcut for console.log with some formatting capabilities
+ * ````
+ * log("Hello World");
+ * log("a = " + a);
+ * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
+ * log(MyObject);
+ * log(MyClass);
+ * ````
+ * @param * input: what you want to console.log
+ * @alias: trace
+ */
+AFTC.Log = {
+    enabled: true,
+    element: false,
+    enable: function () {
+        enabled = true;
+    },
+    disable: function () {
+        enabled = false;
+    },
+    to: function (arg) {
+        var error = false;
+        if (arg == undefined || arg == null || !arg) {
+            AFTC.Log.element = false;
+            return;
+        } else if (typeof (arg) == "string") {
+            arg = getElementById(arg);
+        }
+        if (isElement(arg)) {
+            AFTC.Log.element = arg;
+        } else {
+            console.error("logTo(arg) ERROR: Supplied arg is not an ID or Element! To turn off logTo HTML element, don't supply an argument or use false.");
+        }
+    },
+    out: function (arg) {
+        if (console) {
+            if (AFTC.Log.enabled) {
+                if (typeof (arg) == "undefined") {
+                    console.warn("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
+                } else {
+                    console.log(arg);
+                }
+                if (AFTC.Log.element != false) {
+                    if (isElement(arg)) {
+                        // AFTC.Log.element.innerHTML += ("[HTMLElement]<br>");
+                        AFTC.Log.element.innerHTML += (arg+"<br>");
+                    } else {
+                        if (typeof (arg) == "object") {
+                            AFTC.Log.element.innerHTML += "[object||array]<br>";
+                            for (var key in arg) {
+                                AFTC.Log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;[" + key + "] = " + arg[key] + "<br>");
+                            }
+                        } else {
+                            AFTC.Log.element.innerHTML += (arg + "<br>");
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+window.logTo = function (element) { AFTC.Log.to(element); }
+window.log = function (arg) { AFTC.Log.out(arg); }
+window.trace = function (arg) { AFTC.Log.out(arg); }
+
+/**
+ * @function: logEnable() | log.enable()
+ * @desc: Enables log()
+ */
+window.logEnable = function () { AFTC.Log.enabled = true; }
+window.log.enable = function () { AFTC.Log.enabled = true; }
+
+
+/**
+ * @function: logDisable() | log.disable()
+ * @desc: Disable log()
+ */
+window.logDisable = function () { AFTC.Log.enabled = false; }
+window.log.disable = function () { AFTC.Log.enabled = false; }
+window.logToDisable = function () { AFTC.Log.to(false); }
+window.disableLogTo = function () { AFTC.Log.to(false); }
+
+
+
+window.cls = function(){
+    if (console){
+        if (console.clear){
+            console.clear();
+        }
+    }
+    if (AFTC.Log.element){
+        AFTC.Log.element.innerHTML = "";
+    }
+}
+window.clearLog = function(){ cls(); }
+//  AFTC.VLog = function(){
+//     if (!(this instanceof arguments.callee)) {
+//         throw new Error("\nAFTC.DOM.HideShow: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+//     }
+//     var me = this;
+//     var vars = {
+
+//     }
+
+//     new AFTC.ArgsToObject(arguments[0], vars);
+//  };
+
+
+
+/**
+ * @function: openDebugWindow(html)
+ * @desc: open a popup window with the html you wish to display in it
+ * @param dataType html: the html you wish to display in the popup window
+ * @return:
+ * @alias: stringToWindow
+ */
+window.openDebugWindow = function (html) {
+    var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
+    w.document.title = "Debug";
+    w.document.write("<style>body {width:100%;}</style>");
+    w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + html + "</div>");
+    //w.document.write("<div style='width:100%'>" + str + "</div>");
+    w.document.close();
+}
+window.stringToWindow = function (html) {
+    openDebugWindow(html);
+}
+window.htmlToWindow = function (html) {
+    openDebugWindow(html);
+}
 
 /**
  * @function: addEvent(obj,type,fn,useCapture)
@@ -25,6 +250,7 @@ window.addEvent = function (obj, type, fn, useCapture) {
     }
 };
 
+
 /**
  * @function: onReady(fn)
  * @desc: Replacement for jQuerys $(document).ready
@@ -34,377 +260,21 @@ window.addEvent = function (obj, type, fn, useCapture) {
 window.onReady = function (fn) {
     // IE9+
     if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-        fn();
+        // Adds a little delay but is a good thing
+        setTimeout(fn, 10);
     } else {
-        document.addEventListener("DOMContentLoaded", function () {
-            // Adds a little delay but is a good thing
-            setTimeout(fn, 10);
-        });
+        if (document.addEventListener){
+            document.addEventListener("DOMContentLoaded", function () {
+                // Adds a little delay but is a good thing
+                setTimeout(fn, 10);
+            });
+        }
+        
     }
 }
 window.ready = function (fn) {
     window.onReady(fn);
 }
-
-
-
-
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// DOM Element retrieval
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-AFTC.AFTCElementQueryCache = [];
-
-/**
- * @function: getElementById(id)
- * @desc: short cut for document.getElementById, it also caches the query
- * @param id string: id of html element to retrieve
- * @alias: getId
- * @alias: byId
- */
-window.getElementById = function (id) {
-    var cached = AFTC.AFTCElementQueryCache[id];
-    if (isElement(cached)) {
-        return cached;
-    } else {
-        var ele = document.getElementById(id);
-        AFTC.AFTCElementQueryCache[id] = ele;
-        return ele;
-    }
-}
-window.getId = function (id) { return window.getElementById(id); }
-window.byId = function (id) { return window.getElementById(id); }
-
-/**
- * @function: querySelector(str)
- * @desc: Short cut for document.querySelector, it also caches the query
- * @param string str: the query to be run on the dom
- * @alias: query
- * @alias: cssQuery
- */
-window.querySelector = function (str) {
-    var cached = AFTC.AFTCElementQueryCache[str];
-    if (isElement(cached)) {
-        return cached;
-    } else {
-        var ele = document.querySelector(str);
-        AFTC.AFTCElementQueryCache[str] = ele;
-        return ele;
-    }
-}
-window.query = function (id) { return window.querySelector(id); }
-window.cssQuery = function (id) { return window.querySelector(id); }
-
-
-/**
- * @function: getElementsByClassName(str)
- * @desc: Short cut for document.getElementsByClassName, it also caches the query
- * @param string str: the class name to look for
- * @alias: getClass
- * @alias: byClass
- */
-window.getElementsByClassName = function (str) {
-    var cached = AFTC.AFTCElementQueryCache[str];
-    if (isElement(cached)) {
-        return cached;
-    } else {
-        var ele = document.getElementsByClassName(str);
-        AFTC.AFTCElementQueryCache[str] = ele;
-        return ele;
-    }
-}
-window.getClass = function (id) { return window.getElementsByClassName(id); }
-window.byClass = function (id) { return window.getElementsByClassName(id); }
-
-
-
-/**
- * @function: getElementsByTagName(str)
- * @desc: shortcut for getElementsByTagName
- * @param string str: tag name to look for
- */
-window.getElementsByTagName = function (str) {
-    var cached = AFTC.AFTCElementQueryCache[str];
-    if (isElement(cached)) {
-        return cached;
-    } else {
-        var ele = document.getElementsByTagName(str);
-        AFTC.AFTCElementQueryCache[str] = ele;
-        return ele;
-    }
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Styling shortcuts
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-/**
- * @function: addClass(elementOrId,classname)
- * @desc: shortcut to add a css class to a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to add
- */
-window.addClass = function (elementOrId, className) {
-    if (isElement(elementOrId)) {
-        elementOrId.classList.add(className);
-    } else {
-        getElementById(elementOrId).classList.add(className);
-    }
-}
-
-/**
- * @func: removeClass(elementOrId,className)
- * @desc: shortcut to remove a class from a html element
- * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
- * @param string className: the class name to remove
- */
-window.removeClass = function (elementOrId, className) {
-    if (isElement(elementOrId)) {
-        elementOrId.classList.remove(className);
-    } else {
-        log("elementOrId =" + elementOrId);
-        log("className =" + className);
-        getElementById(elementOrId).classList.remove(className);
-    }
-}
-
-
-/**
- * @function: hasClass(elementOrId, cls)
- * @desc: Check to see if an element has a class attached to it
- * @param string elementOrId: The elemnt or id of the html element
- * @param string cls: class to look for
- */
-window.hasClass = function (elementOrId, cls) {
-    if (isElement(elementOrId)) {
-        return elementOrId.classList.contains(cls);
-    } else {
-        return getElementById(elementOrId).classList.contains(cls);
-    }
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// DEBUG
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-/**
- * @function: AFTC.log{}
- * @desc: shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
- * @param: boolean enabled: sets window.log to enabled or disabled
- * @alias: trace
- */
-
-AFTC.log = {
-    enabled: true,
-    elementId: "",
-    element: false
-};
-/**
- * @function: log(input)
- * @desc: Shortcut for console.log with capabilities to log nice arrays, objects and to html elements via innerHTML
- * ````
- * log("Hello World");
- * log("a = " + a);
- * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
- * log(MyObject);
- * log(MyClass);
- * ````
- * @param * input: what you want to console.log
- * @alias: trace
- */
-window.log = function (arg) {
-    if (console) {
-        if (AFTC.log.enabled) {
-            if (typeof (arg) == "undefined") {
-                console.error("AFTC.LOG(arg) ERROR: Your log variable (arg) is \"undefined\"!");
-            } else {
-                console.log(arg);
-            }
-            if (AFTC.log.element != false) {
-                if (typeof (arg) == "object") {
-                    AFTC.log.element.innerHTML += "[Object]<br>";
-                    for (var key in arg) {
-                        AFTC.log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + arg[key] + "<br>");
-                    }
-                } else {
-                    AFTC.log.element.innerHTML += (arg + "<br>");
-                }
-
-            }
-        }
-    }
-}
-window.trace = function (arg) {
-    log(arg);
-}
-
-
-
-/**
- * @function: logEnable()
- * @desc: Enables log()
- */
-window.logEnable = function () {
-    AFTC.log.enabled = true;
-}
-
-
-/**
- * @function: logDisable()
- * @desc: Disable log()
- */
-window.logDisable = function () {
-    AFTC.log.enabled = false;
-}
-
-
-
-
-
-/**
- * @function: logTo(elementOrElementId)
- * @desc: When using log you output will also be output to that html element
- * ````
- * logTo("footer");
- * ````
- * @param element||string elementId: elementId to output to
- */
-window.logTo = function (elementOrElementId) {
-    if (elementOrElementId == undefined || elementOrElementId == null || elementOrElementId == false) {
-        AFTC.log.element = false;
-        // console.log("AFTC.log(): HTML element output has been disabled.");
-        return;
-    }
-    var element;
-    if (typeof (elementOrElementId) == "string") {
-        element = getElementById(elementOrElementId);
-        if (isElement(element)) {
-            AFTC.log.element = element;
-            // console.log("AFTC.log(): Has now been configured to output to a HTML element.");
-        }
-        return;
-    } else {
-        if (isElement(elementOrElementId)) {
-            AFTC.log.element = element;
-            console.log("AFTC.log(): Has now been configured to output to a HTML element.");
-        }
-    }
-}
-
-
-/**
- * @function: logObjTo(elementId,obj,appendOrPrepend)
- * @desc: A console.log alternative that will output an object to a html element and the console nicely formatted at the same time
- * @param string elementId: html element id to output to
- * @param object obj: the object to debug output
- * @param boolean optional append: append text or prepend text
- * @return:
- */
-window.logObjTo = function (elementId, obj, append) {
-    var element = getElementById(elementId);
-    if (!element) {
-        throw ("AFTC.JS > logObjTo(elementId,obj): Usage error. Can't find elementId of [" + elementId + "] on the dom!");
-    }
-
-    var msg = "Logging object:<br>\n";
-    for (var key in obj) {
-        msg += "&nbsp;&nbsp;&nbsp;&nbsp;" + key + " = " + obj[key] + "<br>\n";
-    }
-
-    if (!append) {
-        append = true;
-    }
-
-    if (append) {
-        var oldContent = element.innerHTML;
-        element.innerHTML = oldContent + "<br>" + msg;
-    } else {
-        var oldContent = element.innerHTML;
-        element.innerHTML = msg + "<br>" + oldContent;
-    }
-}
-
-
-/**
- * @function: openDebugWindow(html)
- * @desc: open a popup window with the html you wish to display in it
- * @param dataType html: the html you wish to display in the popup window
- * @return:
- * @alias: stringToWindow
- */
-window.openDebugWindow = function (html) {
-    var w = window.open('debug', 'debug', 'width=1200,height=400,resizeable,scrollbars');
-    w.document.title = "Debug";
-    w.document.write("<style>body {width:100%;}</style>");
-    w.document.write("<div style='display:block;width:98%;-ms-word-wrap:break-word ;word-wrap:break-word;border:1px solid #000000;'>" + html + "</div>");
-    //w.document.write("<div style='width:100%'>" + str + "</div>");
-    w.document.close();
-}
-window.stringToWindow = function (html) {
-    openDebugWindow(html);
-}
-
-
-/**
- * @function: setHTML(elementOrId,html);
- * @desc: quick shortcut for outputting html to an element
- * ````
- * setHTML("header","Welcome");
- * // or
- * var myElement = getElementById("header");
- * setHTML(myElement,"Welcome!");
- * ````
- * @param dataType elementOrId: the element or the element id you wish to set the html of
- * @param dataType html: the html string to insert into your element
- * @return:
- * @alias: html
- */
-window.setHTML = function (elementOrId, str) {
-    var element;
-    if (typeof (elementOrId) == "string") {
-        element = getElementById(elementOrId);
-    }
-    if (isElement(element)) {
-        element.innerHTML = str;
-    } else {
-        return "unable to retrieve element from [" + elementOrId + "]";
-    }
-}
-window.html = function (element, str) { window.setHTML(element, str); }
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Array functions
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
@@ -412,8 +282,9 @@ window.html = function (element, str) { window.setHTML(element, str); }
  * @param number index: the array index you wish to remove
  * @return: array
  */
-window.arrayRemoveIndex = function (array, index) {
-    return array.splice(index);
+window.arrayRemoveIndex = function (arr, index) {
+    arr.splice(index, 1);
+    return arr;
 }
 
 /**
@@ -427,27 +298,17 @@ window.isStringInArray = function (needle, haystack) {
 }
 
 /**
- * @function: arrayContains(haystack,needle)
+ * @function: arrayContains(needle,haystack)
  * @desc: Check to see if your array contains something you want to find
  * @param array arr: the array you wish to search
  * @param string needle: what you want to find
  */
-window.arrayContains = function (haystack, needle) {
+window.arrayContains = function (needle, haystack) {
     if (haystack.indexOf(needle) > -1) { return true; } else { return false; }
 }
+window.isInArray = function (needle, haystack) { return window.arrayContains(needle, haystack); }
 
-/**
- * @function: arrayRemove(arr,item)
- * @desc: removes an item from an array
- * @param array arr: the array you wish to search and remove from
- * @param string item:  index at which a given element can be found
- * @alias: arrayRemoveItem
- */
-window.arrayRemove = function (arr, item) {
-    if (!window.arrayContains(item)) { return this; }
-    return arr.splice(arr.indexOf(item), 1);
-}
-window.arrayRemoveItem = function (arr, item) { return arrayRemove(arr, item); }
+
 
 /**
  * @function: arrayEmpty(arr)
@@ -459,6 +320,10 @@ window.arrayEmpty = function (arr) {
     while (arr.length > 0) { arr.pop(); }
 }
 window.arrayClear = function (arr) { window.arrayEmpty(arr); }
+
+
+
+
 
 
 /**
@@ -474,6 +339,9 @@ window.getMaxFromArray = function (arr) {
 window.arrayGetMax = function (arr) { return getMaxFromArray(arr); }
 window.arrayMax = function (arr) { return getMaxFromArray(arr); }
 
+
+
+
 /**
  * @function: arrayGetMin
  * @desc: returns the minimum value in an array
@@ -481,34 +349,23 @@ window.arrayMax = function (arr) { return getMaxFromArray(arr); }
  * @alias: getMinFromArray
  * @alias: arrayMin
  */
-window.arrayGetMin = function (arr) {
+window.getMinFromArray = function (arr) {
     return Math.min.apply(Math, arr);
 }
-window.getMinFromArray = function (arr) { return arrayGetMin(arr); }
-window.arrayMin = function (arr) { return arrayGetMin(arr); }
+window.arrayGetMin = function (arr) { return getMinFromArray(arr); }
+window.arrayMin = function (arr) { return getMinFromArray(arr); }
+
+
+
 
 /**
  * @function: arrayShuffle(arr)
- * @desc: shuffles an array using a random method out of a choice of 2
+ * @desc: shuffles an array (method 1)
  * @param array arr: the array to shuffle
- * @alias: shuffleArray2
- * @alias: shuffleArray3
+ * @alias: shuffle
+ * @alias: arrayShuffle
  */
 window.arrayShuffle = function (arr) {
-    var methodNo = getRandom(2, 3);
-    log(methodNo);
-    return window["arrayShuffle" + methodNo](arr);
-    var fn = "arrayShuffle" + methodNo;
-}
-window.shuffleArray = function (arr) { return arrayShuffle(arr); }
-
-
-/**
- * @function: arrayShuffle2(arr)
- * @desc: shuffles an array (method 2)
- * @param array arr: the array to shuffle
- */
-window.arrayShuffle2 = function (arr) {
     var currentIndex = arr.length,
         temporaryValue, randomIndex;
 
@@ -527,13 +384,18 @@ window.arrayShuffle2 = function (arr) {
 
     return arr;
 }
+window.shuffle = function(arr){ return arrayShuffle(arr); }
+window.shuffleArray = function(arr){ return arrayShuffle(arr); }
+
 
 /**
- * @function: arrayShuffle3(a)
+ * @function: arrayShuffle2(arr)
  * @desc: shuffles an array (method 2)
- * @param array a: the array to shuffle
+ * @param array arr: the array to shuffle
+ * @alias: shuffle2
+ * @alias: arrayShuffle2
  */
-window.arrayShuffle3 = function (a) {
+window.arrayShuffle2 = function (a) {
     var x, t, r = new Uint32Array(1);
     for (var i = 0, c = a.length - 1, m = a.length; i < c; i++ , m--) {
         crypto.getRandomValues(r);
@@ -543,21 +405,69 @@ window.arrayShuffle3 = function (a) {
 
     return a;
 }
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+window.shuffle2 = function(arr){ return arrayShuffle2(arr); }
+window.shuffleArray2 = function(arr){ return arrayShuffle2(arr); }
 
 
 
 
+window.arrayToSingleLineString = function (arr) {
+    var html = "[";
+    for (i = 0; i < arr.length; i++) {
+        switch (typeof (arr[i])) {
+            case "number":
+                html += arr[i] + ",";
+                break;
+            case "string":
+                html += "'" + arr[i] + "',";
+                break;
+            default:
+                html += "" + typeof (arr[i]) + ",";
+                break;
+        }
+    }
+    html = trimStringLength(html, html.length - 1);
+    html += "]";
+    return html;
+}
+window.arrayToString = function(arr){ return arrayToSingleLineString(arr); }
 
 
 
+/**
+ * @function:convertToArray(v)
+ * @desc: takes an input and returns it as index[0] of an array
+ * @param & v: value to insert into array
+ * @alias: valueToArray
+ */
+window.convertToArray = function(v){
+    var a = [];
+    a[0] = v;
+    return a;
+}
+window.toArray = function(v){ return convertToArray(v); }
+window.valueToArray = function(v){ return convertToArray(v); }
+/**
+ * @function: getFunctionName(fn)
+ * @desc: tries to get the function name of a suppled function
+ * @param function fn: the function wish to get the name of
+ */
+function getFunctionName(fn) {
+    var name = fn.toString();
+    var reg = /function ([^\(]*)/;
+    return reg.exec(name)[1];
+};
+/**
+ * @function: isInString(find,source)
+ * @desc: check for string in string
+ * @param string find: The string to look for
+ * @param string source: The string to look in
+ */
+window.isInString = function (find,source) {
+    return source.indexOf(find) !== -1;
+}
+window.inString = function (find,source) { return isInString(find,source); }
 
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Datatype handling / Variable conversion / Type checking / isXXX / getXXX / Common equation functions etc
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 /**
  * @function: isEven(n)
@@ -630,130 +540,6 @@ window.isDOM = function (obj) {
             (typeof obj.ownerDocument === "object");
     }
 };
-/**
- * @function: radToDeg(input)
- * @desc: converts radians to degrees
- * @param number input: the radians you wish converted to degrees
- * @alias: rad2deg
- */
-window.radToDeg = function (input) {
-    return input * (180 / Math.PI);
-}
-window.rad2deg = function (arg) { return radToDeg(arg); }
-
-
-/**
- * @function: degToRad(input)
- * @desc: converts degrees to radians
- * @param number input: the value you wish converted to radians
- * @alias: deg2rad
- */
-window.degToRad = function (input) {
-    return input * (Math.PI / 180);
-}
-window.deg2rad = function (arg) { return degToRad(arg); }
-
-
-/**
- * @function: boolToString(bool)
- * @desc: converts boolean to a string of true or false
- * @param boolean bool: the boolean you wish to convert
- */
-window.boolToString = function (bool) {
-
-    if (!bool || bool == undefined || typeof (bool) != "boolean") {
-        console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
-        return "error";
-    }
-
-    if (bool) {
-        return "true";
-    } else {
-        return "false";
-    }
-}
-
-
-
-
-/**
- * @function: boolToYesNo(bool)
- * @desc: converts a boolean to yes or no
- * @param boolean bool: the boolean you wish to convert
- */
-window.boolToYesNo = function (bool) {
-
-    if (!bool || bool == undefined || typeof (bool) != "boolean") {
-        console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
-        return "error";
-    }
-
-    if (bool) {
-        return "yes";
-    } else {
-        return "no";
-    }
-}
-
-
-/**
- * @function: stringToBool(str)
- * @desc: converts a string to a boolean (y,yes,"1",no etc)
- * @param string str: the string you wish to convert
- */
-window.stringToBool = function (str) {
-
-    if (!str || str == undefined || typeof (str) != "string") {
-        console.log("AFTC.js: Conversion.js: stringToBoolean(str): Error - input str is not valid!");
-        return false;
-    }
-
-    switch (str.toLowerCase()) {
-        case "y":
-            return true;
-            break;
-        case "yes":
-            return true;
-            break;
-        case "1":
-            return true;
-            break;
-        case "true":
-            return true;
-            break;
-        case "y":
-            return true;
-            break;
-        default:
-            return false;
-            break;
-    }
-}
-
-
-
-/**
- * @function: getBooleanFrom(input)
- * @desc: converts an input to a boolean
- * @param * input: the variable you wish to convert to a boolean
- */
-window.getBooleanFrom = function (input) {
-    if (input == null || input == "" || !input) {
-        return false;
-    }
-
-    if (typeof (input) == "string") {
-        return stringToBool(input);
-    }
-
-    if (typeof (input) == "number") {
-        if (input <= 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
 
 
 /**
@@ -772,6 +558,7 @@ window.isBoolean = function (input) {
 window.isBool = function (input) { return isBoolean(input); }
 
 
+
 /**
  * @function: isNumeric(n)
  * @desc: check if variable is numeric
@@ -782,7 +569,6 @@ window.isNumeric = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 window.isNumber = function (n) { return isNumeric(n); }
-
 
 
 
@@ -798,82 +584,6 @@ window.isArray = function (input) {
 }
 
 /**
- * @function: parseArrayToFloat(arr)
- * @desc: parses all values in array to float
- * @param array arr: array to process
- * @alias: arrayToFloat
- */
-window.parseArrayToFloat = function (arr) {
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = parseFloat(arr[i]);
-    }
-    return arr;
-}
-window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
-
-/**
- * @function:parseArrayToInt(arr)
- * @desc: parses all values in array to float
- * @param array arr: array to process
- * @alias: arrayToInt
- */
-window.parseArrayToInt = function (arr) {
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = parseInt(arr[i]);
-    }
-    return arr;
-}
-window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
-
-
-
-/**
- * @function:convertToArray(v)
- * @desc: takes an input and returns it as index[0] of an array
- * @param & v: value to insert into array
- * @alias: valueToArray
- */
-window.convertToArray = function (v) {
-    var a = [];
-    a[0] = v;
-    return a;
-}
-window.valueToArray = function (v) { return convertToArray(v); }
-
-
-/**
- * @function: getFunctionName(fn)
- * @desc: tries to get the function name of a suppled function
- * @param function fn: the function wish to get the name of
- */
-function getFunctionName(fn) {
-    var name = fn.toString();
-    var reg = /function ([^\(]*)/;
-    return reg.exec(name)[1];
-};
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Random generators (small ones)
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-/**
  * @function: getRandomInt(min,max)
  * @desc: returns a random number / int betwen your specified min and max values
  * @param number min: the minimum your random number is allowed to go
@@ -883,10 +593,31 @@ function getFunctionName(fn) {
 window.getRandomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-window.getRandom = function (min, max) {
-    return getRandomInt(min, max);
-}
+window.randomInt = function (min, max) { return getRandomInt(min, max); }
+window.getRandom = function (min, max) { return getRandomInt(min, max); }
+window.random = function (min, max) { return getRandomInt(min, max); }
 
+
+
+/**
+ * @function: getRandomThatsNot(min,max,not)
+ * @desc: returns a random int betwen your specified min and max values but never the not value
+ * @param number min: the minimum your random number is allowed to go
+ * @param number max: the maximum your random number is allowed to go
+ * @alias: getRandom
+ */
+window.getRandomThatsNot = function(min,max,not){
+    var r = not; var lim = 100; var runs = 0;
+    while (r==not && runs < lim){
+        runs++;
+        r = getRandomInt(min,max);
+    }
+    if (runs>=lim){
+        return false;
+    } else {
+        return r;
+    }
+}
 
 
 /**
@@ -898,6 +629,7 @@ window.getRandom = function (min, max) {
 window.getRandomFloat = function (min, max) {
     return (Math.random() * (max - min) + min);
 };
+window.randomFloat = function (min, max) { return getRandomFloat(min, max); }
 
 
 /**
@@ -916,24 +648,25 @@ window.randomString = function (length) {
 
     return text;
 }
-window.getRandomString = function (len) {
-    return randomString(len);
-}
+window.getRandomString = function (len) { return randomString(len); }
 
 
 /**
- * @function: getUniqueId()
+ * @function: getUID(length)
  * @desc: Generates a random id
+ * @param number length: length of the unique id to generate
  * @alias: getUID
- * @alias: generateRandomId
  * @alias: generateUID
  */
-window.getUniqueId = function () {
-    return randomString(5) + Math.random().toString(36).substr(2, 8);
+window.getUID = function (len) {
+    if (len > 34){
+        console.error("getUID(length): Limit error: Length must be 34 or lower");
+    } else {
+        return Math.random().toString(36).substr(2, len);
+    }
 }
-window.getUID = function () { return getUniqueId(); }
-window.generateRandomId = function () { return getUniqueId(); }
-window.generateUID = function () { return getUniqueId(); }
+window.getUniqueId = function (len) { return getUID(len); }
+window.generateUID = function (len) { return getUID(len); }
 
 
 /**
@@ -946,7 +679,7 @@ window.generateUID = function () { return getUniqueId(); }
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
     for (var i = 0; i < arraySize; i++) {
-        arr[i] = getRandom(min, max);
+        arr[i] = getRandomInt(min, max);
     }
     return arr;
 }
@@ -985,403 +718,10 @@ window.guid = function () {
 }
 window.getGUID = function () { return guid(); }
 
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 
 
-
-
-
-
-
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// Misc features (small ones only)
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-/**
- * @function: redirect(url)
- * @desc: no more typing self.location.href, just use redirect(url)
- * @param string url: the url you wish to redirect to
- */
-window.redirect = function (url) {
-    self.location.href = url;
-};
-
-
-
-/**
- * @function: hide(element,classListToRemove,classListToAdd)
- * @desc: hides a html element, can also add or remove any amount of classes on element hide at the same time
- * @param element||string element: the element or the string id of the element you wish to hide
- * @param array classListToRemoveOnHide: string of class to remove or array of string classes to remove on hide
- * @param array classListToAddOnHide: string of class to remove or array of string classes to add on hide
- */
-window.hide = function (element, classListToRemoveOnHide, classListToAddOnHide) {
-    var elementId = false;
-    if (typeof (element) == "string") {
-        elementId = element;
-        element = getElementById(elementId);
-    } else if (!isElement(element)) {
-        console.error("AFTC.js > show({element}): Usage error, element must be string ID of element or the element itself");
-        return false;
-    }
-
-    if (!element || element == null || element == undefined) {
-        console.error("AFTC.js > show({element}): Unable to find element of id [" + elementId + "]");
-        return false;
-    }
-
-    // REMOVE
-    if (isArray(classListToRemoveOnHide)) {
-        for (var key in classListToRemoveOnHide) {
-            var className = classListToRemoveOnHide[key];
-            // log("removing class [" + className + "]");
-            removeClass(element, className);
-        }
-    } else if (typeof (classListToRemoveOnHide) == "string") {
-        removeClass(element, classListToRemoveOnHide);
-        // log("removing class [" + className + "]");
-    }
-
-    // ADD
-    if (isArray(classListToAddOnHide)) {
-        for (var key in classListToAddOnHide) {
-            var className = classListToAddOnHide[key];
-            // log("adding class [" + className + "]");
-            addClass(element, className);
-        }
-    } else if (typeof (classListToAddOnHide) == "string") {
-        addClass(element, classListToAddOnHide);
-        // log("adding class [" + className + "]");
-    }
-
-
-    var oldDisplayValue = element.getAttribute("old-display-prop");
-    //log("oldDisplayValue = " + oldDisplayValue);
-    if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1) {
-        // log("no old value going to assume display is block");
-        element.style.display = 'block';
-    }
-
-    element.style.display = 'none';
-}
-
-
-/**
- * @function: show(element,classListToRemove,classListToSAdd)
- * @desc: show a html element, can also add or remove any amount of classes on element show at the same time
- * @param array of elements||string element: the element or the string id of the element you wish to hide
- * @param array classListToRemoveOnShow: string of class to remove or array of string classes to remove on show
- * @param array classListToAddOnShow: string of class to remove or array of string classes to add on show
- */
-window.show = function (element, classListToRemoveOnShow, classListToAddOnShow) {
-    // log("window.show(" + element + ")");
-    var elementId = false;
-    if (typeof (element) == "string") {
-        elementId = element;
-        element = getElementById(elementId);
-    } else if (!isElement(element)) {
-        console.error("AFTC.js > show({element}): Usage error, element must be string ID of element or the element itself");
-        return false;
-    }
-
-    if (!element || element == null || element == undefined) {
-        console.error("AFTC.js > show({element}): Unable to find element of id [" + elementId + "]");
-        return false;
-    }
-
-    // REMOVE
-    if (isArray(classListToRemoveOnShow)) {
-        for (var key in classListToRemoveOnShow) {
-            var className = classListToRemoveOnShow[key];
-            // log("removing class [" + className + "]");
-            removeClass(element, className);
-        }
-    } else if (typeof (classListToRemoveOnShow) == "string") {
-        removeClass(element, classListToRemoveOnShow);
-        // log("removing class [" + className + "]");
-    }
-
-    // ADD
-    if (isArray(classListToAddOnShow)) {
-        for (var key in classListToAddOnShow) {
-            var className = classListToAddOnShow[key];
-            // log("adding class [" + className + "]");
-            addClass(element, className);
-        }
-    } else if (typeof (classListToAddOnShow) == "string") {
-        addClass(element, classListToAddOnShow);
-        // log("adding class [" + className + "]");
-    }
-
-
-    var oldDisplayValue = element.getAttribute("old-display-prop");
-    //log("oldDisplayValue = " + oldDisplayValue);
-    if (!oldDisplayValue || oldDisplayValue == "" || oldDisplayValue.length < 1) {
-        // log("no old value going to assume display is block");
-        element.style.display = 'block';
-    } else {
-        element.style.display = oldDisplayValue;
-    }
-
-
-}
-
-
-
-window.goFullScreen = function (element) {
-    var target = document.body;
-    if (element != undefined){
-        if (isElement(element)) {
-            target = element;
-        }
-    }
-    
-    if (target.requestFullscreen) {
-        target.requestFullscreen();
-    } else if (target.webkitRequestFullscreen) {
-        target.webkitRequestFullscreen();
-    } else if (target.mozRequestFullScreen) {
-        target.mozRequestFullScreen();
-    } else if (target.msRequestFullscreen) {
-        target.msRequestFullscreen();
-    } else {
-        console.error('Fullscreen API is not supported.');
-    }
-}
-
-window.exitFullScreen = function () {
-	if (document.exitFullscreen) {
-		document.exitFullscreen();
-	} else if (document.webkitExitFullscreen) {
-		document.webkitExitFullscreen();
-	} else if (document.mozCancelFullScreen) {
-		document.mozCancelFullScreen();
-	} else if (document.msExitFullscreen) {
-		document.msExitFullscreen();
-	} else {
-		console.error('Fullscreen API is not supported.');
-	}
-}
-
-
-AFTC.Point = function (x, y) {
-    if (!x) { x = 0; }
-    if (!y) { y = 0; }
-    this.x = x;
-    this.y = y;
-}
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-/**
- * @function: cleanJSONString(s)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- */
-window.generateUniqueId = function (length) {
-
-}
-
-
-
-/**
- * @function: cleanJSONString(s)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.cleanJSONString = function (s) {
-	// preserve newlines, etc - use valid JSON
-	s = s.replace(/\\n/g, "\\n")
-		.replace(/\\'/g, "\\'")
-		.replace(/\\"/g, '\\"')
-		.replace(/\\&/g, "\\&")
-		.replace(/\\r/g, "\\r")
-		.replace(/\\t/g, "\\t")
-		.replace(/\\b/g, "\\b")
-		.replace(/\\f/g, "\\f");
-	// remove non-printable and other non-valid JSON chars
-	s = s.replace(/[\u0000-\u0019]+/g, "");
-	return s;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: escapeHTML(text)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.escapeHTML = function (text) {
-	var replacements = {
-		"<": "&lt;",
-		">": "&gt;",
-		"&": "&amp;",
-		"\"": "&quot;"
-	};
-	return text.replace(/[<>&"]/g, function (character) {
-		return replacements[character];
-	});
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: trimStringLength(input, length)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.trimStringLength = function (input, length) {
-	return input.substring(0, length);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: getFileExtension(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getFileExtension = function (str) {
-	var ext = str.split('.').pop();
-	return str;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: getFileExtension2(input)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getFileExtension2 = function (input) {
-	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-/**
- * @function: getLastPartOfUrl()
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getLastPartOfUrl = function () {
-	var url = window.location.href;
-	var part = url.substring(url.lastIndexOf('/') + 1);
-	return part;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: removeFileFromPath(path)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.removeFileFromPath = function (path) {
-	//var pa = '/this/is/a/folder/aFile.txt';
-	var r = /[^\/]*$/;
-	path = path.replace(r, '');
-	return path;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: getAnchorFromUrl(url)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getAnchorFromUrl = function (url) {
-	return url.slice(url.lastIndexOf('#') + 1);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-/**
- * @function: String.prototype.startsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
-if (typeof String.prototype.startsWith != 'function') {
-	String.prototype.startsWith = function (str) {
-		return this.match(new RegExp("^" + str));
-	};
-}
-
-/**
- * @function: String.prototype.endsWith(str)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-// es6 now supports the startsWith() and endsWith() (This is for pre ES6 support)
-if (typeof String.prototype.endsWith != 'function') {
-	String.prototype.endsWith = function (str) {
-		return this.match(new RegExp(str + "$"));
-	};
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: getStringBetween(str,start,end)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getStringBetween = function(str,start,end){
-	return str.split(start).pop().split(end).shift().trim();
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: getAllStringsBetween(str,start,end)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getAllStringsBetween = function(str,start,end){
-	//return str.match(new RegExp(start + "(.*)" + end));
-	// var regExString = new RegExp("(?:"+start+")(.*?)(?:"+end+")", "ig"); //set ig flag for global search and case insensitive
-	// return regExString.exec(str);
-	for(var i=0; i<str.length; ++i) {
-		log(str[i]);
-	}
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-/*
-window.getAllStringsBetween = function(str,start,end){
-	var arr = str.split(/[:;]/);
-}
-
-
-test.match(new RegExp(firstvariable + "(.*)" + secondvariable));
-
-or
-
-var regExString = new RegExp("(?:"+firstvariable+")(.*?)(?:"+secondvariable+")", "ig"); //set ig flag for global search and case insensitive
-
-var testRE = regExString.exec("My cow always gives milk.");
-if (testRE && testRE.length > 1) //RegEx has found something and has more than one entry.
-{  
-    alert(testRE[1]); //is the matched group if found
-}
-*/
 
 
 
@@ -1390,7 +730,7 @@ if (testRE && testRE.length > 1) //RegEx has found something and has more than o
 
 /**
  * @function: getWeightedRandom(odds, iterations)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * @desc: Get a weighted random based on odds and iterations
  * @param string odds: xxxxxxxxxxxxxxxxxxxx
  * @param string iterations: xxxxxxxxxxxxxxxxxxxx
  */
@@ -1439,6 +779,520 @@ window.getWeightedRandom = function (odds, iterations) {
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /**
+ * @function: limitLengthInWords(str, maxWords)
+ * @desc: Limit a string in length of words
+ * @param string str: the original string to limit
+ * @param number maxWords: the number of words you wish to limit to
+ * @return object: {output:string,remaining:number}
+ */
+window.limitLengthInWords = function (str, maxWords) {
+	var wordCount = str.split(/\S+/).length - 1;
+	var re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
+	var output = "";
+	if (wordCount >= maxWords) {
+		output = str.match(re);
+	} else {
+		output = str;
+	}
+	return { output: output, remaining: (maxWords - wordCount) };
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+
+
+/**
+ * @function: cleanJSONString(s)
+ * @desc: Attempts to clean a json string
+ * @param string s: input string
+ */
+window.cleanJSONString = function (s) {
+	// preserve newlines, etc - use valid JSON
+	s = s.replace(/\\n/g, "\\n")
+		.replace(/\\'/g, "\\'")
+		.replace(/\\"/g, '\\"')
+		.replace(/\\&/g, "\\&")
+		.replace(/\\r/g, "\\r")
+		.replace(/\\t/g, "\\t")
+		.replace(/\\b/g, "\\b")
+		.replace(/\\f/g, "\\f");
+	// remove non-printable and other non-valid JSON chars
+	s = s.replace(/[\u0000-\u0019]+/g, "");
+	return s;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/**
+ * @function: escapeHTML(input)
+ * @desc: Attempts to escape a html string
+ * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ */
+/*
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+*/
+window.escapeHTML = function (input) {
+	if (typeof (input) != "string") { console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
+
+	var replacements = {
+		"<": "&lt;",
+		">": "&gt;",
+		"&": "&amp;",
+		"\"": "&quot;",
+		"`": "&#039;"
+	};
+	return input.replace(/[<>&"]/g, function (character) {
+		return replacements[character];
+	});
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: setStringLength(input, len)
+ * @desc: sets the length of a string from left to right
+ * @param string input: what string do you want to set the length of?
+ * @param number length: the length you want the string to be
+ * @alias cutStringTo
+ * @alias cutString
+ * @alias cutStringLength
+ * @alias setStrLen
+ */
+window.cutStringTo = function (s, len) {
+	return s.substring(0, len);
+}
+window.cutString = function (s, len) { return cutStringTo(s,len); }
+window.cutStringLength = function (s, len) { return cutStringTo(s,len); }
+window.setStrLen = function (s, len) { return cutStringTo(s,len); }
+window.setStringLength = function (s, len) { return cutStringTo(s,len); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/**
+ * @function: trimStringBy(input, trimBy)
+ * @desc: Trims the length of a string by a value
+ * @param string input: The string you want to trim
+ * @param number trimBy: How many characters do you want to trim off the end
+ */
+window.trimStringBy = function (str, trimBy) {
+	return (str.substring(0, str.length - trimBy));
+}
+window.rTrim = function (str, trimBy) { return trimStringBy(str, trimBy); }
+
+
+/**
+ * @function: leftTrim(str, by)
+ * @desc: Trims the left of a string by a specified amount
+ * @param string str: The string you want to trim
+ * @param number by: How many characters do you want to trim off the end
+ */
+window.lTrim = function (str, by) {
+	return str.substring(by, str.length);
+}
+window.leftTrim = function (str, by) { return lTrim(str, by); }
+
+
+
+
+
+/**
+ * @function: getFileExtension(input)
+ * @desc: Attempts to get the file extension from a file path string
+ * @param string str: the file path string
+ */
+window.getFileExtension = function (input) {
+	var ext = input.split('.').pop();
+	return ext;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: getFileExtension2(input)
+ * @desc: Attempts to get the file extension from a file path string
+ * @param string str: the file path string
+ */
+window.getFileExtension2 = function (input) {
+	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/**
+ * @function: getLastPartOfUrl(url)
+ * @desc: Gets the last part of a URL
+ * @param string url: url to process
+ */
+window.getLastPartOfUrl = function (url) {
+	if (!url) {
+		url = window.location.href;
+	}
+	var part = url.substring(url.lastIndexOf('/') + 1);
+	return part;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: removeFileFromPath(path)
+ * @desc: Attempts to remove the file from a file path string
+ * @param string path: path
+ */
+window.removeFileFromPath = function (path) {
+	//var pa = '/this/is/a/folder/aFile.txt';
+	var r = /[^\/]*$/;
+	path = path.replace(r, '');
+	return path;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/**
+ * @function: getAnchor(url)
+ * @desc: Get anchor from url
+ * @param string url: The url to get the anchor from
+ */
+window.getAnchor = function (url) {
+	if (!url) { url = window.location.href; }
+	var anchorAvailable = isInString("#", url);
+	if (anchorAvailable) {
+		return url.slice(url.lastIndexOf('#') + 1);
+	} else {
+		return false;
+	}
+}
+window.getAnchorFromUrl = function (url) { return window.getAnchor(url); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+/**
+ * @function: String.prototype.startsWith(str)
+ * @desc: ES6 supports the startsWith(), this is for pre ES6 support
+ * @param string str: string to check
+ */
+if (typeof String.prototype.startsWith != 'function') {
+	String.prototype.startsWith = function (str) {
+		return this.match(new RegExp("^" + str));
+	};
+}
+
+/**
+ * @function: String.prototype.endsWith(str)
+ * @desc: ES6 supports endsWith(), this is for pre ES6 support
+ * @param string str: string to check
+ */
+//
+if (typeof String.prototype.endsWith != 'function') {
+	String.prototype.endsWith = function (str) {
+		return this.match(new RegExp(str + "$"));
+	};
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/**
+ * @function: getStringBetween(input,start,end)
+ * @desc: Gets a string between two other strings
+ * @param string input: input string to check
+ * @param string start: start string marker
+ * @param string end: end string marker
+ */
+window.getStringBetween = function (str, start, end) {
+	return str.split(start).pop().split(end).shift().trim();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: getAllStringsBetween(str,start,end)
+ * @desc: Gets all strings between two other strings (multi match)
+ * @param string str: input string to check
+ * @param string start: start string marker
+ * @param string end: end string marker
+ */
+window.getAllStringsBetween = function (str, start, end) {
+	var orig = str;
+	var results = [];
+	// log(orig);
+	// log("--------");
+
+	function getBetween() {
+		// log("CHECKING: " + str);
+		var startMatchIndex = str.indexOf(start); // Find start match
+		// log("startMatchIndex: " + startMatchIndex);
+		if (startMatchIndex == -1) { return false; }
+
+		var startCutIndex = start.length + startMatchIndex; // calc start cut index
+		// log("startCutIndex: " + startCutIndex);
+
+		str = str.substring(startCutIndex, str.length); // LTrim to start cut index
+		// log("CUT: " + str);
+
+		var endMatchIndex = str.indexOf(end); // find end match index
+		// log("endMatchIndex: " + endMatchIndex);
+		if (endMatchIndex == -1) { return false; }
+
+		var between = str.substring(0, endMatchIndex); // get string between
+		// log("between: " + between);
+		var endCutIndex = end.length + endMatchIndex;
+		//log("endCutIndex: " + endCutIndex);
+		str = str.substring(endCutIndex, str.length); // cut off end string
+		//log("FINAL: " + str);
+		return between;
+	}
+	var lim = 500; // Want to loop forever? 500 seems like areasonable limit
+	var pos = 0;
+	var result = true;
+	while (pos <= lim && result != false) {
+		pos++;
+		result = getBetween();
+		if (result) {
+			//log("between["+i+"] = " + result);
+			results.push(result);
+			//log("");
+		}
+	}
+	return results;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+/**
+ * @function: radToDeg(input)
+ * @desc: converts radians to degrees
+ * @param number input: the radians you wish converted to degrees
+ * @alias: rad2deg
+ */
+window.radToDeg = function (input) {
+    return input * (180 / Math.PI);
+}
+window.rad2deg = function (arg) { return radToDeg(arg); }
+
+
+/**
+ * @function: degToRad(input)
+ * @desc: converts degrees to radians
+ * @param number input: the value you wish converted to radians
+ * @alias: deg2rad
+ */
+window.degToRad = function (input) {
+    return input * (Math.PI / 180);
+}
+window.deg2rad = function (arg) { return degToRad(arg); }
+
+
+
+/**
+ * @function: toHex(num)
+ * @desc: Converts a number to hex
+ * @param number num: decimal base 10
+ * @return string: hexidecimal value
+ */
+window.toHex = function (num) {
+    return num.toString(16);
+}
+window.decToHex = function(num) { return toHex(num); }
+window.decimalToHex = function(num) { return toHex(num); }
+window.numberToHex = function(num) { return toHex(num); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/**
+ * @function: boolToString(bool)
+ * @desc: converts boolean to a string of true or false
+ * @param boolean bool: the boolean you wish to convert
+ */
+window.boolToString = function (bool) {
+
+    if (!bool || bool == undefined || typeof (bool) != "boolean") {
+        console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
+        return "error";
+    }
+
+    if (bool) {
+        return "true";
+    } else {
+        return "false";
+    }
+}
+window.booleanToString = function(bool) { return boolToString(bool); }
+
+
+
+
+/**
+ * @function: boolToYesNo(bool)
+ * @desc: converts a boolean to yes or no
+ * @param boolean bool: the boolean you wish to convert
+ */
+window.boolToYesNo = function (bool) {
+
+    if (!bool || bool == undefined || typeof (bool) != "boolean") {
+        console.log("AFTC.js: Conversion.js: boolToString(str): Error - input is not a boolean!");
+        return "error";
+    }
+
+    if (bool) {
+        return "yes";
+    } else {
+        return "no";
+    }
+}
+window.booleanToYesNo = function(bool) { return boolToYesNo(bool); }
+
+
+/**
+ * @function: stringToBool(str)
+ * @desc: Converts a string to a boolean (y,yes,"1",no etc)
+ * @param string str: the string you wish to convert
+ */
+window.stringToBool = function (str) {
+
+    if (!str || str == undefined || typeof (str) != "string") {
+        console.log("AFTC.js: Conversion.js: stringToBoolean(str): Error - input str is not valid!");
+        return false;
+    }
+
+    switch (str.toLowerCase()) {
+        case "y":
+            return true;
+            break;
+        case "yes":
+            return true;
+            break;
+        case "1":
+            return true;
+            break;
+        case "true":
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+window.stringToBoolean = function(str) { return stringToBool(str); }
+
+
+
+/**
+ * @function: getBooleanFrom(input)
+ * @desc: converts an input to a boolean
+ * @param * input: the variable you wish to convert to a boolean
+ */
+window.toBoolean = function (input) {
+    if (input == null || input == "" || !input) {
+        return false;
+    }
+
+    if (typeof (input) == "string") {
+        return stringToBool(input);
+    }
+
+    if (typeof (input) == "number") {
+        if (input <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    return true;
+}
+window.getBooleanFrom = function(input) { return toBoolean(input); }
+
+
+
+/**
+ * @function: parseArrayToFloat(arr)
+ * @desc: parses all values in array to float
+ * @param array arr: array to process
+ * @alias: arrayToFloat
+ */
+window.parseArrayToFloat = function (arr) {
+    var converted;
+    for (var i = 0; i < arr.length; i++) {
+        converted = parseFloat(arr[i]);
+        if (isNaN(converted)){
+            arr[i] = 0;
+        } else {
+            arr[i] = converted;
+        }
+    }
+    return arr;
+}
+window.arrayToFloat = function (arr) { return parseArrayToFloat(arr); }
+
+/**
+ * @function:parseArrayToInt(arr)
+ * @desc: parses all values in array to float
+ * @param array arr: array to process
+ * @alias: arrayToInt
+ */
+window.parseArrayToInt = function (arr) {
+    for (var i = 0; i < arr.length; i++) {
+        converted = parseInt(arr[i]);
+        if (isNaN(converted)){
+            arr[i] = 0;
+        } else {
+            arr[i] = converted;
+        }
+    }
+    return arr;
+}
+window.arrayToInt = function (arr) { return parseArrayToInt(arr); }
+
+
+
+/**
+ * @function:toArray(v)
+ * @desc: takes an input and returns it as index[0] of an array
+ * @param * arg: value to insert into array
+ * @alias: convertToArray
+ * @alias: valueToArray
+ */
+window.toArray = function (arg) {
+    var a = [];
+    switch (typeof(arg)){
+        case "object":
+            if (isArray(arg)){
+                return arg;
+            } else {
+                for (var prop in arg){
+                    a.push(arg[prop]);
+                }
+                return a;
+            }
+            return [arg];
+        break;
+        default:
+            return [arg];
+        break;
+    }
+}
+window.convertToArray = function (v) { return toArray(v); }
+
+/**
  * @function: getDaysBetween(startDateTime, endDateTime)
  * @desc: Gets the number of whole days between a start and end date
  * @param DateTime startDateTime: start date
@@ -1460,6 +1314,28 @@ window.getDaysBetween = function(startDateTime, endDateTime) {
 window.getNoOfDaysBetween = function(start, end){ return getDaysBetween(start, end); }
 window.getDaysBetweenDates = function(start, end){ return getDaysBetween(start, end); }
 
+
+
+/**
+ * @function: getUKDateFromDate(date)
+ * @desc: Formats a date in the UK format
+ * @param Date date
+ */
+window.getUKDateFromDate = function(dte){
+	var output = dte.getDay() + "-" + (dte.getMonth()+1) + "-" + dte.getFullYear();
+	return output;
+}
+
+
+/**
+ * @function: getUSDateFromDate(date)
+ * @desc: Formats a date in the US format
+ * @param Date date
+ */
+window.getUSDateFromDate = function(dte){
+	var output = dte.getFullYear() + "-" + (dte.getMonth()+1) + "-" + (dte.getDay()+1)
+	return output;
+}
 
 
 
@@ -1545,7 +1421,7 @@ window.getDateTime = function (local) {
 		case "db":
 			datetime = getSQLDateTime();
 			break;
-		case "us":
+		case "en-GB":
 			datetime = currentdate.toLocaleString('en-US', {
 				hour12: false,
 				month: "numeric",
@@ -1567,15 +1443,583 @@ window.getDateTime = function (local) {
 }
 
 
+/**
+ * @function: validateEmail(email)
+ * @desc: Validats an email address
+ * @param string email: email address
+ * @returns boolean
+ */
+window.isEmail = function (email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+window.validateEmail = function (email) { return isEmail(email); }
+window.isValidEmail = function (email) { return isEmail(email); }
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isMobile()
+ * @desc: isMobile
+ * @return boolean
+ */
+window.isMobile = function(){
+	// Windows Phone must come first because its UA also contains "Android"!
+	var ua = navigator.userAgent.toLowerCase();
+	if (/windows phone/i.test(ua)) {
+		return true;
+	} else {
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+window.isAndroid = function(){
+	var ua = navigator.userAgent.toLowerCase();
+	if (/windows phone/i.test(ua)) {
+		return false;
+	} else {
+		var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+		return isAndroid;
+	}
+}
+
+window.iOS = function() {
+	var iDevices = [
+	  'iPad Simulator',
+	  'iPhone Simulator',
+	  'iPod Simulator',
+	  'iPad',
+	  'iPhone',
+	  'iPod'
+	];
+
+	if (!!navigator.platform) {
+	  while (iDevices.length) {
+		if (navigator.platform === iDevices.pop()){ return true; }
+	  }
+	}
+
+	return false;
+  }
+
+/**
+ * @function: isFireFox()
+ * @desc: Detects FireFox
+ * @return boolean
+ */
+window.isFireFox = function () {
+	// var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	// return is_firefox;
+	return (typeof InstallTrigger !== 'undefined');
+}
+
+/**
+ * @function: isChrome()
+ * @desc: Detects Chrome
+ * @return boolean
+ */
+window.isChrome = function () {
+	// var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	var chrome = !!window.chrome && !!window.chrome.webstore;
+	return chrome;
+}
+
+
+/**
+ * @function: isEdge()
+ * @desc: Detects Edge
+ * @return boolean
+ */
+window.isEdge = function () {
+	//var isEdge = !isIE && !!window.StyleMedia; // Edge 20+
+	var edge = false;
+	if (/Edge\/\d./i.test(navigator.userAgent)) {
+		edge = true;
+	}
+	return edge;
+}
+
+
+/**
+ * @function: isSafari()
+ * @desc: Detects Safari
+ * @return boolean
+ */
+window.isSafari = function () {
+	// var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+	// return is_safari;
+	return /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+}
+
+/**
+ * @function: isIE()
+ * @desc: Detects IE
+ * @return boolean
+ */
+window.isIE = function () {
+	// var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
+	// return is_ie;
+	// params.isIE = navigator.userAgent.match(/MSIE|Trident/);
+	// params.isIE = document.documentMode; // IS9 and above
+	return /*@cc_on!@*/false || !!document.documentMode; // Internet Explorer 6-11
+}
+
+
+/**
+ * @function: isOpera()
+ * @desc: Detects Opera
+ * @return boolean
+ */
+window.isOpera = function() {
+	// var isChromium = window.chrome;
+	// var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
+	// var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
+	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	return isOpera;
+}
+
+/**
+ * @function: getIEVersion()
+ * @desc: Gets version of IE
+ * @return float
+ */
+window.getIEVersion = function () {
+	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
+	return match ? parseInt(match[1]) : undefined;
+}
+
+/**
+ * @function: getBrowser()
+ * @desc: Detects browser
+ * @return string
+ */
+window.getBrowser = function () {
+	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+	if (/trident/i.test(M[1])) {
+		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+		return 'IE';
+	}
+	if (M[1] === 'Chrome') {
+		tem = ua.match(/\bOPR\/(\d+)/);
+		if (tem != null) {
+			return 'Opera';
+		}
+	}
+	M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+	if ((tem = ua.match(/version\/(\d+)/i)) != null) {
+		M.splice(1, 1, tem[1]);
+	}
+	return M[0];
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
+
+/**
+ * @function: getOS(testUserAgent)
+ * @desc: Attempts to get the os from the user agent or the test user agent
+ * @param string testUserAgent: test user agent string
+ */
+window.getOS = function (testAgent) {
+	var userAgent;
+
+	if (!testAgent){
+		userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	} else {
+		userAgent = testAgent;
+	}
+
+	userAgent = userAgent.toLowerCase();
+
+
+
+
+	// Windows Phone must come first because its UA also contains "Android"!
+	if (/windows phone/i.test(userAgent)) {
+		return {
+			os:"windows phone",
+			userAgent:userAgent
+		}
+	}
+
+	// Samsung Browser detection S8
+	if (/samsungbrowser/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	if (/android/i.test(userAgent)) {
+		return {
+			os:"android",
+			userAgent:userAgent
+		}
+	}
+
+	if (/ipad|iphone|ipod/i.test(userAgent)) {
+		return {
+			os:"ios",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	// Windows Phone must come first because its UA also contains "Android"
+	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
+		return {
+			os:"windows",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/os x/i.test(userAgent)) {
+		return {
+			os:"osx",
+			userAgent:userAgent
+		}
+	}
+
+	if (/macintosh|osx/i.test(userAgent)) {
+		return {
+			os:"osx",
+			userAgent:userAgent
+		}
+	}
+
+	if (/openbsd/i.test(userAgent)) {
+		return {
+			os:"open bsd",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/sunos/i.test(userAgent)) {
+		return {
+			os:"sunos",
+			userAgent:userAgent
+		}
+	}
+
+
+
+
+
+
+	if (/crkey/i.test(userAgent)) {
+		return {
+			os:"chromecast",
+			userAgent:userAgent
+		}
+	}
+
+	if (/appletv/i.test(userAgent)) {
+		return {
+			os:"apple tv",
+			userAgent:userAgent
+		}
+	}
+
+	if (/wiiu/i.test(userAgent)) {
+		return {
+			os:"nintendo wiiu",
+			userAgent:userAgent
+		}
+	}
+
+	if (/nintendo 3ds/i.test(userAgent)) {
+		return {
+			os:"nintendo 3ds",
+			userAgent:userAgent
+		}
+	}
+
+	if (/playstation/i.test(userAgent)) {
+		return {
+			os:"playstation",
+			userAgent:userAgent
+		}
+	}
+
+	if (/kindle/i.test(userAgent)) {
+		return {
+			os:"amazon kindle",
+			userAgent:userAgent
+		}
+	}
+
+	if (/ cros /i.test(userAgent)) {
+		return {
+			os:"chrome os",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	if (/ubuntu/i.test(userAgent)) {
+		return {
+			os:"ubuntu",
+			userAgent:userAgent
+		}
+	}
+
+
+	if (/googlebot/i.test(userAgent)) {
+		return {
+			os:"google bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/bingbot/i.test(userAgent)) {
+		return {
+			os:"bing bot",
+			userAgent:userAgent
+		}
+	}
+
+	if (/yahoo! slurp/i.test(userAgent)) {
+		return {
+			os:"yahoo bot",
+			userAgent:userAgent
+		}
+	}
+
+
+
+	return {
+		os: false,
+		userAgent:userAgent
+	};
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+/**
+ * @function: setHTML(elementOrId,html);
+ * @desc: quick shortcut for outputting html to an element
+ * ````
+ * setHTML("header","Welcome");
+ * // or
+ * var myElement = getElementById("header");
+ * setHTML(myElement,"Welcome!");
+ * ````
+ * @param dataType elementOrId: the element or the element id you wish to set the html of
+ * @param dataType html: the html string to insert into your element
+ * @return:
+ * @alias: html
+ */
+window.setHTML = function (elementOrId, str) {
+    var element;
+    if (typeof (elementOrId) == "string") {
+        element = getElementById(elementOrId);
+    }
+    if (isElement(element)) {
+        element.innerHTML = str;
+    } else {
+        return "unable to retrieve element from [" + elementOrId + "]";
+    }
+}
+window.html = function (element, str) { window.setHTML(element, str); }
+
+
+/**
+ * @function: getElementOffsetTop(elementId)
+ * @desc: Gets an elements top offset
+ * @param string elementId: the element ID you wish to get the top offset of
+ */
+window.getElementOffsetTop = function (elementId) {
+    var element = getElementById(elementId);
+    var curtop = 0;
+    if (isElement(element)) {
+        if (element.offsetParent) {
+            do {
+                curtop += element.offsetTop;
+            } while (element = element.offsetParent);
+            return parseFloat([curtop]);
+        }
+    }
+}
+window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementId); }
+
+
+
+
+
+
+
+
+/**
+ * @function: centerAbsoluteElement(eleOrEleId)
+ * @desc: Center element that is absolute positioned
+ * @param element || string eleOrEleId: element or id of element to center
+ */
+window.centerAbsoluteElement = function (eleOrEleId) {
+	var element;
+
+	if (typeof (eleOrEleId) === "string") {
+		element = document.getElementById(eleOrEleId);
+		if (!element) {
+			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
+		}
+	}
+
+	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
+	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
+	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
+	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
+
+	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
+	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
+	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
+	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
+
+	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
+	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
+	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
+	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
+
+	var offsetWidth = parseInt(element.offsetWidth);
+	var offsetHeight = parseInt(element.offsetHeight);
+
+	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
+	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
+
+	element.style.left = tx + "px";
+	element.style.top = ty + "px";
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// Styling shortcuts
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+/**
+ * @function: addClass(elementOrId,classname)
+ * @desc: shortcut to add a css class to a html element
+ * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
+ * @param string className: the class name to add
+ */
+window.addClass = function (elementOrId, classNames) {
+    var element;
+    if (typeof(elementOrId) == "string"){
+        element = getElementById(elementOrId);
+    }
+
+    if (isArray(classNames)){
+        for (var i=0; i < classNames.length; i++){
+            element.classList.add(classNames[i]);
+        }
+    } else {
+        element.classList.add(classNames);
+    }
+}
+window.addClassTo = function(elementOrId, classNames){ addClass(elementOrId, classNames); }
+
+/**
+ * @func: removeClass(elementOrId,className)
+ * @desc: shortcut to remove a class from a html element
+ * @param elementORstring elementOrId: The elemnt or id of the html element to add a css class to
+ * @param string className: the class name to remove
+ */
+window.removeClass = function (elementOrId, className) {
+    var element;
+    if (typeof(elementOrId) == "string"){
+        element = getElementById(elementOrId);
+    }
+
+    if (isArray(className)){
+        for (var i=0; i < className.length; i++){
+            element.classList.remove(className[i]);
+        }
+    } else {
+        element.classList.remove(className);
+    }
+}
+window.removeClassFrom = function(elementOrId, classNames){ removeClass(elementOrId, classNames); }
+
+
+/**
+ * @function: hasClass(elementOrId, cls)
+ * @desc: Check to see if an element has a class attached to it
+ * @param string elementOrId: The elemnt or id of the html element
+ * @param string cls: class to look for
+ */
+window.hasClass = function (elementOrId, cls) {
+    if (isElement(elementOrId)) {
+        return elementOrId.classList.contains(cls);
+    } else {
+        return getElementById(elementOrId).classList.contains(cls);
+    }
+}
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+/**
+ * @function: redirect(url)
+ * @desc: no more typing self.location.href, just use redirect(url)
+ * @param string url: the url you wish to redirect to
+ */
+window.redirect = function (url) {
+    self.location.href = url;
+};
+
+
+window.goFullScreen = function (element) {
+    var target = document.body;
+    if (element != undefined){
+        if (isElement(element)) {
+            target = element;
+        }
+    }
+    
+    if (target.requestFullscreen) {
+        target.requestFullscreen();
+    } else if (target.webkitRequestFullscreen) {
+        target.webkitRequestFullscreen();
+    } else if (target.mozRequestFullScreen) {
+        target.mozRequestFullScreen();
+    } else if (target.msRequestFullscreen) {
+        target.msRequestFullscreen();
+    } else {
+        console.error('Fullscreen API is not supported.');
+    }
+}
+
+window.exitFullScreen = function () {
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	} else if (document.webkitExitFullscreen) {
+		document.webkitExitFullscreen();
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	} else if (document.msExitFullscreen) {
+		document.msExitFullscreen();
+	} else {
+		console.error('Fullscreen API is not supported.');
+	}
+}
+/**
+ * @function: setCookie(name, value)
+ * @desc: Sets a cookie by name with a value
+ * @param string name: name of the cookie
+ * @param * value: value of the cookie
  */
 window.setCookie = function (name, value) {
 	//document.cookie = name + "=" + value + "; expires=Thu, 18 Dec 2013 12:00:00 GMT";
-	//.cookie(name, value, {expires:365,path:'/sfsow'});
+	//.cookie(name, value, {expires:365,path:'/cookies'});
 	var expires = new Date();
 	expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
 	document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
@@ -1585,8 +2029,8 @@ window.setCookie = function (name, value) {
 
 /**
  * @function: getCookie(name)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @desc: Gets the value of a cookie by name
+ * @param string name: name of the cookie
  */
 window.getCookie = function (name) {
 	//return .cookie(name);
@@ -1597,58 +2041,1025 @@ window.getCookie = function (name) {
 
 
 /**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @function: isChecked(elementId)
+ * @desc: Checks to if checkbox is checked or not
+ * @param string elementId: element id of the form element to check
  */
-window.validateEmail = function (email) {
-	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	return re.test(email);
+window.isChecked = function (id) {
+	return document.getElementById(id).checked;
 }
-
-
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.isValidEmail = function (email) {
-	return validateEmail(email);
-}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 
 
 /**
- * @function: generateNoise(canvasId, opacity)
- * @desc: Generate noise into a canvas element (ensure you set canvase dimensions)
- * @param string canvasId: Canvas element id to work with
- * @param number opacity: opacity of noise
+ * @function: isNumberKey(event)
+ * @desc: Checks if evt supplied (use on form input events via onkeyup or onkeydown)
+ * @param event evt: html onkeyup(event) or onkeydown(event)
  */
-window.generateNoise = function(canvasId, opacity) {
-	var canvas = document.getElementById(canvasId),
-		ctx = canvas.getContext('2d'),
-		x, y,
-		number,
-		opacity = opacity || .2;
+window.isNumberKey = function (evt) {
+	var charCode = (evt.which) ? evt.which : event.keyCode;
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+		return false;
 
-	for (x = 0; x < canvas.width; x++) {
-		for (y = 0; y < canvas.height; y++) {
-			number = Math.floor(Math.random() * 60);
+	return true;
+}
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
-			ctx.fillStyle = "rgba(" + number + "," + number + "," + number + "," + opacity + ")";
-			ctx.fillRect(x, y, 1, 1);
+
+
+
+
+
+
+/**
+ * @function: removeAllSelectOptions(elementOrId)
+ * @desc: Removes all the options in a select
+ * @param element || string: element or id string
+ */
+window.removeAllSelectOptions = function (elementOrId) {
+    var element;
+	if (typeof(elementOrId) == "string"){
+		element = document.getElementById(elementOrId);
+		if (!element){
+			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + elementOrId + "]");
 		}
 	}
 
-	//document.body.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")";
+	if (element) {
+		for (var i = element.options.length - 1; i >= 0; i--) {
+			element.remove(i);
+		}
+	}
+
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.clearSelect = function(elementOrId) { removeAllSelectOptions(elementOrId); }
+// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 
-// AFTC init
-var AFTC = AFTC || {}
+
+
+
+
+
+
+/**
+ * @function: parseJSONToSelect(j, selectElementIdOrElement, label, value)
+ * @desc: parses a json object of key value pairs to a form select element
+ * @param string j: the json data
+ * @param multi selectElementIdOrElement: the json data
+ * @param string label: of key value pair this is the key
+ * @param string value: of key value pair this is the value
+ */
+window.parseJSONToSelect = function (j, elementOrId, labelKey, valueKey) {
+	var element;
+
+	if (typeof(elementOrId) == "string"){
+		element = document.getElementById(elementOrId);
+		if (!element){
+			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + elementOrId + "]");
+		}
+	}
+
+	if( typeof(elementOrId) == "object"){
+		element = elementOrId;
+	}
+
+	if (typeof(j) == "string"){
+		j = JSON.parse(j);
+	}
+
+	for (var i = 0; i < j.length; i++) {
+		var label = j[i][labelKey];
+		var data = j[i][valueKey];
+
+		var option = document.createElement("option");
+		option.text = label;
+		option.value = data;
+		//log(option);
+		element.add(option);
+	}
+}
+// AFTC.Point = function (x, y) {
+//     !x ? this.x = 0 : this.x = x;
+//     !y ? this.y = 0 : this.y = y;
+// }
+
+AFTC.Point = function (x, y) {
+
+    !x ? this.x = 0 : this.x = x;
+    !y ? this.y = 0 : this.y = y;
+
+    this.position = function () {
+        return [this.x, this.y];
+    }
+
+    this.clone = function () {
+        return new AFTC.Point(this.x, this.y);
+    }
+
+    this.delta = function (point) {
+        return [this.x - point.x, this.y - point.y];
+    }
+
+    this.distance = function (point) {
+        var dx = point.x - this.x;
+        var dy = point.y - this.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    this.moveTo = function (x, y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
+    this.moveAtAngle = function (angle, distance) {
+        this.x += Math.cos(angle) * distance;
+        this.y += Math.sin(angle) * distance;
+        return this;
+    }
+
+    this.applyVelocity = function (velocity) {
+        this.x += velocity.vx;
+        this.y += velocity.vy;
+        return this;
+    }
+
+    this.angleRadians = function (point) {
+        // radians = atan2(deltaY, deltaX)
+        var y = point.y - this.y;
+        var x = point.x - this.x;
+        return Math.atan2(y, x);
+    }
+
+    this.angleDeg = function (point) {
+        // degrees = atan2(deltaY, deltaX) * (180 / PI)
+        var y = point.y - this.y;
+        var x = point.x - this.x;
+        return Math.atan2(y, x) * (180 / Math.PI);
+    }
+
+    this.rotate = function (origin, radians) {
+        // rotate the point around a given origin point
+        var cos = Math.cos(radians);
+        var sin = Math.sin(radians);
+        this.x =
+            cos * (this.x - origin.x) + sin * (this.y - origin.y) + origin.x;
+        this.y =
+            cos * (this.y - origin.y) - sin * (this.x - origin.x) + origin.y;
+        return this;
+    }
+}
+
+
+AFTC.Rectangle = function (x, y, w, h) {
+    !x ? this.x = 0 : this.x = x;
+    !y ? this.y = 0 : this.y = y;
+    !w ? this.w = 0 : this.w = w;
+    !h ? this.h = 0 : this.h = h;
+    this.center = new AFTC.Point();
+
+    function init() {
+        this.center = setCenterPoint();
+    }
+
+    function setCenterPoint() {
+        this.center = new AFTC.Point();
+        this.center.x = Math.abs(this.w - this.x) / 2;
+        this.center.y = Math.abs(this.h - this.y) / 2;
+    }
+
+    this.offsetOuter = function (offset) {
+        var rect = new AFTC.Rectangle();
+        rect.x = this.x - offset;
+        rect.y = this.y - offset;
+        rect.w = this.w + offset * 2;
+        rect.h = this.h + offset * 2;
+    }
+
+    this.offsetInner = function (offset) {
+        var rect = new AFTC.Rectangle();
+        rect.x = this.x + offset;
+        rect.y = this.y + offset;
+        rect.w = this.w - offset * 2;
+        rect.h = this.h - offset * 2;
+    }
+
+    this.setX = function (v) { this.x = v; init(); }
+    this.setY = function (v) { this.y = v; init(); }
+    this.setW = function (v) { this.w = v; init(); }
+    this.setH = function (v) { this.h = v; init(); }
+
+    init();
+}
+AFTC.Rect = AFTC.Rectangle;
+
+
+
+
+AFTC.Velocity = function (vx, vy) {
+
+    !vx ? this.vx = 0 : this.vx = vx;
+    !vy ? this.vy = 0 : this.vy = vy;
+
+    this.flip = function () {
+        // reflection on both axis
+        this.vx *= -1;
+        this.vy *= -1;
+        return this;
+    }
+
+    this.flipX = function () {
+        // reflection on x axis
+        this.vx *= -1;
+        return this;
+    }
+
+    this.flipY = function () {
+        // reflection on y axis
+        this.vy *= -1;
+        return this;
+    }
+
+    this.multiply = function (scalar) {
+        this.vx *= scalar;
+        this.vy *= scalar;
+        return this;
+    }
+
+    this.divide = function (scalar) {
+        this.vx /= scalar;
+        this.vy /= scalar;
+        return this;
+    }
+}
+
+/**
+ * @function: cycle(pos, max)
+ * @desc: cycles from 0 to max based on pos, will cycle back to 0 if over max
+ * @param number pos: position of max
+ * @param number max: max number to cycle to
+ */
+function cycle(pos, max) {
+    return (pos % max + max) % max;
+}
+// Resource:
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+// https://www.w3schools.com/jsref/dom_obj_audio.asp
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+AFTC.Audio = function () {
+    if (!(this instanceof arguments.callee)) {
+        var msg = "\nAFTC.Audio: USAGE ERROR: Constructor called as a function.\n";
+        msg += "Please use new AFTC.Audio({params})";
+        throw new Error(msg);
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    // Accessor
+    var me = this;
+
+    // Vo's
+    var preloaderFileVo = function () {
+        var me = this;
+        this.src = false;
+        this.ext = false;
+        this.content_type = false;
+        this.base64 = false;
+        this.loaded = false;
+        this.xhr = new XMLHttpRequest();
+
+        this.load = function () {
+            this.ext = getFileExtension(this.src);
+            this.xhr.addEventListener("load", loaded);
+
+            // this.xhr.onreadystatechange = function () {
+            // log(this.readyState);
+            // if (this.readyState == 4 && this.status == 200) {}
+            // };
+
+            this.xhr.open("GET", this.src, true);
+            this.xhr.send();
+        }
+
+        function loaded(e) {
+            // log("LOADED");
+            me.loaded = true;
+            try { me.xhr.removeEventListener("load", loaded); } catch (e) { }
+            me.content_type = me.xhr.getResponseHeader("content-type");
+            // log("me.content_type = " + me.content_type);
+            // log("me.ext = " + me.ext);
+            if (isInString("text/html", me.content_type)) {
+                me.base64 = true;
+            }
+            checkAllLoaded();
+        }
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    // Args
+    var args = {
+        src: false,
+        cache: true,
+        volume: 1,
+        repeat: 0,
+        preload: true,
+        offsetLoopBy: 0,
+        loopByOffset: false,
+        onUpdate: false,
+        onReady: false,
+        onComplete: false,
+        hideWarnings: false,
+    };
+    new AFTC.ArgsToObject(arguments[0], args);
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    // Params
+    var params = {
+        t: 0,
+        preloader: {
+            files: [], // array of preloaderFileVo's
+            fileCount: 0
+        },
+        browser: {
+            detected: false,
+            isChrome: false,
+            isFirefox: false,
+            isOpera: false,
+            isSafari: false,
+            isEdge: false,
+            isIE: false
+        },
+        compatibility: {
+            ie: ["mp3"],
+            edge: ["mp3", "ogg", "flac", "wav"],
+            chrome: ["mp3", "ogg", "flac", "wav"],
+            firefox: ["mp3", "ogg", "flac", "wav"],
+            opera: ["mp3", "ogg", "flac", "wav"],
+            safari: ["mp3", "wav"]
+        },
+        suppliedExtensions: [],
+        audio: false,
+        playing: false,
+        playCount: 0,
+        totalPlayCount: 0,
+        offsetLoopDuration: 0,
+        onPlayTimer: false
+    };
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    function init() {
+        // Browser flags
+        params.browser.detected = true;
+        params.isChrome = isChrome();
+        params.isFirefox = isFireFox();
+        params.isOpera = isOpera();
+        params.isSafari = isSafari();
+        params.isEdge = isEdge();
+        params.isIE = isIE();
+
+        // Var ini
+        isArray(args.src) ? params.preloader.fileCount = args.src.length : params.preloader.fileCount = 1;
+        // log("params.preloader.fileCount = " + params.preloader.fileCount);
+
+        params.offsetLoopDuration = params.audio.duration - args.offsetLoopBy;
+
+        // Preloader
+        setupPreloader();
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    function setupPreloader() {
+        // Preloading
+        var i;
+        if (typeof (args.src) != "string") {
+            // log("MUTLI FILE");
+            for (i = 0; i < args.src.length; i++) {
+                var vo = new preloaderFileVo();
+                vo.src = args.src[i];
+                if (!args.cache) {
+                    vo.src = vo.src + "?r=" + getRandomInt(1, 99999999);
+                }
+                params.preloader.files.push(vo);
+            }
+        } else {
+            // log("SINGLE FILE");
+            var vo = new preloaderFileVo();
+            vo.src = args.src;
+            if (!args.cache) {
+                vo.src = vo.src + "?r=" + getRandomInt(1, 99999999);
+            }
+            params.preloader.files.push(vo);
+        }
+
+        // Start xhr preloaders on each file path / url supplied
+        for (i = 0; i < params.preloader.fileCount; i++) {
+            var vo = params.preloader.files[i];
+            vo.load();
+            params.suppliedExtensions.push(vo.ext);
+        }
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    function checkAllLoaded() {
+        // log("checkAllLoaded()");
+        var loaded = true;
+        for (i = 0; i < params.preloader.fileCount; i++) {
+            var vo = params.preloader.files[i];
+            // log(vo.ext + " = " + vo.loaded);
+            if (!vo.loaded) { loaded = false; }
+        }
+        // log("checkAllLoaded(): loaded = " + loaded);
+
+        if (loaded) {
+            advise();
+        }
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    function advise(vo) {
+
+        var msg = false;
+
+        if (args.repeat > 0) {
+            msg = "\nAFTC.Audio() > Loop Warning\n";
+            msg += "When looping or repeating it is recommended that you set the offsetLoop parameter unique for each device and browser and file format as it can vary between them (if in doubt leave it at zero), it will use the classic html5 audio end event and loop timing, which doesn't always have perfect results.\n";
+            msg += "\n";
+        }
+
+        msg += "AFTC.Audio() > Browser audio format compatibility checks can be found at:\n";
+        msg += "FLAC: https://caniuse.com/#search=flac\n";
+        msg += "WAV: https://caniuse.com/#search=wav\n";
+        msg += "OGG: https://caniuse.com/#search=ogg\n";
+        msg += "MP3: https://caniuse.com/#search=mp3\n";
+        msg += "\n";
+
+        msg += "TO TURN OFF THESE MESSAGES USE: hideWarnings:true\n";
+        msg += "eg. new AFTC.Audio({hideWarnings:true});\n";
+        msg += "\n";
+
+        if (msg && !args.hideWarnings) {
+            console.warn(msg);
+        }
+
+        setupSound();
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    function setupSound() {
+        // log("setupSound()");
+        params.audio = document.createElement('audio');
+        params.audio.volume = args.volume;
+        params.audio.preload = "auto"; // auto || metadata || none
+
+        // params.audio.addEventListener('timeupdate', onTimeUpdate, false);
+        // params.audio.addEventListener("ended", playCompleteViaEvent, false);
+        // params.audio.addEventListener("canplay", function (e) {
+        //     log("UNABLE TO PLAY: ");
+        // });
+
+        // params.audio.addEventListener("onloadeddata",function(){ log("LOADED"); }); // DOESNT WORK BUT SHOULD!
+        // params.audio.onloadeddata = function () {
+        //     params.loaded = true;
+        //     log("onloadeddata()");
+        // };
+
+        // Sounds can have multiple formats attached to them, just like video
+        if (params.preloader.fileCount > 1) {
+            var html = "";
+            for (var i = 0; i < params.preloader.fileCount; i++) {
+                var vo = params.preloader.files[i];
+                html += '<source src="' + vo.src + '" type="' + vo.content_type + '" />'
+            }
+            params.audio.innerHTML = html;
+        } else {
+            var vo = params.preloader.files[0];
+            if (vo.base64) {
+                params.audio.src = vo.xhr.responseText;
+            } else {
+                params.audio.setAttribute('src', vo.src);
+            }
+        }
+
+        if (args.onReady){
+            args.onReady();
+        }
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+    // Play monitor loop
+    function playBackMonitor() {
+        if (!params.playing) { return false; }
+
+        // https://www.w3schools.com/jsref/dom_obj_audio.asp
+        if (args.onUpdate) {
+            var info = {
+                audio: params.audio,
+                currentSrc: params.audio.currentSrc,
+                currentTime: params.audio.currentTime,
+                duration: params.audio.duration,
+                offsetLoopDuration: params.offsetLoopDuration,
+                ended: params.audio.ended,
+                playbackRate: params.audio.playbackRate,
+                volume: params.audio.volume,
+                playCount: params.playCount,
+                totalPlayCount: params.totalPlayCount
+            };
+            args.onUpdate(info);
+        }
+
+        if (params.audio.currentTime >= params.offsetLoopDuration) {
+            params.playCount++;
+
+            if (params.playCount >= params.totalPlayCount) {
+                clearInterval(params.onPlayTimer);
+                //params.audio.pause();
+                params.onPlayTimer = false;
+                params.playing = false;
+                if (args.onComplete){
+                    var info = {
+                        audio: params.audio,
+                        currentSrc: params.audio.currentSrc,
+                        currentTime: params.audio.currentTime,
+                        duration: params.audio.duration,
+                        offsetLoopDuration: params.offsetLoopDuration,
+                        ended: params.audio.ended,
+                        playbackRate: params.audio.playbackRate,
+                        volume: params.audio.volume,
+                        playCount: params.playCount,
+                        totalPlayCount: params.totalPlayCount
+                    };
+                    args.onComplete(info);
+                }
+            } else {
+                params.audio.currentTime = 0;
+                params.audio.play();
+                params.checkInProgress = false;
+            }
+        }
+
+        // if (!params.audio.ended){
+        //     requestAnimationFrame(playBackMonitor);
+        // }
+    }
+
+
+
+
+    // Utility
+    function startPlaybackMonitor() {
+        params.playing = true;
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+    // Public
+    this.play = function (time) {
+        if (!params.audio) { return false; } // Prevent params.audio usage when not available
+
+        params.offsetLoopDuration = params.audio.duration - args.offsetLoopBy;
+        params.totalPlayCount = (args.repeat + 1);
+        if (args.repeat == -1){ params.totalPlayCount = 999999999999999; }
+        params.playCount = 0;
+        time ? time : time = 0; // true || false
+        params.audio.currentTime = time;
+        params.playing = true;
+        params.audio.play();
+        params.onPlayTimer = setInterval(playBackMonitor, 10);
+    }
+
+    this.stop = function () {
+        clearInterval(params.onPlayTimer);
+        params.audio.pause();
+        params.onPlayTimer = false;
+        if (!params.audio) { return false; } // Prevent params.audio usage when not available
+        params.audio.currentTime = 0;
+        params.playing = false;
+    }
+
+    this.pause = function () {
+        params.audio.pause();
+        clearInterval(params.onPlayTimer);
+        params.onPlayTimer = false;
+        params.playing = false;
+        if (!params.audio) { return false; } // Prevent params.audio usage when not available
+    }
+
+    this.resume = function () {
+        if (!params.audio) { return false; } // Prevent params.audio usage when not available
+        params.playing = true;
+        params.audio.play();
+        params.onPlayTimer = setInterval(playBackMonitor, 10);
+    }
+
+    // Constructor simulation
+    init();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+
+
+// // REF: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+// // REF: https://www.w3schools.com/tags/ref_av_dom.asp
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// AFTC.Audio = function () {
+//     if (!(this instanceof arguments.callee)) {
+//         var msg = "\nAFTC.Audio: USAGE ERROR: Constructor called as a function.\n";
+//         msg += "Please use new AFTC.Audio({params})";
+//         throw new Error(msg);
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//     var me = this;
+//     var args = {
+//         url: false,
+//         base64: false,
+//         volume: 1,
+//         repeat: 0,
+//         preload: true,
+//         onComplete: false,
+//         offsetLoopBy: 0,
+//     };
+//     var params = {
+//         audio: false,
+//         loaded: false,
+//         playCount: 0,
+//         endTimeWithOffset: 0,
+//         manualLooping: false,
+//         manualLoopingComplete: false,
+//         timer: false,
+//         timerInterval: 50,
+//         ready: false,
+//         isIE: false,
+//         isEdge: false,
+//         isFireFox: false,
+//         isChrome: false,
+//         isOpera: false,
+//         isSafari: false
+//     };
+
+//     new AFTC.ArgsToObject(arguments[0], args);
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//     // Constructor
+//     function init() {
+//         if (!args.url) {
+//             throw new Error("\nAFTC.Audio: USAGE ERROR: A url to a sound file is required!");
+//         }
+
+//         // DETECT THE BROWSERS
+//         params.isChrome = isChrome();
+//         params.isFirefox = isFireFox();
+//         params.isOpera = isOpera();
+//         params.isSafari = isSafari();
+//         params.isEdge = isEdge();
+//         params.isIE = isIE();
+//         // log("isChrome = " + params.isChrome);
+//         // log("isFirefox = " + params.isFirefox);
+//         // log("isOpera = " + params.isOpera);
+//         // log("isSafari = " + params.isSafari);
+//         // log("isEdge = " + params.isEdge);
+//         // log("isIE = " + params.isIE);
+
+//         //params.audio = new Audio();
+//         // params.audio.src = args.url; // DONT WORK
+
+//         params.audio = document.createElement('audio');
+//         // params.audio.volume = args.volume;
+//         params.audio.preload = "auto"; // auto || metadata || none
+
+//         params.audio.addEventListener('timeupdate', onTimeUpdate, false);
+//         params.audio.addEventListener("ended", playCompleteViaEvent, false);
+
+//         // params.audio.addEventListener("onloadeddata",function(){ log("LOADED"); }); // DOESNT WORK BUT SHOULD!
+//         params.audio.onloadeddata = function () {
+//             params.loaded = true;
+//             onLoadedInitAudio();
+//         };
+
+//         if (isArray(args.url)) {
+//             var html = "";
+//             var isOGG, isMP3, isWAV;
+//             for (var i = 0; i < args.url.length; i++) {
+//                 // log("file " + i + " = " + args.url[i]);
+//                 isOGG = isInString("ogg", args.url[i].toLowerCase());
+//                 isMP3 = isInString("mp3", args.url[i].toLowerCase());
+//                 isWAV = isInString("wav", args.url[i].toLowerCase());
+//                 if (isOGG && !isMP3 && !isWAV) {
+//                     html += '<source src="' + args.url[i] + '" type="audio/ogg" />'
+//                 } else if (!isOGG && isMP3 && !isWAV) {
+//                     html += '<source src="' + args.url[i] + '" type="audio/mpeg" />'
+//                 } else if (!isOGG && !isMP3 && isWAV) {
+//                     html += '<source src="' + args.url[i] + '" type="audio/wave" />'
+//                 } else {
+//                     throw new Error("\nAFTC.Audio: USAGE ERROR: Only MP3, OGG and WAV formats are supported!");
+//                 }
+//             }
+//             params.audio.innerHTML = html;
+//             //audioElement.innerHTML = '<source src="' + '/audio/sound.mp3'+ '" type="audio/mpeg" />'
+//         } else {
+
+//             var msg = "\nAFTC.JS > AUDIO.JS > WARNING\n";
+//             msg += "You are using an obsolete or incapable web browser, audio may not function correctly!\n";
+
+//             if (params.isIE) {
+//                 msg += "If you have to use a microsoft web browser please use MS Edge, however this may still not function correctly.\n";
+//                 msg += "It is recommended that you use Chrome, Firefox or Opera web browsers.";
+//                 console.warn(msg);
+//             } else if (params.isEdge) {
+//                 msg += "It is recommended that you use Chrome, Firefox or Opera web browsers.";
+//                 console.warn(msg);
+//             }
+
+//             // Compatibility issue alerts/warnings
+//             var isOGG = isInString("ogg", args.url.toLowerCase());
+//             var isMP3 = isInString("mp3", args.url.toLowerCase());
+//             var isWAV = isInString("wav", args.url.toLowerCase());
+//             // log("isOGG = " + isOGG);
+//             // log("isMP3 = " + isMP3);
+//             // log("isWAV = " + isWAV);
+//             // log("args.url = " + args.url);
+
+//             if (params.isIE && isWAV || params.isEdge && isWAV || params.isFirefox && isWAV) {
+//                 throw new Error("\nAFTC.Audio: USAGE ERROR: FireFox, EDGE & IE don't support WAV playback!\nPlease use MP3!");
+//             }
+//             if (params.isIE && isOGG) {
+//                 throw new Error("\nAFTC.Audio: USAGE ERROR: IE doesn't support OGG playback!\nPlease use MP3!");
+//             }
+
+
+//             if (args.base64) {
+//                 params.audio.src = args.url;
+//             } else {
+//                 params.audio.setAttribute('src', args.url);
+//             }
+//         }
+
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function onLoadedInitAudio() {
+//         // log("onLoadedInitAudio()");
+//         // This will force execution of the timeupdate event, which will init params.audio.duration
+//         params.audio.volume = 0;
+//         setTimeout(function () {
+//             // WARNING: Putting params.audio.play here will ignore volume and other settings
+//             playIt();
+//         }, 250);
+//     }
+//     function playIt() {
+//         params.audio.play();
+//         params.timer = setInterval(checkForDuration, params.timerInterval);
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function checkForDuration() {
+//         if (params.audio.duration > 0) {
+//             params.isReady = true;
+//             //log(params.audio.duration + " seconds of audio is ready for use!");
+//             // setHTML("debug3", "duration = " + params.audio.duration.toFixed(3));
+//             clearInterval(params.timer);
+//             params.timer = null;
+//             params.ready = true;
+//             params.audio.pause();
+//             params.audio.volume = args.volume;
+//             params.audio.currentTime = 0;
+
+//             // SET REPEAT HERE AFTER DURATION INIT HAS BEEN DONE
+//             // NOTE: Edge wont loop unless src is an array of sources (BUG)
+//             if (params.isEdge && !isArray(args.src)) {
+//                 if (args.offsetLoopBy == 0) {
+//                     args.offsetLoopBy = 0.01;
+//                 }
+//             } else {
+//                 if (args.repeat == -1) {
+//                     params.audio.loop = true;
+//                 }
+//             }
+//         } else {
+//             // setHTML("debug3", "duration = ??");
+//         }
+
+//         // log(args);
+//         // log(params);
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function onTimeUpdate(e) {
+//         // Doesn't need to do anything, but "ontimeupdate" event needs to be initialised
+//         // log("onTimeUpdate()");
+//         // params.currentTime = this.currentTime;
+//         // params.audio.duration = this.duration;
+//         // setHTML("debug2","duration = " + params.audio.duration.toFixed(3));
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function playCompleteViaEvent() {
+//         if (params.audio.loop) {
+//             // log("AUDIO is in loop mode");
+//             return;
+//         }
+
+//         if (params.manualLooping) { return; }
+
+//         params.playCount++;
+//         // log("playCompleteViaEvent(): playCount = " + params.playCount + " : args.repeat = " + args.repeat);
+
+//         params.audio.currentTime = 0;
+
+//         if (args.repeat == -1) {
+//             // repeat forever
+//             params.audio.currentTime = 0;
+//             params.audio.play();
+//         } else {
+//             if (params.playCount <= args.repeat) {
+//                 // repeat
+//                 params.audio.currentTime = 0;
+//                 params.audio.play();
+//             } else {
+//                 // complete
+//                 params.audio.pause();
+//                 params.audio.currentTime = 0;
+
+//                 if (args.onComplete) {
+//                     args.onComplete();
+//                 }
+//             }
+//         }
+
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function checkPlayPos() {
+//         if (!params.manualLooping) { return; }
+
+//         // setHTML("debug1", "time = " + params.audio.currentTime.toFixed(3) + "/" + params.audio.duration.toFixed(3));
+
+//         if (params.manualLoopingComplete) {
+//             // log("checkPlayPos(): manualLoopingComplete!");
+//             return;
+//         }
+//         params.endTimeWithOffset = params.audio.duration - args.offsetLoopBy;
+//         if (params.audio.currentTime >= params.endTimeWithOffset) {
+//             params.playCount++;
+
+//             if (args.repeat == -1) {
+//                 // repeat forever
+//                 params.audio.currentTime = 0;
+//             } else if (args.repeat > 0) {
+//                 if (params.playCount <= args.repeat) {
+//                     // repeat
+//                     params.audio.currentTime = 0;
+//                 } else {
+//                     // COMPELTE
+//                     params.manualLoopingComplete = true;
+//                     // log("COMPLETE!");
+//                     clearInterval(params.timer);
+//                     params.timer = null;
+//                     if (args.onComplete) {
+//                         args.onComplete();
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+//     function play() {
+//         if (params.audio) {
+//             if (!params.isReady) {
+//                 console.warn("AFTC.Audio(): WARNING: Audio is not ready! [load has not completed, will try to play anyway!]");
+//             }
+//             params.playCount = 0;
+//             params.manualLoopingComplete = false;
+//             params.audio.currentTime = 0;
+
+//             if (args.offsetLoopBy != 0) {
+//                 params.manualLooping = true;
+//                 params.timer = setInterval(checkPlayPos, params.timerInterval);
+//                 params.audio.play();
+//             } else {
+//                 params.manualLooping = false;
+//                 params.audio.play();
+//             }
+//         } else {
+//             console.warn("AFTC.Audio(): WARNING: Audio is not ready!");
+//         }
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function pause() {
+//         if (params.audio) {
+//             params.audio.pause();
+//         }
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+//     function resume() {
+//         if (params.audio) {
+//             params.audio.play();
+//         }
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     function dispose() {
+//         params.audio.removeEventListener('timeupdate', onTimeUpdate, false);
+//         params.audio.removeEventListener('ended', playCompleteViaEvent, false);
+//         params.audio = undefined;
+//     }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     // public
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//     this.play = function () { play(); }
+//     this.pause = function () { pause(); }
+//     this.stop = function () { pause(); }
+//     this.resume = function () { resume(); }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//     this.dispose = function () { dispose(); }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//     this.getAudio = function () { return params.audio; }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//     this.isReady = function () { return params.ready; }
+//     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//     // Constructor simulation (run construct or init in this case)
+//     init();
+// }
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+    // window.playSound = function (url, vol, loop, onComplete) {
+    //     var sound = new Audio(url);
+    //     vol ? sound.volume = vol : sound.volume = 1;
+    //     if (loop) {
+    //         sound.loop = true;
+    //         // sound.addEventListener('ended', function () {
+    //         //     log("ENDED!");
+    //         //     this.currentTime = 0;
+    //         //     this.play();
+    //         // }, false);
+    //     }
+
+    //     if (onComplete) {
+    //         try {
+    //             sound.removeEventListener("ended", onComplete, false);
+    //         } catch (e) { }
+    //     }
+    //     sound.play();
+    //     return sound;
+    // }
+/*
+ * Author: Darcey.Lloyd@gmail.com
+ */
+
+
 
 /**
  * @type: class
@@ -1804,9 +3215,9 @@ AFTC.Animate = function (elementId, onComplete) {
 
         // If params are single value then push them into arrays for array processing
         if (!isStyleArray && !isValueArray && !isDurationArray) {
-            style = convertToArray(style);
-            value = convertToArray(value);
-            duration = convertToArray(duration);
+            style = [style];
+            value = [value];
+            duration = [duration];
         }
 
         // Create new StackVo() for strack of set||anim|delay configurations
@@ -2290,58 +3701,6 @@ AFTC.Animate = function (elementId, onComplete) {
 
 
 
-// AFTC.totParams = {
-//     startTime:0,
-//     endTime:0,
-//     startValue:0,
-//     endValue:0,
-//     duration:0,
-//     active:false,
-//     step:0,
-//     range:0,
-//     onUpdate:false,
-//     onComplete:false
-// }
-// window.tweenValueOverTime = function(start,end,duration,onUpdate,onComplete){
-//     if(AFTC.totParams.active){
-//         console.warn("tweenValueOverTime(): Error: Already running, if you require more advanced value tweening please use AFTC.Animate()");
-//         return;
-//     }
-    
-//     AFTC.totParams.active = true;
-//     AFTC.totParams.duration = duration * 1000;
-//     AFTC.totParams.startTime = new Date().getTime();
-//     AFTC.totParams.endTime = AFTC.totParams.startTime + AFTC.totParams.duration;
-//     AFTC.totParams.startValue = start;
-//     AFTC.totParams.endValue = end;
-//     AFTC.totParams.range = AFTC.totParams.endValue-AFTC.totParams.startValue;
-//     AFTC.totParams.step = AFTC.totParams.range/(duration*1000);
-//     AFTC.totParams.onUpdate = onUpdate;
-//     AFTC.totParams.onComplete = onComplete;
-//     log(AFTC.totParams);
-//     AFTCTweenValueEngine();
-// }
-// window.AFTCTweenValueEngine = function(){
-//     var c = new Date().getTime() - AFTC.totParams.startTime;
-//     var v = 0;
-//     if (c < AFTC.totParams.duration){
-//         v = AFTC.totParams.startValue + AFTC.totParams.step * c;
-//         log(c + " v=" + v);
-//         if (onUpdate){
-//             onUpdate(v);
-//         }
-//         requestAnimationFrame(AFTCTweenValueEngine);
-//     } else {
-//         v = AFTC.totParams.endValue;
-//         log(c + " v=" + v);
-//         log("COMPELTE");
-//         if (onUpdate){
-//             onComplete(v);
-//         }
-//     }
-    
-// }
-
 
 
 /**
@@ -2381,28 +3740,6 @@ window.fadeOut = function (elementId, duration) {
 
 
 
-
-
-
-/**
- * @function: getElementOffsetTop(elementIdOrQuery)
- * @desc: Gets an elements top offset
- * @param string elementId: the element ID you wish to get the top offset of
- */
-window.getElementOffsetTop = function (elementId) {
-    var element = getElementById(elementId);
-    var curtop = 0;
-    if (isElement(element)){
-        if (element.offsetParent) {
-            do {
-                curtop += element.offsetTop;
-            } while (element = element.offsetParent);
-            return parseFloat([curtop]);
-        }
-    }
-    
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -2511,79 +3848,185 @@ window.scrollToElement = function (elementId, arg_duration, offset) {
     }
     animate();
 }
+/*
+ * Author: Darcey.Lloyd@gmail.com
+ */
+
+/**
+ * @function: AFTC.Canvas({id||canvas})
+ * @desc:
+ * ````
+
+ * ````
+ * @param string canvasId: Canvas element id to work with
+ * @param number opacity: opacity of noise
+ */
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// AFTC init
-var AFTC = AFTC || {}
+AFTC.Canvas = function () {
+    if (!(this instanceof arguments.callee)) {
+        throw new Error("\nAFTC.Canvas: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+    }
 
-
-
-/**
- * @function: getHSLColor(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.getHSLColor = function (value) {
-    //value from 0 to 1
-    var hue = ((1 - value) * 120).toString(10);
-    return ["hsl(", hue, ",100%,50%)"].join("");
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: getRandomRGBString()
- * @desc: returns a random RGB string RGB(xxx,xxx,xxx)
- */
-window.getRandomRGBString = function () {
-    var r = Math.round(Math.random() * 255);
-    var g = Math.round(Math.random() * 255);
-    var b = Math.round(Math.random() * 255);
-    var rgb = "rgb(" + r + "," + g + "," + b + ")";
-    return rgb;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: getRandomColor()
- * @desc: returns a random RGB object o.r, o.g, o.g
- */
-window.getRandomColor = function () {
-    var o = {
-        r:Math.round(Math.random() * 255),
-        g:Math.round(Math.random() * 255),
-        b:Math.round(Math.random() * 255),
+    var me = this;
+    var args = {
+        id: false, canvas: false
+    }
+    var params = {
+        dpr: 1,
+        canvas: false,
+        context: false,
     };
-    return o;
+
+    new AFTC.ArgsToObject(arguments[0], args);
+
+    function init() {
+        if (args.id && !args.canvas) {
+            params.canvas = getElementById(args.id);
+        } else if (!args.id && args.canvas) {
+            params.canvas = args.canvas;
+        } else {
+            params.canvas = document.createElement("canvas");
+        }
+        params.context = params.canvas.getContext('2d');
+
+        params.dpr = window.devicePixelRatio || 1;
+    }
+
+    this.drawCircle = function (args) {
+        var fnArgs = {
+            x: 0, y: 0, radius: 20,
+            fillColor: "#FFCC00",
+            borderWidth: 2,
+            borderColor: "#000000"
+        };
+        AFTC.ArgsToObject(args, fnArgs);
+        params.context.beginPath();
+        params.context.arc(fnArgs.x, fnArgs.y, fnArgs.radius, 0, 2 * Math.PI, false);
+        params.context.fillStyle = fnArgs.fillColor;
+        params.context.fill();
+        params.context.lineWidth = fnArgs.borderWidth;
+        params.context.strokeStyle = fnArgs.borderColor;
+        params.context.stroke();
+    }
+
+    this.drawLine = function (args) {
+        var fnArgs = {
+            fromX: 0, fromY: 0,
+            toX: 100, toY: 1,
+            color: "#FFCC00",
+            lineWidth: 1
+        };
+        AFTC.ArgsToObject(args, fnArgs);
+
+        params.context.beginPath();
+        params.context.moveTo(fnArgs.fromX, fnArgs.fromY);
+        params.context.lineTo(fnArgs.toX, fnArgs.toY);
+        params.context.lineWidth = fnArgs.lineWidth;
+        params.context.strokeStyle = fnArgs.color;
+        params.context.stroke();
+    }
+
+    this.attachImage = function () {
+        var fnArgs = {
+            src: false, id: false, img: false,
+            x: false, y: false, w: -1, h: -1,
+            onComplete: false
+        };
+        var fnParams = {
+            img: false,
+            canvas: params.canvas,
+            context: params.context
+        };
+
+        AFTC.ArgsToObject(arguments[0], fnArgs);
+
+        if (fnArgs.src && !fnArgs.id && !fnArgs.img) {
+            fnParams.img = new Image();
+            fnParams.img.onload = function () {
+                if (fnArgs.w != -1 && fnArgs.h != -1) {
+                    fnParams.context.drawImage(this, fnArgs.x, fnArgs.y, fnArgs.w, fnArgs.h);
+                } else {
+                    fnParams.context.drawImage(this, fnArgs.x, fnArgs.y);
+                }
+            }
+            fnParams.img.src = fnArgs.src;
+            if (fnArgs.onComplete) { fnArgs.onComplete(); }
+        } else if (!fnArgs.src && fnArgs.id && !fnArgs.img) {
+            fnArgs.img = getElementById(fnArgs.id);
+            if (fnArgs.w != -1 && fnArgs.h != -1) {
+                fnParams.context.drawImage(fnArgs.img, fnArgs.x, fnArgs.y, fnArgs.w, fnArgs.h);
+            } else {
+                fnParams.context.drawImage(fnArgs.img, fnArgs.x, fnArgs.y);
+            }
+            if (fnArgs.onComplete) { fnArgs.onComplete(); }
+        } else if (!fnArgs.src && !fnArgs.id && fnArgs.img) {
+            if (fnArgs.w != -1 && fnArgs.h != -1) {
+                fnParams.context.drawImage(fnArgs.img, fnArgs.x, fnArgs.y, fnArgs.w, fnArgs.h);
+            } else {
+                fnParams.context.drawImage(fnArgs.img, fnArgs.x, fnArgs.y);
+            }
+            if (fnArgs.onComplete) { fnArgs.onComplete(); }
+        } else {
+            console.error("AFTC.Canvas().attachImage(): Error please set the correct arguments...");
+        }
+    }
+
+
+    this.attachText = function (args) {
+        var fnArgs = {
+            text: "undefined", size: 14, font: "arial",
+            color: false, stroke: false, strokeSize: 1,
+            x: 0, y: 0
+        };
+        var fnParams = {
+            canvas: params.canvas,
+            context: params.context
+        };
+
+        AFTC.ArgsToObject(args, fnArgs);
+
+        fnArgs.size = parseInt(fnArgs.size);
+        fnParams.context.font = fnArgs.size + "px " + fnArgs.font;
+        fnParams.context.lineWidth = fnArgs.strokeSize;
+
+        if (fnArgs.color) {
+            fnParams.context.fillStyle = fnArgs.color;
+            fnParams.context.fillText(fnArgs.text, fnArgs.x, fnArgs.y);
+        }
+
+        if (fnArgs.stroke) {
+            fnParams.context.strokeStyle = fnArgs.stroke;
+            fnParams.context.strokeText(fnArgs.text, fnArgs.x, fnArgs.y);
+        }
+    }
+
+    this.getCanvas = function () { return params.canvas; }
+    this.getContext = function () { return params.context; }
+    this.getWidth = function () { return params.canvas.width; }
+    this.getHeight = function () { return params.canvas.height; }
+    this.setWidth = function (w) { params.canvas.width = w; }
+    this.setHeight = function (h) { params.canvas.height = h; }
+    this.setSize = function (w, h) { params.canvas.width = w; params.canvas.height = h; }
+    this.getParams = function () { return params; }
+    this.clear = function () { params.context.clearRect(0, 0, params.canvas.width, params.canvas.height); }
+
+    init();
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-/**
- * @function: getRandomHexColor()
- * @desc: gets a random hex color
- * @return string: hex color
- */
-window.getRandomHexColor = function () {
-    var hex = Math.floor(Math.random() * 0xFFFFFF);
-    return "#" + ("000000" + hex.toString(16)).substr(-6);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: getRandomRGBColor()
- * @desc: getRandomRGBColor
- * @return string: rgb color
- */
-window.getRandomRGBColor = function(){
-    rand = "rgb("+
-        Math.floor(Math.random()*256)+","+
-        Math.floor(Math.random()*256)+","+
-        Math.floor(Math.random()*256)+")";
-    return rand;
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// /**
+//  * @function: getHSLColor(xxx)
+//  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+//  */
+// window.getHSLColor = function (value) {
+//   //value from 0 to 1
+//   var hue = ((1 - value) * 120).toString(10);
+//   return ["hsl(", hue, ",100%,50%)"].join("");
+// }
+// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 /**
@@ -2595,14 +4038,9 @@ window.getRandomRGBColor = function(){
  * @return string: hex color
  */
 window.rgb2Hex = function (r, g, b) {
-    if (r > 255 || g > 255 || b > 255)
-        throw "Invalid color component";
-    return ((r << 16) | (g << 8) | b).toString(16);
+  return ((r << 16) | (g << 8) | b).toString(16);
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 /**
  * @function: rgbToHex(r,g,b)
@@ -2613,18 +4051,14 @@ window.rgb2Hex = function (r, g, b) {
  * @return string: hex color
  */
 window.rgbToHex = function (r, g, b) {
-    function getHex(c) {
-        var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
-    }
-
-    var rr = getHex(r);
-    var gg = getHex(g);
-    var bb = getHex(b);
-
-    return "#" + rr + gg + bb;
+  function getHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+  var hex = "#" + getHex(r) + getHex(g) + getHex(b);
+  hex = hex.toUpperCase();
+  return hex;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -2635,1098 +4069,426 @@ window.rgbToHex = function (r, g, b) {
  * @return string: rgb color
  */
 window.hexToRgb = function (hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-    } : null;
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: numberToHex(num)
- * @desc: numberToHex
- * @param number num: decimal base 10
- * @return string: hexidecimal value
- */
-window.numberToHex = function (num) {
-    return num.toString(16);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.rgb2hsv = function() {
-    var rr, gg, bb,
-        r = arguments[0] / 255,
-        g = arguments[1] / 255,
-        b = arguments[2] / 255,
-        h, s,
-        v = Math.max(r, g, b),
-        diff = v - Math.min(r, g, b),
-        diffc = function(c){
-            return (v - c) / 6 / diff + 1 / 2;
-        };
-
-    if (diff == 0) {
-        h = s = 0;
-    } else {
-        s = diff / v;
-        rr = diffc(r);
-        gg = diffc(g);
-        bb = diffc(b);
-
-        if (r === v) {
-            h = bb - gg;
-        }else if (g === v) {
-            h = (1 / 3) + rr - bb;
-        }else if (b === v) {
-            h = (2 / 3) + gg - rr;
-        }
-        if (h < 0) {
-            h += 1;
-        }else if (h > 1) {
-            h -= 1;
-        }
-    }
-    return {
-        h: Math.round(h * 360),
-        s: Math.round(s * 100),
-        v: Math.round(v * 100)
-    };
-}
-
-
-
+window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
 
 
 /**
- * @function: AFTC.Color(arg_color)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @class: AFTC.Color({params})
+ * @desc: Color allows you to create, convert, lighten or darken colours and more.
+ * @param object params: parameters object
+ * @return object: [AFTC.Color]
+ * @link: https://codepen.io/AllForTheCode/pen/mLZRge
  */
+AFTC.Color = function () {
+  var me = this;
+  var args = {
+    r: false, g: false, b: false, a: false,
+    hex: false
+  };
+  var params = {
+    r: false,
+    g: false,
+    b: false,
+    a: false,
+  };
 
-AFTC.Color = function (arg_color) {
-
-    // Var ini
-    var me = this;
-
-    var params = {
-        color: {
-            r: 0,
-            g: 0,
-            b: 0
-        }
-    };
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    function init() {
-        //log("AFTC.Color.init()");
-
-        // Process arg_color
-        var hex = "";
-        var num = "";
-        var rgb = "";
-        var str = "";
-        var conversionError = false;
-
-        switch (typeof (arg_color)) {
-            case "string":
-                // hex or rgb
-                if (arg_color[0] == "#") {
-                    //log("AFTC.Color.init(): Converting hex format [" + arg_color + "] to RGB");
-                    rgb = hexToRgb(arg_color);
-                    params.color.r = rgb.r;
-                    params.color.g = rgb.g;
-                    params.color.b = rgb.b;
-                } else {
-                    //log("AFTC.Color.init(): Converting rgb string to RGB");
-                    str = arg_color.replace("rgb(", "");
-                    str = str.replace(")", "");
-                    var arr = str.split(",");
-                    if (arr.length == 3) {
-                        params.color.r = parseInt(arr[0]);
-                        params.color.g = parseInt(arr[1]);
-                        params.color.b = parseInt(arr[2]);
-                    } else {
-                        conversionError = true;
-                    }
-                }
-                break;
-            // case "number":
-            //     //log("AFTC.Color.init(): Converting number format 0x000000 to RGB");
-            //     hex = "#" + numberToHex(arg_color);
-            //     log(arg_color);
-            //     log(hex);
-            //     rgb = hexToRgb(hex);
-            //     params.color.r = rgb.r;
-            //     params.color.g = rgb.g;
-            //     params.color.b = rgb.b;
-            //     break;
-            case "object":
-                var isArray = !!arg_color && arg_color.constructor === Array;
-                if (!isArray) {
-                    conversionError = true;
-                } else if (arg_color.length == 3) {
-                    //log("AFTC.Color.init(): Converting array to RGB");
-                    params.color.r = parseInt(arg_color[0]);
-                    params.color.g = parseInt(arg_color[1]);
-                    params.color.b = parseInt(arg_color[2]);
-                } else {
-                    conversionError = true;
-                }
-                break;
-            default:
-
-                break;
-        }
-
-
-        //log(params.color.rgb);
-
-        if (conversionError) {
-            var msg = "";
-            msg += "AFTC.Color(): ERROR - Unable to conver the color you supplied [" + arg_color + "] to a useful RGB value!\n";
-            msg += "Formats supported are:" + "\n";
-            msg += "\t" + "new AFTC.Color('rgb(50,60,70)');" + "\n";
-            msg += "\t" + "new AFTC.Color('50,60,70');" + "\n";
-            msg += "\t" + "new AFTC.Color([50,60,70]);" + "\n";
-            msg += "\t" + "new AFTC.Color('#FFFFFF');" + "\n";
-            throw (msg);
-        }
-    }
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    var adjustBrightness = function (percent) {
-        //log("adjustBrightness(): " + percent);
-        if (percent == 0) {
-            return;
-        } else {
-            if (percent > 0){
-                shadeColor(params.color,percent);
-            } else {
-                shadeColor(params.color,percent);
-
-            }
-            //log("################### - " + rgbToHex(params.color) + " " + percent + "%");
-        }
-    }
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-    // Utility functions
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Stack exchange was full of rubbish (event hat shadeBlendConvert), done my own based on percentage of number base 255
-    function shadeColor(rgbObj, percent) {
-        var r = rgbObj.r;
-        var g = rgbObj.g;
-        var b = rgbObj.b;
-
-        var redPercent = (100/255) * r; // The current value percent of 255
-        var redTarget = Math.ceil(redPercent + percent);
-        if (redPercent > 100){
-            redTarget = 100;
-        }
-
-        var greenPercent = (100/255) * g; // The current value percent of 255
-        var greenTarget = Math.ceil(greenPercent + percent);
-        if (greenTarget > 100){
-            greenTarget = 100;
-        }
-
-        var bluePercent = (100/255) * b // The current value percent of 255
-        var blueTarget = Math.ceil(bluePercent + percent);
-        if (blueTarget > 100){
-            blueTarget = 100;
-        }
-        
-        
-        //log(rgbObj)
-        //log("redPercent:" + redPercent.toFixed(2) + "%  redTarget:" + redTarget.toFixed(2));
-        // log("greenPercent:" + greenPercent.toFixed(2) + "%  greenTarget:" + greenTarget.toFixed(2));
-        //log("bluePercent:" + bluePercent.toFixed(2) + "%  blueTarget:" + blueTarget.toFixed(2));
-
-        var step = 255/100;
-
-        params.color.r = Math.round(step * redTarget);
-        params.color.g = Math.round(step * greenTarget);
-        params.color.b = Math.round(step * blueTarget);
-
-
-    }
-
-
-
-
-    var rgbToHex = function (obj) {
-        var r = obj.r;
-        var g = obj.g;
-        var b = obj.b;
-
-        function getHex(c) {
-            var hex = c.toString(16);
-            return hex.length == 1 ? "0" + hex : hex;
-        }
-
-        var rr = getHex(r);
-        var gg = getHex(g);
-        var bb = getHex(b);
-
-        return "#" + rr + gg + bb;
-    }
-    var rgb2hex = function (obj) {
-        var red = obj.r;
-        var gren = obj.g;
-        var blue = obj.b;
-
-        var rgb = blue | (green << 8) | (red << 16);
-        return '#' + (0x1000000 + rgb).toString(16).slice(1)
-    }
-
-    var hexToRgb = function (hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
-    }
-
-    var numberToHex = function (num) {
-        return num.toString(16);
-    }
-
-
-    var rgbToNumber = function RGBToHex(obj) {
-        var r = obj.r;
-        var g = obj.g;
-        var b = obj.b;
-
-        var v = r << 16 | g << 8 | b;
-        return v;
-    }
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-    // Simulate constructor
-    init();
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-    // Public
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    return {
-        lighten: function (percent) {
-            adjustBrightness(percent);
-        },
-        darken: function (percent) {
-            adjustBrightness(-percent);
-        },
-        getHex: function () {
-            return rgbToHex(params.color);
-        },
-        getRGB: function () {
-            return {r:params.color.r,g:params.color.g,b:params.color.b};
-        },
-        getRGBString: function () {
-            return "rgb(" + params.color.r + "," + params.color.g + "," + params.color.b + ")";
-        },
-        getNumber: function () {
-
-            return rgbToNumber(params.color) + " ";
-        }
-    }
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-/**
- * @function: isMobile()
- * @desc: isMobile
- * @return boolean
- */
-window.isMobile = function(){
-	// Windows Phone must come first because its UA also contains "Android"!
-	var ua = navigator.userAgent.toLowerCase();
-	if (/windows phone/i.test(ua)) {
-		return true;
-	} else {
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-
-window.isAndroid = function(){
-	var ua = navigator.userAgent.toLowerCase();
-	if (/windows phone/i.test(ua)) {
-		return false;
-	} else {
-		var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-		return isAndroid;
-	}
-}
-
-window.iOS = function() {
-	var iDevices = [
-	  'iPad Simulator',
-	  'iPhone Simulator',
-	  'iPod Simulator',
-	  'iPad',
-	  'iPhone',
-	  'iPod'
-	];
-  
-	if (!!navigator.platform) {
-	  while (iDevices.length) {
-		if (navigator.platform === iDevices.pop()){ return true; }
-	  }
-	}
-  
-	return false;
+  if (arguments[0] && typeof (arguments[0]) == "object") {
+    new AFTC.ArgsToObject(arguments[0], args);
   }
 
-/**
- * @function: isFireFox()
- * @desc: Detects FireFox
- * @return boolean
- */
-window.isFireFox = function () {
-	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-	return is_firefox;
+
+  function init() {
+    // log(args);
+
+    if (args.hex) {
+      // log("HEX");
+      params.hex = args.hex;
+      initHex();
+    } else if (!args.hex && !isBool(args.r) && !isBool(args.g) && !isBool(args.b) && !args.a) {
+      // log("RGB");
+      !args.r ? params.r = 0 : params.r = args.r;
+      !args.g ? params.g = 0 : params.g = args.g;
+      !args.b ? params.b = 0 : params.b = args.b;
+      params.a = 1;
+    } else if (!args.hex && !isBool(args.r) && !isBool(args.g) && !isBool(args.b) && !isBool(args.a)) {
+      // log("RGBA");
+      !args.r ? params.r = 0 : params.r = args.r;
+      !args.g ? params.g = 0 : params.g = args.g;
+      !args.b ? params.b = 0 : params.b = args.b;
+      !args.a ? params.a = 0 : params.a = args.a;
+    } else {
+      // log("RANDOM");
+      randomizeColor();
+    }
+  }
+
+
+  function initHex() {
+    args.hex = args.hex.replace("#", "");
+    var HexBits = args.hex.match(/.{1,2}/g)
+    params.r = hexToDec(HexBits[0]);
+    params.g = hexToDec(HexBits[1]);
+    params.b = hexToDec(HexBits[2]);
+    params.a = 1;
+  }
+
+
+  function randomizeColor() {
+    params.r = Math.round(Math.random() * 255);
+    params.g = Math.round(Math.random() * 255);
+    params.b = Math.round(Math.random() * 255);
+    params.a = 1;
+  }
+
+
+  function alterByPercent(percent, r, g, b) {
+    var step = 255 / 100; // step for 255 as a %
+
+    function getValue(color, percent) {
+      var currentP = parseInt((100 / 255) * color);
+      var targetP = parseInt(currentP + percent);
+      if (targetP > 100) { targetP = 100; }
+      if (targetP < -100) { targetP = -100; }
+
+      var newColor = Math.ceil(step * targetP);
+      if (newColor > 255) { newColor = 255; }
+      if (targetP < 0) { newColor = 0; }
+
+      // log(percent + ": " + color + " = " + currentP + " > " + targetP + " = " + newColor);
+      return newColor;
+    }
+    if (r) { params.r = getValue(params.r, percent); }
+    if (g) { params.g = getValue(params.g, percent); }
+    if (b) { params.b = getValue(params.b, percent); }
+  }
+
+
+  this.lighten = function (percent, spectrum) {
+    if (!spectrum) {
+      alterByPercent(percent, true, true, true);
+    } else {
+      var enableR = true,
+        enableG = true,
+        enableB = true;
+      if (spectrum.r) { enableR = spectrum.r; }
+      if (spectrum.g) { enableG = spectrum.g; }
+      if (spectrum.b) { enableB = spectrum.b; }
+      alterByPercent(percent, spectrum.r, spectrum.g, spectrum.b);
+    }
+
+  }
+
+  this.darken = function (percent, spectrum) {
+    if (!spectrum) {
+      alterByPercent(-percent, true, true, true);
+    } else {
+      var enableR = true,
+        enableG = true,
+        enableB = true;
+      if (spectrum.r) { enableR = spectrum.r; }
+      if (spectrum.g) { enableG = spectrum.g; }
+      if (spectrum.b) { enableB = spectrum.b; }
+      alterByPercent(-percent, spectrum.r, spectrum.g, spectrum.b);
+    }
+  }
+
+
+
+  // Utility functions
+  function hexToDec(v) {
+    return parseInt(v, 16);
+  }
+
+  function decToHex(v) {
+    var hex = v.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  // Public function
+  this.randomizeColor = function () {
+    randomizeColor();
+  }
+
+  this.getRGBSstring = function () {
+    var c = "RGB(" + params.r + "," + params.g + "," + params.b + ")";
+    return c;
+  }
+  this.getRGBASstring = function () {
+    var c = "RGBA(" + params.r + "," + params.g + "," + params.b + "," + params.a + ")";
+    return c;
+  }
+  this.getHexString = function () {
+    var c = "#" + decToHex(params.r) + decToHex(params.g) + decToHex(params.b);
+    c = c.toUpperCase();
+    return c;
+  }
+  this.getHex = function () { return this.getHexString(); }
+  this.hex = function () { return this.getHex(); }
+  this.getRGB = function () { return this.getRGBSstring(); }
+  this.rgb = function () { return this.getRGB(); }
+  this.getRGBA = function () { return this.getRGBASstring(); }
+  this.rgba = function () { return this.getRGBA(); }
+  this.setRGB = function (r, g, b) { params.r = r; params.g = g; params.b = b; }
+  this.setHex = function (hex) { args.hex = hex; initHex(); }
+
+  init();
 }
 
-/**
- * @function: isChrome()
- * @desc: Detects Chrome
- * @return boolean
- */
-window.isChrome = function () {
-	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-	return is_chrome;
-}
-
-/**
- * @function: isSafari()
- * @desc: Detects Safari
- * @return boolean
- */
-window.isSafari = function () {
-	var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
-	return is_safari;
-}
-
-/**
- * @function: isIE()
- * @desc: Detects IE
- * @return boolean
- */
-window.isIE = function () {
-	var is_ie = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
-	return is_ie;
-}
-
-
-/**
- * @function: isOpera()
- * @desc: Detects Opera
- * @return boolean
- */
-window.isOpera = function() {
-	var isChromium = window.chrome;
-	// var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
-	var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
-	if(isChromium !== null && isOpera == true) {
-		// is Opera (chromium)
-	} else { 
-		// not Opera (chromium) 
-	}
-	if (isOpera){
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * @function: getIEVersion()
- * @desc: Gets version of IE
- * @return float
- */
-window.getIEVersion = function () {
-	var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
-	return match ? parseInt(match[1]) : undefined;
-}
-
-/**
- * @function: getBrowser()
- * @desc: Detects browser
- * @return string
- */
-window.getBrowser = function () {
-	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-	if (/trident/i.test(M[1])) {
-		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-		return 'IE';
-	}
-	if (M[1] === 'Chrome') {
-		tem = ua.match(/\bOPR\/(\d+)/);
-		if (tem != null) {
-			return 'Opera';
-		}
-	}
-	M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-	if ((tem = ua.match(/version\/(\d+)/i)) != null) {
-		M.splice(1, 1, tem[1]);
-	}
-	return M[0];
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 
 
 /**
- * @function: getOS(testUserAgent)
- * @desc: Attempts to get the os from the user agent or the test user agent
- * @param string testUserAgent: test user agent string
+ * @function: getRandomColor()
+ * @desc: returns a random RGB object o.r, o.g, o.g
  */
-window.getOS = function (testAgent) {
-	var userAgent;
-
-	if (!testAgent){
-		userAgent = navigator.userAgent || navigator.vendor || window.opera;
-	} else {
-		userAgent = testAgent;
-	}
-
-	userAgent = userAgent.toLowerCase();
-
-	
-
-
-	// Windows Phone must come first because its UA also contains "Android"!
-	if (/windows phone/i.test(userAgent)) {
-		return {
-			os:"windows phone",
-			userAgent:userAgent
-		}
-	}
-
-	// Samsung Browser detection S8
-	if (/samsungbrowser/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/android/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ipad|iphone|ipod/i.test(userAgent)) {
-		return {
-			os:"ios",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	// Windows Phone must come first because its UA also contains "Android"
-	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
-		return {
-			os:"windows",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/os x/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/macintosh|osx/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/openbsd/i.test(userAgent)) {
-		return {
-			os:"open bsd",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/sunos/i.test(userAgent)) {
-		return {
-			os:"sunos",
-			userAgent:userAgent
-		}
-	}
-
-
-
-
-
-
-	if (/crkey/i.test(userAgent)) {
-		return {
-			os:"chromecast",
-			userAgent:userAgent
-		}
-	}
-
-	if (/appletv/i.test(userAgent)) {
-		return {
-			os:"apple tv",
-			userAgent:userAgent
-		}
-	}
-
-	if (/wiiu/i.test(userAgent)) {
-		return {
-			os:"nintendo wiiu",
-			userAgent:userAgent
-		}
-	}
-
-	if (/nintendo 3ds/i.test(userAgent)) {
-		return {
-			os:"nintendo 3ds",
-			userAgent:userAgent
-		}
-	}
-
-	if (/playstation/i.test(userAgent)) {
-		return {
-			os:"playstation",
-			userAgent:userAgent
-		}
-	}
-
-	if (/kindle/i.test(userAgent)) {
-		return {
-			os:"amazon kindle",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ cros /i.test(userAgent)) {
-		return {
-			os:"chrome os",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/ubuntu/i.test(userAgent)) {
-		return {
-			os:"ubuntu",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/googlebot/i.test(userAgent)) {
-		return {
-			os:"google bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/bingbot/i.test(userAgent)) {
-		return {
-			os:"bing bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/yahoo! slurp/i.test(userAgent)) {
-		return {
-			os:"yahoo bot",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	return {
-		os: false,
-		userAgent:userAgent
-	};
+window.getRandomColor = function () {
+  var c = new AFTC.Color();
+  return c;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+window.getRandomHexColor = function () {
+  var c = new AFTC.Color();
+  return c.getHex();
+}
+window.getRandomRGBString = function () {
+  var c = new AFTC.Color();
+  return c.getRGB();
+}
+window.getRandomRGBAString = function () {
+  var c = new AFTC.Color();
+  return c.getRGBA();
+}
+window.getRandomRGBColor = function () {
+  var c = new AFTC.Color();
+  return c.getRGB();
+}
 
+/*
+ * Author: Darcey.Lloyd@gmail.com
+ */
 
-
-
-// AFTC init
 var AFTC = AFTC || {}
 
 
-// AFTC.lockBody params
-window.AFTCLockBodyParams = {
-	pageYOffset: null,
-	elementId: ""
-};
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.lockBody = function () {
-	if (arguments[0] && typeof (arguments[0]) == "object") {
-		for (var key in arguments[0]) {
-			if (window.AFTCLockBodyParams.hasOwnProperty(key)) {
-				window.AFTCLockBodyParams[key] = arguments[0][key];
-			} else {
-				throw ("AFTC.js > dom.js > lockBody(): Usage Error - Unknown parameter [" + key + "]");
-			}
-		}
-	} else {
-		var usage = "\n";
-		usage += "AFTC.js > dom.js > lockBody() usage:" + "\n";
-		usage += "lockBody({elementId:'PageContainmentDivId'});" + "\n";
-		usage += "unlockBody();" + "\n";
-		throw (usage);
-	}
 
-	if (window.pageYOffset) {
-		window.AFTCLockBodyParams.pageYOffset = window.pageYOffset;
+AFTC.Visibility = function () {
+    // if (!(this instanceof arguments.callee)) {
+    //     throw new Error("\nAFTC.Visibility: USAGE ERROR: Constructor called as a function.\nPlease use new AFTC.DOM.HideHsow({})");
+    // }
+    // if (!(this instanceof AFTC.Visibility)) {
+    //     throw new Error("AFTC.Visibility needs to be called with the new keyword");
+    // }
 
-		$('html, body').css({
-			top: -(window.AFTCLockBodyParams.pageYOffset)
-		});
-	}
-
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "100%",
-		overflow: "hidden"
-	});
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.unlockBody = function () {
-	$('#' + window.AFTCLockBodyParams.elementId).css({
-		height: "",
-		overflow: ""
-	});
-
-	$('html, body').css({
-		top: ''
-	});
-
-	window.scrollTo(0, window.AFTCLockBodyParams.pageYOffset);
-	window.setTimeout(function () {
-		window.AFTCLockBodyParams.pageYOffset = null;
-	}, 0);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.centerAbsoluteElement = function (eleOrEleId) {
-	var element;
-
-	if (typeof (eleOrEleId) === "string") {
-		element = document.getElementById(eleOrEleId);
-		if (!element) {
-			throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
-		}
-	}
-
-	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
-	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
-	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
-	// var marginB = parseInt( getComputedStyle(element,null).marginBottom );
-
-	// var paddingL = parseInt( getComputedStyle(element,null).paddingLeft );
-	// var paddingR = parseInt( getComputedStyle(element,null).paddingRight );
-	// var paddingT = parseInt( getComputedStyle(element,null).paddingTop );
-	// var paddingB = parseInt( getComputedStyle(element,null).paddingBottom );
-
-	// var borderLeftW = parseInt( getComputedStyle(element,null).borderLeftWidth );
-	// var borderRighttW = parseInt( getComputedStyle(element,null).borderRighttWidth );
-	// var borderTopW = parseInt( getComputedStyle(element,null).borderTopWidth );
-	// var borderBottomW = parseInt( getComputedStyle(element,null).borderBottomWidth );
-
-	var offsetWidth = parseInt(element.offsetWidth);
-	var offsetHeight = parseInt(element.offsetHeight);
-
-	var tx = (window.innerWidth / 2) - (offsetWidth / 2);
-	var ty = (window.innerHeight / 2) - (offsetHeight / 2);
-
-	element.style.left = tx + "px";
-	element.style.top = ty + "px";
-
-	// element.css("left", tx);
-	// element.css("top", ty);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-// /**
-//  * @function: xxxxxx(xxx)
-//  * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//  * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
-//  */
-// window.getStyle = function (eleOrId, style) {
-//     var element;
-
-//     if (typeof (eleOrId) == "string") {
-//         element = document.getElementById(eleOrId);
-//         if (!element) {
-//             var msg = "getComputerStyle(elementOrId,style): usage error!";
-//             msg += "elementOrId needs to be an element in the DOM or a string of the ID of an element in the DOM!";
-//             throw (msg);
-//         }
-//     } else {
-//         element = eleOrId;
-//     }
-
-
-//     if (!document.defaultView) {
-//         var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support defaultView, please upgrade your browser or try google chrome.";
-//         throw (msg);
-//     }
-
-//     if (!document.defaultView.getComputedStyle) {
-//         var msg = "getComputerStyle(elementOrId,style): Your browser doesn't support getComputedStyle, please upgrade your browser or try google chrome.";
-//         throw (msg);
-//     }
-
-//     var sd = document.defaultView.getComputedStyle(element, null);
-
-//     if (!sd[style]) {
-//         var msg = "\n" + "getComputerStyle(elementOrId,style): Computed style for element doesn't exist!\n";
-//         msg += "The element [" + eleOrId + "] doesn't have a computer style property of [" + style + "]";
-//         throw (msg);
-//     }
-
-//     return sd[style];
-// }
-// // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-
-/**
- * @function: isBreakPoint(bp)
- * @desc: Returns the breakpoint your in
- * @param array bp: [320, 480, 768, 1024] etc
- */
-window.isBreakPoint = function(bp) {
-    // The breakpoints that you set in your css
-    var bps = [320, 480, 768, 1024];
-    var w = window.innerWidth;
-    var min, max;
-    for (var i = 0, l = bps.length; i < l; i++) {
-      if (bps[i] === bp) {
-        min = bps[i-1] || 0;
-        max = bps[i];
-        break;
-      }
+    var me = this;
+    var vars = {
+        element: false,
+        id: false,
+        delay: false,
+        duration: false,
+        display: "block",
+        animateHeight: false,
+        onStartAddClassList: false,
+        onStartRemoveClassList: false,
+        onCompleteAddClassList: false,
+        onCompleteRemoveClassList: false,
+        onComplete: false
     }
-    return w > min && w <= max;
-  }
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.removeAllSelectOptions = function (selectBoxId) {
-	var i,
-		element = document.getElementById(selectBoxId);
 
-	if (element) {
-		for (i = element.options.length - 1; i >= 0; i--) {
-			element.remove(i);
-		}
-	}
+    new AFTC.ArgsToObject(arguments[0], vars);
 
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+    function getElement() {
+        if (!vars.element && vars.id) {
+            vars.element = getElementById(vars.id);
+        }
+    }
 
+    function removeClassList(classList) {
+        if (isArray(classList)) {
+            for (var key in classList) {
+                var className = classList[key];
+                try {
+                    vars.element.classList.remove(className);
+                } catch (e){ }
+            }
+        } else if (typeof (classList) == "string") {
+            try {
+                vars.element.classList.remove(classList);
+            } catch (e){ }
+        }
+    }
 
+    function addClassList(classList) {
+        if (isArray(classList)) {
+            for (var key in classList) {
+                var className = classList[key];
+                try {
+                    vars.element.classList.add(className);
+                } catch (e){ }
+            }
+        } else if (typeof (classList) == "string") {
+            try {
+                vars.element.classList.add(classList);
+            } catch (e){ }
+        }
+    }
 
+    function processOnStartClassLists() {
+        if (vars.onStartAddClassList) {
+            addClassList(vars.onStartAddClassList);
+        }
+        if (vars.onStartRemoveClassList) {
+            removeClassList(vars.onStartRemoveClassList);
+        }
+    }
 
+    function processOnCompleteClassLists() {
+        if (vars.onCompleteAddClassList) {
+            addClassList(vars.onCompleteAddClassList);
+        }
+        if (vars.onCompleteRemoveClassList) {
+            removeClassList(vars.onCompleteRemoveClassList);
+        }
+    }
 
-/**
- * @function: checkboxToggleContent(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.checkboxToggleContent = function (cb, ids, showOnCheck) {
-	var msg = "aftc.js > checkboxShowHide > incorrect usage!\n";
-	msg += "checkboxHideShow(arg1,arg2,arg3)" + "\n";
-	msg += "arg1 = checkbox element || checkbox element id" + "\n";
-	msg += "arg2 = elementIdToShowHodeToggle || ArrayOfElementIdsToShowHide toggle" + "\n";
-	msg += "arg3 (optional) = boolean : true (default) = show items on check || false = hide items on check" + "\n";
+    function _hide() {
+        getElement();
+        if (!vars.element || !isElement(vars.element)) { return; }
 
-	var checkbox;
+        processOnStartClassLists();
 
-	if (typeof (cb) == "string") {
-		checkbox = document.getElementById(cb);
-		if (!cb) {
-			log("checkboxShowHide argument 1 ID was not found on the DOM! Check for typos")
-			throw (msg);
-		}
-	}
+        function setOnCompleteState() {
+            vars.element.style.transitionDuration = "0s";
+            vars.element.style.display = "none";
+            processOnCompleteClassLists();
+            if (vars.onComplete) {
+                vars.onComplete();
+            }
+        }
 
-	if (cb.type && cb.type != 'checkbox') {
-		log("checkboxShowHide argument 1 was not a checkbox element or id of a checkbox!")
-		throw (msg);
-	}
-
-
-	if (!ids || ids == '' || ids.length < 1) {
-		log("checkboxShowHide argument 2 is not valid!")
-		throw (msg);
-	}
-
-
-	if (typeof (showOnCheck) == "undefined") {
-		showOnCheck = true;
-	}
-
-	var itemsToShowHide = [];
-
-	if (typeof (ids) == "string") {
-		var element = document.getElementById(ids);
-		if (!element) {
-			log("Unable to find elemnt id [" + ids + "] on page!\n" + msg);
-		}
-		itemsToShowHide.push(element);
-
-	} else if (isArray(ids)) {
-		// log("PARSING ARRAY");
-		for (var index = 0; index < ids.length; index++) {
-			var id = ids[index];
-			// log("going to look for element with id of [" + id + "]");
-			var element = document.getElementById(id);
-			if (!element) {
-				throw ("Unable to find elemnt id [" + id + "] on page!\n" + msg);
-			}
-			itemsToShowHide.push(element);
-		}
-
-	}
-
-
-	// Take note of each elements style.display value as we will want to restore it
-	//.setAttribute('data', "icon:
-	//document.getElementById('item1').dataset.icon
-
-
-	for (var index = 0; index < itemsToShowHide.length; index++) {
-		var element = itemsToShowHide[index];
-		var currentDisplayStyle = element.style.display;
-		var originalDisplayStyle = element.getAttribute("data-display");
-		if (!element.dataset.display) {
-			//displayStyle = getStyle(element,"display"); // This would make it dependent on misc.js
-			var sd = document.defaultView.getComputedStyle(element, null);
-			currentDisplayStyle = sd.display;
-			originalDisplayStyle = currentDisplayStyle;
-			element.setAttribute("data-display", originalDisplayStyle);
-		}
-
-		var style = "";
-
-		if (cb.checked && showOnCheck) {
-			style = originalDisplayStyle;
-		} else if (cb.checked && !showOnCheck) {
-			style = "none";
-		} else if (!cb.checked && showOnCheck) {
-			style = "none";
-		} else {
-			style = originalDisplayStyle;
-		}
-
-		//log("Setting [" + element.id + "] style.display to [" + style + "]");
-		element.style.display = style;
-
-	}
-
-	// log("---");
-	// log("currentDisplayStyle = [" + currentDisplayStyle + "]");
-	// log("originalDisplayStyle = [" + originalDisplayStyle + "]");
-
-	// show by elementId
-	var elementToShow = document.getElementById(ids);
-	if (elementToShow) {
+        if (vars.duration) {
+            vars.element.style.transitionDuration = vars.duration + "s";
+            vars.element.style.opacity = 0;
+            vars.element.style.overflow = "hidden";
+            if (vars.animateHeight){
+                vars.element.style.height = getComputedStyle(vars.element).height;
+                setTimeout(function () {
+                    vars.element.style.height = "0px";
+                    vars.element.style.marginTop = "0px";
+                    vars.element.style.marginBottom = "0px";
+                }, 25);
+            }
+            vars.element.addEventListener("transitionend", function (event) {
+                setOnCompleteState();
+            }, false);
+        } else {
+            vars.element.style.display = "none";
+            setOnCompleteState();
+        }
+    }
 
 
-	}
+    function hide() {
+        if (vars.delay) {
+            setTimeout(function () {
+                _hide();
+            }, (vars.delay*1000));
+        } else {
+            _hide();
+        }
+    }
 
-	/*
-	var $state = jQuery('input[name="' + $checkboxID + '"]:checked').val();
-	$state = $state.toLowerCase();
+    
 
-	if ($state.checked) {
-		jQuery("#" + $elementIdForHideShow).slideDown();
-	} else {
-		jQuery("#" + $elementIdForHideShow).slideUp();
-	}
-	*/
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+    function _show() {
+        getElement();
+        if (!vars.element || !isElement(vars.element)) { return; }
 
+        processOnStartClassLists();
 
-/**
- * @function: isChecked(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.isChecked = function (id) {
-	return document.getElementById(id).checked;
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+        function setOnCompleteState() {
+            vars.element.style.transitionDuration = "0s";
+            vars.element.style.opacity = 1;
+            vars.element.style.display = vars.display;
+            processOnCompleteClassLists();
+            if (vars.onComplete) {
+                vars.onComplete();
+            }
+        }
 
+        if (vars.duration) {
+            vars.element.style.opacity = 0;
+            vars.element.style.transitionDuration = vars.duration + "s";
+            vars.element.style.display = vars.display;
+            setTimeout(function () {
+                vars.element.style.opacity = 1;
+            }, 25);
 
+            vars.element.addEventListener("transitionend", function (event) {
+                setOnCompleteState();
+            }, false);
+        } else {
+            setOnCompleteState();
+        }
+    }
 
+    return {
+        hide: function () {
+            hide();
+        },
+        show: function () {
+            show();
+        }
+    }
 
-/**
- * @function: isNumberKey(event)
- * @desc: Checks if evt supplied (use on form input events via onkeyup or onkeydown)
- * @param event evt: html onkeyup(event) or onkeydown(event)
- */
-window.isNumberKey = function (evt) {
-	var charCode = (evt.which) ? evt.which : event.keyCode;
-	if (charCode > 31 && (charCode < 48 || charCode > 57))
-		return false;
-
-	return true;
-}
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-
-
-/**
- * @function: parseJSONToSelect(j, selectElementIdOrElement, labelKey, valueKey)
- * @desc: parses a json object of key value pairs to a form select element
- * @param string j: the json data
- * @param multi selectElementIdOrElement: the json data
- * @param string labelKey: of key value pair this is the key
- * @param string valueKey: of key value pair this is the value
- */
-window.parseJSONToSelect = function (j, selectElementIdOrElement, labelKey, valueKey) {
-	var element;
-
-	if (typeof(selectElementIdOrElement) == "string"){
-		element = document.getElementById(selectElementIdOrElement);
-		if (!element){
-			throw("AFTC.js > parseJSONToSelect() Usage ERROR, Unable to find anything on the DOM with an ID of [" + selectElementIdOrElement + "]");
-		}
-	}
-
-	if( typeof(selectElementIdOrElement) == "object"){
-		element = selectElementIdOrElement;
-	}
-
-	if (typeof(j) == "string"){
-		j = JSON.parse(j);
-	}
-
-	for (var i = 0; i < j.length; i++) {
-		var label = j[i][labelKey];
-		var data = j[i][valueKey];
-
-		var option = document.createElement("option");
-		option.text = label;
-		option.value = data;
-		//log(option);
-		element.add(option);
-	}
+    function show() {
+        if (vars.delay) {
+            setTimeout(function () {
+                _show();
+            }, (vars.delay*1000));
+        } else {
+            _show();
+        }
+    }
 }
 
-
-
-
-/**
- * @function: xxxxxx(xxx)
- * @desc: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
- */
-window.limitLengthInWords = function (element, maxWords) {
-	var value = element.value,
-		wordCount = value.split(/\S+/).length - 1,
-		re = new RegExp("^\\s*\\S+(?:\\s+\\S+){0," + (maxWords - 1) + "}");
-	if (wordCount >= maxWords) {
-		element.value = value.match(re);
-		document.getElementById('word_count').innerHTML = "";
-		wcount_valid = true;
-	} else {
-		document.getElementById('word_count').innerHTML = (maxWords - wordCount) + " words remaining";
-		wcount_valid = false;
-	}
-
-	return wcount_valid;
+window.show = function () {
+    if (typeof(arguments[0]) == "string"){
+        var args = { id :arguments[0] }
+        AFTC.Visibility(args).show();
+    } else if (isElement(arguments[0])){
+        var args = { element :arguments[0] }
+        AFTC.Visibility(args).show();
+    } else {
+        AFTC.Visibility(arguments[0]).show();
+    }
 }
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+window.fadeIn = function(){ window.show(arguments[0]); }
+
+window.hide = function () {
+    if (typeof(arguments[0]) == "string"){
+        var args = { id :arguments[0] }
+        AFTC.Visibility(args).hide();
+    } else if (isElement(arguments[0])){
+        var args = { element :arguments[0] }
+        AFTC.Visibility(args).hide();
+    } else {
+        AFTC.Visibility(arguments[0]).hide();
+    }
+}
+window.fadeOut = function(){ window.hide(arguments[0]); }
+
+
+
 // AFTC init
 var AFTC = AFTC || {}
 
@@ -4085,131 +4847,6 @@ AFTC.XHR = function () {
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-
-
-
-
-/**
- * @function: AFTC.Benchmark()
- * @desc: Quick and easy benchmarking, see examples benchmark.htm for usage
- * ````
- * AFTC.Benchmark().start();
- * // do you stuff
- * AFTC.Benchmark().end();
- * log( AFTC.Benchmark().getTime() );
- * ````
- * @function start: start benchmark
- * @function stop: stop benchmark
- * @function getTime: return benchmark result
- */
-AFTC.Benchmark = function () {
-    var params = {
-        start: 0,
-        end: 0,
-        time: 0
-    }
-
-    return {
-        start: function () {
-            params.start = new Date();
-        },
-        stop: function () {
-            params.end = new Date();
-            params.time = params.end.getTime() - params.start.getTime();
-            return params.time;
-        },
-        getTime: function () {
-            return params.time;
-        }
-    }
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-/**
- * @function: AFTC.Resizemanager()
- * @desc: A function stack manager for resize and orientation change events
- * @function: enable()
- * @desc: enable function stack execution on oritentation and resize change
- * @function: disable()
- * @desc: disable function stack execution on oritentation and resize change
- * @function: add(uid,fn)
- * @desc: add function to orientation and resize stack
- * @param string uid: unique id / label of function to add from stack
- * @param function fn: function to add to stack
- * @function: remove(uid)
- * @desc: remove function from orientation and resize stack
- * @param string uid: unique id / label of function to remove from stack
- */
-AFTC.ResizeManager = {
-    running: false,
-    enabled: false,
-    delay: 100,
-    stack: [],
-    enable: function () {
-        // log("AFTC.ResizeManager.enable()");
-        AFTC.ResizeManager.enabled = true;
-        window.addEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
-        window.addEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
-    },
-    disable: function () {
-        // log("AFTC.ResizeManager.disable()");
-        AFTC.ResizeManager.enabled = false;
-        window.removeEventListener("resize", AFTC.ResizeManager.resizeHandler, false);
-        window.removeEventListener("orientationchange", AFTC.ResizeManager.resizeHandler, false);
-    },
-    add: function (uid, fn) {
-        // log("AFTC.ResizeManager.add(): " + uid);
-        var stackItem = {};
-        stackItem.uid = uid;
-        stackItem.fn = fn;
-        AFTC.ResizeManager.stack.push(stackItem);
-    },
-    remove: function (uid) {
-        // log("AFTC.ResizeManager.remove(): " + uid);
-        var len = AFTC.ResizeManager.stack.length;
-        for (var i = 0; i < len; i++) {
-            if (AFTC.ResizeManager.stack[i]) {
-                //log(AFTC.ResizeManager.stack[i].uid);
-                if (AFTC.ResizeManager.stack[i].uid == uid) {
-                    AFTC.ResizeManager.stack.splice(i, 1);
-                    AFTC.ResizeManager.remove(uid);
-                    break;
-                }
-            }
-        }
-    },
-    runStackItem: function (index, stackLength) {
-        // log("runStackItem(index:"+index+")");
-        window.setTimeout(function () {
-            if (index == (stackLength - 1)) {
-                AFTC.ResizeManager.running = false;
-            }
-            AFTC.ResizeManager.stack[index].fn();
-        }, AFTC.ResizeManager.delay);
-
-    },
-    resizeHandler: function (e) {
-        if (AFTC.ResizeManager.running) {
-            return;
-        }
-        AFTC.ResizeManager.running = true;
-
-        window.setTimeout(function () {
-            var len = AFTC.ResizeManager.stack.length;
-            for (var i = 0; i < len; i++) {
-                AFTC.ResizeManager.runStackItem(i, len);
-            }
-        }, AFTC.ResizeManager.delay);
-    }
-}
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 

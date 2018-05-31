@@ -1,12 +1,8 @@
 {
   "name": "aftc.js",
-  "version": "1.6.23",
+  "version": "1.6.0",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
-    "webpack-dev": "webpack -d",
-    "webpack-dev-watch": "webpack -d --watch",
-    "webpack-build": "webpack -p",
-    "webpack-build-watch": "webpack -p --watch",
     "gulp-build": "gulp build",
     "gulp-watch": "gulp watch"
   },
