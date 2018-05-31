@@ -111,7 +111,7 @@ window.getArrayOfRandomNumbers = function (arraySize, min, max) {
  * @desc: generate an array of random string of a specified length
  * @param arraySize number: the number of random strings to generate also the array size that will be returned
  * @param strLength number: the length of the strings to be generated
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/BVNJvB
  */
 window.getArrayOfRandomStrings = function (arraySize, strLength) {
     var arr = [];
@@ -127,7 +127,7 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
  * @function: guid()
  * @desc: generates a guid
  * @alias: getGUID
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/MGLayZ
  */
 window.guid = function () {
     function Amiga() {
@@ -156,7 +156,7 @@ window.getGUID = function () { return guid(); }
  * @desc: Get a weighted random based on odds and iterations
  * @param odds array: array of odds
  * @param iterations number: number of iterations to run on each number test
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/RyvWjZ
  */
 window.getWeightedRandom = function (odds, iterations) {
     if (!odds) {

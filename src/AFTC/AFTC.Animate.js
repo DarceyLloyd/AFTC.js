@@ -19,6 +19,9 @@
  * anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
  * ````
  * @link: see usage example in test/animation.htm
+ * @link: https://codepen.io/AllForTheCode/pen/MXYGob
+ * @link: https://codepen.io/AllForTheCode/pen/MXYPqq
+ * @link: https://codepen.io/AllForTheCode/pen/xzbymv
  */
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 AFTC.Animate = function (elementId, onComplete) {

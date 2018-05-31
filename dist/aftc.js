@@ -527,7 +527,7 @@ window.arrayToSingleLineString = function (arr) {
                 break;
         }
     }
-    html = trimStringLength(html, html.length - 1);
+    html = cutStringTo(html, html.length - 1);
     html += "]";
     return html;
 }
@@ -797,7 +797,7 @@ window.generateUID = function (len) { return getUID(len); }
  * @param arraySize number: the number of random numbers to generate also the array size that will be returned
  * @param min number: the minimum your random number is allowed to be
  * @param max number: the maximum your random number is allowed to be
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/NMoGdz
  */
 window.getArrayOfRandomNumbers = function (arraySize, min, max) {
     var arr = [];
@@ -2631,6 +2631,22 @@ AFTC.Velocity = function (vx, vy) {
 function cycle(pos, max) {
     return (pos % max + max) % max;
 }
+/**
+ * @function: AFTC.Audio({options})
+ * @desc: An audio player with preloading capabilities, looping abilities and loop offset capabilities
+ * @params src stringOrArray: String or Array of urls/paths to sound files
+ * @params cache boolean: To cache or not to cache
+ * @params volume float: 0 to 1
+ * @params repeat number: -1 forever, 0 play once only, or the number of times to repeat
+ * @params preload boolean: true or false
+ * @params offsetLoopBy float: the sample offset from the end that you wish to loop by can help remove loop gaps
+ * @params onUpdate function: the function you wish to run when your sound is playing provides and info object
+ * @params onReady function: the function you wish to run when your sound is ready and can play
+ * @params onComplete function: the function you wish to run when your sound has finished playing
+ * @params hideWarnings boolean: hides notices in console for compatibility issues when not using mp3 etc
+ * @link: https://codepen.io/AllForTheCode/pen/NzWrvm
+ */
+
 // Resource:
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
 // https://www.w3schools.com/jsref/dom_obj_audio.asp
@@ -3401,6 +3417,9 @@ AFTC.Audio = function () {
  * anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
  * ````
  * @link: see usage example in test/animation.htm
+ * @link: https://codepen.io/AllForTheCode/pen/MXYGob
+ * @link: https://codepen.io/AllForTheCode/pen/MXYPqq
+ * @link: https://codepen.io/AllForTheCode/pen/xzbymv
  */
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 AFTC.Animate = function (elementId, onComplete) {

@@ -1,3 +1,19 @@
+/**
+ * @function: AFTC.Audio({options})
+ * @desc: An audio player with preloading capabilities, looping abilities and loop offset capabilities
+ * @params src stringOrArray: String or Array of urls/paths to sound files
+ * @params cache boolean: To cache or not to cache
+ * @params volume float: 0 to 1
+ * @params repeat number: -1 forever, 0 play once only, or the number of times to repeat
+ * @params preload boolean: true or false
+ * @params offsetLoopBy float: the sample offset from the end that you wish to loop by can help remove loop gaps
+ * @params onUpdate function: the function you wish to run when your sound is playing provides and info object
+ * @params onReady function: the function you wish to run when your sound is ready and can play
+ * @params onComplete function: the function you wish to run when your sound has finished playing
+ * @params hideWarnings boolean: hides notices in console for compatibility issues when not using mp3 etc
+ * @link: https://codepen.io/AllForTheCode/pen/NzWrvm
+ */
+
 // Resource:
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
 // https://www.w3schools.com/jsref/dom_obj_audio.asp

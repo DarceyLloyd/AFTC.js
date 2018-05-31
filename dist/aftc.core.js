@@ -813,7 +813,7 @@ window.getArrayOfRandomNumbers = function (arraySize, min, max) {
  * @desc: generate an array of random string of a specified length
  * @param arraySize number: the number of random strings to generate also the array size that will be returned
  * @param strLength number: the length of the strings to be generated
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/BVNJvB
  */
 window.getArrayOfRandomStrings = function (arraySize, strLength) {
     var arr = [];
@@ -829,7 +829,7 @@ window.getArrayOfRandomStrings = function (arraySize, strLength) {
  * @function: guid()
  * @desc: generates a guid
  * @alias: getGUID
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/MGLayZ
  */
 window.guid = function () {
     function Amiga() {
@@ -858,7 +858,7 @@ window.getGUID = function () { return guid(); }
  * @desc: Get a weighted random based on odds and iterations
  * @param odds array: array of odds
  * @param iterations number: number of iterations to run on each number test
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/RyvWjZ
  */
 window.getWeightedRandom = function (odds, iterations) {
     if (!odds) {
@@ -907,9 +907,10 @@ window.getWeightedRandom = function (odds, iterations) {
 /**
  * @function: limitLengthInWords(str, maxWords)
  * @desc: Limit a string in length of words
- * @param string str: the original string to limit
- * @param number maxWords: the number of words you wish to limit to
+ * @param str string: the original string to limit
+ * @param maxWords number: the number of words you wish to limit to
  * @return object: {output:string,remaining:number}
+ * @link: https://codepen.io/AllForTheCode/pen/xjMdye
  */
 window.limitLengthInWords = function (str, maxWords) {
 	var wordCount = str.split(/\S+/).length - 1;
@@ -931,7 +932,8 @@ window.limitLengthInWords = function (str, maxWords) {
 /**
  * @function: cleanJSONString(s)
  * @desc: Attempts to clean a json string
- * @param string s: input string
+ * @param s string: input string
+ * @link: https://codepen.io/AllForTheCode/pen/BxMRER
  */
 window.cleanJSONString = function (s) {
 	// preserve newlines, etc - use valid JSON
@@ -953,18 +955,19 @@ window.cleanJSONString = function (s) {
 /**
  * @function: escapeHTML(input)
  * @desc: Attempts to escape a html string
- * @param string xxxx: xxxxxxxxxxxxxxxxxxxx
+ * @param input string: the string you wish to escape
+ * @link: https://codepen.io/AllForTheCode/pen/PerGRJ
  */
-/*
-function escapeHtml(unsafe) {
-    return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
- }
-*/
+//
+// function escapeHtml(unsafe) {
+//     return unsafe
+//          .replace(/&/g, "&amp;")
+//          .replace(/</g, "&lt;")
+//          .replace(/>/g, "&gt;")
+//          .replace(/"/g, "&quot;")
+//          .replace(/'/g, "&#039;");
+//  }
+//
 window.escapeHTML = function (input) {
 	if (typeof (input) != "string") { console.error("escape(arg): usage error: arg needs to be a string!"); return false; }
 
@@ -984,15 +987,16 @@ window.escapeHTML = function (input) {
 
 
 /**
- * @function: setStringLength(input, len)
+ * @function: cutStringTo(input, len)
  * @desc: sets the length of a string from left to right
- * @param string input: what string do you want to set the length of?
- * @param number length: the length you want the string to be
- * @alias cutStringTo
- * @alias cutString
- * @alias cutStringLength
- * @alias setStrLen
- * @alias trimStringLength
+ * @param input string: what string do you want to set the length of?
+ * @param length number: the length you want the string to be
+ * @alias: cutStringTo
+ * @alias: cutString
+ * @alias: cutStringLength
+ * @alias: setStrLen
+ * @alias: trimStringLength
+ * @link: https://codepen.io/AllForTheCode/pen/VxJKEm
  */
 window.cutStringTo = function (s, len) {
 	return s.substring(0, len);
@@ -1008,8 +1012,10 @@ window.trimStringLength = function (s, len) { return cutStringTo(s,len); }
 /**
  * @function: trimStringBy(input, trimBy)
  * @desc: Trims the length of a string by a value
- * @param string input: The string you want to trim
- * @param number trimBy: How many characters do you want to trim off the end
+ * @param input string: The string you want to trim
+ * @param trimBy number: How many characters do you want to trim off the end
+ * @alias: tTrim
+ * @link: https://codepen.io/AllForTheCode/pen/BxgLvr
  */
 window.trimStringBy = function (str, trimBy) {
 	return (str.substring(0, str.length - trimBy));
@@ -1022,6 +1028,8 @@ window.rTrim = function (str, trimBy) { return trimStringBy(str, trimBy); }
  * @desc: Trims the left of a string by a specified amount
  * @param string str: The string you want to trim
  * @param number by: How many characters do you want to trim off the end
+ * @alias: lTrim
+ * @link: https://codepen.io/AllForTheCode/pen/wXayva
  */
 window.lTrim = function (str, by) {
 	return str.substring(by, str.length);
@@ -1036,6 +1044,7 @@ window.leftTrim = function (str, by) { return lTrim(str, by); }
  * @function: getFileExtension(input)
  * @desc: Attempts to get the file extension from a file path string
  * @param string str: the file path string
+ * @link: https://codepen.io/AllForTheCode/pen/OZeRqv
  */
 window.getFileExtension = function (input) {
 	var ext = input.split('.').pop();
@@ -1049,6 +1058,7 @@ window.getFileExtension = function (input) {
  * @function: getFileExtension2(input)
  * @desc: Attempts to get the file extension from a file path string
  * @param string str: the file path string
+ * @link: https://codepen.io/AllForTheCode/pen/OZeRqv
  */
 window.getFileExtension2 = function (input) {
 	return input.slice((input.lastIndexOf(".") - 1 >>> 0) + 2);
@@ -1062,6 +1072,7 @@ window.getFileExtension2 = function (input) {
  * @function: getLastPartOfUrl(url)
  * @desc: Gets the last part of a URL
  * @param string url: url to process
+ * @link: https://codepen.io/AllForTheCode/pen/gzNwNv
  */
 window.getLastPartOfUrl = function (url) {
 	if (!url) {
@@ -1078,6 +1089,7 @@ window.getLastPartOfUrl = function (url) {
  * @function: removeFileFromPath(path)
  * @desc: Attempts to remove the file from a file path string
  * @param string path: path
+ * @link: https://codepen.io/AllForTheCode/pen/QrXGWY
  */
 window.removeFileFromPath = function (path) {
 	//var pa = '/this/is/a/folder/aFile.txt';
@@ -1092,6 +1104,7 @@ window.removeFileFromPath = function (path) {
  * @function: getAnchor(url)
  * @desc: Get anchor from url
  * @param string url: The url to get the anchor from
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getAnchor = function (url) {
 	if (!url) { url = window.location.href; }
@@ -1113,6 +1126,7 @@ window.getAnchorFromUrl = function (url) { return window.getAnchor(url); }
  * @function: String.prototype.startsWith(str)
  * @desc: ES6 supports the startsWith(), this is for pre ES6 support
  * @param string str: string to check
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 if (typeof String.prototype.startsWith != 'function') {
 	String.prototype.startsWith = function (str) {
@@ -1124,6 +1138,7 @@ if (typeof String.prototype.startsWith != 'function') {
  * @function: String.prototype.endsWith(str)
  * @desc: ES6 supports endsWith(), this is for pre ES6 support
  * @param string str: string to check
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 //
 if (typeof String.prototype.endsWith != 'function') {
@@ -1140,6 +1155,7 @@ if (typeof String.prototype.endsWith != 'function') {
  * @param string input: input string to check
  * @param string start: start string marker
  * @param string end: end string marker
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getStringBetween = function (str, start, end) {
 	return str.split(start).pop().split(end).shift().trim();
@@ -1154,6 +1170,7 @@ window.getStringBetween = function (str, start, end) {
  * @param string str: input string to check
  * @param string start: start string marker
  * @param string end: end string marker
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 window.getAllStringsBetween = function (str, start, end) {
 	var orig = str;
@@ -1593,6 +1610,7 @@ window.getDateTime = function (local) {
  * @desc: Validats an email address
  * @param string email: email address
  * @returns boolean
+ * @link: https://codepen.io/AllForTheCode/pen/xjogjy
  */
 window.isEmail = function (email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

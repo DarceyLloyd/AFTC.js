@@ -2,6 +2,7 @@
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
+ <a href='#aftcaudiooptions'>AFTC.Audio({options})</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
  <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
  <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>

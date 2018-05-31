@@ -87,6 +87,7 @@ var aftc_modules = [
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
+ <a href='#aftcaudiooptions'>AFTC.Audio({options})</a><br>
  <a href='#aftclog'>AFTC.Log</a><br>
  <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
  <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
@@ -313,9 +314,54 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>object</td>
-		<td>params</td>
-		<td>parameters object</td>
+		<td>s</td>
+		<td>src</td>
+		<td>String or Array of urls/paths to sound files</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>cache</td>
+		<td>To cache or not to cache</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>volume</td>
+		<td>0 to 1</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>repeat</td>
+		<td>-1 forever, 0 play once only, or the number of times to repeat</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>preload</td>
+		<td>true or false</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>offsetLoopBy</td>
+		<td>the sample offset from the end that you wish to loop by can help remove loop gaps</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onUpdate</td>
+		<td>the function you wish to run when your sound is playing provides and info object</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onReady</td>
+		<td>the function you wish to run when your sound is ready and can play</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onComplete</td>
+		<td>the function you wish to run when your sound has finished playing</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>hideWarnings</td>
+		<td>hides notices in console for compatibility issues when not using mp3 etc</td>
 	</tr>
 </table>
 
@@ -328,6 +374,87 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MXYGob' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYGob</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/MXYPqq' target='_blank'>https://codepen.io/AllForTheCode/pen/MXYPqq</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/xzbymv' target='_blank'>https://codepen.io/AllForTheCode/pen/xzbymv</a>
+
+
+<hr><br><br><br>
+    
+### <b>AFTC.Audio({options})</b>
+An audio player with preloading capabilities, looping abilities and loop offset capabilities<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>src</td>
+		<td>String or Array of urls/paths to sound files</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>cache</td>
+		<td>To cache or not to cache</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>volume</td>
+		<td>0 to 1</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>repeat</td>
+		<td>-1 forever, 0 play once only, or the number of times to repeat</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>preload</td>
+		<td>true or false</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>offsetLoopBy</td>
+		<td>the sample offset from the end that you wish to loop by can help remove loop gaps</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onUpdate</td>
+		<td>the function you wish to run when your sound is playing provides and info object</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onReady</td>
+		<td>the function you wish to run when your sound is ready and can play</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>onComplete</td>
+		<td>the function you wish to run when your sound has finished playing</td>
+	</tr>
+	<tr>
+		<td>s</td>
+		<td>hideWarnings</td>
+		<td>hides notices in console for compatibility issues when not using mp3 etc</td>
+	</tr>
+</table>
+
+<b>Returns:</b> 
+#### Alias's:
+ - log
+ - trace
+
+</details>
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/NzWrvm' target='_blank'>https://codepen.io/AllForTheCode/pen/NzWrvm</a>
 
 
 <hr><br><br><br>
@@ -1300,7 +1427,7 @@ generate an array of random number between your max and min values<br>
 </details>
 
 #### Usage examples:
- - <a href='https://codepen.io/AllForTheCode/pen/xxxxxxx' target='_blank'>https://codepen.io/AllForTheCode/pen/xxxxxxx</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMoGdz' target='_blank'>https://codepen.io/AllForTheCode/pen/NMoGdz</a>
 
 
 <hr><br><br><br>
