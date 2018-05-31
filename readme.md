@@ -189,7 +189,6 @@ var aftc_modules = [
  <a href='#removefilefrompathpath'>removeFileFromPath(path)</a><br>
  <a href='#rgb2hexrgb'>rgb2Hex(r,g,b)</a><br>
  <a href='#rgbtohexrgb'>rgbToHex(r,g,b)</a><br>
- <a href='#scrolltoelementelementidargdurationoffset'>scrollToElement(elementId, arg_duration, offset)</a><br>
  <a href='#setcookienamevalue'>setCookie(name, value)</a><br>
  <a href='#sethtmlelementoridhtml'>setHTML(elementOrId,html);</a><br>
  <a href='#setstringlengthinputlen'>setStringLength(input, len)</a><br>
@@ -3792,46 +3791,6 @@ rgb to hex<br>
 </table>
 
 <b>Returns:</b> hex color
-#### Alias's:
- - html
-
-</details>
-
-
-
-<hr><br><br><br>
-    
-### <b>scrollToElement(elementId, arg_duration, offset)</b>
-Scroll to element on page<br>
-
-<details>
-    <summary><b>More information</b></summary>
-
- #### Parameters: 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>elementId</td>
-		<td>ID of element you wish to scroll to</td>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>arg_duration</td>
-		<td>Duration in seconds</td>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>offset</td>
-		<td>How much to offset scroll by</td>
-	</tr>
-</table>
-
-<b>Returns:</b> 
 #### Alias's:
  - html
 
