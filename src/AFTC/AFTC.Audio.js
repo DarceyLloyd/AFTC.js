@@ -66,7 +66,7 @@ AFTC.Audio = function () {
         onComplete: false,
         hideWarnings: false,
     };
-    new AFTC.ArgsToObject(arguments[0], args);
+    argsToObject(arguments, args);
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 

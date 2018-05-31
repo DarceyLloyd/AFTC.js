@@ -28,7 +28,7 @@ AFTC.Canvas = function () {
         context: false,
     };
 
-    new AFTC.ArgsToObject(arguments[0], args);
+    argsToObject(arguments, args);
 
     function init() {
         if (args.id && !args.canvas) {
