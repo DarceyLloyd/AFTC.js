@@ -254,18 +254,35 @@ window.log.enable = function () { AFTC.Log.enabled = true; }
 
 /**
  * @function: logDisable()
- * @desc: Enables log and trace
+ * @desc: Disables log and trace
  * @alias: window.log.disable();
  * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
  * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
 window.logDisable = function () { AFTC.Log.enabled = false; }
 window.log.disable = function () { AFTC.Log.enabled = false; }
+
+
+
+/**
+ * @function: logToDisable()
+ * @desc: Disables log and trace to a html element
+ * @alias: disableLogTo();
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
+ */
 window.logToDisable = function () { AFTC.Log.to(false); }
 window.disableLogTo = function () { AFTC.Log.to(false); }
 
 
 
+/**
+ * @function: cls()
+ * @desc: Clears the console if supported
+ * @alias: clearLog();
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
+ */
 window.cls = function () {
     if (console) {
         if (console.clear) {

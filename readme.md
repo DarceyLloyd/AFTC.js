@@ -113,6 +113,263 @@ Quick and easy args to object<br>
 
 <hr><br><br><br>
     
+### <b>getElementById(id)</b>
+Gets an element from the DOM by ID. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>string</td>
+		<td>The ID of the DOM element you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - getId
+ - byId
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/PedyNO' target='_blank'>https://codepen.io/AllForTheCode/pen/PedyNO</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>querySelector(query)</b>
+Gets an element from the DOM via DOM Query. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>query</td>
+		<td>string</td>
+		<td>The DOM Query / css element path you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - query
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/MGqPrN' target='_blank'>https://codepen.io/AllForTheCode/pen/MGqPrN</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>getElementsByName(name)</b>
+Gets an array of element from the DOM that have a specific name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>The name of the DOM element you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>getElementByName(name)</b>
+Gets the first element from the DOM that has a specific name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>The name of the DOM element you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>The class the DOM element(s) use you wish to find</b>
+Gets an array of html elements from the DOM that have a specific class name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>The class name the DOM element uses you wish to find</b>
+Gets the first html element from the DOM that has a specific class name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>getElementsByTagName(tagName)</b>
+Gets an array of html elements from the DOM that has a specific tag name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>getElementByTagName(tagName)</b>
+Gets the first html element from the DOM that has a specific tag name. NOTE<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>tagName</td>
+		<td>string</td>
+		<td>the tag name you wish to find</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - log
+ - trace
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+</details>
+
+<hr><br><br><br>
+    
 ### <b>AFTC.Log</b>
 Shortcut for console.log with some formatting capabilities<br>
 ````
@@ -142,17 +399,50 @@ log(MyClass);
 
 [return]
 #### Alias's:
+ - log
  - trace
 
 #### Usage examples:
- - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 </details>
 
 <hr><br><br><br>
     
-### <b>logEnable() | log.enable()</b>
-Enables log()<br>
+### <b>logTo(element)</b>
+Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted<br>
+
+<details>
+    <summary><b>More information</b></summary>
+
+ #### Parameters: 
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>string</td>
+		<td>The id of html element you wish to console.log to</td>
+	</tr>
+</table>
+
+[return]
+#### Alias's:
+ - window.log.enable();
+
+#### Usage examples:
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
+
+</details>
+
+<hr><br><br><br>
+    
+### <b>logEnable()</b>
+Enables log and trace<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -173,17 +463,18 @@ Enables log()<br>
 
 [return]
 #### Alias's:
- - stringToWindow
+ - window.log.enable();
 
 #### Usage examples:
- - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 </details>
 
 <hr><br><br><br>
     
-### <b>logDisable() | log.disable()</b>
-Disable log()<br>
+### <b>logDisable()</b>
+Enables log and trace<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -204,10 +495,11 @@ Disable log()<br>
 
 [return]
 #### Alias's:
- - stringToWindow
+ - window.log.disable();
 
 #### Usage examples:
- - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
 </details>
 
