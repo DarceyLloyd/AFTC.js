@@ -111,7 +111,8 @@ function getAnchors($path){
     $out = "### <b>Quick links:</b>\n";
     foreach ($anchors as $value) {
         if (!isInString("//",$value)){
-            $lower = strtolower( $value );
+            $link = strtolower( $value );
+            $link = preg_replace("/[^A-Za-z0-9 ]/", '', $link);
             $out .= " <a href='#" . $lower . "'>" . $value . "</a><br>\n";
         }
     }
