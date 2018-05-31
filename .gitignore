@@ -3,8 +3,6 @@
 vendor
 node_modules
 
-
-
 # OS generated files #
 ######################
 .DS_Store
@@ -18,6 +16,7 @@ Thumbs.db
 # IDE files #
 #############
 nbproject
+.nbproject
 .~lock.*
 .buildpath
 .idea
@@ -30,5 +29,6 @@ prepros-6.config
 package-lock.json
 
 
-GenerateDocumentation.php
-readme.old
+# Misc #
+########
+.old
