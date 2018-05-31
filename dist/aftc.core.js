@@ -7,7 +7,7 @@ var AFTC = AFTC || {}
 
 
 /**
- * @function: argsToObject(args, obj)
+ * @function: argsToObject(fArgs, obj, strict)
  * @desc: Quick and easy args to object
  * @param args object: arguments (from the function structure, typically code will always be 'arguments'
  * @param obj object: object to parse into
@@ -20,7 +20,7 @@ argsToObject = function (fArgs, obj, strict) {
     if (fArgs[0] && typeof (fArgs[0]) == "object") {
         var args = fArgs[0];
 
-        if (!strict){ strict = true; }
+        if (strict == undefined){ strict = true; }
         if (args && typeof (args) == "object") {
             for (var key in args) {
                 if (strict){
