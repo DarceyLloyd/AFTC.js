@@ -235,7 +235,7 @@ function generateReadme($comments){
 [links]
 </details>
 
-<hr>
+<hr><br><br><br>
     ";
 
     $out = "";

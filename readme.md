@@ -111,7 +111,7 @@ Quick and easy args to object<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>AFTC.Log</b>
 Shortcut for console.log with some formatting capabilities<br>
@@ -149,7 +149,7 @@ log(MyClass);
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>logEnable() | log.enable()</b>
 Enables log()<br>
@@ -180,7 +180,7 @@ Enables log()<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>logDisable() | log.disable()</b>
 Disable log()<br>
@@ -211,7 +211,7 @@ Disable log()<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>openDebugWindow(html)</b>
 open a popup window with the html you wish to display in it<br>
@@ -242,7 +242,7 @@ open a popup window with the html you wish to display in it<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>The function to call when the event is triggered</b>
 Shortcut for adding events with old browser compatibility<br>
@@ -283,7 +283,7 @@ Shortcut for adding events with old browser compatibility<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>inline function or pass it a function for when your page is loaded and ready to be used</b>
 Replacement for jQuerys $(document).ready<br>
@@ -319,7 +319,7 @@ Replacement for jQuerys $(document).ready<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayRemoveIndex(arr,index)</b>
 remove a specified index from an array<br>
@@ -355,7 +355,7 @@ remove a specified index from an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isStringInArray(needle,haystack)</b>
 Check to see if a string is in an array<br>
@@ -391,7 +391,7 @@ Check to see if a string is in an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayContains(needle,haystack)</b>
 Check to see if your array contains something you want to find<br>
@@ -427,7 +427,7 @@ Check to see if your array contains something you want to find<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayEmpty(arr)</b>
 clears/empties an array for garbage collection<br>
@@ -458,7 +458,7 @@ clears/empties an array for garbage collection<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getMaxFromArray(arr)</b>
 returns the maximum value in an array<br>
@@ -490,7 +490,7 @@ returns the maximum value in an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayGetMin</b>
 returns the minimum value in an array<br>
@@ -522,7 +522,7 @@ returns the minimum value in an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayShuffle(arr)</b>
 shuffles an array (method 1)<br>
@@ -554,7 +554,7 @@ shuffles an array (method 1)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>arrayShuffle2(arr)</b>
 shuffles an array (method 2)<br>
@@ -586,7 +586,7 @@ shuffles an array (method 2)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>convertToArray(v)</b>
 takes an input and returns it as index[0] of an array<br>
@@ -617,7 +617,7 @@ takes an input and returns it as index[0] of an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>the function wish to get the name of</b>
 tries to get the function name of a suppled function<br>
@@ -653,7 +653,7 @@ tries to get the function name of a suppled function<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isInString(find,source)</b>
 check for string in string<br>
@@ -689,7 +689,7 @@ check for string in string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isEven(n)</b>
 check if input is even<br>
@@ -720,7 +720,7 @@ check if input is even<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isOdd(n)</b>
 check if input is odd<br>
@@ -751,7 +751,7 @@ check if input is odd<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isAlphaNumeric(input)</b>
 check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
@@ -782,7 +782,7 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isElement(o)</b>
 checks if your variable is an element or not<br>
@@ -813,7 +813,7 @@ checks if your variable is an element or not<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isElement2(element)</b>
 checks to see if your vairable is an element or not<br>
@@ -844,7 +844,7 @@ checks to see if your vairable is an element or not<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isDOM(obj)</b>
 checks to see if your variable is a DOM object<br>
@@ -875,7 +875,7 @@ checks to see if your variable is a DOM object<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isBoolean(input)</b>
 checks if a variable is a boolean<br>
@@ -906,7 +906,7 @@ checks if a variable is a boolean<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isNumeric(n)</b>
 check if variable is numeric<br>
@@ -937,7 +937,7 @@ check if variable is numeric<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isArray(input)</b>
 check if variable is an array<br>
@@ -968,7 +968,7 @@ check if variable is an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getRandomInt(min,max)</b>
 returns a random number / int betwen your specified min and max values<br>
@@ -1004,7 +1004,7 @@ returns a random number / int betwen your specified min and max values<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getRandomThatsNot(min,max,not)</b>
 returns a random int betwen your specified min and max values but never the not value<br>
@@ -1040,7 +1040,7 @@ returns a random int betwen your specified min and max values but never the not 
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getRandomFloat(min,max)</b>
 returns a random floating point number betwen your specified min and max values<br>
@@ -1076,7 +1076,7 @@ returns a random floating point number betwen your specified min and max values<
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>randomString(length)</b>
 get a random string of a specified length<br>
@@ -1107,7 +1107,7 @@ get a random string of a specified length<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getUID(length)</b>
 Generates a random id<br>
@@ -1139,7 +1139,7 @@ Generates a random id<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getArrayOfRandomNumbers(arraySize,min,max)</b>
 generate an array of random number between your max and min values<br>
@@ -1180,7 +1180,7 @@ generate an array of random number between your max and min values<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getArrayOfRandomStrings(arraySize,strLength)</b>
 generate an array of random string of a specified length<br>
@@ -1216,7 +1216,7 @@ generate an array of random string of a specified length<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>guid()</b>
 generates a guid<br>
@@ -1252,7 +1252,7 @@ generates a guid<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getWeightedRandom(odds, iterations)</b>
 Get a weighted random based on odds and iterations<br>
@@ -1291,7 +1291,7 @@ Get a weighted random based on odds and iterations<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>limitLengthInWords(str, maxWords)</b>
 Limit a string in length of words<br>
@@ -1330,7 +1330,7 @@ Limit a string in length of words<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>cleanJSONString(s)</b>
 Attempts to clean a json string<br>
@@ -1364,7 +1364,7 @@ Attempts to clean a json string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>escapeHTML(input)</b>
 Attempts to escape a html string<br>
@@ -1398,7 +1398,7 @@ Attempts to escape a html string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>setStringLength(input, len)</b>
 sets the length of a string from left to right<br>
@@ -1437,7 +1437,7 @@ sets the length of a string from left to right<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>trimStringBy(input, trimBy)</b>
 Trims the length of a string by a value<br>
@@ -1473,7 +1473,7 @@ Trims the length of a string by a value<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>leftTrim(str, by)</b>
 Trims the left of a string by a specified amount<br>
@@ -1509,7 +1509,7 @@ Trims the left of a string by a specified amount<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getFileExtension(input)</b>
 Attempts to get the file extension from a file path string<br>
@@ -1540,7 +1540,7 @@ Attempts to get the file extension from a file path string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getFileExtension2(input)</b>
 Attempts to get the file extension from a file path string<br>
@@ -1571,7 +1571,7 @@ Attempts to get the file extension from a file path string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getLastPartOfUrl(url)</b>
 Gets the last part of a URL<br>
@@ -1602,7 +1602,7 @@ Gets the last part of a URL<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>removeFileFromPath(path)</b>
 Attempts to remove the file from a file path string<br>
@@ -1633,7 +1633,7 @@ Attempts to remove the file from a file path string<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getAnchor(url)</b>
 Get anchor from url<br>
@@ -1664,7 +1664,7 @@ Get anchor from url<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>String.prototype.startsWith(str)</b>
 ES6 supports the startsWith(), this is for pre ES6 support<br>
@@ -1695,7 +1695,7 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>String.prototype.endsWith(str)</b>
 ES6 supports endsWith(), this is for pre ES6 support<br>
@@ -1726,7 +1726,7 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getStringBetween(input,start,end)</b>
 Gets a string between two other strings<br>
@@ -1767,7 +1767,7 @@ Gets a string between two other strings<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getAllStringsBetween(str,start,end)</b>
 Gets all strings between two other strings (multi match)<br>
@@ -1808,7 +1808,7 @@ Gets all strings between two other strings (multi match)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>radToDeg(input)</b>
 converts radians to degrees<br>
@@ -1839,7 +1839,7 @@ converts radians to degrees<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>degToRad(input)</b>
 converts degrees to radians<br>
@@ -1870,7 +1870,7 @@ converts degrees to radians<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>toHex(num)</b>
 Converts a number to hex<br>
@@ -1901,7 +1901,7 @@ Converts a number to hex<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>boolToString(bool)</b>
 converts boolean to a string of true or false<br>
@@ -1932,7 +1932,7 @@ converts boolean to a string of true or false<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>boolToYesNo(bool)</b>
 converts a boolean to yes or no<br>
@@ -1963,7 +1963,7 @@ converts a boolean to yes or no<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>stringToBool(str)</b>
 Converts a string to a boolean (y,yes,"1",no etc)<br>
@@ -1994,7 +1994,7 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getBooleanFrom(input)</b>
 converts an input to a boolean<br>
@@ -2025,7 +2025,7 @@ converts an input to a boolean<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>parseArrayToFloat(arr)</b>
 parses all values in array to float<br>
@@ -2056,7 +2056,7 @@ parses all values in array to float<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>parseArrayToInt(arr)</b>
 parses all values in array to float<br>
@@ -2087,7 +2087,7 @@ parses all values in array to float<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>toArray(v)</b>
 takes an input and returns it as index[0] of an array<br>
@@ -2119,7 +2119,7 @@ takes an input and returns it as index[0] of an array<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getDaysBetween(startDateTime, endDateTime)</b>
 Gets the number of whole days between a start and end date<br>
@@ -2156,7 +2156,7 @@ Gets the number of whole days between a start and end date<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getUKDateFromDate(date)</b>
 Formats a date in the UK format<br>
@@ -2187,7 +2187,7 @@ Formats a date in the UK format<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getUSDateFromDate(date)</b>
 Formats a date in the US format<br>
@@ -2218,7 +2218,7 @@ Formats a date in the US format<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getUkDateFromDbDateTime(input)</b>
 get a uk date from a mysql db date value<br>
@@ -2249,7 +2249,7 @@ get a uk date from a mysql db date value<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getUkDateTimeFromDbDateTime(input)</b>
 get a uk date from a mysql db date time value<br>
@@ -2280,7 +2280,7 @@ get a uk date from a mysql db date time value<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getSQLDateTime()</b>
 gets the date time now for sql insert<br>
@@ -2311,7 +2311,7 @@ gets the date time now for sql insert<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getDateTime(local)</b>
 gets the date time at a specified local<br>
@@ -2342,7 +2342,7 @@ gets the date time at a specified local<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>validateEmail(email)</b>
 Validats an email address<br>
@@ -2373,7 +2373,7 @@ Validats an email address<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isMobile()</b>
 isMobile<br>
@@ -2404,7 +2404,7 @@ isMobile<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isFireFox()</b>
 Detects FireFox<br>
@@ -2435,7 +2435,7 @@ Detects FireFox<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isChrome()</b>
 Detects Chrome<br>
@@ -2466,7 +2466,7 @@ Detects Chrome<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isEdge()</b>
 Detects Edge<br>
@@ -2497,7 +2497,7 @@ Detects Edge<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isSafari()</b>
 Detects Safari<br>
@@ -2528,7 +2528,7 @@ Detects Safari<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isIE()</b>
 Detects IE<br>
@@ -2559,7 +2559,7 @@ Detects IE<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isOpera()</b>
 Detects Opera<br>
@@ -2590,7 +2590,7 @@ Detects Opera<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getIEVersion()</b>
 Gets version of IE<br>
@@ -2621,7 +2621,7 @@ Gets version of IE<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getBrowser()</b>
 Detects browser<br>
@@ -2652,7 +2652,7 @@ Detects browser<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getOS(testUserAgent)</b>
 Attempts to get the os from the user agent or the test user agent<br>
@@ -2683,7 +2683,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>setHTML(elementOrId,html);</b>
 quick shortcut for outputting html to an element<br>
@@ -2725,7 +2725,7 @@ setHTML(myElement,"Welcome!");
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getElementOffsetTop(elementId)</b>
 Gets an elements top offset<br>
@@ -2754,7 +2754,7 @@ Gets an elements top offset<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>centerAbsoluteElement(eleOrEleId)</b>
 Center element that is absolute positioned<br>
@@ -2783,7 +2783,7 @@ Center element that is absolute positioned<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>the class name to add</b>
 shortcut to add a css class to a html element<br>
@@ -2812,7 +2812,7 @@ shortcut to add a css class to a html element<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>the class name to remove</b>
 shortcut to remove a class from a html element<br>
@@ -2841,7 +2841,7 @@ shortcut to remove a class from a html element<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>hasClass(elementOrId, cls)</b>
 Check to see if an element has a class attached to it<br>
@@ -2875,7 +2875,7 @@ Check to see if an element has a class attached to it<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>redirect(url)</b>
 no more typing self.location.href, just use redirect(url)<br>
@@ -2904,7 +2904,7 @@ no more typing self.location.href, just use redirect(url)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>setCookie(name, value)</b>
 Sets a cookie by name with a value<br>
@@ -2938,7 +2938,7 @@ Sets a cookie by name with a value<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getCookie(name)</b>
 Gets the value of a cookie by name<br>
@@ -2967,7 +2967,7 @@ Gets the value of a cookie by name<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isChecked(elementId)</b>
 Checks to if checkbox is checked or not<br>
@@ -2996,7 +2996,7 @@ Checks to if checkbox is checked or not<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>isNumberKey(event)</b>
 Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
@@ -3025,7 +3025,7 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>removeAllSelectOptions(elementOrId)</b>
 Removes all the options in a select<br>
@@ -3054,7 +3054,7 @@ Removes all the options in a select<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>parseJSONToSelect(j, selectElementIdOrElement, label, value)</b>
 parses a json object of key value pairs to a form select element<br>
@@ -3098,7 +3098,7 @@ parses a json object of key value pairs to a form select element<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>cycle(pos, max)</b>
 cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
@@ -3132,7 +3132,7 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>AFTC.Animate(elementId, onComplete)</b>
 Quick and easy css animation for nearly every css element style<br>
@@ -3173,7 +3173,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>fadeIn(elementId, duration)</b>
 fades in an element over a specified duration<br>
@@ -3207,7 +3207,7 @@ fades in an element over a specified duration<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>fadeOut(elementId, duration)</b>
 fades out an element over a specified duration<br>
@@ -3241,7 +3241,7 @@ fades out an element over a specified duration<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>scrollToElement(elementId, arg_duration, offset)</b>
 Scroll to element on page<br>
@@ -3280,7 +3280,7 @@ Scroll to element on page<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>AFTC.Canvas({id||canvas})</b>
 <br>
@@ -3316,7 +3316,7 @@ Scroll to element on page<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b></b>
 
@@ -3355,7 +3355,7 @@ Scroll to element on page<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>rgb2Hex(r,g,b)</b>
 rgb to hex<br>
@@ -3394,7 +3394,7 @@ rgb to hex<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>rgbToHex(r,g,b)</b>
 rgb to hex<br>
@@ -3433,7 +3433,7 @@ rgb to hex<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>hexToRgb(hex)</b>
 hexToRgb<br>
@@ -3462,7 +3462,7 @@ hexToRgb<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>AFTC.Color({params})</b>
 Color allows you to create, convert, lighten or darken colours and more.<br>
@@ -3491,7 +3491,7 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>getRandomColor()</b>
 returns a random RGB object o.r, o.g, o.g<br>
@@ -3530,7 +3530,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     
 ### <b>on a successfull xhr request this is the function that will be called</b>
 Quick and easy xhr/ajax<br>
@@ -3571,7 +3571,7 @@ Quick and easy xhr/ajax<br>
 
 </details>
 
-<hr>
+<hr><br><br><br>
     <br><br><br>
 
 
