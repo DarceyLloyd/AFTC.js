@@ -106,10 +106,10 @@ Quick and easy args to object<br>
 #### Alias's:
  - argsTo
 
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
+
+</details>
 
 <hr>
     
@@ -144,10 +144,10 @@ log(MyClass);
 #### Alias's:
  - trace
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -175,10 +175,10 @@ Enables log()<br>
 #### Alias's:
  - stringToWindow
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -206,10 +206,10 @@ Disable log()<br>
 #### Alias's:
  - stringToWindow
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -237,10 +237,10 @@ open a popup window with the html you wish to display in it<br>
 #### Alias's:
  - stringToWindow
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -278,10 +278,10 @@ Shortcut for adding events with old browser compatibility<br>
 #### Alias's:
  - ready
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -314,10 +314,10 @@ Replacement for jQuerys $(document).ready<br>
 #### Alias's:
  - ready
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -350,10 +350,10 @@ remove a specified index from an array<br>
 #### Alias's:
  - arrayClear
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -386,10 +386,10 @@ Check to see if a string is in an array<br>
 #### Alias's:
  - arrayClear
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -422,10 +422,10 @@ Check to see if your array contains something you want to find<br>
 #### Alias's:
  - arrayClear
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -453,10 +453,10 @@ clears/empties an array for garbage collection<br>
 #### Alias's:
  - arrayClear
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -485,10 +485,10 @@ returns the maximum value in an array<br>
  - arrayGetMax
  - arrayMax
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -517,10 +517,10 @@ returns the minimum value in an array<br>
  - getMinFromArray
  - arrayMin
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -549,10 +549,10 @@ shuffles an array (method 1)<br>
  - shuffle
  - arrayShuffle
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -581,10 +581,10 @@ shuffles an array (method 2)<br>
  - shuffle2
  - arrayShuffle2
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -612,10 +612,10 @@ takes an input and returns it as index[0] of an array<br>
 #### Alias's:
  - valueToArray
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -648,10 +648,10 @@ tries to get the function name of a suppled function<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -684,10 +684,10 @@ check for string in string<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -715,10 +715,10 @@ check if input is even<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -746,10 +746,10 @@ check if input is odd<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -777,10 +777,10 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -808,10 +808,10 @@ checks if your variable is an element or not<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -839,10 +839,10 @@ checks to see if your vairable is an element or not<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -870,10 +870,10 @@ checks to see if your variable is a DOM object<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -901,10 +901,10 @@ checks if a variable is a boolean<br>
 #### Alias's:
  - isBool
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -932,10 +932,10 @@ check if variable is numeric<br>
 #### Alias's:
  - isNumber
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -963,10 +963,10 @@ check if variable is an array<br>
 #### Alias's:
  - getRandom
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -999,10 +999,10 @@ returns a random number / int betwen your specified min and max values<br>
 #### Alias's:
  - getRandom
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1035,10 +1035,10 @@ returns a random int betwen your specified min and max values but never the not 
 #### Alias's:
  - getRandom
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1071,10 +1071,10 @@ returns a random floating point number betwen your specified min and max values<
 #### Alias's:
  - getRandomString
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1102,10 +1102,10 @@ get a random string of a specified length<br>
 #### Alias's:
  - getRandomString
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1134,10 +1134,10 @@ Generates a random id<br>
  - getUID
  - generateUID
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1175,10 +1175,10 @@ generate an array of random number between your max and min values<br>
 #### Alias's:
  - getGUID
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1211,10 +1211,10 @@ generate an array of random string of a specified length<br>
 #### Alias's:
  - getGUID
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1247,10 +1247,10 @@ generates a guid<br>
 #### Alias's:
  - getGUID
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1286,10 +1286,10 @@ Get a weighted random based on odds and iterations<br>
  - 
  - 
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1325,10 +1325,10 @@ Limit a string in length of words<br>
  - 
  - 
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1359,10 +1359,10 @@ Attempts to clean a json string<br>
  - 
  - 
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1393,10 +1393,10 @@ Attempts to escape a html string<br>
  - 
  - 
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1432,10 +1432,10 @@ sets the length of a string from left to right<br>
  - 
  - 
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1468,10 +1468,10 @@ Trims the length of a string by a value<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1504,10 +1504,10 @@ Trims the left of a string by a specified amount<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1535,10 +1535,10 @@ Attempts to get the file extension from a file path string<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1566,10 +1566,10 @@ Attempts to get the file extension from a file path string<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1597,10 +1597,10 @@ Gets the last part of a URL<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1628,10 +1628,10 @@ Attempts to remove the file from a file path string<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1659,10 +1659,10 @@ Get anchor from url<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1690,10 +1690,10 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1721,10 +1721,10 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1762,10 +1762,10 @@ Gets a string between two other strings<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1803,10 +1803,10 @@ Gets all strings between two other strings (multi match)<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1834,10 +1834,10 @@ converts radians to degrees<br>
 #### Alias's:
  - rad2deg
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1865,10 +1865,10 @@ converts degrees to radians<br>
 #### Alias's:
  - deg2rad
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1896,10 +1896,10 @@ Converts a number to hex<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1927,10 +1927,10 @@ converts boolean to a string of true or false<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1958,10 +1958,10 @@ converts a boolean to yes or no<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -1989,10 +1989,10 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2020,10 +2020,10 @@ converts an input to a boolean<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2051,10 +2051,10 @@ parses all values in array to float<br>
 #### Alias's:
  - arrayToFloat
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2082,10 +2082,10 @@ parses all values in array to float<br>
 #### Alias's:
  - arrayToInt
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2114,10 +2114,10 @@ takes an input and returns it as index[0] of an array<br>
  - convertToArray
  - valueToArray
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2151,10 +2151,10 @@ Gets the number of whole days between a start and end date<br>
  - getNoOfDaysBetween
  - getDaysBetweenDates
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2182,10 +2182,10 @@ Formats a date in the UK format<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2213,10 +2213,10 @@ Formats a date in the US format<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2244,10 +2244,10 @@ get a uk date from a mysql db date value<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2275,10 +2275,10 @@ get a uk date from a mysql db date time value<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2306,10 +2306,10 @@ gets the date time now for sql insert<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2337,10 +2337,10 @@ gets the date time at a specified local<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2368,10 +2368,10 @@ Validats an email address<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2399,10 +2399,10 @@ isMobile<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2430,10 +2430,10 @@ Detects FireFox<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2461,10 +2461,10 @@ Detects Chrome<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2492,10 +2492,10 @@ Detects Edge<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2523,10 +2523,10 @@ Detects Safari<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2554,10 +2554,10 @@ Detects IE<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2585,10 +2585,10 @@ Detects Opera<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2616,10 +2616,10 @@ Gets version of IE<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2647,10 +2647,10 @@ Detects browser<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2678,10 +2678,10 @@ Attempts to get the os from the user agent or the test user agent<br>
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2720,10 +2720,10 @@ setHTML(myElement,"Welcome!");
 #### Alias's:
  - html
 
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2749,10 +2749,10 @@ Gets an elements top offset<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2778,10 +2778,10 @@ Center element that is absolute positioned<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2807,10 +2807,10 @@ shortcut to add a css class to a html element<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2836,10 +2836,10 @@ shortcut to remove a class from a html element<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2870,10 +2870,10 @@ Check to see if an element has a class attached to it<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2899,10 +2899,10 @@ no more typing self.location.href, just use redirect(url)<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2933,10 +2933,10 @@ Sets a cookie by name with a value<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2962,10 +2962,10 @@ Gets the value of a cookie by name<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -2991,10 +2991,10 @@ Checks to if checkbox is checked or not<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3020,10 +3020,10 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3049,10 +3049,10 @@ Removes all the options in a select<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3093,10 +3093,10 @@ parses a json object of key value pairs to a form select element<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3127,10 +3127,10 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3168,10 +3168,10 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
+
+</details>
 
 <hr>
     
@@ -3202,10 +3202,10 @@ fades in an element over a specified duration<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3236,10 +3236,10 @@ fades out an element over a specified duration<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3275,10 +3275,10 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3311,10 +3311,10 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3350,10 +3350,10 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3389,10 +3389,10 @@ rgb to hex<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3428,10 +3428,10 @@ rgb to hex<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3457,10 +3457,10 @@ hexToRgb<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3486,10 +3486,10 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
+
+</details>
 
 <hr>
     
@@ -3525,10 +3525,10 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
+
+</details>
 
 <hr>
     
@@ -3566,10 +3566,10 @@ Quick and easy xhr/ajax<br>
 
 [return]
 [alias]
-</details>
-
 #### Usage examples:
  - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
+
+</details>
 
 <hr>
     <br><br><br>

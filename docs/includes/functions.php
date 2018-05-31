@@ -232,9 +232,9 @@ function generateReadme($comments){
 [table]
 [return]
 [alias]
+[links]
 </details>
 
-[links]
 <hr>
     ";
 
