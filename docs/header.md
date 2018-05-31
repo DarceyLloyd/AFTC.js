@@ -4,7 +4,7 @@
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
 
-#### <b>Installation</b>
+### <b>Installation</b>
 ```
 npm i aftc.js
 gulp build
@@ -24,8 +24,8 @@ Then include the version you wish to use, your options are:
 <br><br>
 
 
-<details>
-    <summary><b>Build Guide</b>:</summary>
+
+### <b>Build Guide</b>
 
 I pref' gulp at the moment.
 
@@ -44,7 +44,7 @@ gulp build
 // The extras, the modules, the ooo or to some, the bloat
 // Nice to have, but not essential
 var aftc_modules = [
-    "./dist/aftc.core.js", // The AFTC Core
+    "./dist/aftc.core.js", // The AFTC Core (required)
     "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
     "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
@@ -59,11 +59,11 @@ var aftc_modules = [
 
 - Open terminal in VSCode by pressing CTRL + '
 - Type into terminal
+
 ```
-gulp build
+    gulp build
 ```
 
-</details>
 
  ---
  

@@ -4,7 +4,7 @@
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
 
-#### <b>Installation</b>
+### <b>Installation</b>
 ```
 npm i aftc.js
 gulp build
@@ -24,8 +24,8 @@ Then include the version you wish to use, your options are:
 <br><br>
 
 
-<details>
-    <summary><b>Build Guide</b>:</summary>
+
+### <b>Build Guide</b>
 
 I pref' gulp at the moment.
 
@@ -44,7 +44,7 @@ gulp build
 // The extras, the modules, the ooo or to some, the bloat
 // Nice to have, but not essential
 var aftc_modules = [
-    "./dist/aftc.core.js", // The AFTC Core
+    "./dist/aftc.core.js", // The AFTC Core (required)
     "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
     "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
     "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas();
@@ -59,11 +59,11 @@ var aftc_modules = [
 
 - Open terminal in VSCode by pressing CTRL + '
 - Type into terminal
+
 ```
-gulp build
+    gulp build
 ```
 
-</details>
 
  ---
  
@@ -104,10 +104,10 @@ Quick and easy args to object<br>
 #### Alias's:
  - argsTo
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/PaqbKN' target='_blank'>https://codepen.io/AllForTheCode/pen/PaqbKN</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -136,10 +136,10 @@ Gets an element from the DOM by ID. NOTE<br>
  - getId
  - byId
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/PedyNO' target='_blank'>https://codepen.io/AllForTheCode/pen/PedyNO</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -167,10 +167,10 @@ Gets an element from the DOM via DOM Query. NOTE<br>
 #### Alias's:
  - query
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/MGqPrN' target='_blank'>https://codepen.io/AllForTheCode/pen/MGqPrN</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -199,10 +199,10 @@ Gets an array of element from the DOM that have a specific name. NOTE<br>
  - log
  - trace
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -231,10 +231,10 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
  - log
  - trace
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/gzdBdz' target='_blank'>https://codepen.io/AllForTheCode/pen/gzdBdz</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -263,10 +263,10 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
  - log
  - trace
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -295,10 +295,10 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
  - log
  - trace
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/odPQxE' target='_blank'>https://codepen.io/AllForTheCode/pen/odPQxE</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -327,8 +327,8 @@ Gets an array of html elements from the DOM that has a specific tag name. NOTE<b
  - log
  - trace
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -357,8 +357,8 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
  - log
  - trace
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -394,11 +394,11 @@ log(MyClass);
  - log
  - trace
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -426,10 +426,10 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
 #### Alias's:
  - window.log.enable();
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -457,11 +457,11 @@ Enables log and trace<br>
 #### Alias's:
  - window.log.enable();
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -489,11 +489,11 @@ Enables log and trace<br>
 #### Alias's:
  - window.log.disable();
 
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -521,8 +521,8 @@ open a popup window with the html you wish to display in it<br>
 #### Alias's:
  - stringToWindow
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -565,8 +565,8 @@ Shortcut for adding events with old browser compatibility<br>
 #### Alias's:
  - ready
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -594,8 +594,8 @@ Replacement for jQuerys $(document).ready<br>
 #### Alias's:
  - ready
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -628,8 +628,8 @@ remove a specified index from an array<br>
 #### Alias's:
  - arrayClear
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -662,8 +662,8 @@ Check to see if a string is in an array<br>
 #### Alias's:
  - arrayClear
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -696,8 +696,8 @@ Check to see if your array contains something you want to find<br>
 #### Alias's:
  - arrayClear
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -725,8 +725,8 @@ clears/empties an array for garbage collection<br>
 #### Alias's:
  - arrayClear
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -755,8 +755,8 @@ returns the maximum value in an array<br>
  - arrayGetMax
  - arrayMax
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -785,8 +785,8 @@ returns the minimum value in an array<br>
  - getMinFromArray
  - arrayMin
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -815,8 +815,8 @@ shuffles an array (method 1)<br>
  - shuffle
  - arrayShuffle
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -845,8 +845,8 @@ shuffles an array (method 2)<br>
  - shuffle2
  - arrayShuffle2
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -874,8 +874,8 @@ takes an input and returns it as index[0] of an array<br>
 #### Alias's:
  - valueToArray
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -903,8 +903,8 @@ tries to get the function name of a suppled function<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -937,8 +937,8 @@ check for string in string<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -966,8 +966,8 @@ check if input is even<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -995,8 +995,8 @@ check if input is odd<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1024,8 +1024,8 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1053,8 +1053,8 @@ checks if your variable is an element or not<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1082,8 +1082,8 @@ checks to see if your vairable is an element or not<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1111,8 +1111,8 @@ checks to see if your variable is a DOM object<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1140,8 +1140,8 @@ checks if a variable is a boolean<br>
 #### Alias's:
  - isBool
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1169,8 +1169,8 @@ check if variable is numeric<br>
 #### Alias's:
  - isNumber
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1198,8 +1198,8 @@ check if variable is an array<br>
 #### Alias's:
  - getRandom
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1232,8 +1232,8 @@ returns a random number / int betwen your specified min and max values<br>
 #### Alias's:
  - getRandom
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1266,8 +1266,8 @@ returns a random int betwen your specified min and max values but never the not 
 #### Alias's:
  - getRandom
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1300,8 +1300,8 @@ returns a random floating point number betwen your specified min and max values<
 #### Alias's:
  - getRandomString
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1329,8 +1329,8 @@ get a random string of a specified length<br>
 #### Alias's:
  - getRandomString
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1359,8 +1359,8 @@ Generates a random id<br>
  - getUID
  - generateUID
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1398,8 +1398,8 @@ generate an array of random number between your max and min values<br>
 #### Alias's:
  - getGUID
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1432,8 +1432,8 @@ generate an array of random string of a specified length<br>
 #### Alias's:
  - getGUID
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1466,8 +1466,8 @@ generates a guid<br>
 #### Alias's:
  - getGUID
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1503,8 +1503,8 @@ Get a weighted random based on odds and iterations<br>
  - 
  - 
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1540,8 +1540,8 @@ Limit a string in length of words<br>
  - 
  - 
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1572,8 +1572,8 @@ Attempts to clean a json string<br>
  - 
  - 
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1604,8 +1604,8 @@ Attempts to escape a html string<br>
  - 
  - 
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1641,8 +1641,8 @@ sets the length of a string from left to right<br>
  - 
  - 
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1675,8 +1675,8 @@ Trims the length of a string by a value<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1709,8 +1709,8 @@ Trims the left of a string by a specified amount<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1738,8 +1738,8 @@ Attempts to get the file extension from a file path string<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1767,8 +1767,8 @@ Attempts to get the file extension from a file path string<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1796,8 +1796,8 @@ Gets the last part of a URL<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1825,8 +1825,8 @@ Attempts to remove the file from a file path string<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1854,8 +1854,8 @@ Get anchor from url<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1883,8 +1883,8 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1912,8 +1912,8 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1951,8 +1951,8 @@ Gets a string between two other strings<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -1990,8 +1990,8 @@ Gets all strings between two other strings (multi match)<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2019,8 +2019,8 @@ converts radians to degrees<br>
 #### Alias's:
  - rad2deg
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2048,8 +2048,8 @@ converts degrees to radians<br>
 #### Alias's:
  - deg2rad
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2077,8 +2077,8 @@ Converts a number to hex<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2106,8 +2106,8 @@ converts boolean to a string of true or false<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2135,8 +2135,8 @@ converts a boolean to yes or no<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2164,8 +2164,8 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2193,8 +2193,8 @@ converts an input to a boolean<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2222,8 +2222,8 @@ parses all values in array to float<br>
 #### Alias's:
  - arrayToFloat
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2251,8 +2251,8 @@ parses all values in array to float<br>
 #### Alias's:
  - arrayToInt
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2281,8 +2281,8 @@ takes an input and returns it as index[0] of an array<br>
  - convertToArray
  - valueToArray
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2316,8 +2316,8 @@ Gets the number of whole days between a start and end date<br>
  - getNoOfDaysBetween
  - getDaysBetweenDates
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2345,8 +2345,8 @@ Formats a date in the UK format<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2374,8 +2374,8 @@ Formats a date in the US format<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2403,8 +2403,8 @@ get a uk date from a mysql db date value<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2432,8 +2432,8 @@ get a uk date from a mysql db date time value<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2461,8 +2461,8 @@ gets the date time now for sql insert<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2490,8 +2490,8 @@ gets the date time at a specified local<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2519,8 +2519,8 @@ Validats an email address<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2548,8 +2548,8 @@ isMobile<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2577,8 +2577,8 @@ Detects FireFox<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2606,8 +2606,8 @@ Detects Chrome<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2635,8 +2635,8 @@ Detects Edge<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2664,8 +2664,8 @@ Detects Safari<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2693,8 +2693,8 @@ Detects IE<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2722,8 +2722,8 @@ Detects Opera<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2751,8 +2751,8 @@ Gets version of IE<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2780,8 +2780,8 @@ Detects browser<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2809,8 +2809,8 @@ Attempts to get the os from the user agent or the test user agent<br>
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2849,8 +2849,8 @@ setHTML(myElement,"Welcome!");
 #### Alias's:
  - html
 
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2876,8 +2876,8 @@ Gets an elements top offset<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2903,8 +2903,8 @@ Center element that is absolute positioned<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2935,8 +2935,8 @@ shortcut to add a css class to a html element<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2967,8 +2967,8 @@ shortcut to remove a class from a html element<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -2999,8 +2999,8 @@ Check to see if an element has a class attached to it<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3026,8 +3026,8 @@ no more typing self.location.href, just use redirect(url)<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3058,8 +3058,8 @@ Sets a cookie by name with a value<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3085,8 +3085,8 @@ Gets the value of a cookie by name<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3112,8 +3112,8 @@ Checks to if checkbox is checked or not<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3139,8 +3139,8 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3166,8 +3166,8 @@ Removes all the options in a select<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3208,8 +3208,8 @@ parses a json object of key value pairs to a form select element<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3240,8 +3240,8 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3279,10 +3279,10 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 [return]
 [alias]
+</details>
 #### Usage examples:
  - <a href='see usage example in test/animation.htm' target='_blank'>see usage example in test/animation.htm</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -3313,8 +3313,8 @@ fades in an element over a specified duration<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3345,8 +3345,8 @@ fades out an element over a specified duration<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3382,8 +3382,8 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3416,8 +3416,8 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3453,8 +3453,8 @@ Scroll to element on page<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3490,8 +3490,8 @@ rgb to hex<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3527,8 +3527,8 @@ rgb to hex<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3554,8 +3554,8 @@ hexToRgb<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3581,10 +3581,10 @@ Color allows you to create, convert, lighten or darken colours and more.<br>
 
 [return]
 [alias]
+</details>
 #### Usage examples:
  - <a href='https://codepen.io/AllForTheCode/pen/mLZRge' target='_blank'>https://codepen.io/AllForTheCode/pen/mLZRge</a>
 
-</details>
 
 <hr><br><br><br>
     
@@ -3625,8 +3625,8 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 [return]
 [alias]
-
 </details>
+
 
 <hr><br><br><br>
     
@@ -3669,10 +3669,10 @@ Quick and easy xhr/ajax<br>
 
 [return]
 [alias]
+</details>
 #### Usage examples:
  - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
 
-</details>
 
 <hr><br><br><br>
     <br><br><br>

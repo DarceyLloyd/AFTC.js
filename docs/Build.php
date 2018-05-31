@@ -8,7 +8,7 @@
  * @param strict boolean: xxxxxxxxxx
  * @return: xxxxxxxxxxx
  * @alias: xxxxxxxxxxxxxx
- * @link: https://codepen.io/AllForTheCode/pen/xxxxxxxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxx
  */
 
 
