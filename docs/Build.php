@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comments = getComments($file);
     
     function cmp($a, $b){
-        return strcmp($a->name, $b->name);
+        //return strcmp($a->name, $b->name); // Case sensitive sorting 
+        return strcasecmp($a->name, $b->name); // Binary safe case-insensitive string comparison 
     }
     usort($comments, "cmp");
     //usort($comments, array($comments, "cmp"));
