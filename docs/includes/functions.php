@@ -79,6 +79,47 @@ function trimAndReplace($replace,$with,$source){
     return $out;
 }
 
+
+Class anchorVo{
+    public $name = "";
+    public $link = "";
+}
+
+
+function getAnchors($path){
+    $anchors = [];
+    $filter = ["\t", "\n\n", "\n\n"];
+    $function_filter = ["* ","@function:"];
+    
+    $file = fopen($path, 'r');
+    
+
+    while (($line = fgets($file)) !== false) {
+        $cLine = trimAndReplace($filter,"",$line);
+
+        if (isInString("@function",$cLine)){
+            // function found
+            $cLine = trimAndReplace($function_filter,"",$line);
+            $lower = strtolower( $cLine );
+            array_push($anchors,$cLine);
+            // out($cLine);
+            
+        }
+    }
+
+    sort($anchors, SORT_NATURAL | SORT_FLAG_CASE);
+    $out = "### <b>Quick links:</b>\n";
+    foreach ($anchors as $value) {
+        if (!isInString("//",$value)){
+            $lower = strtolower( $value );
+            $out .= " <a href='#" . $lower . "'>" . $value . "</a><br>\n";
+        }
+    }
+
+    return $out;
+}
+
+
 function getComments($path){
     $comments = []; // Array of comment arrays (a comment array for every /** ? */)
     $filter = ["\t", "\n\n", "\n\n"]; // Things we don't want in our comment lines

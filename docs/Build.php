@@ -19,8 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once("./includes/functions.php");
     require_once("./includes/parse_comment.php");
     require_once("./includes/vos.php");
+
+    $file = "../dist/aftc.js";
+    $anchors = getAnchors($file);
+    file_put_contents("./anchros.md",$anchors);
     
-    $comments = getComments("../dist/aftc.js");
+    $comments = getComments($file);
     $response .= "<h4><b>No of comments to be generatd: </b> " . count($comments) . "</h4>";
     //trace("No of comments processed = " . count($comments));
     // $comments = getComments("./aftc.js");
@@ -31,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $footer = file_get_contents("./footer.md");
     $out = generateReadme($comments);
     
-    file_put_contents("../readme.md",$header . $out . $footer);
+    $readme = $header . $anchors . $out . $footer;
+    file_put_contents("../readme.md",$readme);
     $response .= "<h4><b>Generation complete...</b>";
     // trace("Complete...");
     //echo($out);
