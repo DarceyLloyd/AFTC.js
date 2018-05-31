@@ -1,0 +1,205 @@
+@import url(https://rawgit.com/DarceyLloyd/AFTC.css/master/dist/aftc.no-reset.min.css);
+
+
+html, body {
+  background: #E5E5E5;
+  font-family: Arial, Helvetica;
+  font-size: 0.94em;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 0.96em;
+}
+
+
+h1, h2, h3, h4, h5 {
+  margin: 0 0 14px 0;
+  padding: 0;
+}
+
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+
+#info-box h1 { font-size: 1.1em; }
+#info-box h2 { font-size: 1em; }
+#info-box h3 { font-size: 0.9em; }
+#info-box h4 { font-size: 0.8em; }
+#info-box li { font-size: 0.9em; }
+
+
+button {
+  background: #880000;
+  color: #EEEEEE;
+  padding: 4px 8px;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  margin: 2px;
+  outline: none;
+}
+
+button:hover {
+  background: #BB0000;
+}
+
+
+
+header {
+  margin: 0 0 10px 0;
+  padding: 10px;
+  color: #121212;
+  background: #CCCCCC;
+  border-radius: 4px;
+  border: 1px solid #999999;
+}
+
+header h1 {
+  margin: 0 0 5px 0;
+}
+
+header .sub {
+  display: block;
+  margin: 0 0 10px 0;
+  color: #161616;
+}
+
+#info-box {
+  margin: 0;
+  padding: 10px;
+  color: #EEEEEE;
+  background: #565656;
+  border-radius: 4px;
+}
+
+#info-box h1 {
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+#info-box h2 {
+  margin: 0;
+  padding: 0;
+}
+
+#info-box ul {
+  margin: 0 0 0 35px;
+  padding: 0;
+}
+
+#info-box ul li {
+
+}
+
+#info-box p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.header-box {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  line-height: 22px;
+  color: #FFFFFF;
+  opacity: 0.8;
+  border-radius: 4px;
+
+}
+
+.header-box:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.header-box .left {
+  display: inline-block;
+  line-height: 14px;
+  padding: 4px 4px 5px 4px;
+  background: #565656; /*#363636;*/
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: 1px solid #101010;
+}
+
+.header-box .right {
+  display: inline-block;
+  line-height: 14px;
+  padding: 4px 4px 5px 4px;
+  background: #00AA00; /*#363636;*/
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: 1px solid #101010;
+}
+
+.header-box .bg-npm {
+  background: #C02C2B
+}
+
+.header-box .bg-github {
+  background: #22262A
+}
+
+.header-box .bg-paypal {
+  background: #0E2E7C
+}
+
+
+#output, #debug {
+  padding: 5px;
+  font-size: 12px;
+}
+
+
+
+
+input[type='checkbox']{
+    width: 20px;
+    height: 20px;
+    vertical-align: baseline;
+}
+
+a {
+    color: #CC0000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+.flex-col-inner {
+  padding: 10px;
+}
+
+.outer {
+  width: 100%;
+}
+
+.inner {
+  width: 760px;
+  margin: auto;
+}
+
+
+
+.box {
+  border: 1px solid #656565;
+}
+
+.padded-box {
+  border: 1px solid #656565;
+  padding: 10px;
+}
+/* END OF TEMPLATE STYLES */
+
+/* Styles used in  */
+
+
+
