@@ -172,6 +172,7 @@ window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag
  * log(MyClass);
  * ````
  * @param * input: what you want to console.log
+ * @alias: log
  * @alias: trace
  * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
  * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
@@ -226,21 +227,37 @@ AFTC.Log = {
         }
     }
 };
-window.logTo = function (element) { AFTC.Log.to(element); }
 window.log = function (arg) { AFTC.Log.out(arg); }
 window.trace = function (arg) { AFTC.Log.out(arg); }
 
+
+
 /**
- * @function: logEnable() | log.enable()
- * @desc: Enables log()
+ * @function: logTo(element)
+ * @desc: Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted
+ * @param element string: The id of html element you wish to console.log to
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
+ */
+window.logTo = function (element) { AFTC.Log.to(element); }
+
+
+/**
+ * @function: logEnable()
+ * @desc: Enables log and trace
+ * @alias: window.log.enable();
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
 window.logEnable = function () { AFTC.Log.enabled = true; }
 window.log.enable = function () { AFTC.Log.enabled = true; }
 
 
 /**
- * @function: logDisable() | log.disable()
- * @desc: Disable log()
+ * @function: logDisable()
+ * @desc: Enables log and trace
+ * @alias: window.log.disable();
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
 window.logDisable = function () { AFTC.Log.enabled = false; }
 window.log.disable = function () { AFTC.Log.enabled = false; }

@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * @function: xxxxxx(xxxxxxx)
+ * @desc: xxxxxxxxx
+ * @param args object: xxxxxxxxxxx
+ * @param obj object: xxxxxxx
+ * @param strict boolean: xxxxxxxxxx
+ * @return: xxxxxxxxxxx
+ * @alias: xxxxxxxxxxxxxx
+ * @link: https://codepen.io/AllForTheCode/pen/xxxxxxxxxxxx
+ */
+
+
+
+
 $response = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once("./includes/functions.php");
