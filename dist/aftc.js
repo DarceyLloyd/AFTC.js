@@ -4584,42 +4584,25 @@ https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpReq
 */
 
 
-/**
- * @type: class
- * @name: AFTC.XHR()
- * @version: 1.0.0
- * @requires: base.js
- * @function: AFTC.XHR(args)
+
+ /**
+ * @function: AFTC.XHR({options})
  * @desc: Quick and easy xhr/ajax
  * ````
-	var data = "mode=json2";
-	xhr1 = AFTC.XHR({
-		url: "./request.php",
-		method: "post",
-		data: data,
-		dataType: "form",
-		onComplete: function (response) {
-			logTo("debug", response);
-			response = JSON.parse(response);
-			// Iterate
-			// for (var index in response) {
-			//     var jObject = response[index];
-			//     logTo("debug", jObject);
-			//     for (var key in jObject) {
-			//         log(key + " = " + response[index][key]);
-			//     }
-			// }
-		}
-	});
+ * var data = "mode=json";
+ * xhr1 = AFTC.XHR({
+ * 		url: "./request.php",
+ *  	method: "post",
+ *  	data: data,
+ *  	dataType: "form",
+ * 		onError: function (response) {}
+ * 		onProgress: function (response) {}
+ *  	onComplete: function (response) {}
+ * });
  * ````
- * @param string url: url or file you wish to load
- * @param string method: post, get, put, delete etc
- * @param * data: array, object, formdata, string or json data you wish to send to the url
- * @param string dataType: data type of data object array, object, formdata, form and json
- * @param function onComplete: on a successfull xhr request this is the function that will be called
- * @return object data;
- * @link: see usage example in tests/xhr/xhr.htm
+ * @link: https://codepen.io/AllForTheCode/pen/dKodKx
  */
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 AFTC.XHR = function () {
 	var args = {

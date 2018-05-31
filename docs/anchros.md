@@ -7,7 +7,7 @@
  <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
  <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
  <a href='#aftcvelocityvxvy'>AFTC.Velocity(vx,vy)</a><br>
- <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
+ <a href='#aftcxhroptions'>AFTC.XHR({options})</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
  <a href='#arraycontainsneedlehaystack'>arrayContains(needle,haystack)</a><br>
  <a href='#arrayemptyarr'>arrayEmpty(arr)</a><br>

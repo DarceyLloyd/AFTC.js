@@ -93,7 +93,7 @@ var aftc_modules = [
  <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
  <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
  <a href='#aftcvelocityvxvy'>AFTC.Velocity(vx,vy)</a><br>
- <a href='#aftcxhrargs'>AFTC.XHR(args)</a><br>
+ <a href='#aftcxhroptions'>AFTC.XHR({options})</a><br>
  <a href='#argstoobjectfargsobjstrict'>argsToObject(fArgs, obj, strict)</a><br>
  <a href='#arraycontainsneedlehaystack'>arrayContains(needle,haystack)</a><br>
  <a href='#arrayemptyarr'>arrayEmpty(arr)</a><br>
@@ -655,10 +655,13 @@ AFTC.Velocity class helper<br>
 
 <hr><br><br><br>
     
-### <b>AFTC.XHR(args)</b>
+### <b>AFTC.XHR({options})</b>
 Quick and easy xhr/ajax<br>
 ````
-````
+var data = "mode=json";
+xhr1 = AFTC.XHR({
+url
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -671,24 +674,19 @@ Quick and easy xhr/ajax<br>
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>url</td>
-		<td>url or file you wish to load</td>
+		<td>args</td>
+		<td>object</td>
+		<td>arguments (from the function structure, typically code will always be 'arguments'</td>
 	</tr>
 	<tr>
-		<td>*</td>
-		<td>data</td>
-		<td>array, object, formdata, string or json data you wish to send to the url</td>
+		<td>obj</td>
+		<td>object</td>
+		<td>object to parse into</td>
 	</tr>
 	<tr>
-		<td>string</td>
-		<td>dataType</td>
-		<td>data type of data object array, object, formdata, form and json</td>
-	</tr>
-	<tr>
-		<td>function</td>
-		<td>onComplete</td>
-		<td>on a successfull xhr request this is the function that will be called</td>
+		<td>strict</td>
+		<td>boolean</td>
+		<td>console.warn any args that have been supplied that don't exist in args</td>
 	</tr>
 </table>
 
@@ -699,7 +697,7 @@ Quick and easy xhr/ajax<br>
 </details>
 
 #### Usage examples:
- - <a href='see usage example in tests/xhr/xhr.htm' target='_blank'>see usage example in tests/xhr/xhr.htm</a>
+ - <a href='https://codepen.io/AllForTheCode/pen/dKodKx' target='_blank'>https://codepen.io/AllForTheCode/pen/dKodKx</a>
 
 
 <hr><br><br><br>
