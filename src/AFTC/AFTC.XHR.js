@@ -13,6 +13,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpReq
  /**
  * @function: AFTC.XHR({options})
  * @desc: Quick and easy xhr/ajax
+ * 
  * ````
  * var data = "mode=json";
  * xhr1 = AFTC.XHR({
@@ -25,6 +26,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpReq
  *  	onComplete: function (response) {}
  * });
  * ````
+ * 
  * @link: https://codepen.io/AllForTheCode/pen/dKodKx
  */
 
