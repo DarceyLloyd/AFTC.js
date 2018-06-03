@@ -161,22 +161,7 @@ window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag
 
 
 
-/**
- * @function: AFTC.Log
- * @desc: Shortcut for console.log with some formatting capabilities
- * ````
- * log("Hello World");
- * log("a = " + a);
- * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
- * log(MyObject);
- * log(MyClass);
- * ````
- * @param * input: what you want to console.log
- * @alias: log
- * @alias: trace
- * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
- * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
- */
+
 AFTC.Log = {
     enabled: true,
     element: false,
@@ -227,6 +212,24 @@ AFTC.Log = {
         }
     }
 };
+
+
+/**
+ * @function: log(*)
+ * @desc: Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()
+ * ```
+ * log("Hello World");
+ * log("a = " + a);
+ * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
+ * log(MyObject);
+ * log(MyClass);
+ * ```
+ * @param * input: what you want to console.log
+ * @alias: log
+ * @alias: trace
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
+ */
 window.log = function (arg) { AFTC.Log.out(arg); }
 window.trace = function (arg) { AFTC.Log.out(arg); }
 

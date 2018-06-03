@@ -1,9 +1,9 @@
 /**
  * @function: setHTML(elementOrId,html);
  * @desc: Quick shortcut for outputting html to an element
- * ````
+ * ```
  * setHTML("header","Welcome");
- * ````
+ * ```
  * @param elementOrId stringIdOrHtmlElement: the element or the element id you wish to set the html of
  * @param html string: the html string to insert into your element
  * @alias: html

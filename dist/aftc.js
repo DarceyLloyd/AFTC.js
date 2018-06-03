@@ -161,22 +161,7 @@ window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag
 
 
 
-/**
- * @function: AFTC.Log
- * @desc: Shortcut for console.log with some formatting capabilities
- * ````
- * log("Hello World");
- * log("a = " + a);
- * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
- * log(MyObject);
- * log(MyClass);
- * ````
- * @param * input: what you want to console.log
- * @alias: log
- * @alias: trace
- * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
- * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
- */
+
 AFTC.Log = {
     enabled: true,
     element: false,
@@ -227,6 +212,24 @@ AFTC.Log = {
         }
     }
 };
+
+
+/**
+ * @function: log(*)
+ * @desc: Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()
+ * ```
+ * log("Hello World");
+ * log("a = " + a);
+ * log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
+ * log(MyObject);
+ * log(MyClass);
+ * ```
+ * @param * input: what you want to console.log
+ * @alias: log
+ * @alias: trace
+ * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
+ * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
+ */
 window.log = function (arg) { AFTC.Log.out(arg); }
 window.trace = function (arg) { AFTC.Log.out(arg); }
 
@@ -1447,6 +1450,61 @@ window.toArray = function (arg) {
 }
 window.convertToArray = function (v) { return toArray(v); }
 
+
+
+
+
+
+/**
+ * @function: rgb2Hex(r,g,b)
+ * @desc: rgb to hex
+ * @param number r: red
+ * @param number g: green
+ * @param number b: blue
+ * @return hex color
+ */
+window.rgb2Hex = function (r, g, b) {
+    return ((r << 16) | (g << 8) | b).toString(16);
+  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  /**
+   * @function: rgbToHex(r,g,b)
+   * @desc: rgb to hex
+   * @param number r: red
+   * @param number g: green
+   * @param number b: blue
+   * @return hex color
+   */
+  window.rgbToHex = function (r, g, b) {
+    function getHex(c) {
+      var hex = c.toString(16);
+      return hex.length == 1 ? "0" + hex : hex;
+    }
+    var hex = "#" + getHex(r) + getHex(g) + getHex(b);
+    hex = hex.toUpperCase();
+    return hex;
+  }
+  
+  
+  
+  /**
+   * @function: hexToRgb(hex)
+   * @desc: hexToRgb
+   * @param string hex: hex color
+   * @return rgb color
+   */
+  window.hexToRgb = function (hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+  window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
 /**
  * @function: getDaysBetween(startDateTime, endDateTime)
  * @desc: Gets the number of whole days between a start and end date
@@ -1994,9 +2052,9 @@ window.getOS = function (testAgent) {
 /**
  * @function: setHTML(elementOrId,html);
  * @desc: Quick shortcut for outputting html to an element
- * ````
+ * ```
  * setHTML("header","Welcome");
- * ````
+ * ```
  * @param elementOrId stringIdOrHtmlElement: the element or the element id you wish to set the html of
  * @param html string: the html string to insert into your element
  * @alias: html
@@ -3425,19 +3483,18 @@ AFTC.Audio = function () {
 
 
 /**
- * @type: class
- * @name: AFTC.Animate()
+ * @function: AFTC.Animate()
  * @version: 2.3.14
  * @requires: base.js
  * @function: AFTC.Animate(elementId, onComplete)
  * @desc: Quick and easy css animation for nearly every css element style
- * ````
+ * ```
  * var anim1 = new AFTC.Animate("box1", onCompleteFunction);
  * anim1.wait(2); // wait in 2 seconds
  * anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
  * anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
  * anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
- * ````
+ * ```
  * @link: see usage example in test/animation.htm
  * @link: https://codepen.io/AllForTheCode/pen/MXYGob
  * @link: https://codepen.io/AllForTheCode/pen/MXYPqq
@@ -4119,63 +4176,19 @@ AFTC.Animate = function (elementId, onComplete) {
 // // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-/**
- * @function: rgb2Hex(r,g,b)
- * @desc: rgb to hex
- * @param number r: red
- * @param number g: green
- * @param number b: blue
- * @return hex color
- */
-window.rgb2Hex = function (r, g, b) {
-  return ((r << 16) | (g << 8) | b).toString(16);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/**
- * @function: rgbToHex(r,g,b)
- * @desc: rgb to hex
- * @param number r: red
- * @param number g: green
- * @param number b: blue
- * @return hex color
- */
-window.rgbToHex = function (r, g, b) {
-  function getHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-  }
-  var hex = "#" + getHex(r) + getHex(g) + getHex(b);
-  hex = hex.toUpperCase();
-  return hex;
-}
-
-
-
-/**
- * @function: hexToRgb(hex)
- * @desc: hexToRgb
- * @param string hex: hex color
- * @return rgb color
- */
-window.hexToRgb = function (hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-}
-window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 
 
 
 /**
- * @class: AFTC.Color({params})
+ * @function: AFTC.Color({params})
  * @desc: Color allows you to create, convert, lighten or darken colours and more.
+ * ```
+ * var color1 = new AFTC.Color(); // creates a random color
+ * var color2 = new AFTC.Color({r:255,g:100,b:0}); // creates an RGB color
+ * var color3 = new AFTC.Color({r:255,g:100,b:0,a:1}); // creates an RGBA color
+ * log( color3.getHex() ); // Outputs the hex code of color 3
+ * ```
  * @param object params: parameters object
  * @method lighten(percent,spectrum): lighten the color by precent and optional spectrum {r:bool,g;bool,b:bool}
  * @method darken(percent,spectrum): darken the color by precent and optional spectrum {r:bool,g;bool,b:bool}

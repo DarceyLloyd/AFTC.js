@@ -5,9 +5,9 @@
 /**
  * @function: AFTC.Canvas({id||canvas})
  * @desc:
- * ````
+ * ```
 
- * ````
+ * ```
  * @param string canvasId: Canvas element id to work with
  * @param number opacity: opacity of noise
  */

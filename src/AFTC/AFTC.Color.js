@@ -11,63 +11,19 @@
 // // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-/**
- * @function: rgb2Hex(r,g,b)
- * @desc: rgb to hex
- * @param number r: red
- * @param number g: green
- * @param number b: blue
- * @return hex color
- */
-window.rgb2Hex = function (r, g, b) {
-  return ((r << 16) | (g << 8) | b).toString(16);
-}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/**
- * @function: rgbToHex(r,g,b)
- * @desc: rgb to hex
- * @param number r: red
- * @param number g: green
- * @param number b: blue
- * @return hex color
- */
-window.rgbToHex = function (r, g, b) {
-  function getHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-  }
-  var hex = "#" + getHex(r) + getHex(g) + getHex(b);
-  hex = hex.toUpperCase();
-  return hex;
-}
-
-
-
-/**
- * @function: hexToRgb(hex)
- * @desc: hexToRgb
- * @param string hex: hex color
- * @return rgb color
- */
-window.hexToRgb = function (hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-}
-window.hex2Rgb = function (hex) { return window.hexToRgb(hex); }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 
 
 
 /**
- * @class: AFTC.Color({params})
+ * @function: AFTC.Color({params})
  * @desc: Color allows you to create, convert, lighten or darken colours and more.
+ * ```
+ * var color1 = new AFTC.Color(); // creates a random color
+ * var color2 = new AFTC.Color({r:255,g:100,b:0}); // creates an RGB color
+ * var color3 = new AFTC.Color({r:255,g:100,b:0,a:1}); // creates an RGBA color
+ * log( color3.getHex() ); // Outputs the hex code of color 3
+ * ```
  * @param object params: parameters object
  * @method lighten(percent,spectrum): lighten the color by precent and optional spectrum {r:bool,g;bool,b:bool}
  * @method darken(percent,spectrum): darken the color by precent and optional spectrum {r:bool,g;bool,b:bool}

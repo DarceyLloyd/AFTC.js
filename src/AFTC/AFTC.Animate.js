@@ -5,19 +5,18 @@
 
 
 /**
- * @type: class
- * @name: AFTC.Animate()
+ * @function: AFTC.Animate()
  * @version: 2.3.14
  * @requires: base.js
  * @function: AFTC.Animate(elementId, onComplete)
  * @desc: Quick and easy css animation for nearly every css element style
- * ````
+ * ```
  * var anim1 = new AFTC.Animate("box1", onCompleteFunction);
  * anim1.wait(2); // wait in 2 seconds
  * anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
  * anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
  * anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
- * ````
+ * ```
  * @link: see usage example in test/animation.htm
  * @link: https://codepen.io/AllForTheCode/pen/MXYGob
  * @link: https://codepen.io/AllForTheCode/pen/MXYPqq

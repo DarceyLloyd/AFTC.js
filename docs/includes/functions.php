@@ -110,7 +110,7 @@ function getAnchors($path){
     }
 
     sort($anchors, SORT_NATURAL | SORT_FLAG_CASE);
-    $out = "### <b>Quick links:</b>\n";
+    $out = "<h3><b>Quick links:</b></h3>\n";
     foreach ($anchors as $value) {
         if (!isInString("//",$value)){
             $link = strtolower( $value );
@@ -123,7 +123,7 @@ function getAnchors($path){
     }
 
     $out .= "<br><br>\n";
-    $out .= "#### Browse on codepen\n";
+    $out .= "<h4>Browse on codepen</h4>\n";
     $out .= "<a href='https://codepen.io/AllForTheCode/pens/public/?grid_type=list' target='_blank'>https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>\n";
 
     $out .= "<br><br><hr><br><br>";
@@ -197,12 +197,13 @@ function getComments($path){
 
         // Populate commentVo with line data
         if ($comment_found){
+            //out("---- COMMNET FOUND!");
             // Run lim for dev
             // $comment_count++;
             // if ($comment_count > 90){
             //     die();
             // }
-            //out("--- " . $comment_count);
+            // out("--- " . $comment_count);
             
 
             $bits = explode(":",$cLine);
@@ -217,13 +218,13 @@ function getComments($path){
                     // Function
                     // out("Found: Function: " . $right);
                     $commentVo->type = "function";
-                    $commentVo->name = $right;
+                    $commentVo->title = $right;
                     $previous = ""; // reset
                 } else if (isInString("@class:",$cLine)){
                     // Class
                     // out("Found: Class: " . $right);
                     $commentVo->type = "class";
-                    $commentVo->name = $right;
+                    $commentVo->title = $right;
                     $previous = ""; // reset
                 } else if (isInString("desc",$left)){
                     // Desc
@@ -236,7 +237,7 @@ function getComments($path){
                     // out("Found: Alias: " . $right);
                     $previous = ""; // reset
                     array_push($commentVo->alias,$right);
-                } else if (isInString("link",$left)){
+                } else if (isInString("@link",$cLine)){
                     // Links
                     $link = trimAndReplace("* @link:","",$cLine);
                     // out("Found: Link: " . $link);
@@ -284,6 +285,8 @@ function getComments($path){
         } // End comment found
     };
 
+    
+
     return $comments;
 }
 
@@ -292,11 +295,11 @@ function getComments($path){
 
 
 
-function generateReadme($comments){
+function generateReadmeSingleFile($comments){
     $ts = "<table>";
     $te = "</table>";
     $comment_template = "
-### <b>[title]</b>
+<h3><b>[title]</b><h3>
 [desc]
 
 <details>
@@ -314,12 +317,12 @@ function generateReadme($comments){
 
     $out = "";
     foreach ($comments as $key => $commentVo) {
-        if (strlen($commentVo->name) > 0){
+        if (strlen($commentVo->title) > 0){
             $out .= $comment_template;
-            // trace($commentVo->name);
+            // trace($commentVo->title);
     
             // Title
-            $out = str_replace("[title]",$commentVo->name,$out);
+            $out = str_replace("[title]",$commentVo->title,$out);
     
             // Description
             $desc = "";
@@ -351,7 +354,7 @@ function generateReadme($comments){
             if (count($commentVo->links)>0){
                 // out("LINKS FOUND = " . count($commentVo->links));
                 // print_r($commentVo->links);
-                $links = "#### Usage examples:\n";
+                $links = "<h4> Usage examples:</h4>\n";
                 $cnt = 0;
                 foreach ($commentVo->links as $link) {
                     // trace($link);
@@ -367,7 +370,7 @@ function generateReadme($comments){
             // Params table
             if (count($commentVo->params)>0){
                 $table = "\n";
-                $table .= " #### Parameters: \n";
+                $table .= "<h4>Parameters:</h4>\n";
                 $table .= "<table>\n";
                 $table .= "\t<tr>\n";
                     $table .= "\t\t<th>Name</th>" . "\n";
@@ -390,7 +393,7 @@ function generateReadme($comments){
             // Methods
             if (count($commentVo->methods)>0){
                 $table = "\n";
-                $table .= " #### Methods: \n";
+                $table .= "<h4> Methods:</h4>\n";
                 $table .= "<table>\n";
                 $table .= "\t<tr>\n";
                     $table .= "\t\t<th>Name</th>" . "\n";
@@ -410,7 +413,7 @@ function generateReadme($comments){
     
             // Alias
             if (count($commentVo->alias)>0){
-                $alias = "#### Alias's:\n";
+                $alias = "<h4>Alias's:</h4>\n";
                 foreach ($commentVo->alias as $alt) {
                     $alias .= " - " . $alt . "\n";
                 }
@@ -435,6 +438,208 @@ function generateReadme($comments){
     // file_put_contents("./readme.htm",$out);
     return $out;
 }
+
+
+
+
+
+function processCommentTitle($out,$title){
+    // Title
+    // trace($title);
+    $out = str_replace("[title]",$title,$out);
+    return $out;
+}
+
+function processCommentDescription($out,$description){
+    // Description
+    // print_r($description);
+    $desc = "";
+    $code_started = false;
+    foreach ($description as $line) {
+        //str_replace("```",("\n\nAAAA".$line),$line);// Doesnt work
+
+        if (isInString("```",$line)){
+            if (!$code_started){
+                $line = "\n" . $line;
+                // code comment open
+                $code_started = true;
+                $desc .= "\n" . $line . "\n";
+            } else {
+                // code comment close
+                $code_started = false;
+                $desc .= "\n```\n";
+            }
+        } else {
+            if ($code_started){
+                // inner code comment (not 1st and not last)
+                $desc .= $line . "\n";
+            } else {
+                // Standard description line
+                $desc .= $line . "<br>";
+            }
+        }
+    }
+    $out = str_replace("[desc]",$desc,$out);
+    $out .= "\n\n";
+    return $out;
+}
+
+function processCommentLinks($out,$links){
+    // Links
+    if (count($links)>0){
+        // out("LINKS FOUND = " . count($links));
+        // print_r($commentVo->links);
+        $str = "<h4> Usage examples:</h4>\n";
+        $cnt = 0;
+        foreach ($links as $link) {
+            // trace($link);
+            $cnt ++;
+            $str .= " - <a href='" . $link . "' target='_blank'>" . $link . "</a>\n";
+        }
+        $out = str_replace("[links]",$str,$out);
+    } else {
+        $out = str_replace("[links]","",$out);
+    }
+    return $out;
+}
+
+function processCommentParams($out,$params){
+    // Params table
+    if (count($params)>0){
+        $table = "\n";
+        $table .= "<h4>Parameters:</h4>\n";
+        $table .= "<table>\n";
+        $table .= "\t<tr>\n";
+            $table .= "\t\t<th>Name</th>" . "\n";
+            $table .= "\t\t<th>Type</th>" . "\n";
+            $table .= "\t\t<th>Description</th>" . "\n";
+        $table .= "\t</tr>\n";
+        foreach ($params as $param) {
+            $table .= "\t<tr>\n";
+            $table .= "\t\t<td>" . $param->name . "</td>" . "\n";
+            $table .= "\t\t<td>" . $param->data_type . "</td>" . "\n";
+            $table .= "\t\t<td>" . $param->desc . "</td>" . "\n";
+            $table .= "\t</tr>\n";
+        }
+        $table .= "</table>\n";
+        $out = str_replace("[table]",$table,$out);
+    } else {
+        $out = str_replace("[table]","",$out);
+    }
+    return $out;
+}
+
+function processCommentMethods($out,$methods){
+    // Methods
+    if (count($methods)>0){
+        $table = "\n";
+        $table .= "<h4> Methods:</h4>\n";
+        $table .= "<table>\n";
+        $table .= "\t<tr>\n";
+            $table .= "\t\t<th>Name</th>" . "\n";
+            $table .= "\t\t<th>Description</th>" . "\n";
+        $table .= "\t</tr>\n";
+        foreach ($methods as $method) {
+            $table .= "\t<tr>\n";
+            $table .= "\t\t<td>" . $method->name . "</td>" . "\n";
+            $table .= "\t\t<td>" . $method->desc . "</td>" . "\n";
+            $table .= "\t</tr>\n";
+        }
+        $table .= "</table>\n";
+        $out = str_replace("[methods]",$table,$out);
+    } else {
+        $out = str_replace("[methods]","",$out);
+    }
+    return $out;
+}
+
+function processCommentAlias($out,$aliases){
+    // Alias
+    if (count($aliases)>0){
+        $alias = "<h4>Alias's:</h4>\n";
+        foreach ($aliases as $alt) {
+            $alias .= " - " . $alt . "\n";
+        }
+        $out = str_replace("[alias]",$alias,$out);
+    } else {
+        $out = str_replace("[alias]","",$out);
+    }
+    return $out;
+}
+
+function processCommentReturn($out,$returns){
+    // Return
+    // out("return = " . $returns . " len = " . strlen($returns));
+    if (strlen($returns) > 0){
+        $str = "<b>Returns:</b> " . $returns;
+        $out = str_replace("[return]",$str,$out);
+    } else {
+        $out = str_replace("[return]","",$out);
+    }
+    return $out;
+}
+
+
+function generateReadmeMultiFile($comments){
+$file_template_start = "\n\n\n
+<h2><b>[file_name]</b></h2>\n\n";
+
+$file_template_end = "\n\n<br><br><br><br><br>\n\n";
+
+$comment_template = "\n\n
+<h3><b>[title]</b></h3>
+[desc]
+
+<details>
+    <summary><b>More information</b></summary>
+[table]
+[methods]
+[return]
+[alias]
+</details>
+
+[links]
+
+<hr><br><br><br>
+    ";
+
+
+    $out = "";
+    foreach ($comments as $comment) {
+        $part = $file_template_start;
+
+        // File name
+        $str = "<b>FILE: " . strtoupper($comment["file_name"]) . "</b><hr>";
+        $part = str_replace("[file_name]",$str,$part);
+        // var_dump($comment["file_name"]);
+        
+        // Comments for file
+        $part .= $comment_template;
+        foreach ($comment["comments"] as $commentVo) {
+            if (strlen($commentVo->title) > 0){
+                $part .= $comment_template;
+
+                $part = processCommentTitle($part,$commentVo->title);
+                $part = processCommentDescription($part,$commentVo->desc);
+                $part = processCommentLinks($part,$commentVo->links);
+                $part = processCommentParams($part,$commentVo->params);
+                $part = processCommentMethods($part,$commentVo->methods);
+                $part = processCommentAlias($part,$commentVo->alias);
+                $part = processCommentReturn($part,$commentVo->return);
+            }
+        }
+        $part .= $file_template_end;
+
+        $out .= $part;
+    }
+
+    
+    return $out;
+}
+
+
+
+
 
 
 

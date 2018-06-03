@@ -1,9 +1,10 @@
-### <b>Quick links:</b>
+<h3><b>Quick links:</b></h3>
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
+ <a href='#aftcanimate'>AFTC.Animate()</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
  <a href='#aftcaudiooptions'>AFTC.Audio({options})</a><br>
- <a href='#aftclog'>AFTC.Log</a><br>
+ <a href='#aftccolorparams'>AFTC.Color({params})</a><br>
  <a href='#aftcpointxy'>AFTC.Point(x,y)</a><br>
  <a href='#aftcrectanglexywh'>AFTC.Rectangle(x, y, w, h)</a><br>
  <a href='#aftcvelocityvxvy'>AFTC.Velocity(vx,vy)</a><br>
@@ -91,6 +92,7 @@
  <a href='#isstringinarrayneedlehaystack'>isStringInArray(needle,haystack)</a><br>
  <a href='#lefttrimstrby'>leftTrim(str, by)</a><br>
  <a href='#limitlengthinwordsstrmaxwords'>limitLengthInWords(str, maxWords)</a><br>
+ <a href='#log'>log(*)</a><br>
  <a href='#logdisable'>logDisable()</a><br>
  <a href='#logenable'>logEnable()</a><br>
  <a href='#logtoelement'>logTo(element)</a><br>
@@ -120,6 +122,6 @@
  <a href='#trimstringbyinputtrimby'>trimStringBy(input, trimBy)</a><br>
  <a href='#validateemailemail'>validateEmail(email)</a><br>
 <br><br>
-#### Browse on codepen
+<h4>Browse on codepen</h4>
 <a href='https://codepen.io/AllForTheCode/pens/public/?grid_type=list' target='_blank'>https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 <br><br><hr><br><br>

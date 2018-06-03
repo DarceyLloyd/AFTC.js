@@ -7,7 +7,7 @@
 class CommentVo
 {
     public $type = "";
-    public $name = "";
+    public $title = "";
     public $desc = [];
     public $params = [];
     public $methods = [];
