@@ -16,6 +16,18 @@
  <br>
 
 
+## <b>Found this useful? Please Donate...</b>
+Any and all donations to help keep active development and the lights on are more than welcome.
+
+[![paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+<br>
+ <hr>
+ <br>
+
+
+
+
 ### <b>Installation</b>
 ```
 npm i aftc.js
@@ -771,7 +783,7 @@ Clears the console if supported<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -1204,7 +1216,7 @@ takes an input and returns it as index[0] of an array<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -1338,7 +1350,7 @@ Exits full screen mode<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -1863,7 +1875,7 @@ hexToRgb<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -1986,7 +1998,7 @@ Gets the value of a cookie by name<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -2160,7 +2172,7 @@ Check to see if an element has a class attached to it<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -2450,7 +2462,7 @@ gets the date time at a specified local<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -2534,7 +2546,7 @@ open a popup window with the html you wish to display in it<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -2829,7 +2841,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3048,7 +3060,7 @@ Scroll to element on page<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3075,7 +3087,7 @@ Scroll to element on page<br>
 <hr><br><br><br>
     
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3220,7 +3232,7 @@ A replacement for using body onload and no need for jQuery's $(document).ready<b
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3419,7 +3431,7 @@ parses a json object of key value pairs to a form select element<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3753,7 +3765,7 @@ AFTC.Velocity class helper<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -3831,7 +3843,7 @@ tries to get the function name of a suppled function<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -4238,7 +4250,7 @@ check if variable is an array<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -4326,7 +4338,7 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -4723,7 +4735,7 @@ Get a weighted random based on odds and iterations<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5346,7 +5358,7 @@ Gets all strings between two other strings (multi match)<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5373,7 +5385,7 @@ Gets all strings between two other strings (multi match)<br>
 <hr><br><br><br>
     
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5451,7 +5463,7 @@ Validats an email address<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5478,7 +5490,7 @@ Validats an email address<br>
 <hr><br><br><br>
     
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5721,7 +5733,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -5797,7 +5809,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -6013,7 +6025,7 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -6256,7 +6268,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -6283,7 +6295,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 <hr><br><br><br>
     
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 
 
@@ -6361,7 +6373,7 @@ Quick and easy xhr/ajax<br>
 
 
 
-<hr><hr><br><br><br>
+<br><br><br><br><br>
 
 <br><br><br>
 
