@@ -309,6 +309,8 @@ Quick and easy args to object<br>
     
 
 
+
+
 <h3><b>getElementById(id)</b></h3>
 Gets an element from the DOM by ID. NOTE<br>
 
@@ -343,6 +345,8 @@ Gets an element from the DOM by ID. NOTE<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>querySelector(query)</b></h3>
@@ -380,6 +384,8 @@ Gets an element from the DOM via DOM Query. NOTE<br>
     
 
 
+
+
 <h3><b>getElementsByName(name)</b></h3>
 Gets an array of element from the DOM that have a specific name. NOTE<br>
 
@@ -411,6 +417,8 @@ Gets an array of element from the DOM that have a specific name. NOTE<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getElementByName(name)</b></h3>
@@ -446,6 +454,8 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
     
 
 
+
+
 <h3><b>getElementsByClassName(className)</b></h3>
 Gets an array of html elements from the DOM that have a specific class name. NOTE<br>
 
@@ -477,6 +487,8 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getElementByClassName(className)</b></h3>
@@ -512,6 +524,8 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
     
 
 
+
+
 <h3><b>getElementsByTagName(tagName)</b></h3>
 Gets an array of html elements from the DOM that has a specific tag name. NOTE<br>
 
@@ -543,6 +557,8 @@ Gets an array of html elements from the DOM that has a specific tag name. NOTE<b
     
 
 
+
+
 <h3><b>getElementByTagName(tagName)</b></h3>
 Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 
@@ -572,6 +588,8 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>log(*)</b></h3>
@@ -620,6 +638,8 @@ log(MyClass);
     
 
 
+
+
 <h3><b>logTo(element)</b></h3>
 Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted<br>
 
@@ -653,6 +673,8 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
     
 
 
+
+
 <h3><b>logEnable()</b></h3>
 Enables log and trace<br>
 
@@ -673,6 +695,8 @@ Enables log and trace<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>logDisable()</b></h3>
@@ -697,6 +721,8 @@ Disables log and trace<br>
     
 
 
+
+
 <h3><b>logToDisable()</b></h3>
 Disables log and trace to a html element<br>
 
@@ -719,6 +745,8 @@ Disables log and trace to a html element<br>
     
 
 
+
+
 <h3><b>cls()</b></h3>
 Clears the console if supported<br>
 
@@ -739,6 +767,8 @@ Clears the console if supported<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -827,6 +857,8 @@ remove a specified index from an array<br>
     
 
 
+
+
 <h3><b>isStringInArray(needle,haystack)</b></h3>
 Check to see if a string is in an array<br>
 
@@ -863,6 +895,8 @@ Check to see if a string is in an array<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>arrayContains(needle,haystack)</b></h3>
@@ -905,6 +939,8 @@ Check to see if your array contains something you want to find<br>
     
 
 
+
+
 <h3><b>arrayEmpty(arr)</b></h3>
 clears/empties an array for garbage collection<br>
 
@@ -938,6 +974,8 @@ clears/empties an array for garbage collection<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getMaxFromArray(arr)</b></h3>
@@ -976,6 +1014,8 @@ returns the maximum value in an array<br>
     
 
 
+
+
 <h3><b>arrayGetMin(arr)</b></h3>
 returns the minimum value in an array<br>
 
@@ -1010,6 +1050,8 @@ returns the minimum value in an array<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>arrayShuffle(arr)</b></h3>
@@ -1048,6 +1090,8 @@ shuffles an array (method 1)<br>
     
 
 
+
+
 <h3><b>arrayShuffle2(arr)</b></h3>
 shuffles an array (method 2)<br>
 
@@ -1082,6 +1126,8 @@ shuffles an array (method 2)<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>arrayToSingleLineString(arr)</b></h3>
@@ -1119,6 +1165,8 @@ Converts an array to a single line string (usefull for debug)<br>
     
 
 
+
+
 <h3><b>convertToArray(val)</b></h3>
 takes an input and returns it as index[0] of an array<br>
 
@@ -1152,6 +1200,8 @@ takes an input and returns it as index[0] of an array<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -1230,6 +1280,8 @@ no more typing self.location.href, just use redirect(url)<br>
     
 
 
+
+
 <h3><b>goFullScreen(element)</b></h3>
 Go full screen, on an element if specified or whole browser if left out<br>
 
@@ -1263,6 +1315,8 @@ Go full screen, on an element if specified or whole browser if left out<br>
     
 
 
+
+
 <h3><b>exitFullScreen()</b></h3>
 Exits full screen mode<br>
 
@@ -1280,6 +1334,8 @@ Exits full screen mode<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -1362,6 +1418,8 @@ converts radians to degrees<br>
     
 
 
+
+
 <h3><b>degToRad(input)</b></h3>
 converts degrees to radians<br>
 
@@ -1397,6 +1455,8 @@ converts degrees to radians<br>
     
 
 
+
+
 <h3><b>toHex(num)</b></h3>
 Converts a number to hex<br>
 
@@ -1428,6 +1488,8 @@ Converts a number to hex<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>boolToString(bool)</b></h3>
@@ -1463,6 +1525,8 @@ converts boolean to a string of true or false<br>
     
 
 
+
+
 <h3><b>boolToYesNo(bool)</b></h3>
 converts a boolean to yes or no<br>
 
@@ -1494,6 +1558,8 @@ converts a boolean to yes or no<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>stringToBool(str)</b></h3>
@@ -1529,6 +1595,8 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
     
 
 
+
+
 <h3><b>getBooleanFrom(input)</b></h3>
 converts an input to a boolean<br>
 
@@ -1560,6 +1628,8 @@ converts an input to a boolean<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>parseArrayToFloat(arr)</b></h3>
@@ -1597,6 +1667,8 @@ parses all values in array to float<br>
     
 
 
+
+
 <h3><b>parseArrayToInt(arr)</b></h3>
 parses all values in array to float<br>
 
@@ -1630,6 +1702,8 @@ parses all values in array to float<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>toArray(v)</b></h3>
@@ -1666,6 +1740,8 @@ takes an input and returns it as index[0] of an array<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>rgb2Hex(r,g,b)</b></h3>
@@ -1709,6 +1785,8 @@ rgb to hex<br>
     
 
 
+
+
 <h3><b>rgbToHex(r,g,b)</b></h3>
 rgb to hex<br>
 
@@ -1750,6 +1828,8 @@ rgb to hex<br>
     
 
 
+
+
 <h3><b>hexToRgb(hex)</b></h3>
 hexToRgb<br>
 
@@ -1779,6 +1859,8 @@ hexToRgb<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -1867,6 +1949,8 @@ Sets a cookie by name with a value<br>
     
 
 
+
+
 <h3><b>getCookie(name)</b></h3>
 Gets the value of a cookie by name<br>
 
@@ -1898,6 +1982,8 @@ Gets the value of a cookie by name<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -1990,6 +2076,8 @@ Add a css class to a html element<br>
     
 
 
+
+
 <h3><b>removeClass(elementOrId,className)</b></h3>
 shortcut to remove a class from a html element<br>
 
@@ -2030,6 +2118,8 @@ shortcut to remove a class from a html element<br>
     
 
 
+
+
 <h3><b>hasClass(elementOrId, cls)</b></h3>
 Check to see if an element has a class attached to it<br>
 
@@ -2066,6 +2156,8 @@ Check to see if an element has a class attached to it<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -2160,6 +2252,8 @@ Gets the number of whole days between a start and end date<br>
     
 
 
+
+
 <h3><b>getUKDateFromDate(dte)</b></h3>
 Formats a date in the UK format<br>
 
@@ -2191,6 +2285,8 @@ Formats a date in the UK format<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getUSDateFromDate(dte)</b></h3>
@@ -2226,6 +2322,8 @@ Formats a date in the US format<br>
     
 
 
+
+
 <h3><b>getUkDateFromDbDateTime(input)</b></h3>
 get a uk date from a mysql db date value<br>
 
@@ -2257,6 +2355,8 @@ get a uk date from a mysql db date value<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getUkDateTimeFromDbDateTime(input)</b></h3>
@@ -2292,6 +2392,8 @@ get a uk date from a mysql db date time value<br>
     
 
 
+
+
 <h3><b>getSQLDateTime()</b></h3>
 gets the date time now for sql insert<br>
 
@@ -2309,6 +2411,8 @@ gets the date time now for sql insert<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getDateTime(local)</b></h3>
@@ -2342,6 +2446,8 @@ gets the date time at a specified local<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -2425,6 +2531,8 @@ open a popup window with the html you wish to display in it<br>
 <hr><br><br><br>
     
 
+
+
 <hr><hr><br><br><br>
 
 
@@ -2474,6 +2582,8 @@ Detects if the device you are using is a mobile or not<br>
     
 
 
+
+
 <h3><b>isAndroid()</b></h3>
 Detects if the device you are using is android or not<br>
 
@@ -2491,6 +2601,8 @@ Detects if the device you are using is android or not<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>iOS()</b></h3>
@@ -2512,6 +2624,8 @@ Detects if the device you are using is iOS or not<br>
     
 
 
+
+
 <h3><b>isFireFox()</b></h3>
 Detects FireFox<br>
 
@@ -2529,6 +2643,8 @@ Detects FireFox<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isChrome()</b></h3>
@@ -2550,6 +2666,8 @@ Detects Chrome<br>
     
 
 
+
+
 <h3><b>isEdge()</b></h3>
 Detects Edge<br>
 
@@ -2567,6 +2685,8 @@ Detects Edge<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isSafari()</b></h3>
@@ -2588,6 +2708,8 @@ Detects Safari<br>
     
 
 
+
+
 <h3><b>isIE()</b></h3>
 Detects IE<br>
 
@@ -2605,6 +2727,8 @@ Detects IE<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isOpera()</b></h3>
@@ -2626,6 +2750,8 @@ Detects Opera<br>
     
 
 
+
+
 <h3><b>getIEVersion()</b></h3>
 Gets version of IE<br>
 
@@ -2645,6 +2771,8 @@ Gets version of IE<br>
     
 
 
+
+
 <h3><b>getBrowser()</b></h3>
 Detects browser<br>
 
@@ -2662,6 +2790,8 @@ Detects browser<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getOS(testUserAgent)</b></h3>
@@ -2695,6 +2825,8 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -2797,6 +2929,8 @@ setHTML("header","Welcome");
     
 
 
+
+
 <h3><b>getElementOffsetTop(elementId)</b></h3>
 Gets an elements top offset<br>
 
@@ -2830,6 +2964,8 @@ Gets an elements top offset<br>
     
 
 
+
+
 <h3><b>centerAbsoluteElement(elementId)</b></h3>
 Center element that is absolute positioned<br>
 
@@ -2861,6 +2997,8 @@ Center element that is absolute positioned<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>scrollToElement(elementId, duration, offset)</b></h3>
@@ -2904,6 +3042,8 @@ Scroll to element on page<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -3039,6 +3179,8 @@ Shortcut for adding events with old browser compatibility<br>
     
 
 
+
+
 <h3><b>onReady(fn)</b></h3>
 A replacement for using body onload and no need for jQuery's $(document).ready<br>
 
@@ -3072,6 +3214,8 @@ A replacement for using body onload and no need for jQuery's $(document).ready<b
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -3150,6 +3294,8 @@ Checks to if checkbox is checked or not<br>
     
 
 
+
+
 <h3><b>isNumberKey(evt)</b></h3>
 Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
@@ -3181,6 +3327,8 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>removeAllSelectOptions(elementId)</b></h3>
@@ -3215,6 +3363,8 @@ Removes all the options in a select<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>parseJSONToSelect(j, selectElementIdOrElement, label, value)</b></h3>
@@ -3263,6 +3413,8 @@ parses a json object of key value pairs to a form select element<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -3447,6 +3599,8 @@ parses a json object of key value pairs to a form select element<br>
     
 
 
+
+
 <h3><b>AFTC.Rectangle(x, y, w, h)</b></h3>
 Rectangle class, allos you to set x, y, width and height or a rectangle<br>
 
@@ -3527,6 +3681,8 @@ Rectangle class, allos you to set x, y, width and height or a rectangle<br>
     
 
 
+
+
 <h3><b>AFTC.Velocity(vx,vy)</b></h3>
 AFTC.Velocity class helper<br>
 
@@ -3591,6 +3747,8 @@ AFTC.Velocity class helper<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -3667,6 +3825,8 @@ tries to get the function name of a suppled function<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -3755,6 +3915,8 @@ check for string in string<br>
     
 
 
+
+
 <h3><b>isEven(n)</b></h3>
 check if input is even<br>
 
@@ -3786,6 +3948,8 @@ check if input is even<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isOdd(n)</b></h3>
@@ -3821,6 +3985,8 @@ check if input is odd<br>
     
 
 
+
+
 <h3><b>isAlphaNumeric(input)</b></h3>
 check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
@@ -3852,6 +4018,8 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isElement(o)</b></h3>
@@ -3887,6 +4055,8 @@ checks if your variable is an element or not<br>
     
 
 
+
+
 <h3><b>isElement2(element)</b></h3>
 checks to see if your vairable is an element or not<br>
 
@@ -3920,6 +4090,8 @@ checks to see if your vairable is an element or not<br>
     
 
 
+
+
 <h3><b>isDOM(obj)</b></h3>
 checks to see if your variable is a DOM object<br>
 
@@ -3951,6 +4123,8 @@ checks to see if your variable is a DOM object<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>isBoolean(input)</b></h3>
@@ -3988,6 +4162,8 @@ checks if a variable is a boolean<br>
     
 
 
+
+
 <h3><b>isNumeric(n)</b></h3>
 check if variable is numeric<br>
 
@@ -4023,6 +4199,8 @@ check if variable is numeric<br>
     
 
 
+
+
 <h3><b>isArray(input)</b></h3>
 check if variable is an array<br>
 
@@ -4054,6 +4232,8 @@ check if variable is an array<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -4140,6 +4320,8 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -4232,6 +4414,8 @@ returns a random number / int betwen your specified min and max values<br>
     
 
 
+
+
 <h3><b>getRandomThatsNot(min,max,not)</b></h3>
 returns a random int betwen your specified min and max values but never the not value<br>
 
@@ -4272,6 +4456,8 @@ returns a random int betwen your specified min and max values but never the not 
     
 
 
+
+
 <h3><b>getRandomFloat(min,max)</b></h3>
 returns a random floating point number betwen your specified min and max values<br>
 
@@ -4310,6 +4496,8 @@ returns a random floating point number betwen your specified min and max values<
     
 
 
+
+
 <h3><b>randomString(length)</b></h3>
 get a random string of a specified length<br>
 
@@ -4343,6 +4531,8 @@ get a random string of a specified length<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getUID(length)</b></h3>
@@ -4379,6 +4569,8 @@ Generates a random id<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getArrayOfRandomNumbers(arraySize,min,max)</b></h3>
@@ -4424,6 +4616,8 @@ generate an array of random number between your max and min values<br>
     
 
 
+
+
 <h3><b>getArrayOfRandomStrings(arraySize,strLength)</b></h3>
 generate an array of random string of a specified length<br>
 
@@ -4462,6 +4656,8 @@ generate an array of random string of a specified length<br>
     
 
 
+
+
 <h3><b>guid()</b></h3>
 generates a guid<br>
 
@@ -4481,6 +4677,8 @@ generates a guid<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getWeightedRandom(odds, iterations)</b></h3>
@@ -4519,6 +4717,8 @@ Get a weighted random based on odds and iterations<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -4607,6 +4807,8 @@ Limit a string in length of words<br>
     
 
 
+
+
 <h3><b>cleanJSONString(s)</b></h3>
 Attempts to clean a json string<br>
 
@@ -4640,6 +4842,8 @@ Attempts to clean a json string<br>
     
 
 
+
+
 <h3><b>escapeHTML(input)</b></h3>
 Attempts to escape a html string<br>
 
@@ -4671,6 +4875,8 @@ Attempts to escape a html string<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>cutStringTo(input, len)</b></h3>
@@ -4717,6 +4923,8 @@ sets the length of a string from left to right<br>
     
 
 
+
+
 <h3><b>trimStringBy(input, trimBy)</b></h3>
 Trims the length of a string by a value<br>
 
@@ -4755,6 +4963,8 @@ Trims the length of a string by a value<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>leftTrim(str, by)</b></h3>
@@ -4797,6 +5007,8 @@ Trims the left of a string by a specified amount<br>
     
 
 
+
+
 <h3><b>getFileExtension(input)</b></h3>
 Attempts to get the file extension from a file path string<br>
 
@@ -4828,6 +5040,8 @@ Attempts to get the file extension from a file path string<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getFileExtension2(input)</b></h3>
@@ -4863,6 +5077,8 @@ Attempts to get the file extension from a file path string<br>
     
 
 
+
+
 <h3><b>getLastPartOfUrl(url)</b></h3>
 Gets the last part of a URL<br>
 
@@ -4894,6 +5110,8 @@ Gets the last part of a URL<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>removeFileFromPath(path)</b></h3>
@@ -4929,6 +5147,8 @@ Attempts to remove the file from a file path string<br>
     
 
 
+
+
 <h3><b>getAnchor(url)</b></h3>
 Get anchor from url<br>
 
@@ -4960,6 +5180,8 @@ Get anchor from url<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>String.prototype.startsWith(str)</b></h3>
@@ -4995,6 +5217,8 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
     
 
 
+
+
 <h3><b>String.prototype.endsWith(str)</b></h3>
 ES6 supports endsWith(), this is for pre ES6 support<br>
 
@@ -5026,6 +5250,8 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 
 <hr><br><br><br>
     
+
+
 
 
 <h3><b>getStringBetween(input,start,end)</b></h3>
@@ -5071,6 +5297,8 @@ Gets a string between two other strings<br>
     
 
 
+
+
 <h3><b>getAllStringsBetween(str,start,end)</b></h3>
 Gets all strings between two other strings (multi match)<br>
 
@@ -5112,6 +5340,8 @@ Gets all strings between two other strings (multi match)<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -5215,6 +5445,8 @@ Validats an email address<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -5464,6 +5696,8 @@ log( color3.getHex() ); // Outputs the hex code of color 3
     
 
 
+
+
 <h3><b>getRandomColor()</b></h3>
 returns a random RGB object o.r, o.g, o.g<br>
 
@@ -5479,6 +5713,8 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -5551,6 +5787,8 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -5765,6 +6003,8 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -5987,6 +6227,8 @@ log( color3.getHex() ); // Outputs the hex code of color 3
     
 
 
+
+
 <h3><b>getRandomColor()</b></h3>
 returns a random RGB object o.r, o.g, o.g<br>
 
@@ -6002,6 +6244,8 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
@@ -6105,6 +6349,8 @@ Quick and easy xhr/ajax<br>
 
 <hr><br><br><br>
     
+
+
 
 <hr><hr><br><br><br>
 
