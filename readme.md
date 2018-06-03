@@ -582,7 +582,9 @@ log("a = " + a);
 log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
 log(MyObject);
 log(MyClass);
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -2709,7 +2711,9 @@ Attempts to get the os from the user agent or the test user agent<br>
 Quick shortcut for outputting html to an element<br>
 ```
 setHTML("header","Welcome");
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -2752,7 +2756,9 @@ setHTML("header","Welcome");
 Quick shortcut for outputting html to an element<br>
 ```
 setHTML("header","Welcome");
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5255,7 +5261,9 @@ var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5358,7 +5366,9 @@ var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5489,7 +5499,9 @@ anim1.wait(2); // wait in 2 seconds
 anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
 anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
 anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5518,7 +5530,9 @@ anim1.wait(2); // wait in 2 seconds
 anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
 anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
 anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5770,7 +5784,9 @@ var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
@@ -5873,7 +5889,9 @@ var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
+
 ```
+
 
 <details>
     <summary><b>More information</b></summary>
