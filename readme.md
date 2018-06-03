@@ -87,6 +87,7 @@ var aftc_modules = [
 <h3><b>Quick links:</b></h3>
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
+ <a href='#aftcanimate'>AFTC.Animate()</a><br>
  <a href='#aftcanimateelementidoncomplete'>AFTC.Animate(elementId, onComplete)</a><br>
  <a href='#aftcaudiooptions'>AFTC.Audio({options})</a><br>
  <a href='#aftccolorparams'>AFTC.Color({params})</a><br>
@@ -2698,10 +2699,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 
 <h3><b>setHTML(elementOrId,html);</b></h3>
-Quick shortcut for outputting html to an element<br>
-````
-setHTML("header","Welcome");
-````
+Quick shortcut for outputting html to an element<br>```<br>setHTML("header","Welcome");<br>```<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -2741,10 +2739,7 @@ setHTML("header","Welcome");
 
 
 <h3><b>setHTML(elementOrId,html);</b></h3>
-Quick shortcut for outputting html to an element<br>
-````
-setHTML("header","Welcome");
-````
+Quick shortcut for outputting html to an element<br>```<br>setHTML("header","Welcome");<br>```<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5462,14 +5457,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 
 <h3><b>AFTC.Animate(elementId, onComplete)</b></h3>
-Quick and easy css animation for nearly every css element style<br>
-````
-var anim1 = new AFTC.Animate("box1", onCompleteFunction);
-anim1.wait(2); // wait in 2 seconds
-anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
-anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
-anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
-````
+Quick and easy css animation for nearly every css element style<br>```<br>var anim1 = new AFTC.Animate("box1", onCompleteFunction);<br>anim1.wait(2); // wait in 2 seconds<br>anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity<br>anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds<br>anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds<br>```<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5491,14 +5479,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 
 <h3><b>AFTC.Animate(elementId, onComplete)</b></h3>
-Quick and easy css animation for nearly every css element style<br>
-````
-var anim1 = new AFTC.Animate("box1", onCompleteFunction);
-anim1.wait(2); // wait in 2 seconds
-anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity
-anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds
-anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds
-````
+Quick and easy css animation for nearly every css element style<br>```<br>var anim1 = new AFTC.Animate("box1", onCompleteFunction);<br>anim1.wait(2); // wait in 2 seconds<br>anim1.set("backgroundColor","RGBA(255,255,255,0.5)"); // sets background color to white 50% opacity<br>anim1.anim("fontColor","RGBA(255,0,0,1)",1.5); // animates the font color to red over 1.5 seconds<br>anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // sets innerHTML, padding-left and left position over 1, 2 and 3 seconds<br>```<br>
 
 <details>
     <summary><b>More information</b></summary>
