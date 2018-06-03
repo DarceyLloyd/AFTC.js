@@ -574,14 +574,7 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 
 
 <h3><b>log(*)</b></h3>
-Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()<br>
-````
-log("Hello World");
-log("a = " + a);
-log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);
-log(MyObject);
-log(MyClass);
-````
+Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()<br>```javascript<br>log("Hello World");<br>log("a = " + a);<br>log("myVar1 = " + myVar1 + "  myVar2 = " + myVar2);<br>log(MyObject);<br>log(MyClass);<br>```<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5248,13 +5241,7 @@ Validats an email address<br>
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
-````
-var color1 = new AFTC.Color(); // creates a random color
-var color2 = new AFTC.Color({r
-var color3 = new AFTC.Color({r
-log( color3.getHex() ); // Outputs the hex code of color 3
-````*<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>```javascript<br>var color1 = new AFTC.Color(); // creates a random color<br>var color2 = new AFTC.Color({r<br>var color3 = new AFTC.Color({r<br>log( color3.getHex() ); // Outputs the hex code of color 3<br>```<br>*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5351,13 +5338,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
-````
-var color1 = new AFTC.Color(); // creates a random color
-var color2 = new AFTC.Color({r
-var color3 = new AFTC.Color({r
-log( color3.getHex() ); // Outputs the hex code of color 3
-````*<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>```javascript<br>var color1 = new AFTC.Color(); // creates a random color<br>var color2 = new AFTC.Color({r<br>var color3 = new AFTC.Color({r<br>log( color3.getHex() ); // Outputs the hex code of color 3<br>```<br>*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5763,13 +5744,7 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
-````
-var color1 = new AFTC.Color(); // creates a random color
-var color2 = new AFTC.Color({r
-var color3 = new AFTC.Color({r
-log( color3.getHex() ); // Outputs the hex code of color 3
-````*<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>```javascript<br>var color1 = new AFTC.Color(); // creates a random color<br>var color2 = new AFTC.Color({r<br>var color3 = new AFTC.Color({r<br>log( color3.getHex() ); // Outputs the hex code of color 3<br>```<br>*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5866,13 +5841,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
-````
-var color1 = new AFTC.Color(); // creates a random color
-var color2 = new AFTC.Color({r
-var color3 = new AFTC.Color({r
-log( color3.getHex() ); // Outputs the hex code of color 3
-````*<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>```javascript<br>var color1 = new AFTC.Color(); // creates a random color<br>var color2 = new AFTC.Color({r<br>var color3 = new AFTC.Color({r<br>log( color3.getHex() ); // Outputs the hex code of color 3<br>```<br>*<br>
 
 <details>
     <summary><b>More information</b></summary>
