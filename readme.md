@@ -5248,13 +5248,13 @@ Validats an email address<br>
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
 ````
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
-````
+````*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5351,13 +5351,13 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
 ````
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
-````
+````*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5763,13 +5763,13 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
 ````
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
-````
+````*<br>
 
 <details>
     <summary><b>More information</b></summary>
@@ -5866,13 +5866,13 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <h3><b>AFTC.Color({params})</b></h3>
-Color allows you to create, convert, lighten or darken colours and more.<br>
+Color allows you to create, convert, lighten or darken colours and more.<br>*<br>
 ````
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
 var color3 = new AFTC.Color({r
 log( color3.getHex() ); // Outputs the hex code of color 3
-````
+````*<br>
 
 <details>
     <summary><b>More information</b></summary>
