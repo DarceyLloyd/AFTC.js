@@ -594,6 +594,7 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 
 <h3><b>log(*)</b></h3>
 Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()<br>
+
 ```
 log("Hello World");
 log("a = " + a);
@@ -2841,6 +2842,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 <h3><b>setHTML(elementOrId,html);</b></h3>
 Quick shortcut for outputting html to an element<br>
+
 ```
 setHTML("header","Welcome");
 
@@ -2886,6 +2888,7 @@ setHTML("header","Welcome");
 
 <h3><b>setHTML(elementOrId,html);</b></h3>
 Quick shortcut for outputting html to an element<br>
+
 ```
 setHTML("header","Welcome");
 
@@ -5488,6 +5491,7 @@ Validats an email address<br>
 
 <h3><b>AFTC.Color({params})</b></h3>
 Color allows you to create, convert, lighten or darken colours and more.<br>
+
 ```
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
@@ -5593,6 +5597,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 <h3><b>AFTC.Color({params})</b></h3>
 Color allows you to create, convert, lighten or darken colours and more.<br>
+
 ```
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
@@ -5729,6 +5734,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 <h3><b>AFTC.Animate(elementId, onComplete)</b></h3>
 Quick and easy css animation for nearly every css element style<br>
+
 ```
 var anim1 = new AFTC.Animate("box1", onCompleteFunction);
 anim1.wait(2); // wait in 2 seconds
@@ -5760,6 +5766,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 <h3><b>AFTC.Animate(elementId, onComplete)</b></h3>
 Quick and easy css animation for nearly every css element style<br>
+
 ```
 var anim1 = new AFTC.Animate("box1", onCompleteFunction);
 anim1.wait(2); // wait in 2 seconds
@@ -6019,6 +6026,7 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 <h3><b>AFTC.Color({params})</b></h3>
 Color allows you to create, convert, lighten or darken colours and more.<br>
+
 ```
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
@@ -6124,6 +6132,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 <h3><b>AFTC.Color({params})</b></h3>
 Color allows you to create, convert, lighten or darken colours and more.<br>
+
 ```
 var color1 = new AFTC.Color(); // creates a random color
 var color2 = new AFTC.Color({r
