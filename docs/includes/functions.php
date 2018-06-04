@@ -629,9 +629,10 @@ $comment_template = "\n\n
         $part = str_replace("[file_name]",$str,$file_template_start);
         // var_dump($comment["file_name"]);
         
-        $part .= $comment_template;
         foreach ($comment["comments"] as $commentVo) {
+            
             if (strlen($commentVo->title) > 0){
+                $part .= $comment_template;
 
                 $part = processCommentTitle($part,$commentVo->title);
                 $part = processCommentDescription($part,$commentVo->desc);
