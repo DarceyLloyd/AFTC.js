@@ -588,36 +588,50 @@ $file_template_end = "\n\n<br><br><br><br><br>\n\n";
 
 $comment_template = "\n\n
 <h3><b>[title]</b></h3>
+
 [desc]
 
 <details>
-    <summary><b>More information</b></summary>
+
+<summary><b>More information</b></summary>
+
+
 [table]
+
+
 [methods]
+
+
 [return]
+
+
 [alias]
+
+
 </details>
 
+
 [links]
+
 
 <hr><br><br><br>
     ";
 
+    // print_r($comments);
+    // die();
 
     $out = "";
     foreach ($comments as $comment) {
-        $part = $file_template_start;
-
+        // print_r($comment);
+        
         // File name
         $str = "<b>FILE: " . strtoupper($comment["file_name"]) . "</b><hr>";
-        $part = str_replace("[file_name]",$str,$part);
+        $part = str_replace("[file_name]",$str,$file_template_start);
         // var_dump($comment["file_name"]);
         
-        // Comments for file
         $part .= $comment_template;
         foreach ($comment["comments"] as $commentVo) {
             if (strlen($commentVo->title) > 0){
-                $part .= $comment_template;
 
                 $part = processCommentTitle($part,$commentVo->title);
                 $part = processCommentDescription($part,$commentVo->desc);
@@ -626,12 +640,16 @@ $comment_template = "\n\n
                 $part = processCommentMethods($part,$commentVo->methods);
                 $part = processCommentAlias($part,$commentVo->alias);
                 $part = processCommentReturn($part,$commentVo->return);
+                $commentVo = null;
+            
             }
         }
         $part .= $file_template_end;
+        // print_r($part);
 
         $out .= $part;
     }
+    // print_r($processed);
 
     
     return $out;

@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // // die();
     // $comments = getComments($file);
 
-    $file = "../src/aftc.js";
+    // $file = "../src/aftc.js";
     $files = [
         "../src/aftc.js",
         "../src/core/array.js",
@@ -151,6 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $header = file_get_contents("./header.md");
     $footer = file_get_contents("./footer.md");
+
     $out = generateReadmeMultiFile($collection);
     
     $readme = $header . $anchors . $out . $footer;
@@ -158,7 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // file_put_contents("../readme.htm",$readme);
     $response .= "<h4><b>Generation complete...</b>";
     // trace("Complete...");
-    //echo($out);
+    // echo($out);
+    // die();
 }
 ?>
 
