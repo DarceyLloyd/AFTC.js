@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $readme = $header . $anchors . $out . $footer;
     file_put_contents("../readme.md",$readme);
-    file_put_contents("../readme.htm",$readme);
+    // file_put_contents("../readme.htm",$readme);
     $response .= "<h4><b>Generation complete...</b>";
     // trace("Complete...");
     //echo($out);
