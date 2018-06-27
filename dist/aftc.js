@@ -4193,8 +4193,8 @@ AFTC.Animate = function (elementId, onComplete) {
  * @method lighten(percent,spectrum): lighten the color by precent and optional spectrum {r:bool,g;bool,b:bool}
  * @method darken(percent,spectrum): darken the color by precent and optional spectrum {r:bool,g;bool,b:bool}
  * @method randomizeColor: randomises the colour
- * @method getRGBSstring: returns the RGB value of the color
- * @method getRGBASstring: returns the RGBA value of the color
+ * @method getRGBString: returns the RGB value of the color
+ * @method getRGBAString: returns the RGBA value of the color
  * @method getHexString: returns the HEX value of the color
  * @method getHex: returns the HEX value of the color
  * @method hex: returns the HEX value of the color
@@ -4335,11 +4335,11 @@ AFTC.Color = function () {
     randomizeColor();
   }
 
-  this.getRGBSstring = function () {
+  this.getRGBString = function () {
     var c = "RGB(" + params.r + "," + params.g + "," + params.b + ")";
     return c;
   }
-  this.getRGBASstring = function () {
+  this.getRGBAString = function () {
     var c = "RGBA(" + params.r + "," + params.g + "," + params.b + "," + params.a + ")";
     return c;
   }

@@ -6374,11 +6374,11 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 		<td>randomises the colour</td>
 	</tr>
 	<tr>
-		<td>getRGBSstring</td>
+		<td>getRGBString</td>
 		<td>returns the RGB value of the color</td>
 	</tr>
 	<tr>
-		<td>getRGBASstring</td>
+		<td>getRGBAString</td>
 		<td>returns the RGBA value of the color</td>
 	</tr>
 	<tr>
@@ -6725,11 +6725,11 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 		<td>randomises the colour</td>
 	</tr>
 	<tr>
-		<td>getRGBSstring</td>
+		<td>getRGBString</td>
 		<td>returns the RGB value of the color</td>
 	</tr>
 	<tr>
-		<td>getRGBASstring</td>
+		<td>getRGBAString</td>
 		<td>returns the RGBA value of the color</td>
 	</tr>
 	<tr>
