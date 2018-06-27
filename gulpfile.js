@@ -1,6 +1,14 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var inject = require('gulp-inject-string');
+
+var fs = require('fs')
+var json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+var version = json.version;
+
+var msg = "// AFTC.JS Version " + version + "\n"
+msg += "// Author: Darcey@aftc.io" + "\n";
 
 
 // The core, the base, the essentials, the foundations, the stuff I can't live without
@@ -70,6 +78,7 @@ gulp.task('build', function () {
     gulp.src(aftc_core)
         .pipe(concat('aftc.core.js'))
         // .pipe(uglify())
+        .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
             this.emit("end");
@@ -79,6 +88,7 @@ gulp.task('build', function () {
     gulp.src(aftc_core)
         .pipe(concat('aftc.core.min.js'))
         .pipe(uglify())
+        .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
             this.emit("end");
@@ -88,15 +98,20 @@ gulp.task('build', function () {
     gulp.src(aftc_modules)
         .pipe(concat('aftc.js'))
         // .pipe(uglify())
+        .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
             this.emit("end");
         })
         .pipe(gulp.dest('./dist/'));
 
+
+    
+    
     gulp.src(aftc_modules)
         .pipe(concat('aftc.min.js'))
         .pipe(uglify())
+        .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
             this.emit("end");
