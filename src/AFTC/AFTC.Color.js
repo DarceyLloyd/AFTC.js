@@ -185,9 +185,9 @@ AFTC.Color = function () {
   }
   this.getHex = function () { return this.getHexString(); }
   this.hex = function () { return this.getHex(); }
-  this.getRGB = function () { return this.getRGBSstring(); }
+  this.getRGB = function () { return this.getRGBString(); }
   this.rgb = function () { return this.getRGB(); }
-  this.getRGBA = function () { return this.getRGBASstring(); }
+  this.getRGBA = function () { return this.getRGBAString(); }
   this.rgba = function () { return this.getRGBA(); }
   this.setRGB = function (r, g, b) { params.r = r; params.g = g; params.b = b; }
   this.setHex = function (hex) { args.hex = hex; initHex(); }
