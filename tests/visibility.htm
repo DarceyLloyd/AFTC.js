@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tests</title>
+    <script src="../dist/aftc.js"></script>
+    <style>
+            .container {
+                display: table;
+                border: 1px solid #000000;
+            }
+            .box {
+                padding: 3px;
+                margin: 3px;
+                background: #000000;
+                color: #FFFFFF;
+            }
+
+            .hidden {
+                opacity: 0;
+            }
+    </style>
+    <script>
+        onReady(function(){
+            var btn = getElementById("btn");
+            btn.addEventListener("click", startTest);
+
+            startTest();
+        })
+        
+        function startTest() {
+            fadeIn({
+                id: "box1",
+                onStartStyles: {
+                    color: "#FFCC00"
+                },
+                onCompleteStyles: {
+                    color: "#00CC00"
+                },
+                duration: 1,
+                onStartRemoveClassList: "hidden", // need to remove the hidden class or the opacity tween wont be seen
+            });
+            // fadeIn({
+            //     id: "box2",
+            //     duration: 2,
+            //     onStartRemoveClassList: "hidden", // need to remove the hidden class or the opacity tween wont be seen
+            // });
+            // fadeIn({
+            //     id: "box3",
+            //     duration: 3,
+            //     onStartRemoveClassList: "hidden", // need to remove the hidden class or the opacity tween wont be seen
+            // });
+
+            fadeOut({
+                id: "box4",
+                onStartStyles: {
+                    color: "#FFCC00"
+                },
+                onCompleteStyles: {
+                    opacity: 1,
+                    color: "#00CC00"
+                },
+                duration: 1
+            });
+            // fadeOut({
+            //     id: "box5",
+            //     duration: 2
+            // });
+            // fadeOut({
+            //     id: "box6",
+            //     duration: 1
+            // });
+        }
+    </script>
+</head>
+
+<body>
+
+    <button id="btn">START</button>
+
+    <div id="container1" class="container">
+        <div id="box1" class="box hidden">BOX 1</div>
+        <div id="box2" class="box hidden">BOX 2</div>
+        <div id="box3" class="box hidden">BOX 3</div>
+    </div>
+
+    <div id="container2" class="container">
+        <div id="box4" class="box">BOX 4</div>
+        <div id="box5" class="box">BOX 5</div>
+        <div id="box6" class="box">BOX 6</div>
+    </div>
+
+</body>
+
+</html>

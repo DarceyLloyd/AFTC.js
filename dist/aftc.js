@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.27
+// AFTC.JS Version 1.6.29
 // Author: Darcey@aftc.io
 /*
  * Author: darcey@aftc.io || darcey.lloyd@gmail.com
@@ -4412,7 +4412,8 @@ AFTC.Visibility = function () {
         id: false,
         delay: false,
         duration: false,
-        display: "block",
+        onStartStyles: false,
+        onCompleteStyles: false,
         animateHeight: false,
         onStartAddClassList: false,
         onStartRemoveClassList: false,
@@ -4435,12 +4436,12 @@ AFTC.Visibility = function () {
                 var className = classList[key];
                 try {
                     vars.element.classList.remove(className);
-                } catch (e){ }
+                } catch (e) { }
             }
         } else if (typeof (classList) == "string") {
             try {
                 vars.element.classList.remove(classList);
-            } catch (e){ }
+            } catch (e) { }
         }
     }
 
@@ -4450,12 +4451,12 @@ AFTC.Visibility = function () {
                 var className = classList[key];
                 try {
                     vars.element.classList.add(className);
-                } catch (e){ }
+                } catch (e) { }
             }
         } else if (typeof (classList) == "string") {
             try {
                 vars.element.classList.add(classList);
-            } catch (e){ }
+            } catch (e) { }
         }
     }
 
@@ -4477,33 +4478,58 @@ AFTC.Visibility = function () {
         }
     }
 
+    function processOnStartStyles() {
+        log("processOnStartStyles()");
+        if (vars.onStartStyles) {
+            for (var key in vars.onStartStyles) {
+                var styleObject = key;
+                var value = vars.onStartStyles[key];
+                try {
+                    vars.element.style[key] = value;
+                } catch (e) { }
+            }
+        }
+    }
+
+    function processOnCompleteStyles() {
+        log("processOnCompleteStyles()");
+        if (vars.onCompleteStyles) {
+            for (var key in vars.onCompleteStyles) {
+                var styleObject = key;
+                var value = vars.onCompleteStyles[key];
+                try {
+                    vars.element.style[key] = value;
+                } catch (e) { }
+            }
+        }
+    }
+
     function _hide() {
         getElement();
         if (!vars.element || !isElement(vars.element)) { return; }
 
         processOnStartClassLists();
+        processOnStartStyles();
 
         function setOnCompleteState() {
             vars.element.style.transitionDuration = "0s";
-            vars.element.style.display = "none";
             processOnCompleteClassLists();
+            processOnCompleteStyles();
             if (vars.onComplete) {
                 vars.onComplete();
             }
         }
 
         if (vars.duration) {
-            vars.element.style.transitionDuration = vars.duration + "s";
-            vars.element.style.opacity = 0;
-            vars.element.style.overflow = "hidden";
-            if (vars.animateHeight){
-                vars.element.style.height = getComputedStyle(vars.element).height;
-                setTimeout(function () {
-                    vars.element.style.height = "0px";
-                    vars.element.style.marginTop = "0px";
-                    vars.element.style.marginBottom = "0px";
-                }, 25);
-            }
+            // Ensure heights are set
+            vars.element.style.height = getComputedStyle(vars.element).height;
+            // vars.element.style.height = "0px";
+
+            // Prevent double run with duration and opacity set at delay
+            setTimeout(function () {
+                vars.element.style.transitionDuration = vars.duration + "s";
+                vars.element.style.opacity = 0;
+            }, 25);
             vars.element.addEventListener("transitionend", function (event) {
                 setOnCompleteState();
             }, false);
@@ -4518,25 +4544,25 @@ AFTC.Visibility = function () {
         if (vars.delay) {
             setTimeout(function () {
                 _hide();
-            }, (vars.delay*1000));
+            }, (vars.delay * 1000));
         } else {
             _hide();
         }
     }
 
-    
 
     function _show() {
         getElement();
         if (!vars.element || !isElement(vars.element)) { return; }
 
         processOnStartClassLists();
+        processOnStartStyles();
 
         function setOnCompleteState() {
             vars.element.style.transitionDuration = "0s";
             vars.element.style.opacity = 1;
-            vars.element.style.display = vars.display;
             processOnCompleteClassLists();
+            processOnCompleteStyles();
             if (vars.onComplete) {
                 vars.onComplete();
             }
@@ -4544,13 +4570,14 @@ AFTC.Visibility = function () {
 
         if (vars.duration) {
             vars.element.style.opacity = 0;
-            vars.element.style.transitionDuration = vars.duration + "s";
-            vars.element.style.display = vars.display;
+            // Prevent double run with duration and opacity set at delay
             setTimeout(function () {
+                vars.element.style.transitionDuration = vars.duration + "s";
                 vars.element.style.opacity = 1;
             }, 25);
 
             vars.element.addEventListener("transitionend", function (event) {
+                log("transition end");
                 setOnCompleteState();
             }, false);
         } else {
@@ -4571,7 +4598,7 @@ AFTC.Visibility = function () {
         if (vars.delay) {
             setTimeout(function () {
                 _show();
-            }, (vars.delay*1000));
+            }, (vars.delay * 1000));
         } else {
             _show();
         }
@@ -4579,30 +4606,30 @@ AFTC.Visibility = function () {
 }
 
 window.show = function () {
-    if (typeof(arguments[0]) == "string"){
-        var args = { id :arguments[0] }
+    if (typeof (arguments[0]) == "string") {
+        var args = { id: arguments[0] }
         AFTC.Visibility(args).show();
-    } else if (isElement(arguments[0])){
-        var args = { element :arguments[0] }
+    } else if (isElement(arguments[0])) {
+        var args = { element: arguments[0] }
         AFTC.Visibility(args).show();
     } else {
         AFTC.Visibility(arguments[0]).show();
     }
 }
-window.fadeIn = function(){ window.show(arguments[0]); }
+window.fadeIn = function () { window.show(arguments[0]); }
 
 window.hide = function () {
-    if (typeof(arguments[0]) == "string"){
-        var args = { id :arguments[0] }
+    if (typeof (arguments[0]) == "string") {
+        var args = { id: arguments[0] }
         AFTC.Visibility(args).hide();
-    } else if (isElement(arguments[0])){
-        var args = { element :arguments[0] }
+    } else if (isElement(arguments[0])) {
+        var args = { element: arguments[0] }
         AFTC.Visibility(args).hide();
     } else {
         AFTC.Visibility(arguments[0]).hide();
     }
 }
-window.fadeOut = function(){ window.hide(arguments[0]); }
+window.fadeOut = function () { window.hide(arguments[0]); }
 
 
 

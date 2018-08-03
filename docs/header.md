@@ -99,3 +99,6 @@ var aftc_modules = [
  
 <br><br>
 
+
+
+# NPMJS Has issues with Docs from GITHUB from this point, want to see the docs better please visit the github page https://github.com/DarceyLloyd/AFTC.js.git
