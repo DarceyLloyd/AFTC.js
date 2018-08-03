@@ -101,7 +101,8 @@ var aftc_modules = [
 
 
 
-<h3><b>Quick links:</b></h3>
+# NPMJS Has issues with Docs from GITHUB from this point, want to see the docs better please visit the github page https://github.com/DarceyLloyd/AFTC.js.git
+<br><br><br><h3><b>Quick links:</b></h3>
  <a href='#addclasselementoridclassname'>addClass(elementOrId,classname)</a><br>
  <a href='#addeventobjtypefnusecapture'>addEvent(obj,type,fn,useCapture)</a><br>
  <a href='#aftcanimate'>AFTC.Animate()</a><br>

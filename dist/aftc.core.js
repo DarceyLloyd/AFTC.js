@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.29
+// AFTC.JS Version 1.6.30
 // Author: Darcey@aftc.io
 /*
  * Author: darcey@aftc.io || darcey.lloyd@gmail.com

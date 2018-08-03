@@ -87,7 +87,7 @@ AFTC.Visibility = function () {
     }
 
     function processOnStartStyles() {
-        log("processOnStartStyles()");
+        // log("processOnStartStyles()");
         if (vars.onStartStyles) {
             for (var key in vars.onStartStyles) {
                 var styleObject = key;
@@ -100,7 +100,7 @@ AFTC.Visibility = function () {
     }
 
     function processOnCompleteStyles() {
-        log("processOnCompleteStyles()");
+        // log("processOnCompleteStyles()");
         if (vars.onCompleteStyles) {
             for (var key in vars.onCompleteStyles) {
                 var styleObject = key;
@@ -185,7 +185,6 @@ AFTC.Visibility = function () {
             }, 25);
 
             vars.element.addEventListener("transitionend", function (event) {
-                log("transition end");
                 setOnCompleteState();
             }, false);
         } else {
