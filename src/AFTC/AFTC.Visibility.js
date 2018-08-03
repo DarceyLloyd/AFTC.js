@@ -166,6 +166,10 @@ AFTC.Visibility = function () {
         processOnStartClassLists();
         processOnStartStyles();
 
+        if (vars.element.style.display == "none" || vars.element.style.display == "") {
+            vars.element.style.display = "block";
+        }
+
         function setOnCompleteState() {
             vars.element.style.transitionDuration = "0s";
             vars.element.style.opacity = 1;
