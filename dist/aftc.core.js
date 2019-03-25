@@ -1,8 +1,5 @@
-// AFTC.JS Version 1.6.30
+// AFTC.JS Version 1.6.37
 // Author: Darcey@aftc.io
-/*
- * Author: darcey@aftc.io || darcey.lloyd@gmail.com
- */
 
 // AFTC Core
 var AFTC = AFTC || {}
@@ -1760,9 +1757,32 @@ window.isFireFox = function () {
  * @link: https://codepen.io/AllForTheCode/pen/xjmNLM
  */
 window.isChrome = function () {
-	// var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-	var chrome = !!window.chrome && !!window.chrome.webstore;
-	return chrome;
+	//var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1; // FALSE POSITIVE IN OPERA
+	// var chrome = !!window.chrome && !!window.chrome.webstore; // DOESNT WORK ANY LONGER
+
+	var isChromium = window.chrome;
+	var winNav = window.navigator;
+	var vendorName = winNav.vendor;
+	var isOpera = typeof window.opr !== "undefined";
+	var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+	var isIOSChrome = winNav.userAgent.match("CriOS");
+	
+	if (isIOSChrome) {
+	   // is Google Chrome on IOS
+	   return true;
+	} else if(
+	  isChromium !== null &&
+	  typeof isChromium !== "undefined" &&
+	  vendorName === "Google Inc." &&
+	  isOpera === false &&
+	  isIEedge === false
+	) {
+	   // is Google Chrome
+	   return true;
+	} else { 
+	   // not Google Chrome 
+	   return false;
+	}
 }
 
 

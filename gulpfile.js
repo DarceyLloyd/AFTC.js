@@ -1,11 +1,25 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var inject = require('gulp-inject-string');
+const gulp = require('gulp');
 
-var fs = require('fs')
-var json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
-var version = json.version;
+
+// Uglify
+const uglify = require('gulp-uglify'); // https://www.npmjs.com/package/gulp-uglify
+const terser = require('gulp-terser'); // Supports ES5 and ES6
+
+const concat = require('gulp-concat');
+const inject = require('gulp-inject-string'); // Prepends string to top of builds
+const plumber = require("gulp-plumber"); // Pipe sequence
+const rename = require("gulp-rename");
+const sass = require("gulp-sass");
+const pump = require('pump');
+
+
+const fs = require('fs')
+const json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+const version = json.version;
+
+function log(arg) {
+    console.log(arg);
+}
 
 var msg = "// AFTC.JS Version " + version + "\n"
 msg += "// Author: Darcey@aftc.io" + "\n";
@@ -72,9 +86,7 @@ var aftc_modules = [
 
 
 
-
-
-gulp.task('build', function () {
+function buildCore(done) {
     gulp.src(aftc_core)
         .pipe(concat('aftc.core.js'))
         // .pipe(uglify())
@@ -84,7 +96,10 @@ gulp.task('build', function () {
             this.emit("end");
         })
         .pipe(gulp.dest('./dist/'));
+    done();
+}
 
+function buildCoreMin(done) {
     gulp.src(aftc_core)
         .pipe(concat('aftc.core.min.js'))
         .pipe(uglify())
@@ -94,7 +109,11 @@ gulp.task('build', function () {
             this.emit("end");
         })
         .pipe(gulp.dest('./dist/'));
+    done();
+}
 
+
+function buildDev(done) {
     gulp.src(aftc_modules)
         .pipe(concat('aftc.js'))
         // .pipe(uglify())
@@ -104,75 +123,25 @@ gulp.task('build', function () {
             this.emit("end");
         })
         .pipe(gulp.dest('./dist/'));
-
-
-    
-    
-    gulp.src(aftc_modules)
-        .pipe(concat('aftc.min.js'))
-        .pipe(uglify())
-        .pipe(inject.prepend(msg))
-        .on("error", function (e) {
-            console.log(e.toString());
-            this.emit("end");
-        })
-        .pipe(gulp.dest('./dist/'));
-});
+    done();
+}
 
 
 
-
-// gulp.task('build-new', function () {
-//     gulp.src(js2)
-//         .pipe(concat('aftc.new.js'))
-//         // .pipe(uglify())
-//         .on("error", function (e) {
-//             console.log(e.toString());
-//             this.emit("end");
-//         })
-//         .pipe(gulp.dest('./dist/'));
-
-//     gulp.src(js2)
-//         .pipe(concat('aftc.new.min.js'))
-//         .pipe(uglify())
-//         .on("error", function (e) {
-//             console.log(e.toString());
-//             this.emit("end");
-//         })
-//         .pipe(gulp.dest('./dist/'));
-// });
+function buildDist(done) { 
+    pump([
+        gulp.src(aftc_modules),
+        concat('aftc.min.js'),
+        terser(),
+        inject.prepend(msg),
+        gulp.dest('./dist/')
+      ],
+      done
+    );
+    // done();
+}
 
 
-// gulp.task('build-dev', function () {
-//     //gulp.src('./src/**/*.js')
-//     gulp.src(jsFiles)
-//         .pipe(concat('aftc.js'))
-//         .on("error", function (e) {
-//             console.log(e.toString());
-//             this.emit("end");
-//         })
-//         .pipe(gulp.dest('./dist/'));
-// });
+gulp.task("build", gulp.parallel(buildCore, buildCoreMin, buildDev, buildDist));
 
-// gulp.task('build-dist', function () {
-//     gulp.src(jsFiles)
-//         .pipe(concat('aftc.min.js'))
-//         .pipe(uglify())
-//         .on("error", function (e) {
-//             console.log(e.toString());
-//             this.emit("end");
-//         })
-//         .pipe(gulp.dest('./dist/'));
-// });
-
-
-
-// gulp.task('build', ['build-dev', 'build-dist']);
-
-// gulp.task('watch', function () {
-//     gulp.watch(jsFiles, ['build', 'build-dev']);
-// });
-
-
-
-
+gulp.task("build-dist",gulp.series(buildDist));

@@ -1,6 +1,3 @@
-/*
- * Author: darcey@aftc.io || darcey.lloyd@gmail.com
- */
 
 // AFTC Core
 var AFTC = AFTC || {}
