@@ -1,6 +1,6 @@
 {
   "name": "aftc.js",
-  "version": "1.6.37",
+  "version": "1.6.38",
   "description": "A collection of utilities / functions for browser based development.",
   "scripts": {
     "gulp-build": "gulp build",
@@ -14,18 +14,17 @@
   "author": "darcey.lloyd@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "gsap": "^1.20.6",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-inject-string": "^1.1.2",
+    "gulp-jsbeautifier": "^3.0.1",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-terser": "^1.1.7",
+    "gulp-terser": "^1.2.0",
     "gulp-uglify": "^3.0.2",
     "pump": "^3.0.0",
-    "uglify-js": "^3.5.1",
-    "webpack": "^2.4.1"
+    "uglify-js": "^3.7.0"
   },
   "dependencies": {}
 }

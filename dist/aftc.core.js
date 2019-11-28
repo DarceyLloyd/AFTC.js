@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.37
+// AFTC.JS Version 1.6.38
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -162,52 +162,31 @@ window.getElementByTagName = function (tagName) { return AFTC.GetElement.by("tag
 
 
 AFTC.Log = {
-    enabled: true,
     element: false,
-    enable: function () {
-        enabled = true;
-    },
-    disable: function () {
-        enabled = false;
-    },
-    to: function (arg) {
-        var error = false;
-        if (arg == undefined || arg == null || !arg) {
-            AFTC.Log.element = false;
-            return;
-        } else if (typeof (arg) == "string") {
-            arg = getElementById(arg);
-        }
-        if (isElement(arg)) {
-            AFTC.Log.element = arg;
-        } else {
-            console.error("logTo(arg) ERROR: Supplied arg is not an ID or Element! To turn off logTo HTML element, don't supply an argument or use false.");
-        }
-    },
     out: function (arg) {
         if (console) {
-            if (AFTC.Log.enabled) {
-                if (typeof (arg) == "undefined") {
-                    console.warn("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
+
+            if (typeof (arg) == "undefined") {
+                console.warn("log(arg) ERROR: Your log variable (arg) is \"undefined\"!");
+            } else {
+                console.log(arg);
+            }
+            if (AFTC.Log.element != false) {
+                if (isElement(arg)) {
+                    // AFTC.Log.element.innerHTML += ("[HTMLElement]<br>");
+                    AFTC.Log.element.innerHTML += (arg + "<br>");
                 } else {
-                    console.log(arg);
-                }
-                if (AFTC.Log.element != false) {
-                    if (isElement(arg)) {
-                        // AFTC.Log.element.innerHTML += ("[HTMLElement]<br>");
-                        AFTC.Log.element.innerHTML += (arg + "<br>");
-                    } else {
-                        if (typeof (arg) == "object") {
-                            AFTC.Log.element.innerHTML += "[object||array]<br>";
-                            for (var key in arg) {
-                                AFTC.Log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;[" + key + "] = " + arg[key] + "<br>");
-                            }
-                        } else {
-                            AFTC.Log.element.innerHTML += (arg + "<br>");
+                    if (typeof (arg) == "object") {
+                        AFTC.Log.element.innerHTML += "[object||array]<br>";
+                        for (var key in arg) {
+                            AFTC.Log.element.innerHTML += ("&nbsp;&nbsp;&nbsp;&nbsp;[" + key + "] = " + arg[key] + "<br>");
                         }
+                    } else {
+                        AFTC.Log.element.innerHTML += (arg + "<br>");
                     }
                 }
             }
+
         }
     }
 };
@@ -235,46 +214,14 @@ window.trace = function (arg) { AFTC.Log.out(arg); }
 
 
 /**
- * @function: logTo(element)
+ * @function: logTo(ele,msg)
  * @desc: Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted
- * @param element string: The id of html element you wish to console.log to
+ * @param ele element: The html element you wish to log to
+ * @param msg string: The string to inject into the html element
  * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
-window.logTo = function (element) { AFTC.Log.to(element); }
+window.logTo = function (ele,msg) { ele.innerHTML = msg; }
 
-
-/**
- * @function: logEnable()
- * @desc: Enables log and trace
- * @alias: window.log.enable();
- * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
- * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
- */
-window.logEnable = function () { AFTC.Log.enabled = true; }
-window.log.enable = function () { AFTC.Log.enabled = true; }
-
-
-/**
- * @function: logDisable()
- * @desc: Disables log and trace
- * @alias: window.log.disable();
- * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
- * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
- */
-window.logDisable = function () { AFTC.Log.enabled = false; }
-window.log.disable = function () { AFTC.Log.enabled = false; }
-
-
-
-/**
- * @function: logToDisable()
- * @desc: Disables log and trace to a html element
- * @alias: disableLogTo();
- * @link: https://codepen.io/AllForTheCode/pen/pVOOZV
- * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
- */
-window.logToDisable = function () { AFTC.Log.to(false); }
-window.disableLogTo = function () { AFTC.Log.to(false); }
 
 
 

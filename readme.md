@@ -3,6 +3,8 @@
 
 <b>A collection of utilities / functions I find useful when working with JavaScript.</b>
 
+## NEW: ES6 Modules version now available!
+
 <br>
 
 <h3><b>Find AFTC.JS useful? Please Donate...</b></h3>
@@ -44,8 +46,8 @@ Then include the version you wish to use, your options are:
 
  - aftc.core.min.js - this is the aftc.js core compressed (23KB)
  - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
- 
- 
+
+
 
 ##### NOTE: You can always customise your build of the AFTC.JS, see the Build Guide below.
 
@@ -96,7 +98,7 @@ var aftc_modules = [
 
 
  ---
- 
+
 <br><br>
 
 
@@ -293,7 +295,7 @@ Quick and easy args to object<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -345,7 +347,7 @@ Gets an element from the DOM by ID. NOTE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -396,7 +398,7 @@ Gets an element from the DOM via DOM Query. NOTE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -445,7 +447,7 @@ Gets an array of element from the DOM that have a specific name. NOTE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -494,7 +496,7 @@ Gets the first element from the DOM that has a specific name. NOTE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -543,7 +545,7 @@ Gets an array of html elements from the DOM that have a specific class name. NOT
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -592,7 +594,7 @@ Gets the first html element from the DOM that has a specific class name. NOTE<br
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -639,7 +641,7 @@ Gets an array of html elements from the DOM that has a specific tag name. NOTE<b
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -686,7 +688,7 @@ Gets the first html element from the DOM that has a specific tag name. NOTE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -749,7 +751,7 @@ log(MyClass);
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -798,7 +800,7 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -836,7 +838,7 @@ Enables log and trace<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -874,7 +876,7 @@ Disables log and trace<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -912,7 +914,7 @@ Disables log and trace to a html element<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -950,7 +952,7 @@ Clears the console if supported<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1014,7 +1016,7 @@ remove a specified index from an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1068,7 +1070,7 @@ Check to see if a string is in an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1124,7 +1126,7 @@ Check to see if your array contains something you want to find<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1175,7 +1177,7 @@ clears/empties an array for garbage collection<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1227,7 +1229,7 @@ returns the maximum value in an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1279,7 +1281,7 @@ returns the minimum value in an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1331,7 +1333,7 @@ shuffles an array (method 1)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1383,7 +1385,7 @@ shuffles an array (method 2)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1434,7 +1436,7 @@ Converts an array to a single line string (usefull for debug)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1485,7 +1487,7 @@ takes an input and returns it as index[0] of an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1544,7 +1546,7 @@ no more typing self.location.href, just use redirect(url)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1593,7 +1595,7 @@ Go full screen, on an element if specified or whole browser if left out<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1628,7 +1630,7 @@ Exits full screen mode<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1689,7 +1691,7 @@ converts radians to degrees<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1740,7 +1742,7 @@ converts degrees to radians<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1789,7 +1791,7 @@ Converts a number to hex<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1838,7 +1840,7 @@ converts boolean to a string of true or false<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1887,7 +1889,7 @@ converts a boolean to yes or no<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1936,7 +1938,7 @@ Converts a string to a boolean (y,yes,"1",no etc)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -1985,7 +1987,7 @@ converts an input to a boolean<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2036,7 +2038,7 @@ parses all values in array to float<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2087,7 +2089,7 @@ parses all values in array to float<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2139,7 +2141,7 @@ takes an input and returns it as index[0] of an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2196,7 +2198,7 @@ rgb to hex<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2253,7 +2255,7 @@ rgb to hex<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2300,7 +2302,7 @@ hexToRgb<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2364,7 +2366,7 @@ Sets a cookie by name with a value<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2413,7 +2415,7 @@ Gets the value of a cookie by name<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2466,7 +2468,7 @@ Add a css class to a html element<br>
 
 
 <h4>Alias's:</h4>
- - 
+ -
 
 
 
@@ -2479,7 +2481,7 @@ Add a css class to a html element<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2522,7 +2524,7 @@ shortcut to remove a class from a html element<br>
 
 
 <h4>Alias's:</h4>
- - 
+ -
 
 
 
@@ -2535,7 +2537,7 @@ shortcut to remove a class from a html element<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2589,7 +2591,7 @@ Check to see if an element has a class attached to it<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2656,7 +2658,7 @@ Gets the number of whole days between a start and end date<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2705,7 +2707,7 @@ Formats a date in the UK format<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2754,7 +2756,7 @@ Formats a date in the US format<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2803,7 +2805,7 @@ get a uk date from a mysql db date value<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2852,7 +2854,7 @@ get a uk date from a mysql db date time value<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2887,7 +2889,7 @@ gets the date time now for sql insert<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2936,7 +2938,7 @@ gets the date time at a specified local<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -2998,7 +3000,7 @@ open a popup window with the html you wish to display in it<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3043,7 +3045,7 @@ Detects if the device you are using is a mobile or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3078,7 +3080,7 @@ Detects if the device you are using is android or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3113,7 +3115,7 @@ Detects if the device you are using is iOS or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3148,7 +3150,7 @@ Detects FireFox<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3183,7 +3185,7 @@ Detects Chrome<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3218,7 +3220,7 @@ Detects Edge<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3253,7 +3255,7 @@ Detects Safari<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3288,7 +3290,7 @@ Detects IE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3323,7 +3325,7 @@ Detects Opera<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3358,7 +3360,7 @@ Gets version of IE<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3393,7 +3395,7 @@ Detects browser<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3442,7 +3444,7 @@ Attempts to get the os from the user agent or the test user agent<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3514,7 +3516,7 @@ setHTML("header","Welcome");
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3563,7 +3565,7 @@ Gets an elements top offset<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3612,7 +3614,7 @@ Center element that is absolute positioned<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3671,7 +3673,7 @@ Scroll to element on page<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3755,7 +3757,7 @@ Shortcut for adding events with old browser compatibility<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3806,7 +3808,7 @@ A replacement for using body onload and no need for jQuery's $(document).ready<b
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3865,7 +3867,7 @@ Checks to if checkbox is checked or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3914,7 +3916,7 @@ Checks if evt supplied (use on form input events via onkeyup or onkeydown)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -3964,7 +3966,7 @@ Removes all the options in a select<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4028,7 +4030,7 @@ parses a json object of key value pairs to a form select element<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4140,7 +4142,7 @@ parses a json object of key value pairs to a form select element<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4236,7 +4238,7 @@ Rectangle class, allos you to set x, y, width and height or a rectangle<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4318,7 +4320,7 @@ AFTC.Velocity class helper<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4377,7 +4379,7 @@ tries to get the function name of a suppled function<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4441,7 +4443,7 @@ check for string in string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4490,7 +4492,7 @@ check if input is even<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4539,7 +4541,7 @@ check if input is odd<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4588,7 +4590,7 @@ check if an input is an alpha numerical value ([a-z],[A-Z],[0-9] only)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4637,7 +4639,7 @@ checks if your variable is an element or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4686,7 +4688,7 @@ checks to see if your vairable is an element or not<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4735,7 +4737,7 @@ checks to see if your variable is a DOM object<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4786,7 +4788,7 @@ checks if a variable is a boolean<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4837,7 +4839,7 @@ check if variable is numeric<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4886,7 +4888,7 @@ check if variable is an array<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -4950,7 +4952,7 @@ cycles from 0 to max based on pos, will cycle back to 0 if over max<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5016,7 +5018,7 @@ returns a random number / int betwen your specified min and max values<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5072,7 +5074,7 @@ returns a random int betwen your specified min and max values but never the not 
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5126,7 +5128,7 @@ returns a random floating point number betwen your specified min and max values<
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5177,7 +5179,7 @@ get a random string of a specified length<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5229,7 +5231,7 @@ Generates a random id<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5288,7 +5290,7 @@ generate an array of random number between your max and min values<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5342,7 +5344,7 @@ generate an array of random string of a specified length<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5379,7 +5381,7 @@ generates a guid<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5433,7 +5435,7 @@ Get a weighted random based on odds and iterations<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5497,7 +5499,7 @@ Limit a string in length of words<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5546,7 +5548,7 @@ Attempts to clean a json string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5595,7 +5597,7 @@ Attempts to escape a html string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5655,7 +5657,7 @@ sets the length of a string from left to right<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5711,7 +5713,7 @@ Trims the length of a string by a value<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5767,7 +5769,7 @@ Trims the left of a string by a specified amount<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5816,7 +5818,7 @@ Attempts to get the file extension from a file path string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5865,7 +5867,7 @@ Attempts to get the file extension from a file path string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5914,7 +5916,7 @@ Gets the last part of a URL<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -5963,7 +5965,7 @@ Attempts to remove the file from a file path string<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6012,7 +6014,7 @@ Get anchor from url<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6061,7 +6063,7 @@ ES6 supports the startsWith(), this is for pre ES6 support<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6110,7 +6112,7 @@ ES6 supports endsWith(), this is for pre ES6 support<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6169,7 +6171,7 @@ Gets a string between two other strings<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6228,7 +6230,7 @@ Gets all strings between two other strings (multi match)<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6297,7 +6299,7 @@ Validats an email address<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6439,7 +6441,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6472,7 +6474,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6530,7 +6532,7 @@ anim1.set(["html","paddingLeft",left"],["hello","10px","100px"],[1,2,3]); // set
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6658,7 +6660,7 @@ An audio player with preloading capabilities, looping abilities and loop offset 
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6790,7 +6792,7 @@ log( color3.getHex() ); // Outputs the hex code of color 3
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6823,7 +6825,7 @@ returns a random RGB object o.r, o.g, o.g<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
@@ -6892,7 +6894,7 @@ Quick and easy xhr/ajax<br>
 
 
 <hr><br><br><br>
-    
+
 
 
 
