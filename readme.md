@@ -1,34 +1,29 @@
 # <b>AFTC.js</b>
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-<b>A collection of utilities / functions I find useful when working with JavaScript.</b>
+## A collection of usefull everyday utilities / functions.
 
-## NEW: ES6 Modules version now available!
-
-<br>
 
 <h3><b>Find AFTC.JS useful? Please Donate...</b></h3>
 Any and all donations to help keep active development and the lights on are more than welcome.
 
 [![paypal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Darcey%2eLloyd%40gmail%2ecom&lc=GB&item_name=Darcey%20Lloyd%20Developer%20Donation&currency_code=GBP&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-<br>
+
  <hr>
  <br>
 
 
 ### <b>What's new</b>
+ - <b>aftc-modules</b> v1.0.14<br>
+ You can now have the access to the aftc.js collection of utilities/functions in your ES6, Babel, etc projects.
 
- - Version 1.6.x is now available with codepen examples for nearly every function / feature that the AFTC.JS has to offer!<br>
- You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a><br>
- 1.6.x is quite the clean up and documentation refresh
+ - <b>aftc.js</b> v1.6.x<br>
+ You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 
  <br>
  <hr>
  <br>
-
-
-
 
 
 
@@ -36,18 +31,33 @@ Any and all donations to help keep active development and the lights on are more
 ### <b>Installation</b>
 ```
 npm i aftc.js
-gulp build
 ```
+or via cdn:
+- https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc.min.js
+- https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc.core.min.js
+- https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc-module.js
 
+
+#### Use aftc.min.js in your html include or vendor merged packages.
+
+#### Use aftc-module.js in your ES6 projects for tree shacking.
+
+
+<br>
+<hr>
+
+
+
+### <b>File descirptions</b>
 Then include the version you wish to use, your options are:
 
  - <b>aftc.min.js</b> - this is the full aftc.js package compressed, with all the extras (42KB);
  - aftc.js - this is the full aftc.js package uncompressed with all the extras
 
- - aftc.core.min.js - this is the aftc.js core compressed (23KB)
+ - <b>aftc.core.min.js</b> - this is the aftc.js core compressed (23KB)
  - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
 
-
+Either package aftc.min.js with your build or include the aftc.min.js file in your html script tags.
 
 ##### NOTE: You can always customise your build of the AFTC.JS, see the Build Guide below.
 
