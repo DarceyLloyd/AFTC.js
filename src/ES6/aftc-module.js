@@ -1,4 +1,4 @@
-// AFTC.JS ES6 Version 1.0.0
+// AFTC.JS ES6 Version 1.0.14
 // Author: Darcey@aftc.io
 
 
@@ -22,6 +22,29 @@ export function onReady(fn) {
 
 
 
+export function getBrowserY(){
+    let supportPageOffset = window.pageXOffset !== undefined;
+    let isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+
+    // let x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
+    let y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+
+    return y;
+}
+
+
+export function getBrowserX(){
+    let supportPageOffset = window.pageXOffset !== undefined;
+    let isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+
+    let x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
+    // let y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+
+    return x;
+}
+
+
+
 export function normaliseRange(min, max, v) {
     let range = max - min;
     let step = 1 / range;
@@ -40,6 +63,8 @@ export function roundTo(v, dec) {
 
 
 export function attachDebug(no) {
+    if (window.vDebug){ return false; }
+
     window.vDebug = [];
     let debugContainer = document.createElement("div");
     debugContainer.id = "debug-container";
@@ -56,11 +81,6 @@ export function attachDebug(no) {
     document.body.appendChild(debugContainer);
 }
 
-
-export function log(arg) {
-    console.log(arg);
-}
-
 export function debug(index, msg) {
     if (!window.vDebug){ return false; }
     if (index > window.vDebug.length-1){ log("DEBUG INDEX [" + index + "] DOESNT EXIST!"); return false; }
@@ -70,7 +90,44 @@ export function debug(index, msg) {
 
 
 
+export function log(arg) {
+    console.log(arg);
+}
 
+export function logTo(elementOrId,msg){
+    let ele = false;
+    if (typeof(elementOrId) == "string"){
+        ele = document.getElementById(elementOrId);
+    }
+
+    if (ele){
+        ele.innerHTML = msg;
+    }
+}
+
+
+
+
+
+
+
+export function getElementPosition(el) {
+    let position = {
+        top: el.offsetTop,
+        left: el.offsetLeft
+    };
+
+    if (el.offsetParent) {
+        let parentPosition = {
+            top: el.offsetParent.offsetTop,
+            left: el.offsetParent.offsetLeft
+        };
+
+        position.top += parentPosition.top;
+        position.left += parentPosition.left;
+    }
+    return position;
+}
 
 
 
@@ -115,9 +172,7 @@ export function argsToObject(fArgs, obj, strict) {
     }
 };
 
-export function argsTo(args, obj, strict) {
-    this.argsToObject(args, obj, strict);
-}
+
 
 export function isElement(o) {
     let answer = (
@@ -290,6 +345,7 @@ export function getRandomThatsNot(min,max,not){
 }
 
 export function getRandomFloat(min, max) {
+    // let r = from + (Math.random()* (to*2));
     return (Math.random() * (max - min) + min);
 };
 
