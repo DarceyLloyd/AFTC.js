@@ -147,7 +147,7 @@ function buildDist(done) {
 const beautify = require('gulp-jsbeautifier');
 
 const es6_module_files = [
-    "./src/ES6/aftc-module.js"
+    "./src/ES6/aftc-modules.js"
 ];
 
 function buildES6Modules(done){

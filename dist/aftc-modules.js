@@ -1,9 +1,19 @@
-// AFTC.JS Version 1.6.38
+// AFTC.JS Version 1.6.39
 // Author: Darcey@aftc.io
 export function onReady(fn) {
     "complete" === document.readyState || "loading" !== document.readyState && !document.documentElement.doScroll ? setTimeout(fn, 10) : document.addEventListener && document.addEventListener("DOMContentLoaded", () => {
         window.setTimeout(fn, 10)
     })
+}
+export function getBrowserY() {
+    let supportPageOffset = void 0 !== window.pageXOffset,
+        isCSS1Compat = "CSS1Compat" === (document.compatMode || "");
+    return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop
+}
+export function getBrowserX() {
+    let supportPageOffset = void 0 !== window.pageXOffset,
+        isCSS1Compat = "CSS1Compat" === (document.compatMode || "");
+    return supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft
 }
 export function normaliseRange(min, max, v) {
     let r = 1 / (max - min) * (v - min);
@@ -12,23 +22,53 @@ export function normaliseRange(min, max, v) {
 export function roundTo(v, dec) {
     return +(Math.round(Number(v + "e+" + dec)) + "e-" + dec)
 }
-export function attachDebug(no) {
-    window.vDebug = [];
-    let debugContainer = document.createElement("div");
+export function attachDebug(no, ele) {
+    let ids = [],
+        debugContainer = document.createElement("div");
     debugContainer.id = "debug-container";
     for (let i = 0; i < no; i++) {
-        let div = document.createElement("div");
-        div.id = "[" + i + "]", div.classList.add("debug"), debugContainer.appendChild(div), window.vDebug[i] = div, div.addEventListener("click", (function(e) {
+        let id = "aftc-debug-container-" + Math.round(9999999999 * Math.random()),
+            div = document.createElement("div");
+        div.id = id, div.classList.add("debug"), debugContainer.appendChild(div), div.addEventListener("click", (function(e) {
             console.log(this.innerHTML)
-        }))
+        })), ids.push(id)
     }
-    document.body.appendChild(debugContainer)
+    return ele ? ele.appendChild(debugContainer) : document.body.appendChild(debugContainer), ids
 }
 export function log(arg) {
     console.log(arg)
 }
-export function debug(index, msg) {
-    return !!window.vDebug && (index > window.vDebug.length - 1 ? (log("DEBUG INDEX [" + index + "] DOESNT EXIST!"), !1) : void(window.vDebug[index].innerHTML = msg))
+export function logTo(elementOrId, msg) {
+    let ele = !1;
+    "string" == typeof elementOrId && (ele = document.getElementById(elementOrId)), ele && (ele.innerHTML = msg)
+}
+export function inertiaTo(current, target, amount) {
+    if (1 == amount) return target;
+    let distToGo = target - current,
+        delta = current + distToGo * amount;
+    return Math.abs(distToGo) < .01 && (distToGo = 0, delta = target), delta
+}
+export function isInViewport(el) {
+    let top = el.offsetTop,
+        left = el.offsetLeft,
+        width = el.offsetWidth,
+        height = el.offsetHeight;
+    for (; el.offsetParent;) top += (el = el.offsetParent).offsetTop, left += el.offsetLeft;
+    return top < window.pageYOffset + window.innerHeight && left < window.pageXOffset + window.innerWidth && top + height > window.pageYOffset && left + width > window.pageXOffset
+}
+export function getElementPosition(el) {
+    let position = {
+        top: el.offsetTop,
+        left: el.offsetLeft
+    };
+    if (el.offsetParent) {
+        let parentPosition = {
+            top: el.offsetParent.offsetTop,
+            left: el.offsetParent.offsetLeft
+        };
+        position.top += parentPosition.top, position.left += parentPosition.left
+    }
+    return position
 }
 export function argsToObject(fArgs, obj, strict) {
     if (fArgs[0] && "object" == typeof fArgs[0]) {
@@ -36,9 +76,6 @@ export function argsToObject(fArgs, obj, strict) {
         if (void 0 === strict && (strict = !0), args && "object" == typeof args)
             for (let key in args) strict ? obj.hasOwnProperty(key) ? obj[key] = args[key] : console.warn("argsToObject(): Argument [" + key + "] is not supported.") : obj[key] = args[key]
     }
-}
-export function argsTo(args, obj, strict) {
-    this.argsToObject(args, obj, strict)
 }
 export function isElement(o) {
     return 1 == ("object" == typeof HTMLElement ? o instanceof HTMLElement : o && "object" == typeof o && null !== o && 1 === o.nodeType && "string" == typeof o.nodeName)
@@ -128,6 +165,9 @@ export function isArray(input) {
 }
 export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
+}
+export function getRandomBoolean() {
+    return Math.random() >= .5
 }
 export function getRandomThatsNot(min, max, not) {
     let r = not,

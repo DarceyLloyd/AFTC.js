@@ -1,4 +1,4 @@
-// AFTC.JS ES6 Version 1.0.14
+// AFTC.JS ES6 Version 1.0.24
 // Author: Darcey@aftc.io
 
 
@@ -62,31 +62,35 @@ export function roundTo(v, dec) {
 }
 
 
-export function attachDebug(no) {
-    if (window.vDebug){ return false; }
+export function attachDebug(no,ele) {
+    // return id's not the div create elements as these are type of object and not html element
+    let ids = [];
 
-    window.vDebug = [];
     let debugContainer = document.createElement("div");
     debugContainer.id = "debug-container";
+
     for (let i = 0; i < no; i++) {
+        let r = Math.round(Math.random()*9999999999);
+        let id = "aftc-debug-container-" + r;
         let div = document.createElement("div");
-        div.id = "["+i+"]";
+        div.id = id;
         div.classList.add("debug");
         debugContainer.appendChild(div);
-        window.vDebug[i] = div;
         div.addEventListener("click", function (e) {
             console.log(this.innerHTML);
         });
+
+        ids.push(id);
     }
-    document.body.appendChild(debugContainer);
+    if (ele){
+        ele.appendChild(debugContainer);
+    } else {
+        document.body.appendChild(debugContainer);
+    }
+
+    return ids;
 }
 
-export function debug(index, msg) {
-    if (!window.vDebug){ return false; }
-    if (index > window.vDebug.length-1){ log("DEBUG INDEX [" + index + "] DOESNT EXIST!"); return false; }
-
-    window.vDebug[index].innerHTML = msg;
-}
 
 
 
@@ -106,6 +110,53 @@ export function logTo(elementOrId,msg){
 }
 
 
+
+
+
+export function inertiaTo(current,target,amount){
+    if (amount == 1) {
+        return target;
+    }
+    let distToGo = target - current;
+    let delta = current + (distToGo * amount);
+
+    if (Math.abs(distToGo) < 0.01) {
+        distToGo = 0;
+        delta = target;
+    }
+    return delta;
+}
+
+
+
+export function isInViewport(el){
+    let top = el.offsetTop;
+    let left = el.offsetLeft;
+    let width = el.offsetWidth;
+    let height = el.offsetHeight;
+
+    while(el.offsetParent) {
+        el = el.offsetParent;
+        top += el.offsetTop;
+        left += el.offsetLeft;
+    }
+
+    return (
+        top < (window.pageYOffset + window.innerHeight) &&
+        left < (window.pageXOffset + window.innerWidth) &&
+        (top + height) > window.pageYOffset &&
+        (left + width) > window.pageXOffset
+    );
+
+
+    // let bounding = ele.getBoundingClientRect();
+    // return (
+    //     bounding.top >= 0 &&
+    //     bounding.left >= 0 &&
+    //     bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    //     bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    // );
+}
 
 
 
@@ -321,7 +372,16 @@ export function isArray(input) {
 
 export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
+
+
+export function getRandomBoolean(){
+    return Math.random() >= 0.5;
+}
+
+
+
+
 
 /**
  * @function: getRandomThatsNot(min,max,not)

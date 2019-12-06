@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.38
+// AFTC.JS Version 1.6.39
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -2676,3 +2676,26 @@ AFTC.Velocity = function (vx, vy) {
 function cycle(pos, max) {
     return (pos % max + max) % max;
 }
+
+
+
+
+
+
+/**
+ * @function: loadJS(url, onComplete, location)
+ * @desc: cycles from 0 to max based on pos, will cycle back to 0 if over max
+ * @param url string: Path to javascript file to load
+ * @param onComplete function: The function you wish to call once the script has loaded
+ * @link:
+ */
+var loadJS = function(url, onComplete){
+    var scriptTag = document.createElement('script');
+    scriptTag.src = url;
+
+    scriptTag.onload = onComplete;
+    scriptTag.onreadystatechange = onComplete;
+
+    document.body.appendChild(scriptTag);
+};
+
