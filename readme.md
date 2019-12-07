@@ -63,7 +63,6 @@ npm i aftc.js
 or via cdn:
 - https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc.min.js
 - https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc.core.min.js
-- https://cdn.jsdelivr.net/npm/aftc.js@latest/dist/aftc-module.js
 
 
 #### Use aftc.min.js in your html include or vendor merged packages.
