@@ -27,61 +27,61 @@ msg += "// Author: Darcey@aftc.io" + "\n";
 
 // The core, the base, the essentials, the foundations, the stuff I can't live without
 var aftc_core = [
-    "./src/ES5/aftc.js",
-    "./src/ES5/core/debug.js",
-    "./src/ES5/core/events.js",
-    "./src/ES5/core/array.js",
-    "./src/ES5/core/get.js",
-    "./src/ES5/core/is.js",
-    "./src/ES5/core/random.js",
-    "./src/ES5/core/string.js",
-    "./src/ES5/core/conversion.js",
-    "./src/ES5/core/datetime.js",
-    "./src/ES5/core/validation.js",
-    "./src/ES5/core/detection.js",
-    "./src/ES5/core/dom.js",
-    "./src/ES5/core/css.js",
-    "./src/ES5/core/browser.js",
-    "./src/ES5/core/cookies.js",
-    "./src/ES5/core/form.js",
-    "./src/ES5/core/geometry.js",
-    "./src/ES5/core/video.js",
-    "./src/ES5/core/misc.js"
+    "./src/aftc.js",
+    "./src/core/debug.js",
+    "./src/core/events.js",
+    "./src/core/array.js",
+    "./src/core/get.js",
+    "./src/core/is.js",
+    "./src/core/random.js",
+    "./src/core/string.js",
+    "./src/core/conversion.js",
+    "./src/core/datetime.js",
+    "./src/core/validation.js",
+    "./src/core/detection.js",
+    "./src/core/dom.js",
+    "./src/core/css.js",
+    "./src/core/browser.js",
+    "./src/core/cookies.js",
+    "./src/core/form.js",
+    "./src/core/geometry.js",
+    "./src/core/video.js",
+    "./src/core/misc.js"
 ];
 
 // The extras, the modules, the ooo or to some, the bloat
 // Nice to have, but not essential
 var aftc_modules = [
     // The AFTC Core (required) START
-    "./src/ES5/aftc.js",
-    "./src/ES5/core/debug.js",
-    "./src/ES5/core/events.js",
-    "./src/ES5/core/array.js",
-    "./src/ES5/core/get.js",
-    "./src/ES5/core/is.js",
-    "./src/ES5/core/random.js",
-    "./src/ES5/core/string.js",
-    "./src/ES5/core/conversion.js",
-    "./src/ES5/core/datetime.js",
-    "./src/ES5/core/validation.js",
-    "./src/ES5/core/detection.js",
-    "./src/ES5/core/dom.js",
-    "./src/ES5/core/css.js",
-    "./src/ES5/core/browser.js",
-    "./src/ES5/core/cookies.js",
-    "./src/ES5/core/form.js",
-    "./src/ES5/core/geometry.js",
-    "./src/ES5/core/video.js",
-    "./src/ES5/core/misc.js",
+    "./src/aftc.js",
+    "./src/core/debug.js",
+    "./src/core/events.js",
+    "./src/core/array.js",
+    "./src/core/get.js",
+    "./src/core/is.js",
+    "./src/core/random.js",
+    "./src/core/string.js",
+    "./src/core/conversion.js",
+    "./src/core/datetime.js",
+    "./src/core/validation.js",
+    "./src/core/detection.js",
+    "./src/core/dom.js",
+    "./src/core/css.js",
+    "./src/core/browser.js",
+    "./src/core/cookies.js",
+    "./src/core/form.js",
+    "./src/core/geometry.js",
+    "./src/core/video.js",
+    "./src/core/misc.js",
     // The AFTC Core (required) END
-    "./src/ES5/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
-    "./src/ES5/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
-    // "./src/ES5/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas(); (WORK IN PROGRESS);
-    // "./src/ES5/AFTC/AFTC.CheckboxHideShow.js", // Up for review - to be updated or removed
-    "./src/ES5/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
-    "./src/ES5/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()
-    // "./src/ES5/AFTC/AFTC.ResizeManager.js", // Up for review - to be updated or removed
-    "./src/ES5/AFTC/AFTC.XHR.js", // Everyone needs some IO, I know I do...
+    "./src/AFTC/AFTC.Audio.js", // Enables new AFTC.Audio() and playSound()
+    "./src/AFTC/AFTC.Animate.js", // Enables new AFTC.Animate()
+    // "./src/AFTC/AFTC.Canvas.js", // Enables new AFTC.Canvas(); (WORK IN PROGRESS);
+    // "./src/AFTC/AFTC.CheckboxHideShow.js", // Up for review - to be updated or removed
+    "./src/AFTC/AFTC.Color.js", // Enables new AFTC.Color();
+    "./src/AFTC/AFTC.Visibility.js", // Enables hide(), show(), fade(), fadeIn() & fadeOut()
+    // "./src/AFTC/AFTC.ResizeManager.js", // Up for review - to be updated or removed
+    "./src/AFTC/AFTC.XHR.js", // Everyone needs some IO, I know I do...
 ];
 
 
@@ -143,31 +143,29 @@ function buildDist(done) {
 
 
 
-// const beautify = require('gulp-beautify');
-const beautify = require('gulp-jsbeautifier');
+// // const beautify = require('gulp-beautify');
+// const beautify = require('gulp-jsbeautifier');
 
-const es6_module_files = [
-    "./src/ES6/aftc-modules.js"
-];
+// const es6_module_files = [
+//     "./src/ES6/aftc-modules.js"
+// ];
 
-function buildES6Modules(done){
-    pump([
-        gulp.src(es6_module_files),
-        // concat('aftc.min.js'),
-        terser({
-            mangle: false
-        }),
-        beautify(),
-        inject.prepend(msg),
-        gulp.dest('./dist/')
-      ],
-      done
-    );
-}
-
-
+// function buildES6Modules(done){
+//     pump([
+//         gulp.src(es6_module_files),
+//         // concat('aftc.min.js'),
+//         terser({
+//             mangle: false
+//         }),
+//         beautify(),
+//         inject.prepend(msg),
+//         gulp.dest('./dist/')
+//       ],
+//       done
+//     );
+// }
 
 
-gulp.task("build", gulp.parallel(buildCore, buildCoreMin, buildDev, buildDist, buildES6Modules));
 
-gulp.task("build-dist",gulp.series(buildDist));
+
+gulp.task("build", gulp.parallel(buildCore, buildCoreMin, buildDev, buildDist));

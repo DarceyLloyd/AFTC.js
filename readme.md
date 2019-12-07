@@ -12,15 +12,43 @@ Any and all donations to help keep active development and the lights on are more
 
  <hr>
  <br>
+<br>
 
 
-### <b>What's new</b>
- - <b>aftc-modules</b> v1.0.14<br>
- You can now have the access to the aftc.js collection of utilities/functions in your ES6, Babel, etc projects.
 
- - <b>aftc.js</b> v1.6.x<br>
+ ## <b>Want the ES6 modules version? <b>aftc-modules.js</b><br>
+ <b>
+ Visit <a href="https://github.com/DarceyLloyd/aftc-modules" target="_blank">https://github.com/DarceyLloyd/aftc-modules</a></b>
+
+ ```
+ npm i aftc-modules
+ ```
+
+
+
+<hr>
+<br>
+<br>
+
+
+
+
+
+# <b>What's new</b>
+## <b>aftc.js</b> v1.6.x</b><br>
  You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 
+
+ ## <b>Added loadJS(src,onLoad)</b><br>
+ Quick and easy script loading and attachement to the DOM.
+
+ ## <b>attachDebug(no, ele)</b><br>
+ Attach some visual debug divs to an element which you can logTo, returns an array of elements so you can:
+ ```
+ let v = attachDebug(10,document.body);
+ logTo(v[0],"hello world 1");
+ logTo(v[9],"hello world 10");
+ ```
  <br>
  <hr>
  <br>
@@ -40,7 +68,7 @@ or via cdn:
 
 #### Use aftc.min.js in your html include or vendor merged packages.
 
-#### Use aftc-module.js in your ES6 projects for tree shacking.
+#### Use aftc-modules.js in your ES6 projects for tree shacking.
 
 
 <br>
@@ -68,8 +96,6 @@ Either package aftc.min.js with your build or include the aftc.min.js file in yo
 
 
 ### <b>Build Guide</b>
-
-I pref' gulp at the moment.
 
 ```
 gulp build
