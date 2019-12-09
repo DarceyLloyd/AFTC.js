@@ -21,11 +21,11 @@ function cycle(pos, max) {
  * @param onComplete function: The function you wish to call once the script has loaded
  * @link:
  */
-var loadJS = function (url, onComplete) {
+var loadJS = function (src, onComplete) {
     /*
     // NOT IE11 Friendly
     var scriptTag = document.createElement('script');
-    scriptTag.src = url;
+    scriptTag.src = src;
 
     scriptTag.onload = onComplete;
     scriptTag.onreadystatechange = onComplete;
@@ -38,7 +38,7 @@ var loadJS = function (url, onComplete) {
     var head = document.getElementsByTagName("head")[0] || document.body;
     var script = document.createElement("script");
 
-    script.src = srcIELibs;
+    script.src = src;
 
     script.onreadystatechange = function () {
         if (this.readyState == 'complete' || this.readyState == 'loaded') {
