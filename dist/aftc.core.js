@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.41
+// AFTC.JS Version 1.6.42
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -2689,7 +2689,9 @@ function cycle(pos, max) {
  * @param onComplete function: The function you wish to call once the script has loaded
  * @link:
  */
-var loadJS = function(url, onComplete){
+var loadJS = function (url, onComplete) {
+    /*
+    // NOT IE11 Friendly
     var scriptTag = document.createElement('script');
     scriptTag.src = url;
 
@@ -2697,5 +2699,30 @@ var loadJS = function(url, onComplete){
     scriptTag.onreadystatechange = onComplete;
 
     document.body.appendChild(scriptTag);
+    */
+
+
+    var me = this;
+    var head = document.getElementsByTagName("head")[0] || document.body;
+    var script = document.createElement("script");
+
+    script.src = srcIELibs;
+
+    script.onreadystatechange = function () {
+        if (this.readyState == 'complete' || this.readyState == 'loaded') {
+            if (onComplete) {
+                onComplete();
+            }
+        }
+    };
+
+    script.onload = function () {
+        if (onComplete) {
+            onComplete();
+        }
+    };
+
+    head.appendChild(script);
+
 };
 
