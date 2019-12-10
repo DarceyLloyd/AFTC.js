@@ -77,7 +77,7 @@ var loadJS = function (src, onComplete) {
  * @method dispose: dispose of all functions in the function stack
  * @link:
  */
-export function AnimationFrameStack() {
+function AnimationFrameStack() {
 
     this.init = function(){
         if (!window){
