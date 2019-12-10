@@ -78,6 +78,7 @@ var loadJS = function (src, onComplete) {
  * @link:
  */
 function AnimationFrameStack() {
+    var me = this;
 
     this.init = function(){
         if (!window){
@@ -119,13 +120,14 @@ function AnimationFrameStack() {
     this.processFnStack = function(){
         if (!window.aftcAnimStack.running){ return; }
 
-        for(let i=0; i < window.aftcAnimStack.stack.length; i++){
-            window.aftcAnimStack.stack[i]();
+        if (window.aftcAnimStack.stack){
+            // log(window.aftcAnimStack.stack.length);
+            for(var i=0; i < window.aftcAnimStack.stack.length; i++){
+                window.aftcAnimStack.stack[i]();
+            }
         }
 
-        window.requestAnimationFrame(()=>{
-            this.processFnStack();
-        });
+        window.requestAnimationFrame(me.processFnStack);
     }
 
     this.add = function(fn){
@@ -133,13 +135,12 @@ function AnimationFrameStack() {
     }
 
     this.remove = function(fn){
-        for(let i=0; i < window.aftcAnimStack.stack.length; i++){
+        for(var i=0; i < window.aftcAnimStack.stack.length; i++){
             if (window.aftcAnimStack.stack[i] === fn){
-                window.aftcAnimStack.stack = arrayRemoveItem(window.aftcAnimStack.stack,fn);
+                window.aftcAnimStack.stack = arrayRemoveIndex(window.aftcAnimStack.stack,i);
             }
         }
     }
-
 
     this.init();
 }
