@@ -35,6 +35,18 @@ Any and all donations to help keep active development and the lights on are more
 
 
 # <b>What's new</b>
+
+## <b>AnimationFrameStack</b><br>
+A single request animation frame function stack which can be used to control multiple classes / whole applications renderers etc via methods add(fn) remove(fn) stop() start() dispose()
+
+```
+let AnimStack = new AnimationFrameStack();
+animStack.add(fn1);
+animStack.stop();
+adnimStack.remove(fn2);
+animStack.start();
+```
+
 ## <b>aftc.js</b> v1.6.x</b><br>
  You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 
