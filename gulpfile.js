@@ -2,14 +2,14 @@ const gulp = require('gulp');
 
 
 // Uglify
-const uglify = require('gulp-uglify'); // https://www.npmjs.com/package/gulp-uglify
+// const uglify = require('gulp-uglify'); // https://www.npmjs.com/package/gulp-uglify
 const terser = require('gulp-terser'); // Supports ES5 and ES6
 
 const concat = require('gulp-concat');
 const inject = require('gulp-inject-string'); // Prepends string to top of builds
-const plumber = require("gulp-plumber"); // Pipe sequence
-const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+// const plumber = require("gulp-plumber"); // Pipe sequence
+// const rename = require("gulp-rename");
+// const sass = require("gulp-sass");
 const pump = require('pump');
 
 
@@ -85,11 +85,9 @@ var aftc_modules = [
 ];
 
 
-
 function buildCore(done) {
     gulp.src(aftc_core)
         .pipe(concat('aftc.core.js'))
-        // .pipe(uglify())
         .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
@@ -100,23 +98,21 @@ function buildCore(done) {
 }
 
 function buildCoreMin(done) {
-    gulp.src(aftc_core)
-        .pipe(concat('aftc.core.min.js'))
-        .pipe(uglify())
-        .pipe(inject.prepend(msg))
-        .on("error", function (e) {
-            console.log(e.toString());
-            this.emit("end");
-        })
-        .pipe(gulp.dest('./dist/'));
-    done();
+    pump([
+            gulp.src(aftc_core),
+            concat('aftc.core.min.js'),
+            terser(),
+            inject.prepend(msg),
+            gulp.dest('./dist/')
+        ],
+        done
+    );
 }
 
 
 function buildDev(done) {
     gulp.src(aftc_modules)
         .pipe(concat('aftc.js'))
-        // .pipe(uglify())
         .pipe(inject.prepend(msg))
         .on("error", function (e) {
             console.log(e.toString());
@@ -127,43 +123,17 @@ function buildDev(done) {
 }
 
 
-
 function buildDist(done) {
     pump([
-        gulp.src(aftc_modules),
-        concat('aftc.min.js'),
-        terser(),
-        inject.prepend(msg),
-        gulp.dest('./dist/')
-      ],
-      done
+            gulp.src(aftc_modules),
+            concat('aftc.min.js'),
+            terser(),
+            inject.prepend(msg),
+            gulp.dest('./dist/')
+        ],
+        done
     );
-    // done();
 }
-
-
-
-// // const beautify = require('gulp-beautify');
-// const beautify = require('gulp-jsbeautifier');
-
-// const es6_module_files = [
-//     "./src/ES6/aftc-modules.js"
-// ];
-
-// function buildES6Modules(done){
-//     pump([
-//         gulp.src(es6_module_files),
-//         // concat('aftc.min.js'),
-//         terser({
-//             mangle: false
-//         }),
-//         beautify(),
-//         inject.prepend(msg),
-//         gulp.dest('./dist/')
-//       ],
-//       done
-//     );
-// }
 
 
 
