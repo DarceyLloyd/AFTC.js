@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.50
+// AFTC.JS Version 1.6.51
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -220,7 +220,28 @@ window.trace = function (arg) { AFTC.Log.out(arg); }
  * @param msg string: The string to inject into the html element
  * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
-window.logTo = function (ele,msg) { ele.innerHTML = msg; }
+window.logTo = function logTo(elementOrId,msg){
+    function isElement(o) {
+        return (
+            typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+                o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
+        );
+    }
+
+    let ele = false;
+    if (typeof(elementOrId) == "string"){
+        ele = document.getElementById(elementOrId);
+    } else {
+        ele = elementOrId;
+    }
+
+    if (isElement(ele)){
+        ele.innerHTML = msg;
+    } else {
+        console.log("LogTo(): Unable to log to element or id provided!");
+        return false;
+    }
+}
 
 
 
@@ -2823,6 +2844,10 @@ function attachDebug(no,ele) {
 
     let debugContainer = document.createElement("div");
     debugContainer.id = "debug-container";
+    debugContainer.style.zIndex = "99999";
+    debugContainer.style.position = "fixed";
+    debugContainer.style.right = "5px";
+    debugContainer.style.top = "5px";
 
     for (let i = 0; i < no; i++) {
         let r = Math.round(Math.random()*9999999999);
@@ -2830,6 +2855,11 @@ function attachDebug(no,ele) {
         let div = document.createElement("div");
         div.id = id;
         div.classList.add("debug");
+        div.style.background = "#FFFFFF";
+        div.style.color = "#000000";
+        div.style.margin = "2px";
+        div.style.padding = "2px";
+
         debugContainer.appendChild(div);
         div.addEventListener("click", function (e) {
             console.log(this.innerHTML);
