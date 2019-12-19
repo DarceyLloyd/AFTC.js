@@ -21,7 +21,7 @@ function cycle(pos, max) {
  * @param onComplete function: The function you wish to call once the script has loaded
  * @link:
  */
-var loadJS = function (src, onComplete) {
+var loadJS = function (src, onComplete, onProgress) {
     /*
     // NOT IE11 Friendly
     var scriptTag = document.createElement('script');
@@ -33,28 +33,62 @@ var loadJS = function (src, onComplete) {
     document.body.appendChild(scriptTag);
     */
 
-
     var me = this;
     var head = document.getElementsByTagName("head")[0] || document.body;
     var script = document.createElement("script");
 
-    script.src = src;
+    // script.src = src;
 
-    script.onreadystatechange = function () {
-        if (this.readyState == 'complete' || this.readyState == 'loaded') {
-            if (onComplete) {
-                onComplete();
+    // script.onreadystatechange = function () {
+    //     if (this.readyState == 'complete' || this.readyState == 'loaded') {
+    //         if (onComplete) {
+    //             onComplete();
+    //         }
+    //     }
+    // };
+
+    // script.onload = function () {
+    //     if (onComplete) {
+    //         onComplete();
+    //     }
+    // };
+
+    // head.appendChild(script);
+
+    var req = new XMLHttpRequest();
+
+    // report progress events
+    req.addEventListener("progress", function(event) {
+        if (event.lengthComputable) {
+            var percentComplete = event.loaded / event.total;
+            // console.log(percentComplete);
+            if (onProgress){
+                onProgress(percentComplete);
+            }
+        } else {
+            // Unable to compute progress information since the total size is unknown
+            if (onProgress){
+                onProgress(false);
             }
         }
-    };
+    }, false);
 
-    script.onload = function () {
+    // load responseText into a new script element
+    req.addEventListener("load", function(e) {
+        script.innerHTML = e.target.responseText;
+        document.documentElement.appendChild(script);
+
         if (onComplete) {
             onComplete();
         }
-    };
 
-    head.appendChild(script);
+        script.addEventListener("load", function() {
+            // this runs after the new script has been executed...
+        });
+    }, false);
+
+    req.open("GET", src);
+    req.send();
 
 };
 

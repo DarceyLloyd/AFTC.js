@@ -51,7 +51,7 @@ animStack.start();
  You can view all pens at <a href="https://codepen.io/AllForTheCode/pens/public/?grid_type=list" target="_blank">https://codepen.io/AllForTheCode/pens/public/?grid_type=list</a>
 
 
- ## <b>Added loadJS(src,onLoad)</b><br>
+ ## <b>Added loadJS(src,onComplete,onProgress)</b><br>
  Quick and easy script loading and attachement to the DOM.
 
  ## <b>attachDebug(no, ele)</b><br>
