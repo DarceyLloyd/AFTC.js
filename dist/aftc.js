@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.55
+// AFTC.JS Version 1.6.56
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -4580,7 +4580,7 @@ AFTC.Color = function () {
 
             // Ensure i gets to 1
             distFrom1 = 1-i;
-            if (distFrom1<0.1){
+            if (distFrom1<0.05){
                 i = 1;
             }
             // log(i + "    distFrom1:" + distFrom1);
