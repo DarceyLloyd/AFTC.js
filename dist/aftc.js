@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.52
+// AFTC.JS Version 1.6.53
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -4545,6 +4545,11 @@ AFTC.Color = function () {
 
 
     // Utility functions
+    // Calculates a number between two numbers at a specific increment
+    function lerp(a, b, i) {
+        return (1 - i) * a + i * b;
+    };
+
     function hexToDec(v) {
         return parseInt(v, 16);
     }
@@ -4555,6 +4560,33 @@ AFTC.Color = function () {
     }
 
     // Public function
+    this.fadeTo = function(r,g,b,steps){
+        let color = this.getRGB();
+        return this.fadeFromTo(color.r,color.g,color.b,r,g,b,steps);
+    }
+
+    this.fadeFromTo = function(r1,g1,b1,r2,g2,b2,steps){
+        let colors = [];
+        let colorVo = function(){
+            this.r = 0;
+            this.g = 0;
+            this.b = 0;
+        }
+
+        let tick = 1 / steps;
+        for(let i=0; i <= 1;){
+            let color = new colorVo();
+            color.r = Math.round(lerp(r1,r2,i));
+            color.g = Math.round(lerp(g1,g2,i));
+            color.b = Math.round(lerp(b1,b2,i));
+            colors.push(color);
+
+            i = Math.round ((i+tick)*1000 );
+            i /= 1000;
+        }
+        return colors;
+    }
+
     this.randomizeColor = function () {
         randomizeColor();
     }

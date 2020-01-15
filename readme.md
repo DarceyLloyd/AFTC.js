@@ -36,6 +36,17 @@ Any and all donations to help keep active development and the lights on are more
 
 # <b>What's new</b>
 
+## Added fadeTo and fadeFromTo to AFTC.Color()
+```
+let color = new AFTC.Color();
+
+color.setRGB(0,255,0); // set starting color
+let colors1 = color.fadeTo(255,0,0,10);
+
+// Or do it with fromTo
+let colors2 = color.fadeFromTo(0,0,0,255,0,0,10);
+```
+
 ## <b>AnimationFrameStack</b><br>
 A single request animation frame function stack which can be used to control multiple classes / whole applications renderers etc via methods add(fn) remove(fn) stop() start() dispose()
 

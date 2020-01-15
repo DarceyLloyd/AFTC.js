@@ -84,6 +84,8 @@ var aftc_modules = [
     "./src/AFTC/AFTC.XHR.js", // Everyone needs some IO, I know I do...
 ];
 
+const allFiles = aftc_core.concat(aftc_modules);
+
 
 function buildCore(done) {
     gulp.src(aftc_core)
@@ -139,3 +141,12 @@ function buildDist(done) {
 
 
 gulp.task("build", gulp.parallel(buildCore, buildCoreMin, buildDev, buildDist));
+
+
+
+
+gulp.task("watch", function(){
+    gulp.watch([
+        "./src/**/*.js"
+    ], gulp.parallel(buildCore, buildCoreMin, buildDev, buildDist));
+});

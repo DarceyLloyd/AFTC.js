@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tests</title>
+    <script src="../dist/aftc.js"></script>
+    <style>
+            .container {
+                display: table;
+                border: 1px solid #000000;
+            }
+            .box {
+                padding: 3px;
+                margin: 3px;
+                width: 100px;
+                height: 20px;
+            }
+
+            .hidden {
+                opacity: 0;
+            }
+    </style>
+    <script>
+        onReady(function(){
+            var colors = [];
+            var container = getElementById("container");
+
+            let color = new AFTC.Color();
+            color.setRGB(0,255,0);
+            colors = color.fadeTo(255,0,0,10);
+
+            // Or do it with fromTo
+            // colors = color.fadeFromTo(0,0,0,255,0,0,10);
+
+            let html = "";
+            for(let i=0; i<colors.length; i++){
+                let rgb = colors[i].r + "," + colors[i].g + "," + colors[i].b;
+                // html += "<div class='box' style='backgroundColor:RGB(" + rgb + ")'"> + i + "</div>";
+                html += "<div class='box' style='background:RGB(" + rgb + ")'>" + i + "</div>";
+            }
+
+            container.innerHTML = html;
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container" class="container">
+
+    </div>
+</body>
+
+</html>
