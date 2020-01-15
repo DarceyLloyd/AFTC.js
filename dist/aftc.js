@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.53
+// AFTC.JS Version 1.6.55
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -4573,16 +4573,26 @@ AFTC.Color = function () {
             this.b = 0;
         }
 
-        let tick = 1 / steps;
+        let tick = 1 / (steps);
+        let distFrom1 = 0;
         for(let i=0; i <= 1;){
+
+
+            // Ensure i gets to 1
+            distFrom1 = 1-i;
+            if (distFrom1<0.1){
+                i = 1;
+            }
+            // log(i + "    distFrom1:" + distFrom1);
+
             let color = new colorVo();
             color.r = Math.round(lerp(r1,r2,i));
             color.g = Math.round(lerp(g1,g2,i));
             color.b = Math.round(lerp(b1,b2,i));
             colors.push(color);
 
-            i = Math.round ((i+tick)*1000 );
-            i /= 1000;
+            i = Math.round ((i+tick)*100 );
+            i /= 100;
         }
         return colors;
     }
