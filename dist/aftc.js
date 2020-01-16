@@ -4575,14 +4575,14 @@ AFTC.Color = function () {
 
         let tick = 1 / (steps);
         let distFrom1 = 0;
-        for(let i=0; i <= 1;){
+        for(let i=0; i <= 1; i+=tick){
 
 
             // Ensure i gets to 1
-            distFrom1 = 1-i;
-            if (distFrom1<0.05){
-                i = 1;
-            }
+            // distFrom1 = 1-i;
+            // if (distFrom1<0.05){
+            //     i = 1;
+            // }
             // log(i + "    distFrom1:" + distFrom1);
 
             let color = new colorVo();
@@ -4591,8 +4591,8 @@ AFTC.Color = function () {
             color.b = Math.round(lerp(b1,b2,i));
             colors.push(color);
 
-            i = Math.round ((i+tick)*100 );
-            i /= 100;
+            // i = Math.round ((i+tick)*100 );
+            // i /= 100;
         }
         return colors;
     }
