@@ -36,6 +36,11 @@ Any and all donations to help keep active development and the lights on are more
 
 # <b>What's new</b>
 
+## Reduced core to it's bare minimum
+Why? This is because of the direction JS development is going, if I am building a webpack project I often only want: log, logTo, onReady and argsToObject. And so a new core was born! Using webpack? You should be using aftc-modules unless I haven't migrated a feature over yet.
+
+
+
 ## Added fadeTo and fadeFromTo to AFTC.Color()
 ```
 let color = new AFTC.Color();
@@ -101,13 +106,11 @@ or via cdn:
 ### <b>File descirptions</b>
 Then include the version you wish to use, your options are:
 
- - <b>aftc.min.js</b> - this is the full aftc.js package compressed, with all the extras (42KB);
- - aftc.js - this is the full aftc.js package uncompressed with all the extras
+ - <b>aftc.min.js (44KB)</b> - Have it all!
 
- - <b>aftc.core.min.js</b> - this is the aftc.js core compressed (23KB)
- - aftc.core.js - this is the aftc.js core uncompressed (none of the extras like color, animation, canvas, hide show, fade etc)
+ - <b>aftc.core.min.js (3.71KB)</b> - onReady, log, Log, getElement shortcuts, getRandomInt/float etc.
 
-Either package aftc.min.js with your build or include the aftc.min.js file in your html script tags.
+
 
 ##### NOTE: You can always customise your build of the AFTC.JS, see the Build Guide below.
 

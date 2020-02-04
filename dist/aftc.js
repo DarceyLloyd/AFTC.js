@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.6.57
+// AFTC.JS Version 1.7.0
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -285,6 +285,31 @@ window.stringToWindow = function (html) { openDebugWindow(html); }
 window.htmlToWindow = function (html) { openDebugWindow(html);}
 
 /**
+ * @function: onReady(fn)
+ * @desc: A replacement for using body onload and no need for jQuery's $(document).ready
+ * @param fn function: inline function or pass it a function for when your page is loaded and ready to be used
+ * @alias: ready
+ * @link: https://codepen.io/AllForTheCode/pen/GdYxVa
+ */
+window.onReady = function (fn) {
+    // IE9+
+    if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+        // Adds a little delay but is a good thing
+        setTimeout(fn, 10);
+    } else {
+        if (document.addEventListener){
+            document.addEventListener("DOMContentLoaded", function () {
+                // Adds a little delay but is a good thing
+                setTimeout(fn, 10);
+            });
+        }
+
+    }
+}
+window.ready = function (fn) {
+    window.onReady(fn);
+}
+/**
  * @function: addEvent(obj,type,fn,useCapture)
  * @desc: Shortcut for adding events with old browser compatibility
  * @param obj object: The object you wish to attach the event listener to
@@ -305,32 +330,6 @@ window.addEvent = function (obj, type, fn, useCapture) {
     }
 };
 
-
-/**
- * @function: onReady(fn)
- * @desc: A replacement for using body onload and no need for jQuery's $(document).ready
- * @param fn function: inline function or pass it a function for when your page is loaded and ready to be used
- * @alias: ready
- * @link: https://codepen.io/AllForTheCode/pen/GdYxVa
- */
-window.onReady = function (fn) {
-    // IE9+
-    if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-        // Adds a little delay but is a good thing
-        setTimeout(fn, 10);
-    } else {
-        if (document.addEventListener){
-            document.addEventListener("DOMContentLoaded", function () {
-                // Adds a little delay but is a good thing
-                setTimeout(fn, 10);
-            });
-        }
-        
-    }
-}
-window.ready = function (fn) {
-    window.onReady(fn);
-}
 /**
  * @function: arrayRemoveIndex(arr,index)
  * @desc: remove a specified index from an array
@@ -740,6 +739,7 @@ window.randomString = function (length) {
     return text;
 }
 window.getRandomString = function (len) { return randomString(len); }
+
 
 
 /**
@@ -2098,11 +2098,11 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
  * @link: https://codepen.io/AllForTheCode/pen/ZRGabV
  */
 window.centerAbsoluteElement = function (elementId) {
-	var element = document.getElementById(elementId);		
+	var element = document.getElementById(elementId);
 	if (!element) {
 		throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 	}
-	
+
 	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
 	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
 	// var marginT = parseInt( getComputedStyle(element,null).marginTop );

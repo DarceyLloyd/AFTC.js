@@ -57,11 +57,11 @@ window.getElementTopOffset = function (elementId) { getElementOffsetTop(elementI
  * @link: https://codepen.io/AllForTheCode/pen/ZRGabV
  */
 window.centerAbsoluteElement = function (elementId) {
-	var element = document.getElementById(elementId);		
+	var element = document.getElementById(elementId);
 	if (!element) {
 		throw ("AFTC.js > centerAbsoluteElement(elementOrElementId): ERROR! elementId supplied was not found on the DOM!");
 	}
-	
+
 	// var marginL = parseInt( getComputedStyle(element,null).marginLeft );
 	// var marginR = parseInt( getComputedStyle(element,null).marginRight );
 	// var marginT = parseInt( getComputedStyle(element,null).marginTop );
