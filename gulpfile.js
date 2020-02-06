@@ -30,6 +30,7 @@ var aftc_core = [
     "./src/aftc.js",
     "./src/core/events.js",
     "./src/core/random.js",
+    "./src/core/io.js",
 
     // "./src/core/debug.js",
     // "./src/core/array.js",
@@ -59,6 +60,7 @@ var aftc_modules = [
     "./src/core/debug.js",
     "./src/core/events.js",
     "./src/core/events-extended.js",
+    "./src/core/io.js",
     "./src/core/array.js",
     "./src/core/get.js",
     "./src/core/is.js",
