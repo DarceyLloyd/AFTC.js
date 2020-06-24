@@ -22,7 +22,7 @@ window.goFullScreen = function (element) {
             target = element;
         }
     }
-    
+
     if (target.requestFullscreen) {
         target.requestFullscreen();
     } else if (target.webkitRequestFullscreen) {

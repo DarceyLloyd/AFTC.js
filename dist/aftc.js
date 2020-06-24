@@ -2410,7 +2410,7 @@ window.goFullScreen = function (element) {
             target = element;
         }
     }
-    
+
     if (target.requestFullscreen) {
         target.requestFullscreen();
     } else if (target.webkitRequestFullscreen) {
@@ -5238,7 +5238,7 @@ AFTC.XHR = function () {
 					var data = "";
 					var formData = new FormData();
 					for (var key in args.data) {
-						log(key + " = " + args.data[key]);
+						// log(key + " = " + args.data[key]);
 						formData.append(key, args.data[key]);
 						data += "&" + key + "=" + args.data[key];
 					}

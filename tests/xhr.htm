@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tests</title>
+    <script src="../dist/aftc.js"></script>
+    <style>
+            .container {
+                display: table;
+                border: 1px solid #000000;
+            }
+            .box {
+                padding: 3px;
+                margin: 3px;
+                width: 100px;
+                height: 20px;
+            }
+
+            .hidden {
+                opacity: 0;
+            }
+    </style>
+    <script>
+        onReady(function(){
+
+
+            let xhr1 = AFTC.XHR({
+                url: "./php/json-response.php",
+                onComplete: function(e){
+                    log("onComplete()");
+                }
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container" class="container">
+
+    </div>
+</body>
+
+</html>
