@@ -260,10 +260,7 @@ var aftc_modules = [
  <a href='#lefttrimstrby'>leftTrim(str, by)</a><br>
  <a href='#limitlengthinwordsstrmaxwords'>limitLengthInWords(str, maxWords)</a><br>
  <a href='#log'>log(*)</a><br>
- <a href='#logdisable'>logDisable()</a><br>
- <a href='#logenable'>logEnable()</a><br>
- <a href='#logtoelement'>logTo(element)</a><br>
- <a href='#logtodisable'>logToDisable()</a><br>
+ <a href='#logtoelement'>logTo(element,str,append)</a><br>
  <a href='#onreadyfn'>onReady(fn)</a><br>
  <a href='#opendebugwindowhtml'>openDebugWindow(html)</a><br>
  <a href='#parsearraytofloatarr'>parseArrayToFloat(arr)</a><br>
@@ -772,8 +769,6 @@ log(MyClass);
 
 <summary><b>More information</b></summary>
 
-
-
 <h4>Parameters:</h4>
 <table>
 	<tr>
@@ -789,18 +784,9 @@ log(MyClass);
 </table>
 
 
-
-
-
-
-
-
-
 <h4>Alias's:</h4>
  - log
  - trace
-
-
 
 </details>
 
@@ -809,55 +795,50 @@ log(MyClass);
  - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
  - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
 
-
-
 <hr><br><br><br>
 
 
 
 
 
-<h3><b>logTo(element)</b></h3>
 
-Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted<br>
+
+
+<h3><b>logTo(element or elementId,string,append:boolean=true)</b></h3>
+
+Shortcut for console.log with some formatting capabilities, you can also log to html elements see logTo()<br>
+
+```
+logTo("MyElement","Hello World",false); // clears element and inserts
+logTo("MyElement","Hello World"); // appends
+let myElement = document.getElementById("MyElementId");
+logTo(myElement,"Hello World"); // appends
+
+
+```
+
 
 <details>
 
 <summary><b>More information</b></summary>
 
-
-
 <h4>Parameters:</h4>
 <table>
 	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
+		<th>Element or ElementId</th>
+		<th>String</th>
+		<th>Append</th>
 	</tr>
 	<tr>
-		<td>element</td>
-		<td>string</td>
-		<td>The id of html element you wish to console.log to</td>
+		<td>HTML Element or String </td>
+		<td>String to be inserted into element</td>
+		<td>To append string or not to elements contents</td>
 	</tr>
 </table>
 
 
 
-
-
-
-
-
-
-
-
-
 </details>
-
-
-<h4> Usage examples:</h4>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
 
 
 <hr><br><br><br>
@@ -866,115 +847,7 @@ Enabled AFTC.Log and log to output to a html element of choice also, some things
 
 
 
-<h3><b>logEnable()</b></h3>
 
-Enables log and trace<br>
-
-<details>
-
-<summary><b>More information</b></summary>
-
-
-
-
-
-
-
-
-
-
-
-<h4>Alias's:</h4>
- - window.log.enable();
-
-
-
-</details>
-
-
-<h4> Usage examples:</h4>
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-
-<hr><br><br><br>
-
-
-
-
-
-<h3><b>logDisable()</b></h3>
-
-Disables log and trace<br>
-
-<details>
-
-<summary><b>More information</b></summary>
-
-
-
-
-
-
-
-
-
-
-
-<h4>Alias's:</h4>
- - window.log.disable();
-
-
-
-</details>
-
-
-<h4> Usage examples:</h4>
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-
-<hr><br><br><br>
-
-
-
-
-
-<h3><b>logToDisable()</b></h3>
-
-Disables log and trace to a html element<br>
-
-<details>
-
-<summary><b>More information</b></summary>
-
-
-
-
-
-
-
-
-
-
-
-<h4>Alias's:</h4>
- - disableLogTo();
-
-
-
-</details>
-
-
-<h4> Usage examples:</h4>
- - <a href='https://codepen.io/AllForTheCode/pen/pVOOZV' target='_blank'>https://codepen.io/AllForTheCode/pen/pVOOZV</a>
- - <a href='https://codepen.io/AllForTheCode/pen/NMLLJX' target='_blank'>https://codepen.io/AllForTheCode/pen/NMLLJX</a>
-
-
-
-<hr><br><br><br>
 
 
 
