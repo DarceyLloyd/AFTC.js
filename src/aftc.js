@@ -212,13 +212,19 @@ window.trace = function (arg) { AFTC.Log.out(arg); }
 
 
 /**
- * @function: logTo(ele,msg)
+ * @function: logTo(ele,msg,append)
  * @desc: Enabled AFTC.Log and log to output to a html element of choice also, some things like arrays will be formatted
  * @param ele element: The html element you wish to log to
  * @param msg string: The string to inject into the html element
+ * @param append boolean: Whether to append or to overwrite all content (good for clean start)
  * @link: https://codepen.io/AllForTheCode/pen/NMLLJX
  */
-window.logTo = function logTo(elementOrId,msg){
+window.logTo = function logTo(elementOrId,msg,append){
+
+    if (!append){
+        append = true;
+    }
+
     function isElement(o) {
         return (
             typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
@@ -234,7 +240,12 @@ window.logTo = function logTo(elementOrId,msg){
     }
 
     if (isElement(ele)){
-        ele.innerHTML = msg;
+        if (append){
+            ele.innerHTML = ele.innerHTML + msg + "<br>";
+        } else {
+            ele.innerHTML = msg;
+        }
+        
     } else {
         console.log("LogTo(): Unable to log to element or id provided!");
         return false;
