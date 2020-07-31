@@ -31,6 +31,7 @@ var aftc_core = [
     "./src/core/events.js",
     "./src/core/random.js",
     "./src/core/io.js",
+    "./src/core/cookies.js",
 
     // "./src/core/debug.js",
     // "./src/core/array.js",

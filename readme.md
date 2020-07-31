@@ -2251,7 +2251,7 @@ hexToRgb<br>
 
 
 
-<h3><b>setCookie(name, value)</b></h3>
+<h3><b>setCookie(name, value, expiryTimeInDays)</b></h3>
 
 Sets a cookie by name with a value<br>
 
@@ -2277,6 +2277,11 @@ Sets a cookie by name with a value<br>
 		<td>value</td>
 		<td>string</td>
 		<td>value of the cookie</td>
+	</tr>
+	<tr>
+		<td>expiryTimeInDays</td>
+		<td>number</td>
+		<td>Specify the number of days the cookie will expire in.</td>
 	</tr>
 </table>
 
