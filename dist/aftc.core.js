@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.7.6
+// AFTC.JS Version 1.7.7
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -460,7 +460,7 @@ var loadJS = function (src, onComplete, onProgress) {
  * @param value string: value of the cookie
  * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
-window.setCookie = function (name, value,exdays) {
+window.setCookie = function (cname, cvalue,exdays) {
 	// var expires = new Date();
 	// expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
 	// document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();

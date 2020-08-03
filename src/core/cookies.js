@@ -5,7 +5,7 @@
  * @param value string: value of the cookie
  * @link: https://codepen.io/AllForTheCode/pen/RyBMwq
  */
-window.setCookie = function (name, value,exdays) {
+window.setCookie = function (cname, cvalue,exdays) {
 	// var expires = new Date();
 	// expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
 	// document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
