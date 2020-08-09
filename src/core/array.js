@@ -19,6 +19,13 @@ window.arrayRemoveIndex = function (arr, index) {
  * @link: https://codepen.io/AllForTheCode/pen/QrZrBM
  */
 window.isStringInArray = function (needle, haystack) {
+    if (typeof(haystack) === "string"){
+        if (needle === haystack){
+            return true;
+        } else {
+            return false;
+        }
+    };
     return (new RegExp('(' + haystack.join('|').replace(/\./g, '\\.') + ')$')).test(needle);
 }
 
