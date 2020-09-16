@@ -206,16 +206,16 @@ window.scrollToElement = function (elementId, arg_duration, offset) {
 
 
 /**
- * @function: getOffset(element)
+ * @function: getElementPos(element)
  * @desc: Will return the left (x) and top (y) position of an element
  * ```
- * let pos = getOffset(myElement);
+ * let pos = getElementPos(myElement);
  * ```
  * @param element HTMLElement: The element to get the position of
- * @alias: 
+ * @alias: getOffset
  * @link: 
  */
-window.getOffset = function(el) {
+window.getElementPos = function(el) {
     let x = 0;
     let y = 0;
     while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
@@ -225,3 +225,4 @@ window.getOffset = function(el) {
     }
     return { left: x, top: y };
 }
+window.getOffset = window.getElementPos(el);
