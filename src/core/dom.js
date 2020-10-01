@@ -225,4 +225,4 @@ window.getElementPos = function(el) {
     }
     return { left: x, top: y };
 }
-window.getOffset = window.getElementPos(el);
+window.getOffset = function(el) { window.getElementPos(el); }

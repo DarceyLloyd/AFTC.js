@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.7.10
+// AFTC.JS Version 1.7.11
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -2365,7 +2365,7 @@ window.getElementPos = function(el) {
     }
     return { left: x, top: y };
 }
-window.getOffset = window.getElementPos(el);
+window.getOffset = function(el) { window.getElementPos(el); }
 /**
  * @function: addClass(elementOrId,classname)
  * @desc: Add a css class to a html element
