@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.7.11
+// AFTC.JS Version 1.7.12
 // Author: Darcey@aftc.io
 
 // AFTC Core

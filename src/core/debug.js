@@ -17,3 +17,56 @@ window.openDebugWindow = function (html) {
 }
 window.stringToWindow = function (html) { openDebugWindow(html); }
 window.htmlToWindow = function (html) { openDebugWindow(html);}
+
+
+
+
+
+function attachDebug(no,ele) {
+    // return id's not the div create elements as these are type of object and not html element
+    let ids = [];
+
+    let debugContainer = document.createElement("div");
+    debugContainer.id = "debug-container";
+    debugContainer.style.zIndex = "99999";
+    debugContainer.style.position = "fixed";
+    debugContainer.style.right = "5px";
+    debugContainer.style.top = "5px";
+
+    for (let i = 0; i < no; i++) {
+        let r = Math.round(Math.random()*9999999999);
+        let id = "aftc-debug-container-" + r;
+        let div = document.createElement("div");
+        div.id = id;
+        div.classList.add("debug");
+        div.style.background = "#FFFFFF";
+        div.style.color = "#000000";
+        div.style.margin = "2px";
+        div.style.padding = "2px";
+
+        debugContainer.appendChild(div);
+        div.addEventListener("click", function (e) {
+            console.log(this.innerHTML);
+        });
+
+        ids.push(id);
+        window["AFTCVDebugItem"+i] = div;
+    }
+    if (ele){
+        ele.appendChild(debugContainer);
+    } else {
+        document.body.appendChild(debugContainer);
+    }
+
+    return ids;
+}
+
+
+function debugTo(index,val){
+    window["AFTCVDebugItem"+index].innerHTML = val;
+    // getElementById(id).innerHTML = val;
+}
+
+function debugToId(id,val){
+    getElementById(id).innerHTML = val;
+}

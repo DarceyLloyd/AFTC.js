@@ -74,8 +74,8 @@ animStack.start();
  Attach some visual debug divs to an element which you can logTo, returns an array of elements so you can:
  ```
  let v = attachDebug(10,document.body);
- logTo(v[0],"hello world 1");
- logTo(v[9],"hello world 10");
+ debugTo(v[0],"hello world 1");
+ debugTo(v[9],"hello world 10");
  ```
  <br>
  <hr>
