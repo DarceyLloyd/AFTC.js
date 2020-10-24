@@ -13,7 +13,7 @@ var AFTC = AFTC || {}
  * @alias: argsTo
  * @link: https://codepen.io/AllForTheCode/pen/PaqbKN
  */
-argsToObject = function (fArgs, obj, strict) {
+window.argsToObject = function (fArgs, obj, strict) {
     if (fArgs[0] && typeof (fArgs[0]) == "object") {
         var args = fArgs[0];
 
@@ -34,7 +34,7 @@ argsToObject = function (fArgs, obj, strict) {
 
     }
 };
-argsTo = function (args, obj, strict) { argsToObject(args, obj, strict); }
+window.argsTo = function (args, obj, strict) { argsToObject(args, obj, strict); }
 
 
 

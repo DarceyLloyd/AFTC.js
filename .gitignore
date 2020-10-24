@@ -1,10 +1,9 @@
-# OS generated files #
-######################
+# Dev
 vendor
 node_modules
+package-lock.json
 
-# OS generated files #
-######################
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -13,8 +12,7 @@ node_modules
 ehthumbs.db
 Thumbs.db
 
-# IDE files #
-#############
+# IDE files
 nbproject
 .nbproject
 .~lock.*
@@ -26,13 +24,9 @@ composer.lock
 .vs
 .vscode
 prepros-6.config
-package-lock.json
 
 
-# Misc #
-########
+# Misc
 .old
 backups
-
-
 beta
