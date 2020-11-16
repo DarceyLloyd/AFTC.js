@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tests</title>
+    <script src="../dist/aftc.js"></script>
+    <style>
+            
+            .box {
+                border: 1px solid #000000;
+                padding: 2px;
+            }
+    </style>
+    <script>
+        onReady(function(){
+            setHTML("info1","JavaScript test 1");
+
+            setHTML("info2","JavaScript test 2a","append");
+            setHTML("info2","JavaScript test 2b","append");
+
+            setHTML("info3","JavaScript test 3a","prepend");
+            setHTML("info3","JavaScript test 3b","prepend");
+        })
+    </script>
+</head>
+
+<body>
+
+    <h3>Set or not using 3rd param</h3>
+    <div id="info1" class="box">Darcey@aftc.io</div>
+
+    <h3>Append</h3>
+    <div id="info2" class="box">Darcey@aftc.io</div>
+
+    <h3>Prepend</h3>
+    <div id="info3" class="box">Darcey@aftc.io</div>
+   
+</body>
+
+</html>

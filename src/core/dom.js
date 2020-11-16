@@ -1,26 +1,54 @@
 /**
- * @function: setHTML(elementOrId,html);
+ * @function: setHTML(elementOrId,html,mode="set");
  * @desc: Quick shortcut for outputting html to an element
  * ```
  * setHTML("header","Welcome");
  * ```
  * @param elementOrId stringIdOrHtmlElement: the element or the element id you wish to set the html of
  * @param html string: the html string to insert into your element
+ * @param mode string: the mode to set the html content of the element, set || append || prepend, defaults to set
  * @alias: html
  * @link: https://codepen.io/AllForTheCode/pen/KRbLER
  */
-window.setHTML = function (elementOrId, str) {
-    var element;
-    if (typeof (elementOrId) == "string") {
-        element = getElementById(elementOrId);
+window.setHTML = function (elementOrId, str, mode) {
+        let ele;
+        if (typeof (elementOrId) === "string") {
+            ele = document.getElementById(elementOrId);
+            if (!ele) {
+                ele = document.querySelector(elementOrId);
+            }
+        } else {
+            ele = elementOrId;
+        }
+    
+        if (ele) {
+
+            if (mode){
+                mode = mode.toLowerCase();
+            }
+    
+            switch (mode) {
+                case "append":
+                    if (ele.innerHTML == ""){
+                        ele.innerHTML += str;
+                    } else {
+                        ele.innerHTML += "<br>" + str;
+                    }
+                    
+                    break;
+                case "prepend":
+                    ele.innerHTML = str + "<br>" + ele.innerHTML;
+                    break;
+                default:
+                    ele.innerHTML = str;
+                    break;
+            }
+    
+        } else {
+            return "setHTML(): Usage error: Unable to retrieve element id or use element [" + elementOrId + "]";
+        }
     }
-    if (isElement(element)) {
-        element.innerHTML = str;
-    } else {
-        return "unable to retrieve element from [" + elementOrId + "]";
-    }
-}
-window.html = function (element, str) { window.setHTML(element, str); }
+window.html = function (elementOrId, str, mode) { window.setHTML(elementOrId, str, mode); }
 
 
 /**
