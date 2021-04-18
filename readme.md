@@ -16,7 +16,7 @@ Any and all donations to help keep active development and the lights on are more
 
 
 
- ## <b>Want the ES6 modules version? <b>aftc-modules.js</b><br>
+ ## <b>Want the ES6+ modules version? <b>aftc-modules.js</b><br>
  <b>
  Visit <a href="https://github.com/DarceyLloyd/aftc-modules" target="_blank">https://github.com/DarceyLloyd/aftc-modules</a></b>
 
@@ -35,6 +35,10 @@ Any and all donations to help keep active development and the lights on are more
 
 
 # <b>What's new</b>
+
+## Added loadCss(href,onComplete)
+
+## Added alias loadScript for loadJs
 
 ## Reduced core to it's bare minimum
 Why? This is because of the direction JS development is going, if I am building a webpack project I often only want: log, logTo, onReady and argsToObject. And so a new core was born! Using webpack? You should be using aftc-modules unless I haven't migrated a feature over yet.

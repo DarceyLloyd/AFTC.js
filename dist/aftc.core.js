@@ -378,6 +378,7 @@ window.getRandomString = function (len) { return randomString(len); }
  * @desc: cycles from 0 to max based on pos, will cycle back to 0 if over max
  * @param url string: Path to javascript file to load
  * @param onComplete function: The function you wish to call once the script has loaded
+ * @alians loadScript
  * @link:
  */
 var loadJS = function (src, onComplete, onProgress) {
@@ -417,23 +418,23 @@ var loadJS = function (src, onComplete, onProgress) {
     var req = new XMLHttpRequest();
 
     // report progress events
-    req.addEventListener("progress", function(event) {
+    req.addEventListener("progress", function (event) {
         if (event.lengthComputable) {
             var percentComplete = event.loaded / event.total;
             // console.log(percentComplete);
-            if (onProgress){
+            if (onProgress) {
                 onProgress(percentComplete);
             }
         } else {
             // Unable to compute progress information since the total size is unknown
-            if (onProgress){
+            if (onProgress) {
                 onProgress(false);
             }
         }
     }, false);
 
     // load responseText into a new script element
-    req.addEventListener("load", function(e) {
+    req.addEventListener("load", function (e) {
         script.innerHTML = e.target.responseText;
         document.documentElement.appendChild(script);
 
@@ -441,7 +442,7 @@ var loadJS = function (src, onComplete, onProgress) {
             onComplete();
         }
 
-        script.addEventListener("load", function() {
+        script.addEventListener("load", function () {
             // this runs after the new script has been executed...
         });
     }, false);
@@ -450,9 +451,33 @@ var loadJS = function (src, onComplete, onProgress) {
     req.send();
 
 };
+var loadScript = function (src, onComplete, onProgress) {
+    loadJS(src, onComplete, onProgress);
+}
 
 
 
+/**
+ * @function: loadCss(href,onComplete)
+ * @desc: Loads a CSS file
+ * @param string:href, function:onComplete (optional)
+ * @alias:
+ * @link:
+ */
+
+var loadCss = function (href, onComplete) {
+    var link = document.createElement("link");
+    link.onload = function () {
+        if (onComplete) {
+            onComplete();
+        }
+    }
+    link.href = href;
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.media = "screen,print";
+    document.getElementsByTagName("head")[0].appendChild(link);
+}
 /**
  * @function: setCookie(name, value)
  * @desc: Sets a cookie by name with a value
