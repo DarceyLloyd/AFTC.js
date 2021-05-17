@@ -1,4 +1,4 @@
-// AFTC.JS Version 1.8.0
+// AFTC.JS Version 1.8.5
 // Author: Darcey@aftc.io
 
 // AFTC Core
@@ -1827,17 +1827,17 @@ window.isValidEmail = function (email) { return isEmail(email); }
  * @link: https://codepen.io/AllForTheCode/pen/KRbLdm
  */
 window.isMobile = function(){
-	// Windows Phone must come first because its UA also contains "Android"!
-	var ua = navigator.userAgent.toLowerCase();
-	if (/windows phone/i.test(ua)) {
-		return true;
-	} else {
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    // Windows Phone must come first because its UA also contains "Android"!
+    let ua = navigator.userAgent.toLowerCase();
+    if (/windows phone/i.test(ua)) {
+        return true;
+    } else {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 /**
@@ -1847,13 +1847,13 @@ window.isMobile = function(){
  * @link: https://codepen.io/AllForTheCode/pen/RyEmgN
  */
 window.isAndroid = function(){
-	var ua = navigator.userAgent.toLowerCase();
-	if (/windows phone/i.test(ua)) {
-		return false;
-	} else {
-		var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-		return isAndroid;
-	}
+    let ua = navigator.userAgent.toLowerCase();
+    if (/windows phone/i.test(ua)) {
+        return false;
+    } else {
+        let isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+        return isAndroid;
+    }
 }
 
 /**
@@ -1901,33 +1901,52 @@ window.isFireFox = function () {
  * @link: https://codepen.io/AllForTheCode/pen/xjmNLM
  */
 window.isChrome = function () {
-	//var chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1; // FALSE POSITIVE IN OPERA
-	// var chrome = !!window.chrome && !!window.chrome.webstore; // DOESNT WORK ANY LONGER
+    var isChromium = window.chrome;
+    var winNav = window.navigator;
+    var vendorName = winNav.vendor;
+    var isOpera = typeof window.opr !== "undefined";
+    var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+    var isIOSChrome = winNav.userAgent.match("CriOS");
 
-	var isChromium = window.chrome;
-	var winNav = window.navigator;
-	var vendorName = winNav.vendor;
-	var isOpera = typeof window.opr !== "undefined";
-	var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
-	var isIOSChrome = winNav.userAgent.match("CriOS");
-	
-	if (isIOSChrome) {
-	   // is Google Chrome on IOS
-	   return true;
-	} else if(
-	  isChromium !== null &&
-	  typeof isChromium !== "undefined" &&
-	  vendorName === "Google Inc." &&
-	  isOpera === false &&
-	  isIEedge === false
-	) {
-	   // is Google Chrome
-	   return true;
-	} else { 
-	   // not Google Chrome 
-	   return false;
-	}
+    // Have to detect edge first as it's now chromium based
+    if (/Edge|Edg\/\d./i.test(navigator.userAgent)) {
+    // if (/Edge\/\d./i.test(navigator.userAgent)) {
+        return false;
+    }
+
+    if (isIOSChrome) {
+        // is Google Chrome on IOS
+        return true;
+    } else if (
+        isChromium !== null &&
+        typeof isChromium !== "undefined" &&
+        vendorName === "Google Inc." &&
+        isOpera === false &&
+        isIEedge === false
+    ) {
+        // is Google Chrome
+        return true;
+    } else {
+        // not Google Chrome
+        return false;
+    }
 }
+
+/**
+ * @function: isIOS()
+ * @desc: Detects iOS
+ * @return boolean
+ */
+window.isIOS = function() {
+    let ua = navigator.userAgent;
+    if (/iPad Simulator|iPhone Simulator|iPod Simulator|iPad|iPod|iPhone/i.test(ua)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 
 
 /**
@@ -1937,12 +1956,13 @@ window.isChrome = function () {
  * @link: https://codepen.io/AllForTheCode/pen/aGPrLP
  */
 window.isEdge = function () {
-	//var isEdge = !isIE && !!window.StyleMedia; // Edge 20+
-	var edge = false;
-	if (/Edge\/\d./i.test(navigator.userAgent)) {
-		edge = true;
-	}
-	return edge;
+    //let isEdge = !isIE && !!window.StyleMedia; // Edge 20+
+    let edge = false;
+
+    if (/Edge|Edg\/\d./i.test(navigator.userAgent)) {
+        edge = true;
+    }
+    return edge;
 }
 
 
@@ -1953,9 +1973,14 @@ window.isEdge = function () {
  * @link: https://codepen.io/AllForTheCode/pen/gzZJXr
  */
 window.isSafari = function () {
-	// var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
-	// return is_safari;
-	return /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    // let is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+    // return is_safari;
+    // return /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -1980,11 +2005,11 @@ window.isIE = function () {
  * @link: https://codepen.io/AllForTheCode/pen/dewEJb
  */
 window.isOpera = function() {
-	// var isChromium = window.chrome;
-	// var isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
-	// var isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
-	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-	return isOpera;
+    // let isChromium = window.chrome;
+    // let isOpera = window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1;
+    // let isOpera = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
+    let isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    return isOpera;
 }
 
 /**
@@ -2027,193 +2052,32 @@ window.getBrowser = function () {
 
 
 /**
- * @function: getOS(testUserAgent)
+ * @function: getOS()
  * @desc: Attempts to get the os from the user agent or the test user agent
- * @param string testUserAgent: test user agent string
- * @link: https://codepen.io/AllForTheCode/pen/erbaVj
  */
-window.getOS = function (testAgent) {
-	var userAgent;
+window.getOS = function() {
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+        os = null;
 
-	if (!testAgent){
-		userAgent = navigator.userAgent || navigator.vendor || window.opera;
-	} else {
-		userAgent = testAgent;
-	}
+    if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+        os = 'Android';
+    } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+    }
 
-	userAgent = userAgent.toLowerCase();
-
-
-
-
-	// Windows Phone must come first because its UA also contains "Android"!
-	if (/windows phone/i.test(userAgent)) {
-		return {
-			os:"windows phone",
-			userAgent:userAgent
-		}
-	}
-
-	// Samsung Browser detection S8
-	if (/samsungbrowser/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/android/i.test(userAgent)) {
-		return {
-			os:"android",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ipad|iphone|ipod/i.test(userAgent)) {
-		return {
-			os:"ios",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	// Windows Phone must come first because its UA also contains "Android"
-	if (/win64|win32|win16|win95|win98|windows 2000|windows xp|msie|windows nt 6.3; trident|windows nt|windows/i.test(userAgent)) {
-		return {
-			os:"windows",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/os x/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/macintosh|osx/i.test(userAgent)) {
-		return {
-			os:"osx",
-			userAgent:userAgent
-		}
-	}
-
-	if (/openbsd/i.test(userAgent)) {
-		return {
-			os:"open bsd",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/sunos/i.test(userAgent)) {
-		return {
-			os:"sunos",
-			userAgent:userAgent
-		}
-	}
-
-
-
-
-
-
-	if (/crkey/i.test(userAgent)) {
-		return {
-			os:"chromecast",
-			userAgent:userAgent
-		}
-	}
-
-	if (/appletv/i.test(userAgent)) {
-		return {
-			os:"apple tv",
-			userAgent:userAgent
-		}
-	}
-
-	if (/wiiu/i.test(userAgent)) {
-		return {
-			os:"nintendo wiiu",
-			userAgent:userAgent
-		}
-	}
-
-	if (/nintendo 3ds/i.test(userAgent)) {
-		return {
-			os:"nintendo 3ds",
-			userAgent:userAgent
-		}
-	}
-
-	if (/playstation/i.test(userAgent)) {
-		return {
-			os:"playstation",
-			userAgent:userAgent
-		}
-	}
-
-	if (/kindle/i.test(userAgent)) {
-		return {
-			os:"amazon kindle",
-			userAgent:userAgent
-		}
-	}
-
-	if (/ cros /i.test(userAgent)) {
-		return {
-			os:"chrome os",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	if (/ubuntu/i.test(userAgent)) {
-		return {
-			os:"ubuntu",
-			userAgent:userAgent
-		}
-	}
-
-
-	if (/googlebot/i.test(userAgent)) {
-		return {
-			os:"google bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/bingbot/i.test(userAgent)) {
-		return {
-			os:"bing bot",
-			userAgent:userAgent
-		}
-	}
-
-	if (/yahoo! slurp/i.test(userAgent)) {
-		return {
-			os:"yahoo bot",
-			userAgent:userAgent
-		}
-	}
-
-
-
-	return {
-		os: false,
-		userAgent:userAgent
-	};
+    return os;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
 
 /**
  * @function: setHTML(elementOrId,html,mode="set");
